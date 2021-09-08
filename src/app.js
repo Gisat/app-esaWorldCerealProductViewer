@@ -13,16 +13,15 @@ import '@gisatcz/ptr-core/lib/styles/reset.css';
 import '@gisatcz/ptr-core/lib/styles/base.scss';
 import './styles/index.scss';
 
-import ReviewApp from './components/App';
+import AppContent from './components/AppContent';
 
 const path = process.env.PUBLIC_URL;
 
 function createRoutes(Store, isPreloaded) {
-	return {
-	};
+	return {};
 }
 
-function init(Store, {absPath, isPreloaded, currentUrl, navHandler}) {
+function initRouter(Store, {absPath, isPreloaded, currentUrl, navHandler}) {
 	/**
 	 * Creates router instance that can be used to manipulate urls.
 	 *
@@ -47,15 +46,15 @@ function init(Store, {absPath, isPreloaded, currentUrl, navHandler}) {
 
 const ConnectedAppContainer = connects.AppContainer(AppContainer);
 
-const AppComponent = () => {
+const App = () => {
 	return (
 		<>
 			<Helmet defaultTitle="WorldCereal | Product Viewer" />
 			<ConnectedAppContainer appKey={appKey}>
-				<ReviewApp />
+				<AppContent />
 			</ConnectedAppContainer>
 		</>
 	);
 };
 
-export {AppComponent as App, init};
+export {App, initRouter};

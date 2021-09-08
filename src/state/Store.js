@@ -10,12 +10,8 @@ import {
 	baseStores,
 } from '@gisatcz/ptr-state';
 import {createBrowserHistory, createMemoryHistory} from 'history';
-import {init as initApp} from '../app';
-import {
-	createRequestCounter,
-	createAsyncMiddleware,
-	isServer,
-} from '@gisatcz/ptr-core';
+import {initRouter} from '../app';
+import {createAsyncMiddleware, isServer} from '@gisatcz/ptr-core';
 
 export const history = isServer
 	? createMemoryHistory()
@@ -67,12 +63,7 @@ function createAppStore(options) {
 		delete window.__PRELOADED_STATE__;
 	}
 
-	const requestCounter = createRequestCounter();
-	const store = createStore(
-		createReducer(),
-		initialState,
-		createEnhancer(requestCounter)
-	);
+	const store = createStore(createReducer(), initialState);
 
 	const absPath =
 		options?.absPath ??
@@ -81,7 +72,7 @@ function createAppStore(options) {
 			window.location.host +
 			process.env.PUBLIC_URL;
 
-	initApp(store, {
+	initRouter(store, {
 		absPath,
 		isPreloaded,
 		currentUrl: options?.currentUrl,
@@ -90,7 +81,6 @@ function createAppStore(options) {
 
 	return {
 		store: store,
-		requestCounter: requestCounter,
 	};
 }
 

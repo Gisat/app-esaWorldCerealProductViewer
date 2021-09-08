@@ -8,7 +8,7 @@ import {App} from './app';
 
 const {store} = createStore();
 
-const Application = () => (
+const ConnectedApp = () => (
 	<Provider store={store}>
 		<App />
 	</Provider>
@@ -18,7 +18,7 @@ function renderApp() {
 	const rootEl = document.getElementById('root');
 	const render =
 		isServer || rootEl.hasChildNodes() ? ReactDOM.hydrate : ReactDOM.render;
-	render(<Application />, rootEl);
+	render(<ConnectedApp />, rootEl);
 }
 
 renderApp();
