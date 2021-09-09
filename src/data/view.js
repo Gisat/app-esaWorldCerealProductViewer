@@ -13,12 +13,29 @@ export default {
 						key: 'productViewer-map-1',
 						data: {},
 					},
+					'productViewer-map-2': {
+						key: 'productViewer-map-2',
+						data: {},
+					},
+					'productViewer-map-3': {
+						key: 'productViewer-map-3',
+						data: {},
+					},
+					'productViewer-map-4': {
+						key: 'productViewer-map-4',
+						data: {},
+					},
 				},
 				sets: {
 					'productViewer-set': {
 						key: 'productViewer-set',
 						activeMapKey: 'productViewer-map-1',
-						maps: ['productViewer-map-1'],
+						maps: [
+							'productViewer-map-1',
+							'productViewer-map-2',
+							'productViewer-map-3',
+							'productViewer-map-4',
+						],
 						sync: {
 							center: true,
 							boxRange: true,

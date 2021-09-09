@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
 import {connects} from '@gisatcz/ptr-state';
 import {ReactLeafletMap, MapSet, PresentationMap} from '@gisatcz/ptr-maps';
+import MapContainer from '../MapContainer';
 
-const ConnectedMap = connects.Map(PresentationMap);
+const ConnectedMap = MapContainer(PresentationMap);
 const ConnectedMapSet = connects.MapSet(MapSet);
 
 import './style.scss';
