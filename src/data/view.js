@@ -26,14 +26,14 @@ export default {
 						data: {
 							backgroundLayer: backgroundLayers.imagery,
 							view: {
-								boxRange: 2000000,
+								boxRange: 400000,
 								center: {
 									lat: -33,
 									lon: -59,
 								},
 							},
 							viewLimits: {
-								boxRangeRange: [1000, 10000000],
+								boxRangeRange: [10000, 8000000],
 							},
 						},
 					},
