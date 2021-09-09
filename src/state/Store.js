@@ -10,8 +10,12 @@ import {
 	baseStores,
 } from '@gisatcz/ptr-state';
 import {createBrowserHistory, createMemoryHistory} from 'history';
-import {initRouter} from '../app';
-import {createAsyncMiddleware, isServer} from '@gisatcz/ptr-core';
+import {initApp} from '../app';
+import {
+	createAsyncMiddleware,
+	createRequestCounter,
+	isServer,
+} from '@gisatcz/ptr-core';
 
 export const history = isServer
 	? createMemoryHistory()
@@ -41,6 +45,7 @@ const composeEnhancers =
 		window?.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?.({})) ||
 	compose;
 
+// TODO why request counter?
 function createEnhancer(requestCounter) {
 	return composeEnhancers(
 		reduxBatch,
@@ -63,7 +68,12 @@ function createAppStore(options) {
 		delete window.__PRELOADED_STATE__;
 	}
 
-	const store = createStore(createReducer(), initialState);
+	const requestCounter = createRequestCounter();
+	const store = createStore(
+		createReducer(),
+		initialState,
+		createEnhancer(requestCounter)
+	);
 
 	const absPath =
 		options?.absPath ??
@@ -72,7 +82,7 @@ function createAppStore(options) {
 			window.location.host +
 			process.env.PUBLIC_URL;
 
-	initRouter(store, {
+	initApp(store, {
 		absPath,
 		isPreloaded,
 		currentUrl: options?.currentUrl,

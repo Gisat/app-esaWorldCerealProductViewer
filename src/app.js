@@ -5,6 +5,7 @@ import {connects} from '@gisatcz/ptr-state';
 import {create as createRouter} from '@gisatcz/ptr-router';
 import {AppContainer} from '@gisatcz/ptr-components';
 
+import Action from './state/Action';
 import {init as initCore} from './core';
 import {appKey} from './constants/keys';
 
@@ -18,10 +19,14 @@ import AppContent from './components/AppContent';
 const path = process.env.PUBLIC_URL;
 
 function createRoutes(Store, isPreloaded) {
-	return {};
+	return {
+		'': {
+			name: 'home',
+		},
+	};
 }
 
-function initRouter(Store, {absPath, isPreloaded, currentUrl, navHandler}) {
+function initApp(Store, {absPath, isPreloaded, currentUrl, navHandler}) {
 	/**
 	 * Creates router instance that can be used to manipulate urls.
 	 *
@@ -42,6 +47,8 @@ function initRouter(Store, {absPath, isPreloaded, currentUrl, navHandler}) {
 	if (isPreloaded) {
 		return;
 	}
+
+	Store.dispatch(Action.init(path));
 }
 
 const ConnectedAppContainer = connects.AppContainer(AppContainer);
@@ -57,4 +64,4 @@ const App = () => {
 	);
 };
 
-export {App, initRouter};
+export {App, initApp};
