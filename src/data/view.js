@@ -11,19 +11,59 @@ export default {
 				maps: {
 					'productViewer-map-1': {
 						key: 'productViewer-map-1',
-						data: {},
+						data: {
+							layers: [
+								{
+									key: 'extent',
+									type: 'vector',
+									options: {
+										features: [],
+									},
+								},
+							],
+						},
 					},
 					'productViewer-map-2': {
 						key: 'productViewer-map-2',
-						data: {},
+						data: {
+							layers: [
+								{
+									key: 'extent',
+									type: 'vector',
+									options: {
+										features: [],
+									},
+								},
+							],
+						},
 					},
 					'productViewer-map-3': {
 						key: 'productViewer-map-3',
-						data: {},
+						data: {
+							layers: [
+								{
+									key: 'extent',
+									type: 'vector',
+									options: {
+										features: [],
+									},
+								},
+							],
+						},
 					},
 					'productViewer-map-4': {
 						key: 'productViewer-map-4',
-						data: {},
+						data: {
+							layers: [
+								{
+									key: 'extent',
+									type: 'vector',
+									options: {
+										features: [],
+									},
+								},
+							],
+						},
 					},
 				},
 				sets: {

@@ -1,3 +1,4 @@
+import {createBrowserHistory, createMemoryHistory} from 'history';
 import {
 	createStore,
 	combineReducers,
@@ -9,13 +10,14 @@ import {
 	activeMetadataActions,
 	baseStores,
 } from '@gisatcz/ptr-state';
-import {createBrowserHistory, createMemoryHistory} from 'history';
-import {initApp} from '../app';
 import {
 	createAsyncMiddleware,
 	createRequestCounter,
 	isServer,
 } from '@gisatcz/ptr-core';
+import {initApp} from '../app';
+
+import productMetadata from './worldCereal/ProductMetadata/reducers';
 
 export const history = isServer
 	? createMemoryHistory()
@@ -37,7 +39,14 @@ function createMiddleware(requestCounter, withoutLogger) {
 }
 
 function createReducer() {
-	return combineReducers({...baseStores});
+	const reducers = combineReducers({
+		productMetadata,
+	});
+
+	return combineReducers({
+		...baseStores,
+		worldCereal: reducers,
+	});
 }
 
 const composeEnhancers =

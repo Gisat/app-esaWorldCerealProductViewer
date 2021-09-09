@@ -1,5 +1,5 @@
 import {connect, setRecomputeState as setState} from '@gisatcz/ptr-state';
-import {utils} from '@gisatcz/ptr-utils';
+import {utils, map as mapUtils} from '@gisatcz/ptr-utils';
 import Action from '../state/Action';
 import Select from '../state/Select';
 
@@ -32,6 +32,9 @@ const mapDispatchToPropsFactory = () => {
 				dispatch(
 					Action.maps.setMapViewport(ownProps.stateMapKey, mapWidth, mapHeight)
 				);
+				dispatch(
+					Action.worldCereal.adjustInitialBoxRange(ownProps.stateMapKey)
+				);
 				dispatch(Action.maps.use(ownProps.stateMapKey, null, null));
 			},
 
@@ -42,7 +45,9 @@ const mapDispatchToPropsFactory = () => {
 			refreshUse: () => {},
 
 			onViewChange: update => {
-				dispatch(Action.maps.updateMapAndSetView(ownProps.stateMapKey, update));
+				dispatch(
+					Action.worldCereal.updateMapView(ownProps.stateMapKey, update)
+				);
 			},
 
 			onPropViewChange: (update, mapWidth, mapHeight) => {
