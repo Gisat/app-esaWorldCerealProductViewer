@@ -3,8 +3,7 @@ export default [
 		key: 'baa33640-9ec9-483c-980d-5b406927a8ff',
 		data: {
 			name: 'Argentina',
-			productid:
-				'2020_21HTC_annualcropland_classification_WorldCerealPixelLSTM',
+			id: '2020_21HTC_annualcropland_classification_WorldCerealPixelLSTM',
 			sos: '2020-06-15',
 			eos: '2020-09-15',
 			season: 'summer1',
@@ -42,8 +41,7 @@ export default [
 		key: '567cf8b6-9c92-4909-b906-96b4941558d2',
 		data: {
 			name: 'Brazil',
-			productid:
-				'2020_22LHQ_annualcropland_classification_WorldCerealPixelLSTM',
+			id: '2020_22LHQ_annualcropland_classification_WorldCerealPixelLSTM',
 			sos: '2020-05-01',
 			eos: '2020-08-12',
 			season: 'summer1',
@@ -81,8 +79,7 @@ export default [
 		key: '33c00a4d-cae3-48d9-8ea8-76937ed1345c',
 		data: {
 			name: 'Spain',
-			productid:
-				'2020_30SWJ_annualcropland_classification_WorldCerealPixelLSTM',
+			id: '2020_30SWJ_annualcropland_classification_WorldCerealPixelLSTM',
 			sos: '2020-06-01',
 			eos: '2020-09-22',
 			season: 'summer1',
@@ -120,8 +117,7 @@ export default [
 		key: '366e2b4d-be2a-4267-bd92-f0bdfd27bfba',
 		data: {
 			name: 'Belgium',
-			productid:
-				'2020_31UFS_annualcropland_classification_WorldCerealPixelLSTM',
+			id: '2020_31UFS_annualcropland_classification_WorldCerealPixelLSTM',
 			sos: '2020-04-22',
 			eos: '2020-06-15',
 			season: 'summer1',
@@ -159,8 +155,7 @@ export default [
 		key: 'e3c0d8b2-ec03-4e60-9e44-32d1fb35a25c',
 		data: {
 			name: 'Ukraine',
-			productid:
-				'2020_35UQR_annualcropland_classification_WorldCerealPixelLSTM',
+			id: '2020_35UQR_annualcropland_classification_WorldCerealPixelLSTM',
 			sos: '2020-05-01',
 			eos: '2020-09-17',
 			season: 'summer1',
@@ -198,8 +193,7 @@ export default [
 		key: 'db6a07b9-811c-4eae-9cde-ff90818d6e19',
 		data: {
 			name: 'Kenya',
-			productid:
-				'2020_37MBV_annualcropland_classification_WorldCerealPixelLSTM',
+			id: '2020_37MBV_annualcropland_classification_WorldCerealPixelLSTM',
 			sos: '2020-06-30',
 			eos: '2020-08-04',
 			season: 'summer1',
@@ -237,8 +231,7 @@ export default [
 		key: '5fee9108-9726-4843-914f-d4093167298f',
 		data: {
 			name: 'China',
-			productid:
-				'2020_50SMF_annualcropland_classification_WorldCerealPixelLSTM',
+			id: '2020_50SMF_annualcropland_classification_WorldCerealPixelLSTM',
 			sos: '2020-04-17',
 			eos: '2020-06-12',
 			season: 'summer1',

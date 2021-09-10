@@ -7,7 +7,7 @@ export default {
 			worldCereal: {},
 			maps: {
 				activeMapKey: 'productViewer-map-1',
-				activeSetKey: 'productViewer-set',
+				activeSetKey: 'productViewer-mapSet',
 				maps: {
 					'productViewer-map-1': {
 						key: 'productViewer-map-1',
@@ -67,8 +67,8 @@ export default {
 					},
 				},
 				sets: {
-					'productViewer-set': {
-						key: 'productViewer-set',
+					'productViewer-mapSet': {
+						key: 'productViewer-mapSet',
 						activeMapKey: 'productViewer-map-1',
 						maps: [
 							'productViewer-map-1',
@@ -90,7 +90,7 @@ export default {
 								},
 							},
 							viewLimits: {
-								boxRangeRange: [10000, 8000000],
+								boxRangeRange: [10000, 10000000],
 							},
 						},
 					},
