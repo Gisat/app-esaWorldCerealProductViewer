@@ -16,7 +16,7 @@ const ConnectedMapSet = connects.MapSet(MapSet);
 
 import './style.scss';
 
-const App = ({onMount, onUnmount}) => {
+const App = ({onMount, onUnmount, viewLimits}) => {
 	useEffect(() => {
 		if (typeof onMount === 'function') {
 			onMount();
@@ -35,7 +35,11 @@ const App = ({onMount, onUnmount}) => {
 				wrapper={MapWrapper}
 			>
 				<SimpleLayersControl />
-				<MapControls levelsBased zoomOnly />
+				<MapControls
+					levelsBased
+					zoomOnly
+					viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
+				/>
 			</ConnectedMapSet>
 			<ControlPanel />
 		</div>
