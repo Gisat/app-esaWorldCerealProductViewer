@@ -3,6 +3,7 @@ import {find as _find} from 'lodash';
 import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
 import {mapSetKey} from '../../../constants/keys';
+import annualCroplandClassification from '../../../data/styles/annualCroplandClassification';
 
 const add = commonActions.add(ActionTypes.WORLD_CEREAL.PRODUCT_METADATA);
 const setActiveKeys = commonActions.setActiveKeys(
@@ -12,7 +13,6 @@ const setActiveKeys = commonActions.setActiveKeys(
 function handleProductInActiveMap(productMetadataKey) {
 	return (dispatch, getState) => {
 		const map = Select.maps.getMapSetActiveMap(getState(), mapSetKey);
-
 		const productMetadata = Select.worldCereal.productMetadata.getByKey(
 			getState(),
 			productMetadataKey
@@ -23,46 +23,54 @@ function handleProductInActiveMap(productMetadataKey) {
 		const layerIsPresent =
 			map?.data?.layers &&
 			!!_find(map.data.layers, layer => layer.layerKey === productMetadataKey);
+
+		// Remove or add layer(s)
 		if (layerIsPresent) {
 			tiles.forEach(tile => {
+				// TODO remove multiple layers at once?
 				dispatch(
 					CommonAction.maps.removeMapLayer(
 						map.key,
-						`${productMetadataKey}_${tile.tile}`
+						getUniqueLayerKey(productMetadataKey, tile)
 					)
 				);
 			});
 		} else {
 			const layers = [];
 			tiles.forEach(tile =>
-				layers.push({
-					key: `${productMetadataKey}_${tile.tile}`,
-					layerKey: productMetadataKey,
-					type: 'cog',
-					options: {
-						url: tile.path,
-						style: {
-							rules: [
-								{
-									styles: [
-										{
-											color: '#000000',
-										},
-										{
-											bandIndex: 0,
-											values: {
-												0: {color: null},
-											},
-										},
-									],
-								},
-							],
-						},
-					},
-				})
+				layers.push(getLayerDefinition(productMetadataKey, tile))
 			);
 			dispatch(CommonAction.maps.addMapLayers(map.key, layers));
 		}
+	};
+}
+
+// helpers ---------------------------------------------------------------------------------------
+/**
+ * Create unique layer key. Each product has several tiles. Each tile should be an unique map layer.
+ * @param productMetadataKey {string} uuid of product metadata
+ * @param tile {tile: Object, path: string}
+ * @returns {string}
+ */
+function getUniqueLayerKey(productMetadataKey, tile) {
+	return `${productMetadataKey}_${tile.tile}`;
+}
+
+/**
+ * Get layer definition
+ * @param productMetadataKey {string} uuid of product metadata
+ * @param tile {tile: Object, path: string}
+ * @returns {Object} Panther.Layer
+ */
+function getLayerDefinition(productMetadataKey, tile) {
+	return {
+		key: getUniqueLayerKey(productMetadataKey, tile),
+		layerKey: productMetadataKey,
+		type: 'cog',
+		options: {
+			url: tile.path,
+			style: annualCroplandClassification.data.definition,
+		},
 	};
 }
 

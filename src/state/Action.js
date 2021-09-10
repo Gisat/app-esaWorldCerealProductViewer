@@ -24,10 +24,6 @@ function init(path) {
 		// add mock data
 		dispatch(productMetadataActions.add(productMetadata));
 
-		productMetadata.forEach(metadata => {
-			const feature = metadata.data.geometry;
-		});
-
 		// add metadata aoi for testing
 
 		// setTimeout(() => {
@@ -68,9 +64,8 @@ function adjustInitialBoxRange(mapKey) {
 
 		if (boxRange !== currentMapView.boxRange) {
 			dispatch(CommonAction.maps.updateMapAndSetView(mapKey, {boxRange}));
+			// TODO get product metadata for current view
 		}
-
-		// TODO get product metadata for current view
 	};
 }
 
