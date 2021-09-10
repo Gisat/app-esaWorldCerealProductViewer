@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {connects} from '@gisatcz/ptr-state';
 import {ReactLeafletMap, MapSet, PresentationMap} from '@gisatcz/ptr-maps';
 import MapContainer from '../MapContainer';
+import MapWrapper from '../MapWrapper';
 import ControlPanel from '../ControlPanel';
 
 const ConnectedMap = MapContainer(PresentationMap);
@@ -25,6 +26,7 @@ const App = ({onMount, onUnmount}) => {
 				stateMapSetKey="productViewer-mapSet"
 				mapComponent={ReactLeafletMap}
 				connectedMapComponent={ConnectedMap}
+				wrapper={MapWrapper}
 			></ConnectedMapSet>
 			<ControlPanel />
 		</div>

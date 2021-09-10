@@ -17,7 +17,7 @@ class ControlPanel extends React.PureComponent {
 			<div className="worldCereal-ControlPanel">
 				{this.props.productMetadata &&
 					this.props.productMetadata.map(metadataItem => {
-						return <div>{metadataItem.data.id}</div>;
+						return <div key={metadataItem.key}>{metadataItem.data.name}</div>;
 					})}
 			</div>
 		);
