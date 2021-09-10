@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default {
-	topomap: {
-		key: 'topomap',
+	esri_WorldTopoMap: {
+		key: 'esri_WorldTopoMap',
 		name: 'ESRI Topomap',
 		type: 'wmts',
 		options: {
@@ -12,8 +12,8 @@ export default {
 		attribution: <>Esri, USGS | Esri, HERE, Garmin, FAO, NOAA, USGS</>,
 		theme: 'light',
 	},
-	imagery: {
-		key: 'imagery',
+	esri_WorldImagery: {
+		key: 'esri_WorldImagery',
 		name: 'ESRI Imagery',
 		type: 'wmts',
 		options: {
@@ -25,8 +25,8 @@ export default {
 		),
 		theme: 'dark',
 	},
-	greyCanvas: {
-		key: 'greyCanvas',
+	esri_WorldGrayCanvas: {
+		key: 'esri_WorldGrayCanvas',
 		name: 'ESRI Grey Canvas',
 		type: 'wmts',
 		options: {
@@ -36,8 +36,8 @@ export default {
 		attribution: <>Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ</>,
 		theme: 'light',
 	},
-	osm: {
-		key: 'osm',
+	openStreetMap_Mapnik: {
+		key: 'openStreetMap_Mapnik',
 		name: 'OpenStreetMap',
 		type: 'wmts',
 		options: {
@@ -54,64 +54,6 @@ export default {
 					OpenStreetMap
 				</a>{' '}
 				contributors
-			</>
-		),
-		theme: 'light',
-	},
-	cartoDark: {
-		key: 'cartoDark',
-		name: 'CartoDB - dark',
-		type: 'wmts',
-		options: {
-			url: 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png',
-		},
-		attribution: (
-			<>
-				&copy;{' '}
-				<a
-					href="https://www.openstreetmap.org/copyright"
-					target="_blank"
-					rel="noreferrer noopener"
-				>
-					OpenStreetMap
-				</a>{' '}
-				contributors,{' '}
-				<a
-					href="https://creativecommons.org/licenses/by-sa/2.0/"
-					target="_blank"
-					rel="noreferrer noopener"
-				>
-					CC-BY-SA
-				</a>
-			</>
-		),
-		theme: 'dark',
-	},
-	cartoGrey: {
-		key: 'cartoGrey',
-		name: 'CartoDB - grey',
-		type: 'wmts',
-		options: {
-			url: 'https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png',
-		},
-		attribution: (
-			<>
-				&copy;{' '}
-				<a
-					href="https://www.openstreetmap.org/copyright"
-					target="_blank"
-					rel="noreferrer noopener"
-				>
-					OpenStreetMap
-				</a>{' '}
-				contributors,{' '}
-				<a
-					href="https://creativecommons.org/licenses/by-sa/2.0/"
-					target="_blank"
-					rel="noreferrer noopener"
-				>
-					CC-BY-SA
-				</a>
 			</>
 		),
 		theme: 'light',

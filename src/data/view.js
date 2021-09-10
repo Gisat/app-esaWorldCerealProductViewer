@@ -81,7 +81,7 @@ export default {
 							boxRange: true,
 						},
 						data: {
-							backgroundLayer: backgroundLayers.cartoGrey,
+							backgroundLayer: backgroundLayers.esri_WorldGrayCanvas,
 							view: {
 								boxRange: 400000,
 								center: {

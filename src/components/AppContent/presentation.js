@@ -4,6 +4,7 @@ import {ReactLeafletMap, MapSet, PresentationMap} from '@gisatcz/ptr-maps';
 import MapContainer from '../MapContainer';
 import MapWrapper from '../MapWrapper';
 import ControlPanel from '../ControlPanel';
+import SimpleLayersControl from '../SimpleLayersControl';
 
 const ConnectedMap = MapContainer(PresentationMap);
 const ConnectedMapSet = connects.MapSet(MapSet);
@@ -27,7 +28,9 @@ const App = ({onMount, onUnmount}) => {
 				mapComponent={ReactLeafletMap}
 				connectedMapComponent={ConnectedMap}
 				wrapper={MapWrapper}
-			></ConnectedMapSet>
+			>
+				<SimpleLayersControl />
+			</ConnectedMapSet>
 			<ControlPanel />
 		</div>
 	);
