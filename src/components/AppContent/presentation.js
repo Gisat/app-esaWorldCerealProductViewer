@@ -1,6 +1,11 @@
 import React, {useEffect} from 'react';
 import {connects} from '@gisatcz/ptr-state';
-import {ReactLeafletMap, MapSet, PresentationMap} from '@gisatcz/ptr-maps';
+import {
+	ReactLeafletMap,
+	MapControls,
+	MapSet,
+	PresentationMap,
+} from '@gisatcz/ptr-maps';
 import MapContainer from '../MapContainer';
 import MapWrapper from '../MapWrapper';
 import ControlPanel from '../ControlPanel';
@@ -30,6 +35,7 @@ const App = ({onMount, onUnmount}) => {
 				wrapper={MapWrapper}
 			>
 				<SimpleLayersControl />
+				<MapControls levelsBased zoomOnly />
 			</ConnectedMapSet>
 			<ControlPanel />
 		</div>
