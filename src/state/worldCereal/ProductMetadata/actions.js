@@ -10,6 +10,10 @@ const setActiveKeys = commonActions.setActiveKeys(
 	ActionTypes.WORLD_CEREAL.PRODUCT_METADATA
 );
 
+/**
+ * Add/remove the product to/from active map
+ * @param productMetadataKey {string} unique key of product metadata
+ */
 function handleProductInActiveMap(productMetadataKey) {
 	return (dispatch, getState) => {
 		const map = Select.maps.getMapSetActiveMap(getState(), mapSetKey);
@@ -20,12 +24,12 @@ function handleProductInActiveMap(productMetadataKey) {
 
 		const {tiles} = productMetadata.data;
 
-		const layerIsPresent =
+		const isLayerPresent =
 			map?.data?.layers &&
 			!!_find(map.data.layers, layer => layer.layerKey === productMetadataKey);
 
 		// Remove or add layer(s)
-		if (layerIsPresent) {
+		if (isLayerPresent) {
 			tiles.forEach(tile => {
 				// TODO remove multiple layers at once?
 				dispatch(

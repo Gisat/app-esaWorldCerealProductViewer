@@ -11,6 +11,11 @@ const getActiveModels = commonSelectors.getActiveModels(getSubstate);
 const getAll = commonSelectors.getAll(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
 
+/**
+ * @param {Object} state
+ * @param {string} mapSetKey
+ * @return {Object|null} Panther map view
+ */
 const getByMapSetView = createSelector(
 	[
 		CommonSelect.maps.getMapSetActiveMapView,
