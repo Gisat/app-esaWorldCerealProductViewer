@@ -25,6 +25,7 @@ class ControlPanel extends React.PureComponent {
 						productMetadata.map(metadataItem => {
 							return (
 								<Button
+									key={metadataItem.key}
 									onClick={handleProductInActiveMap.bind(
 										this,
 										metadataItem.key

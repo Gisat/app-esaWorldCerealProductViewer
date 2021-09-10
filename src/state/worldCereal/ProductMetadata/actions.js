@@ -11,13 +11,7 @@ const setActiveKeys = commonActions.setActiveKeys(
 
 function handleProductInActiveMap(productMetadataKey) {
 	return (dispatch, getState) => {
-		// TODO getActiveMapSetActiveMap selector
-		const maps = Select.maps.getMapSetMaps(getState(), mapSetKey);
-		const activeMapKey = Select.maps.getMapSetActiveMapKey(
-			getState(),
-			mapSetKey
-		);
-		const map = _find(maps, map => map.key === activeMapKey);
+		const map = Select.maps.getMapSetActiveMap(getState(), mapSetKey);
 
 		const productMetadata = Select.worldCereal.productMetadata.getByKey(
 			getState(),

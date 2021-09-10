@@ -28,7 +28,8 @@ function init(path) {
 			const feature = metadata.data.geometry;
 		});
 
-		// TODO add metadata aoi for testing for now
+		// add metadata aoi for testing
+
 		// setTimeout(() => {
 		// 	const features = productMetadata.map(metadata => {
 		// 		return {

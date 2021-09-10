@@ -11,10 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 			state,
 			mapSetKey
 		),
-		layers: Select.worldCereal.productMetadata.getMapSetActiveMapLayers(
-			state,
-			mapSetKey
-		),
+		layers: Select.maps.getMapSetActiveMapLayers(state, mapSetKey),
 	};
 };
 

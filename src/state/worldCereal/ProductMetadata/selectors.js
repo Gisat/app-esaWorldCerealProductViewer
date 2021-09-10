@@ -1,10 +1,9 @@
-import {filter as _filter, find as _find} from 'lodash';
+import {filter as _filter} from 'lodash';
 import {createSelector} from 'reselect';
 import intersect from '@turf/intersect';
 import {commonSelectors, Select as CommonSelect} from '@gisatcz/ptr-state';
 import {map as mapUtils} from '@gisatcz/ptr-utils';
 import {mapConstants} from '@gisatcz/ptr-core';
-import Select from '../../Select';
 
 const getSubstate = state => state.worldCereal.productMetadata;
 
@@ -13,19 +12,13 @@ const getActiveModels = commonSelectors.getActiveModels(getSubstate);
 const getAll = commonSelectors.getAll(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
 
-// TODO specific map selectors
-const getMapSetActiveMapLayers = createSelector(
-	[CommonSelect.maps.getMapSetMaps, CommonSelect.maps.getMapSetActiveMapKey],
-	(maps, activeMapKey) => {
-		const map = maps && _find(maps, map => map.key === activeMapKey);
-		return map?.data?.layers || null;
-	}
-);
-
 const getByMapSetView = createSelector(
-	[CommonSelect.maps.getMapSetView, CommonSelect.maps.getMapSetMaps, getAll],
-	(view, maps, models) => {
-		const viewport = maps?.[0]?.data?.viewport; // TODO specific selector for active map set map viewport
+	[
+		CommonSelect.maps.getMapSetActiveMapView,
+		CommonSelect.maps.getMapSetActiveMapViewport,
+		getAll,
+	],
+	(view, viewport, models) => {
 		if (models && view && viewport) {
 			const feature = getExtentFromViewAsGeoJsonFeature(view, viewport);
 			return _filter(
@@ -91,5 +84,4 @@ export default {
 
 	getByKey,
 	getByMapSetView,
-	getMapSetActiveMapLayers,
 };
