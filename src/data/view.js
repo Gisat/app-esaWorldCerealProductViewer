@@ -81,7 +81,7 @@ export default {
 							boxRange: true,
 						},
 						data: {
-							backgroundLayer: backgroundLayers.imagery,
+							backgroundLayer: backgroundLayers.cartoGrey,
 							view: {
 								boxRange: 400000,
 								center: {
