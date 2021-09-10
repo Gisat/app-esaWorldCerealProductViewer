@@ -1,5 +1,4 @@
 import {filter as _filter} from 'lodash';
-import createCachedSelector from 're-reselect';
 import {createSelector} from 'reselect';
 import intersect from '@turf/intersect';
 import {commonSelectors, Select as CommonSelect} from '@gisatcz/ptr-state';

@@ -23,6 +23,27 @@ function init(path) {
 
 		// add mock data
 		dispatch(productMetadataActions.add(productMetadata));
+
+		productMetadata.forEach(metadata => {
+			const feature = metadata.data.geometry;
+		});
+
+		// TODO add metadata aoi for testing for now
+		// setTimeout(() => {
+		// 	const features = productMetadata.map(metadata => {
+		// 		return {
+		// 			geometry: metadata.data.geometry,
+		// 			type: 'Feature',
+		// 		};
+		// 	});
+		// 	dispatch(
+		// 		CommonAction.maps.addMapLayerToIndex('productViewer-map-1', {
+		// 			key: 'layer-test',
+		// 			type: 'vector',
+		// 			options: {features},
+		// 		})
+		// 	);
+		// }, 50);
 	};
 }
 
