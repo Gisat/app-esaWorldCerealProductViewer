@@ -1,4 +1,5 @@
 import {connect} from '@gisatcz/ptr-state';
+import Action from '../../state/Action';
 import Select from '../../state/Select';
 
 import Presentation from './presentation';
@@ -10,11 +11,20 @@ const mapStateToProps = (state, ownProps) => {
 			state,
 			mapSetKey
 		),
+		layers: Select.worldCereal.productMetadata.getMapSetActiveMapLayers(
+			state,
+			mapSetKey
+		),
 	};
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-	return {};
+	return {
+		handleProductInActiveMap: metadataKey =>
+			dispatch(
+				Action.worldCereal.productMetadata.handleProductInActiveMap(metadataKey)
+			),
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Presentation);

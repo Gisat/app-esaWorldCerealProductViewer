@@ -1,15 +1,26 @@
-import {filter as _filter} from 'lodash';
+import {filter as _filter, find as _find} from 'lodash';
 import {createSelector} from 'reselect';
 import intersect from '@turf/intersect';
 import {commonSelectors, Select as CommonSelect} from '@gisatcz/ptr-state';
 import {map as mapUtils} from '@gisatcz/ptr-utils';
 import {mapConstants} from '@gisatcz/ptr-core';
+import Select from '../../Select';
 
 const getSubstate = state => state.worldCereal.productMetadata;
 
 const getActiveKeys = commonSelectors.getActiveKeys(getSubstate);
 const getActiveModels = commonSelectors.getActiveModels(getSubstate);
 const getAll = commonSelectors.getAll(getSubstate);
+const getByKey = commonSelectors.getByKey(getSubstate);
+
+// TODO specific map selectors
+const getMapSetActiveMapLayers = createSelector(
+	[CommonSelect.maps.getMapSetMaps, CommonSelect.maps.getMapSetActiveMapKey],
+	(maps, activeMapKey) => {
+		const map = maps && _find(maps, map => map.key === activeMapKey);
+		return map?.data?.layers || null;
+	}
+);
 
 const getByMapSetView = createSelector(
 	[CommonSelect.maps.getMapSetView, CommonSelect.maps.getMapSetMaps, getAll],
@@ -78,5 +89,7 @@ export default {
 	getActiveKeys,
 	getActiveModels,
 
+	getByKey,
 	getByMapSetView,
+	getMapSetActiveMapLayers,
 };
