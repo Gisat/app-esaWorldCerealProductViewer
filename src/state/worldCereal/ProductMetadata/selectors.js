@@ -12,7 +12,40 @@ const getActiveKeys = commonSelectors.getActiveKeys(getSubstate);
 const getActiveModels = commonSelectors.getActiveModels(getSubstate);
 const getAll = commonSelectors.getAll(getSubstate);
 
-const getFeatureFromExtent = extent => {
+const getByMapSetView = createSelector(
+	[CommonSelect.maps.getMapSetView, CommonSelect.maps.getMapSetMaps, getAll],
+	(view, maps, models) => {
+		const viewport = maps?.[0]?.data?.viewport; // TODO specific selector for active map set map viewport
+		if (models && view && viewport) {
+			const feature = getExtentFromViewAsGeoJsonFeature(view, viewport);
+			return _filter(
+				models,
+				model => !!intersect(model.data.geometry, feature)
+			);
+		} else {
+			return null;
+		}
+	}
+);
+
+// helpers
+function getExtentFromViewAsGeoJsonFeature(view, viewport) {
+	const extent = mapUtils.view.getBoundingBoxFromViewForEpsg3857(
+		view.center,
+		view.boxRange,
+		viewport.width / viewport.height,
+		mapConstants.averageLatitude
+	);
+
+	const extentAsArray = [
+		[extent.minLon, extent.minLat],
+		[extent.maxLon, extent.maxLat],
+	];
+
+	return getFeatureFromExtent(extentAsArray);
+}
+
+function getFeatureFromExtent(extent) {
 	const nodes = 5;
 	const coordsInner = new Array(nodes).fill(null);
 	const coordsInnerFill = coordsInner.map((v, i) => {
@@ -38,35 +71,7 @@ const getFeatureFromExtent = extent => {
 			coordinates: [coordsInnerFill],
 		},
 	};
-};
-
-const getByMapSetView = createSelector(
-	[CommonSelect.maps.getMapSetView, CommonSelect.maps.getMapSetMaps, getAll],
-	(view, maps, models) => {
-		const viewport = maps?.[0]?.data?.viewport; // TODO specific selector for active map set map viewport
-		if (models && view && viewport) {
-			const extent = mapUtils.view.getBoundingBoxFromViewForEpsg3857(
-				view.center,
-				view.boxRange,
-				viewport.width / viewport.height,
-				mapConstants.averageLatitude
-			);
-
-			const extentAsArray = [
-				[extent.minLon, extent.minLat],
-				[extent.maxLon, extent.maxLat],
-			];
-
-			const feature = getFeatureFromExtent(extentAsArray);
-			return _filter(
-				models,
-				model => !!intersect(model.data.geometry, feature)
-			);
-		} else {
-			return null;
-		}
-	}
-);
+}
 
 export default {
 	getSubstate,
