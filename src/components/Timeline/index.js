@@ -11,17 +11,18 @@ const mapStateToProps = (state, ownProps) => {
 			state,
 			mapSetKey
 		),
-		layers: Select.maps.getMapSetActiveMapLayers(state, mapSetKey),
+		activeLayers: Select.maps.getMapSetActiveMapLayers(state, mapSetKey),
 	};
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		handleProductInActiveMap: metadataKey => {
+		handleProductInActiveMap: data =>
 			dispatch(
-				Action.worldCereal.productMetadata.handleProductInActiveMap(metadataKey)
-			);
-		},
+				Action.worldCereal.productMetadata.handleProductInActiveMap(
+					data.layerTemplateKey
+				)
+			),
 	};
 };
 
