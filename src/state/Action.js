@@ -8,7 +8,9 @@ import productMetadataActions from './worldCereal/ProductMetadata/actions';
 
 // TODO load view from BE
 import view from '../data/view';
-import productMetadata from '../data/mock_productMetadata';
+import productMetadata from '../data/mock_productMetadata/correct_annualcropland';
+import productMetadata_wheat from '../data/mock_productMetadata/fake_wheat';
+import productMetadata_annualcropland_diffTimes from '../data/mock_productMetadata/fake_annualcropland_diffTimes';
 
 function init(path) {
 	return (dispatch, getState) => {
@@ -23,6 +25,10 @@ function init(path) {
 
 		// add mock data
 		dispatch(productMetadataActions.add(productMetadata));
+		dispatch(productMetadataActions.add(productMetadata_wheat));
+		dispatch(
+			productMetadataActions.add(productMetadata_annualcropland_diffTimes)
+		);
 
 		// add metadata aoi for testing
 

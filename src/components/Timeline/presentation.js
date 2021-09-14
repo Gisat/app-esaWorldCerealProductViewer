@@ -6,8 +6,8 @@ import {MapTimeline, Mouse, Years, Months} from '@gisatcz/ptr-timeline';
 import './style.scss';
 
 const periodLimit = {
-	start: '2019',
-	end: '2022',
+	start: '2020',
+	end: '2021',
 };
 
 const LEVELS = [
@@ -60,10 +60,7 @@ class Timeline extends React.PureComponent {
 							activeLayers,
 							layer => layer.layerKey === product.key
 						),
-						activePeriodIndex: _findIndex(
-							activeLayers,
-							layer => layer.layerKey === product.key
-						),
+						activePeriodIndex: 0,
 						title: product.data.name,
 						info: product.data.product,
 						zIndex: i,

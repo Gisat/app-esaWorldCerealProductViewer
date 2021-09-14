@@ -4,6 +4,7 @@ import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
 import {mapSetKey} from '../../../constants/keys';
 import annualCroplandClassification from '../../../data/styles/annualCroplandClassification';
+import wheatClassification from '../../../data/styles/wheatClassification';
 
 const add = commonActions.add(ActionTypes.WORLD_CEREAL.PRODUCT_METADATA);
 const setActiveKeys = commonActions.setActiveKeys(
@@ -42,7 +43,13 @@ function handleProductInActiveMap(productMetadataKey) {
 		} else {
 			const layers = [];
 			tiles.forEach(tile =>
-				layers.push(getLayerDefinition(productMetadataKey, tile))
+				layers.push(
+					getLayerDefinition(
+						productMetadataKey,
+						tile,
+						productMetadata?.data.product
+					)
+				)
 			);
 			dispatch(CommonAction.maps.addMapLayers(map.key, layers));
 		}
@@ -64,18 +71,34 @@ function getUniqueLayerKey(productMetadataKey, tile) {
  * Get layer definition
  * @param productMetadataKey {string} uuid of product metadata
  * @param tile {tile: Object, path: string}
+ * @param product {string}
  * @returns {Object} Panther.Layer
  */
-function getLayerDefinition(productMetadataKey, tile) {
+function getLayerDefinition(productMetadataKey, tile, product) {
 	return {
 		key: getUniqueLayerKey(productMetadataKey, tile),
 		layerKey: productMetadataKey,
 		type: 'cog',
 		options: {
 			url: tile.path,
-			style: annualCroplandClassification.data.definition,
+			style: getStyleByProduct(product),
 		},
 	};
+}
+
+/**
+ * @param product {string}
+ * @returns {Object} Panther style definition
+ */
+function getStyleByProduct(product) {
+	switch (product) {
+		case 'annualcropland':
+			return annualCroplandClassification.data.definition;
+		case 'wheat':
+			return wheatClassification.data.definition;
+		default:
+			return annualCroplandClassification.data.definition;
+	}
 }
 
 export default {
