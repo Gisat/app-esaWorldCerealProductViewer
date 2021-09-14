@@ -1,5 +1,5 @@
 import React from 'react';
-import {find as _find} from 'lodash';
+import {find as _find, findIndex as _findIndex} from 'lodash';
 import PropTypes from 'prop-types';
 import {MapTimeline, Mouse, Years, Months} from '@gisatcz/ptr-timeline';
 
@@ -57,6 +57,10 @@ class Timeline extends React.PureComponent {
 						color: 'rgba(255, 0, 0, 0.3)',
 						activeColor: 'rgba(255, 0, 0, 0.7)',
 						active: !!_find(
+							activeLayers,
+							layer => layer.layerKey === product.key
+						),
+						activePeriodIndex: _findIndex(
 							activeLayers,
 							layer => layer.layerKey === product.key
 						),

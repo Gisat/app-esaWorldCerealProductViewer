@@ -1,4 +1,5 @@
 import backgroundLayers from './layers/backgroundLayers';
+import annualCroplandClassification from './styles/annualCroplandClassification';
 
 export default {
 	key: '371846f9-0270-4e43-a46a-db009cd5946a',
@@ -13,56 +14,34 @@ export default {
 						key: 'productViewer-map-1',
 						data: {
 							layers: [
-								{
-									key: 'extent',
-									type: 'vector',
-									options: {
-										features: [],
-									},
-								},
+								// {
+								// 	key: '2455c3a9e1ffbfc72dcd1b0c3ff1ccf2-207',
+								// 	layerKey: '2455c3a9e1ffbfc72dcd1b0c3ff1ccf2-207',
+								// 	type: 'cog',
+								// 	options: {
+								// 		url: 'https://modis-vi-nasa.s3-us-west-2.amazonaws.com/MOD13A1.006/2018.01.01.tif',
+								// 		style: annualCroplandClassification.data.definition,
+								// 	},
+								// },
 							],
 						},
 					},
 					'productViewer-map-2': {
 						key: 'productViewer-map-2',
 						data: {
-							layers: [
-								{
-									key: 'extent',
-									type: 'vector',
-									options: {
-										features: [],
-									},
-								},
-							],
+							layers: [],
 						},
 					},
 					'productViewer-map-3': {
 						key: 'productViewer-map-3',
 						data: {
-							layers: [
-								{
-									key: 'extent',
-									type: 'vector',
-									options: {
-										features: [],
-									},
-								},
-							],
+							layers: [],
 						},
 					},
 					'productViewer-map-4': {
 						key: 'productViewer-map-4',
 						data: {
-							layers: [
-								{
-									key: 'extent',
-									type: 'vector',
-									options: {
-										features: [],
-									},
-								},
-							],
+							layers: [],
 						},
 					},
 				},
