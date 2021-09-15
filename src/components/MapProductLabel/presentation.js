@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from '@gisatcz/ptr-atoms';
+import {Button, Icon} from '@gisatcz/ptr-atoms';
 
 import './style.scss';
 
@@ -9,9 +9,10 @@ export const MapProductLabelContainer = ({children}) => (
 
 class MapProductLabel extends React.PureComponent {
 	render() {
-		const {productMetadata} = this.props;
+		const {productMetadata, productTemplates} = this.props;
 		if (productMetadata) {
 			const {product, sos, eos, aez_id} = productMetadata.data;
+			const template = productTemplates[product]?.data;
 
 			return (
 				<div className="worldCereal-MapProductLabel">
@@ -19,9 +20,23 @@ class MapProductLabel extends React.PureComponent {
 						className="worldCereal-MapProductLabel-button"
 						small
 						secondary
-						icon="crop"
 					>
-						{product} ({sos}/{eos}) AEZ: {aez_id}
+						<>
+							<div className="worldCereal-MapProductLabel-button-caption-header">
+								{template?.icon ? <Icon icon={template.icon} /> : null}
+								<div>
+									<span className="worldCereal-MapProductLabel-product">
+										{template?.nameDisplay || product}
+									</span>
+									<span className="worldCereal-MapProductLabel-zone">
+										(zone {aez_id})
+									</span>
+								</div>
+							</div>
+							<div className="worldCereal-MapProductLabel-period">
+								{sos} / {eos}
+							</div>
+						</>
 					</Button>
 				</div>
 			);

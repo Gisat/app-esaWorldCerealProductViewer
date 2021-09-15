@@ -13,5 +13,32 @@
 
 .worldCereal-MapProductLabel-button.small {
   border-radius: .1rem;
-  padding: 0 .25rem;
+  padding: .15rem;
+}
+
+.worldCereal-MapProductLabel-button.small .ptr-button-content {
+  padding: 0;
+  font-size: $b1;
+}
+
+.worldCereal-MapProductLabel-button-caption-header {
+  display: flex;
+  align-items: center;
+}
+
+.worldCereal-MapProductLabel-button-caption-header > .ptr-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.worldCereal-MapProductLabel-product {
+  margin: 0 .15rem;
+}
+
+.worldCereal-MapProductLabel-period {
+  font-size: $a0;
+}
+
+.worldCereal-MapProductLabel-zone {
+  font-size: $a0;
 }

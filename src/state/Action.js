@@ -8,6 +8,7 @@ import productMetadataActions from './worldCereal/ProductMetadata/actions';
 
 // TODO load view from BE
 import view from '../data/view';
+import cases from '../data/cases';
 import productMetadata from '../data/mock_productMetadata/correct_annualcropland';
 import productMetadata_wheat from '../data/mock_productMetadata/fake_wheat';
 import productMetadata_annualcropland_diffTimes from '../data/mock_productMetadata/fake_annualcropland_diffTimes';
@@ -22,6 +23,9 @@ function init(path) {
 		// add & apply view
 		dispatch(CommonAction.views.add(view));
 		dispatch(CommonAction.views.applyAndSetActive(view.key, CommonAction));
+
+		// add metadata
+		dispatch(CommonAction.cases.add(cases));
 
 		// add mock data
 		dispatch(productMetadataActions.add(productMetadata));
