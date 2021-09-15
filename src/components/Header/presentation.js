@@ -11,7 +11,7 @@ import './style.scss';
 class Header extends React.PureComponent {
 	static propTypes = {
 		addMap: PropTypes.func,
-		mapSetMapKeys: PropTypes.number,
+		mapSetMapKeys: PropTypes.array,
 	};
 
 	constructor(props) {
