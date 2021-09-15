@@ -6,6 +6,7 @@ import {
 	MapSet,
 	PresentationMap,
 } from '@gisatcz/ptr-maps';
+import Header from '../Header';
 import MapContainer from '../MapContainer';
 import MapWrapper from '../MapWrapper';
 import SimpleLayersControl from '../SimpleLayersControl';
@@ -28,7 +29,7 @@ const App = ({onMount, onUnmount, viewLimits}) => {
 
 	return (
 		<div className="worldCereal-ProductViewer">
-			<></>
+			<Header />
 			<ConnectedMapSet
 				stateMapSetKey="productViewer-mapSet"
 				mapComponent={ReactLeafletMap}
