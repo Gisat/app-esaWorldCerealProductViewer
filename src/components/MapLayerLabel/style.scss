@@ -1,0 +1,17 @@
+@import '../../styles/variables';
+
+.worldCereal-MapLayerLabelContainer {
+  position: absolute;
+  top: .35rem;
+  left: .35rem;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: calc(100% - 2rem);
+  grid-gap: .25rem;
+}
+
+.worldCereal-MapLayerLabel-button.small {
+  border-radius: .1rem;
+  padding: 0 .25rem;
+}

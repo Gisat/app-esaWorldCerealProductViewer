@@ -1,5 +1,6 @@
-import {filter as _filter} from 'lodash';
+import {filter as _filter, uniq as _uniq} from 'lodash';
 import {createSelector} from 'reselect';
+import {createCachedSelector} from 're-reselect';
 import intersect from '@turf/intersect';
 import {commonSelectors, Select as CommonSelect} from '@gisatcz/ptr-state';
 import utils from '../../../utils';
@@ -9,6 +10,7 @@ const getSubstate = state => state.worldCereal.productMetadata;
 const getActiveKeys = commonSelectors.getActiveKeys(getSubstate);
 const getActiveModels = commonSelectors.getActiveModels(getSubstate);
 const getAll = commonSelectors.getAll(getSubstate);
+const getAllAsObject = commonSelectors.getAllAsObject(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
 
 /**
@@ -35,6 +37,27 @@ const getByMapSetView = createSelector(
 	}
 );
 
+/**
+ * @param {Object} state
+ * @param {string} mapKey
+ * @return {Array|null} Collection of product metadata present in given map
+ */
+const getByMapKey = createCachedSelector(
+	[CommonSelect.maps.getMapLayersStateByMapKey, getAllAsObject],
+	(mapLayers, productMetadata) => {
+		if (mapLayers?.length && productMetadata) {
+			const metadataKeys = _uniq(mapLayers.map(layer => layer.layerKey));
+			if (metadataKeys.length) {
+				return metadataKeys.map(key => productMetadata[key]);
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
+	}
+)((state, mapKey) => mapKey);
+
 export default {
 	getSubstate,
 
@@ -42,5 +65,6 @@ export default {
 	getActiveModels,
 
 	getByKey,
+	getByMapKey,
 	getByMapSetView,
 };
