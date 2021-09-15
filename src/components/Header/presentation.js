@@ -36,7 +36,8 @@ class Header extends React.PureComponent {
 						className="ptr-dark"
 						onClick={addMap}
 						ghost
-						icon="plus"
+						small
+						icon="plus-thick"
 						disabled={mapsInMapSet >= MAX_MAPS_IN_MAP_SET}
 					>
 						Add map
