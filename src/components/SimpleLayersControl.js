@@ -3,7 +3,7 @@ import {SimpleLayersControl} from '@gisatcz/ptr-maps';
 import Select from '../state/Select';
 import Action from '../state/Action';
 import backgroundLayers from '../data/layers/backgroundLayers';
-import {mapSetKey} from '../constants/keys';
+import {mapSetKey} from '../constants/app';
 
 const mapStateToProps = (state, ownProps) => {
 	const mapSet = Select.maps.getMapSetByKey(state, mapSetKey);

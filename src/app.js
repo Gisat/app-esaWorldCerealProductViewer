@@ -7,7 +7,7 @@ import {AppContainer} from '@gisatcz/ptr-components';
 
 import Action from './state/Action';
 import {init as initCore} from './core';
-import {appKey} from './constants/keys';
+import {appKey} from './constants/app';
 
 // base styles need to be imported before all components
 import '@gisatcz/ptr-core/lib/styles/reset.css';

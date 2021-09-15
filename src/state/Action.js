@@ -2,7 +2,7 @@ import {Action as CommonAction} from '@gisatcz/ptr-state';
 import {map as mapUtils} from '@gisatcz/ptr-utils';
 import Select from './Select';
 import config from '../config';
-import {appKey} from '../constants/keys';
+import {appKey} from '../constants/app';
 
 import productMetadataActions from './worldCereal/ProductMetadata/actions';
 

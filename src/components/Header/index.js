@@ -2,12 +2,14 @@ import {connect} from '@gisatcz/ptr-state';
 import {utils} from '@gisatcz/ptr-utils';
 import Action from '../../state/Action';
 import Select from '../../state/Select';
-import {mapSetKey} from '../../constants/keys';
+import {mapSetKey} from '../../constants/app';
 
 import Presentation from './presentation';
 
 const mapStateToProps = (state, ownProps) => {
-	return {};
+	return {
+		mapSetMapKeys: Select.maps.getMapSetMapKeys(state, mapSetKey),
+	};
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

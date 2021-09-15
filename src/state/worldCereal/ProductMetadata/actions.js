@@ -2,7 +2,7 @@ import {commonActions, Action as CommonAction} from '@gisatcz/ptr-state';
 import {find as _find} from 'lodash';
 import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
-import {mapSetKey} from '../../../constants/keys';
+import {mapSetKey} from '../../../constants/app';
 import annualCroplandClassification from '../../../data/styles/annualCroplandClassification';
 import wheatClassification from '../../../data/styles/wheatClassification';
 

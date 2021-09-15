@@ -3,7 +3,7 @@ import Action from '../../../state/Action';
 import Select from '../../../state/Select';
 
 import Presentation from './presentation';
-import {mapSetKey} from '../../../constants/keys';
+import {mapSetKey} from '../../../constants/app';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
