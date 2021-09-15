@@ -58,7 +58,7 @@
 }
 
 
-$mapBorder: 1px solid var(--base50);
+$mapBorder: 0.05rem solid var(--base50); // the width in rem fixes the ugly white space between border and content in Chrome
 
 .ptr-map-grid .ptr-map-grid-cell .ptr-map {
 	border: 0;
