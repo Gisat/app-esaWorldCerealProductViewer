@@ -86,6 +86,7 @@ function getLayerDefinition(productMetadataKey, tile, product) {
 	};
 }
 
+// TODO get style from cases
 /**
  * @param product {string}
  * @returns {Object} Panther style definition

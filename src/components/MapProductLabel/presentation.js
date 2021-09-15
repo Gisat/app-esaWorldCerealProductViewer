@@ -9,10 +9,11 @@ export const MapProductLabelContainer = ({children}) => (
 
 class MapProductLabel extends React.PureComponent {
 	render() {
-		const {productMetadata, productTemplates} = this.props;
+		const {productMetadata, productTemplate} = this.props;
 		if (productMetadata) {
 			const {product, sos, eos, aez_id} = productMetadata.data;
-			const template = productTemplates[product]?.data;
+			const color =
+				productTemplate?.data?.style?.rules?.[0]?.styles?.[0]?.color;
 
 			return (
 				<div className="worldCereal-MapProductLabel">
@@ -21,12 +22,14 @@ class MapProductLabel extends React.PureComponent {
 						small
 						secondary
 					>
-						<>
+						<div className="ptr-button-content" style={{borderColor: color}}>
 							<div className="worldCereal-MapProductLabel-button-caption-header">
-								{template?.icon ? <Icon icon={template.icon} /> : null}
+								{productTemplate?.data?.icon ? (
+									<Icon icon={productTemplate.data.icon} />
+								) : null}
 								<div>
 									<span className="worldCereal-MapProductLabel-product">
-										{template?.nameDisplay || product}
+										{productTemplate?.data?.nameDisplay || product}
 									</span>
 									<span className="worldCereal-MapProductLabel-zone">
 										(zone {aez_id})
@@ -36,7 +39,7 @@ class MapProductLabel extends React.PureComponent {
 							<div className="worldCereal-MapProductLabel-period">
 								{sos} / {eos}
 							</div>
-						</>
+						</div>
 					</Button>
 				</div>
 			);

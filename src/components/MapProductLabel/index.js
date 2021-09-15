@@ -10,7 +10,10 @@ const mapStateToProps = (state, ownProps) => {
 			state,
 			ownProps.productMetadataKey
 		),
-		productTemplates: Select.cases.getAllAsObject(state), // TODO add data about particular case
+		productTemplate: Select.worldCereal.getProductTemplateByProductMetadataKey(
+			state,
+			ownProps.productMetadataKey
+		), // TODO add data about particular case
 	};
 };
 
