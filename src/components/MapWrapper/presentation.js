@@ -2,7 +2,8 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import {Button} from '@gisatcz/ptr-atoms';
-import MapProductLabel, {MapProductLabelContainer} from '../MapProductLabel';
+import MapProductLabel from '../MapProductLabel';
+import {MapProductLabelContainer} from '../MapProductLabel/presentation';
 
 import './style.scss';
 
@@ -18,8 +19,13 @@ class MapWrapper extends React.PureComponent {
 	}
 
 	render() {
-		const {mapKey, activeMapKey, removeMap, mapSetMapKeys, productMetadata} =
-			this.props;
+		const {
+			mapKey,
+			activeMapKey,
+			removeMap,
+			mapSetMapKeys,
+			productMetadataKeys,
+		} = this.props;
 		const wrapperClasses = classnames(
 			'ptr-map-wrapper worldCereal-MapWrapper',
 			{
@@ -29,13 +35,13 @@ class MapWrapper extends React.PureComponent {
 
 		return (
 			<div className={wrapperClasses}>
-				<MapProductLabelContainer>
-					{productMetadata?.length
-						? productMetadata.map(productMetadataItem =>
-								this.renderMapProductLabel(productMetadataItem)
-						  )
-						: null}
-				</MapProductLabelContainer>
+				{productMetadataKeys?.length ? (
+					<MapProductLabelContainer>
+						{productMetadataKeys.map(productMetadataKey =>
+							this.renderMapProductLabel(productMetadataKey)
+						)}
+					</MapProductLabelContainer>
+				) : null}
 				{mapSetMapKeys?.length > 1 ? (
 					<Button
 						icon="close"
@@ -49,9 +55,12 @@ class MapWrapper extends React.PureComponent {
 		);
 	}
 
-	renderMapProductLabel(productMetadata) {
+	renderMapProductLabel(productMetadataKey) {
 		return (
-			<MapProductLabel key={productMetadata.key} {...productMetadata.data} />
+			<MapProductLabel
+				key={productMetadataKey}
+				productMetadataKey={productMetadataKey}
+			/>
 		);
 	}
 }

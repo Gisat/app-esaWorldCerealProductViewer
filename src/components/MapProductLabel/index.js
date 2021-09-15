@@ -1,25 +1,20 @@
-import React from 'react';
-import {Button} from '@gisatcz/ptr-atoms';
+import {connect} from '@gisatcz/ptr-state';
+import Action from '../../state/Action';
+import Select from '../../state/Select';
 
-import './style.scss';
+import Presentation from './presentation';
 
-export const MapProductLabelContainer = ({children}) => (
-	<div className="worldCereal-MapProductLabelContainer">{children}</div>
-);
-
-const MapProductLabel = props => {
-	return (
-		<div className="worldCereal-MapProductLabel">
-			<Button
-				className="worldCereal-MapProductLabel-button"
-				small
-				secondary
-				icon="crop"
-			>
-				{props.product} ({props.sos}/{props.eos}) AEZ: {props.aez_id}
-			</Button>
-		</div>
-	);
+const mapStateToProps = (state, ownProps) => {
+	return {
+		productMetadata: Select.worldCereal.productMetadata.getByKey(
+			state,
+			ownProps.productMetadataKey
+		),
+	};
 };
 
-export default MapProductLabel;
+const mapDispatchToProps = (dispatch, ownProps) => {
+	return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Presentation);

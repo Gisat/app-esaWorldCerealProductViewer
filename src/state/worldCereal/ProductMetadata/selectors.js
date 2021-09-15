@@ -40,18 +40,13 @@ const getByMapSetView = createSelector(
 /**
  * @param {Object} state
  * @param {string} mapKey
- * @return {Array|null} Collection of product metadata present in given map
+ * @return {Array|null} Keys of product metadata present in given map
  */
-const getByMapKey = createCachedSelector(
-	[CommonSelect.maps.getMapLayersStateByMapKey, getAllAsObject],
-	(mapLayers, productMetadata) => {
-		if (mapLayers?.length && productMetadata) {
-			const metadataKeys = _uniq(mapLayers.map(layer => layer.layerKey));
-			if (metadataKeys.length) {
-				return metadataKeys.map(key => productMetadata[key]);
-			} else {
-				return null;
-			}
+const getKeysByMapKey = createCachedSelector(
+	[CommonSelect.maps.getMapLayersStateByMapKey],
+	mapLayers => {
+		if (mapLayers?.length) {
+			return _uniq(mapLayers.map(layer => layer.layerKey));
 		} else {
 			return null;
 		}
@@ -65,6 +60,7 @@ export default {
 	getActiveModels,
 
 	getByKey,
-	getByMapKey,
 	getByMapSetView,
+
+	getKeysByMapKey,
 };

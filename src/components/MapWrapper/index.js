@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		activeMapKey: Select.maps.getMapSetActiveMapKey(state, mapSetKey),
 		mapSetMapKeys: Select.maps.getMapSetMapKeys(state, mapSetKey),
-		productMetadata: Select.worldCereal.productMetadata.getByMapKey(
+		productMetadataKeys: Select.worldCereal.productMetadata.getKeysByMapKey(
 			state,
 			ownProps.mapKey
 		),
