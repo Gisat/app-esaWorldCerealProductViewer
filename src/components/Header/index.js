@@ -1,5 +1,8 @@
 import {connect} from '@gisatcz/ptr-state';
+import {utils} from '@gisatcz/ptr-utils';
+import Action from '../../state/Action';
 import Select from '../../state/Select';
+import {mapSetKey} from '../../constants/keys';
 
 import Presentation from './presentation';
 
@@ -8,7 +11,13 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-	return {};
+	return {
+		addMap: () => {
+			const mapKey = utils.uuid();
+			dispatch(Action.maps.addMap({key: mapKey}));
+			dispatch(Action.maps.addMapToSet(mapKey, mapSetKey));
+		},
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Presentation);
