@@ -133,15 +133,15 @@ export default {
 						maps: [
 							'productViewer-map-1',
 							'productViewer-map-2',
-							'productViewer-map-3',
-							'productViewer-map-4',
+							// 'productViewer-map-3',
+							// 'productViewer-map-4',
 						],
 						sync: {
 							center: true,
 							boxRange: true,
 						},
 						data: {
-							backgroundLayer: backgroundLayers.esri_WorldGrayCanvas,
+							backgroundLayer: backgroundLayers.esri_WorldImagery,
 							view: {
 								boxRange: 400000,
 								center: {
