@@ -1,6 +1,6 @@
 @import '../../styles/variables';
 
-.worldCereal-MapLayerLabelContainer {
+.worldCereal-MapProductLabelContainer {
   position: absolute;
   top: .35rem;
   left: .35rem;
@@ -11,7 +11,7 @@
   grid-gap: .25rem;
 }
 
-.worldCereal-MapLayerLabel-button.small {
+.worldCereal-MapProductLabel-button.small {
   border-radius: .1rem;
   padding: 0 .25rem;
 }

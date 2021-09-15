@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import {Button} from '@gisatcz/ptr-atoms';
-import MapLayerLabel, {MapLayerLabelContainer} from '../MapLayerLabel';
+import MapProductLabel, {MapProductLabelContainer} from '../MapProductLabel';
 
 import './style.scss';
 
@@ -29,13 +29,13 @@ class MapWrapper extends React.PureComponent {
 
 		return (
 			<div className={wrapperClasses}>
-				<MapLayerLabelContainer>
+				<MapProductLabelContainer>
 					{productMetadata?.length
 						? productMetadata.map(productMetadataItem =>
-								this.renderMapLayerLabel(productMetadataItem)
+								this.renderMapProductLabel(productMetadataItem)
 						  )
 						: null}
-				</MapLayerLabelContainer>
+				</MapProductLabelContainer>
 				{mapSetMapKeys?.length > 1 ? (
 					<Button
 						icon="close"
@@ -49,9 +49,9 @@ class MapWrapper extends React.PureComponent {
 		);
 	}
 
-	renderMapLayerLabel(productMetadata) {
+	renderMapProductLabel(productMetadata) {
 		return (
-			<MapLayerLabel key={productMetadata.key} {...productMetadata.data} />
+			<MapProductLabel key={productMetadata.key} {...productMetadata.data} />
 		);
 	}
 }
