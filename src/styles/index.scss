@@ -58,7 +58,7 @@
 }
 
 
-$mapBorder: 1px solid #888;
+$mapBorder: 1px solid var(--base50);
 
 .ptr-map-grid .ptr-map-grid-cell .ptr-map {
 	border: 0;

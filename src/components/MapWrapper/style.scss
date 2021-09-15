@@ -4,19 +4,6 @@
 
 }
 
-.ptr-map-wrapper.worldCereal-MapWrapper::after {
-  content: "";
-  z-index: 2;
-  pointer-events: none;
-  position: absolute;
-  width: 20px;
-  height: 80px;
-  top: -45px;
-  left: 10px;
-  transform: rotate(45deg);
-}
-
 .ptr-map-wrapper.worldCereal-MapWrapper.active::after {
-  background: red;
-  border: 0;
+  border: 2px dashed var(--accent50);
 }
