@@ -8,6 +8,14 @@
   border: 2px dashed var(--accent50);
 }
 
+.worldCereal-MapProductLabelContainer {
+  position: absolute;
+  top: .4rem;
+  left: .4rem;
+  z-index: 2;
+  max-width: calc(100% - 2rem);
+}
+
 .worldCereal-MapRemoveButton.ptr-button {
   position: absolute;
   top: 0;

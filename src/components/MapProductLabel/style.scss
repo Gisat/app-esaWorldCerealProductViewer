@@ -1,32 +1,5 @@
 @import '../../styles/variables';
 
-.worldCereal-MapProductLabelContainer {
-  position: absolute;
-  top: .4rem;
-  left: .4rem;
-  z-index: 2;
-  display: flex;
-  flex-wrap: wrap;
-  max-width: calc(100% - 2rem);
-  grid-gap: .25rem;
-}
-
-.worldCereal-MapProductLabel {
-  display: flex;
-  background: var(--accent30);
-  color: var(--base90);
-  border-radius: .15rem;
-  border-left: 5px solid;
-  font-size: $b1;
-  box-shadow: 0 0 5px rgba(0,0,0,.7);
-}
-
-.worldCereal-MapProductLabel-content {
-  display: flex;
-  flex-direction: column;
-  padding: .25rem .75rem .25rem .5rem;
-}
-
 .worldCereal-MapProductLabel-header {
   display: flex;
   align-items: center;
@@ -47,12 +20,4 @@
 
 .worldCereal-MapProductLabel-zone {
   font-size: $a0;
-}
-
-.worldCereal-MapProductLabel-button.ptr-button {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-left: 1px solid rgba(var(--base50rgb), .25);
 }

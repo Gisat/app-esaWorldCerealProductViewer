@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import {Button} from '@gisatcz/ptr-atoms';
 import MapProductLabel from '../MapProductLabel';
-import {MapProductLabelContainer} from '../MapProductLabel/presentation';
 
 import './style.scss';
+import {MapLabelContainer} from '../atoms/MapLabel';
 
 class MapWrapper extends React.PureComponent {
 	static propTypes = {
@@ -37,11 +37,11 @@ class MapWrapper extends React.PureComponent {
 		return (
 			<div className={wrapperClasses}>
 				{productMetadataKeys?.length ? (
-					<MapProductLabelContainer>
+					<MapLabelContainer className="worldCereal-MapProductLabelContainer">
 						{productMetadataKeys.map(productMetadataKey =>
 							this.renderMapProductLabel(productMetadataKey)
 						)}
-					</MapProductLabelContainer>
+					</MapLabelContainer>
 				) : null}
 				{mapSetMapKeys?.length > 1 ? (
 					<Button
