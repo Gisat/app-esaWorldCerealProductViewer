@@ -47,6 +47,7 @@ class MapWrapper extends React.PureComponent {
 					<Button
 						icon="close"
 						invisible
+						small
 						className="worldCereal-MapRemoveButton"
 						onClick={removeMap.bind(this, mapKey)}
 					/>
