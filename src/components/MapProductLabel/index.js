@@ -18,7 +18,16 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-	return {};
+	return {
+		onProductRemove: () => {
+			dispatch(
+				Action.worldCereal.removeAllLayersFromMapByLayerKey(
+					ownProps.mapKey,
+					ownProps.productMetadataKey
+				)
+			);
+		},
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Presentation);

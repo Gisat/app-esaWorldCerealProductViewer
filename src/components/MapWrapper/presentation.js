@@ -10,6 +10,7 @@ import './style.scss';
 class MapWrapper extends React.PureComponent {
 	static propTypes = {
 		activeMapKey: PropTypes.string,
+		mapKey: PropTypes.string,
 		mapSetMapKeys: PropTypes.array,
 		productMetadata: PropTypes.array,
 	};
@@ -60,6 +61,7 @@ class MapWrapper extends React.PureComponent {
 			<MapProductLabel
 				key={productMetadataKey}
 				productMetadataKey={productMetadataKey}
+				mapKey={this.props.mapKey}
 			/>
 		);
 	}

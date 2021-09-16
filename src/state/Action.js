@@ -97,6 +97,19 @@ function updateMapView(mapKey, viewUpdate) {
 	};
 }
 
+function removeAllLayersFromMapByLayerKey(mapKey, layerKey) {
+	return (dispatch, getState) => {
+		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);
+		if (mapLayers) {
+			mapLayers.forEach(layer => {
+				if (layer.layerKey === layerKey) {
+					dispatch(CommonAction.maps.removeMapLayer(mapKey, layer.key));
+				}
+			});
+		}
+	};
+}
+
 export default {
 	...CommonAction,
 	init,
@@ -104,6 +117,7 @@ export default {
 		productMetadata: productMetadataActions,
 
 		adjustInitialBoxRange,
+		removeAllLayersFromMapByLayerKey,
 		updateMapView,
 	},
 };
