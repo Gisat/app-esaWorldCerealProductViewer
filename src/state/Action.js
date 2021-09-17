@@ -72,6 +72,12 @@ function updateMapView(mapKey, viewUpdate) {
 	};
 }
 
+/**
+ * Remove all layers from map with given layerKey parameter (layerKey (in contrast with key) could be common for multiple layers).
+ * For given productMetadata is the layerKey same as productMetadataKey
+ * @param mapKey {string}
+ * @param layerKey {string} productMetadataKey uuid
+ */
 function removeAllLayersFromMapByLayerKey(mapKey, layerKey) {
 	return (dispatch, getState) => {
 		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);

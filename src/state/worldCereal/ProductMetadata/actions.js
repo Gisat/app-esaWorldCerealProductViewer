@@ -3,8 +3,6 @@ import {find as _find} from 'lodash';
 import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
 import {mapSetKey} from '../../../constants/app';
-import annualCroplandClassification from '../../../data/styles/annualCroplandClassification';
-import wheatClassification from '../../../data/styles/wheatClassification';
 
 const add = commonActions.add(ActionTypes.WORLD_CEREAL.PRODUCT_METADATA);
 const setActiveKeys = commonActions.setActiveKeys(

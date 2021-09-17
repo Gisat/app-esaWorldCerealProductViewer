@@ -2,6 +2,12 @@ import {Select as CommonSelect} from '@gisatcz/ptr-state';
 import productMetadataSelectors from './worldCereal/ProductMetadata/selectors';
 import {createCachedSelector} from 're-reselect';
 
+/**
+ * Get product template extended by style definition
+ * @param {Object} state
+ * @param {string} productMetadataKey uuid
+ * @return {Object} Case model extended by style definition
+ */
 const getProductTemplateByProductMetadataKey = createCachedSelector(
 	[
 		CommonSelect.cases.getAllAsObject,
@@ -37,6 +43,12 @@ const getProductTemplateByProductMetadataKey = createCachedSelector(
 	}
 )((state, productMetadataKey) => productMetadataKey);
 
+/**
+ * Get style based on styleKey in case
+ * @param {Object} state
+ * @param {string} productTemplateKey caseKey
+ * @return {Object} Panther style definition
+ */
 const getStyleDefinitionByProductTemplateKey = createCachedSelector(
 	[CommonSelect.cases.getByKey, CommonSelect.styles.getAllAsObject],
 	(productTemplate, styles) => {
