@@ -3,12 +3,19 @@ import {connect} from '@gisatcz/ptr-state';
 import {Icon} from '@gisatcz/ptr-atoms';
 import Action from '../../state/Action';
 import Select from '../../state/Select';
+import {mapSetKey} from '../../constants/app';
 
 import MapLabel from '../atoms/MapLabel';
 import './style.scss';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
+		isProductInVisibleArea:
+			Select.worldCereal.productMetadata.isModelInMapExtent(
+				state,
+				ownProps.productMetadataKey,
+				mapSetKey
+			),
 		productMetadata: Select.worldCereal.productMetadata.getByKey(
 			state,
 			ownProps.productMetadataKey
@@ -34,14 +41,23 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 const MapProductLabel = props => {
-	const {productMetadata, productTemplate, onProductRemove} = props;
+	const {
+		isProductInVisibleArea,
+		productMetadata,
+		productTemplate,
+		onProductRemove,
+	} = props;
 	if (productMetadata) {
 		const {product, sos, eos, aez_id} = productMetadata.data;
 		const stripColor =
 			productTemplate?.data?.style?.rules?.[0]?.styles?.[0]?.color;
 
 		return (
-			<MapLabel stripColor={stripColor} onRemove={onProductRemove}>
+			<MapLabel
+				stripColor={stripColor}
+				onRemove={onProductRemove}
+				active={isProductInVisibleArea}
+			>
 				<MapProductLabelContent
 					icon={productTemplate?.data?.icon}
 					product={productTemplate?.data?.nameDisplay || product}

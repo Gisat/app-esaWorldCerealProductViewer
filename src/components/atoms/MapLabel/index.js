@@ -10,8 +10,11 @@ export const MapLabelContainer = ({className, children}) => {
 	return <div className={classes}>{children}</div>;
 };
 
-const MapLabel = ({stripColor, onRemove, children, className}) => {
-	const classes = classnames('ptr-MapLabel', className);
+const MapLabel = ({active, stripColor, onRemove, children, className}) => {
+	const classes = classnames('ptr-MapLabel', {
+		...className,
+		'is-active': active,
+	});
 
 	return (
 		<div className={classes} style={{borderColor: stripColor}}>

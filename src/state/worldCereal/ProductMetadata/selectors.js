@@ -13,23 +13,41 @@ const getAll = commonSelectors.getAll(getSubstate);
 const getAllAsObject = commonSelectors.getAllAsObject(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
 
+// helpers ----------------------------------------------
+
+/**
+ * Return active map view as polygon feature
+ * @param {Object} state
+ * @return {GeoJSON.Feature|null}
+ */
+const getMapSetActiveMapExtentAsFeature = createSelector(
+	[
+		CommonSelect.maps.getMapSetActiveMapView,
+		CommonSelect.maps.getMapSetActiveMapViewport,
+	],
+	(view, viewport) => {
+		if (view && viewport) {
+			return utils.getExtentFromMapViewAsFeature(view, viewport);
+		} else {
+			return null;
+		}
+	}
+);
+
+// selectors ---------------------------------------------
+
 /**
  * @param {Object} state
  * @param {string} mapSetKey
  * @return {Object|null} Panther map view
  */
 const getByMapSetView = createSelector(
-	[
-		CommonSelect.maps.getMapSetActiveMapView,
-		CommonSelect.maps.getMapSetActiveMapViewport,
-		getAll,
-	],
-	(view, viewport, models) => {
-		if (models && view && viewport) {
-			const feature = utils.getExtentFromMapViewAsFeature(view, viewport);
+	[getMapSetActiveMapExtentAsFeature, getAll],
+	(mapExtentAsFeature, models) => {
+		if (mapExtentAsFeature && models) {
 			return _filter(
 				models,
-				model => !!intersect(model.data.geometry, feature)
+				model => !!intersect(model.data.geometry, mapExtentAsFeature)
 			);
 		} else {
 			return null;
@@ -53,6 +71,26 @@ const getKeysByMapKey = createCachedSelector(
 	}
 )((state, mapKey) => mapKey);
 
+/**
+ * @param {Object} state
+ * @param {string} productMetadataKey
+ * @return {boolean} true if given product is in current map extent
+ */
+const isModelInMapExtent = createCachedSelector(
+	[
+		(state, productMetadataKey, mapSetKey) =>
+			getMapSetActiveMapExtentAsFeature(state, mapSetKey),
+		getByKey,
+	],
+	(mapExtentAsFeature, model) => {
+		if (mapExtentAsFeature && model) {
+			return !!intersect(model.data.geometry, mapExtentAsFeature);
+		} else {
+			return false;
+		}
+	}
+)((state, productMetadataKey) => productMetadataKey);
+
 export default {
 	getSubstate,
 
@@ -63,4 +101,6 @@ export default {
 	getByMapSetView,
 
 	getKeysByMapKey,
+
+	isModelInMapExtent,
 };
