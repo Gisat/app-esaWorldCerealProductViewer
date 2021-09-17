@@ -3,5 +3,7 @@
 .worldCereal-Timeline {
   min-height: 10rem;
   max-height: 10rem;
+  max-width: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
 }
