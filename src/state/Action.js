@@ -9,9 +9,7 @@ import productMetadataActions from './worldCereal/ProductMetadata/actions';
 // TODO load view from BE
 import view from '../data/view';
 import cases from '../data/cases';
-
-import annualCroplandClassification from '../data/styles/annualCroplandClassification';
-import wheatClassification from '../data/styles/wheatClassification';
+import styles from '../data/styles';
 
 import productMetadata from '../data/mock_productMetadata/correct_annualcropland';
 import productMetadata_wheat from '../data/mock_productMetadata/fake_wheat';
@@ -30,12 +28,7 @@ function init(path) {
 
 		// add metadata
 		dispatch(CommonAction.cases.add(cases));
-		dispatch(
-			CommonAction.styles.add([
-				annualCroplandClassification,
-				wheatClassification,
-			])
-		);
+		dispatch(CommonAction.styles.add(styles));
 
 		// add mock data
 		dispatch(productMetadataActions.add(productMetadata));
@@ -43,24 +36,6 @@ function init(path) {
 		dispatch(
 			productMetadataActions.add(productMetadata_annualcropland_diffTimes)
 		);
-
-		// add metadata aoi for testing
-
-		// setTimeout(() => {
-		// 	const features = productMetadata.map(metadata => {
-		// 		return {
-		// 			geometry: metadata.data.geometry,
-		// 			type: 'Feature',
-		// 		};
-		// 	});
-		// 	dispatch(
-		// 		CommonAction.maps.addMapLayerToIndex('productViewer-map-1', {
-		// 			key: 'layer-test',
-		// 			type: 'vector',
-		// 			options: {features},
-		// 		})
-		// 	);
-		// }, 50);
 	};
 }
 

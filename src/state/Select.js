@@ -37,11 +37,28 @@ const getProductTemplateByProductMetadataKey = createCachedSelector(
 	}
 )((state, productMetadataKey) => productMetadataKey);
 
+const getStyleDefinitionByProductTemplateKey = createCachedSelector(
+	[CommonSelect.cases.getByKey, CommonSelect.styles.getAllAsObject],
+	(productTemplate, styles) => {
+		if (productTemplate && styles) {
+			const styleKey = productTemplate.data?.styleKey;
+			if (styleKey && styles[styleKey]) {
+				return styles[styleKey].data.definition;
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
+	}
+)((state, productTemplateKey) => productTemplateKey);
+
 export default {
 	...CommonSelect,
 	worldCereal: {
 		productMetadata: productMetadataSelectors,
 
 		getProductTemplateByProductMetadataKey,
+		getStyleDefinitionByProductTemplateKey,
 	},
 };
