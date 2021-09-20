@@ -30,6 +30,7 @@
 		"@gisatcz/ptr-state": "^2.0.0-dev.19",
 		"@gisatcz/ptr-timeline": "^0.0.7",
 		"@gisatcz/ptr-utils": "^1.4.0",
+		"@react-hook/size": "^2.1.2",
 		"@turf/intersect": "^6.5.0",
 		"classnames": "^2.3.1",
 		"history": "^5.0.1",

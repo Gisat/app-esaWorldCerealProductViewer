@@ -44,7 +44,7 @@ const App = ({onMount, onUnmount, viewLimits}) => {
 					viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
 				/>
 			</ConnectedMapSet>
-			<RetractableWindow retracted />
+			<RetractableWindow retracted bottomPosition={6} bodyHeight={22} />
 			<Timeline />
 			{/*<ControlPanel />*/}
 		</div>
