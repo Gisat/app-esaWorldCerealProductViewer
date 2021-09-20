@@ -23,7 +23,6 @@
 	},
 	"dependencies": {
 		"@gisatcz/ptr-atoms": "^1.3.13",
-		"@gisatcz/ptr-charts": "^1.3.4",
 		"@gisatcz/ptr-components": "^1.2.4",
 		"@gisatcz/ptr-core": "^1.4.0",
 		"@gisatcz/ptr-maps": "^1.8.0",
