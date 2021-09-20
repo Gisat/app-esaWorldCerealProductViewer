@@ -1,0 +1,249 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+import {utils} from '@gisatcz/ptr-utils';
+import {Timeline, Overlay} from '@gisatcz/ptr-timeline';
+
+import MapTimelineLegend from './MapTimelineLegend';
+import './style.scss';
+
+const CONTROLS_WIDTH = 0;
+
+const getOverlayCfg = options => {
+	const otherOptions = options.options || {};
+	return {
+		key: options.key,
+		layerTemplateKey: options.layerTemplateKey,
+		start: moment(options.period.start),
+		end: moment(options.period.end),
+		period: options.period,
+		periodIndex: options.periodIndex,
+		backdroundColor: options.backdroundColor,
+		hideLabel: options.hideLabel,
+		height: options.height,
+		top: options.top,
+		options: {
+			...otherOptions,
+		},
+	};
+};
+
+
+const proccessLayerCfg = (layerCfg, top, rowHeight) => {
+	if (layerCfg && layerCfg.period && layerCfg.period.length > 0) {
+		const otherOptions = layerCfg.options || {};
+		const cfgs = layerCfg.period.map((period, index) => {
+			return getOverlayCfg({
+				key: `${layerCfg.key}-${index}`,
+				layerTemplateKey: layerCfg.layerTemplateKey,
+				period: period,
+				periodIndex: index,
+				backdroundColor:
+					layerCfg.active && layerCfg.activePeriodIndex === index
+						? layerCfg.activeColor
+						: layerCfg.color,
+				hideLabel: true,
+				height: rowHeight * utils.getRemSize(),
+				top: top * utils.getRemSize(),
+				options: {
+					...otherOptions,
+				},
+			});
+		});
+		return cfgs;
+	} else if (
+		layerCfg.period &&
+		layerCfg.period.start &&
+		layerCfg.period.end
+	) {
+		const otherOptions = layerCfg.options || {};
+		const cfg = getOverlayCfg({
+			key: layerCfg.key,
+			layerTemplateKey: layerCfg.layerTemplateKey,
+			period: layerCfg.period,
+			periodIndex: 0,
+			backdroundColor: layerCfg.active
+				? layerCfg.activeColor
+				: layerCfg.color,
+			label: layerCfg.title,
+			hideLabel: true,
+			height: rowHeight * utils.getRemSize(),
+			top: top * utils.getRemSize(),
+			options: {
+				// classes: 'overlay5',
+				...otherOptions,
+			},
+		});
+
+		return [cfg];
+	} else {
+		return [];
+	}
+}
+
+const getOverlaysCfg = layers => {
+	const LINEHEIGHT = 1;
+	const ROWHEIGHT = 0.6; //in rem
+	let line = -1;
+	let PADDING = (LINEHEIGHT - ROWHEIGHT) / 2;
+	layers.sort((a, b) => {
+		let aZIndex = 0;
+		if(a.length > 0){
+			aZIndex = a[0].zIndex;
+		} else {
+			aZIndex = a.zIndex;
+		}
+
+		let bZIndex = 0;
+		if(b.length > 0){
+			bZIndex = b[0].zIndex;
+		} else {
+			bZIndex = b.zIndex;
+		}
+		return aZIndex - bZIndex;
+	});
+
+	
+	let lastZIndex = layers?.[0]?.zIndex || 0;
+
+	let top = PADDING;
+	return layers.reduce((acc, layerCfg) => {
+		// if (lastZIndex !== layerCfg.zIndex) {
+		// 	line = line + 1;
+		// 	lastZIndex = layerCfg.zIndex;
+		// 	//todo rem
+		// 	// fixme
+		// 	top = line * LINEHEIGHT + PADDING;
+		// }
+
+		if(layerCfg && layerCfg.length > 0) {
+			line = line + 1;
+			top = line * LINEHEIGHT + PADDING;
+			let lcfgs = [];
+			layerCfg.forEach(lcfg => lcfgs = [...lcfgs, ...proccessLayerCfg(lcfg, top, ROWHEIGHT)]);
+			return [...acc,  ...lcfgs];
+		} else {
+			line = line + 1;
+			top = line * LINEHEIGHT + PADDING;
+			return [...acc, ...proccessLayerCfg(layerCfg, top, ROWHEIGHT)];
+		}
+
+	}, []);
+};
+
+class MapTimeline extends React.PureComponent {
+	static propTypes = {
+		periodLimit: PropTypes.shape({
+			start: PropTypes.string,
+			end: PropTypes.string,
+		}).isRequired,
+		period: PropTypes.shape({
+			start: PropTypes.string,
+			end: PropTypes.string,
+		}),
+		dayWidth: PropTypes.number,
+		centerTime: PropTypes.func,
+		contentHeight: PropTypes.number, //Default contentHeight is calculated fron layers count
+		width: PropTypes.number,
+		height: PropTypes.number,
+
+		onHover: PropTypes.func,
+		onClick: PropTypes.func,
+
+		periodLimitOnCenter: PropTypes.bool,
+		vertical: PropTypes.bool,
+
+		levels: PropTypes.arrayOf(
+			PropTypes.shape({
+				end: PropTypes.number,
+				level: PropTypes.string,
+			})
+		), //ordered levels by higher level.end
+		onChange: PropTypes.func,
+		selectMode: PropTypes.bool, //whether change time while zoom
+		//MapTimeline specific
+		onLayerClick: PropTypes.func,
+		layers: PropTypes.array, //which layers display in timeline
+		legend: PropTypes.bool, //Display legend part on left side in horizontal view
+	};
+
+	static defaultProps = {
+		dayWidth: 1.5,
+		onHover: () => {},
+		onClick: () => {},
+		onLayerClick: () => {},
+		width: 100,
+		height: 100,
+		selectMode: false,
+		vertical: false,
+		layers: [],
+		legend: false,
+	};
+
+	getZIndexCount(layers) {
+		const sortedLayers = [...layers].sort((a, b) => a.zIndex - b.zIndex);
+
+		//merge layers on same level
+		let lastZIndex = -1;
+		const layersCount = sortedLayers.reduce((acc, layer) => {
+			if (lastZIndex < layer.zIndex) {
+				lastZIndex = layer.zIndex;
+				return acc + 1;
+			} else {
+				return acc;
+			}
+		}, 0);
+
+		return layersCount;
+	}
+
+	render() {
+		const {
+			levels,
+			periodLimit,
+			onHover,
+			onClick,
+			onChange,
+			vertical,
+			children,
+			periodLimitOnCenter,
+			selectMode,
+			contentHeight,
+			onLayerClick,
+			layers,
+			legend,
+		} = this.props;
+
+		const overlays = getOverlaysCfg(layers);
+		const contentHeightByLayers =
+			(this.getZIndexCount(layers) + 1) * utils.getRemSize();
+		const childArray = React.Children.toArray(children);
+		childArray.push(
+			<Overlay key={'layers'} overlays={overlays} onClick={onLayerClick} />
+		);
+
+		return (
+			<div className={'ptr-maptimeline'}>
+				{legend && !vertical ? <MapTimelineLegend layers={layers} /> : null}
+				<div style={{display: 'flex', flex: '1 1 auto'}}>
+					<Timeline
+						periodLimit={periodLimit}
+						periodLimitOnCenter={periodLimitOnCenter}
+						onChange={onChange}
+						onHover={onHover}
+						onClick={onClick}
+						vertical={vertical}
+						levels={levels}
+						// contentHeight={contentHeight || contentHeightByLayers}
+						contentHeight={200}
+						selectMode={selectMode}
+					>
+						{childArray}
+					</Timeline>
+				</div>
+			</div>
+		);
+	}
+}
+
+export default MapTimeline;

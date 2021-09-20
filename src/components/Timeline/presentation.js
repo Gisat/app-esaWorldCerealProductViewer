@@ -1,7 +1,8 @@
 import React from 'react';
 import {find as _find, findIndex as _findIndex} from 'lodash';
 import PropTypes from 'prop-types';
-import {MapTimeline, Mouse, Years, Months} from '@gisatcz/ptr-timeline';
+import {Mouse, Years, Months} from '@gisatcz/ptr-timeline';
+import MapTimeline from '../MapTimeline';
 
 import './style.scss';
 
@@ -17,7 +18,7 @@ const LEVELS = [
 	},
 	{
 		level: 'month',
-		end: 5,
+		end: 10,
 	},
 ];
 
@@ -35,17 +36,27 @@ const Levels = props => {
 class Timeline extends React.PureComponent {
 	static propTypes = {};
 
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		const {productMetadata, activeLayers, handleProductInActiveMap} =
 			this.props;
 
-		const layers = productMetadata?.length
-			? productMetadata.map((product, i) => {
-					return {
+		const layersByPlaces = {};
+		let layers = [];
+		if(productMetadata?.length) {
+			productMetadata.forEach((product, i) => {
+				const placeID = product.data.aez_id;
+				const productID = product.data.product;
+				if(!layersByPlaces.hasOwnProperty(placeID)) {
+					layersByPlaces[placeID] = {};
+				}
+
+				if(!layersByPlaces[placeID].hasOwnProperty(productID)) {
+					layersByPlaces[placeID][productID] = [];
+				}
+
+				// push data from same place and same product to the same line in timeline
+				layersByPlaces[placeID][productID].push ({
 						key: product.key,
 						layerTemplateKey: product.key,
 						period: [
@@ -61,12 +72,17 @@ class Timeline extends React.PureComponent {
 							layer => layer.layerKey === product.key
 						),
 						activePeriodIndex: 0,
-						title: product.data.name,
-						info: product.data.product,
-						zIndex: i,
-					};
+						title: `${product.data.name} ${product.data.product}`,
+						// zIndex: i,
+					});
 			  })
-			: null;
+		}
+
+		for (const placeId of Object.keys(layersByPlaces)) {
+			for (const productID of Object.keys(layersByPlaces[placeId])) {
+				layers = [...layers, layersByPlaces[placeId][productID]];
+			}
+		}
 
 		return (
 			<div className="worldCereal-Timeline">

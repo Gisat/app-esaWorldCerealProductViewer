@@ -1,0 +1,27 @@
+// @import "../../../styles/_variables.scss";
+
+.ptr-maptimeline {
+	display: flex;
+}
+
+.ptr-maptimelinelegend {
+	display: flex;
+	flex-flow: column;
+	// uncomment
+	// line-height: $a1;
+	// font-size: $a1;
+	line-height: 1rem;
+	font-size: 1rem;
+	max-width: 14rem;
+}
+.ptr-maptimelinelegend span {
+	// uncomment
+	// padding: 0 $a;
+	padding: 0 1rem;
+}
+
+.ptr-maptimeline-legenditem {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
