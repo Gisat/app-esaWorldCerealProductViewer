@@ -38,11 +38,12 @@ $boxShadow: 0 0 $boxShadowSpread rgba(0,0,0,.5);
 .ptr-RetractableWindowControlBar:after {
   content: "";
   width: calc(100% + #{$boxShadowSpread} + 1px);
+  max-width: 100%;
   height: calc(#{$boxShadowSpread} + 1px);
   position: absolute;
   bottom: calc(-#{$boxShadowSpread} - 1px);
   left: 0;
-  background: white;
+  background: var(--base0);
 }
 
 .ptr-RetractableWindowBody {
