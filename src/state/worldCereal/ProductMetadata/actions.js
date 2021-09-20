@@ -3,8 +3,6 @@ import {find as _find} from 'lodash';
 import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
 import {mapSetKey} from '../../../constants/app';
-import annualCroplandClassification from '../../../data/styles/annualCroplandClassification';
-import wheatClassification from '../../../data/styles/wheatClassification';
 
 const add = commonActions.add(ActionTypes.WORLD_CEREAL.PRODUCT_METADATA);
 const setActiveKeys = commonActions.setActiveKeys(
@@ -45,6 +43,7 @@ function handleProductInActiveMap(productMetadataKey) {
 			tiles.forEach(tile =>
 				layers.push(
 					getLayerDefinition(
+						getState(),
 						productMetadataKey,
 						tile,
 						productMetadata?.data.product
@@ -69,37 +68,25 @@ function getUniqueLayerKey(productMetadataKey, tile) {
 
 /**
  * Get layer definition
+ * @param state {Object}
  * @param productMetadataKey {string} uuid of product metadata
  * @param tile {tile: Object, path: string}
  * @param product {string}
  * @returns {Object} Panther.Layer
  */
-function getLayerDefinition(productMetadataKey, tile, product) {
+function getLayerDefinition(state, productMetadataKey, tile, product) {
 	return {
 		key: getUniqueLayerKey(productMetadataKey, tile),
 		layerKey: productMetadataKey,
 		type: 'cog',
 		options: {
 			url: tile.path,
-			style: getStyleByProduct(product),
+			style: Select.worldCereal.getStyleDefinitionByProductTemplateKey(
+				state,
+				product
+			),
 		},
 	};
-}
-
-// TODO get style from cases
-/**
- * @param product {string}
- * @returns {Object} Panther style definition
- */
-function getStyleByProduct(product) {
-	switch (product) {
-		case 'annualcropland':
-			return annualCroplandClassification.data.definition;
-		case 'wheat':
-			return wheatClassification.data.definition;
-		default:
-			return annualCroplandClassification.data.definition;
-	}
 }
 
 export default {

@@ -1,5 +1,10 @@
 @import '../../styles/variables';
 
 .worldCereal-Timeline {
-  height: 13rem;
+  // height: 13rem;
+  min-height: 10rem;
+  max-height: 10rem;
+  max-width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
