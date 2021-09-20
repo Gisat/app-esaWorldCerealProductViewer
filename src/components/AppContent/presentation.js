@@ -9,6 +9,7 @@ import {
 import Header from '../Header';
 import MapContainer from '../MapContainer';
 import MapWrapper from '../MapWrapper';
+import RetractableWindow from '../atoms/RetractableWindow';
 import SimpleLayersControl from '../SimpleLayersControl';
 import Timeline from '../Timeline';
 
@@ -43,6 +44,7 @@ const App = ({onMount, onUnmount, viewLimits}) => {
 					viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
 				/>
 			</ConnectedMapSet>
+			<RetractableWindow retracted />
 			<Timeline />
 			{/*<ControlPanel />*/}
 		</div>

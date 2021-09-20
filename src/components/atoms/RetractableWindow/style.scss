@@ -1,0 +1,74 @@
+@import '../../../styles/variables';
+
+$borderRadius: .25rem;
+$boxShadowSpread: 5px;
+$boxShadow: 0 0 $boxShadowSpread rgba(0,0,0,.5);
+
+.ptr-RetractableWindow {
+  position: absolute;
+  transition: top .5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  border-radius: $borderRadius $borderRadius 0 0;
+  align-items: flex-start;
+  pointer-events: none;
+
+  // TODO move to specific component style declaration
+  left: 1rem;
+  width: calc(100% - 2rem);
+  z-index: 3;
+
+  // TODO move to component calculation
+  top: calc(100% - 24rem);
+}
+
+.ptr-RetractableWindow.is-retracted {
+  top: calc(100% - 8rem);
+}
+
+.ptr-RetractableWindowControlBar {
+  pointer-events: initial;
+  position: relative;
+  z-index: 2;
+  background: var(--base0);
+  border-radius: $borderRadius $borderRadius 0 0;
+  box-shadow: $boxShadow;
+
+  // TODO for now
+  height: 2rem;
+  line-height: 2rem;
+
+  // TODO move to specific component style declaration
+  padding: 0 .5rem;
+}
+
+.ptr-RetractableWindowControlBar:after {
+  content: "";
+  width: calc(100% + #{$boxShadowSpread} + 1px);
+  height: calc(#{$boxShadowSpread} + 1px);
+  position: absolute;
+  bottom: calc(-#{$boxShadowSpread} - 1px);
+  left: 0;
+  background: white;
+}
+
+.ptr-RetractableWindowBody {
+  pointer-events: initial;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background: var(--base0);
+  border-top-right-radius: $borderRadius;
+  box-shadow: $boxShadow;
+  transition: box-shadow .1s ease-in-out;
+
+  // TODO move to component calculation
+
+  // TODO move to specific component style declaration
+  padding: .5rem;
+}
+
+.ptr-RetractableWindow.is-retracted .ptr-RetractableWindowBody {
+  box-shadow: none;
+  transition: box-shadow .1s .4s ease-in-out;
+}
