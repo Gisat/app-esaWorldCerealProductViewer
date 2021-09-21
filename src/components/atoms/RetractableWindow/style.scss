@@ -1,28 +1,22 @@
 @import '../../../styles/variables';
 
 $borderRadius: .25rem;
-$boxShadowSpread: 5px;
+$boxShadowSpread: 3px;
 $boxShadow: 0 0 $boxShadowSpread rgba(0,0,0,.5);
 
 .ptr-RetractableWindow {
   position: absolute;
+  left: 0;
+  width: 100%;
   transition: top .5s ease-in-out;
   display: flex;
   flex-direction: column;
   border-radius: $borderRadius $borderRadius 0 0;
   align-items: flex-start;
   pointer-events: none;
-
-  // TODO move to specific component style declaration
-  left: .5rem;
-  width: calc(100% - 1rem);
-  z-index: 3;
 }
 
-.ptr-RetractableWindow.is-retracted {
-
-}
-
+// Control bar
 .ptr-RetractableWindowControlBar {
   pointer-events: initial;
   position: relative;
@@ -30,9 +24,8 @@ $boxShadow: 0 0 $boxShadowSpread rgba(0,0,0,.5);
   background: var(--base0);
   border-radius: $borderRadius $borderRadius 0 0;
   box-shadow: $boxShadow;
-
-  // TODO move to specific component style declaration
-  padding: 0 .5rem;
+  display: flex;
+  align-items: center;
 }
 
 .ptr-RetractableWindowControlBar:after {
@@ -46,6 +39,23 @@ $boxShadow: 0 0 $boxShadowSpread rgba(0,0,0,.5);
   background: var(--base0);
 }
 
+.ptr-RetractableWindowControlBar .ptr-icon {
+  width: .75rem;
+  height: .75rem;
+  transform: rotate(270deg);
+  transition: transform .5s ease-in-out;
+  margin: 0 .5rem;
+}
+
+.ptr-RetractableWindow.is-retracted .ptr-RetractableWindowControlBar .ptr-icon {
+  transform: rotate(90deg);
+}
+
+.ptr-RetractableWindowControlBar > div {
+  flex: 1;
+}
+
+// Body
 .ptr-RetractableWindowBody {
   pointer-events: initial;
   position: relative;
@@ -56,9 +66,6 @@ $boxShadow: 0 0 $boxShadowSpread rgba(0,0,0,.5);
   box-shadow: $boxShadow;
   transition: box-shadow .1s ease-in-out;
   overflow-y: auto;
-
-  // TODO move to specific component style declaration
-  padding: .5rem;
 }
 
 .ptr-RetractableWindow.is-retracted .ptr-RetractableWindowBody {

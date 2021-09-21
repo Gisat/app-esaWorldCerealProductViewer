@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import useSize from '@react-hook/size';
 import classnames from 'classnames';
+import {Icon} from '@gisatcz/ptr-atoms';
 
 import './style.scss';
 
@@ -18,6 +19,7 @@ const RetractableWindowControlBar = ({children, onClick, onHeightChange}) => {
 			onClick={onClick}
 			className="ptr-RetractableWindowControlBar"
 		>
+			<Icon icon="chevron-left" />
 			{children}
 		</div>
 	);
@@ -46,8 +48,7 @@ const RetractableWindow = ({
 	const [isRetracted, handleRetraction] = useState(retracted);
 	const [positionOffset, handlePosition] = useState(0);
 
-	const classes = classnames('ptr-RetractableWindow', {
-		...className,
+	const classes = classnames(`ptr-RetractableWindow ${className}`, {
 		'is-retracted': isRetracted,
 	});
 

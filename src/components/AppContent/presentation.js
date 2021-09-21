@@ -45,16 +45,14 @@ const App = ({onMount, onUnmount, viewLimits}) => {
 				/>
 			</ConnectedMapSet>
 			<RetractableWindow
+				className="worldCereal-FilterWindow"
 				retracted
 				bottomPosition={6}
 				bodyHeight={12}
 				controlBarContent={
 					<div>
 						Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui.
-						Aliquam in lorem sit amet leo accumsan lacinia. Nullam sit amet
-						magna in magna gravida vehicula. Etiam posuere lacus quis dolor. Nam
-						sed tellus id magna elementum tincidunt. Integer vulputate sem a
-						nibh rutrum consequat.
+						Aliquam in lorem sit amet leo accumsan lacinia.
 					</div>
 				}
 			>
