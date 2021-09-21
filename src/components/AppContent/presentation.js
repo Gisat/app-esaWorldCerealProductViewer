@@ -12,6 +12,7 @@ import MapWrapper from '../MapWrapper';
 import RetractableWindow from '../atoms/RetractableWindow';
 import SimpleLayersControl from '../SimpleLayersControl';
 import Timeline from '../Timeline';
+import ActiveFilterInfo from '../ActiveFilterInfo';
 
 const ConnectedMap = MapContainer(PresentationMap);
 const ConnectedMapSet = connects.MapSet(MapSet);
@@ -49,12 +50,7 @@ const App = ({onMount, onUnmount, viewLimits}) => {
 				retracted
 				bottomPosition={6}
 				bodyHeight={12}
-				controlBarContent={
-					<div>
-						Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui.
-						Aliquam in lorem sit amet leo accumsan lacinia.
-					</div>
-				}
+				controlBarContent={<ActiveFilterInfo />}
 			>
 				<p>
 					Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui.
