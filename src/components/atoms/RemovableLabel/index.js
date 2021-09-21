@@ -19,8 +19,7 @@ const RemovableLabel = ({
 	children,
 	className,
 }) => {
-	const classes = classnames('ptr-RemovableLabel', {
-		...className,
+	const classes = classnames(`ptr-RemovableLabel ${className}`, {
 		'is-active': active,
 		'has-strip': stripColor,
 		'is-floating': floating,
