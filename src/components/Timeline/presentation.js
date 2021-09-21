@@ -36,46 +36,45 @@ const Levels = props => {
 class Timeline extends React.PureComponent {
 	static propTypes = {};
 
-
 	render() {
 		const {productMetadata, activeLayers, handleProductInActiveMap} =
 			this.props;
 
 		const layersByPlaces = {};
 		let layers = [];
-		if(productMetadata?.length) {
+		if (productMetadata?.length) {
 			productMetadata.forEach((product, i) => {
 				const placeID = product.data.aez_id;
 				const productID = product.data.product;
-				if(!layersByPlaces.hasOwnProperty(placeID)) {
+				if (!layersByPlaces.hasOwnProperty(placeID)) {
 					layersByPlaces[placeID] = {};
 				}
 
-				if(!layersByPlaces[placeID].hasOwnProperty(productID)) {
+				if (!layersByPlaces[placeID].hasOwnProperty(productID)) {
 					layersByPlaces[placeID][productID] = [];
 				}
 
 				// push data from same place and same product to the same line in timeline
-				layersByPlaces[placeID][productID].push ({
-						key: product.key,
-						layerTemplateKey: product.key,
-						period: [
-							{
-								start: product.data.sos,
-								end: product.data.eos,
-							},
-						],
-						color: 'rgba(255, 0, 0, 0.3)',
-						activeColor: 'rgba(255, 0, 0, 0.7)',
-						active: !!_find(
-							activeLayers,
-							layer => layer.layerKey === product.key
-						),
-						activePeriodIndex: 0,
-						title: `${product.data.name} ${product.data.product}`,
-						// zIndex: i,
-					});
-			  })
+				layersByPlaces[placeID][productID].push({
+					key: product.key,
+					layerTemplateKey: product.key,
+					period: [
+						{
+							start: product.data.sos,
+							end: product.data.eos,
+						},
+					],
+					color: 'rgba(255, 0, 0, 0.3)',
+					activeColor: 'rgba(255, 0, 0, 0.7)',
+					active: !!_find(
+						activeLayers,
+						layer => layer.layerKey === product.key
+					),
+					activePeriodIndex: 0,
+					title: `${product.data.product} (z ${product.data.aez_id}) ${product.data.name}`,
+					// zIndex: i,
+				});
+			});
 		}
 
 		for (const placeId of Object.keys(layersByPlaces)) {
