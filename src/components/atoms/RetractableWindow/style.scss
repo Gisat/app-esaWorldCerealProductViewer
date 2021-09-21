@@ -26,6 +26,7 @@ $boxShadow: 0 0 $boxShadowSpread rgba(0,0,0,.5);
   box-shadow: $boxShadow;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .ptr-RetractableWindowControlBar:after {
@@ -47,7 +48,7 @@ $boxShadow: 0 0 $boxShadowSpread rgba(0,0,0,.5);
   margin: 0 .5rem;
 }
 
-.ptr-RetractableWindow.is-retracted .ptr-RetractableWindowControlBar .ptr-icon {
+.ptr-RetractableWindow.is-retracted .ptr-RetractableWindowControlBar .ptr-icon.retract {
   transform: rotate(90deg);
 }
 

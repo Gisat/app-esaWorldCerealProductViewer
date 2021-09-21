@@ -5,7 +5,7 @@ import {Button} from '@gisatcz/ptr-atoms';
 import MapProductLabel from '../MapProductLabel';
 
 import './style.scss';
-import {MapLabelContainer} from '../atoms/MapLabel';
+import {RemovableLabelContainer} from '../atoms/RemovableLabel';
 
 class MapWrapper extends React.PureComponent {
 	static propTypes = {
@@ -37,11 +37,11 @@ class MapWrapper extends React.PureComponent {
 		return (
 			<div className={wrapperClasses}>
 				{productMetadataKeys?.length ? (
-					<MapLabelContainer className="worldCereal-MapProductLabelContainer">
+					<RemovableLabelContainer className="worldCereal-MapProductLabelContainer">
 						{productMetadataKeys.map(productMetadataKey =>
 							this.renderMapProductLabel(productMetadataKey)
 						)}
-					</MapLabelContainer>
+					</RemovableLabelContainer>
 				) : null}
 				{mapSetMapKeys?.length > 1 ? (
 					<Button

@@ -1,5 +1,20 @@
 @import '../../styles/variables';
 
 .worldCereal-ActiveFilterInfo {
-  padding-right: .5rem;
+  display: flex;
+  align-items: center;
+}
+
+.worldCereal-ActiveFilterInfo-summary {
+  font-size: $b1;
+  color: var(--base90);
+  padding: 0 .15rem 0 0;
+}
+
+.worldCereal-ActiveFilterInfo-summary em {
+  font-weight: bold;
+}
+
+.worldCereal-ActiveFilterInfo-filters {
+  margin: .35rem;
 }

@@ -5,7 +5,7 @@ import Action from '../../state/Action';
 import Select from '../../state/Select';
 import {mapSetKey} from '../../constants/app';
 
-import MapLabel from '../atoms/MapLabel';
+import RemovableLabel from '../atoms/RemovableLabel';
 import './style.scss';
 
 const mapStateToProps = (state, ownProps) => {
@@ -53,10 +53,11 @@ const MapProductLabel = props => {
 			productTemplate?.data?.style?.rules?.[0]?.styles?.[0]?.color;
 
 		return (
-			<MapLabel
+			<RemovableLabel
 				stripColor={stripColor}
 				onRemove={onProductRemove}
 				active={isProductInVisibleArea}
+				floating
 			>
 				<MapProductLabelContent
 					icon={productTemplate?.data?.icon}
@@ -65,7 +66,7 @@ const MapProductLabel = props => {
 					start={sos}
 					end={eos}
 				/>
-			</MapLabel>
+			</RemovableLabel>
 		);
 	} else {
 		return null;

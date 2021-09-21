@@ -1,13 +1,34 @@
 import React from 'react';
+import RemovableLabel, {RemovableLabelContainer} from '../atoms/RemovableLabel';
 
 import './style.scss';
 
-const AvailableFilterInfo = ({availableProductMetadata}) => {
+const ActiveFilterInfo = ({availableProductMetadata}) => {
 	return (
 		<div className="worldCereal-ActiveFilterInfo">
-			{availableProductMetadata?.length || 0} filtered products
+			<div className="worldCereal-ActiveFilterInfo-summary">
+				<em>{availableProductMetadata?.length || 0}</em> filtered products
+			</div>
+			<RemovableLabelContainer className="worldCereal-ActiveFilterInfo-filters">
+				<RemovableLabel
+					small
+					onRemove={e => {
+						e.stopPropagation();
+					}}
+				>
+					Filter
+				</RemovableLabel>
+				<RemovableLabel
+					small
+					onRemove={e => {
+						e.stopPropagation();
+					}}
+				>
+					Filter 2
+				</RemovableLabel>
+			</RemovableLabelContainer>
 		</div>
 	);
 };
 
-export default AvailableFilterInfo;
+export default ActiveFilterInfo;
