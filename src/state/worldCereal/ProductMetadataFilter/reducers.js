@@ -19,7 +19,7 @@ const INITIAL_STATE = {
 	},
 	activeFilter: {
 		aez_id: null,
-		product: ['annualcropland'],
+		product: ['annualcropland', 'wheat'],
 	},
 };
 
