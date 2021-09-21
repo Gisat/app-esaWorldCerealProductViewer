@@ -5,9 +5,6 @@ import ActionTypes from '../../../constants/ActionTypes';
 import {mapSetKey} from '../../../constants/app';
 
 const add = commonActions.add(ActionTypes.WORLD_CEREAL.PRODUCT_METADATA);
-const setActiveKeys = commonActions.setActiveKeys(
-	ActionTypes.WORLD_CEREAL.PRODUCT_METADATA
-);
 
 /**
  * Add/remove the product to/from active map
@@ -91,7 +88,6 @@ function getLayerDefinition(state, productMetadataKey, tile, product) {
 
 export default {
 	add,
-	setActiveKeys,
 
 	handleProductInActiveMap,
 };
