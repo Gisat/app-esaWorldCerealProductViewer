@@ -225,7 +225,7 @@ class MapTimeline extends React.PureComponent {
 		return (
 			<div className={'ptr-maptimeline'}>
 				{legend && !vertical ? <MapTimelineLegend layers={layers} /> : null}
-				<div style={{display: 'flex', flex: '1 1 auto'}}>
+				<div className={'ptr-timeline'}>
 					<Timeline
 						periodLimit={periodLimit}
 						periodLimitOnCenter={periodLimitOnCenter}

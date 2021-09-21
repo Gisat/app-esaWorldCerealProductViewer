@@ -2,9 +2,15 @@
 
 .ptr-maptimeline {
 	display: flex;
+
+	.ptr-timeline{
+		display: flex;
+		flex: 1 1 auto;
+	}
 }
 
 .ptr-maptimelinelegend {
+	flex: 0 1 auto;
 	display: flex;
 	flex-flow: column;
 	// uncomment
@@ -13,6 +19,7 @@
 	line-height: 1rem;
 	font-size: 1rem;
 	max-width: 14rem;
+	width: 14rem;
 }
 .ptr-maptimelinelegend span {
 	// uncomment
