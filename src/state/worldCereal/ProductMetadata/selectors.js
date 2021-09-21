@@ -7,10 +7,7 @@ import utils from '../../../utils';
 
 const getSubstate = state => state.worldCereal.productMetadata;
 
-const getActiveKeys = commonSelectors.getActiveKeys(getSubstate);
-const getActiveModels = commonSelectors.getActiveModels(getSubstate);
 const getAll = commonSelectors.getAll(getSubstate);
-const getAllAsObject = commonSelectors.getAllAsObject(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
 
 // helpers ----------------------------------------------
@@ -93,9 +90,6 @@ const isModelInMapExtent = createCachedSelector(
 
 export default {
 	getSubstate,
-
-	getActiveKeys,
-	getActiveModels,
 
 	getByKey,
 	getByMapSetView,

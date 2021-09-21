@@ -2,9 +2,13 @@
 
 .worldCereal-Timeline {
   // height: 13rem;
-  min-height: 10rem;
-  max-height: 10rem;
+  position: relative;
+  background: var(--base0);
+  min-height: 6rem;
+  max-height: 6rem;
   max-width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  z-index: 4;
+  border-top: 1px solid var(--base30);
 }

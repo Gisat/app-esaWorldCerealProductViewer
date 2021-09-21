@@ -2,7 +2,7 @@ export default [
 	{
 		key: 'bc47c2b3-a604-4e24-99a0-94108d4e219e',
 		data: {
-			name: 'Argentina wheat',
+			name: 'Argentina',
 			id: '2020_21HTC_annualcropland_confidence_WorldCerealPixelLSTM',
 			sos: '2020-06-15',
 			eos: '2020-09-15',
@@ -40,7 +40,7 @@ export default [
 	{
 		key: '65cce091-2023-4218-8f8d-2a95c07815cd',
 		data: {
-			name: 'Brazil wheat',
+			name: 'Brazil',
 			id: '2020_22LHQ_annualcropland_confidence_WorldCerealPixelLSTM',
 			sos: '2020-05-01',
 			eos: '2020-08-12',
@@ -78,7 +78,7 @@ export default [
 	{
 		key: '99f2d7c5-a558-4855-8447-e5e5a90a5627',
 		data: {
-			name: 'Spain wheat',
+			name: 'Spain',
 			id: '2020_30SWJ_annualcropland_confidence_WorldCerealPixelLSTM',
 			sos: '2020-06-01',
 			eos: '2020-09-22',
@@ -116,7 +116,7 @@ export default [
 	{
 		key: '399c2b09-fc0e-4209-8140-c88b823c8d96',
 		data: {
-			name: 'Belgium wheat',
+			name: 'Belgium',
 			id: '2020_31UFS_annualcropland_confidence_WorldCerealPixelLSTM',
 			sos: '2020-04-22',
 			eos: '2020-06-15',
@@ -154,7 +154,7 @@ export default [
 	{
 		key: '12e2063d-1040-4372-8210-7ead7816b7da',
 		data: {
-			name: 'Ukraine wheat',
+			name: 'Ukraine',
 			id: '2020_35UQR_annualcropland_confidence_WorldCerealPixelLSTM',
 			sos: '2020-05-01',
 			eos: '2020-09-17',
@@ -192,7 +192,7 @@ export default [
 	{
 		key: '9b0ed3d7-f2ed-4511-8846-679750f5b0c0',
 		data: {
-			name: 'Kenya wheat',
+			name: 'Kenya',
 			id: '2020_37MBV_annualcropland_confidence_WorldCerealPixelLSTM',
 			sos: '2020-06-30',
 			eos: '2020-08-04',
@@ -230,7 +230,7 @@ export default [
 	{
 		key: 'c48b398d-2023-43a3-81d2-bcafd835849b',
 		data: {
-			name: 'China wheat',
+			name: 'China',
 			id: '2020_50SMF_annualcropland_confidence_WorldCerealPixelLSTM',
 			sos: '2020-04-17',
 			eos: '2020-06-12',
