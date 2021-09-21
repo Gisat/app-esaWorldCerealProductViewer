@@ -26,7 +26,7 @@ $boxShadow: 0 0 $boxShadowSpread rgba(0,0,0,.5);
   box-shadow: $boxShadow;
   display: flex;
   align-items: center;
-  cursor: pointer;
+  cursor: default;
 }
 
 .ptr-RetractableWindowControlBar:after {

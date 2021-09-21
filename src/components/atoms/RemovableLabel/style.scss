@@ -13,6 +13,7 @@
   border-radius: .15rem;
   font-size: $b1;
   cursor: default;
+  border: 1px solid rgba(var(--base50rgb), .25);
 }
 
 .ptr-RemovableLabel.is-small {
@@ -28,9 +29,11 @@
 }
 
 .ptr-RemovableLabel.has-strip {
+  border: 0;
   border-left: 5px solid;
 }
 
+// content
 .ptr-RemovableLabel-content {
   display: flex;
   flex-direction: column;
@@ -41,6 +44,7 @@
   padding: 0.05rem .35rem;
 }
 
+// button
 .ptr-RemovableLabel-removeButton.ptr-button {
   min-height: .5rem;
   height: 100%;
