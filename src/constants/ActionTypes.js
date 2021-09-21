@@ -7,6 +7,11 @@ const specificActionTypes = utils.deepKeyMirror({
 			ADD: null,
 			SET_ACTIVE_KEYS: null,
 		},
+		PRODUCT_METADATA_FILTER: {
+			ACTIVE_FILTER: {
+				REMOVE_VALUE: null,
+			},
+		},
 	},
 });
 

@@ -3,13 +3,13 @@
 .worldCereal-ActiveFilterInfo {
   display: flex;
   align-items: center;
-  min-height: m(4/3);
+  min-height: 2.05rem;
 }
 
 .worldCereal-ActiveFilterInfo-summary {
   font-size: $b1;
   color: var(--base90);
-  margin: 0 .35rem 0 0;
+  margin: 0 .5rem 0 .15rem;
 }
 
 .worldCereal-ActiveFilterInfo-summary em {

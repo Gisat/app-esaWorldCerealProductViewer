@@ -19,9 +19,7 @@ const getActiveFilterParameters = createSelector(
 					let finalValues;
 
 					if (dataType === 'cases') {
-						finalValues = values.map(
-							value => cases[value]?.data?.nameDisplay || value
-						);
+						finalValues = values.map(value => cases[value] || value);
 					}
 
 					data.push({
