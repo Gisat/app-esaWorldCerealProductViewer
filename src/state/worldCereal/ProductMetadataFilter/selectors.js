@@ -1,5 +1,6 @@
 import {Select as CommonSelect} from '@gisatcz/ptr-state';
 import {createSelector} from 'reselect';
+import {createCachedSelector} from 're-reselect';
 import {forIn as _forIn} from 'lodash';
 
 const getActiveFilter = state =>
@@ -47,9 +48,27 @@ const getActiveFilterParameters = createSelector(
 	}
 );
 
+const isValueInActiveFilter = createCachedSelector(
+	[
+		getActiveFilter,
+		(state, parameter) => parameter,
+		(state, parameter, value) => value,
+	],
+	(activeFilter, parameter, value) => {
+		if (activeFilter && parameter && value) {
+			const parameterOptions = activeFilter[parameter];
+			return !!(parameterOptions && parameterOptions.indexOf(value) > -1);
+		} else {
+			return false;
+		}
+	}
+)((state, parameter, value) => `${parameter}_${value}`);
+
 export default {
 	getActiveFilter,
 	getActiveFilterParameters,
 
 	getFilterParameters,
+
+	isValueInActiveFilter,
 };

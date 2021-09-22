@@ -11,7 +11,8 @@ const ActiveFilterInfo = ({
 	return (
 		<div className="worldCereal-ActiveFilterInfo">
 			<div className="worldCereal-ActiveFilterInfo-summary">
-				<em>{availableProductMetadata?.length || 0}</em> filtered products
+				<em>{availableProductMetadata?.length || 0}</em> filtered product
+				{availableProductMetadata?.length > 1 ? 's' : ''}
 			</div>
 			{activeFilterParameters ? (
 				<RemovableLabelContainer className="worldCereal-ActiveFilterInfo-filters">

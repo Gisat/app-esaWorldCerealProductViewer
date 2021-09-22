@@ -5,6 +5,7 @@ import PageSwitcher, {
 	PageSwitcherMenuItem,
 	PageSwitcherPage,
 } from '../atoms/PageSwitcher';
+import ProductFilterParameter from './ProductFilterParameter/presentation';
 
 import './style.scss';
 
@@ -24,7 +25,7 @@ const ProductFilter = ({filterParameters}) => {
 				{filterParameters
 					? filterParameters.map((item, i) => (
 							<PageSwitcherPage pageKey={item.key}>
-								{item.name}
+								<ProductFilterParameter parameterKey={item.key} {...item} />
 							</PageSwitcherPage>
 					  ))
 					: null}

@@ -1,7 +1,5 @@
 @import '../../styles/variables';
 
-// TODO move to specific component
-// Filter
 .worldCereal-Filter {
   height: 100%;
 }
@@ -19,4 +17,5 @@
   padding: m(2/3) m(1);
   border-top: 1px solid var(--base25);
   border-left: 1px solid var(--base25);
+  width: 100%;
 }

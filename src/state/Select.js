@@ -78,11 +78,14 @@ const getProductMetadataByMapSetViewAndFilter = createSelector(
 		if (productMetadata && filter) {
 			return _filter(productMetadata, item => {
 				// TODO add other filter params
-				const {aez_id, product} = item.data;
+				const {aez_id, product, season} = item.data;
 				if (filter.aez_id && !_includes(filter.aez_id, aez_id)) {
 					return false;
 				}
 				if (filter.product && !_includes(filter.product, product)) {
+					return false;
+				}
+				if (filter.season && !_includes(filter.season, season)) {
 					return false;
 				}
 				return true;
