@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import {utils} from '@gisatcz/ptr-utils';
 import {Timeline, Overlay} from '@gisatcz/ptr-timeline';
-import XAxe from './XAxe';
+import XAxis from './XAxis';
 import MapTimelineLegend from './MapTimelineLegend';
 import './style.scss';
 
@@ -257,7 +257,7 @@ class MapTimeline extends React.PureComponent {
 
 		return (
 			<>
-			<XAxe period={this.state.period} getX={this.getX} dayWidth={this.state.dayWidth} vertical={vertical} activeLevel={this.state.activeLevel}/>
+			<XAxis period={this.state.period} getX={this.getX} dayWidth={this.state.dayWidth} vertical={vertical} activeLevel={this.state.activeLevel}/>
 			<div className={'ptr-maptimeline-scrollable'}>
 				<div className={'ptr-maptimeline'}>
 					{legend && !vertical ? <MapTimelineLegend layers={layers} /> : null}
