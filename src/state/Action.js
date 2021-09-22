@@ -26,6 +26,11 @@ function init(path) {
 		// add & apply view
 		dispatch(CommonAction.views.add(view));
 		dispatch(CommonAction.views.applyAndSetActive(view.key, CommonAction));
+		dispatch(
+			productMetadataFilterActions.setActiveFilter(
+				view.data.state.worldCereal.productMetadataFilter.activeFilter
+			)
+		);
 
 		// add metadata
 		dispatch(CommonAction.cases.add(cases));

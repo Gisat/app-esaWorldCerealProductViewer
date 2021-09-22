@@ -27,9 +27,6 @@ const INITIAL_STATE = {
 			options: ['summer1', 'summer2', 'winter'],
 		},
 	},
-	activeFilter: {
-		product: ['annualcropland', 'wheat'],
-	},
 };
 
 const addValueToActiveFilter = (state, parameter, value) => {
@@ -67,6 +64,13 @@ const removeValueFromActiveFilter = (state, parameter, value) => {
 	}
 };
 
+const setActiveFilter = (state, activeFilter) => {
+	return {
+		...state,
+		activeFilter,
+	};
+};
+
 export default (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case ActionTypes.WORLD_CEREAL.PRODUCT_METADATA_FILTER.ACTIVE_FILTER
@@ -75,6 +79,8 @@ export default (state = INITIAL_STATE, action) => {
 		case ActionTypes.WORLD_CEREAL.PRODUCT_METADATA_FILTER.ACTIVE_FILTER
 			.REMOVE_VALUE:
 			return removeValueFromActiveFilter(state, action.parameter, action.value);
+		case ActionTypes.WORLD_CEREAL.PRODUCT_METADATA_FILTER.ACTIVE_FILTER.SET:
+			return setActiveFilter(state, action.activeFilter);
 		default:
 			return state;
 	}

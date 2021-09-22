@@ -4,7 +4,13 @@ export default {
 	key: '371846f9-0270-4e43-a46a-db009cd5946a',
 	data: {
 		state: {
-			worldCereal: {},
+			worldCereal: {
+				productMetadataFilter: {
+					activeFilter: {
+						product: ['annualcropland', 'wheat'],
+					},
+				},
+			},
 			maps: {
 				activeMapKey: 'ea10b274-dd71-4e58-b627-d2803ab891f7',
 				activeSetKey: 'productViewer-mapSet',
