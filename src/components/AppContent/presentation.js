@@ -13,6 +13,12 @@ import RetractableWindow from '../atoms/RetractableWindow';
 import SimpleLayersControl from '../SimpleLayersControl';
 import Timeline from '../Timeline';
 import ActiveFilterInfo from '../ActiveFilterInfo';
+import PageSwitcher, {
+	PageSwitcherContent,
+	PageSwitcherMenu,
+	PageSwitcherMenuItem,
+	PageSwitcherPage,
+} from '../atoms/PageSwitcher';
 
 const ConnectedMap = MapContainer(PresentationMap);
 const ConnectedMapSet = connects.MapSet(MapSet);
@@ -49,9 +55,30 @@ const App = ({onMount, onUnmount, viewLimits}) => {
 				className="worldCereal-FilterWindow ptr-dark"
 				retracted
 				bottomPosition={6}
-				bodyHeight={16}
+				bodyHeight={14}
 				controlBarContent={<ActiveFilterInfo />}
-			></RetractableWindow>
+			>
+				<PageSwitcher className="worldCereal-Filter">
+					<PageSwitcherMenu>
+						<PageSwitcherMenuItem pageKey="product">
+							Product
+						</PageSwitcherMenuItem>
+						<PageSwitcherMenuItem pageKey="zone">Zone</PageSwitcherMenuItem>
+						<PageSwitcherMenuItem pageKey="season" active>
+							Season
+						</PageSwitcherMenuItem>
+						<PageSwitcherMenuItem pageKey="user" disabled>
+							User
+						</PageSwitcherMenuItem>
+					</PageSwitcherMenu>
+					<PageSwitcherContent>
+						<PageSwitcherPage pageKey="product">Product page</PageSwitcherPage>
+						<PageSwitcherPage pageKey="zone">Zone page</PageSwitcherPage>
+						<PageSwitcherPage pageKey="season">Season page</PageSwitcherPage>
+						<PageSwitcherPage pageKey="user">User page</PageSwitcherPage>
+					</PageSwitcherContent>
+				</PageSwitcher>
+			</RetractableWindow>
 			<Timeline />
 			{/*<ControlPanel />*/}
 		</div>
