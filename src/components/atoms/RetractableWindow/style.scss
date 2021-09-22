@@ -50,16 +50,17 @@ $boxShadow: 0 0 $boxShadowSpread rgba(0,0,0,.3);
   background: transparent;
 }
 
-.ptr-RetractableWindowControlBar .ptr-icon {
-  width: .75rem;
-  height: .75rem;
-  transform: rotate(270deg);
-  transition: transform .5s ease-in-out;
-  margin: 0 .5rem;
-}
-
 .ptr-RetractableWindowControlBar .ptr-icon .line {
   fill: var(--base90);
+}
+
+.ptr-RetractableWindow .ptr-RetractableWindowControlBar .ptr-icon.retract {
+  width: 1.75rem;
+  height: 1.75rem;
+  transform: rotate(270deg);
+  transition: transform .5s ease-in-out;
+  padding: 0 .5rem;
+  cursor: pointer;
 }
 
 .ptr-RetractableWindow.is-retracted .ptr-RetractableWindowControlBar .ptr-icon.retract {
