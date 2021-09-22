@@ -4,11 +4,22 @@ import {forIn as _forIn} from 'lodash';
 
 const getActiveFilter = state =>
 	state.worldCereal.productMetadataFilter.activeFilter;
-const getFilterParameters = state =>
+const getFilterParametersAsObject = state =>
 	state.worldCereal.productMetadataFilter.parameters;
 
+const getFilterParameters = createSelector(
+	[getFilterParametersAsObject],
+	parameters => {
+		return parameters && Object.values(parameters);
+	}
+);
+
 const getActiveFilterParameters = createSelector(
-	[getActiveFilter, getFilterParameters, CommonSelect.cases.getAllAsObject],
+	[
+		getActiveFilter,
+		getFilterParametersAsObject,
+		CommonSelect.cases.getAllAsObject,
+	],
 	(activeFilter, params, cases) => {
 		if (activeFilter && params) {
 			let data = [];
@@ -39,4 +50,6 @@ const getActiveFilterParameters = createSelector(
 export default {
 	getActiveFilter,
 	getActiveFilterParameters,
+
+	getFilterParameters,
 };
