@@ -10,7 +10,7 @@ import './style.scss';
 
 const periodLimit = {
 	start: '2020',
-	end: '2021',
+	end: '2022',
 };
 
 const LEVELS = [

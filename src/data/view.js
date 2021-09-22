@@ -7,7 +7,7 @@ export default {
 			worldCereal: {
 				productMetadataFilter: {
 					activeFilter: {
-						product: ['annualcropland', 'wheat'],
+						product: ['annualcropland'],
 					},
 				},
 			},
@@ -39,8 +39,8 @@ export default {
 							view: {
 								boxRange: 400000,
 								center: {
-									lat: -33,
-									lon: -59,
+									lat: -35,
+									lon: -63,
 								},
 							},
 							viewLimits: {
