@@ -250,6 +250,7 @@ class MapTimeline extends React.PureComponent {
 		// const contentHeightByLayers =
 		// 	(this.getZIndexCount(layers) + 1) * utils.getRemSize();
 		const contentHeightByLayers = layers.length * utils.getRemSize();
+		const minTimelineHeight = 11 * utils.getRemSize();
 		const childArray = React.Children.toArray(children);
 		childArray.push(
 			<Overlay key={'layers'} overlays={overlays} onClick={onLayerClick} />
@@ -270,7 +271,7 @@ class MapTimeline extends React.PureComponent {
 							onClick={onClick}
 							vertical={vertical}
 							levels={levels}
-							contentHeight={contentHeight || contentHeightByLayers}
+							contentHeight={Math.max(contentHeightByLayers, minTimelineHeight)}
 							// contentHeight={200}
 							selectMode={selectMode}
 						>
