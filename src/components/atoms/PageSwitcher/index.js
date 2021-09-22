@@ -31,7 +31,11 @@ export const PageSwitcherMenuItem = ({
 	});
 
 	return (
-		<div className={classes} onClick={() => setActivePage(pageKey)}>
+		<div
+			key={pageKey}
+			className={classes}
+			onClick={() => setActivePage(pageKey)}
+		>
 			{children}
 		</div>
 	);

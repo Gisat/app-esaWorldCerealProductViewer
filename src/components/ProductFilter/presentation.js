@@ -15,7 +15,11 @@ const ProductFilter = ({filterParameters}) => {
 			<PageSwitcherMenu>
 				{filterParameters
 					? filterParameters.map((item, i) => (
-							<PageSwitcherMenuItem pageKey={item.key} active={i === 0}>
+							<PageSwitcherMenuItem
+								key={item.key}
+								pageKey={item.key}
+								active={i === 0}
+							>
 								{item.name}
 							</PageSwitcherMenuItem>
 					  ))
@@ -24,7 +28,7 @@ const ProductFilter = ({filterParameters}) => {
 			<PageSwitcherContent>
 				{filterParameters
 					? filterParameters.map((item, i) => (
-							<PageSwitcherPage pageKey={item.key}>
+							<PageSwitcherPage key={item.key} pageKey={item.key}>
 								<ProductFilterParameter parameterKey={item.key} {...item} />
 							</PageSwitcherPage>
 					  ))
