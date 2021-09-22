@@ -12,6 +12,12 @@ const mapStateToProps = (state, ownProps) => {
 			ownProps.parameterKey,
 			ownProps.value
 		),
+		count: Select.worldCereal.getProductMetadataCountForFilterOption(
+			state,
+			mapSetKey,
+			ownProps.parameterKey,
+			ownProps.value
+		),
 	};
 };
 

@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
 		activeFilterParameters:
 			Select.worldCereal.productMetadataFilter.getActiveFilterParameters(state),
 		availableProductMetadata:
-			Select.worldCereal.getProductMetadataByMapSetViewAndFilter(
+			Select.worldCereal.getProductMetadataByMapSetViewAndActiveFilter(
 				state,
 				mapSetKey
 			),

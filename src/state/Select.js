@@ -1,5 +1,9 @@
 import {createCachedSelector} from 're-reselect';
-import {filter as _filter, includes as _includes} from 'lodash';
+import {
+	filter as _filter,
+	includes as _includes,
+	findIndex as _findIndex,
+} from 'lodash';
 import {Select as CommonSelect} from '@gisatcz/ptr-state';
 
 import productMetadataSelectors from './worldCereal/ProductMetadata/selectors';
@@ -69,32 +73,76 @@ const getStyleDefinitionByProductTemplateKey = createCachedSelector(
 	}
 )((state, productTemplateKey) => productTemplateKey);
 
-const getProductMetadataByMapSetViewAndFilter = createSelector(
+/**
+ * Filter product metadata according to current map view and active filter
+ * @param {Object} state
+ * @param {string} mapSetKey
+ * @return {Array} A collection of filtered product metadata
+ */
+const getProductMetadataByMapSetViewAndActiveFilter = createSelector(
 	[
 		productMetadataSelectors.getByMapSetView,
 		productMetadataFilterSelectors.getActiveFilter,
 	],
-	(productMetadata, filter) => {
-		if (productMetadata && filter) {
-			return _filter(productMetadata, item => {
-				// TODO add other filter params
-				const {aez_id, product, season} = item.data;
-				if (filter.aez_id && !_includes(filter.aez_id, aez_id)) {
-					return false;
-				}
-				if (filter.product && !_includes(filter.product, product)) {
-					return false;
-				}
-				if (filter.season && !_includes(filter.season, season)) {
-					return false;
-				}
-				return true;
-			});
+	(productMetadata, activeFilter) => {
+		if (productMetadata && activeFilter) {
+			return filterMetadata(productMetadata, activeFilter);
 		} else {
 			return null;
 		}
 	}
 );
+
+/**
+ * @param {Object} state
+ * @param {string} mapSetKey
+ * @param {string} filterParameterKey
+ * @param {string} value option
+ * @return {number}
+ */
+const getProductMetadataCountForFilterOption = createCachedSelector(
+	[
+		productMetadataSelectors.getByMapSetView,
+		productMetadataFilterSelectors.getActiveFilter,
+		(state, mapSetKey, filterParameterKey) => filterParameterKey,
+		(state, mapSetKey, filterParameterKey, value) => value,
+	],
+	(productMetadata, activeFilter, filterParameterKey, value) => {
+		if (productMetadata && activeFilter && filterParameterKey && value) {
+			const updatedFilter = {...activeFilter, [filterParameterKey]: [value]};
+			const filteredMetadata = filterMetadata(productMetadata, updatedFilter);
+			return filteredMetadata?.length || 0;
+		} else {
+			return 0;
+		}
+	}
+)(
+	(state, mapSetKey, filterParameterKey, value) =>
+		`${filterParameterKey}_${value}`
+);
+
+// helpers
+/**
+ * @param productMetadata {Array} A collection of product metadata
+ * @param filter {Object} metadata filter
+ * @returns {Array} A collection of filtered product metadata
+ */
+function filterMetadata(productMetadata, filter) {
+	return _filter(productMetadata, item => {
+		// TODO add other filter params
+		const {aez_id, product, season} = item.data;
+		if (filter.aez_id && filter.aez_id.indexOf(aez_id) === -1) {
+			return false;
+		}
+		if (filter.product && filter.product.indexOf(product) === -1) {
+			return false;
+		}
+		if (filter.season && filter.season.indexOf(season) === -1) {
+			return false;
+		}
+		return true;
+	});
+}
 
 export default {
 	...CommonSelect,
@@ -102,7 +150,8 @@ export default {
 		productMetadata: productMetadataSelectors,
 		productMetadataFilter: productMetadataFilterSelectors,
 
-		getProductMetadataByMapSetViewAndFilter,
+		getProductMetadataByMapSetViewAndActiveFilter,
+		getProductMetadataCountForFilterOption,
 		getProductTemplateByProductMetadataKey,
 		getStyleDefinitionByProductTemplateKey,
 	},
