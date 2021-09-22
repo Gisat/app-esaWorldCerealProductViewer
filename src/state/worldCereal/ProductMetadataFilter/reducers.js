@@ -1,32 +1,9 @@
 import {stateManagement} from '@gisatcz/ptr-utils';
 import ActionTypes from '../../../constants/ActionTypes';
+import parameters from '../../../data/worldCereal/productMetadataFilter/parameters';
 
-// TODO move activeFilter out from initial state
 const INITIAL_STATE = {
-	parameters: {
-		aez_id: {
-			key: 'aez_id',
-			name: 'Zone',
-			type: 'checkbox',
-			orderDirection: 'asc',
-			options: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-		},
-		product: {
-			key: 'product',
-			// dataType: 'cases',
-			name: 'Product',
-			type: 'checkbox',
-			orderDirection: 'asc',
-			options: ['annualcropland', 'wheat', 'maize', 'irrigation'],
-		},
-		season: {
-			key: 'season',
-			name: 'Season',
-			type: 'checkbox',
-			orderDirection: 'asc',
-			options: ['summer1', 'summer2', 'winter'],
-		},
-	},
+	parameters,
 };
 
 const addValueToActiveFilter = (state, parameter, value) => {
