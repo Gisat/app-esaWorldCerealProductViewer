@@ -1,5 +1,16 @@
 // @import "../../../styles/_variables.scss";
 
+.ptr-maptimeline-scrollable{
+
+}
+
+.ptr-timeline-legend-placeholder{
+	flex: 0 1 auto;
+	display: flex;
+	flex-flow: column;
+	min-width: 14rem;
+}
+
 .ptr-maptimeline {
 	display: flex;
 
@@ -31,4 +42,17 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+}
+
+
+g.ptr-timeline-year,
+.ptr-timeline-year > line,
+g.ptr-timeline-month,
+g.ptr-timeline-month > line,
+g.ptr-timeline-day,
+g.ptr-timeline-hour,
+g.ptr-timeline-hour > line,
+g.ptr-timeline-minute,
+g.ptr-timeline-minute > line {
+stroke: red;
 }

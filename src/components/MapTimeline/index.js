@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import {utils} from '@gisatcz/ptr-utils';
 import {Timeline, Overlay} from '@gisatcz/ptr-timeline';
-
+import XAxis from './XAxis';
 import MapTimelineLegend from './MapTimelineLegend';
 import './style.scss';
 
@@ -180,6 +180,17 @@ class MapTimeline extends React.PureComponent {
 		legend: false,
 	};
 
+	constructor(props) {
+		super(props);
+		this.onChange = this.onChange.bind(this);
+		this.getX = this.getX.bind(this);
+
+		this.state={
+			period: {start: new Date(), end: new Date()},
+			dayWidth: null
+		}
+	}
+
 	getZIndexCount(layers) {
 		const sortedLayers = [...layers].sort((a, b) => a.zIndex - b.zIndex);
 
@@ -195,6 +206,27 @@ class MapTimeline extends React.PureComponent {
 		}, 0);
 
 		return layersCount;
+	}
+
+	onChange(change) {
+		const update = {};
+		if(change.dayWidth !== this.state.dayWidth) {
+			update.dayWidth = change.dayWidth
+		}
+		if(change.period !== this.state.period) {
+			update.period = change.period
+		}
+		if(change.activeLevel !== this.state.activeLevel) {
+			update.activeLevel = change.activeLevel
+		}
+		this.setState(update);
+	}
+
+	getX(date) {
+		date = moment(date);
+		let diff = date.unix() - moment(this.state.period.start).unix();
+		let diffDays = diff / (60 * 60 * 24);
+		return diffDays * this.state.dayWidth;
 	}
 
 	render() {
@@ -215,33 +247,39 @@ class MapTimeline extends React.PureComponent {
 		} = this.props;
 
 		const overlays = getOverlaysCfg(layers);
-		const contentHeightByLayers =
-			(this.getZIndexCount(layers) + 1) * utils.getRemSize();
+		// const contentHeightByLayers =
+		// 	(this.getZIndexCount(layers) + 1) * utils.getRemSize();
+		const contentHeightByLayers = layers.length * utils.getRemSize();
 		const childArray = React.Children.toArray(children);
 		childArray.push(
 			<Overlay key={'layers'} overlays={overlays} onClick={onLayerClick} />
 		);
 
 		return (
-			<div className={'ptr-maptimeline'}>
-				{legend && !vertical ? <MapTimelineLegend layers={layers} /> : null}
-				<div className={'ptr-timeline'}>
-					<Timeline
-						periodLimit={periodLimit}
-						periodLimitOnCenter={periodLimitOnCenter}
-						onChange={onChange}
-						onHover={onHover}
-						onClick={onClick}
-						vertical={vertical}
-						levels={levels}
-						// contentHeight={contentHeight || contentHeightByLayers}
-						contentHeight={200}
-						selectMode={selectMode}
-					>
-						{childArray}
-					</Timeline>
+			<>
+			<XAxis period={this.state.period} getX={this.getX} dayWidth={this.state.dayWidth} vertical={vertical} activeLevel={this.state.activeLevel}/>
+			<div className={'ptr-maptimeline-scrollable'}>
+				<div className={'ptr-maptimeline'}>
+					{legend && !vertical ? <MapTimelineLegend layers={layers} /> : null}
+					<div className={'ptr-timeline'}>
+						<Timeline
+							periodLimit={periodLimit}
+							periodLimitOnCenter={periodLimitOnCenter}
+							onChange={this.onChange}
+							onHover={onHover}
+							onClick={onClick}
+							vertical={vertical}
+							levels={levels}
+							contentHeight={contentHeight || contentHeightByLayers}
+							// contentHeight={200}
+							selectMode={selectMode}
+						>
+							{childArray}
+						</Timeline>
+					</div>
 				</div>
 			</div>
+			</>
 		);
 	}
 }
