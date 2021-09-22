@@ -8,6 +8,11 @@ const getActiveFilter = state =>
 const getFilterParametersAsObject = state =>
 	state.worldCereal.productMetadataFilter.parameters;
 
+/**
+ * Get all parameters for filtering as array
+ * @param {Object} state
+ * @return {Array} A collection of parameters for filtering
+ */
 const getFilterParameters = createSelector(
 	[getFilterParametersAsObject],
 	parameters => {
@@ -15,6 +20,11 @@ const getFilterParameters = createSelector(
 	}
 );
 
+/**
+ * Get active filter extended with parameters
+ * @param {Object} state
+ * @return {Array} A collection of parameters for filtering
+ */
 const getActiveFilterParameters = createSelector(
 	[
 		getActiveFilter,
@@ -48,6 +58,13 @@ const getActiveFilterParameters = createSelector(
 	}
 );
 
+/**
+ * True, if given value is present in active filter
+ * @param {Object} state
+ * @param {string} parameter
+ * @param {string} value
+ * @return {boolean}
+ */
 const isValueInActiveFilter = createCachedSelector(
 	[
 		getActiveFilter,
