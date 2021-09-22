@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import {utils} from '@gisatcz/ptr-utils';
-import {Timeline, Overlay} from '@gisatcz/ptr-timeline';
+import {Timeline, Overlay, TimeLineHover, HoverHandler, position, utils as timelineUtils} from '@gisatcz/ptr-timeline';
 import XAxis from './XAxis';
 import MapTimelineLegend from './MapTimelineLegend';
 import './style.scss';
 
+const {getIntersectionOverlays, overlap} = timelineUtils.overlays;
 const CONTROLS_WIDTH = 0;
+const TOOLTIP_PADDING = 5;
+const MOUSEBUFFERWIDTH = 20;
+const {getTootlipPosition} = position;
 
 const getOverlayCfg = options => {
 	const otherOptions = options.options || {};
@@ -22,6 +26,7 @@ const getOverlayCfg = options => {
 		hideLabel: options.hideLabel,
 		height: options.height,
 		top: options.top,
+		label: options.title, //label for tooltip
 		options: {
 			...otherOptions,
 		},
@@ -45,6 +50,7 @@ const proccessLayerCfg = (layerCfg, top, rowHeight) => {
 				hideLabel: true,
 				height: rowHeight * utils.getRemSize(),
 				top: top * utils.getRemSize(),
+				title: layerCfg.title,
 				options: {
 					...otherOptions,
 				},
@@ -69,6 +75,7 @@ const proccessLayerCfg = (layerCfg, top, rowHeight) => {
 			hideLabel: true,
 			height: rowHeight * utils.getRemSize(),
 			top: top * utils.getRemSize(),
+			title: layerCfg.title,
 			options: {
 				// classes: 'overlay5',
 				...otherOptions,
@@ -183,8 +190,10 @@ class MapTimeline extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.onChange = this.onChange.bind(this);
+		this.getHorizontalTootlipStyle = this.getHorizontalTootlipStyle.bind(this);
 		this.getX = this.getX.bind(this);
-
+		this.getHoverContent = this.getHoverContent.bind(this);
+		this.wrapperRef = React.createRef();
 		this.state={
 			period: {start: new Date(), end: new Date()},
 			dayWidth: null
@@ -229,6 +238,73 @@ class MapTimeline extends React.PureComponent {
 		return diffDays * this.state.dayWidth;
 	}
 
+	getHoverContent(x, time, evt) {
+		const {layers} = this.props;
+		const overlays = getOverlaysCfg(layers);
+		const intersectionOverlays = getIntersectionOverlays(
+			time,
+			overlays,
+			MOUSEBUFFERWIDTH,
+			evt.dayWidth
+		);
+
+		intersectionOverlays.sort((a, b) => a.top - b.top);
+		const intersectionOverlaysElms = intersectionOverlays.map(overlay => {
+			return (
+				<div key={overlay.key} className={'ptr-timeline-tooltip-layer'}>
+					<div>
+						<span
+							className="dot"
+							style={{backgroundColor: overlay.backdroundColor}}
+						></span>
+					</div>
+					<div>{overlay.label}</div>
+				</div>
+			);
+		});
+
+		return (
+			<div>
+				time: {` ${time.format('YYYY MM D H:mm:ss')}`}
+				{intersectionOverlaysElms}
+			</div>
+		);
+	}
+
+	getHorizontalTootlipStyle() {
+		const referencePoint = 'center';
+
+		return () => {
+			const windowScrollTop = window.document.documentElement.scrollTop;
+			const windowScrollLeft = window.document.documentElement.scrollLeft;
+			const windowHeight = window.document.documentElement.clientHeight;
+			const windowWidth = window.document.documentElement.clientWidth;
+			const windowBBox = [
+				windowScrollTop,
+				windowScrollLeft + windowWidth,
+				windowScrollTop + windowHeight,
+				windowScrollLeft,
+			];
+			// return (position,origPosX,origPosY,width,height,hoveredElemen) => {
+			return (origPosX, origPosY, width, height, hoveredElemen) => {
+					// debugger
+					return getTootlipPosition(
+						referencePoint,
+						['bottom', 'top'],
+						windowBBox,
+						TOOLTIP_PADDING
+					)(
+						origPosX,
+						origPosY,
+						width,
+						height,
+						this.wrapperRef.current
+					);
+			}
+		};
+	}
+
+
 	render() {
 		const {
 			levels,
@@ -257,30 +333,34 @@ class MapTimeline extends React.PureComponent {
 		);
 
 		return (
-			<>
+			<div ref={this.wrapperRef}>
 			<XAxis period={this.state.period} getX={this.getX} dayWidth={this.state.dayWidth} vertical={vertical} activeLevel={this.state.activeLevel}/>
 			<div className={'ptr-maptimeline-scrollable'}>
 				<div className={'ptr-maptimeline'}>
 					{legend && !vertical ? <MapTimelineLegend layers={layers} /> : null}
 					<div className={'ptr-timeline'}>
-						<Timeline
-							periodLimit={periodLimit}
-							periodLimitOnCenter={periodLimitOnCenter}
-							onChange={this.onChange}
-							onHover={onHover}
-							onClick={onClick}
-							vertical={vertical}
-							levels={levels}
-							contentHeight={Math.max(contentHeightByLayers, minTimelineHeight)}
-							// contentHeight={200}
-							selectMode={selectMode}
-						>
-							{childArray}
-						</Timeline>
+						<HoverHandler getStyle={this.getHorizontalTootlipStyle()}>
+							<TimeLineHover getHoverContent={this.getHoverContent}>
+								<Timeline
+									periodLimit={periodLimit}
+									periodLimitOnCenter={periodLimitOnCenter}
+									onChange={this.onChange}
+									onHover={onHover}
+									onClick={onClick}
+									vertical={vertical}
+									levels={levels}
+									contentHeight={Math.max(contentHeightByLayers, minTimelineHeight)}
+									// contentHeight={200}
+									selectMode={selectMode}
+								>
+									{childArray}
+								</Timeline>
+							</TimeLineHover>
+						</HoverHandler>
 					</div>
 				</div>
 			</div>
-			</>
+			</div>
 		);
 	}
 }
