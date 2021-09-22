@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classnames from 'classnames';
 
 import './style.scss';
@@ -21,9 +21,11 @@ export const PageSwitcherMenuItem = ({
 	activePageKey,
 	setActivePage,
 }) => {
-	if (active && !activePageKey) {
-		setActivePage(pageKey);
-	}
+	useEffect(() => {
+		if (active && !activePageKey) {
+			setActivePage(pageKey);
+		}
+	});
 
 	const classes = classnames('ptr-PageSwitcherMenuItem', {
 		'is-active': activePageKey === pageKey,
@@ -31,7 +33,11 @@ export const PageSwitcherMenuItem = ({
 	});
 
 	return (
-		<div className={classes} onClick={() => setActivePage(pageKey)}>
+		<div
+			key={pageKey}
+			className={classes}
+			onClick={() => setActivePage(pageKey)}
+		>
 			{children}
 		</div>
 	);

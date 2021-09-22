@@ -7,7 +7,11 @@ const ProductFilterParameter = ({name, options, parameterKey}) => {
 	return (
 		<div className="worldCereal-ProductFilterParameter">
 			{options.map(option => (
-				<ProductFilterOption parameterKey={parameterKey} value={option} />
+				<ProductFilterOption
+					key={option}
+					parameterKey={parameterKey}
+					value={option}
+				/>
 			))}
 		</div>
 	);
