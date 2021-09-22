@@ -1,7 +1,9 @@
 import React from 'react';
 import {find as _find, findIndex as _findIndex} from 'lodash';
 import PropTypes from 'prop-types';
-import {Mouse, Years, Months} from '@gisatcz/ptr-timeline';
+import {Mouse} from '@gisatcz/ptr-timeline';
+import Months from '../MapTimeline/Months';
+import Years from '../MapTimeline/Years';
 import MapTimeline from '../MapTimeline';
 
 import './style.scss';
