@@ -12,6 +12,13 @@ import MapWrapper from '../MapWrapper';
 import RetractableWindow from '../atoms/RetractableWindow';
 import SimpleLayersControl from '../SimpleLayersControl';
 import Timeline from '../Timeline';
+import ActiveFilterInfo from '../ActiveFilterInfo';
+import PageSwitcher, {
+	PageSwitcherContent,
+	PageSwitcherMenu,
+	PageSwitcherMenuItem,
+	PageSwitcherPage,
+} from '../atoms/PageSwitcher';
 
 const ConnectedMap = MapContainer(PresentationMap);
 const ConnectedMapSet = connects.MapSet(MapSet);
@@ -45,41 +52,32 @@ const App = ({onMount, onUnmount, viewLimits}) => {
 				/>
 			</ConnectedMapSet>
 			<RetractableWindow
-				className="worldCereal-FilterWindow"
+				className="worldCereal-FilterWindow ptr-dark"
 				retracted
 				bottomPosition={6}
-				bodyHeight={12}
-				controlBarContent={
-					<div>
-						Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui.
-						Aliquam in lorem sit amet leo accumsan lacinia.
-					</div>
-				}
+				bodyHeight={14}
+				controlBarContent={<ActiveFilterInfo />}
 			>
-				<p>
-					Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui.
-					Aliquam in lorem sit amet leo accumsan lacinia. Nullam sit amet magna
-					in magna gravida vehicula. Etiam posuere lacus quis dolor. Nam sed
-					tellus id magna elementum tincidunt. Integer vulputate sem a nibh
-					rutrum consequat. Donec iaculis gravida nulla. Nulla accumsan, elit
-					sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam
-					nulla vel leo. In rutrum. Donec ipsum massa, ullamcorper in, auctor
-					et, scelerisque sed, est. Nullam justo enim, consectetuer nec,
-					ullamcorper ac, vestibulum in, elit. Donec quis nibh at felis congue
-					commodo.
-				</p>
-				<p>
-					Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui.
-					Aliquam in lorem sit amet leo accumsan lacinia. Nullam sit amet magna
-					in magna gravida vehicula. Etiam posuere lacus quis dolor. Nam sed
-					tellus id magna elementum tincidunt. Integer vulputate sem a nibh
-					rutrum consequat. Donec iaculis gravida nulla. Nulla accumsan, elit
-					sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam
-					nulla vel leo. In rutrum. Donec ipsum massa, ullamcorper in, auctor
-					et, scelerisque sed, est. Nullam justo enim, consectetuer nec,
-					ullamcorper ac, vestibulum in, elit. Donec quis nibh at felis congue
-					commodo.
-				</p>
+				<PageSwitcher className="worldCereal-Filter">
+					<PageSwitcherMenu>
+						<PageSwitcherMenuItem pageKey="product">
+							Product
+						</PageSwitcherMenuItem>
+						<PageSwitcherMenuItem pageKey="zone">Zone</PageSwitcherMenuItem>
+						<PageSwitcherMenuItem pageKey="season" active>
+							Season
+						</PageSwitcherMenuItem>
+						<PageSwitcherMenuItem pageKey="user" disabled>
+							User
+						</PageSwitcherMenuItem>
+					</PageSwitcherMenu>
+					<PageSwitcherContent>
+						<PageSwitcherPage pageKey="product">Product page</PageSwitcherPage>
+						<PageSwitcherPage pageKey="zone">Zone page</PageSwitcherPage>
+						<PageSwitcherPage pageKey="season">Season page</PageSwitcherPage>
+						<PageSwitcherPage pageKey="user">User page</PageSwitcherPage>
+					</PageSwitcherContent>
+				</PageSwitcher>
 			</RetractableWindow>
 			<Timeline />
 			{/*<ControlPanel />*/}

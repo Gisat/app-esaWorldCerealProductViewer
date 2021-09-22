@@ -19,7 +19,7 @@ const RetractableWindowControlBar = ({children, onClick, onHeightChange}) => {
 			onClick={onClick}
 			className="ptr-RetractableWindowControlBar"
 		>
-			<Icon icon="chevron-left" />
+			<Icon icon="chevron-left" className="retract" />
 			{children}
 		</div>
 	);

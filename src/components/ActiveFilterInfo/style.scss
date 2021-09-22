@@ -1,0 +1,22 @@
+@import '../../styles/variables';
+
+.worldCereal-ActiveFilterInfo {
+  display: flex;
+  align-items: center;
+  min-height: 2.05rem;
+}
+
+.worldCereal-ActiveFilterInfo-summary {
+  font-size: $b1;
+  color: var(--accent70);
+  margin: 0 .5rem 0 .15rem;
+}
+
+.worldCereal-ActiveFilterInfo-summary em {
+  font-weight: bold;
+  font-size: $a1;
+}
+
+.worldCereal-ActiveFilterInfo-filters {
+  margin: .35rem;
+}

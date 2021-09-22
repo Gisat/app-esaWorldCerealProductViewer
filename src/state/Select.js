@@ -1,6 +1,10 @@
-import {Select as CommonSelect} from '@gisatcz/ptr-state';
-import productMetadataSelectors from './worldCereal/ProductMetadata/selectors';
 import {createCachedSelector} from 're-reselect';
+import {filter as _filter, includes as _includes} from 'lodash';
+import {Select as CommonSelect} from '@gisatcz/ptr-state';
+
+import productMetadataSelectors from './worldCereal/ProductMetadata/selectors';
+import productMetadataFilterSelectors from './worldCereal/ProductMetadataFilter/selectors';
+import {createSelector} from 'reselect';
 
 /**
  * Get product template extended by style definition
@@ -65,11 +69,37 @@ const getStyleDefinitionByProductTemplateKey = createCachedSelector(
 	}
 )((state, productTemplateKey) => productTemplateKey);
 
+const getProductMetadataByMapSetViewAndFilter = createSelector(
+	[
+		productMetadataSelectors.getByMapSetView,
+		productMetadataFilterSelectors.getActiveFilter,
+	],
+	(productMetadata, filter) => {
+		if (productMetadata && filter) {
+			return _filter(productMetadata, item => {
+				// TODO add other filter params
+				const {aez_id, product} = item.data;
+				if (filter.aez_id && !_includes(filter.aez_id, aez_id)) {
+					return false;
+				}
+				if (filter.product && !_includes(filter.product, product)) {
+					return false;
+				}
+				return true;
+			});
+		} else {
+			return null;
+		}
+	}
+);
+
 export default {
 	...CommonSelect,
 	worldCereal: {
 		productMetadata: productMetadataSelectors,
+		productMetadataFilter: productMetadataFilterSelectors,
 
+		getProductMetadataByMapSetViewAndFilter,
 		getProductTemplateByProductMetadataKey,
 		getStyleDefinitionByProductTemplateKey,
 	},

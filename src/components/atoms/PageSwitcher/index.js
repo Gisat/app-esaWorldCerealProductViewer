@@ -1,0 +1,76 @@
+import React, {useState} from 'react';
+import classnames from 'classnames';
+
+import './style.scss';
+
+// helpers
+function passPropsToChildren(props, children) {
+	return React.Children.map(children, child => {
+		if (React.isValidElement(child)) {
+			return React.cloneElement(child, props);
+		}
+		return child;
+	});
+}
+
+export const PageSwitcherMenuItem = ({
+	children,
+	disabled,
+	active,
+	pageKey,
+	activePageKey,
+	setActivePage,
+}) => {
+	if (active && !activePageKey) {
+		setActivePage(pageKey);
+	}
+
+	const classes = classnames('ptr-PageSwitcherMenuItem', {
+		'is-active': activePageKey === pageKey,
+		'is-disabled': disabled,
+	});
+
+	return (
+		<div className={classes} onClick={() => setActivePage(pageKey)}>
+			{children}
+		</div>
+	);
+};
+
+export const PageSwitcherPage = ({children, pageKey, activePageKey}) => {
+	return activePageKey === pageKey ? (
+		<div className="ptr-PageSwitcherPage">{children}</div>
+	) : null;
+};
+
+export const PageSwitcherContent = ({
+	children,
+	activePageKey,
+	setActivePage,
+}) => {
+	const childrenWithProps = passPropsToChildren(
+		{activePageKey, setActivePage},
+		children
+	);
+	return <div className="ptr-PageSwitcherContent">{childrenWithProps}</div>;
+};
+
+export const PageSwitcherMenu = ({children, activePageKey, setActivePage}) => {
+	const childrenWithProps = passPropsToChildren(
+		{activePageKey, setActivePage},
+		children
+	);
+	return <div className="ptr-PageSwitcherMenu">{childrenWithProps}</div>;
+};
+
+const PageSwitcher = ({children, className}) => {
+	const [activePageKey, setActivePage] = useState(null);
+	const classes = classnames(`ptr-PageSwitcher ${className}`, {});
+	const childrenWithProps = passPropsToChildren(
+		{activePageKey, setActivePage},
+		children
+	);
+	return <div className={classes}>{childrenWithProps}</div>;
+};
+
+export default PageSwitcher;

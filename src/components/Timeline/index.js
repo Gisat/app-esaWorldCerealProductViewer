@@ -7,7 +7,7 @@ import {mapSetKey} from '../../constants/app';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		productMetadata: Select.worldCereal.productMetadata.getByMapSetView(
+		productMetadata: Select.worldCereal.getProductMetadataByMapSetViewAndFilter(
 			state,
 			mapSetKey
 		),

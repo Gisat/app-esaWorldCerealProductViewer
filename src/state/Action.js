@@ -5,6 +5,7 @@ import config from '../config';
 import {appKey} from '../constants/app';
 
 import productMetadataActions from './worldCereal/ProductMetadata/actions';
+import productMetadataFilterActions from './worldCereal/ProductMetadataFilter/actions';
 
 // TODO load view from BE
 import view from '../data/view';
@@ -96,6 +97,7 @@ export default {
 	init,
 	worldCereal: {
 		productMetadata: productMetadataActions,
+		productMetadataFilter: productMetadataFilterActions,
 
 		adjustInitialBoxRange,
 		removeAllLayersFromMapByLayerKey,

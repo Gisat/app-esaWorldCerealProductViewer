@@ -18,6 +18,7 @@ import {
 import {initApp} from '../app';
 
 import productMetadata from './worldCereal/ProductMetadata/reducers';
+import productMetadataFilter from './worldCereal/ProductMetadataFilter/reducers';
 
 export const history = isServer
 	? createMemoryHistory()
@@ -41,6 +42,7 @@ function createMiddleware(requestCounter, withoutLogger) {
 function createReducer() {
 	const reducers = combineReducers({
 		productMetadata,
+		productMetadataFilter,
 	});
 
 	return combineReducers({
