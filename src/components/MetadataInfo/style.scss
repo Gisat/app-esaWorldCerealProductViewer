@@ -1,0 +1,40 @@
+@import '../../styles/variables';
+
+.worldCereal-MetadataInfoTitle {
+  margin: 0;
+  padding: m(2/3) m(1) 0;
+  color: var(--base90);
+}
+
+.worldCereal-MetadataInfo {
+  padding: m(2/3) 0;
+}
+
+.worldCereal-MetadataInfoGrid {
+
+}
+
+.worldCereal-MetadataInfoGrid > div {
+  padding: 0 m(1);
+  display: flex;
+}
+
+.worldCereal-MetadataInfoGrid > div:nth-child(odd) {
+  background: var(--base10);
+}
+
+.worldCereal-MetadataInfoGrid > div span {
+  line-height: 1.75rem;
+}
+
+.worldCereal-MetadataInfoGrid > div span.is-small {
+  font-size: $b1;
+}
+
+.worldCereal-MetadataInfoGrid > div span:first-child {
+  flex: 1;
+}
+
+.worldCereal-MetadataInfoGrid > div span:last-child {
+  margin-left: 2rem;
+}

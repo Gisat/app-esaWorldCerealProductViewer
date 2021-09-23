@@ -1,14 +1,15 @@
 import React from 'react';
 import Modal from 'react-modal';
-import {Button} from '@gisatcz/ptr-atoms';
 import {connect} from '@gisatcz/ptr-state';
 import Action from '../../state/Action';
 import Select from '../../state/Select';
 import {mapSetKey} from '../../constants/app';
-
-import RemovableLabel from '../atoms/RemovableLabel';
-import './style.scss';
 import ModalWindow from '../atoms/ModalWindow';
+import MetadataInfo from '../MetadataInfo';
+import RemovableLabel from '../atoms/RemovableLabel';
+
+import './style.scss';
+import {MetadataInfoTitle} from '../MetadataInfo/presentation';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
@@ -78,22 +79,11 @@ const MapProductLabel = props => {
 					/>
 				</RemovableLabel>
 				<ModalWindow
-					title={<>Product metadata</>}
+					title={<MetadataInfoTitle />}
 					isOpen={modalIsOpen}
 					onClose={() => setModalOpen(false)}
 				>
-					<>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Quisque
-						tincidunt scelerisque libero. Et harum quidem rerum facilis est et
-						expedita distinctio. Proin pede metus, vulputate nec, fermentum
-						fringilla, vehicula vitae, justo. Temporibus autem quibusdam et aut
-						officiis debitis aut rerum necessitatibus saepe eveniet ut et
-						voluptates repudiandae sint et molestiae non recusandae. Integer
-						vulputate sem a nibh rutrum consequat. Pellentesque arcu. Praesent
-						in mauris eu tortor porttitor accumsan. Nulla est. Phasellus
-						faucibus molestie nisl. Mauris dolor felis, sagittis at, luctus sed,
-						aliquam non, tellus. Duis pulvinar.
-					</>
+					<MetadataInfo productMetadataKey={productMetadata.key} />
 				</ModalWindow>
 			</>
 		);
