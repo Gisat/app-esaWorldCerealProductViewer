@@ -8,7 +8,7 @@
 
 .ptr-RemovableLabel {
   display: flex;
-  background: var(--base25);
+  background: var(--base35);
   color: var(--base90);
   border-radius: .15rem;
   font-size: $b1;
@@ -53,5 +53,5 @@
 }
 
 .ptr-RemovableLabel-removeButton.ptr-button:hover {
-  background: var(--base15);
+  background: var(--base25);
 }
