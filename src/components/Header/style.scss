@@ -23,21 +23,22 @@
 }
 
 .worldCereal-Header-logo img {
-  height: 3rem;
-}
-
-.worldCereal-Header-logo span {
-  font-size: $b2;
-  color: var(--accent50);
-  padding: 0 1rem 0 .5rem;
+  height: 2.25rem;
 }
 
 .worldCereal-Header-logo h1 {
   margin: 0;
-  padding: 0 1rem;
-  color: var(--base10);
-  font-size: $b2;
+  color: var(--accent30);
+  font-size: 1.125rem;
   font-weight: normal;
-  line-height: 1.25;
-  border-left: 2px solid var(--base40);
+  letter-spacing: .5px;
+}
+
+.worldCereal-Header-logo h1 span {
+  padding: 0 .5rem;
+}
+
+.worldCereal-Header-logo h1 span:first-child {
+  border-right: 2px solid var(--base40);
+  color: var(--base10);
 }

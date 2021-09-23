@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {Button} from '@gisatcz/ptr-atoms';
 
 import {MAX_MAPS_IN_MAP_SET} from '../../constants/app';
-import logo from '../../assests/logo_circle.png';
+import logo from '../../assests/logo.png';
 
 import './style.scss';
 
@@ -27,9 +27,11 @@ class Header extends React.PureComponent {
 				<div className="worldCereal-Header-logo">
 					<div>
 						<img src={logo} />
-						<span>World Cereal</span>
 					</div>
-					<h1>Product Viewer</h1>
+					<h1>
+						<span>World Cereal</span>
+						<span>Product Viewer</span>
+					</h1>
 				</div>
 				<div className="worldCereal-Header-tools">
 					<Button
