@@ -8,7 +8,9 @@ import Presentation from './presentation';
 const mapStateToProps = (state, ownProps) => {
 	return {
 		activeFilterParameters:
-			Select.worldCereal.productMetadataFilter.getActiveFilterParameters(state),
+			Select.worldCereal.productMetadataFilter.getActiveFilterWithFilterParameters(
+				state
+			),
 		availableProductMetadata:
 			Select.worldCereal.getProductMetadataByMapSetViewAndActiveFilter(
 				state,

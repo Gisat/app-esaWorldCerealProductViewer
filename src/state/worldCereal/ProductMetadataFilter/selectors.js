@@ -25,7 +25,7 @@ const getFilterParameters = createSelector(
  * @param {Object} state
  * @return {Array} A collection of parameters for filtering
  */
-const getActiveFilterParameters = createSelector(
+const getActiveFilterWithFilterParameters = createSelector(
 	[
 		getActiveFilter,
 		getFilterParametersAsObject,
@@ -83,7 +83,7 @@ const isValueInActiveFilter = createCachedSelector(
 
 export default {
 	getActiveFilter,
-	getActiveFilterParameters,
+	getActiveFilterWithFilterParameters,
 
 	getFilterParameters,
 

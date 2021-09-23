@@ -8,7 +8,7 @@ export default {
 	},
 	product: {
 		key: 'product',
-		// dataType: 'cases',
+		dataType: 'cases',
 		name: 'Product',
 		type: 'checkbox',
 		orderDirection: 'asc',
