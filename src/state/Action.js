@@ -12,6 +12,7 @@ import view from '../data/view';
 import cases from '../data/cases';
 import styles from '../data/styles';
 
+import randomMetadata from '../data/mock_productMetadata/1000_random_metadata';
 import productMetadata from '../data/mock_productMetadata/correct_annualcropland';
 import productMetadata_wheat from '../data/mock_productMetadata/fake_wheat';
 import productMetadata_annualcropland_diffTimes from '../data/mock_productMetadata/fake_annualcropland_diffTimes';
@@ -26,6 +27,11 @@ function init(path) {
 		// add & apply view
 		dispatch(CommonAction.views.add(view));
 		dispatch(CommonAction.views.applyAndSetActive(view.key, CommonAction));
+		dispatch(
+			productMetadataFilterActions.setActiveFilter(
+				view.data.state.worldCereal.productMetadataFilter.activeFilter
+			)
+		);
 
 		// add metadata
 		dispatch(CommonAction.cases.add(cases));
@@ -37,6 +43,9 @@ function init(path) {
 		dispatch(
 			productMetadataActions.add(productMetadata_annualcropland_diffTimes)
 		);
+
+		// add random metadata
+		// dispatch(productMetadataActions.add(randomMetadata));
 	};
 }
 

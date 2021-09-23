@@ -11,6 +11,7 @@ const specificActionTypes = utils.deepKeyMirror({
 			ACTIVE_FILTER: {
 				ADD_VALUE: null,
 				REMOVE_VALUE: null,
+				SET: null,
 			},
 		},
 	},
