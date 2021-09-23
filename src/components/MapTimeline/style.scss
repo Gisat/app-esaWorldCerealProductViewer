@@ -36,6 +36,7 @@
 	// uncomment
 	// padding: 0 $a;
 	padding: 0 1rem;
+	color: var(--base10);
 }
 
 .ptr-maptimeline-legenditem {
@@ -54,7 +55,8 @@ g.ptr-timeline-hour,
 g.ptr-timeline-hour > line,
 g.ptr-timeline-minute,
 g.ptr-timeline-minute > line {
-stroke: red;
+    stroke: var(--accent50);
+	fill: var(--base90);
 }
 
 .ptr-timeline-tooltip-layer {
