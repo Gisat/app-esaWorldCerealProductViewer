@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 				state,
 				mapSetKey
 			),
+		productTemplates: Select.cases.getAllAsObject(state),
 		activeLayers: Select.maps.getMapSetActiveMapLayers(state, mapSetKey),
 	};
 };

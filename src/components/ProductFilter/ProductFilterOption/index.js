@@ -18,6 +18,11 @@ const mapStateToProps = (state, ownProps) => {
 			ownProps.parameterKey,
 			ownProps.value
 		),
+		metadata: Select.worldCereal.productMetadataFilter.getValueMetadata(
+			state,
+			ownProps.parameterKey,
+			ownProps.value
+		),
 	};
 };
 

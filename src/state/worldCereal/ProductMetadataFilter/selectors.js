@@ -36,16 +36,11 @@ const getActiveFilterWithFilterParameters = createSelector(
 			let data = [];
 			_forIn(activeFilter, (values, key) => {
 				if (values) {
-					const parameter = params[key];
-					const dataType = parameter.dataType;
-					let finalValues;
-
-					if (dataType === 'cases') {
-						finalValues = values.map(value => cases[value] || value);
-					}
-
+					const finalValues = values.map(
+						value => getValueMetadataHelper(params, key, value, cases) || value
+					);
 					data.push({
-						parameter,
+						parameter: params[key],
 						values: finalValues || values,
 					});
 				}
@@ -57,6 +52,22 @@ const getActiveFilterWithFilterParameters = createSelector(
 		}
 	}
 );
+
+/**
+ * @param {Object} state
+ * @param {string} parameter
+ * @param {string} value
+ * @return {Object|null}
+ */
+const getValueMetadata = createCachedSelector(
+	[
+		getFilterParametersAsObject,
+		(state, parameterKey) => parameterKey,
+		(state, parameterKey, value) => value,
+		CommonSelect.cases.getAllAsObject,
+	],
+	getValueMetadataHelper
+)((state, parameterKey, value) => `${parameterKey}_${value}`);
 
 /**
  * True, if given value is present in active filter
@@ -81,11 +92,36 @@ const isValueInActiveFilter = createCachedSelector(
 	}
 )((state, parameter, value) => `${parameter}_${value}`);
 
+// helpers --------------------------------------------------------------
+/**
+ * If given parameter for filtering is a metadata type, then return model for given value
+ * @param parameters {Array} A collection of parameters for filtering
+ * @param parameterKey {string}
+ * @param value {string}
+ * @param cases {Object}
+ * @return {Object|null}
+ */
+function getValueMetadataHelper(parameters, parameterKey, value, cases) {
+	if (parameters && parameterKey && value) {
+		const parameter = parameters[parameterKey];
+		const dataType = parameter?.dataType;
+
+		if (dataType === 'cases' && cases) {
+			return cases[value] || value;
+		} else {
+			return null;
+		}
+	} else {
+		return null;
+	}
+}
+
 export default {
 	getActiveFilter,
 	getActiveFilterWithFilterParameters,
 
 	getFilterParameters,
+	getValueMetadata,
 
 	isValueInActiveFilter,
 };

@@ -7,8 +7,11 @@ const ProductFilterOption = ({
 	count,
 	parameterKey,
 	selected,
+	metadata,
 	onValueChange,
 }) => {
+	const name = metadata?.data?.nameDisplay || value;
+
 	return (
 		<div className="worldCereal-ProductFilterOption">
 			<input
@@ -22,7 +25,7 @@ const ProductFilterOption = ({
 				}}
 			/>
 			<label htmlFor={value}>
-				{value} <span>({count})</span>
+				{name} <span>({count})</span>
 			</label>
 		</div>
 	);

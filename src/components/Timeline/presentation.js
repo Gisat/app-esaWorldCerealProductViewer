@@ -39,8 +39,12 @@ class Timeline extends React.PureComponent {
 	static propTypes = {};
 
 	render() {
-		const {productMetadata, activeLayers, handleProductInActiveMap} =
-			this.props;
+		const {
+			productMetadata,
+			productTemplates,
+			activeLayers,
+			handleProductInActiveMap,
+		} = this.props;
 
 		const layersByPlaces = {};
 		let layers = [];
@@ -48,6 +52,9 @@ class Timeline extends React.PureComponent {
 			productMetadata.forEach((product, i) => {
 				const placeID = product.data.aez_id;
 				const productID = product.data.product;
+				const productTemplate = productTemplates[productID];
+				const productName = productTemplate?.data?.nameDisplay || productID;
+
 				if (!layersByPlaces.hasOwnProperty(placeID)) {
 					layersByPlaces[placeID] = {};
 				}
@@ -73,7 +80,7 @@ class Timeline extends React.PureComponent {
 						layer => layer.layerKey === product.key
 					),
 					activePeriodIndex: 0,
-					title: `${product.data.product} (z ${product.data.aez_id}) ${product.data.name}`,
+					title: `${productName} (zone ${placeID})`,
 					// zIndex: i,
 				});
 			});
