@@ -10,7 +10,7 @@ import './style.scss';
 
 const periodLimit = {
 	start: '2020',
-	end: '2021',
+	end: '2024',
 };
 
 const LEVELS = [
@@ -66,7 +66,7 @@ class Timeline extends React.PureComponent {
 							end: product.data.eos,
 						},
 					],
-					color: 'rgba(255, 0, 0, 0.3)',
+					color: 'var(--accent50)',
 					activeColor: 'rgba(255, 0, 0, 0.7)',
 					active: !!_find(
 						activeLayers,

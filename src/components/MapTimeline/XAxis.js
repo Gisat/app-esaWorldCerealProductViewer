@@ -1,15 +1,18 @@
 import React from 'react';
 import {withResizeDetector} from 'react-resize-detector';
-import Years from './Years';
+import YearsLabels from './YearsLabels';
 import MonthsLabels from './MonthsLabels';
 
 const Levels = props => {
 	const {activeLevel} = props;
 	switch (activeLevel) {
 		case 'year':
-			return React.createElement(Years, {...props, key: 'year'});
+			return React.createElement(YearsLabels, {...props, key: 'year'});
 		case 'month':
-			return React.createElement(MonthsLabels, {...props, key: 'month'});
+			return [
+                React.createElement(MonthsLabels, {...props, key: 'month'}),
+                React.createElement(YearsLabels, {...props, key: 'year'}),
+            ];
 	}
     return null
 };
