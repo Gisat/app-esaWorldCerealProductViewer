@@ -328,7 +328,7 @@ class MapTimeline extends React.PureComponent {
 		const contentHeightByLayers = layers.length * utils.getRemSize();
 		const minTimelineHeight = 11 * utils.getRemSize();
 		let childArray = React.Children.toArray(children);
-		childArray = [<Overlay key={'layers'} overlays={overlays} onClick={onLayerClick} />, ...childArray];
+		childArray = [...childArray,<Overlay key={'layers'} overlays={overlays} onClick={onLayerClick} />,];
 
 		return (
 			<div ref={this.wrapperRef}>
