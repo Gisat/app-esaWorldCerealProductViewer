@@ -9,6 +9,7 @@ const getSubstate = state => state.worldCereal.productMetadata;
 
 const getAll = commonSelectors.getAll(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
+const getAllAsObject = commonSelectors.getAllAsObject(getSubstate);
 
 // helpers ----------------------------------------------
 
@@ -93,6 +94,8 @@ export default {
 
 	getByKey,
 	getByMapSetView,
+
+	getAllAsObject,
 
 	getKeysByMapKey,
 

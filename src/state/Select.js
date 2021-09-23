@@ -51,6 +51,31 @@ const getProductTemplateByProductMetadataKey = createCachedSelector(
 	}
 )((state, productMetadataKey) => productMetadataKey);
 
+const getProductTemplates = createSelector(
+	[
+		CommonSelect.cases.getAllAsObject,
+		CommonSelect.styles.getAllAsObject,
+		productMetadataSelectors.getAllAsObject,
+	],
+	(cases, styles, productMetadata) => {
+		if (cases && styles) {
+			const productTemplates = {};
+			for (const [caseKey, caseData] of Object.entries(cases)) {
+				const style = styles[caseData.data?.styleKey];
+				productTemplates[caseKey] = {
+					...caseData,
+				}
+				if (style) {
+					productTemplates[caseKey].data.style = style;
+				}
+			}
+			return productTemplates;
+		} else {
+			return null
+		}
+	}
+);
+
 /**
  * Get style based on styleKey in case
  * @param {Object} state
@@ -152,6 +177,7 @@ export default {
 
 		getProductMetadataByMapSetViewAndActiveFilter,
 		getProductMetadataCountForFilterOption,
+		getProductTemplates,
 		getProductTemplateByProductMetadataKey,
 		getStyleDefinitionByProductTemplateKey,
 	},

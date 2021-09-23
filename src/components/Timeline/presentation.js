@@ -1,4 +1,5 @@
 import React from 'react';
+import chroma from 'chroma-js';
 import {find as _find, findIndex as _findIndex} from 'lodash';
 import PropTypes from 'prop-types';
 import {Mouse} from '@gisatcz/ptr-timeline';
@@ -63,6 +64,9 @@ class Timeline extends React.PureComponent {
 					layersByPlaces[placeID][productID] = [];
 				}
 
+				const productColor =
+					productTemplate?.data?.style.data?.definition?.rules[0]?.styles[0]?.color
+				const activeProductColor = productColor ? chroma(productColor).saturate(3).brighten(1).hex() : null;
 				// push data from same place and same product to the same line in timeline
 				layersByPlaces[placeID][productID].push({
 					key: product.key,
@@ -73,8 +77,8 @@ class Timeline extends React.PureComponent {
 							end: product.data.eos,
 						},
 					],
-					color: 'var(--accent50)',
-					activeColor: 'rgba(255, 0, 0, 0.7)',
+					color: productColor || 'var(--accent50)',
+					activeColor: activeProductColor || 'var(--accent70)',
 					active: !!_find(
 						activeLayers,
 						layer => layer.layerKey === product.key
