@@ -15,20 +15,24 @@ const RemovableLabel = ({
 	floating,
 	small,
 	stripColor,
+	onClick,
 	onRemove,
 	children,
 	className,
 }) => {
-	const classes = classnames(`ptr-RemovableLabel ${className}`, {
+	const classes = classnames(`ptr-RemovableLabel ${className || ''}`, {
 		'is-active': active,
 		'has-strip': stripColor,
 		'is-floating': floating,
 		'is-small': small,
+		'is-clickable': !!onClick,
 	});
 
 	return (
 		<div className={classes} style={{borderColor: stripColor}}>
-			<div className="ptr-RemovableLabel-content">{children}</div>
+			<div onClick={onClick} className="ptr-RemovableLabel-content">
+				{children}
+			</div>
 			{onRemove ? (
 				<Button
 					className="ptr-RemovableLabel-removeButton"

@@ -42,6 +42,14 @@
   padding: 0.05rem .35rem;
 }
 
+.ptr-RemovableLabel.is-clickable .ptr-RemovableLabel-content {
+  cursor: pointer;
+}
+
+.ptr-RemovableLabel.is-clickable .ptr-RemovableLabel-content:hover {
+  background: var(--base25);
+}
+
 // button
 .ptr-RemovableLabel-removeButton.ptr-button {
   min-height: .5rem;
