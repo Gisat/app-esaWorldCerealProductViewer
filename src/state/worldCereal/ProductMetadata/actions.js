@@ -26,29 +26,54 @@ function handleProductInActiveMap(productMetadataKey) {
 
 		// Remove or add layer(s)
 		if (isLayerPresent) {
-			tiles.forEach(tile => {
-				// TODO remove multiple layers at once?
-				dispatch(
-					CommonAction.maps.removeMapLayer(
-						map.key,
-						getUniqueLayerKey(productMetadataKey, tile)
-					)
-				);
-			});
+			dispatch(removeLayersForTiles(productMetadataKey, tiles, map.key));
 		} else {
-			const layers = [];
-			tiles.forEach(tile =>
-				layers.push(
-					getLayerDefinition(
-						getState(),
-						productMetadataKey,
-						tile,
-						productMetadata?.data.product
-					)
+			dispatch(
+				addLayersForTiles(
+					productMetadataKey,
+					tiles,
+					productMetadata?.data.product,
+					map.key
 				)
 			);
-			dispatch(CommonAction.maps.addMapLayers(map.key, layers));
 		}
+	};
+}
+
+/**
+ * @param productMetadataKey {string} unique key of product metadata
+ * @param tiles {Array} A collection of tiles
+ * @param mapKey {string}
+ */
+function removeLayersForTiles(productMetadataKey, tiles, mapKey) {
+	return (dispatch, getState) => {
+		tiles.forEach(tile => {
+			// TODO remove multiple layers at once?
+			dispatch(
+				CommonAction.maps.removeMapLayer(
+					mapKey,
+					getUniqueLayerKey(productMetadataKey, tile)
+				)
+			);
+		});
+	};
+}
+
+/**
+ * @param productMetadataKey {string} unique key of product metadata
+ * @param tiles {Array} A collection of tiles
+ * @param product {string} key of product (case)
+ * @param mapKey {string}
+ */
+function addLayersForTiles(productMetadataKey, tiles, product, mapKey) {
+	return (dispatch, getState) => {
+		const layers = [];
+		tiles.forEach(tile =>
+			layers.push(
+				getLayerDefinition(getState(), productMetadataKey, tile, product)
+			)
+		);
+		dispatch(CommonAction.maps.addMapLayers(mapKey, layers));
 	};
 }
 
@@ -88,6 +113,7 @@ function getLayerDefinition(state, productMetadataKey, tile, product) {
 
 export default {
 	add,
+	addLayersForTiles,
 
 	handleProductInActiveMap,
 };

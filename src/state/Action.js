@@ -13,6 +13,7 @@ import cases from '../data/cases';
 import styles from '../data/styles';
 
 import randomMetadata from '../data/mock_productMetadata/1000_random_metadata';
+import france_tiles_test from '../data/mock_productMetadata/france_tiles_test';
 import productMetadata from '../data/mock_productMetadata/correct_annualcropland';
 import productMetadata_wheat from '../data/mock_productMetadata/fake_wheat';
 import productMetadata_annualcropland_diffTimes from '../data/mock_productMetadata/fake_annualcropland_diffTimes';
@@ -46,6 +47,18 @@ function init(path) {
 
 		// add random metadata
 		// dispatch(productMetadataActions.add(randomMetadata));
+
+		// add test layers
+		// setTimeout(() => {
+		// 	dispatch(
+		// 		productMetadataActions.addLayersForTiles(
+		// 			'test',
+		// 			france_tiles_test,
+		// 			'annualcropland',
+		// 			Object.keys(view.data.state.maps.maps)[0]
+		// 		)
+		// 	);
+		// }, 500);
 	};
 }
 
