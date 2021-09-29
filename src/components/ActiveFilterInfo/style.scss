@@ -21,3 +21,17 @@
 .worldCereal-ActiveFilterInfo-filters {
   margin: .35rem;
 }
+
+.worldCereal-ActiveFilterInfo-clearAllButton.small  {
+  height: 1.35rem;
+  min-height: auto;
+}
+
+.worldCereal-ActiveFilterInfo-clearAllButton.small .ptr-button-caption {
+  padding: 0;
+  line-height: 1.35rem;
+}
+
+.worldCereal-ActiveFilterInfo-clearAllButton.small .ptr-icon {
+  margin: .15rem 0;
+}
