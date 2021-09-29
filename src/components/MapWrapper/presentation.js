@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import {Button} from '@gisatcz/ptr-atoms';
+import {Button, Menu, MenuItem} from '@gisatcz/ptr-atoms';
 import MapProductLabel from '../MapProductLabel';
 
 import './style.scss';
@@ -26,6 +26,7 @@ class MapWrapper extends React.PureComponent {
 			removeMap,
 			mapSetMapKeys,
 			productMetadataKeys,
+			removeAllLayers,
 		} = this.props;
 		const wrapperClasses = classnames(
 			'ptr-map-wrapper worldCereal-MapWrapper',
@@ -43,15 +44,35 @@ class MapWrapper extends React.PureComponent {
 						)}
 					</RemovableLabelContainer>
 				) : null}
-				{mapSetMapKeys?.length > 1 ? (
+				<div className="worldCereal-MapTools">
 					<Button
-						icon="close"
+						title="Options"
+						onClick={() => {}}
+						icon="dots"
 						invisible
 						small
-						className="worldCereal-MapRemoveButton"
-						onClick={removeMap.bind(this, mapKey)}
-					/>
-				) : null}
+						className="worldCereal-MapToolsButton"
+					>
+						<Menu left>
+							<MenuItem
+								disabled={!productMetadataKeys?.length}
+								onClick={removeAllLayers.bind(this, mapKey)}
+							>
+								Remove all layers
+							</MenuItem>
+						</Menu>
+					</Button>
+					{mapSetMapKeys?.length > 1 ? (
+						<Button
+							title="Remove map"
+							icon="close"
+							invisible
+							small
+							className="worldCereal-MapToolsButton"
+							onClick={removeMap.bind(this, mapKey)}
+						/>
+					) : null}
+				</div>
 				{this.props.children}
 			</div>
 		);

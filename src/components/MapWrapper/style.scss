@@ -16,11 +16,17 @@
   max-width: calc(100% - 2rem);
 }
 
-.worldCereal-MapRemoveButton.ptr-button {
+.worldCereal-MapTools {
   position: absolute;
   top: 0;
   right: 0;
   z-index: 2;
+  display: flex;
+  grid-gap: .05rem;
+  background: var(--base50);
+}
+
+.worldCereal-MapToolsButton.ptr-button {
   padding: 0 .15rem;
   border-radius: 0;
   background: var(--accent30);

@@ -114,6 +114,18 @@ function removeAllLayersFromMapByLayerKey(mapKey, layerKey) {
 	};
 }
 
+// TODO create common action in maps
+function removeAllMapLayers(mapKey) {
+	return (dispatch, getState) => {
+		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);
+		if (mapLayers) {
+			mapLayers.forEach(layer => {
+				dispatch(CommonAction.maps.removeMapLayer(mapKey, layer.key));
+			});
+		}
+	};
+}
+
 export default {
 	...CommonAction,
 	init,
@@ -123,6 +135,7 @@ export default {
 
 		adjustInitialBoxRange,
 		removeAllLayersFromMapByLayerKey,
+		removeAllMapLayers,
 		updateMapView,
 	},
 };
