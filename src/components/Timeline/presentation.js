@@ -51,7 +51,7 @@ class Timeline extends React.PureComponent {
 		let layers = [];
 		if (productMetadata?.length) {
 			productMetadata.forEach((product, i) => {
-				const placeID = product.data.aez_id;
+				const placeID = product.data.aez;
 				const productID = product.data.product;
 				const productTemplate = productTemplates[productID];
 				const productName = productTemplate?.data?.nameDisplay || productID;
@@ -65,8 +65,11 @@ class Timeline extends React.PureComponent {
 				}
 
 				const productColor =
-					productTemplate?.data?.style.data?.definition?.rules[0]?.styles[0]?.color
-				const activeProductColor = productColor ? chroma(productColor).saturate(3).brighten(1).hex() : null;
+					productTemplate?.data?.style.data?.definition?.rules[0]?.styles[0]
+						?.color;
+				const activeProductColor = productColor
+					? chroma(productColor).saturate(3).brighten(1).hex()
+					: null;
 				// push data from same place and same product to the same line in timeline
 				layersByPlaces[placeID][productID].push({
 					key: product.key,

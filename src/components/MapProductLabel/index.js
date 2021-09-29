@@ -55,7 +55,7 @@ const MapProductLabel = props => {
 		onProductRemove,
 	} = props;
 	if (productMetadata) {
-		const {product, sos, eos, aez_id} = productMetadata.data;
+		const {product, sos, eos, aez} = productMetadata.data;
 		const stripColor =
 			productTemplate?.data?.style?.rules?.[0]?.styles?.[0]?.color;
 
@@ -73,7 +73,7 @@ const MapProductLabel = props => {
 					<MapProductLabelContent
 						icon={productTemplate?.data?.icon}
 						product={productTemplate?.data?.nameDisplay || product}
-						zone={aez_id}
+						zone={aez}
 						start={sos}
 						end={eos}
 					/>

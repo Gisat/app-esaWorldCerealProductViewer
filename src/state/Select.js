@@ -64,14 +64,14 @@ const getProductTemplates = createSelector(
 				const style = styles[caseData.data?.styleKey];
 				productTemplates[caseKey] = {
 					...caseData,
-				}
+				};
 				if (style) {
 					productTemplates[caseKey].data.style = style;
 				}
 			}
 			return productTemplates;
 		} else {
-			return null
+			return null;
 		}
 	}
 );
@@ -155,8 +155,8 @@ const getProductMetadataCountForFilterOption = createCachedSelector(
 function filterMetadata(productMetadata, filter) {
 	return _filter(productMetadata, item => {
 		// TODO add other filter params
-		const {aez_id, product, season} = item.data;
-		if (filter.aez_id && filter.aez_id.indexOf(aez_id) === -1) {
+		const {aez, product, season} = item.data;
+		if (filter.aez && filter.aez.indexOf(aez) === -1) {
 			return false;
 		}
 		if (filter.product && filter.product.indexOf(product) === -1) {

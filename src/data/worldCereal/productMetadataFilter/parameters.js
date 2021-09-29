@@ -1,6 +1,6 @@
 export default {
-	aez_id: {
-		key: 'aez_id',
+	aez: {
+		key: 'aez',
 		name: 'Zone',
 		type: 'checkbox',
 		orderDirection: 'asc',

@@ -1,10 +1,22 @@
 import {commonActions, Action as CommonAction} from '@gisatcz/ptr-state';
 import {find as _find} from 'lodash';
+import productMetadataModel from '../../../models/productMetadata';
 import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
 import {mapSetKey} from '../../../constants/app';
 
-const add = commonActions.add(ActionTypes.WORLD_CEREAL.PRODUCT_METADATA);
+/**
+ * Add models to store
+ * @param items {Array} A collection of incoming items
+ */
+function add(items) {
+	return dispatch => {
+		const models = items.map(item => productMetadataModel(item));
+		dispatch(
+			commonActions.add(ActionTypes.WORLD_CEREAL.PRODUCT_METADATA)(models)
+		);
+	};
+}
 
 /**
  * Add/remove the product to/from active map

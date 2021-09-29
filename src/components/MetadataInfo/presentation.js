@@ -20,7 +20,7 @@ class MetadataInfo extends React.PureComponent {
 		const {productMetadata} = this.props;
 
 		if (productMetadata) {
-			const {product, season, sos, eos, aez_id, id} = productMetadata.data;
+			const {product, season, sos, eos, aez, id} = productMetadata.data;
 
 			return (
 				<div className="worldCereal-MetadataInfo">
@@ -47,7 +47,7 @@ class MetadataInfo extends React.PureComponent {
 						</div>
 						<div>
 							<span>AEZ</span>
-							<span>{aez_id}</span>
+							<span>{aez}</span>
 						</div>
 					</div>
 				</div>
