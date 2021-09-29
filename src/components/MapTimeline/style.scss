@@ -1,4 +1,4 @@
-// @import "../../../styles/_variables.scss";
+@import "../../styles/_variables.scss";
 
 .ptr-maptimeline-scrollable{
 
@@ -28,7 +28,7 @@
 	// line-height: $a1;
 	// font-size: $a1;
 	line-height: 1rem;
-	font-size: 1rem;
+	font-size: $b1;
 	max-width: 14rem;
 	width: 14rem;
 }
