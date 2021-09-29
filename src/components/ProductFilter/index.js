@@ -7,8 +7,15 @@ import Presentation from './presentation';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
+		activeParameter: Select.components.get(
+			state,
+			'productFilter',
+			'activeParameter'
+		),
 		filterParameters:
-			Select.worldCereal.productMetadataFilter.getFilterParameters(state),
+			Select.worldCereal.productMetadataFilter.getFilterParametersOrdered(
+				state
+			),
 	};
 };
 

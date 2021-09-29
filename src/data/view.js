@@ -11,6 +11,12 @@ export default {
 					},
 				},
 			},
+			components: {
+				productFilter: {
+					activeParameter: 'product',
+					parameterOrder: ['product', 'season', 'aez'],
+				},
+			},
 			maps: {
 				activeMapKey: 'ea10b274-dd71-4e58-b627-d2803ab891f7',
 				activeSetKey: 'productViewer-mapSet',

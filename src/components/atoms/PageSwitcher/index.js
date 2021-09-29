@@ -69,11 +69,11 @@ export const PageSwitcherMenu = ({children, activePageKey, setActivePage}) => {
 	return <div className="ptr-PageSwitcherMenu">{childrenWithProps}</div>;
 };
 
-const PageSwitcher = ({children, className}) => {
-	const [activePageKey, setActivePage] = useState(null);
+const PageSwitcher = ({children, className, activeKey}) => {
+	const [activePageKey, setActivePage] = useState(activeKey);
 	const classes = classnames(`ptr-PageSwitcher ${className}`, {});
 	const childrenWithProps = passPropsToChildren(
-		{activePageKey, setActivePage},
+		{activePageKey: activePageKey || activeKey, setActivePage},
 		children
 	);
 	return <div className={classes}>{childrenWithProps}</div>;

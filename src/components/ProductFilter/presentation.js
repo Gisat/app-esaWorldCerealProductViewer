@@ -9,17 +9,13 @@ import ProductFilterParameter from './ProductFilterParameter/presentation';
 
 import './style.scss';
 
-const ProductFilter = ({filterParameters}) => {
+const ProductFilter = ({filterParameters, activeParameter}) => {
 	return (
-		<PageSwitcher className="worldCereal-Filter">
+		<PageSwitcher className="worldCereal-Filter" activeKey={activeParameter}>
 			<PageSwitcherMenu>
 				{filterParameters
-					? filterParameters.map((item, i) => (
-							<PageSwitcherMenuItem
-								key={item.key}
-								pageKey={item.key}
-								active={i === 0}
-							>
+					? filterParameters.map(item => (
+							<PageSwitcherMenuItem key={item.key} pageKey={item.key}>
 								{item.name}
 							</PageSwitcherMenuItem>
 					  ))

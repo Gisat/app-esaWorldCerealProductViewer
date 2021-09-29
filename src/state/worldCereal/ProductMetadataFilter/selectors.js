@@ -21,6 +21,28 @@ const getFilterParameters = createSelector(
 );
 
 /**
+ * Get all parameters for filtering as array ordered
+ * @param {Object} state
+ * @return {Array} A collection of parameters for filtering
+ */
+const getFilterParametersOrdered = createSelector(
+	[
+		getFilterParametersAsObject,
+		state =>
+			CommonSelect.components.get(state, 'productFilter', 'parameterOrder'),
+	],
+	(parameters, order) => {
+		if (parameters) {
+			return order
+				? order.map(key => parameters[key])
+				: Object.values(parameters);
+		} else {
+			return null;
+		}
+	}
+);
+
+/**
  * Get active filter extended with parameters
  * @param {Object} state
  * @return {Array} A collection of parameters for filtering
@@ -121,6 +143,7 @@ export default {
 	getActiveFilterWithFilterParameters,
 
 	getFilterParameters,
+	getFilterParametersOrdered,
 	getValueMetadata,
 
 	isValueInActiveFilter,
