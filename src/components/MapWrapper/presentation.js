@@ -37,9 +37,11 @@ class MapWrapper extends React.PureComponent {
 			}
 		);
 
+		const noMetadata = _isEmpty(productsMetadata);
+
 		return (
 			<div className={wrapperClasses}>
-				{!_isEmpty(productsMetadata) ? (
+				{!noMetadata ? (
 					<RemovableLabelContainer className="worldCereal-MapProductLabelContainer">
 						{this.renderMapProductLabels(productsMetadata)}
 					</RemovableLabelContainer>
@@ -55,7 +57,7 @@ class MapWrapper extends React.PureComponent {
 					>
 						<Menu left>
 							<MenuItem
-								disabled={!productsMetadata?.length}
+								disabled={noMetadata}
 								onClick={removeAllLayers.bind(this, mapKey)}
 							>
 								Remove all layers
