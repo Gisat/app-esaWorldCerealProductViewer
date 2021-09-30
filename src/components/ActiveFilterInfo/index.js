@@ -29,6 +29,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 				)
 			);
 		},
+		onAllValuesRemove: parameter => {
+			dispatch(
+				Action.worldCereal.productMetadataFilter.removeAllParameterValuesFromActiveFilter(
+					parameter
+				)
+			);
+		},
 		onClearAll: () => {
 			dispatch(
 				Action.worldCereal.productMetadataFilter.removeAllValuesFromActiveFilter()

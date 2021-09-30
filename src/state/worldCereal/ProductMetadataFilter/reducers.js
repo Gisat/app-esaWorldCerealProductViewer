@@ -41,6 +41,16 @@ const removeValueFromActiveFilter = (state, parameter, value) => {
 	}
 };
 
+const removeAllParameterValuesFromActiveFilter = (state, parameter) => {
+	return {
+		...state,
+		activeFilter: {
+			...state.activeFilter,
+			[parameter]: null,
+		},
+	};
+};
+
 const removeAllValuesFromActiveFilter = state => {
 	return {
 		...state,
@@ -63,6 +73,9 @@ export default (state = INITIAL_STATE, action) => {
 		case ActionTypes.WORLD_CEREAL.PRODUCT_METADATA_FILTER.ACTIVE_FILTER
 			.REMOVE_ALL:
 			return removeAllValuesFromActiveFilter(state);
+		case ActionTypes.WORLD_CEREAL.PRODUCT_METADATA_FILTER.ACTIVE_FILTER
+			.REMOVE_ALL_FROM_PARAMETER:
+			return removeAllParameterValuesFromActiveFilter(state, action.parameter);
 		case ActionTypes.WORLD_CEREAL.PRODUCT_METADATA_FILTER.ACTIVE_FILTER
 			.REMOVE_VALUE:
 			return removeValueFromActiveFilter(state, action.parameter, action.value);

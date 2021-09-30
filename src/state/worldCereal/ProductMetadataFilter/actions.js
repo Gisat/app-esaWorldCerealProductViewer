@@ -39,6 +39,18 @@ const actionRemoveAllValuesFromActiveFilter = () => {
 };
 
 /**
+ * Remove all values from filter for given parameter
+ * @param parameter {string}
+ */
+const actionRemoveAllParameterValuesFromActiveFilter = parameter => {
+	return {
+		type: ActionTypes.WORLD_CEREAL.PRODUCT_METADATA_FILTER.ACTIVE_FILTER
+			.REMOVE_ALL_FROM_PARAMETER,
+		parameter,
+	};
+};
+
+/**
  * Set active filter
  * @param activeFilter {Object}
  */
@@ -52,6 +64,8 @@ const actionSetActiveFilter = activeFilter => {
 export default {
 	addValueToActiveFilter: actionAddValueToActiveFilter,
 	removeValueFromActiveFilter: actionRemoveValueFromActiveFilter,
+	removeAllParameterValuesFromActiveFilter:
+		actionRemoveAllParameterValuesFromActiveFilter,
 	removeAllValuesFromActiveFilter: actionRemoveAllValuesFromActiveFilter,
 
 	setActiveFilter: actionSetActiveFilter,

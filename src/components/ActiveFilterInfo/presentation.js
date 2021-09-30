@@ -1,13 +1,60 @@
 import React from 'react';
 import {Button} from '@gisatcz/ptr-atoms';
+import {MIN_FILTER_PARAMETER_VALUES_FOR_GROUPING} from "../../constants/app";
 import RemovableLabel, {RemovableLabelContainer} from '../atoms/RemovableLabel';
 
 import './style.scss';
+
+const FilterParameterLabels = ({
+	parameter,
+	onValueRemove,
+	onAllValuesRemove,
+}) => {
+	const numOfLabels = parameter.values.length;
+
+	if (numOfLabels >= MIN_FILTER_PARAMETER_VALUES_FOR_GROUPING) {
+		return (
+			<RemovableLabel
+				key={parameter.parameter.key}
+				small
+				onRemove={e => {
+					e.stopPropagation();
+					onAllValuesRemove(parameter.parameter.key);
+				}}
+			>
+				{`${numOfLabels} ${parameter.parameter.name}s`}
+			</RemovableLabel>
+		);
+	} else {
+		return (
+			<React.Fragment key={parameter.key}>
+				{parameter.values.map(value => {
+					const valueKey = value.key || value;
+					const valueName = value.data?.nameDisplay || value;
+
+					return (
+						<RemovableLabel
+							key={valueKey}
+							small
+							onRemove={e => {
+								e.stopPropagation();
+								onValueRemove(parameter.parameter.key, valueKey);
+							}}
+						>
+							{parameter.parameter.name}: {valueName}
+						</RemovableLabel>
+					);
+				})}
+			</React.Fragment>
+		);
+	}
+};
 
 const ActiveFilterInfo = ({
 	activeFilterParameters,
 	availableProductMetadata,
 	onValueRemove,
+	onAllValuesRemove,
 	onClearAll,
 }) => {
 	let numOfFilters = 0;
@@ -27,29 +74,13 @@ const ActiveFilterInfo = ({
 			</div>
 			{activeFilterParameters ? (
 				<RemovableLabelContainer className="worldCereal-ActiveFilterInfo-filters">
-					{activeFilterParameters.map(item => {
-						return (
-							<React.Fragment key={item.key}>
-								{item.values.map(value => {
-									const valueKey = value.key || value;
-									const valueName = value.data?.nameDisplay || value;
-
-									return (
-										<RemovableLabel
-											key={valueKey}
-											small
-											onRemove={e => {
-												e.stopPropagation();
-												onValueRemove(item.parameter.key, valueKey);
-											}}
-										>
-											{item.parameter.name}: {valueName}
-										</RemovableLabel>
-									);
-								})}
-							</React.Fragment>
-						);
-					})}
+					{activeFilterParameters.map(parameter => (
+						<FilterParameterLabels
+							parameter={parameter}
+							onValueRemove={onValueRemove}
+							onAllValuesRemove={onAllValuesRemove}
+						/>
+					))}
 					{numOfFilters > 1 ? (
 						<Button
 							icon="times"
