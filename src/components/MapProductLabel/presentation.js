@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import PropTypes from 'prop-types';
 import RemovableLabel from '../atoms/RemovableLabel';
 import ModalWindow from '../atoms/ModalWindow';
 import {MetadataInfoTitle} from '../MetadataInfo/presentation';
@@ -7,36 +8,34 @@ import MetadataInfo from '../MetadataInfo';
 
 Modal.setAppElement('#root');
 
-const MapProductLabel = props => {
+const MapProductLabel = ({
+	productMetadata,
+	productTemplate,
+	productKey,
+	productMetadataKeys,
+	onProductRemove,
+}) => {
 	const [modalIsOpen, setModalOpen] = React.useState(false);
 
-	const {
-		isProductInVisibleArea,
-		productMetadata,
-		productTemplate,
-		onProductRemove,
-	} = props;
-	if (productMetadata) {
-		const {product, sos, eos, aez} = productMetadata.data;
-		const stripColor =
-			productTemplate?.data?.style?.rules?.[0]?.styles?.[0]?.color;
+	const productCount = productMetadataKeys?.length;
+	const color = productTemplate?.data?.style?.rules?.[0]?.styles?.[0]?.color;
 
+	if (productCount) {
 		return (
 			<>
 				<RemovableLabel
-					stripColor={stripColor}
+					stripColor={color}
 					onRemove={onProductRemove}
 					onClick={() => {
 						setModalOpen(true);
 					}}
-					active={isProductInVisibleArea}
+					active={true}
 					floating
 				>
 					<MapProductLabelContent
-						product={productTemplate?.data?.nameDisplay || product}
-						zone={aez}
-						start={sos}
-						end={eos}
+						product={productTemplate?.data?.nameDisplay || productKey}
+						productMetadata={productMetadata}
+						count={productCount}
 					/>
 				</RemovableLabel>
 				<ModalWindow
@@ -44,7 +43,7 @@ const MapProductLabel = props => {
 					isOpen={modalIsOpen}
 					onClose={() => setModalOpen(false)}
 				>
-					<MetadataInfo productMetadataKey={productMetadata.key} />
+					<MetadataInfo productMetadata={productMetadata} />
 				</ModalWindow>
 			</>
 		);
@@ -53,7 +52,30 @@ const MapProductLabel = props => {
 	}
 };
 
-const MapProductLabelContent = ({product, zone, start, end}) => {
+MapProductLabel.proptypes = {
+	productMetadata: PropTypes.array,
+	productTemplate: PropTypes.object,
+	productMetadataKeys: PropTypes.array,
+	productKey: PropTypes.string,
+};
+
+const MapProductLabelContent = ({count, product, productMetadata}) => {
+	if (count === 1) {
+		const {sos, eos, aez} = productMetadata[0].data;
+		return (
+			<MapSingleProductLabelContent
+				product={product}
+				zone={aez}
+				start={sos}
+				end={eos}
+			/>
+		);
+	} else {
+		return <MapMultipleProductLabelContent product={product} count={count} />;
+	}
+};
+
+const MapSingleProductLabelContent = ({product, zone, start, end}) => {
 	return (
 		<>
 			<div className="worldCereal-MapProductLabel-header">
@@ -66,6 +88,21 @@ const MapProductLabelContent = ({product, zone, start, end}) => {
 			</div>
 			<div className="worldCereal-MapProductLabel-period">
 				{start} / {end}
+			</div>
+		</>
+	);
+};
+
+const MapMultipleProductLabelContent = ({product, count}) => {
+	return (
+		<>
+			<div className="worldCereal-MapProductLabel-header">
+				<div>
+					<span className="worldCereal-MapProductLabel-product">{product}</span>
+				</div>
+			</div>
+			<div className="worldCereal-MapProductLabel-productsCount">
+				<em>{count}</em> products
 			</div>
 		</>
 	);

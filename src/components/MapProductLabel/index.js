@@ -10,12 +10,12 @@ import './style.scss';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		isProductInVisibleArea:
-			Select.worldCereal.productMetadata.isModelInMapExtent(
-				state,
-				ownProps.productMetadataKey,
-				mapSetKey
-			),
+		// isProductInVisibleArea:
+		// 	Select.worldCereal.productMetadata.isModelInMapExtent(
+		// 		state,
+		// 		ownProps.productMetadataKey,
+		// 		mapSetKey
+		// 	),
 		productTemplate: Select.worldCereal.getProductTemplateByKey(
 			state,
 			ownProps.productKey
@@ -27,9 +27,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onProductRemove: () => {
 			dispatch(
-				Action.worldCereal.removeAllLayersFromMapByLayerKey(
+				Action.worldCereal.removeAllLayersFromMapByLayerKeys(
 					ownProps.mapKey,
-					ownProps.productMetadataKey
+					ownProps.productMetadataKeys
 				)
 			);
 		},

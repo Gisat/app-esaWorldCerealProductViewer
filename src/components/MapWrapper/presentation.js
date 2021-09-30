@@ -4,10 +4,10 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import {Button, Menu, MenuItem} from '@gisatcz/ptr-atoms';
 import MapProductLabel from '../MapProductLabel';
-
-import './style.scss';
 import {RemovableLabelContainer} from '../atoms/RemovableLabel';
 import {MIN_PRODUCT_MAP_LABELS_FOR_GROUPING} from '../../constants/app';
+
+import './style.scss';
 
 class MapWrapper extends React.PureComponent {
 	static propTypes = {
@@ -84,10 +84,10 @@ class MapWrapper extends React.PureComponent {
 		let labels = [];
 		_forIn(productsMetadata, (models, product) => {
 			if (models.length >= MIN_PRODUCT_MAP_LABELS_FOR_GROUPING) {
-				// labels.push(this.renderMapMultipleProductsLabel(product, models));
+				labels.push(this.renderMapProductLabel(product, product, models));
 			} else {
 				models.forEach(model => {
-					labels.push(this.renderMapProductLabel(product, model));
+					labels.push(this.renderMapProductLabel(model.key, product, [model]));
 				});
 			}
 		});
@@ -95,12 +95,14 @@ class MapWrapper extends React.PureComponent {
 		return labels.length ? labels : null;
 	}
 
-	renderMapProductLabel(productKey, productMetadata) {
+	renderMapProductLabel(key, productKey, productMetadata) {
+		const productMetadataKeys = productMetadata.map(item => item.key);
+
 		return (
 			<MapProductLabel
-				key={productMetadata.key}
+				key={key}
 				productKey={productKey}
-				productMetadataKey={productMetadata.key}
+				productMetadataKeys={productMetadataKeys}
 				productMetadata={productMetadata}
 				mapKey={this.props.mapKey}
 			/>

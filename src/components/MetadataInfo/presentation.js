@@ -9,7 +9,7 @@ export const MetadataInfoTitle = () => (
 
 class MetadataInfo extends React.PureComponent {
 	static propTypes = {
-		productMetadata: PropTypes.object,
+		productMetadata: PropTypes.array,
 	};
 
 	constructor(props) {
@@ -19,39 +19,42 @@ class MetadataInfo extends React.PureComponent {
 	render() {
 		const {productMetadata} = this.props;
 
-		if (productMetadata) {
-			const {product, season, sos, eos, aez, id} = productMetadata.data;
+		if (productMetadata.length) {
+			return productMetadata.map(productMetadataItem => {
+				const {product, season, sos, eos, aez, id} = productMetadataItem.data;
 
-			return (
-				<div className="worldCereal-MetadataInfo">
-					<div className="worldCereal-MetadataInfoGrid">
-						<div>
-							<span>Product</span>
-							<span>{product}</span>
-						</div>
-						<div>
-							<span>Product ID</span>
-							<span className="is-small">{id}</span>
-						</div>
-						<div>
-							<span>Season</span>
-							<span>{season}</span>
-						</div>
-						<div>
-							<span>Start of season</span>
-							<span>{sos}</span>
-						</div>
-						<div>
-							<span>End of season</span>
-							<span>{eos}</span>
-						</div>
-						<div>
-							<span>AEZ</span>
-							<span>{aez}</span>
+				return (
+					<div className="worldCereal-MetadataInfo">
+						<h4>{id}</h4>
+						<div className="worldCereal-MetadataInfoGrid">
+							<div>
+								<span>Product ID</span>
+								<span className="is-small">{id}</span>
+							</div>
+							<div>
+								<span>Product</span>
+								<span>{product}</span>
+							</div>
+							<div>
+								<span>Season</span>
+								<span>{season}</span>
+							</div>
+							<div>
+								<span>Start of season</span>
+								<span>{sos}</span>
+							</div>
+							<div>
+								<span>End of season</span>
+								<span>{eos}</span>
+							</div>
+							<div>
+								<span>AEZ</span>
+								<span>{aez}</span>
+							</div>
 						</div>
 					</div>
-				</div>
-			);
+				);
+			});
 		} else {
 			return null;
 		}

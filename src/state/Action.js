@@ -96,17 +96,18 @@ function updateMapView(mapKey, viewUpdate) {
 }
 
 /**
- * Remove all layers from map with given layerKey parameter (layerKey (in contrast with key) could be common for multiple layers).
+ * Remove all layers from map with given layerKey parameters (layerKey (in contrast with key) could be common for multiple layers).
  * For given productMetadata is the layerKey same as productMetadataKey
  * @param mapKey {string}
- * @param layerKey {string} productMetadataKey uuid
+ * @param layerKeys {Array} List of productMetadataKey uuids
  */
-function removeAllLayersFromMapByLayerKey(mapKey, layerKey) {
+function removeAllLayersFromMapByLayerKeys(mapKey, layerKeys) {
 	return (dispatch, getState) => {
 		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);
-		if (mapLayers) {
+		if (mapLayers && layerKeys.length) {
 			mapLayers.forEach(layer => {
-				if (layer.layerKey === layerKey) {
+				if (layerKeys.indexOf(layer.layerKey) !== -1) {
+					// TODO create action to remove layers at once
 					dispatch(CommonAction.maps.removeMapLayer(mapKey, layer.key));
 				}
 			});
@@ -134,7 +135,7 @@ export default {
 		productMetadataFilter: productMetadataFilterActions,
 
 		adjustInitialBoxRange,
-		removeAllLayersFromMapByLayerKey,
+		removeAllLayersFromMapByLayerKeys,
 		removeAllMapLayers,
 		updateMapView,
 	},
