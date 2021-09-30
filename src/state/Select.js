@@ -13,18 +13,18 @@ import {createSelector} from 'reselect';
 /**
  * Get product template extended by style definition
  * @param {Object} state
- * @param {string} productMetadataKey uuid
+ * @param {string} productKey
  * @return {Object} Case model extended by style definition
  */
-const getProductTemplateByProductMetadataKey = createCachedSelector(
+const getProductTemplateByKey = createCachedSelector(
 	[
 		CommonSelect.cases.getAllAsObject,
 		CommonSelect.styles.getAllAsObject,
-		productMetadataSelectors.getByKey,
+		(state, productKey) => productKey,
 	],
-	(cases, styles, productMetadata) => {
-		if (productMetadata && cases) {
-			const productTemplate = cases[productMetadata.data?.product];
+	(cases, styles, productKey) => {
+		if (cases && productKey) {
+			const productTemplate = cases[productKey];
 			if (productTemplate) {
 				if (styles) {
 					const style = styles[productTemplate.data?.styleKey];
@@ -178,7 +178,7 @@ export default {
 		getProductMetadataByMapSetViewAndActiveFilter,
 		getProductMetadataCountForFilterOption,
 		getProductTemplates,
-		getProductTemplateByProductMetadataKey,
+		getProductTemplateByKey,
 		getStyleDefinitionByProductTemplateKey,
 	},
 };

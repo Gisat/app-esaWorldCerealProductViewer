@@ -1,4 +1,5 @@
 import React from 'react';
+import {isEmpty as _isEmpty, forIn as _forIn} from 'lodash';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import {Button, Menu, MenuItem} from '@gisatcz/ptr-atoms';
@@ -6,13 +7,14 @@ import MapProductLabel from '../MapProductLabel';
 
 import './style.scss';
 import {RemovableLabelContainer} from '../atoms/RemovableLabel';
+import {MIN_PRODUCT_MAP_LABELS_FOR_GROUPING} from '../../constants/app';
 
 class MapWrapper extends React.PureComponent {
 	static propTypes = {
 		activeMapKey: PropTypes.string,
 		mapKey: PropTypes.string,
 		mapSetMapKeys: PropTypes.array,
-		productMetadata: PropTypes.array,
+		productsMetadata: PropTypes.object,
 	};
 
 	constructor(props) {
@@ -25,7 +27,7 @@ class MapWrapper extends React.PureComponent {
 			activeMapKey,
 			removeMap,
 			mapSetMapKeys,
-			productMetadataKeys,
+			productsMetadata,
 			removeAllLayers,
 		} = this.props;
 		const wrapperClasses = classnames(
@@ -37,11 +39,9 @@ class MapWrapper extends React.PureComponent {
 
 		return (
 			<div className={wrapperClasses}>
-				{productMetadataKeys?.length ? (
+				{!_isEmpty(productsMetadata) ? (
 					<RemovableLabelContainer className="worldCereal-MapProductLabelContainer">
-						{productMetadataKeys.map(productMetadataKey =>
-							this.renderMapProductLabel(productMetadataKey)
-						)}
+						{this.renderMapProductLabels(productsMetadata)}
 					</RemovableLabelContainer>
 				) : null}
 				<div className="worldCereal-MapTools">
@@ -55,7 +55,7 @@ class MapWrapper extends React.PureComponent {
 					>
 						<Menu left>
 							<MenuItem
-								disabled={!productMetadataKeys?.length}
+								disabled={!productsMetadata?.length}
 								onClick={removeAllLayers.bind(this, mapKey)}
 							>
 								Remove all layers
@@ -78,11 +78,28 @@ class MapWrapper extends React.PureComponent {
 		);
 	}
 
-	renderMapProductLabel(productMetadataKey) {
+	renderMapProductLabels(productsMetadata) {
+		let labels = [];
+		_forIn(productsMetadata, (models, product) => {
+			if (models.length >= MIN_PRODUCT_MAP_LABELS_FOR_GROUPING) {
+				// labels.push(this.renderMapMultipleProductsLabel(product, models));
+			} else {
+				models.forEach(model => {
+					labels.push(this.renderMapProductLabel(product, model));
+				});
+			}
+		});
+
+		return labels.length ? labels : null;
+	}
+
+	renderMapProductLabel(productKey, productMetadata) {
 		return (
 			<MapProductLabel
-				key={productMetadataKey}
-				productMetadataKey={productMetadataKey}
+				key={productMetadata.key}
+				productKey={productKey}
+				productMetadataKey={productMetadata.key}
+				productMetadata={productMetadata}
 				mapKey={this.props.mapKey}
 			/>
 		);

@@ -1,4 +1,4 @@
-import {filter as _filter, uniq as _uniq} from 'lodash';
+import {filter as _filter, uniq as _uniq, groupBy as _groupBy} from 'lodash';
 import {createSelector} from 'reselect';
 import {createCachedSelector} from 're-reselect';
 import intersect from '@turf/intersect';
@@ -71,6 +71,33 @@ const getKeysByMapKey = createCachedSelector(
 
 /**
  * @param {Object} state
+ * @param {string} mapKey
+ * @return {Array|null} Product metadata models present in given map
+ */
+const getModelsByMapKey = createCachedSelector(
+	[getAllAsObject, getKeysByMapKey],
+	(models, keys) => {
+		if (keys?.length && models) {
+			return keys.map(key => models[key]);
+		} else {
+			return null;
+		}
+	}
+)((state, mapKey) => mapKey);
+
+const getModelsByMapKeyGroupedByParam = createCachedSelector(
+	[getModelsByMapKey, (state, mapKey, parameter) => parameter],
+	(models, parameter) => {
+		if (models?.length && parameter) {
+			return _groupBy(models, model => model.data[parameter]);
+		} else {
+			return null;
+		}
+	}
+)((state, mapKey, parameter) => `${mapKey}_${parameter}`);
+
+/**
+ * @param {Object} state
  * @param {string} productMetadataKey
  * @return {boolean} true if given product is in current map extent
  */
@@ -98,6 +125,8 @@ export default {
 	getAllAsObject,
 
 	getKeysByMapKey,
+	getModelsByMapKey,
+	getModelsByMapKeyGroupedByParam,
 
 	isModelInMapExtent,
 };
