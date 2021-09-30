@@ -25,7 +25,7 @@ class MetadataInfo extends React.PureComponent {
 
 				return (
 					<div className="worldCereal-MetadataInfo">
-						<h4>{id}</h4>
+						<h4>Product: {id}</h4>
 						<div className="worldCereal-MetadataInfoGrid">
 							<div>
 								<span>Product ID</span>

@@ -21,7 +21,9 @@ const ModalWindow = ({isOpen, onClose, title, children}) => {
 					className="ptr-Modal-closeButton"
 				/>
 			</div>
-			<div className="ptr-Modal-content">{children}</div>
+			<div className="ptr-Modal-content">
+				<div>{children}</div>
+			</div>
 		</Modal>
 	);
 };
