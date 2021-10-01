@@ -68,7 +68,7 @@ class Timeline extends React.PureComponent {
 					productTemplate?.data?.style?.data?.definition?.rules[0]?.styles[0]
 						?.color;
 				const productColor = activeProductColor
-					? chroma(activeProductColor).desaturate(4).hex()
+					? chroma(activeProductColor).desaturate(3).hex()
 					: null;
 				// push data from same place and same product to the same line in timeline
 				layersByPlaces[placeID][productID].push({
