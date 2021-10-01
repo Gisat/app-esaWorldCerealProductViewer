@@ -49,7 +49,7 @@ const App = ({onMount, onUnmount, viewLimits}) => {
 			<RetractableWindow
 				className="worldCereal-FilterWindow ptr-dark"
 				retracted
-				bottomPosition={13.2}
+				bottomPosition={13}
 				bodyHeight={14}
 				controlBarContent={<ActiveFilterInfo />}
 			>
