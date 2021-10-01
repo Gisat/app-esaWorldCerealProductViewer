@@ -45,7 +45,7 @@ export default {
 							view: {
 								boxRange: 800000,
 								center: {
-									lat: 47,
+									lat: 46,
 									lon: 0,
 								},
 							},

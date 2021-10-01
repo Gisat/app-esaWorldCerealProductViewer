@@ -10,8 +10,8 @@ import MapTimeline from '../MapTimeline';
 import './style.scss';
 
 const periodLimit = {
-	start: '2020',
-	end: '2024',
+	start: '2019-01-30',
+	end: '2022',
 };
 
 const LEVELS = [
@@ -65,9 +65,11 @@ class Timeline extends React.PureComponent {
 				}
 
 				const activeProductColor =
-					productTemplate?.data?.style.data?.definition?.rules[0]?.styles[0]
+					productTemplate?.data?.style?.data?.definition?.rules[0]?.styles[0]
 						?.color;
-				const productColor = chroma(activeProductColor).desaturate(4).hex();
+				const productColor = activeProductColor
+					? chroma(activeProductColor).desaturate(4).hex()
+					: null;
 				// push data from same place and same product to the same line in timeline
 				layersByPlaces[placeID][productID].push({
 					key: product.key,
