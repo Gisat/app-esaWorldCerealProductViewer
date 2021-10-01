@@ -9,9 +9,10 @@ import MapTimeline from '../MapTimeline';
 
 import './style.scss';
 
+// TODO dynamic
 const periodLimit = {
-	start: '2019-01-30',
-	end: '2021-01-30',
+	start: '2019-01-02',
+	end: '2021-01-31',
 };
 
 const LEVELS = [
