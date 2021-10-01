@@ -17,7 +17,13 @@ const RetractableWindowControlBar = ({children, onClick, onHeightChange}) => {
 		<div
 			ref={ref}
 			onClick={onClick}
+			onKeyDown={e => {
+				if (e.key === 'Enter') {
+					onClick();
+				}
+			}}
 			className="ptr-RetractableWindowControlBar"
+			tabIndex={0}
 		>
 			<Icon icon="chevron-left" className="retract" />
 			{children}

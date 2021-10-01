@@ -37,6 +37,12 @@ export const PageSwitcherMenuItem = ({
 			key={pageKey}
 			className={classes}
 			onClick={() => setActivePage(pageKey)}
+			tabIndex={0}
+			onKeyDown={e => {
+				if (e.key === 'Enter') {
+					setActivePage(pageKey);
+				}
+			}}
 		>
 			{children}
 		</div>
