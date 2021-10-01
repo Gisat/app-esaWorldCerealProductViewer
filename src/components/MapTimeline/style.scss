@@ -59,6 +59,10 @@ g.ptr-timeline-minute > line {
 	fill: var(--base95);
 }
 
+g.ptr-timeline-month.secondary > line {
+	stroke: var(--accent85);
+}
+
 
 .ptr-timeline-year-label,
 .ptr-timeline-month-label {
