@@ -53,9 +53,10 @@ const RetractableWindow = ({
 	});
 
 	const style = {
-		top: `calc(100% - ${positionOffset}px - ${
-			isRetracted ? bottomPosition : bottomPosition + bodyHeight
-		}rem)`,
+		// top: `calc(100% - ${positionOffset}px - ${
+		// 	isRetracted ? bottomPosition : bottomPosition + bodyHeight
+		// }rem)`,
+		top: `calc(100% - ${positionOffset}px - 13rem)`,
 	};
 
 	return (
