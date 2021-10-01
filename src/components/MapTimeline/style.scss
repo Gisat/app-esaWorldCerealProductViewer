@@ -55,8 +55,20 @@ g.ptr-timeline-hour,
 g.ptr-timeline-hour > line,
 g.ptr-timeline-minute,
 g.ptr-timeline-minute > line {
-    stroke: var(--accent50);
+    stroke: var(--accent70);
 	fill: var(--base90);
+}
+
+
+.ptr-timeline-year-label,
+.ptr-timeline-month-label {
+	stroke: none;
+	fill: var(--accent50);
+	font-size: .85rem;
+}
+
+.ptr-timeline-year-label {
+	font-weight: bold;
 }
 
 .ptr-timeline-tooltip-layer {

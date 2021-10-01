@@ -11,7 +11,7 @@ import './style.scss';
 
 const periodLimit = {
 	start: '2019-01-30',
-	end: '2022',
+	end: '2021-01-30',
 };
 
 const LEVELS = [
@@ -21,7 +21,7 @@ const LEVELS = [
 	},
 	{
 		level: 'month',
-		end: 10,
+		end: 5,
 	},
 ];
 
