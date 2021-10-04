@@ -7,7 +7,6 @@ import YearDash from './YearDash';
 import MonthDash from '../Months/MonthDash';
 import './style.scss';
 
-
 const Years = props => {
 	const {period, getX, dayWidth, height, vertical} = props;
 	const periodStart = moment(period.start);
@@ -24,18 +23,15 @@ const Years = props => {
 	if (dayWidth > 0.7) {
 		const monthsCfg = utils.interval.getMonths(periodStart, periodEnd);
 		months = _map(monthsCfg, month => {
-			if (month.month === '07') {
-				let x = getX(month.start);
-				return (
-					<MonthDash
-						key={`${month.year}-${month.month}`}
-						x={x}
-						vertical={vertical}
-					/>
-				);
-			} else {
-				return null;
-			}
+			let x = getX(month.start);
+			return (
+				<MonthDash
+					key={`${month.year}-${month.month}`}
+					x={x}
+					vertical={vertical}
+					secondary
+				/>
+			);
 		});
 	}
 	return (
@@ -45,7 +41,6 @@ const Years = props => {
 		</g>
 	);
 };
-
 
 Years.propTypes = {
 	period: PropTypes.shape({

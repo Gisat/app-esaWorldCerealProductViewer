@@ -3,7 +3,7 @@
 .worldCereal-Timeline {
   position: relative;
   background: var(--base95);
-  min-height: 13rem;
+  min-height: 10rem;
   max-width: 100%;
   z-index: 4;
   border-top: 1px solid var(--base70);
@@ -21,7 +21,7 @@
   }
 
   .ptr-maptimeline-scrollable{
-    height: 11rem;
+    height: 8rem;
     overflow-y: auto;
     overflow-x: hidden;
   }

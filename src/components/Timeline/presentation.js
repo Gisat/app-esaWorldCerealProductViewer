@@ -9,9 +9,10 @@ import MapTimeline from '../MapTimeline';
 
 import './style.scss';
 
+// TODO dynamic
 const periodLimit = {
-	start: '2019-01-30',
-	end: '2021-01-30',
+	start: '2019-01-02',
+	end: '2021-01-31',
 };
 
 const LEVELS = [
@@ -47,8 +48,10 @@ class Timeline extends React.PureComponent {
 			handleProductInActiveMap,
 		} = this.props;
 
-		const layersByPlaces = {};
+		const layersByProducts = {};
 		let layers = [];
+
+		// TODO prepare this in selector
 		if (productMetadata?.length) {
 			productMetadata.forEach((product, i) => {
 				const placeID = product.data.aez;
@@ -56,12 +59,12 @@ class Timeline extends React.PureComponent {
 				const productTemplate = productTemplates[productID];
 				const productName = productTemplate?.data?.nameDisplay || productID;
 
-				if (!layersByPlaces.hasOwnProperty(placeID)) {
-					layersByPlaces[placeID] = {};
+				if (!layersByProducts.hasOwnProperty(productID)) {
+					layersByProducts[productID] = {};
 				}
 
-				if (!layersByPlaces[placeID].hasOwnProperty(productID)) {
-					layersByPlaces[placeID][productID] = [];
+				if (!layersByProducts[productID].hasOwnProperty(placeID)) {
+					layersByProducts[productID][placeID] = [];
 				}
 
 				const activeProductColor =
@@ -71,7 +74,7 @@ class Timeline extends React.PureComponent {
 					? chroma(activeProductColor).desaturate(3).hex()
 					: null;
 				// push data from same place and same product to the same line in timeline
-				layersByPlaces[placeID][productID].push({
+				layersByProducts[productID][placeID].push({
 					key: product.key,
 					layerTemplateKey: product.key,
 					period: [
@@ -93,9 +96,9 @@ class Timeline extends React.PureComponent {
 			});
 		}
 
-		for (const placeId of Object.keys(layersByPlaces)) {
-			for (const productID of Object.keys(layersByPlaces[placeId])) {
-				layers = [...layers, layersByPlaces[placeId][productID]];
+		for (const product of Object.keys(layersByProducts)) {
+			for (const place of Object.keys(layersByProducts[product])) {
+				layers = [...layers, layersByProducts[product][place]];
 			}
 		}
 
