@@ -11,6 +11,8 @@ const ModalWindow = ({isOpen, onClose, title, children}) => {
 			onAfterOpen={() => {}}
 			className="ptr-Modal"
 			overlayClassName="ptr-ModalOverlay ptr-light"
+			onRequestClose={onClose}
+			shouldCloseOnOverlayClick={true}
 		>
 			<div className="ptr-Modal-header">
 				<div className="ptr-Modal-title">{title}</div>
