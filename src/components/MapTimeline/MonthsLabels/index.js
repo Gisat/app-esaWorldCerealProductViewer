@@ -17,7 +17,8 @@ const Months = props => {
 
 	const months = _map(monthsCfg, month => {
 		if (month.month !== '01') {
-			let x = getX(month.start);
+			const labelXCorrection = -3;
+			let x = getX(month.start) + labelXCorrection;
 			let label = React.createElement(utils.textLabel.default, {label:month.month,vertical,x,height,className: 'ptr-timeline-month-label'});
 			return (
 				<g className={'ptr-timeline-month'}>

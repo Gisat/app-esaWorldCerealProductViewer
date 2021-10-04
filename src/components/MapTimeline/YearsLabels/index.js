@@ -15,7 +15,8 @@ const Years = props => {
 	const yearsCfg = utils.interval.getYears(periodStart, periodEnd);
 	
 	const years = _map(yearsCfg, year => {
-		let x = getX(year.start);
+		const labelXCorrection = -3;
+		let x = getX(year.start) + labelXCorrection;
 		let label = React.createElement(utils.textLabel.default, {label:year.year,vertical,x,height,className: 'ptr-timeline-year-label'});
 		return (
 			<g className={'ptr-timeline-year'}>
