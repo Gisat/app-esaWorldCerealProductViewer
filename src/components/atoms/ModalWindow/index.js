@@ -4,12 +4,14 @@ import Modal from 'react-modal';
 
 import './style.scss';
 
-const ModalWindow = ({isOpen, onClose, title, children}) => {
+const ModalWindow = ({isOpen, onClose, title, className, children}) => {
+	const classes = `ptr-Modal ${className}`;
+
 	return (
 		<Modal
 			isOpen={isOpen}
 			onAfterOpen={() => {}}
-			className="ptr-Modal"
+			className={classes}
 			overlayClassName="ptr-ModalOverlay ptr-light"
 			onRequestClose={onClose}
 			shouldCloseOnOverlayClick={true}

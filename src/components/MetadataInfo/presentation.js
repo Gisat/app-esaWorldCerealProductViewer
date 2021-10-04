@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MetadataInfoItem from './MetadataItem';
 
 import './style.scss';
 
@@ -20,41 +21,15 @@ class MetadataInfo extends React.PureComponent {
 		const {productMetadata} = this.props;
 
 		if (productMetadata.length) {
-			return productMetadata.map(productMetadataItem => {
-				const {product, season, sos, eos, aez, id} = productMetadataItem.data;
-
-				return (
-					<div className="worldCereal-MetadataInfo">
-						<h4>Product: {id}</h4>
-						<div className="worldCereal-MetadataInfoGrid">
-							<div>
-								<span>Product ID</span>
-								<span className="is-small">{id}</span>
-							</div>
-							<div>
-								<span>Product</span>
-								<span>{product}</span>
-							</div>
-							<div>
-								<span>Season</span>
-								<span>{season}</span>
-							</div>
-							<div>
-								<span>Start of season</span>
-								<span>{sos}</span>
-							</div>
-							<div>
-								<span>End of season</span>
-								<span>{eos}</span>
-							</div>
-							<div>
-								<span>AEZ</span>
-								<span>{aez}</span>
-							</div>
-						</div>
-					</div>
-				);
-			});
+			return (
+				<div className="worldCereal-MetadataInfo">
+					{productMetadata.map(productMetadataItem => {
+						return (
+							<MetadataInfoItem productMetadata={productMetadataItem?.data} />
+						);
+					})}
+				</div>
+			);
 		} else {
 			return null;
 		}

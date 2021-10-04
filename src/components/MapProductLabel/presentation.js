@@ -42,6 +42,7 @@ const MapProductLabel = ({
 					title={<MetadataInfoTitle />}
 					isOpen={modalIsOpen}
 					onClose={() => setModalOpen(false)}
+					className="worldCereal-Modal"
 				>
 					<MetadataInfo productMetadata={productMetadata} />
 				</ModalWindow>

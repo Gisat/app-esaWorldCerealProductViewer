@@ -12,7 +12,7 @@ export default model => {
 		type,
 		public: isPublic,
 		tiles,
-		relatedProduct,
+		related_products,
 	} = model.data;
 
 	return {
@@ -30,7 +30,7 @@ export default model => {
 			type,
 			public: isPublic,
 			tiles,
-			relatedProduct,
+			relatedProducts: related_products,
 		},
 	};
 };
