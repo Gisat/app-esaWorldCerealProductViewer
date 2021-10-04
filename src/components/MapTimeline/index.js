@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import ReactResizeDetector from 'react-resize-detector';
+
 import {utils} from '@gisatcz/ptr-utils';
 import {
 	Timeline,
@@ -198,6 +200,7 @@ class MapTimeline extends React.PureComponent {
 		this.state = {
 			period: {start: new Date(), end: new Date()},
 			dayWidth: null,
+			timelineWidth: null,
 		};
 	}
 
@@ -335,32 +338,37 @@ class MapTimeline extends React.PureComponent {
 					dayWidth={this.state.dayWidth}
 					vertical={vertical}
 					activeLevel={this.state.activeLevel}
+					passedWidth={this.state.timelineWidth}
 				/>
 				<div className={'ptr-maptimeline-scrollable'}>
 					<div className={'ptr-maptimeline'}>
 						{legend && !vertical ? <MapTimelineLegend layers={layers} /> : null}
 						<div className={'ptr-timeline'}>
-							<HoverHandler getStyle={this.getHorizontalTootlipStyle()}>
-								<TimeLineHover getHoverContent={this.getHoverContent}>
-									<Timeline
-										periodLimit={periodLimit}
-										periodLimitOnCenter={periodLimitOnCenter}
-										onChange={this.onChange}
-										onHover={onHover}
-										onClick={onClick}
-										vertical={vertical}
-										levels={levels}
-										contentHeight={Math.max(
-											contentHeightByLayers,
-											minTimelineHeight
-										)}
-										// contentHeight={200}
-										selectMode={selectMode}
-									>
-										{childArray}
-									</Timeline>
-								</TimeLineHover>
-							</HoverHandler>
+							<ReactResizeDetector handleWidth onResize={(width) => {;this.setState({timelineWidth:width})}}>
+								<div style={{width: this.state.timelineWidth}}>
+								<HoverHandler getStyle={this.getHorizontalTootlipStyle()}>
+									<TimeLineHover getHoverContent={this.getHoverContent}>
+											<Timeline
+												periodLimit={periodLimit}
+												periodLimitOnCenter={periodLimitOnCenter}
+												onChange={this.onChange}
+												onHover={onHover}
+												onClick={onClick}
+												vertical={vertical}
+												levels={levels}
+												contentHeight={Math.max(
+													contentHeightByLayers,
+													minTimelineHeight
+												)}
+												// contentHeight={200}
+												selectMode={selectMode}
+											>
+												{childArray}
+											</Timeline>
+									</TimeLineHover>
+								</HoverHandler>
+								</div>
+							</ReactResizeDetector>
 						</div>
 					</div>
 				</div>

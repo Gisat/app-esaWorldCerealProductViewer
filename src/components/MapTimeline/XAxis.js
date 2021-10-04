@@ -18,11 +18,11 @@ const Levels = props => {
 };
 
 
-const XAxis = ({period, getX, dayWidth, vertical, height, width, activeLevel}) => {
+const XAxis = ({period, getX, dayWidth, vertical, height, width, activeLevel, passedWidth}) => {
     const elementWidth = vertical ? height : width;
 	const elementHeight = vertical ? width : height;
     const transform = vertical ? `scale(-1,1) translate(-${height},0)` : '';
-
+    const preferedWidth = Math.min(passedWidth, width);
     return (
             <div style={{display:'flex'}}>
                 <div className={'ptr-timeline-legend-placeholder'}>
@@ -32,7 +32,7 @@ const XAxis = ({period, getX, dayWidth, vertical, height, width, activeLevel}) =
                         version={'1.1'}
                         xmlns={'http://www.w3.org/2000/svg'}
                         xmlnsXlink={'http://www.w3.org/1999/xlink'}
-                        width={elementWidth}
+                        width={preferedWidth}
                         height={elementHeight}
                     >
                         <g transform={transform}>
