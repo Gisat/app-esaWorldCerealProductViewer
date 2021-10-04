@@ -344,8 +344,7 @@ class MapTimeline extends React.PureComponent {
 					<div className={'ptr-maptimeline'}>
 						{legend && !vertical ? <MapTimelineLegend layers={layers} /> : null}
 						<div className={'ptr-timeline'}>
-							<ReactResizeDetector handleWidth onResize={(width) => {;this.setState({timelineWidth:width})}}>
-								<div style={{width: this.state.timelineWidth}}>
+							<ReactResizeDetector handleWidth skipOnMount={false} onResize={(width) => {console.log("xxx",width);this.setState({timelineWidth:width})}}>
 								<HoverHandler getStyle={this.getHorizontalTootlipStyle()}>
 									<TimeLineHover getHoverContent={this.getHoverContent}>
 											<Timeline
@@ -367,7 +366,6 @@ class MapTimeline extends React.PureComponent {
 											</Timeline>
 									</TimeLineHover>
 								</HoverHandler>
-								</div>
 							</ReactResizeDetector>
 						</div>
 					</div>
