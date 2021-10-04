@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import {utils} from '@gisatcz/ptr-utils';
-import {Timeline, Overlay, TimeLineHover, HoverHandler, position, utils as timelineUtils} from '@gisatcz/ptr-timeline';
+import {
+	Timeline,
+	Overlay,
+	TimeLineHover,
+	HoverHandler,
+	position,
+	utils as timelineUtils,
+} from '@gisatcz/ptr-timeline';
 import XAxis from './XAxis';
 import MapTimelineLegend from './MapTimelineLegend';
 import './style.scss';
@@ -11,6 +18,7 @@ const {getIntersectionOverlays, overlap} = timelineUtils.overlays;
 const CONTROLS_WIDTH = 0;
 const TOOLTIP_PADDING = 5;
 const MOUSEBUFFERWIDTH = 20;
+const MIN_TIMELINE_HEIGHT = 8;
 const {getTootlipPosition} = position;
 
 const getOverlayCfg = options => {
@@ -32,7 +40,6 @@ const getOverlayCfg = options => {
 		},
 	};
 };
-
 
 const proccessLayerCfg = (layerCfg, top, rowHeight) => {
 	if (layerCfg && layerCfg.period && layerCfg.period.length > 0) {
@@ -57,20 +64,14 @@ const proccessLayerCfg = (layerCfg, top, rowHeight) => {
 			});
 		});
 		return cfgs;
-	} else if (
-		layerCfg.period &&
-		layerCfg.period.start &&
-		layerCfg.period.end
-	) {
+	} else if (layerCfg.period && layerCfg.period.start && layerCfg.period.end) {
 		const otherOptions = layerCfg.options || {};
 		const cfg = getOverlayCfg({
 			key: layerCfg.key,
 			layerTemplateKey: layerCfg.layerTemplateKey,
 			period: layerCfg.period,
 			periodIndex: 0,
-			backdroundColor: layerCfg.active
-				? layerCfg.activeColor
-				: layerCfg.color,
+			backdroundColor: layerCfg.active ? layerCfg.activeColor : layerCfg.color,
 			label: layerCfg.title,
 			hideLabel: true,
 			height: rowHeight * utils.getRemSize(),
@@ -86,7 +87,7 @@ const proccessLayerCfg = (layerCfg, top, rowHeight) => {
 	} else {
 		return [];
 	}
-}
+};
 
 const getOverlaysCfg = layers => {
 	const LINEHEIGHT = 1;
@@ -95,14 +96,14 @@ const getOverlaysCfg = layers => {
 	let PADDING = (LINEHEIGHT - ROWHEIGHT) / 2;
 	layers.sort((a, b) => {
 		let aZIndex = 0;
-		if(a.length > 0){
+		if (a.length > 0) {
 			aZIndex = a[0].zIndex;
 		} else {
 			aZIndex = a.zIndex;
 		}
 
 		let bZIndex = 0;
-		if(b.length > 0){
+		if (b.length > 0) {
 			bZIndex = b[0].zIndex;
 		} else {
 			bZIndex = b.zIndex;
@@ -110,7 +111,6 @@ const getOverlaysCfg = layers => {
 		return aZIndex - bZIndex;
 	});
 
-	
 	let lastZIndex = layers?.[0]?.zIndex || 0;
 
 	let top = PADDING;
@@ -123,18 +123,19 @@ const getOverlaysCfg = layers => {
 		// 	top = line * LINEHEIGHT + PADDING;
 		// }
 
-		if(layerCfg && layerCfg.length > 0) {
+		if (layerCfg && layerCfg.length > 0) {
 			line = line + 1;
 			top = line * LINEHEIGHT + PADDING;
 			let lcfgs = [];
-			layerCfg.forEach(lcfg => lcfgs = [...lcfgs, ...proccessLayerCfg(lcfg, top, ROWHEIGHT)]);
-			return [...acc,  ...lcfgs];
+			layerCfg.forEach(
+				lcfg => (lcfgs = [...lcfgs, ...proccessLayerCfg(lcfg, top, ROWHEIGHT)])
+			);
+			return [...acc, ...lcfgs];
 		} else {
 			line = line + 1;
 			top = line * LINEHEIGHT + PADDING;
 			return [...acc, ...proccessLayerCfg(layerCfg, top, ROWHEIGHT)];
 		}
-
 	}, []);
 };
 
@@ -194,10 +195,10 @@ class MapTimeline extends React.PureComponent {
 		this.getX = this.getX.bind(this);
 		this.getHoverContent = this.getHoverContent.bind(this);
 		this.wrapperRef = React.createRef();
-		this.state={
+		this.state = {
 			period: {start: new Date(), end: new Date()},
-			dayWidth: null
-		}
+			dayWidth: null,
+		};
 	}
 
 	getZIndexCount(layers) {
@@ -219,14 +220,14 @@ class MapTimeline extends React.PureComponent {
 
 	onChange(change) {
 		const update = {};
-		if(change.dayWidth !== this.state.dayWidth) {
-			update.dayWidth = change.dayWidth
+		if (change.dayWidth !== this.state.dayWidth) {
+			update.dayWidth = change.dayWidth;
 		}
-		if(change.period !== this.state.period) {
-			update.period = change.period
+		if (change.period !== this.state.period) {
+			update.period = change.period;
 		}
-		if(change.activeLevel !== this.state.activeLevel) {
-			update.activeLevel = change.activeLevel
+		if (change.activeLevel !== this.state.activeLevel) {
+			update.activeLevel = change.activeLevel;
 		}
 		this.setState(update);
 	}
@@ -287,23 +288,16 @@ class MapTimeline extends React.PureComponent {
 			];
 			// return (position,origPosX,origPosY,width,height,hoveredElemen) => {
 			return (origPosX, origPosY, width, height, hoveredElemen) => {
-					// debugger
-					return getTootlipPosition(
-						referencePoint,
-						['bottom', 'top'],
-						windowBBox,
-						TOOLTIP_PADDING
-					)(
-						origPosX,
-						origPosY,
-						width,
-						height,
-						this.wrapperRef.current
-					);
-			}
+				// debugger
+				return getTootlipPosition(
+					referencePoint,
+					['bottom', 'top'],
+					windowBBox,
+					TOOLTIP_PADDING
+				)(origPosX, origPosY, width, height, this.wrapperRef.current);
+			};
 		};
 	}
-
 
 	render() {
 		const {
@@ -326,38 +320,50 @@ class MapTimeline extends React.PureComponent {
 		// const contentHeightByLayers =
 		// 	(this.getZIndexCount(layers) + 1) * utils.getRemSize();
 		const contentHeightByLayers = layers.length * utils.getRemSize();
-		const minTimelineHeight = 11 * utils.getRemSize();
+		const minTimelineHeight = MIN_TIMELINE_HEIGHT * utils.getRemSize();
 		let childArray = React.Children.toArray(children);
-		childArray = [...childArray,<Overlay key={'layers'} overlays={overlays} onClick={onLayerClick} />,];
+		childArray = [
+			...childArray,
+			<Overlay key={'layers'} overlays={overlays} onClick={onLayerClick} />,
+		];
 
 		return (
 			<div ref={this.wrapperRef}>
-			<XAxis period={this.state.period} getX={this.getX} dayWidth={this.state.dayWidth} vertical={vertical} activeLevel={this.state.activeLevel}/>
-			<div className={'ptr-maptimeline-scrollable'}>
-				<div className={'ptr-maptimeline'}>
-					{legend && !vertical ? <MapTimelineLegend layers={layers} /> : null}
-					<div className={'ptr-timeline'}>
-						<HoverHandler getStyle={this.getHorizontalTootlipStyle()}>
-							<TimeLineHover getHoverContent={this.getHoverContent}>
-								<Timeline
-									periodLimit={periodLimit}
-									periodLimitOnCenter={periodLimitOnCenter}
-									onChange={this.onChange}
-									onHover={onHover}
-									onClick={onClick}
-									vertical={vertical}
-									levels={levels}
-									contentHeight={Math.max(contentHeightByLayers, minTimelineHeight)}
-									// contentHeight={200}
-									selectMode={selectMode}
-								>
-									{childArray}
-								</Timeline>
-							</TimeLineHover>
-						</HoverHandler>
+				<XAxis
+					period={this.state.period}
+					getX={this.getX}
+					dayWidth={this.state.dayWidth}
+					vertical={vertical}
+					activeLevel={this.state.activeLevel}
+				/>
+				<div className={'ptr-maptimeline-scrollable'}>
+					<div className={'ptr-maptimeline'}>
+						{legend && !vertical ? <MapTimelineLegend layers={layers} /> : null}
+						<div className={'ptr-timeline'}>
+							<HoverHandler getStyle={this.getHorizontalTootlipStyle()}>
+								<TimeLineHover getHoverContent={this.getHoverContent}>
+									<Timeline
+										periodLimit={periodLimit}
+										periodLimitOnCenter={periodLimitOnCenter}
+										onChange={this.onChange}
+										onHover={onHover}
+										onClick={onClick}
+										vertical={vertical}
+										levels={levels}
+										contentHeight={Math.max(
+											contentHeightByLayers,
+											minTimelineHeight
+										)}
+										// contentHeight={200}
+										selectMode={selectMode}
+									>
+										{childArray}
+									</Timeline>
+								</TimeLineHover>
+							</HoverHandler>
+						</div>
 					</div>
 				</div>
-			</div>
 			</div>
 		);
 	}
