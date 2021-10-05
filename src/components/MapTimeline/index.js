@@ -269,7 +269,11 @@ class MapTimeline extends React.PureComponent {
 
 		return (
 			<div>
-				time: {` ${time.format('YYYY MM D H:mm:ss')}`}
+				<div className={'ptr-timeline-tooltip-time'}>
+					<b>{`${time.format('YYYY')}`}</b>-
+					<b>{`${time.format('MM')}`}</b>-
+					<b>{`${time.format('DD')}`}</b>
+				</div>
 				{intersectionOverlaysElms}
 			</div>
 		);
@@ -291,13 +295,13 @@ class MapTimeline extends React.PureComponent {
 			];
 			// return (position,origPosX,origPosY,width,height,hoveredElemen) => {
 			return (origPosX, origPosY, width, height, hoveredElemen) => {
-				// debugger
-				return getTootlipPosition(
+				const position = getTootlipPosition(
 					referencePoint,
 					['bottom', 'top'],
 					windowBBox,
 					TOOLTIP_PADDING
 				)(origPosX, origPosY, width, height, this.wrapperRef.current);
+				return {top: position.top, left: position.left};
 			};
 		};
 	}
