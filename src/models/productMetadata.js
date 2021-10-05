@@ -13,7 +13,7 @@ export default model => {
 		public: isPublic,
 		tiles,
 		related_products,
-	} = model.data;
+	} = model.data.data;
 
 	return {
 		key: model.key,

@@ -10,6 +10,8 @@ export default (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case ActionTypes.WORLD_CEREAL.PRODUCT_METADATA.ADD:
 			return common.add(state, action);
+		case ActionTypes.WORLD_CEREAL.PRODUCT_METADATA.SET_ACTIVE_KEYS:
+			return common.setActiveMultiple(state, action);
 		default:
 			return state;
 	}

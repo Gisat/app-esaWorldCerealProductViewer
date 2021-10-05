@@ -6,9 +6,7 @@ export default {
 		state: {
 			worldCereal: {
 				productMetadataFilter: {
-					activeFilter: {
-						product: ['annualcropland'],
-					},
+					activeFilter: {},
 				},
 			},
 			components: {

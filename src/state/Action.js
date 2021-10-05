@@ -2,7 +2,7 @@ import {Action as CommonAction} from '@gisatcz/ptr-state';
 import {map as mapUtils} from '@gisatcz/ptr-utils';
 import Select from './Select';
 import config from '../config';
-import {appKey} from '../constants/app';
+import {appKey, userKey} from '../constants/app';
 
 import productMetadataActions from './worldCereal/ProductMetadata/actions';
 import productMetadataFilterActions from './worldCereal/ProductMetadataFilter/actions';
@@ -11,18 +11,14 @@ import productMetadataFilterActions from './worldCereal/ProductMetadataFilter/ac
 import view from '../data/view';
 import cases from '../data/cases';
 import styles from '../data/styles';
-
-import productMetadata from '../data/mock_productMetadata/correct_annualcropland';
-import productMetadata_wheat from '../data/mock_productMetadata/fake_wheat';
-import productMetadata_annualcropland_diffTimes from '../data/mock_productMetadata/fake_annualcropland_diffTimes';
-import productMetadata_france from '../data/mock_productMetadata/france_products';
+import utils from '../utils';
 
 function init(path) {
 	return (dispatch, getState) => {
 		dispatch(CommonAction.app.setBaseUrl(path));
 		dispatch(CommonAction.app.updateLocalConfiguration(config));
 		dispatch(CommonAction.app.setKey(appKey));
-		// dispatch(CommonAction.app.loadConfiguration());
+		dispatch(resetUser());
 
 		// add & apply view
 		dispatch(CommonAction.views.add(view));
@@ -38,12 +34,12 @@ function init(path) {
 		dispatch(CommonAction.styles.add(styles));
 
 		// add mock data
-		dispatch(productMetadataActions.add(productMetadata));
-		dispatch(productMetadataActions.add(productMetadata_wheat));
-		dispatch(
-			productMetadataActions.add(productMetadata_annualcropland_diffTimes)
-		);
-		dispatch(productMetadataActions.add(productMetadata_france));
+		// dispatch(productMetadataActions.add(productMetadata));
+		// dispatch(productMetadataActions.add(productMetadata_wheat));
+		// dispatch(
+		// 	productMetadataActions.add(productMetadata_annualcropland_diffTimes)
+		// );
+		// dispatch(productMetadataActions.add(productMetadata_france));
 
 		// add random metadata
 		// dispatch(productMetadataActions.add(randomMetadata));
@@ -59,6 +55,26 @@ function init(path) {
 		// 		)
 		// 	);
 		// }, 500);
+	};
+}
+
+function resetUser() {
+	return (dispatch, getState) => {
+		const config = Select.app.getCompleteLocalConfiguration(getState());
+		if (config) {
+			const {apiBackendProtocol, apiBackendHost, apiBackendPath} = config;
+			const path = 'rest/project/worldCereal/user/sessionStart';
+			const url = `${apiBackendProtocol}://${apiBackendHost}/${apiBackendPath}/${path}`;
+			const method = 'GET';
+
+			utils
+				.request(url, method, null, null, userKey)
+				.catch(
+					err => new Error(`Failed to load product metadata. Error: ${err}`)
+				);
+		} else {
+			throw new Error("Action/resetUser: Config wasn't found!");
+		}
 	};
 }
 
@@ -82,7 +98,7 @@ function adjustInitialBoxRange(mapKey) {
 
 		if (boxRange !== currentMapView.boxRange) {
 			dispatch(CommonAction.maps.updateMapAndSetView(mapKey, {boxRange}));
-			// TODO get product metadata for current view
+			dispatch(productMetadataActions.loadForMapSetView());
 		}
 	};
 }
@@ -90,8 +106,7 @@ function adjustInitialBoxRange(mapKey) {
 function updateMapView(mapKey, viewUpdate) {
 	return (dispatch, getState) => {
 		dispatch(CommonAction.maps.updateMapAndSetView(mapKey, viewUpdate));
-
-		// TODO get product metadata for current view
+		dispatch(productMetadataActions.loadForMapSetView());
 	};
 }
 

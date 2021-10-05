@@ -1,9 +1,14 @@
 import {commonActions, Action as CommonAction} from '@gisatcz/ptr-state';
 import {find as _find} from 'lodash';
+import utils from '../../../utils';
 import productMetadataModel from '../../../models/productMetadata';
 import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
-import {mapSetKey} from '../../../constants/app';
+import {userKey, mapSetKey} from '../../../constants/app';
+
+const setActiveKeys = commonActions.setActiveKeys(
+	ActionTypes.WORLD_CEREAL.PRODUCT_METADATA
+);
 
 /**
  * Add models to store
@@ -15,6 +20,74 @@ function add(items) {
 		dispatch(
 			commonActions.add(ActionTypes.WORLD_CEREAL.PRODUCT_METADATA)(models)
 		);
+	};
+}
+
+/**
+ * Load product metadata based on current map set view
+ */
+function loadForMapSetView() {
+	return (dispatch, getState) => {
+		const state = getState();
+		const viewAsFeature =
+			Select.worldCereal.productMetadata.getMapSetActiveMapExtentAsFeature(
+				state,
+				mapSetKey
+			);
+		const config = Select.app.getCompleteLocalConfiguration(state);
+		if (viewAsFeature && config) {
+			const {geometry} = viewAsFeature;
+			const {apiBackendProtocol, apiBackendHost, apiBackendPath} = config;
+
+			const path = 'rest/project/worldCereal/product/filtered';
+			const url = `${apiBackendProtocol}://${apiBackendHost}/${apiBackendPath}/${path}`;
+			const method = 'POST';
+			const payload = {geometry};
+
+			utils
+				.request(url, method, null, payload, userKey)
+				.then(data => {
+					if (data) {
+						dispatch(handleLoadResponse(data));
+					}
+				})
+				.catch(
+					err => new Error(`Failed to load product metadata. Error: ${err}`)
+				);
+		}
+	};
+}
+
+/**
+ * @param data {products: Array, tiles: Array} products: A collection of products metadata. tiles: List of S2 tiles for given mapView.
+ **/
+function handleLoadResponse(data) {
+	return (dispatch, getState) => {
+		const {products, tiles} = data;
+
+		if (products?.length) {
+			let models = [];
+			let keys = [];
+			products.forEach(product => {
+				if (product.data) {
+					models.push(product);
+				}
+
+				keys.push(product.key);
+			});
+
+			if (models.length) {
+				dispatch(add(models));
+			}
+
+			if (keys.length) {
+				dispatch(setActiveKeys(keys));
+			}
+		}
+
+		if (tiles?.length) {
+			// TODO set tiles as active
+		}
 	};
 }
 
@@ -126,6 +199,7 @@ function getLayerDefinition(state, productMetadataKey, tile, product) {
 export default {
 	add,
 	addLayersForTiles,
+	loadForMapSetView,
 
 	handleProductInActiveMap,
 };

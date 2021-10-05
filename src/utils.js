@@ -1,3 +1,6 @@
+import queryString from 'query-string';
+import fetch from 'isomorphic-fetch';
+
 import {map as mapUtils} from '@gisatcz/ptr-utils';
 import {mapConstants} from '@gisatcz/ptr-core';
 
@@ -49,6 +52,46 @@ function getExtentFromMapViewAsFeature(view, viewport) {
 	return getFeatureFromExtent(getExtentFromMapView(view, viewport));
 }
 
+function request(url, method, query, payload, userKey) {
+	if (query) {
+		url += '?' + queryString.stringify(query);
+	}
+
+	let headers = {
+		'Content-Type': 'application/json',
+	};
+
+	if (userKey) {
+		headers['X-User-Info'] = userKey;
+	}
+
+	return fetch(url, {
+		headers,
+		method: method,
+		body: payload ? JSON.stringify(payload) : null,
+	})
+		.then(
+			response => {
+				if (response.ok) {
+					return response.json().then(body => {
+						if (body) {
+							return body;
+						} else {
+							throw new Error('no data returned');
+						}
+					});
+				} else {
+					throw new Error('response error');
+				}
+			},
+			error => {
+				throw error;
+			}
+		)
+		.catch(err => new Error(`Failed to fetch. Error: ${err}`));
+}
+
 export default {
 	getExtentFromMapViewAsFeature,
+	request,
 };

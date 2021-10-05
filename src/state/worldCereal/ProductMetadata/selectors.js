@@ -128,5 +128,7 @@ export default {
 	getModelsByMapKey,
 	getModelsByMapKeyGroupedByParam,
 
+	getMapSetActiveMapExtentAsFeature,
+
 	isModelInMapExtent,
 };
