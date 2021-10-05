@@ -119,6 +119,25 @@ const getProductMetadataByMapSetViewAndActiveFilter = createSelector(
 );
 
 /**
+ * Filter active product metadata according to active filter
+ * @param {Object} state
+ * @return {Array} A collection of filtered product metadata
+ */
+const getActiveProductMetadataByActiveFilter = createSelector(
+	[
+		productMetadataSelectors.getActiveModels,
+		productMetadataFilterSelectors.getActiveFilter,
+	],
+	(productMetadata, activeFilter) => {
+		if (productMetadata && activeFilter) {
+			return filterMetadata(productMetadata, activeFilter);
+		} else {
+			return null;
+		}
+	}
+);
+
+/**
  * @param {Object} state
  * @param {string} mapSetKey
  * @param {string} filterParameterKey
@@ -176,6 +195,7 @@ export default {
 		productMetadataFilter: productMetadataFilterSelectors,
 
 		getProductMetadataByMapSetViewAndActiveFilter,
+		getActiveProductMetadataByActiveFilter,
 		getProductMetadataCountForFilterOption,
 		getProductTemplates,
 		getProductTemplateByKey,

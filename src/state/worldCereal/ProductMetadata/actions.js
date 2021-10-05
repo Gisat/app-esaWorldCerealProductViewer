@@ -65,25 +65,21 @@ function handleLoadResponse(data) {
 	return (dispatch, getState) => {
 		const {products, tiles} = data;
 
-		if (products?.length) {
-			let models = [];
-			let keys = [];
-			products.forEach(product => {
-				if (product.data) {
-					models.push(product);
-				}
-
-				keys.push(product.key);
-			});
-
-			if (models.length) {
-				dispatch(add(models));
+		let models = [];
+		let keys = [];
+		products.forEach(product => {
+			if (product.data) {
+				models.push(product);
 			}
 
-			if (keys.length) {
-				dispatch(setActiveKeys(keys));
-			}
+			keys.push(product.key);
+		});
+
+		if (models.length) {
+			dispatch(add(models));
 		}
+
+		dispatch(setActiveKeys(keys));
 
 		if (tiles?.length) {
 			// TODO set tiles as active

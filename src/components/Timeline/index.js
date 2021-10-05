@@ -7,14 +7,9 @@ import {mapSetKey} from '../../constants/app';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		productTemplates: Select.worldCereal.getProductTemplates(
-			state,
-		),
+		productTemplates: Select.worldCereal.getProductTemplates(state),
 		productMetadata:
-			Select.worldCereal.getProductMetadataByMapSetViewAndActiveFilter(
-				state,
-				mapSetKey
-			),
+			Select.worldCereal.getActiveProductMetadataByActiveFilter(state),
 		activeLayers: Select.maps.getMapSetActiveMapLayers(state, mapSetKey),
 	};
 };

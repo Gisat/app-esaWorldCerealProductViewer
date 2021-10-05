@@ -7,6 +7,7 @@ import utils from '../../../utils';
 
 const getSubstate = state => state.worldCereal.productMetadata;
 
+const getActiveModels = commonSelectors.getActiveModels(getSubstate);
 const getAll = commonSelectors.getAll(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
 const getAllAsObject = commonSelectors.getAllAsObject(getSubstate);
@@ -122,6 +123,7 @@ export default {
 	getByKey,
 	getByMapSetView,
 
+	getActiveModels,
 	getAllAsObject,
 
 	getKeysByMapKey,
