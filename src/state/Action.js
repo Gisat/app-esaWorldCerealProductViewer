@@ -1,7 +1,10 @@
+import {config as getConfig} from '@gisatcz/ptr-core';
 import {Action as CommonAction} from '@gisatcz/ptr-state';
 import {map as mapUtils} from '@gisatcz/ptr-utils';
 import Select from './Select';
-import config from '../config';
+
+require('dotenv').config();
+
 import {appKey, userKey} from '../constants/app';
 
 import productMetadataActions from './worldCereal/ProductMetadata/actions';
@@ -13,9 +16,32 @@ import cases from '../data/cases';
 import styles from '../data/styles';
 import utils from '../utils';
 
+const getAppEnvConfig = () => {
+	if(process?.env) {
+		const apiBackendProtocol = process.env?.REACT_APP_apiBackendProtocol;
+		const apiBackendHost = process.env?.REACT_APP_apiBackendHost;
+		const apiBackendPath = process.env?.REACT_APP_apiBackendPath;
+		const requestPageSize = process.env?.REACT_APP_requestPageSize;
+		const requestPageSizeXX = process.env?.REACT_APP_requestPageSizeXX;
+
+		return {
+			...(apiBackendProtocol ? {apiBackendProtocol} : {}),
+			...(apiBackendHost ? {apiBackendHost} : {}),
+			...(apiBackendPath ? {apiBackendPath} : {}),
+			...(requestPageSize ? {requestPageSize} : {}),
+			...(requestPageSizeXX ? {requestPageSizeXX} : {}),
+		}
+	} else {
+		return {};
+	}
+}
+
 function init(path) {
 	return (dispatch, getState) => {
 		dispatch(CommonAction.app.setBaseUrl(path));
+
+		const config = getConfig(getAppEnvConfig());
+
 		dispatch(CommonAction.app.updateLocalConfiguration(config));
 		dispatch(CommonAction.app.setKey(appKey));
 		dispatch(resetUser());
