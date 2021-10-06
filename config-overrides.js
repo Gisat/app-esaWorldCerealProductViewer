@@ -1,5 +1,4 @@
 var path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = function override(config, env) {
 	// comment when using package from npm
@@ -14,12 +13,6 @@ module.exports = function override(config, env) {
 			// '@gisatcz/ptr-timeline': '/Users/vojtadubrovsky/Work/GISAT/git/ptr-timeline'
 		},
 	};
-
-	config.exports = {
-		plugins: [
-		  new BundleAnalyzerPlugin()
-		]
-	  }
 
 	return config;
 };
