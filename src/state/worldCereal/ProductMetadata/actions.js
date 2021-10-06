@@ -103,7 +103,10 @@ function handleProductInActiveMap(productMetadataKey) {
 
 		const isLayerPresent =
 			map?.data?.layers &&
-			!!_find(map.data.layers, layer => layer.layerKey === productMetadataKey);
+			!!_find(
+				map.data.layers,
+				layer => layer.productMetadataKey === productMetadataKey
+			);
 
 		// Remove or add layer(s)
 		if (isLayerPresent) {
@@ -149,11 +152,18 @@ function removeLayersForTiles(productMetadataKey, tiles, mapKey) {
 function addLayersForTiles(productMetadataKey, tiles, product, mapKey) {
 	return (dispatch, getState) => {
 		const layers = [];
-		tiles.forEach(tile =>
-			layers.push(
-				getLayerDefinition(getState(), productMetadataKey, tile, product)
-			)
+		const activeTiles = Select.worldCereal.productMetadata.getActiveTiles(
+			getState()
 		);
+
+		tiles.forEach(tile => {
+			if (activeTiles.indexOf(tile.tile) > -1) {
+				layers.push(
+					getLayerDefinition(getState(), productMetadataKey, tile, product)
+				);
+			}
+		});
+
 		dispatch(CommonAction.maps.addMapLayers(mapKey, layers));
 	};
 }
@@ -181,6 +191,8 @@ function getLayerDefinition(state, productMetadataKey, tile, product) {
 	return {
 		key: getUniqueLayerKey(productMetadataKey, tile),
 		layerKey: productMetadataKey,
+		productMetadataKey,
+		tileKey: tile.tile,
 		type: 'cog',
 		options: {
 			url: tile.path,

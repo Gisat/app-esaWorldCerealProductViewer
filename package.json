@@ -1,6 +1,7 @@
 {
 	"name": "app-esa-world-cereal-product-viewer",
 	"description": "ESA World Cereal: Product Viewer",
+	"homepage": ".",
 	"keywords": [
 		"panther",
 		"gisat",
@@ -73,7 +74,7 @@
 		"proxy:ssr": "lcp --proxyUrl https://ptr.gisat.cz --port 4444 --origin http://localhost:3001 --proxyPartial \"\" --credentials",
 		"start": "react-app-rewired start",
 		"crau:start": "cra-universal start",
-		"start:ssr": "react-app-rewired start | npm run proxy:ssr | cra-universal start",
+		"start:ssr": "react-app-rewired start | cra-universal start",
 		"build:ssr": "cra-universal build",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -b gh-pages -d build",
