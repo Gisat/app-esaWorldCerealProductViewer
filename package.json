@@ -1,6 +1,7 @@
 {
 	"name": "app-esa-world-cereal-product-viewer",
 	"description": "ESA World Cereal: Product Viewer",
+	"homepage": ".",
 	"keywords": [
 		"panther",
 		"gisat",
