@@ -1,15 +1,25 @@
 var path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = function override(config, env) {
 	// comment when using package from npm
 	config.resolve = {
 		alias: {
-			react:
-				'C:/Users/PavelVlach/WebstormProjects/ptr-state/node_modules/react',
-			// '@gisatcz/ptr-maps': 'C:/Users/PavelVlach/WebstormProjects/ptr-maps',
-			// '@gisatcz/ptr-atoms': 'C:/Users/PavelVlach/WebstormProjects/ptr-atoms',
+			// 'classnames': './node_modules/classnames',
+			// 'react': '/Users/vojtadubrovsky/Work/GISAT/git/app-esaWorldCerealProductViewer/node_modules/@gisatcz/ptr-state/node_modules/react',
+			// '@gisatcz/ptr-maps': '/Users/vojtadubrovsky/Work/GISAT/git/@gisatcz/ptr-maps',
+			// 'react': '/Users/vojtadubrovsky/Work/GISAT/git/ptr-maps/node_modules/react',
+			// 'react-resize-detector': '/Users/vojtadubrovsky/Work/GISAT/git/app-esaWorldCerealProductViewer/node_modules/@gisatcz/ptr-maps/node_modules/react-resize-detector',
+			// 'react-resize-detector': '/Users/vojtadubrovsky/Work/GISAT/git/app-esaWorldCerealProductViewer/node_modules/react-resize-detector',
+			// '@gisatcz/ptr-timeline': '/Users/vojtadubrovsky/Work/GISAT/git/ptr-timeline'
 		},
 	};
+
+	config.exports = {
+		plugins: [
+		  new BundleAnalyzerPlugin()
+		]
+	  }
 
 	return config;
 };

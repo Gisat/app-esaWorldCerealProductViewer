@@ -102,6 +102,7 @@ function createAppStore(options) {
 
 	return {
 		store: store,
+		requestCounter: requestCounter,
 	};
 }
 
