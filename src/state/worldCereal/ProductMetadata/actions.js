@@ -49,11 +49,73 @@ function loadForMapSetView() {
 				.then(data => {
 					if (data) {
 						dispatch(handleLoadResponse(data));
+						dispatch(checkExistingLayers());
 					}
 				})
 				.catch(
 					err => new Error(`Failed to load product metadata. Error: ${err}`)
 				);
+		}
+	};
+}
+
+function checkExistingLayers() {
+	return (dispatch, getState) => {
+		const state = getState();
+		const maps = Select.maps.getMapSetMaps(state, mapSetKey);
+		const activeProductsKeys =
+			Select.worldCereal.productMetadata.getActiveKeys(state);
+		const activeTiles =
+			Select.worldCereal.productMetadata.getActiveTiles(state);
+
+		if (maps && activeProductsKeys?.length && activeTiles?.length) {
+			maps.forEach(map => {
+				const mapKey = map.key;
+				const products = Select.worldCereal.productMetadata.getModelsByMapKey(
+					state,
+					mapKey
+				);
+				const layersToAdd = [];
+				const layers = map.data?.layers;
+				if (layers?.length) {
+					activeProductsKeys.forEach(productMetadataKey => {
+						const product = _.find(products, {key: productMetadataKey});
+						const productTiles = product?.data?.tiles;
+
+						if (productTiles) {
+							activeTiles.forEach(tileKey => {
+								const relevantTile = _find(
+									productTiles,
+									tile => tile.tile === tileKey
+								);
+								if (relevantTile) {
+									const existingLayer = _find(
+										layers,
+										layer =>
+											layer.productMetadataKey === productMetadataKey &&
+											layer.tileKey === tileKey
+									);
+									if (!existingLayer) {
+										const layer = getLayerDefinition(
+											state,
+											productMetadataKey,
+											relevantTile,
+											product.data.product
+										);
+										if (layer) {
+											layersToAdd.push(layer);
+										}
+									}
+								}
+							});
+						}
+					});
+				}
+
+				if (layersToAdd.length) {
+					dispatch(CommonAction.maps.addMapLayers(map.key, layersToAdd));
+				}
+			});
 		}
 	};
 }
