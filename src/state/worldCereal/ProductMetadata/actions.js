@@ -82,7 +82,7 @@ function handleLoadResponse(data) {
 		dispatch(setActiveKeys(keys));
 
 		if (tiles?.length) {
-			// TODO set tiles as active
+			dispatch(actionSetActiveTiles(tiles));
 		}
 	};
 }
@@ -191,6 +191,18 @@ function getLayerDefinition(state, productMetadataKey, tile, product) {
 		},
 	};
 }
+
+// Creators --------------------------------------------------------------------------------------
+/**
+ * Set active tiles
+ * @param tiles {Array} List of tiles
+ */
+const actionSetActiveTiles = tiles => {
+	return {
+		type: ActionTypes.WORLD_CEREAL.PRODUCT_METADATA.SET_ACTIVE_TILES,
+		tiles,
+	};
+};
 
 export default {
 	add,

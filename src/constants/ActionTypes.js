@@ -6,6 +6,7 @@ const specificActionTypes = utils.deepKeyMirror({
 		PRODUCT_METADATA: {
 			ADD: null,
 			SET_ACTIVE_KEYS: null,
+			SET_ACTIVE_TILES: null,
 		},
 		PRODUCT_METADATA_FILTER: {
 			ACTIVE_FILTER: {
