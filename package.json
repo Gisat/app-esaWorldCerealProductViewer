@@ -66,7 +66,7 @@
 	"scripts": {
 		"proxy": "lcp --proxyUrl https://ptr.gisat.cz --port 4444 --origin http://localhost:3000 --proxyPartial \"\" --credentials",
 		"proxy:ssr": "lcp --proxyUrl https://ptr.gisat.cz --port 4444 --origin http://localhost:3001 --proxyPartial \"\" --credentials",
-		"start": "npm run proxy | react-app-rewired start",
+		"start": "react-app-rewired start",
 		"start:ssr": "react-app-rewired start | npm run proxy:ssr | cra-universal start",
 		"build:ssr": "cra-universal build",
 		"predeploy": "npm run build",
