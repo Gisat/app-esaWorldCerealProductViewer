@@ -12,6 +12,8 @@ const getAll = commonSelectors.getAll(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
 const getAllAsObject = commonSelectors.getAllAsObject(getSubstate);
 
+const getActiveTiles = state => state.worldCereal.productMetadata.activeTiles;
+
 // helpers ----------------------------------------------
 
 /**
@@ -124,6 +126,7 @@ export default {
 	getByMapSetView,
 
 	getActiveModels,
+	getActiveTiles,
 	getAllAsObject,
 
 	getKeysByMapKey,
