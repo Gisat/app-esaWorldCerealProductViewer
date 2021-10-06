@@ -107,7 +107,6 @@ class Timeline extends React.PureComponent {
 				{layers ? (
 					<MapTimeline
 						periodLimit={periodLimit}
-						onClick={evt => console.log('onClick', evt)}
 						vertical={false}
 						levels={LEVELS}
 						selectMode={true}

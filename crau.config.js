@@ -52,18 +52,15 @@ module.exports = {
 					{
 						test: /\.s[ac]ss$/i,
 						use: [
-							// Translates CSS into CommonJS
-							'css-loader?url=false',
-							// Compiles Sass to CSS
-							{
-								loader: "sass-loader",
-								options: {
-								  // Prefer `dart-sass`
-								  implementation: require("sass"),
-								},
-							  },
+						"url-loader",
+						  // Creates `style` nodes from JS strings
+						  "style-loader",
+						  // Translates CSS into CommonJS
+						  "css-loader",
+						  // Compiles Sass to CSS
+						  "sass-loader",
 						],
-					},
+					  },
 					{
 						test: /\.css/,
 						use: [
