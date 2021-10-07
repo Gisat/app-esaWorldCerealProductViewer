@@ -51,13 +51,14 @@ const getProductTemplateByKey = createCachedSelector(
 	}
 )((state, productMetadataKey) => productMetadataKey);
 
+/**
+ * Get product templates (cases) extended by style definition
+ * @param {Object} state
+ * @return {Object} Case models extended by style definition
+ */
 const getProductTemplates = createSelector(
-	[
-		CommonSelect.cases.getAllAsObject,
-		CommonSelect.styles.getAllAsObject,
-		productMetadataSelectors.getAllAsObject,
-	],
-	(cases, styles, productMetadata) => {
+	[CommonSelect.cases.getAllAsObject, CommonSelect.styles.getAllAsObject],
+	(cases, styles) => {
 		if (cases && styles) {
 			const productTemplates = {};
 			for (const [caseKey, caseData] of Object.entries(cases)) {

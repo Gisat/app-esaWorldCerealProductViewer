@@ -4,7 +4,7 @@ import utils from '../../../utils';
 import productMetadataModel from '../../../models/productMetadata';
 import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
-import {userKey, mapSetKey} from '../../../constants/app';
+import {mapSetKey} from '../../../constants/app';
 
 const setActiveKeys = commonActions.setActiveKeys(
 	ActionTypes.WORLD_CEREAL.PRODUCT_METADATA
@@ -45,7 +45,7 @@ function loadForMapSetView() {
 			const payload = {geometry};
 
 			utils
-				.request(url, method, null, payload, userKey)
+				.request(url, method, null, payload)
 				.then(data => {
 					if (data) {
 						dispatch(handleLoadResponse(data));

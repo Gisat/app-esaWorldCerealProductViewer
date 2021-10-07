@@ -4,6 +4,8 @@ import fetch from 'isomorphic-fetch';
 import {map as mapUtils} from '@gisatcz/ptr-utils';
 import {mapConstants} from '@gisatcz/ptr-core';
 
+import {userKey} from './constants/app';
+
 /**
  * Get visible map extent from Panther map view and viewport. For maps in EPSG 3857 (WebMercator) projection only.
  * @param view {Object} Panther map view
@@ -52,7 +54,14 @@ function getExtentFromMapViewAsFeature(view, viewport) {
 	return getFeatureFromExtent(getExtentFromMapView(view, viewport));
 }
 
-function request(url, method, query, payload, userKey) {
+/**
+ * @param url {string}
+ * @param method {string} HTTP method
+ * @param query {Object}
+ * @param payload {Object}
+ * @returns {Promise}
+ */
+function request(url, method, query, payload) {
 	if (query) {
 		url += '?' + queryString.stringify(query);
 	}

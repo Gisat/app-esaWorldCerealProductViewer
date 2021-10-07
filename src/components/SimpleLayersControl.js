@@ -23,18 +23,15 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-	return () => {
-		const componentId = 'app_BackgroundLayersControl';
-		return {
-			onSelect: layerKey => {
-				dispatch(
-					Action.maps.setMapSetBackgroundLayer(
-						mapSetKey,
-						backgroundLayers[layerKey]
-					)
-				);
-			},
-		};
+	return {
+		onSelect: layerKey => {
+			dispatch(
+				Action.maps.setMapSetBackgroundLayer(
+					mapSetKey,
+					backgroundLayers[layerKey]
+				)
+			);
+		},
 	};
 };
 

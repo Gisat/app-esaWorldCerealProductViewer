@@ -5,7 +5,7 @@ import Select from './Select';
 
 require('dotenv').config();
 
-import {appKey, userKey} from '../constants/app';
+import {appKey} from '../constants/app';
 
 import productMetadataActions from './worldCereal/ProductMetadata/actions';
 import productMetadataFilterActions from './worldCereal/ProductMetadataFilter/actions';
@@ -17,7 +17,7 @@ import styles from '../data/styles';
 import utils from '../utils';
 
 const getAppEnvConfig = () => {
-	if(process?.env) {
+	if (process?.env) {
 		const apiBackendProtocol = process.env?.REACT_APP_apiBackendProtocol;
 		const apiBackendHost = process.env?.REACT_APP_apiBackendHost;
 		const apiBackendPath = process.env?.REACT_APP_apiBackendPath;
@@ -30,11 +30,11 @@ const getAppEnvConfig = () => {
 			...(apiBackendPath ? {apiBackendPath} : {}),
 			...(requestPageSize ? {requestPageSize} : {}),
 			...(requestPageSizeXX ? {requestPageSizeXX} : {}),
-		}
+		};
 	} else {
 		return {};
 	}
-}
+};
 
 function init(path) {
 	return (dispatch, getState) => {
@@ -44,7 +44,7 @@ function init(path) {
 
 		dispatch(CommonAction.app.updateLocalConfiguration(config));
 		dispatch(CommonAction.app.setKey(appKey));
-		dispatch(resetUser());
+		dispatch(resetSession());
 
 		// add & apply view
 		dispatch(CommonAction.views.add(view));
@@ -84,7 +84,10 @@ function init(path) {
 	};
 }
 
-function resetUser() {
+/**
+ * Reset session
+ */
+function resetSession() {
 	return (dispatch, getState) => {
 		const config = Select.app.getCompleteLocalConfiguration(getState());
 		if (config) {
@@ -94,7 +97,7 @@ function resetUser() {
 			const method = 'GET';
 
 			utils
-				.request(url, method, null, null, userKey)
+				.request(url, method, null, null)
 				.catch(
 					err => new Error(`Failed to load product metadata. Error: ${err}`)
 				);
@@ -129,6 +132,10 @@ function adjustInitialBoxRange(mapKey) {
 	};
 }
 
+/**
+ * @param mapKey {string}
+ * @param viewUpdate {Object} Panther's mapView parameters to update
+ */
 function updateMapView(mapKey, viewUpdate) {
 	return (dispatch, getState) => {
 		dispatch(CommonAction.maps.updateMapAndSetView(mapKey, viewUpdate));
@@ -157,6 +164,10 @@ function removeAllLayersFromMapByLayerKeys(mapKey, layerKeys) {
 }
 
 // TODO create common action in maps
+/**
+ * Remove all layers (except background) for given map
+ * @param mapKey {string}
+ */
 function removeAllMapLayers(mapKey) {
 	return (dispatch, getState) => {
 		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);
