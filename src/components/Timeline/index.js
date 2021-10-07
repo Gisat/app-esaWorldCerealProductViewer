@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 		productMetadata:
 			Select.worldCereal.getActiveProductMetadataByActiveFilter(state),
 		activeLayers: Select.maps.getMapSetActiveMapLayers(state, mapSetKey),
+		isInteractivityLimited: Select.worldCereal.isInteractivityLimited(state),
 	};
 };
 

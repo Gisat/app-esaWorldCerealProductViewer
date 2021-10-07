@@ -126,8 +126,7 @@ function adjustInitialBoxRange(mapKey) {
 		);
 
 		if (boxRange !== currentMapView.boxRange) {
-			dispatch(CommonAction.maps.updateMapAndSetView(mapKey, {boxRange}));
-			dispatch(productMetadataActions.loadForMapSetView());
+			dispatch(updateMapView(mapKey, {boxRange}));
 		}
 	};
 }
@@ -139,7 +138,16 @@ function adjustInitialBoxRange(mapKey) {
 function updateMapView(mapKey, viewUpdate) {
 	return (dispatch, getState) => {
 		dispatch(CommonAction.maps.updateMapAndSetView(mapKey, viewUpdate));
-		dispatch(productMetadataActions.loadForMapSetView());
+
+		// just to be sure, that map view was updated
+		setTimeout(() => {
+			const isInteractivityLimited = Select.worldCereal.isInteractivityLimited(
+				getState()
+			);
+			if (!isInteractivityLimited) {
+				dispatch(productMetadataActions.loadForMapSetView());
+			}
+		}, 10);
 	};
 }
 

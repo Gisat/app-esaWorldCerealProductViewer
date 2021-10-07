@@ -35,11 +35,11 @@ class Header extends React.PureComponent {
 					</h1>
 				</div>
 				<div className="worldCereal-Header-tools">
-					{showStatusInfo ? (
-						<StatusLabel small status="warning">
-							Zoom in to work with layers!
-						</StatusLabel>
-					) : null}
+					{/*{showStatusInfo ? (*/}
+					{/*	<StatusLabel small status="warning">*/}
+					{/*		Zoom in to work with layers!*/}
+					{/*	</StatusLabel>*/}
+					{/*) : null}*/}
 					<Button
 						className="ptr-dark"
 						onClick={addMap}
