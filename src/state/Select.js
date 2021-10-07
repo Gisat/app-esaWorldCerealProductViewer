@@ -1,4 +1,5 @@
 import {createCachedSelector} from 're-reselect';
+import {createSelector} from 'reselect';
 import {
 	filter as _filter,
 	includes as _includes,
@@ -6,9 +7,9 @@ import {
 } from 'lodash';
 import {Select as CommonSelect} from '@gisatcz/ptr-state';
 
+import {mapSetKey, MAX_BOX_RANGE_FOR_LAYERS_HANDLING} from '../constants/app';
 import productMetadataSelectors from './worldCereal/ProductMetadata/selectors';
 import productMetadataFilterSelectors from './worldCereal/ProductMetadataFilter/selectors';
-import {createSelector} from 'reselect';
 
 /**
  * Get product template extended by style definition
@@ -166,6 +167,13 @@ const getProductMetadataCountForFilterOption = createCachedSelector(
 		`${filterParameterKey}_${value}`
 );
 
+const isInteractivityLimited = createSelector(
+	[state => CommonSelect.maps.getMapSetActiveMapView(state, mapSetKey)],
+	mapView => {
+		return mapView?.boxRange > MAX_BOX_RANGE_FOR_LAYERS_HANDLING;
+	}
+);
+
 // helpers
 /**
  * @param productMetadata {Array} A collection of product metadata
@@ -201,5 +209,7 @@ export default {
 		getProductTemplates,
 		getProductTemplateByKey,
 		getStyleDefinitionByProductTemplateKey,
+
+		isInteractivityLimited,
 	},
 };
