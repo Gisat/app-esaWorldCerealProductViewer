@@ -27,6 +27,10 @@
   }
 }
 
+.worldCereal-Timeline.disabled {
+  border-top: 1px solid var(--base95);
+}
+
 .worldCereal-Timeline.disabled:after {
   content: "Zoom in the map to work with layers.";
   @include disabledOverlay();
