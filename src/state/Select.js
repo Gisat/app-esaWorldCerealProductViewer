@@ -1,10 +1,6 @@
 import {createCachedSelector} from 're-reselect';
 import {createSelector} from 'reselect';
-import {
-	filter as _filter,
-	includes as _includes,
-	findIndex as _findIndex,
-} from 'lodash';
+import {filter as _filter} from 'lodash';
 import {Select as CommonSelect} from '@gisatcz/ptr-state';
 
 import {mapSetKey, MAX_BOX_RANGE_FOR_LAYERS_HANDLING} from '../constants/app';
@@ -101,26 +97,6 @@ const getStyleDefinitionByProductTemplateKey = createCachedSelector(
 )((state, productTemplateKey) => productTemplateKey);
 
 /**
- * Filter product metadata according to current map view and active filter
- * @param {Object} state
- * @param {string} mapSetKey
- * @return {Array} A collection of filtered product metadata
- */
-const getProductMetadataByMapSetViewAndActiveFilter = createSelector(
-	[
-		productMetadataSelectors.getByMapSetView,
-		productMetadataFilterSelectors.getActiveFilter,
-	],
-	(productMetadata, activeFilter) => {
-		if (productMetadata && activeFilter) {
-			return filterMetadata(productMetadata, activeFilter);
-		} else {
-			return null;
-		}
-	}
-);
-
-/**
  * Filter active product metadata according to active filter
  * @param {Object} state
  * @return {Array} A collection of filtered product metadata
@@ -148,7 +124,7 @@ const getActiveProductMetadataByActiveFilter = createSelector(
  */
 const getProductMetadataCountForFilterOption = createCachedSelector(
 	[
-		productMetadataSelectors.getByMapSetView,
+		productMetadataSelectors.getActiveModels,
 		productMetadataFilterSelectors.getActiveFilter,
 		(state, mapSetKey, filterParameterKey) => filterParameterKey,
 		(state, mapSetKey, filterParameterKey, value) => value,
@@ -203,7 +179,6 @@ export default {
 		productMetadata: productMetadataSelectors,
 		productMetadataFilter: productMetadataFilterSelectors,
 
-		getProductMetadataByMapSetViewAndActiveFilter,
 		getActiveProductMetadataByActiveFilter,
 		getProductMetadataCountForFilterOption,
 		getProductTemplates,

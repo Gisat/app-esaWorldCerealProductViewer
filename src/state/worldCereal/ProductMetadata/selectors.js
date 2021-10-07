@@ -1,4 +1,4 @@
-import {filter as _filter, uniq as _uniq, groupBy as _groupBy} from 'lodash';
+import {uniq as _uniq, groupBy as _groupBy} from 'lodash';
 import {createSelector} from 'reselect';
 import {createCachedSelector} from 're-reselect';
 import intersect from '@turf/intersect';
@@ -9,7 +9,6 @@ const getSubstate = state => state.worldCereal.productMetadata;
 
 const getActiveModels = commonSelectors.getActiveModels(getSubstate);
 const getActiveKeys = commonSelectors.getActiveKeys(getSubstate);
-const getAll = commonSelectors.getAll(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
 const getAllAsObject = commonSelectors.getAllAsObject(getSubstate);
 
@@ -38,25 +37,6 @@ const getMapSetActiveMapExtentAsFeature = createSelector(
 );
 
 // selectors ---------------------------------------------
-
-/**
- * @param {Object} state
- * @param {string} mapSetKey
- * @return {Object|null} Panther map view
- */
-const getByMapSetView = createSelector(
-	[getMapSetActiveMapExtentAsFeature, getAll],
-	(mapExtentAsFeature, models) => {
-		if (mapExtentAsFeature && models) {
-			return _filter(
-				models,
-				model => !!intersect(model.data.geometry, mapExtentAsFeature)
-			);
-		} else {
-			return null;
-		}
-	}
-);
 
 /**
  * @param {Object} state
@@ -131,7 +111,6 @@ export default {
 	getSubstate,
 
 	getByKey,
-	getByMapSetView,
 
 	getActiveModels,
 	getActiveKeys,
