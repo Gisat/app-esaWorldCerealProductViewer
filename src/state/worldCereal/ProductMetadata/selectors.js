@@ -18,6 +18,7 @@ const getActiveTiles = state => state.worldCereal.productMetadata.activeTiles;
 // helpers ----------------------------------------------
 
 /**
+ * TODO move to ptr-state
  * Return active map view as polygon feature
  * @param {Object} state
  * @return {GeoJSON.Feature|null}
@@ -89,6 +90,12 @@ const getModelsByMapKey = createCachedSelector(
 	}
 )((state, mapKey) => mapKey);
 
+/**
+ * @param {Object} state
+ * @param {string} mapKey
+ * @param {string} parameter for grouping
+ * @return {Array|null} Product metadata models present in given map grouped bz given parameter
+ */
 const getModelsByMapKeyGroupedByParam = createCachedSelector(
 	[getModelsByMapKey, (state, mapKey, parameter) => parameter],
 	(models, parameter) => {

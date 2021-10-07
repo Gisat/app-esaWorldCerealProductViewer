@@ -7,6 +7,7 @@ import {mapConstants} from '@gisatcz/ptr-core';
 import {userKey} from './constants/app';
 
 /**
+ * TODO move to ptr-utils
  * Get visible map extent from Panther map view and viewport. For maps in EPSG 3857 (WebMercator) projection only.
  * @param view {Object} Panther map view
  * @param viewport {height: number, width: number}
@@ -22,6 +23,7 @@ function getExtentFromMapView(view, viewport) {
 }
 
 /**
+ * TODO move to ptr-utils
  * @param extent {{minLon: number, maxLat: number, minLat: number, maxLon: number}}
  * @returns {GeoJSON.Feature}
  */
@@ -45,6 +47,7 @@ function getFeatureFromExtent(extent) {
 }
 
 /**
+ * TODO move to ptr-utils
  * Get visible map extent from Panther map view and viewport as GeoJSON feature. For maps in EPSG 3857 (WebMercator) projection only.
  * @param view {Object} Panther map view
  * @param viewport {height: number, width: number}
