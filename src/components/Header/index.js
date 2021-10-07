@@ -9,6 +9,7 @@ import Presentation from './presentation';
 const mapStateToProps = (state, ownProps) => {
 	return {
 		mapSetMapKeys: Select.maps.getMapSetMapKeys(state, mapSetKey),
+		mapView: Select.maps.getMapSetActiveMapView(state, mapSetKey),
 	};
 };
 

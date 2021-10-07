@@ -42,3 +42,10 @@
   border-right: 2px solid var(--base40);
   color: var(--base10);
 }
+
+.worldCereal-Header-tools {
+  display: flex;
+  grid-gap: 1rem;
+  color: var(--base10);
+  align-items: center;
+}
