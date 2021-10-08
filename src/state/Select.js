@@ -24,7 +24,7 @@ const getProductTemplateByKey = createCachedSelector(
 			const productTemplate = cases[productKey];
 			if (productTemplate) {
 				if (styles) {
-					const style = styles[productTemplate.data?.styleKey];
+					const style = styles[productTemplate.data?.cogStyleKey];
 					if (style) {
 						return {
 							...productTemplate,
@@ -59,7 +59,7 @@ const getProductTemplates = createSelector(
 		if (cases && styles) {
 			const productTemplates = {};
 			for (const [caseKey, caseData] of Object.entries(cases)) {
-				const style = styles[caseData.data?.styleKey];
+				const style = styles[caseData.data?.cogStyleKey];
 				productTemplates[caseKey] = {
 					...caseData,
 				};
@@ -75,7 +75,7 @@ const getProductTemplates = createSelector(
 );
 
 /**
- * Get style based on styleKey in case
+ * Get style based on cogStyleKey in case
  * @param {Object} state
  * @param {string} productTemplateKey caseKey
  * @return {Object} Panther style definition
@@ -84,9 +84,9 @@ const getStyleDefinitionByProductTemplateKey = createCachedSelector(
 	[CommonSelect.cases.getByKey, CommonSelect.styles.getAllAsObject],
 	(productTemplate, styles) => {
 		if (productTemplate && styles) {
-			const styleKey = productTemplate.data?.styleKey;
-			if (styleKey && styles[styleKey]) {
-				return styles[styleKey].data.definition;
+			const cogStyleKey = productTemplate.data?.cogStyleKey;
+			if (cogStyleKey && styles[cogStyleKey]) {
+				return styles[cogStyleKey].data.definition;
 			} else {
 				return null;
 			}

@@ -105,7 +105,7 @@ function checkExistingLayers() {
 										tileKey
 									);
 									if (!existingLayer) {
-										const layer = getLayerDefinition(
+										const layer = getCogLayerDefinition(
 											state,
 											productMetadataKey,
 											relevantTile,
@@ -181,8 +181,10 @@ function handleProductInActiveMap(productMetadataKey) {
 
 		// Remove or add layer(s)
 		if (isLayerPresent) {
+			dispatch(removeProductOutlineLayer(map.key, productMetadataKey));
 			dispatch(removeLayersForTiles(productMetadataKey, tiles, map.key));
 		} else {
+			dispatch(addProductOutlineLayer(map.key, productMetadata));
 			dispatch(
 				addLayersForTiles(
 					productMetadataKey,
@@ -207,10 +209,20 @@ function removeLayersForTiles(productMetadataKey, tiles, mapKey) {
 			dispatch(
 				CommonAction.maps.removeMapLayer(
 					mapKey,
-					getUniqueLayerKey(productMetadataKey, tile)
+					getUniqueCogLayerKey(productMetadataKey, tile)
 				)
 			);
 		});
+	};
+}
+
+/**
+ * @param mapKey {string}
+ * @param productMetadataKey {string} unique key of product metadata
+ */
+function removeProductOutlineLayer(mapKey, productMetadataKey) {
+	return (dispatch, getState) => {
+		dispatch(CommonAction.maps.removeMapLayer(mapKey, productMetadataKey));
 	};
 }
 
@@ -230,12 +242,26 @@ function addLayersForTiles(productMetadataKey, tiles, product, mapKey) {
 		tiles.forEach(tile => {
 			if (activeTiles.indexOf(tile.tile) > -1) {
 				layers.push(
-					getLayerDefinition(getState(), productMetadataKey, tile, product)
+					getCogLayerDefinition(getState(), productMetadataKey, tile, product)
 				);
 			}
 		});
 
 		dispatch(CommonAction.maps.addMapLayers(mapKey, layers));
+	};
+}
+
+/**
+ * @param mapKey {string}
+ * @param productMetadata {Object}
+ */
+function addProductOutlineLayer(mapKey, productMetadata) {
+	return (dispatch, getState) => {
+		const outlineLayer = getProductOutlineLayerDefinition(
+			getState(),
+			productMetadata
+		);
+		dispatch(CommonAction.maps.addMapLayerToIndex(mapKey, outlineLayer));
 	};
 }
 
@@ -246,21 +272,21 @@ function addLayersForTiles(productMetadataKey, tiles, product, mapKey) {
  * @param tile {tile: Object, path: string}
  * @returns {string}
  */
-function getUniqueLayerKey(productMetadataKey, tile) {
+function getUniqueCogLayerKey(productMetadataKey, tile) {
 	return `${productMetadataKey}_${tile.tile}`;
 }
 
 /**
- * Get layer definition
+ * Get COG layer definition
  * @param state {Object}
  * @param productMetadataKey {string} uuid of product metadata
  * @param tile {tile: Object, path: string}
  * @param product {string}
  * @returns {Object} Panther.Layer
  */
-function getLayerDefinition(state, productMetadataKey, tile, product) {
+function getCogLayerDefinition(state, productMetadataKey, tile, product) {
 	return {
-		key: getUniqueLayerKey(productMetadataKey, tile),
+		key: getUniqueCogLayerKey(productMetadataKey, tile),
 		layerKey: productMetadataKey,
 		productMetadataKey,
 		tileKey: tile.tile,
@@ -271,6 +297,49 @@ function getLayerDefinition(state, productMetadataKey, tile, product) {
 				state,
 				product
 			),
+		},
+	};
+}
+
+/**
+ * Get product outline layer definition
+ * @param state {Object}
+ * @param productMetadata {Object}
+ * @returns {Object} Panther.Layer
+ */
+function getProductOutlineLayerDefinition(state, productMetadata) {
+	const {key, data} = productMetadata;
+	const {geometry} = data;
+	const outline = {
+		type: 'Feature',
+		geometry,
+	};
+
+	const cogStyle = Select.worldCereal.getStyleDefinitionByProductTemplateKey(
+		state,
+		productMetadata.data.product
+	);
+
+	return {
+		key,
+		layerKey: key,
+		productMetadataKey: key,
+		type: 'vector',
+		options: {
+			style: {
+				rules: [
+					{
+						styles: [
+							{
+								fill: null,
+								outlineWidth: 1,
+								outlineColor: cogStyle?.rules?.[0]?.styles?.[0].color,
+							},
+						],
+					},
+				],
+			},
+			features: [outline],
 		},
 	};
 }
