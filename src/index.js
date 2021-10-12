@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from '@gisatcz/ptr-state';
 import {isServer} from '@gisatcz/ptr-core';
+import {proj} from '@gisatcz/ptr-maps';
 
 import createStore from './state/Store';
 import {App} from './app';
 
+proj.addProjections(proj.projections.utms);
 const {store} = createStore();
 
 const ConnectedApp = () => (
