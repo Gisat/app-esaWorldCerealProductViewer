@@ -9,6 +9,7 @@ const ProductFilterOption = ({
 	selected,
 	metadata,
 	onValueChange,
+	isInteractivityLimited,
 }) => {
 	const name = metadata?.data?.nameDisplay || value;
 
@@ -16,7 +17,7 @@ const ProductFilterOption = ({
 		<div className="worldCereal-ProductFilterOption">
 			<input
 				type="checkbox"
-				disabled={count === 0}
+				disabled={isInteractivityLimited ? true : count === 0}
 				id={value}
 				name={value}
 				checked={selected}
@@ -25,7 +26,7 @@ const ProductFilterOption = ({
 				}}
 			/>
 			<label htmlFor={value}>
-				{name} <span>({count})</span>
+				{name} <span>({isInteractivityLimited ? 0 : count})</span>
 			</label>
 		</div>
 	);

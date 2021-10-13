@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 			),
 		availableProductMetadata:
 			Select.worldCereal.getActiveProductMetadataByActiveFilter(state),
+		isInteractivityLimited: Select.worldCereal.isInteractivityLimited(state),
 	};
 };
 

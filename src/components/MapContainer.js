@@ -1,5 +1,5 @@
 import {connect, setRecomputeState as setState} from '@gisatcz/ptr-state';
-import {utils, map as mapUtils} from '@gisatcz/ptr-utils';
+import {utils} from '@gisatcz/ptr-utils';
 import Action from '../state/Action';
 import Select from '../state/Select';
 

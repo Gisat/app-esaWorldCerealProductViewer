@@ -1,14 +1,11 @@
 import {createCachedSelector} from 're-reselect';
-import {
-	filter as _filter,
-	includes as _includes,
-	findIndex as _findIndex,
-} from 'lodash';
+import {createSelector} from 'reselect';
+import {filter as _filter} from 'lodash';
 import {Select as CommonSelect} from '@gisatcz/ptr-state';
 
+import {mapSetKey, MAX_BOX_RANGE_FOR_LAYERS_HANDLING} from '../constants/app';
 import productMetadataSelectors from './worldCereal/ProductMetadata/selectors';
 import productMetadataFilterSelectors from './worldCereal/ProductMetadataFilter/selectors';
-import {createSelector} from 'reselect';
 
 /**
  * Get product template extended by style definition
@@ -27,7 +24,7 @@ const getProductTemplateByKey = createCachedSelector(
 			const productTemplate = cases[productKey];
 			if (productTemplate) {
 				if (styles) {
-					const style = styles[productTemplate.data?.styleKey];
+					const style = styles[productTemplate.data?.cogStyleKey];
 					if (style) {
 						return {
 							...productTemplate,
@@ -51,17 +48,18 @@ const getProductTemplateByKey = createCachedSelector(
 	}
 )((state, productMetadataKey) => productMetadataKey);
 
+/**
+ * Get product templates (cases) extended by style definition
+ * @param {Object} state
+ * @return {Object} Case models extended by style definition
+ */
 const getProductTemplates = createSelector(
-	[
-		CommonSelect.cases.getAllAsObject,
-		CommonSelect.styles.getAllAsObject,
-		productMetadataSelectors.getAllAsObject,
-	],
-	(cases, styles, productMetadata) => {
+	[CommonSelect.cases.getAllAsObject, CommonSelect.styles.getAllAsObject],
+	(cases, styles) => {
 		if (cases && styles) {
 			const productTemplates = {};
 			for (const [caseKey, caseData] of Object.entries(cases)) {
-				const style = styles[caseData.data?.styleKey];
+				const style = styles[caseData.data?.cogStyleKey];
 				productTemplates[caseKey] = {
 					...caseData,
 				};
@@ -77,7 +75,7 @@ const getProductTemplates = createSelector(
 );
 
 /**
- * Get style based on styleKey in case
+ * Get style based on cogStyleKey in case
  * @param {Object} state
  * @param {string} productTemplateKey caseKey
  * @return {Object} Panther style definition
@@ -86,9 +84,9 @@ const getStyleDefinitionByProductTemplateKey = createCachedSelector(
 	[CommonSelect.cases.getByKey, CommonSelect.styles.getAllAsObject],
 	(productTemplate, styles) => {
 		if (productTemplate && styles) {
-			const styleKey = productTemplate.data?.styleKey;
-			if (styleKey && styles[styleKey]) {
-				return styles[styleKey].data.definition;
+			const cogStyleKey = productTemplate.data?.cogStyleKey;
+			if (cogStyleKey && styles[cogStyleKey]) {
+				return styles[cogStyleKey].data.definition;
 			} else {
 				return null;
 			}
@@ -97,26 +95,6 @@ const getStyleDefinitionByProductTemplateKey = createCachedSelector(
 		}
 	}
 )((state, productTemplateKey) => productTemplateKey);
-
-/**
- * Filter product metadata according to current map view and active filter
- * @param {Object} state
- * @param {string} mapSetKey
- * @return {Array} A collection of filtered product metadata
- */
-const getProductMetadataByMapSetViewAndActiveFilter = createSelector(
-	[
-		productMetadataSelectors.getByMapSetView,
-		productMetadataFilterSelectors.getActiveFilter,
-	],
-	(productMetadata, activeFilter) => {
-		if (productMetadata && activeFilter) {
-			return filterMetadata(productMetadata, activeFilter);
-		} else {
-			return null;
-		}
-	}
-);
 
 /**
  * Filter active product metadata according to active filter
@@ -146,7 +124,7 @@ const getActiveProductMetadataByActiveFilter = createSelector(
  */
 const getProductMetadataCountForFilterOption = createCachedSelector(
 	[
-		productMetadataSelectors.getByMapSetView,
+		productMetadataSelectors.getActiveModels,
 		productMetadataFilterSelectors.getActiveFilter,
 		(state, mapSetKey, filterParameterKey) => filterParameterKey,
 		(state, mapSetKey, filterParameterKey, value) => value,
@@ -163,6 +141,13 @@ const getProductMetadataCountForFilterOption = createCachedSelector(
 )(
 	(state, mapSetKey, filterParameterKey, value) =>
 		`${filterParameterKey}_${value}`
+);
+
+const isInteractivityLimited = createSelector(
+	[state => CommonSelect.maps.getMapSetActiveMapView(state, mapSetKey)],
+	mapView => {
+		return mapView?.boxRange > MAX_BOX_RANGE_FOR_LAYERS_HANDLING;
+	}
 );
 
 // helpers
@@ -194,11 +179,12 @@ export default {
 		productMetadata: productMetadataSelectors,
 		productMetadataFilter: productMetadataFilterSelectors,
 
-		getProductMetadataByMapSetViewAndActiveFilter,
 		getActiveProductMetadataByActiveFilter,
 		getProductMetadataCountForFilterOption,
 		getProductTemplates,
 		getProductTemplateByKey,
 		getStyleDefinitionByProductTemplateKey,
+
+		isInteractivityLimited,
 	},
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import PageSwitcher, {
 	PageSwitcherContent,
 	PageSwitcherMenu,
@@ -9,9 +10,17 @@ import ProductFilterParameter from './ProductFilterParameter/presentation';
 
 import './style.scss';
 
-const ProductFilter = ({filterParameters, activeParameter}) => {
+const ProductFilter = ({
+	filterParameters,
+	activeParameter,
+	isInteractivityLimited,
+}) => {
+	const classes = classnames('worldCereal-Filter', {
+		disabled: isInteractivityLimited,
+	});
+
 	return (
-		<PageSwitcher className="worldCereal-Filter" activeKey={activeParameter}>
+		<PageSwitcher className={classes} activeKey={activeParameter}>
 			<PageSwitcherMenu>
 				{filterParameters
 					? filterParameters.map(item => (

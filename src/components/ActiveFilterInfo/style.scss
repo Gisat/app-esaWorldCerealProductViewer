@@ -4,6 +4,12 @@
   display: flex;
   align-items: center;
   min-height: 2.05rem;
+  position: relative;
+}
+
+.worldCereal-ActiveFilterInfo.disabled:after {
+  content: "";
+  @include disabledOverlay();
 }
 
 .worldCereal-ActiveFilterInfo-summary {

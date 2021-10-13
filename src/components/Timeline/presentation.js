@@ -1,6 +1,7 @@
 import React from 'react';
 import chroma from 'chroma-js';
-import {find as _find, findIndex as _findIndex} from 'lodash';
+import classnames from 'classnames';
+import {find as _find} from 'lodash';
 import PropTypes from 'prop-types';
 import {Mouse} from '@gisatcz/ptr-timeline';
 import Months from '../MapTimeline/Months';
@@ -38,7 +39,9 @@ const Levels = props => {
 };
 
 class Timeline extends React.PureComponent {
-	static propTypes = {};
+	static propTypes = {
+		isInteractivityLimited: PropTypes.bool,
+	};
 
 	render() {
 		const {
@@ -46,6 +49,7 @@ class Timeline extends React.PureComponent {
 			productTemplates,
 			activeLayers,
 			handleProductInActiveMap,
+			isInteractivityLimited,
 		} = this.props;
 
 		const layersByProducts = {};
@@ -102,8 +106,12 @@ class Timeline extends React.PureComponent {
 			}
 		}
 
+		const classes = classnames('worldCereal-Timeline', {
+			disabled: isInteractivityLimited,
+		});
+
 		return (
-			<div className="worldCereal-Timeline">
+			<div className={classes}>
 				{layers ? (
 					<MapTimeline
 						periodLimit={periodLimit}

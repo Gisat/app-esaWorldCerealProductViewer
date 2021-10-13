@@ -1,8 +1,8 @@
 import React from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import {Button} from '@gisatcz/ptr-atoms';
 
+import StatusLabel from '../atoms/StatusLabel';
 import {MAX_MAPS_IN_MAP_SET} from '../../constants/app';
 import logo from '../../assests/logo.png';
 
@@ -12,6 +12,7 @@ class Header extends React.PureComponent {
 	static propTypes = {
 		addMap: PropTypes.func,
 		mapSetMapKeys: PropTypes.array,
+		showStatusInfo: PropTypes.bool,
 	};
 
 	constructor(props) {
@@ -19,7 +20,7 @@ class Header extends React.PureComponent {
 	}
 
 	render() {
-		const {addMap, mapSetMapKeys} = this.props;
+		const {addMap, mapSetMapKeys, showStatusInfo} = this.props;
 		const mapsInMapSet = mapSetMapKeys?.length;
 
 		return (
@@ -34,6 +35,11 @@ class Header extends React.PureComponent {
 					</h1>
 				</div>
 				<div className="worldCereal-Header-tools">
+					{/*{showStatusInfo ? (*/}
+					{/*	<StatusLabel small status="warning">*/}
+					{/*		Zoom in to work with layers!*/}
+					{/*	</StatusLabel>*/}
+					{/*) : null}*/}
 					<Button
 						className="ptr-dark"
 						onClick={addMap}

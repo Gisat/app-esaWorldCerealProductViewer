@@ -23,6 +23,7 @@ const mapStateToProps = (state, ownProps) => {
 			ownProps.parameterKey,
 			ownProps.value
 		),
+		isInteractivityLimited: Select.worldCereal.isInteractivityLimited(state),
 	};
 };
 

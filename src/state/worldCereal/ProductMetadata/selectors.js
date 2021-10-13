@@ -1,4 +1,4 @@
-import {filter as _filter, uniq as _uniq, groupBy as _groupBy} from 'lodash';
+import {uniq as _uniq, groupBy as _groupBy} from 'lodash';
 import {createSelector} from 'reselect';
 import {createCachedSelector} from 're-reselect';
 import intersect from '@turf/intersect';
@@ -9,7 +9,6 @@ const getSubstate = state => state.worldCereal.productMetadata;
 
 const getActiveModels = commonSelectors.getActiveModels(getSubstate);
 const getActiveKeys = commonSelectors.getActiveKeys(getSubstate);
-const getAll = commonSelectors.getAll(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
 const getAllAsObject = commonSelectors.getAllAsObject(getSubstate);
 
@@ -18,6 +17,7 @@ const getActiveTiles = state => state.worldCereal.productMetadata.activeTiles;
 // helpers ----------------------------------------------
 
 /**
+ * TODO move to ptr-state
  * Return active map view as polygon feature
  * @param {Object} state
  * @return {GeoJSON.Feature|null}
@@ -37,25 +37,6 @@ const getMapSetActiveMapExtentAsFeature = createSelector(
 );
 
 // selectors ---------------------------------------------
-
-/**
- * @param {Object} state
- * @param {string} mapSetKey
- * @return {Object|null} Panther map view
- */
-const getByMapSetView = createSelector(
-	[getMapSetActiveMapExtentAsFeature, getAll],
-	(mapExtentAsFeature, models) => {
-		if (mapExtentAsFeature && models) {
-			return _filter(
-				models,
-				model => !!intersect(model.data.geometry, mapExtentAsFeature)
-			);
-		} else {
-			return null;
-		}
-	}
-);
 
 /**
  * @param {Object} state
@@ -89,6 +70,12 @@ const getModelsByMapKey = createCachedSelector(
 	}
 )((state, mapKey) => mapKey);
 
+/**
+ * @param {Object} state
+ * @param {string} mapKey
+ * @param {string} parameter for grouping
+ * @return {Array|null} Product metadata models present in given map grouped bz given parameter
+ */
 const getModelsByMapKeyGroupedByParam = createCachedSelector(
 	[getModelsByMapKey, (state, mapKey, parameter) => parameter],
 	(models, parameter) => {
@@ -124,7 +111,6 @@ export default {
 	getSubstate,
 
 	getByKey,
-	getByMapSetView,
 
 	getActiveModels,
 	getActiveKeys,

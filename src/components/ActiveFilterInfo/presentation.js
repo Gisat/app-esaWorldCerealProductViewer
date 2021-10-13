@@ -1,6 +1,7 @@
 import React from 'react';
+import classnames from 'classnames';
 import {Button} from '@gisatcz/ptr-atoms';
-import {MIN_FILTER_PARAMETER_VALUES_FOR_GROUPING} from "../../constants/app";
+import {MIN_FILTER_PARAMETER_VALUES_FOR_GROUPING} from '../../constants/app';
 import RemovableLabel, {RemovableLabelContainer} from '../atoms/RemovableLabel';
 
 import './style.scss';
@@ -56,6 +57,7 @@ const ActiveFilterInfo = ({
 	onValueRemove,
 	onAllValuesRemove,
 	onClearAll,
+	isInteractivityLimited,
 }) => {
 	let numOfFilters = 0;
 	if (activeFilterParameters?.length) {
@@ -66,8 +68,12 @@ const ActiveFilterInfo = ({
 		});
 	}
 
+	const classes = classnames('worldCereal-ActiveFilterInfo', {
+		disabled: isInteractivityLimited,
+	});
+
 	return (
-		<div className="worldCereal-ActiveFilterInfo">
+		<div className={classes}>
 			<div className="worldCereal-ActiveFilterInfo-summary">
 				<em>{availableProductMetadata?.length || 0}</em> filtered product
 				{availableProductMetadata?.length > 1 ? 's' : ''}

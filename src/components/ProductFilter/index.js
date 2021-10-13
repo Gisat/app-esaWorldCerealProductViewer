@@ -1,7 +1,5 @@
 import {connect} from '@gisatcz/ptr-state';
-import Action from '../../state/Action';
 import Select from '../../state/Select';
-import {mapSetKey} from '../../constants/app';
 
 import Presentation from './presentation';
 
@@ -16,6 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 			Select.worldCereal.productMetadataFilter.getFilterParametersOrdered(
 				state
 			),
+		isInteractivityLimited: Select.worldCereal.isInteractivityLimited(state),
 	};
 };
 

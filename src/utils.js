@@ -4,7 +4,10 @@ import fetch from 'isomorphic-fetch';
 import {map as mapUtils} from '@gisatcz/ptr-utils';
 import {mapConstants} from '@gisatcz/ptr-core';
 
+import {userKey} from './constants/app';
+
 /**
+ * TODO move to ptr-utils
  * Get visible map extent from Panther map view and viewport. For maps in EPSG 3857 (WebMercator) projection only.
  * @param view {Object} Panther map view
  * @param viewport {height: number, width: number}
@@ -20,6 +23,7 @@ function getExtentFromMapView(view, viewport) {
 }
 
 /**
+ * TODO move to ptr-utils
  * @param extent {{minLon: number, maxLat: number, minLat: number, maxLon: number}}
  * @returns {GeoJSON.Feature}
  */
@@ -43,6 +47,7 @@ function getFeatureFromExtent(extent) {
 }
 
 /**
+ * TODO move to ptr-utils
  * Get visible map extent from Panther map view and viewport as GeoJSON feature. For maps in EPSG 3857 (WebMercator) projection only.
  * @param view {Object} Panther map view
  * @param viewport {height: number, width: number}
@@ -52,7 +57,14 @@ function getExtentFromMapViewAsFeature(view, viewport) {
 	return getFeatureFromExtent(getExtentFromMapView(view, viewport));
 }
 
-function request(url, method, query, payload, userKey) {
+/**
+ * @param url {string}
+ * @param method {string} HTTP method
+ * @param query {Object}
+ * @param payload {Object}
+ * @returns {Promise}
+ */
+function request(url, method, query, payload) {
 	if (query) {
 		url += '?' + queryString.stringify(query);
 	}
