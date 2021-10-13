@@ -6,6 +6,7 @@ module.exports = {
 	modifyWebpack: config => {
 		const newConfig = {
 			...config,
+			mode: 'production',
 			plugins: [
 				...config.plugins,
 				new EnvironmentPlugin({
@@ -14,6 +15,11 @@ module.exports = {
 			],
 			module: {
 				rules: [
+					{
+						// test: path.resolve(__dirname, 'node_modules/webworldwind-esa/build/dist/worldwind.min.js'),
+						test: '/worldwind.min.js/',
+						use: "null-loader"
+					},
 					{
 						test: /\.js$/,
 						use: {

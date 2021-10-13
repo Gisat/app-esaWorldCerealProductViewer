@@ -1,7 +1,8 @@
+@use "sass:math";
 @import '../../../styles/variables';
 
 .worldCereal-ControlPanel {
   width: 30rem;
   overflow-y: hidden;
-  padding: m(2/3);
+  padding: math.div(2, 3);
 }
