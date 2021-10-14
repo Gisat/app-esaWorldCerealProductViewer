@@ -1,7 +1,7 @@
 import path from 'path';
 import React from 'react';
 import {createReactAppExpress} from '@cra-express/core';
-import {Provider} from '@gisatcz/ptr-state';
+import {Provider, initialStates} from '@gisatcz/ptr-state';
 import createStore from '../src/state/Store';
 import {UIDReset} from 'react-uid';
 import {createRenderFn} from '@gisatcz/ptr-core';
@@ -16,11 +16,19 @@ function handleUniversalRender(req, res) {
 	const navHandler = url => {
 		requiredUrl = url;
 	};
+
+	const xUserInfo = req.headers?.['X-User-Info'];
+
+	const userInitialState = {
+		...initialStates.users,
+		activeKey: xUserInfo,
+	};
+	
 	const {store, requestCounter} = createStore({
 		absPath,
 		currentUrl: req.url,
 		navHandler,
-	});
+	}, {users: userInitialState});
 	req.store = store;
 
 	const createElFn = () => {

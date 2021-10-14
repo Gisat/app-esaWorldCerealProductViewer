@@ -35,17 +35,17 @@ function loadForMapSetView() {
 				mapSetKey
 			);
 		const config = Select.app.getCompleteLocalConfiguration(state);
-		if (viewAsFeature && config) {
+		const userKey = Select.users.getActiveKey(getState());
+		if (viewAsFeature && config && userKey) {
 			const {geometry} = viewAsFeature;
 			const {apiBackendProtocol, apiBackendHost, apiBackendPath} = config;
-
 			const path = 'rest/project/worldCereal/product/filtered';
 			const url = `${apiBackendProtocol}://${apiBackendHost}/${apiBackendPath}/${path}`;
 			const method = 'POST';
 			const payload = {geometry};
 
 			utils
-				.request(url, method, null, payload)
+				.request(url, method, null, payload, userKey)
 				.then(data => {
 					if (data) {
 						dispatch(handleLoadResponse(data));

@@ -59,6 +59,16 @@ function init(path) {
 		dispatch(CommonAction.cases.add(cases));
 		dispatch(CommonAction.styles.add(styles));
 
+		const localConfig = Select.app.getCompleteLocalConfiguration(getState());
+		const {devUserKey} = localConfig;
+		const activeUser = Select.users.getActiveKey(getState());
+
+		// For local development
+		// Set active user key from local config if exists
+		if(!activeUser && devUserKey) {
+			dispatch(CommonAction.users.setActiveKey(devUserKey))
+		}
+
 		// add mock data
 		// dispatch(productMetadataActions.add(productMetadata));
 		// dispatch(productMetadataActions.add(productMetadata_wheat));
@@ -91,13 +101,14 @@ function resetSession() {
 	return (dispatch, getState) => {
 		const config = Select.app.getCompleteLocalConfiguration(getState());
 		if (config) {
+			const userKey = Select.users.getActiveKey(getState());
 			const {apiBackendProtocol, apiBackendHost, apiBackendPath} = config;
 			const path = 'rest/project/worldCereal/user/sessionStart';
 			const url = `${apiBackendProtocol}://${apiBackendHost}/${apiBackendPath}/${path}`;
 			const method = 'GET';
-
+			
 			utils
-				.request(url, method, null, null)
+				.request(url, method, null, null, userKey)
 				.catch(
 					err => new Error(`Failed to load product metadata. Error: ${err}`)
 				);
