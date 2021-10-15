@@ -8,7 +8,7 @@ import {utils} from '@gisatcz/ptr-timeline';
 import './style.scss';
 
 
-const Years = props => {
+const YearsLabel = props => {
 	const {period, getX, dayWidth, height, vertical} = props;
 	const periodStart = moment(period.start);
 	const periodEnd = moment(period.end);
@@ -19,7 +19,7 @@ const Years = props => {
 		let x = getX(year.start) + labelXCorrection;
 		let label = React.createElement(utils.textLabel.default, {label:year.year,vertical,x,height,className: 'ptr-timeline-year-label'});
 		return (
-			<g className={'ptr-timeline-year'}>
+			<g className={'ptr-timeline-year'} key={year.year}>
 				{label}
 			</g>
 		);
@@ -53,7 +53,7 @@ const Years = props => {
 };
 
 
-Years.propTypes = {
+YearsLabel.propTypes = {
 	period: PropTypes.shape({
 		start: PropTypes.string,
 		end: PropTypes.string,
@@ -64,8 +64,8 @@ Years.propTypes = {
 	vertical: PropTypes.bool,
 };
 
-Years.defaultProps = {
+YearsLabel.defaultProps = {
 	vertical: false,
 };
 
-export default Years;
+export default YearsLabel;
