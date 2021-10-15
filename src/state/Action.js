@@ -60,9 +60,8 @@ function init(path) {
 		dispatch(CommonAction.styles.add(styles));
 
 		const localConfig = Select.app.getCompleteLocalConfiguration(getState());
-		const {devUserKey} = localConfig;
+		const {'userKey': devUserKey} = localConfig;
 		const activeUser = Select.users.getActiveKey(getState());
-
 		// For local development
 		// Set active user key from local config if exists
 		if(!activeUser && devUserKey) {
