@@ -44,6 +44,17 @@ function init(path) {
 
 		dispatch(CommonAction.app.updateLocalConfiguration(config));
 		dispatch(CommonAction.app.setKey(appKey));
+
+		const localConfig = Select.app.getCompleteLocalConfiguration(getState());
+		const {'userKey': devUserKey} = localConfig;
+		const activeUser = Select.users.getActiveKey(getState());
+		// For local development
+		// Set active user key from local config if exists
+		if(!activeUser && devUserKey) {
+			dispatch(CommonAction.users.setActiveKey(devUserKey))
+		}
+
+
 		dispatch(resetSession());
 
 		// add & apply view
@@ -58,15 +69,6 @@ function init(path) {
 		// add metadata
 		dispatch(CommonAction.cases.add(cases));
 		dispatch(CommonAction.styles.add(styles));
-
-		const localConfig = Select.app.getCompleteLocalConfiguration(getState());
-		const {'userKey': devUserKey} = localConfig;
-		const activeUser = Select.users.getActiveKey(getState());
-		// For local development
-		// Set active user key from local config if exists
-		if(!activeUser && devUserKey) {
-			dispatch(CommonAction.users.setActiveKey(devUserKey))
-		}
 
 		// add mock data
 		// dispatch(productMetadataActions.add(productMetadata));
