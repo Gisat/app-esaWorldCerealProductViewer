@@ -28,17 +28,20 @@ const XAxis = ({period, getX, dayWidth, vertical, height, width, activeLevel, pa
                 <div className={'ptr-timeline-legend-placeholder'}>
                 </div>
                 <div className={'ptr-timeline-x-titles'}>
-                    <svg
-                        version={'1.1'}
-                        xmlns={'http://www.w3.org/2000/svg'}
-                        xmlnsXlink={'http://www.w3.org/1999/xlink'}
-                        width={preferedWidth}
-                        height={elementHeight}
-                    >
-                        <g transform={transform}>
-                            <Levels period={period} getX={getX} dayWidth={dayWidth} height={20} vertical={vertical} activeLevel={activeLevel}/>
-                        </g>
-                    </svg>
+                    {
+                        elementWidth ? 
+                            <svg
+                                version={'1.1'}
+                                xmlns={'http://www.w3.org/2000/svg'}
+                                xmlnsXlink={'http://www.w3.org/1999/xlink'}
+                                width={preferedWidth}
+                                height={elementHeight}
+                            >
+                                <g transform={transform}>
+                                    <Levels period={period} getX={getX} dayWidth={dayWidth} height={20} vertical={vertical} activeLevel={activeLevel}/>
+                                </g>
+                            </svg> : null
+                    }
                 </div>
             </div>
     )

@@ -8,20 +8,19 @@ import {utils} from '@gisatcz/ptr-timeline';
 import './style.scss';
 
 
-const Months = props => {
+const MonthsLabel = props => {
 	const {period, getX, dayWidth, height, vertical} = props;
 	const periodStart = moment(period.start);
 	const periodEnd = moment(period.end);
 	const monthsCfg = utils.interval.getMonths(periodStart, periodEnd);
 	const yearsCfg = utils.interval.getYears(periodStart, periodEnd);
-
 	const months = _map(monthsCfg, month => {
 		if (month.month !== '01') {
 			const labelXCorrection = -3;
 			let x = getX(month.start) + labelXCorrection;
 			let label = React.createElement(utils.textLabel.default, {label:month.month,vertical,x,height,className: 'ptr-timeline-month-label'});
 			return (
-				<g className={'ptr-timeline-month'}>
+				<g className={'ptr-timeline-month'} key={`${month.year}-${month.month}`}>
 					{label}
 				</g>
 			);
@@ -39,7 +38,7 @@ const Months = props => {
 };
 
 
-Months.propTypes = {
+MonthsLabel.propTypes = {
 	period: PropTypes.shape({
 		start: PropTypes.string,
 		end: PropTypes.string,
@@ -50,10 +49,10 @@ Months.propTypes = {
 	vertical: PropTypes.bool,
 };
 
-Months.defaultProps = {
+MonthsLabel.defaultProps = {
 	vertical: false,
 };
 
 
 
-export default Months;
+export default MonthsLabel;

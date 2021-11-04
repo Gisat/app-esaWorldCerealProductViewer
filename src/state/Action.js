@@ -44,6 +44,17 @@ function init(path) {
 
 		dispatch(CommonAction.app.updateLocalConfiguration(config));
 		dispatch(CommonAction.app.setKey(appKey));
+
+		const localConfig = Select.app.getCompleteLocalConfiguration(getState());
+		const {'userKey': devUserKey} = localConfig;
+		const activeUser = Select.users.getActiveKey(getState());
+		// For local development
+		// Set active user key from local config if exists
+		if(!activeUser && devUserKey) {
+			dispatch(CommonAction.users.setActiveKey(devUserKey))
+		}
+
+
 		dispatch(resetSession());
 
 		// add & apply view
@@ -91,13 +102,14 @@ function resetSession() {
 	return (dispatch, getState) => {
 		const config = Select.app.getCompleteLocalConfiguration(getState());
 		if (config) {
+			const userKey = Select.users.getActiveKey(getState());
 			const {apiBackendProtocol, apiBackendHost, apiBackendPath} = config;
 			const path = 'rest/project/worldCereal/user/sessionStart';
 			const url = `${apiBackendProtocol}://${apiBackendHost}/${apiBackendPath}/${path}`;
 			const method = 'GET';
-
+			
 			utils
-				.request(url, method, null, null)
+				.request(url, method, null, null, userKey)
 				.catch(
 					err => new Error(`Failed to load product metadata. Error: ${err}`)
 				);
