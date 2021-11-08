@@ -205,13 +205,16 @@ function handleProductInActiveMap(productMetadataKey) {
 function removeLayersForTiles(productMetadataKey, tiles, mapKey) {
 	return (dispatch, getState) => {
 		tiles.forEach(tile => {
-			// TODO remove multiple layers at once?
-			dispatch(
-				CommonAction.maps.removeMapLayer(
-					mapKey,
-					getUniqueCogLayerKey(productMetadataKey, tile)
-				)
+			const layerKey = getUniqueCogLayerKey(productMetadataKey, tile);
+			const existingLayer = Select.maps.getMapLayerStateByMapKeyAndLayerKey(
+				getState(),
+				mapKey,
+				layerKey
 			);
+			if (existingLayer) {
+				// TODO remove multiple layers at once?
+				dispatch(CommonAction.maps.removeMapLayer(mapKey, layerKey));
+			}
 		});
 	};
 }
