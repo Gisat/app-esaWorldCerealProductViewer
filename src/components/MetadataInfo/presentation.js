@@ -5,7 +5,7 @@ import MetadataInfoItem from './MetadataItem';
 import './style.scss';
 
 export const MetadataInfoTitle = () => (
-	<h3 className="worldCereal-MetadataInfoTitle">Product metadata</h3>
+	<h3 className="worldCereal-MetadataInfoTitle">Tile collection metadata</h3>
 );
 
 class MetadataInfo extends React.PureComponent {

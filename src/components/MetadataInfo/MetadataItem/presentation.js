@@ -6,10 +6,6 @@ import {isArray as _isArray} from 'lodash';
 import './style.scss';
 import {Button, Icon} from '@gisatcz/ptr-atoms';
 
-export const MetadataInfoTitle = () => (
-	<h3 className="worldCereal-MetadataInfoTitle">Product metadata</h3>
-);
-
 const MetadataInfoItemRec = ({label, small, children}) => {
 	const classes = classnames('worldCereal-MetadataInfoItemRec', {
 		small,
@@ -53,6 +49,7 @@ class MetadataInfoItem extends React.PureComponent {
 			meta,
 		} = productMetadata;
 
+		const productName = productTemplate?.data?.nameDisplay || product;
 		const color = productTemplate?.data?.style?.rules?.[0]?.styles?.[0]?.color;
 
 		const style = {
@@ -62,7 +59,9 @@ class MetadataInfoItem extends React.PureComponent {
 		return (
 			<div className="worldCereal-MetadataInfoItem" style={style}>
 				<div className="worldCereal-MetadataInfoItemHeader">
-					<h4 className="worldCereal-MetadataInfoItemHeader-title">{id}</h4>
+					<h4 className="worldCereal-MetadataInfoItemHeader-title">
+						{productName} - zone {aez} - season {season}
+					</h4>
 					<div className="worldCereal-MetadataInfoItemHeader-tools">
 						<Button
 							className="worldCereal-MetadataInfoItemHeader-download"
@@ -76,9 +75,11 @@ class MetadataInfoItem extends React.PureComponent {
 					</div>
 				</div>
 				<div className="worldCereal-MetadataInfoItemBasics">
-					<MetadataInfoItemRec label="product ID">{id}</MetadataInfoItemRec>
+					<MetadataInfoItemRec label="Tile collection ID">
+						{id}
+					</MetadataInfoItemRec>
 					<MetadataInfoItemRec label="product">
-						{productTemplate?.data?.nameDisplay || product}
+						{productName}
 					</MetadataInfoItemRec>
 					<MetadataInfoItemRec label="season">{season}</MetadataInfoItemRec>
 					<MetadataInfoItemRec label="start of season">
@@ -86,11 +87,7 @@ class MetadataInfoItem extends React.PureComponent {
 					</MetadataInfoItemRec>
 					<MetadataInfoItemRec label="end of season">{eos}</MetadataInfoItemRec>
 					<MetadataInfoItemRec label="zone (AEZ)">{aez}</MetadataInfoItemRec>
-					<MetadataInfoItemRec label="type">{type}</MetadataInfoItemRec>
 					<MetadataInfoItemRec label="public">{isPublic}</MetadataInfoItemRec>
-					<MetadataInfoItemRec label="related products">
-						{relatedProducts}
-					</MetadataInfoItemRec>
 				</div>
 			</div>
 		);
