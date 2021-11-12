@@ -24,6 +24,13 @@ const getProductTemplateByKey = createCachedSelector(
 		(state, productKey) => productKey,
 	],
 	(cases, styles, productKey) => {
+		const defaultStyle = styles[defaultStyleKey].data.definition;
+		const defaultTemplate = {
+			data: {
+				style: defaultStyle,
+			},
+		};
+
 		if (cases && productKey) {
 			const productTemplate = cases[productKey];
 			if (productTemplate) {
@@ -38,16 +45,28 @@ const getProductTemplateByKey = createCachedSelector(
 							},
 						};
 					} else {
-						return productTemplate;
+						return {
+							...productTemplate,
+							data: {
+								...productTemplate.data,
+								style: defaultStyle,
+							},
+						};
 					}
 				} else {
-					return productTemplate;
+					return {
+						...productTemplate,
+						data: {
+							...productTemplate.data,
+							style: defaultStyle,
+						},
+					};
 				}
 			} else {
-				return null;
+				return defaultTemplate;
 			}
 		} else {
-			return null;
+			return defaultTemplate;
 		}
 	}
 )((state, productMetadataKey) => productMetadataKey);
