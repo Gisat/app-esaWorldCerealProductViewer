@@ -41,7 +41,7 @@ export default {
 						data: {
 							backgroundLayer: backgroundLayers.esri_WorldImagery,
 							view: {
-								boxRange: 100000,
+								boxRange: 200000,
 								center: {
 									lat: 46,
 									lon: 0,

@@ -12,8 +12,8 @@ import './style.scss';
 
 // TODO dynamic
 const periodLimit = {
-	start: '2019-01-02',
-	end: '2021-01-31',
+	start: '2018-05-01',
+	end: '2020-03-31',
 };
 
 const LEVELS = [
@@ -87,8 +87,8 @@ class Timeline extends React.PureComponent {
 							end: product.data.eos,
 						},
 					],
-					color: productColor || 'var(--accent50)',
-					activeColor: activeProductColor || 'var(--accent70)',
+					color: productColor || 'var(--base60)',
+					activeColor: activeProductColor || 'var(--base40)',
 					active: !!_find(
 						activeLayers,
 						layer => layer.layerKey === product.key

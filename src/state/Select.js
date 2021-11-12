@@ -3,7 +3,11 @@ import {createSelector} from 'reselect';
 import {filter as _filter} from 'lodash';
 import {Select as CommonSelect} from '@gisatcz/ptr-state';
 
-import {mapSetKey, MAX_BOX_RANGE_FOR_LAYERS_HANDLING} from '../constants/app';
+import {
+	mapSetKey,
+	defaultStyleKey,
+	MAX_BOX_RANGE_FOR_LAYERS_HANDLING,
+} from '../constants/app';
 import productMetadataSelectors from './worldCereal/ProductMetadata/selectors';
 import productMetadataFilterSelectors from './worldCereal/ProductMetadataFilter/selectors';
 
@@ -24,7 +28,7 @@ const getProductTemplateByKey = createCachedSelector(
 			const productTemplate = cases[productKey];
 			if (productTemplate) {
 				if (styles) {
-					const style = styles[productTemplate.data?.cogStyleKey];
+					const style = getCogStyle(styles, productTemplate);
 					if (style) {
 						return {
 							...productTemplate,
@@ -59,7 +63,7 @@ const getProductTemplates = createSelector(
 		if (cases && styles) {
 			const productTemplates = {};
 			for (const [caseKey, caseData] of Object.entries(cases)) {
-				const style = styles[caseData.data?.cogStyleKey];
+				const style = getCogStyle(styles, caseData);
 				productTemplates[caseKey] = {
 					...caseData,
 				};
@@ -84,12 +88,14 @@ const getStyleDefinitionByProductTemplateKey = createCachedSelector(
 	[CommonSelect.cases.getByKey, CommonSelect.styles.getAllAsObject],
 	(productTemplate, styles) => {
 		if (productTemplate && styles) {
-			const cogStyleKey = productTemplate.data?.cogStyleKey;
-			if (cogStyleKey && styles[cogStyleKey]) {
-				return styles[cogStyleKey].data.definition;
+			const style = getCogStyle(styles, productTemplate);
+			if (style) {
+				return style.data.definition;
 			} else {
-				return null;
+				return styles[defaultStyleKey].data.definition;
 			}
+		} else if (styles) {
+			return styles[defaultStyleKey].data.definition;
 		} else {
 			return null;
 		}
@@ -171,6 +177,11 @@ function filterMetadata(productMetadata, filter) {
 		}
 		return true;
 	});
+}
+
+function getCogStyle(styles, template) {
+	const styleKey = template.data?.cogStyleKey;
+	return styleKey ? styles[styleKey] : styles[defaultStyleKey];
 }
 
 export default {

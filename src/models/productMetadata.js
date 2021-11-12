@@ -1,36 +1,38 @@
-export default model => {
+export default item => {
 	const {
-		id,
+		tile_collection_id,
 		sos,
 		eos,
 		season,
 		aez_id,
+		aez_group,
 		geometry,
-		users,
-		meta,
 		product,
 		type,
 		public: isPublic,
 		tiles,
 		related_products,
-	} = model.data.data;
+		model,
+		training_refids,
+	} = item.data.data;
 
 	return {
-		key: model.key,
+		key: item.key,
 		data: {
-			id,
+			id: tile_collection_id,
 			sos,
 			eos,
 			season,
 			aez: aez_id,
+			aez_group,
 			geometry,
-			users,
-			meta,
 			product,
 			type,
 			public: isPublic,
 			tiles,
 			relatedProducts: related_products,
+			model,
+			training_refids,
 		},
 	};
 };

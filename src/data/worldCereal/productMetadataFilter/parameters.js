@@ -4,6 +4,7 @@ export default {
 		name: 'Zone',
 		type: 'checkbox',
 		orderDirection: 'asc',
+		disabled: true,
 		options: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
 	},
 	product: {
@@ -18,6 +19,14 @@ export default {
 			'maize',
 			'activecropland',
 			'activeirrigation',
+			// ???
+			'cereals',
+			'springcereals',
+			'wintercereals',
+			'springwheat',
+			'winterwheat',
+			'irrigation-v1',
+			'irrigation-v2',
 		],
 	},
 	season: {
@@ -25,6 +34,6 @@ export default {
 		name: 'Season',
 		type: 'checkbox',
 		orderDirection: 'asc',
-		options: ['summer1', 'summer2', 'winter'],
+		options: ['annual', 'summer1', 'summer2', 'winter'],
 	},
 };

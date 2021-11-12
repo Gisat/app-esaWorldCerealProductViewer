@@ -4,7 +4,7 @@ import utils from '../../../utils';
 import productMetadataModel from '../../../models/productMetadata';
 import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
-import {mapSetKey} from '../../../constants/app';
+import {mapSetKey, defaultStyleKey} from '../../../constants/app';
 
 const setActiveKeys = commonActions.setActiveKeys(
 	ActionTypes.WORLD_CEREAL.PRODUCT_METADATA
@@ -295,7 +295,7 @@ function getCogLayerDefinition(state, productMetadataKey, tile, product) {
 		tileKey: tile.tile,
 		type: 'cog',
 		options: {
-			url: tile.path,
+			url: tile.product,
 			style: Select.worldCereal.getStyleDefinitionByProductTemplateKey(
 				state,
 				product
