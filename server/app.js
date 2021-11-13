@@ -17,7 +17,7 @@ function handleUniversalRender(req, res) {
 		requiredUrl = url;
 	};
 
-	const xUserInfo = req.headers?.['X-User-Info'];
+	const xUserInfo = req.headers?.['x-user-info'];
 
 	const userInitialState = {
 		...initialStates.users,
