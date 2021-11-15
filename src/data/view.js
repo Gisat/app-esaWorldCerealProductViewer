@@ -48,7 +48,7 @@ export default {
 								},
 							},
 							viewLimits: {
-								boxRangeRange: [5000, 10000000],
+								boxRangeRange: [1000, 10000000],
 							},
 						},
 					},
