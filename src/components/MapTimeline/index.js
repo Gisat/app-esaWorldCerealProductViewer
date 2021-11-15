@@ -36,7 +36,9 @@ const getOverlayCfg = options => {
 		hideLabel: options.hideLabel,
 		height: options.height,
 		top: options.top,
-		label: options.title, //label for tooltip
+		// label: options.title, //label for tooltip
+		title: options.title, //label for tooltip
+		subtitle: options.subtitle, //label for tooltip
 		options: {
 			...otherOptions,
 		},
@@ -60,6 +62,7 @@ const proccessLayerCfg = (layerCfg, top, rowHeight) => {
 				height: rowHeight * utils.getRemSize(),
 				top: top * utils.getRemSize(),
 				title: layerCfg.title,
+				subtitle: layerCfg.subtitle,
 				options: {
 					...otherOptions,
 				},
@@ -79,6 +82,7 @@ const proccessLayerCfg = (layerCfg, top, rowHeight) => {
 			height: rowHeight * utils.getRemSize(),
 			top: top * utils.getRemSize(),
 			title: layerCfg.title,
+			subtitle: layerCfg.subtitle,
 			options: {
 				// classes: 'overlay5',
 				...otherOptions,
@@ -245,14 +249,18 @@ class MapTimeline extends React.PureComponent {
 	getHoverContent(x, time, evt) {
 		const {layers} = this.props;
 		const overlays = getOverlaysCfg(layers);
-		const intersectionOverlays = getIntersectionOverlays(
+		let intersectionOverlays = getIntersectionOverlays(
 			time,
 			overlays,
-			MOUSEBUFFERWIDTH,
+			// MOUSEBUFFERWIDTH,
+			0,
 			evt.dayWidth
 		);
 
+		const clientY = evt.clientY;
+
 		intersectionOverlays.sort((a, b) => a.top - b.top);
+		intersectionOverlays = intersectionOverlays.filter(i => i.top <= clientY && (i.top + 16) >= clientY);
 		const intersectionOverlaysElms = intersectionOverlays.map(overlay => {
 			return (
 				<div key={overlay.key} className={'ptr-timeline-tooltip-layer'}>
@@ -262,7 +270,7 @@ class MapTimeline extends React.PureComponent {
 							style={{backgroundColor: overlay.backdroundColor}}
 						></span>
 					</div>
-					<div>{overlay.label}</div>
+					<div><em>{overlay.title}</em> {overlay.subtitle}</div>
 				</div>
 			);
 		});

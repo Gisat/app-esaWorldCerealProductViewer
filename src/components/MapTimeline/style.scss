@@ -125,6 +125,14 @@ g.ptr-timeline-month.secondary > line {
 	border-radius: 50%;
 	display: inline-block;
 }
+.ptr-timeline-tooltip-layer > div:nth-child(2){
+	font-size: $a0;
+	color: var(--base60);
+	 em {
+		color: var(--base100);
+		font-size: $b1;
+	}
+}
 
 .ptr-timeline-overlay rect {
 	cursor: pointer;

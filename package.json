@@ -29,7 +29,7 @@
 		"@gisatcz/ptr-maps": "^1.11.0-dev.3",
 		"@gisatcz/ptr-router": "^0.0.4",
 		"@gisatcz/ptr-state": "^2.0.0-dev.30",
-		"@gisatcz/ptr-timeline": "^0.1.0",
+		"@gisatcz/ptr-timeline": "^0.1.1",
 		"@gisatcz/ptr-utils": "^1.5.2",
 		"@react-hook/size": "^2.1.2",
 		"@turf/intersect": "^6.5.0",
