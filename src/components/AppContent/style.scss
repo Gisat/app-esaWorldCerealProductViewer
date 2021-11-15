@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../../styles/variables';
 
 .worldCereal-ProductViewer {
@@ -12,6 +13,10 @@
 .worldCereal-ProductViewer .ptr-map-set {
   position: relative;
   z-index: 2;
+}
+
+.worldCereal-MapScale {
+  bottom: 1.25rem;
 }
 
 .worldCereal-MapScale .ptr-MapScale-content {

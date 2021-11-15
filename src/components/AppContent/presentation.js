@@ -10,6 +10,7 @@ import {
 import Header from '../Header';
 import MapContainer from '../MapContainer';
 import MapWrapper from '../MapWrapper';
+import MapAttribution from '../MapAttribution';
 import RetractableWindow from '../atoms/RetractableWindow';
 import SimpleLayersControl from '../SimpleLayersControl';
 import Timeline from '../Timeline';
@@ -47,6 +48,7 @@ const App = ({onMount, onUnmount, viewLimits}) => {
 					viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
 				/>
 				<MapScale className="worldCereal-MapScale" />
+				<MapAttribution />
 			</ConnectedMapSet>
 			<RetractableWindow
 				className="worldCereal-FilterWindow ptr-dark"
