@@ -28,9 +28,15 @@ export default [
 		},
 	},
 	{
-		key: 'activeirrigation',
+		key: 'irrigation-v2',
 		data: {
 			nameDisplay: 'Active irrigation',
+		},
+	},
+	{
+		key: 'cereals',
+		data: {
+			nameDisplay: 'Cereals',
 		},
 	},
 ];
