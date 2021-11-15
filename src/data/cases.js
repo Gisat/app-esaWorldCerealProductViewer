@@ -10,7 +10,7 @@ export default [
 		key: 'wheat',
 		data: {
 			nameDisplay: 'Wheat',
-			cogStyleKey: '829f8a76-9746-40f7-bb19-2bb2a09e99a2',
+			cogStyleKey: 'c2ea3a49-8da1-473d-ad7b-3860c95a4cc7',
 		},
 	},
 	{
@@ -24,13 +24,14 @@ export default [
 		key: 'activecropland',
 		data: {
 			nameDisplay: 'Active cropland',
-			cogStyleKey: 'c2ea3a49-8da1-473d-ad7b-3860c95a4cc7',
+			cogStyleKey: '829f8a76-9746-40f7-bb19-2bb2a09e99a2',
 		},
 	},
 	{
 		key: 'irrigation-v2',
 		data: {
 			nameDisplay: 'Active irrigation',
+			cogStyleKey: 'fb76c73c-0e54-4f7c-b331-66110d13856f',
 		},
 	},
 	{

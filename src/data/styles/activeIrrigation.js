@@ -1,13 +1,13 @@
 export default {
-	key: '20c6c7c5-1b58-4db2-85f2-442cf64e341a',
+	key: 'fb76c73c-0e54-4f7c-b331-66110d13856f',
 	data: {
-		nameInternal: 'Default classification style',
+		nameInternal: 'Active irrigation - classification',
 		definition: {
 			rules: [
 				{
 					styles: [
 						{
-							color: '#10afa2',
+							color: '#0065ea',
 						},
 						{
 							bandIndex: 0,
