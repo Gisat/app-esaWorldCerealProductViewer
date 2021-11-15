@@ -41,12 +41,10 @@ class MetadataInfoItem extends React.PureComponent {
 			sos,
 			eos,
 			aez,
+			aez_group,
 			id,
-			users,
+			model,
 			public: isPublic,
-			relatedProducts,
-			type,
-			meta,
 		} = productMetadata;
 
 		const productName = productTemplate?.data?.nameDisplay || product;
@@ -87,7 +85,11 @@ class MetadataInfoItem extends React.PureComponent {
 					</MetadataInfoItemRec>
 					<MetadataInfoItemRec label="end of season">{eos}</MetadataInfoItemRec>
 					<MetadataInfoItemRec label="zone (AEZ)">{aez}</MetadataInfoItemRec>
+					<MetadataInfoItemRec label="zone group">
+						{aez_group}
+					</MetadataInfoItemRec>
 					<MetadataInfoItemRec label="public">{isPublic}</MetadataInfoItemRec>
+					<MetadataInfoItemRec label="model">{model}</MetadataInfoItemRec>
 				</div>
 			</div>
 		);
