@@ -5,7 +5,7 @@ export default {
 		type: 'checkbox',
 		orderDirection: 'asc',
 		// disabled: true,
-		options: [7039, 8046, 11071, 15097, 17106, 34109, 35191, 40224, 41226],
+		options: [7039, 8046, 11071, 15097, 17106, 34190, 35191, 40224, 41226],
 	},
 	product: {
 		key: 'product',

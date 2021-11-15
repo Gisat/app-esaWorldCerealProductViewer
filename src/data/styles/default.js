@@ -7,7 +7,7 @@ export default {
 				{
 					styles: [
 						{
-							color: '#bababa',
+							color: '#0065ea',
 						},
 						{
 							bandIndex: 0,
