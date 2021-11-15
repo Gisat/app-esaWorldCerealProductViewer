@@ -1,5 +1,5 @@
 export default {
-	key: '829f8a76-9746-40f7-bb19-2bb2a09e99a2',
+	key: 'c2ea3a49-8da1-473d-ad7b-3860c95a4cc7',
 	data: {
 		nameInternal: 'Wheat - classification',
 		definition: {
@@ -7,13 +7,19 @@ export default {
 				{
 					styles: [
 						{
-							color: '#e41a1c',
+							color: '#c68801',
 						},
 						{
 							bandIndex: 0,
 							valueClasses: [
 								{
-									interval: [0, 95],
+									interval: [0, 99],
+									intervalBounds: [true, true],
+									color: null,
+								},
+								{
+									interval: [101, 255],
+									intervalBounds: [true, true],
 									color: null,
 								},
 							],

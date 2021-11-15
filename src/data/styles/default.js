@@ -11,9 +11,18 @@ export default {
 						},
 						{
 							bandIndex: 0,
-							values: {
-								0: {color: null},
-							},
+							valueClasses: [
+								{
+									interval: [0, 99],
+									intervalBounds: [true, true],
+									color: null,
+								},
+								{
+									interval: [101, 255],
+									intervalBounds: [true, true],
+									color: null,
+								},
+							],
 						},
 					],
 				},

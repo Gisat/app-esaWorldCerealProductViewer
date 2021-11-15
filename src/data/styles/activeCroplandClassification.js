@@ -1,5 +1,5 @@
 export default {
-	key: 'c2ea3a49-8da1-473d-ad7b-3860c95a4cc7',
+	key: '829f8a76-9746-40f7-bb19-2bb2a09e99a2',
 	data: {
 		nameInternal: 'Active cropland - classification',
 		definition: {
@@ -7,13 +7,22 @@ export default {
 				{
 					styles: [
 						{
-							color: '#c68801',
+							color: '#e41a1c',
 						},
 						{
 							bandIndex: 0,
-							values: {
-								0: {color: null},
-							},
+							valueClasses: [
+								{
+									interval: [0, 99],
+									intervalBounds: [true, true],
+									color: null,
+								},
+								{
+									interval: [101, 255],
+									intervalBounds: [true, true],
+									color: null,
+								},
+							],
 						},
 					],
 				},
