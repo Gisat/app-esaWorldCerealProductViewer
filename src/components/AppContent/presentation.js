@@ -4,6 +4,7 @@ import {
 	ReactLeafletMap,
 	MapControls,
 	MapSet,
+	MapScale,
 	PresentationMap,
 } from '@gisatcz/ptr-maps';
 import Header from '../Header';
@@ -45,10 +46,12 @@ const App = ({onMount, onUnmount, viewLimits}) => {
 					zoomOnly
 					viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
 				/>
+				<MapScale className="worldCereal-MapScale" />
 			</ConnectedMapSet>
 			<RetractableWindow
 				className="worldCereal-FilterWindow ptr-dark"
 				retracted
+				centered
 				bottomPosition={10}
 				bodyHeight={14}
 				controlBarContent={<ActiveFilterInfo />}

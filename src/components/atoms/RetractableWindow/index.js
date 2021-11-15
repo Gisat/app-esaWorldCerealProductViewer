@@ -5,9 +5,18 @@ import {Icon} from '@gisatcz/ptr-atoms';
 
 import './style.scss';
 
-const RetractableWindowControlBar = ({children, onClick, onHeightChange}) => {
+const RetractableWindowControlBar = ({
+	children,
+	centered,
+	onClick,
+	onHeightChange,
+}) => {
 	const ref = React.useRef(null);
 	const [width, height] = useSize(ref);
+
+	const classes = classnames(`ptr-RetractableWindowControlBar`, {
+		'is-centered': centered,
+	});
 
 	useEffect(() => {
 		onHeightChange(height);
@@ -22,7 +31,7 @@ const RetractableWindowControlBar = ({children, onClick, onHeightChange}) => {
 					onClick();
 				}
 			}}
-			className="ptr-RetractableWindowControlBar"
+			className={classes}
 			tabIndex={0}
 		>
 			<Icon icon="chevron-left" className="retract" />
@@ -31,13 +40,17 @@ const RetractableWindowControlBar = ({children, onClick, onHeightChange}) => {
 	);
 };
 
-const RetractableWindowBody = ({children, height}) => {
+const RetractableWindowBody = ({children, centered, height}) => {
 	const style = {
 		height: `${height}rem`,
 	};
 
+	const classes = classnames(`ptr-RetractableWindowBody`, {
+		'is-centered': centered,
+	});
+
 	return (
-		<div className="ptr-RetractableWindowBody" style={style}>
+		<div className={classes} style={style}>
 			{children}
 		</div>
 	);
@@ -45,34 +58,48 @@ const RetractableWindowBody = ({children, height}) => {
 
 const RetractableWindow = ({
 	children,
+	centered,
 	controlBarContent,
 	retracted,
 	bottomPosition,
 	bodyHeight,
 	className,
 }) => {
+	const ref = React.useRef(null);
+	const [width, height] = useSize(ref);
+
 	const [isRetracted, handleRetraction] = useState(retracted);
-	const [positionOffset, handlePosition] = useState(0);
+	const [verticalPositionOffset, handleVerticalPosition] = useState(0);
+	const [horizontalPositionOffset, handleHorizontalPosition] = useState(0);
 
 	const classes = classnames(`ptr-RetractableWindow ${className}`, {
 		'is-retracted': isRetracted,
 	});
 
-	const style = {
-		top: `calc(100% - ${positionOffset}px - ${
+	let style = {
+		top: `calc(100% - ${verticalPositionOffset}px - ${
 			isRetracted ? bottomPosition : bottomPosition + bodyHeight
 		}rem)`,
 	};
 
+	if (centered && horizontalPositionOffset) {
+		style.left = `calc(50% - ${horizontalPositionOffset / 2}px`;
+	}
+
+	useEffect(() => {
+		handleHorizontalPosition(width);
+	}, [width]);
+
 	return (
-		<div className={classes} style={style}>
+		<div className={classes} style={style} ref={ref}>
 			<RetractableWindowControlBar
-				onHeightChange={height => handlePosition(height)}
+				onHeightChange={height => handleVerticalPosition(height)}
 				onClick={() => handleRetraction(!isRetracted)}
+				centered={centered}
 			>
 				{controlBarContent}
 			</RetractableWindowControlBar>
-			<RetractableWindowBody height={bodyHeight}>
+			<RetractableWindowBody height={bodyHeight} centered={centered}>
 				{children}
 			</RetractableWindowBody>
 		</div>

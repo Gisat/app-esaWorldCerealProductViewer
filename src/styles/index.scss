@@ -113,8 +113,6 @@ $mapBorder: 0.05rem solid var(--base50); // the width in rem fixes the ugly whit
 
 // Filter window
 .ptr-RetractableWindow.worldCereal-FilterWindow {
-	left: .5rem;
-	width: calc(100% - 1rem);
 	max-width: 60rem;
 	z-index: 3;
 }

@@ -29,8 +29,8 @@
 	// uncomment
 	// line-height: $a1;
 	// font-size: $a1;
-	line-height: 1rem;
 	font-size: $b1;
+	line-height: $b1;
 	min-width: 16rem;
 	width: 16rem;
 
@@ -45,7 +45,7 @@
 	overflow: hidden;
 	padding: 0 1rem;
 	color: var(--base40);
-	font-size: .6875rem;
+	font-size: $a0;
 }
 
 .ptr-maptimeline-legenditem > em {

@@ -13,3 +13,13 @@
   position: relative;
   z-index: 2;
 }
+
+.worldCereal-MapScale .ptr-MapScale-content {
+  background: rgba(var(--base100rgb), .35);
+  border: 2px solid var(--base45);
+  border-top: 0;
+}
+
+.worldCereal-MapScale .ptr-MapScale-content > span {
+  color: var(--base30);
+}
