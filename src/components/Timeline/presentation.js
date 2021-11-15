@@ -60,6 +60,8 @@ class Timeline extends React.PureComponent {
 			productMetadata.forEach((product, i) => {
 				const placeID = product.data.aez;
 				const productID = product.data.product;
+				const seasonID = product.data.season;
+
 				const productTemplate = productTemplates[productID];
 				const productName = productTemplate?.data?.nameDisplay || productID;
 
@@ -68,7 +70,11 @@ class Timeline extends React.PureComponent {
 				}
 
 				if (!layersByProducts[productID].hasOwnProperty(placeID)) {
-					layersByProducts[productID][placeID] = [];
+					layersByProducts[productID][placeID] = {};
+				}
+
+				if (!layersByProducts[productID][placeID].hasOwnProperty(seasonID)) {
+					layersByProducts[productID][placeID][seasonID] = [];
 				}
 
 				const activeProductColor =
@@ -78,7 +84,7 @@ class Timeline extends React.PureComponent {
 					? chroma(activeProductColor).desaturate(3).hex()
 					: null;
 				// push data from same place and same product to the same line in timeline
-				layersByProducts[productID][placeID].push({
+				layersByProducts[productID][placeID][seasonID].push({
 					key: product.key,
 					layerTemplateKey: product.key,
 					period: [
@@ -94,7 +100,7 @@ class Timeline extends React.PureComponent {
 						layer => layer.layerKey === product.key
 					),
 					activePeriodIndex: 0,
-					title: `${productName} (zone ${placeID})`,
+					title: `${productName} (zone ${placeID}, ${seasonID} season)`,
 					// zIndex: i,
 				});
 			});
@@ -102,7 +108,9 @@ class Timeline extends React.PureComponent {
 
 		for (const product of Object.keys(layersByProducts)) {
 			for (const place of Object.keys(layersByProducts[product])) {
-				layers = [...layers, layersByProducts[product][place]];
+				for (const season of Object.keys(layersByProducts[product][place])) {
+					layers = [...layers, layersByProducts[product][place][season]];
+				}
 			}
 		}
 
