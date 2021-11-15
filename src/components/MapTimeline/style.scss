@@ -63,8 +63,14 @@ g.ptr-timeline-hour,
 g.ptr-timeline-hour > line,
 g.ptr-timeline-minute,
 g.ptr-timeline-minute > line {
-    stroke: var(--accent70);
+    stroke: var(--accent80);
 	fill: var(--base95);
+}
+
+g.ptr-timeline-year,
+.ptr-timeline-year > line {
+	stroke-width: 2px;
+	stroke: var(--accent65);
 }
 
 g.ptr-timeline-month.secondary > line {
@@ -75,8 +81,12 @@ g.ptr-timeline-month.secondary > line {
 .ptr-timeline-year-label,
 .ptr-timeline-month-label {
 	stroke: none;
-	fill: var(--accent50);
+	fill: var(--accent30);
 	font-size: .85rem;
+}
+
+.ptr-timeline-month-label {
+	font-size: $a0;
 }
 
 .ptr-timeline-year-label {
