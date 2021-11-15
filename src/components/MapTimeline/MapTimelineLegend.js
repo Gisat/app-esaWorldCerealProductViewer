@@ -19,18 +19,18 @@ class MapTimelineLegand extends React.PureComponent {
 		const layersElms = layers.reduce((acc, layer) => {
 			// if (lastZIndex < layer.zIndex) {
 			// 	lastZIndex = layer.zIndex;
-				// return [...acc, <span key={layer.layerTemplateKey} className={'ptr-maptimeline-legenditem'} title={`${layer.title} ${layer.info}`}>{layer.title}</span>];
-				//version without info
-				return [
-					...acc,
-					<span
-						key={layer[0].key}
-						className={'ptr-maptimeline-legenditem'}
-						title={`${layer[0].title}`}
-					>
-						{layer[0].title}
-					</span>,
-				];
+			// return [...acc, <span key={layer.layerTemplateKey} className={'ptr-maptimeline-legenditem'} title={`${layer.title} ${layer.info}`}>{layer.title}</span>];
+			//version without info
+			return [
+				...acc,
+				<span
+					key={layer[0].key}
+					className={'ptr-maptimeline-legenditem'}
+					title={`${layer[0].title} ${layer[0].subtitle}`}
+				>
+					<em>{layer[0].title}</em> {layer[0].subtitle}
+				</span>,
+			];
 			// } else {
 			// 	return acc;
 			// }

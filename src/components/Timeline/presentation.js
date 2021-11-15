@@ -100,7 +100,8 @@ class Timeline extends React.PureComponent {
 						layer => layer.layerKey === product.key
 					),
 					activePeriodIndex: 0,
-					title: `${productName} (zone ${placeID}, ${seasonID} season)`,
+					title: `${productName}`,
+					subtitle: `(${seasonID}, zone ${placeID})`,
 					// zIndex: i,
 				});
 			});

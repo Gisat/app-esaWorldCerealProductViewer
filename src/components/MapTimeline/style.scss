@@ -9,7 +9,7 @@
 	flex: 0 1 auto;
 	display: flex;
 	flex-flow: column;
-	min-width: 20rem;
+	min-width: 16rem;
 }
 
 .ptr-maptimeline {
@@ -31,20 +31,22 @@
 	// font-size: $a1;
 	line-height: 1rem;
 	font-size: $b1;
-	min-width: 20rem;
-	width: 20rem;
-}
-.ptr-maptimelinelegend span {
-	// uncomment
-	// padding: 0 $a;
-	padding: 0 1rem;
-	color: var(--base10);
+	min-width: 16rem;
+	width: 16rem;
 }
 
 .ptr-maptimeline-legenditem {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+	padding: 0 1rem;
+	color: var(--base40);
+	font-size: .6875rem;
+}
+
+.ptr-maptimeline-legenditem > em {
+	color: var(--base10);
+	font-size: $b1;
 }
 
 
