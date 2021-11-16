@@ -126,6 +126,8 @@ g.ptr-timeline-month.secondary > line {
 	display: inline-block;
 }
 .ptr-timeline-tooltip-layer > div:nth-child(2){
+	display: flex;
+	flex-flow: column;
 	font-size: $a0;
 	color: var(--base60);
 	 em {

@@ -270,7 +270,12 @@ class MapTimeline extends React.PureComponent {
 							style={{backgroundColor: overlay.backdroundColor}}
 						></span>
 					</div>
-					<div><em>{overlay.title}</em> {overlay.subtitle}</div>
+					<div>
+						<div>
+							<em>{overlay.title}</em> {overlay.subtitle}
+						</div>
+						<div><em>{`${overlay.period.start} / ${overlay.period.end}`}</em></div>
+					</div>
 				</div>
 			);
 		});
