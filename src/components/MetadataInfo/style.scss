@@ -1,7 +1,8 @@
+@use 'sass:math';
 @import '../../styles/variables';
 
 .worldCereal-Modal {
-  background: var(--accent15);
+  background: var(--base05);
 }
 
 .worldCereal-MetadataInfoTitle {
@@ -13,4 +14,22 @@
 
 .worldCereal-MetadataInfo {
   padding: m(1);
+}
+
+.worldCereal-MetadataInfoItemTiles {
+  margin-top: m(math.div(1,3));
+}
+
+.worldCereal-MetadataInfoItemTiles-header {
+  font-size: $b1;
+}
+
+.worldCereal-MetadataInfoItemTiles-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.worldCereal-MetadataInfoItemTiles-content a {
+  font-size: $b1;
+  margin: 0 .5rem 0 0;
 }

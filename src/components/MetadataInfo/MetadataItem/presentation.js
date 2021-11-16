@@ -45,6 +45,7 @@ class MetadataInfoItem extends React.PureComponent {
 			id,
 			model,
 			public: isPublic,
+			tiles,
 		} = productMetadata;
 
 		const productName = productTemplate?.data?.nameDisplay || product;
@@ -60,17 +61,17 @@ class MetadataInfoItem extends React.PureComponent {
 					<h4 className="worldCereal-MetadataInfoItemHeader-title">
 						{productName} - zone {aez} - season {season}
 					</h4>
-					<div className="worldCereal-MetadataInfoItemHeader-tools">
-						<Button
-							className="worldCereal-MetadataInfoItemHeader-download"
-							ghost
-							small
-							disabled
-							icon="download"
-						>
-							Download
-						</Button>
-					</div>
+					{/*<div className="worldCereal-MetadataInfoItemHeader-tools">*/}
+					{/*	<Button*/}
+					{/*		className="worldCereal-MetadataInfoItemHeader-download"*/}
+					{/*		ghost*/}
+					{/*		small*/}
+					{/*		disabled*/}
+					{/*		icon="download"*/}
+					{/*	>*/}
+					{/*		Download*/}
+					{/*	</Button>*/}
+					{/*</div>*/}
 				</div>
 				<div className="worldCereal-MetadataInfoItemBasics">
 					<MetadataInfoItemRec label="Tile collection ID">
@@ -90,6 +91,18 @@ class MetadataInfoItem extends React.PureComponent {
 					</MetadataInfoItemRec>
 					<MetadataInfoItemRec label="public">{isPublic}</MetadataInfoItemRec>
 					<MetadataInfoItemRec label="model">{model}</MetadataInfoItemRec>
+				</div>
+				<div className="worldCereal-MetadataInfoItemTiles">
+					<div className="worldCereal-MetadataInfoItemTiles-header">
+						Original data for S2 tiles:
+					</div>
+					<div className="worldCereal-MetadataInfoItemTiles-content">
+						{tiles.map(tile => (
+							<a target="_blank" rel="noopener noreferrer" href={tile.product}>
+								{tile.tile}
+							</a>
+						))}
+					</div>
 				</div>
 			</div>
 		);
