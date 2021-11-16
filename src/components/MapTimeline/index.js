@@ -260,7 +260,9 @@ class MapTimeline extends React.PureComponent {
 		const clientY = evt.clientY;
 
 		intersectionOverlays.sort((a, b) => a.top - b.top);
-		intersectionOverlays = intersectionOverlays.filter(i => i.top <= clientY && (i.top + 16) >= clientY);
+		intersectionOverlays = intersectionOverlays.filter(
+			i => i.top <= clientY && i.top + 16 >= clientY
+		);
 		const intersectionOverlaysElms = intersectionOverlays.map(overlay => {
 			return (
 				<div key={overlay.key} className={'ptr-timeline-tooltip-layer'}>
@@ -274,7 +276,7 @@ class MapTimeline extends React.PureComponent {
 						<div>
 							<em>{overlay.title}</em> {overlay.subtitle}
 						</div>
-						<div><em>{`${overlay.period.start} / ${overlay.period.end}`}</em></div>
+						<div>{`${overlay.period.start} / ${overlay.period.end}`}</div>
 					</div>
 				</div>
 			);
@@ -283,8 +285,7 @@ class MapTimeline extends React.PureComponent {
 		return (
 			<div>
 				<div className={'ptr-timeline-tooltip-time'}>
-					<b>{`${time.format('YYYY')}`}</b>-
-					<b>{`${time.format('MM')}`}</b>-
+					<b>{`${time.format('YYYY')}`}</b>-<b>{`${time.format('MM')}`}</b>-
 					<b>{`${time.format('DD')}`}</b>
 				</div>
 				{intersectionOverlaysElms}
@@ -361,26 +362,32 @@ class MapTimeline extends React.PureComponent {
 					<div className={'ptr-maptimeline'}>
 						{legend && !vertical ? <MapTimelineLegend layers={layers} /> : null}
 						<div className={'ptr-timeline'}>
-							<ReactResizeDetector handleWidth skipOnMount={false} onResize={(width) => {this.setState({timelineWidth:width})}}>
+							<ReactResizeDetector
+								handleWidth
+								skipOnMount={false}
+								onResize={width => {
+									this.setState({timelineWidth: width});
+								}}
+							>
 								<HoverHandler getStyle={this.getHorizontalTootlipStyle()}>
 									<TimeLineHover getHoverContent={this.getHoverContent}>
-											<Timeline
-												periodLimit={periodLimit}
-												periodLimitOnCenter={periodLimitOnCenter}
-												onChange={this.onChange}
-												onHover={onHover}
-												onClick={onClick}
-												vertical={vertical}
-												levels={levels}
-												contentHeight={Math.max(
-													contentHeightByLayers,
-													minTimelineHeight
-												)}
-												// contentHeight={200}
-												selectMode={selectMode}
-											>
-												{childArray}
-											</Timeline>
+										<Timeline
+											periodLimit={periodLimit}
+											periodLimitOnCenter={periodLimitOnCenter}
+											onChange={this.onChange}
+											onHover={onHover}
+											onClick={onClick}
+											vertical={vertical}
+											levels={levels}
+											contentHeight={Math.max(
+												contentHeightByLayers,
+												minTimelineHeight
+											)}
+											// contentHeight={200}
+											selectMode={selectMode}
+										>
+											{childArray}
+										</Timeline>
 									</TimeLineHover>
 								</HoverHandler>
 							</ReactResizeDetector>
