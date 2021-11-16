@@ -6,7 +6,6 @@ module.exports = {
 	modifyWebpack: config => {
 		const newConfig = {
 			...config,
-			mode: 'production',
 			plugins: [
 				...config.plugins,
 				new EnvironmentPlugin({
@@ -15,11 +14,6 @@ module.exports = {
 			],
 			module: {
 				rules: [
-					{
-						// test: path.resolve(__dirname, 'node_modules/webworldwind-esa/build/dist/worldwind.min.js'),
-						test: '/worldwind.min.js/',
-						use: "null-loader"
-					},
 					{
 						test: /\.js$/,
 						use: {
@@ -32,12 +26,6 @@ module.exports = {
 								],
 								plugins: [
 									'lodash',
-									'@babel/plugin-transform-modules-commonjs',
-									'@babel/plugin-syntax-dynamic-import',
-									'@babel/plugin-proposal-class-properties',
-									'@babel/plugin-proposal-optional-chaining',
-									'@babel/plugin-proposal-nullish-coalescing-operator',
-									'dynamic-import-node',
 									'react-loadable/babel',
 									[
 										'file-loader',
@@ -58,15 +46,12 @@ module.exports = {
 					{
 						test: /\.s[ac]ss$/i,
 						use: [
-						"url-loader",
-						  // Creates `style` nodes from JS strings
-						  "style-loader",
-						  // Translates CSS into CommonJS
-						  "css-loader",
-						  // Compiles Sass to CSS
-						  "sass-loader",
+							// Translates CSS into CommonJS
+							'css-loader?url=false',
+							// Compiles Sass to CSS
+							'sass-loader',
 						],
-					  },
+					},
 					{
 						test: /\.css/,
 						use: [

@@ -5,7 +5,7 @@ import {Button} from '@gisatcz/ptr-atoms';
 import StatusLabel from '../atoms/StatusLabel';
 import {MAX_MAPS_IN_MAP_SET} from '../../constants/app';
 import logo from '../../assests/logo.png';
-
+import logoData from './logo';
 import './style.scss';
 
 class Header extends React.PureComponent {
@@ -27,7 +27,7 @@ class Header extends React.PureComponent {
 			<div className="worldCereal-Header">
 				<div className="worldCereal-Header-logo">
 					<div>
-						<img src={logo} />
+					<img src={`data:image/jpeg;base64,${logoData}`}/>
 					</div>
 					<h1>
 						<span>World Cereal</span>
