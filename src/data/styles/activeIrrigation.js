@@ -13,12 +13,17 @@ export default {
 							bandIndex: 0,
 							valueClasses: [
 								{
-									interval: [0, 99],
-									intervalBounds: [true, true],
+									interval: [0, 1],
+									intervalBounds: [true, false],
 									color: null,
 								},
 								{
-									interval: [101, 255],
+									interval: [2, 3],
+									intervalBounds: [true, false],
+									color: '#a8a8a8',
+								},
+								{
+									interval: [3, 255],
 									intervalBounds: [true, true],
 									color: null,
 								},
