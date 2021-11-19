@@ -18,7 +18,7 @@ export default {
 									color: null,
 								},
 								{
-									interval: [2, 3],
+									interval: [1, 2],
 									intervalBounds: [true, false],
 									color: '#a8a8a8',
 								},
