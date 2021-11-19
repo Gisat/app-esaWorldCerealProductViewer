@@ -34,6 +34,7 @@ const ProductLabel = ({
 						product={productTemplate?.data?.nameDisplay || productKey}
 						productMetadata={productMetadata}
 						count={productCount}
+						color={color}
 					/>
 				</ExpandableLabelHeader>
 				<ExpandableLabelBody height={6}>
@@ -77,7 +78,7 @@ ProductLabel.propTypes = {
 	onProductRemove: PropTypes.func,
 };
 
-const ProductLabelHeader = ({count, product, productMetadata}) => {
+const ProductLabelHeader = ({count, product, productMetadata, color}) => {
 	if (count === 1) {
 		const {sos, eos, aez} = productMetadata[0].data;
 		return (
@@ -86,41 +87,60 @@ const ProductLabelHeader = ({count, product, productMetadata}) => {
 				zone={aez}
 				start={sos}
 				end={eos}
+				color={color}
 			/>
 		);
 	} else {
-		return <MultipleProductLabelHeader product={product} count={count} />;
+		return (
+			<MultipleProductLabelHeader
+				product={product}
+				count={count}
+				color={color}
+			/>
+		);
 	}
 };
 
-const SingleProductLabelHeader = ({product, zone, start, end}) => {
+const SingleProductLabelHeader = ({product, zone, start, end, color}) => {
 	return (
 		<div className="worldCereal-ProductLabelHeader">
-			<div className="worldCereal-ProductLabelHeader-title">
-				<span className="worldCereal-ProductLabelHeader-product">
-					{product}
-				</span>
-				<span className="worldCereal-ProductLabelHeader-zone">
-					(zone {zone})
-				</span>
-			</div>
-			<div className="worldCereal-ProductLabelHeader-period">
-				{start} / {end}
+			<div
+				className="worldCereal-ProductLabelHeader-color"
+				style={{background: color}}
+			/>
+			<div className="worldCereal-ProductLabelHeader-body">
+				<div className="worldCereal-ProductLabelHeader-title">
+					<span className="worldCereal-ProductLabelHeader-product">
+						{product}
+					</span>
+					<span className="worldCereal-ProductLabelHeader-zone">
+						(zone {zone})
+					</span>
+				</div>
+				<div className="worldCereal-ProductLabelHeader-period">
+					{start} / {end}
+				</div>
 			</div>
 		</div>
 	);
 };
 
-const MultipleProductLabelHeader = ({product, count}) => {
+const MultipleProductLabelHeader = ({product, count, color}) => {
 	return (
 		<div className="worldCereal-ProductLabelHeader">
-			<div className="worldCereal-ProductLabelHeader-title">
-				<span className="worldCereal-ProductLabelHeader-product">
-					{product}
-				</span>
-			</div>
-			<div className="worldCereal-ProductLabelHeader-productsCount">
-				<em>{count}</em> products
+			<div
+				className="worldCereal-ProductLabelHeader-color"
+				style={{background: color}}
+			/>
+			<div className="worldCereal-ProductLabelHeader-body">
+				<div className="worldCereal-ProductLabelHeader-title">
+					<span className="worldCereal-ProductLabelHeader-product">
+						{product}
+					</span>
+				</div>
+				<div className="worldCereal-ProductLabelHeader-productsCount">
+					<em>{count}</em> products
+				</div>
 			</div>
 		</div>
 	);

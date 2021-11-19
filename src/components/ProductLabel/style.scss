@@ -6,9 +6,24 @@
 
 // Header
 .worldCereal-ProductLabelHeader {
-  padding: .25rem .75rem .25rem .5rem;
+  display: flex;
   font-size: $b1;
   border-right: 1px solid rgba(var(--base50rgb), .25);
+}
+
+.worldCereal-ProductLabelHeader-color {
+  width: 5px;
+  background: var(--base50);
+  border-top-left-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+}
+
+.ptr-ExpandableLabel.is-expanded .worldCereal-ProductLabelHeader-color {
+  border-bottom-left-radius: 0;
+}
+
+.worldCereal-ProductLabelHeader-body {
+  padding: .25rem .75rem .25rem .5rem;
 }
 
 .worldCereal-ProductLabelHeader-title {
