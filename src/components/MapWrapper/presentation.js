@@ -3,8 +3,10 @@ import {isEmpty as _isEmpty, forIn as _forIn} from 'lodash';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import {Button, Menu, MenuItem} from '@gisatcz/ptr-atoms';
-import MapProductLabel from '../MapProductLabel';
-import {RemovableLabelContainer} from '../atoms/RemovableLabel';
+import ExpandableLabel, {
+	ExpandableLabelBody,
+	ExpandableLabelHeader,
+} from '../atoms/ExpandableLabel';
 import {MIN_PRODUCT_MAP_LABELS_FOR_GROUPING} from '../../constants/app';
 
 import './style.scss';
@@ -42,9 +44,9 @@ class MapWrapper extends React.PureComponent {
 		return (
 			<div className={wrapperClasses}>
 				{!noMetadata ? (
-					<RemovableLabelContainer className="worldCereal-MapProductLabelContainer">
+					<div className="worldCereal-MapProductLabelContainer">
 						{this.renderMapProductLabels(productsMetadata)}
-					</RemovableLabelContainer>
+					</div>
 				) : null}
 				<div className="worldCereal-MapTools">
 					<Button
@@ -99,14 +101,31 @@ class MapWrapper extends React.PureComponent {
 		const productMetadataKeys = productMetadata.map(item => item.key);
 
 		return (
-			<MapProductLabel
-				key={key}
-				productKey={productKey}
-				productMetadataKeys={productMetadataKeys}
-				productMetadata={productMetadata}
-				mapKey={this.props.mapKey}
-			/>
+			<ExpandableLabel floating key={key}>
+				<ExpandableLabelHeader>
+					<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+				</ExpandableLabelHeader>
+				<ExpandableLabelBody height={15}>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+						interdum, leo eu porttitor elementum, urna augue efficitur lectus,
+						ac pharetra dui purus vitae nibh. Morbi id pretium leo. Phasellus
+						convallis sed quam non vulputate. Quisque aliquam pellentesque dolor
+						mattis porta. Proin at dapibus nunc.
+					</p>
+				</ExpandableLabelBody>
+			</ExpandableLabel>
 		);
+
+		// return (
+		// 	<MapProductLabel
+		// 		key={key}
+		// 		productKey={productKey}
+		// 		productMetadataKeys={productMetadataKeys}
+		// 		productMetadata={productMetadata}
+		// 		mapKey={this.props.mapKey}
+		// 	/>
+		// );
 	}
 }
 

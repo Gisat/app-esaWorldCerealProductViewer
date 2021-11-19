@@ -1,10 +1,10 @@
 import React from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
-import RemovableLabel from '../atoms/RemovableLabel';
-import ModalWindow from '../atoms/ModalWindow';
-import {MetadataInfoTitle} from '../MetadataInfo/presentation';
-import MetadataInfo from '../MetadataInfo';
+import RemovableLabel from '../../atoms/RemovableLabel';
+import ModalWindow from '../../atoms/ModalWindow';
+import {MetadataInfoTitle} from '../../MetadataInfo/presentation';
+import MetadataInfo from '../../MetadataInfo';
 
 Modal.setAppElement('#root');
 
