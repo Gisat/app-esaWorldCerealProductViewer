@@ -1,0 +1,42 @@
+@import '../../styles/variables';
+
+.worldCereal-ProductLabel {
+  background: var(--base25);
+}
+
+// Header
+.worldCereal-ProductLabelHeader {
+  padding: .25rem .75rem .25rem .5rem;
+  font-size: $b1;
+  border-right: 1px solid var(--base40);
+}
+
+.worldCereal-ProductLabelHeader-title {
+  display: flex;
+  align-items: center;
+}
+
+.worldCereal-ProductLabelHeader-product {
+  margin-right: .25rem;
+  font-weight: bold;
+  font-size: $a0;
+}
+
+.worldCereal-ProductLabelHeader-period {
+  font-size: $a0;
+  line-height: .875rem;
+}
+
+.worldCereal-ProductLabelHeader-zone {
+  font-size: $a0;
+}
+
+.worldCereal-ProductLabelHeader-productsCount {
+  line-height: .875rem;
+}
+
+.worldCereal-ProductLabelHeader-productsCount em {
+  font-weight: bold;
+}
+
+// Content
