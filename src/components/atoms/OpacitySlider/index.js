@@ -1,0 +1,19 @@
+import React from 'react';
+import ReactSlider from 'react-slider';
+
+import './style.scss';
+
+const OpacitySlider = ({value, onChange}) => {
+	return (
+		<ReactSlider
+			value={value}
+			onChange={onChange}
+			className="ptr-OpacitySlider"
+			thumbClassName="ptr-OpacitySlider-thumb"
+			trackClassName="ptr-OpacitySlider-track"
+			renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
+		/>
+	);
+};
+
+export default OpacitySlider;

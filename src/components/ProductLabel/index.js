@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from '@gisatcz/ptr-state';
 import Select from '../../state/Select';
-import {mapSetKey} from '../../constants/app';
 
 import Presentation from './presentation';
 
@@ -24,6 +23,15 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 				Action.worldCereal.removeAllLayersFromMapByLayerKeys(
 					ownProps.mapKey,
 					ownProps.productMetadataKeys
+				)
+			);
+		},
+		onOpacityChange: opacity => {
+			dispatch(
+				Action.worldCereal.setOpacityByLayerKeys(
+					ownProps.mapKey,
+					ownProps.productMetadataKeys,
+					opacity / 100
 				)
 			);
 		},

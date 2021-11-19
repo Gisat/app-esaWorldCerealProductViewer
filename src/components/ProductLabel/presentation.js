@@ -10,17 +10,20 @@ import ExpandableLabel, {
 import ModalWindow from '../atoms/ModalWindow';
 import {MetadataInfoTitle} from '../MetadataInfo/presentation';
 import MetadataInfo from '../MetadataInfo';
+import OpacitySlider from '../atoms/OpacitySlider';
 
 import './style.scss';
 
 Modal.setAppElement('#root');
 
 const ProductLabel = ({
+	layersOpacity,
 	productMetadata,
 	productTemplate,
 	productKey,
 	productMetadataKeys,
 	onProductRemove,
+	onOpacityChange,
 }) => {
 	const [modalIsOpen, setModalOpen] = React.useState(false);
 	const productCount = productMetadataKeys?.length;
@@ -40,7 +43,7 @@ const ProductLabel = ({
 				<ExpandableLabelBody height={6}>
 					<div className="worldCereal-ProductLabelBody">
 						<ProductLabelBodyItem title="Set opacity">
-							<Icon icon="minus-thick" />
+							<OpacitySlider value={layersOpacity} onChange={onOpacityChange} />
 						</ProductLabelBodyItem>
 						<ProductLabelBodyItem
 							onClick={() => setModalOpen(true)}
