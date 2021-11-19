@@ -45,6 +45,10 @@
   background: var(--base10);
 }
 
+.ptr-ExpandableLabelBody > div {
+  width: 100%;
+}
+
 // Expanded
 .ptr-ExpandableLabelHeader.is-expanded {
   border-bottom-left-radius: 0;
