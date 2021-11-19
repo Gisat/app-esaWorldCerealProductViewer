@@ -26,7 +26,7 @@
 		"@gisatcz/ptr-atoms": "^1.4.0",
 		"@gisatcz/ptr-components": "^1.3.0",
 		"@gisatcz/ptr-core": "^1.6.0",
-		"@gisatcz/ptr-maps": "^1.11.0",
+		"@gisatcz/ptr-maps": "^1.11.1",
 		"@gisatcz/ptr-router": "^0.0.4",
 		"@gisatcz/ptr-state": "^2.0.0-dev.30",
 		"@gisatcz/ptr-timeline": "^0.1.1",
