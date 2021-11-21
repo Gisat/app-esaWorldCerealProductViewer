@@ -88,6 +88,12 @@ function checkExistingLayers() {
 						});
 						const productTiles = productMetadataModel?.data?.tiles;
 
+						const someExistingTile = getLayerByProductMetadataKey(
+							layers,
+							productMetadataKey
+						);
+						const existingOpacity = someExistingTile?.opacity;
+
 						// If product present (as layer) in given map
 						if (productTiles) {
 							// Go through all tiles present in current map view
@@ -97,7 +103,9 @@ function checkExistingLayers() {
 									tileKey
 								);
 
-								// If for given tile is a record in productMetadata tile list and the layer for this tile is not present in the map at the same time, then add the tile (as layer) to the map
+								/* If for given tile is a record in productMetadata tile list
+								and the layer for this tile is not present in the map at the same time,
+								then add the tile (as layer) to the map and use the opacity of existing layer */
 								if (relevantTile) {
 									const existingLayer = getLayerByProductMetadataKeyAndTileKey(
 										layers,
@@ -109,7 +117,8 @@ function checkExistingLayers() {
 											state,
 											productMetadataKey,
 											relevantTile,
-											productMetadataModel.data.product
+											productMetadataModel.data.product,
+											existingOpacity
 										);
 										if (layer) {
 											layersToAdd.push(layer);
@@ -285,15 +294,23 @@ function getUniqueCogLayerKey(productMetadataKey, tile) {
  * @param productMetadataKey {string} uuid of product metadata
  * @param tile {tile: Object, path: string}
  * @param product {string}
+ * @param opacity {number}
  * @returns {Object} Panther.Layer
  */
-function getCogLayerDefinition(state, productMetadataKey, tile, product) {
+function getCogLayerDefinition(
+	state,
+	productMetadataKey,
+	tile,
+	product,
+	opacity
+) {
 	return {
 		key: getUniqueCogLayerKey(productMetadataKey, tile),
 		layerKey: productMetadataKey,
 		productMetadataKey,
 		tileKey: tile.tile,
 		type: 'cog',
+		opacity: opacity >= 0 ? opacity : 1,
 		options: {
 			url: tile.product,
 			style: Select.worldCereal.getStyleDefinitionByProductTemplateKey(
@@ -329,6 +346,7 @@ function getProductOutlineLayerDefinition(state, productMetadata) {
 		productMetadataKey: key,
 		type: 'vector',
 		options: {
+			renderingTechnique: 'canvas',
 			style: {
 				rules: [
 					{
@@ -373,6 +391,18 @@ function getLayerByProductMetadataKeyAndTileKey(
 		layer =>
 			layer.productMetadataKey === productMetadataKey &&
 			layer.tileKey === tileKey
+	);
+}
+
+/**
+ * @param layers {Array} A collection of map layers definitions
+ * @param productMetadataKey {string}
+ * @returns {Object || null} Selected tile
+ */
+function getLayerByProductMetadataKey(layers, productMetadataKey) {
+	return _find(
+		layers,
+		layer => layer.productMetadataKey === productMetadataKey
 	);
 }
 
