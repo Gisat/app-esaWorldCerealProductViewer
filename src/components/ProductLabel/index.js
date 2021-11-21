@@ -13,6 +13,11 @@ const mapStateToProps = (state, ownProps) => {
 			state,
 			ownProps.productKey
 		),
+		layersOpacity: Select.worldCereal.getMapLayersOpacity(
+			state,
+			ownProps.mapKey,
+			ownProps.productMetadataKeys
+		),
 	};
 };
 

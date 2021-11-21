@@ -1,6 +1,6 @@
 import {createCachedSelector} from 're-reselect';
 import {createSelector} from 'reselect';
-import {filter as _filter} from 'lodash';
+import {filter as _filter, includes as _includes} from 'lodash';
 import {Select as CommonSelect} from '@gisatcz/ptr-state';
 
 import {
@@ -168,6 +168,31 @@ const getProductMetadataCountForFilterOption = createCachedSelector(
 		`${filterParameterKey}_${value}`
 );
 
+const getMapLayersOpacity = createCachedSelector(
+	[
+		CommonSelect.maps.getMapLayersStateByMapKey,
+		(state, mapKey, productMetadataKeys) => productMetadataKeys,
+	],
+	(layers, productMetadataKeys) => {
+		const selectedLayers = layers.filter(layer =>
+			_includes(productMetadataKeys, layer.productMetadataKey)
+		);
+
+		let opacitySum = 0;
+		if (selectedLayers.length) {
+			selectedLayers.forEach(selectedLayer => {
+				if (selectedLayer.opacity >= 0) {
+					opacitySum += selectedLayer.opacity;
+				} else {
+					opacitySum += 1;
+				}
+			});
+		}
+
+		return Math.ceil((opacitySum / selectedLayers.length) * 100);
+	}
+)((state, mapKey) => mapKey);
+
 const isInteractivityLimited = createSelector(
 	[state => CommonSelect.maps.getMapSetActiveMapView(state, mapSetKey)],
 	mapView => {
@@ -213,6 +238,7 @@ export default {
 		getProductMetadataCountForFilterOption,
 		getProductTemplates,
 		getProductTemplateByKey,
+		getMapLayersOpacity,
 		getStyleDefinitionByProductTemplateKey,
 
 		isInteractivityLimited,

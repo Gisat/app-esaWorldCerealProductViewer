@@ -188,7 +188,9 @@ function setOpacityByLayerKeys(mapKey, layerKeys, opacity) {
 		if (mapLayers && layerKeys.length) {
 			mapLayers.forEach(layer => {
 				if (layerKeys.indexOf(layer.layerKey) !== -1) {
-					// TODO set opacity
+					dispatch(
+						CommonAction.maps.setMapLayerOpacity(mapKey, layer.key, opacity)
+					);
 				}
 			});
 		}
