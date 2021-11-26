@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import {find as _find, forIn as _forIn} from 'lodash';
 import {Icon} from '@gisatcz/ptr-atoms';
 import ExpandableLabel, {
 	ExpandableLabelBody,
@@ -27,7 +28,9 @@ const ProductLabel = ({
 }) => {
 	const [modalIsOpen, setModalOpen] = React.useState(false);
 	const productCount = productMetadataKeys?.length;
-	const color = productTemplate?.data?.style?.rules?.[0]?.styles?.[0]?.color;
+	const styles = productTemplate?.data?.style?.rules?.[0]?.styles;
+	const styleForLegend = _find(styles, style => style.legend);
+	const color = styles?.[0]?.color;
 
 	return (
 		<>
@@ -40,24 +43,30 @@ const ProductLabel = ({
 						color={color}
 					/>
 				</ExpandableLabelHeader>
-				<ExpandableLabelBody height={6}>
+				<ExpandableLabelBody height={styleForLegend ? 9.5 : 6}>
 					<div className="worldCereal-ProductLabelBody">
-						<ProductLabelBodyItem title="Set opacity">
-							<OpacitySlider value={layersOpacity} onChange={onOpacityChange} />
-						</ProductLabelBodyItem>
-						<ProductLabelBodyItem
-							onClick={() => setModalOpen(true)}
-							title="Show metadata"
-						>
-							<Icon icon="info" />
-						</ProductLabelBodyItem>
-						<ProductLabelBodyItem
-							onClick={onProductRemove}
-							title="Remove layer"
-							dangerous
-						>
-							<Icon icon="close" />
-						</ProductLabelBodyItem>
+						<div>
+							<ProductLabelBodyItem title="Set opacity">
+								<OpacitySlider
+									value={layersOpacity}
+									onChange={onOpacityChange}
+								/>
+							</ProductLabelBodyItem>
+							<ProductLabelBodyItem
+								onClick={() => setModalOpen(true)}
+								title="Show metadata"
+							>
+								<Icon icon="info" />
+							</ProductLabelBodyItem>
+							<ProductLabelBodyItem
+								onClick={onProductRemove}
+								title="Remove layer"
+								// dangerous
+							>
+								<Icon icon="close" />
+							</ProductLabelBodyItem>
+						</div>
+						<ProductLabelLegend style={styleForLegend} />
 					</div>
 				</ExpandableLabelBody>
 			</ExpandableLabel>
@@ -159,6 +168,37 @@ const ProductLabelBodyItem = ({title, dangerous, onClick, children}) => {
 		<div className={classes} onClick={onClick}>
 			<div className="worldCereal-ProductLabelBodyItem-title">{title}</div>
 			<div className="worldCereal-ProductLabelBodyItem-tool">{children}</div>
+		</div>
+	);
+};
+
+const ProductLabelLegend = ({style}) => {
+	// TODO for cogs values only
+	if (style) {
+		let legendItems = [];
+		_forIn(style.values, (options, value) => {
+			if (options.name) {
+				legendItems.push(options);
+			}
+		});
+
+		return (
+			<div className="worldCereal-ProductLabelLegend">
+				{legendItems.map(item => {
+					return <ProductLabelLegendItem color={item.color} name={item.name} />;
+				})}
+			</div>
+		);
+	} else {
+		return null;
+	}
+};
+
+const ProductLabelLegendItem = ({color, name}) => {
+	return (
+		<div className="worldCereal-ProductLabelLegendItem">
+			<div style={{background: color}} />
+			<span>{name}</span>
 		</div>
 	);
 };
