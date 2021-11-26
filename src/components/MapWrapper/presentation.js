@@ -14,6 +14,8 @@ class MapWrapper extends React.PureComponent {
 		mapKey: PropTypes.string,
 		mapSetMapKeys: PropTypes.array,
 		productsMetadata: PropTypes.object,
+		labelsRight: PropTypes.bool,
+		noTools: PropTypes.bool,
 	};
 
 	constructor(props) {
@@ -28,6 +30,8 @@ class MapWrapper extends React.PureComponent {
 			mapSetMapKeys,
 			productsMetadata,
 			removeAllLayers,
+			noTools,
+			labelsRight,
 		} = this.props;
 		const wrapperClasses = classnames(
 			'ptr-map-wrapper worldCereal-MapWrapper',
@@ -36,44 +40,53 @@ class MapWrapper extends React.PureComponent {
 			}
 		);
 
+		const labelContainerClasses = classnames(
+			'worldCereal-MapProductLabelContainer',
+			{
+				'is-right': labelsRight,
+			}
+		);
+
 		const noMetadata = _isEmpty(productsMetadata);
 
 		return (
 			<div className={wrapperClasses}>
 				{!noMetadata ? (
-					<div className="worldCereal-MapProductLabelContainer">
+					<div className={labelContainerClasses}>
 						{this.renderMapProductLabels(productsMetadata)}
 					</div>
 				) : null}
-				<div className="worldCereal-MapTools">
-					<Button
-						title="Options"
-						onClick={() => {}}
-						icon="dots"
-						invisible
-						small
-						className="worldCereal-MapToolsButton"
-					>
-						<Menu left>
-							<MenuItem
-								disabled={noMetadata}
-								onClick={removeAllLayers.bind(this, mapKey)}
-							>
-								Remove all layers
-							</MenuItem>
-						</Menu>
-					</Button>
-					{mapSetMapKeys?.length > 1 ? (
+				{!noTools ? (
+					<div className="worldCereal-MapTools">
 						<Button
-							title="Remove map"
-							icon="close"
+							title="Options"
+							onClick={() => {}}
+							icon="dots"
 							invisible
 							small
 							className="worldCereal-MapToolsButton"
-							onClick={removeMap.bind(this, mapKey)}
-						/>
-					) : null}
-				</div>
+						>
+							<Menu left>
+								<MenuItem
+									disabled={noMetadata}
+									onClick={removeAllLayers.bind(this, mapKey)}
+								>
+									Remove all layers
+								</MenuItem>
+							</Menu>
+						</Button>
+						{mapSetMapKeys?.length > 1 ? (
+							<Button
+								title="Remove map"
+								icon="close"
+								invisible
+								small
+								className="worldCereal-MapToolsButton"
+								onClick={removeMap.bind(this, mapKey)}
+							/>
+						) : null}
+					</div>
+				) : null}
 				{this.props.children}
 			</div>
 		);

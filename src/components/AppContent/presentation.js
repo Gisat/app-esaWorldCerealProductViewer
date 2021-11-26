@@ -20,9 +20,14 @@ import ProductFilter from '../ProductFilter';
 const ConnectedMap = MapContainer(PresentationMap);
 const ConnectedMapSet = connects.MapSet(MapSet);
 
-import './style.scss';
+const Map = MapContainer(PresentationMap);
 
-const App = ({onMount, onUnmount, viewLimits}) => {
+import './style.scss';
+import {ReactCompareSlider} from 'react-compare-slider';
+
+const App = ({onMount, onUnmount, viewLimits, mapsInUse, mapCompareMode}) => {
+	const allowComparison = mapsInUse.length === 2 && mapCompareMode;
+
 	useEffect(() => {
 		if (typeof onMount === 'function') {
 			onMount();
@@ -35,21 +40,54 @@ const App = ({onMount, onUnmount, viewLimits}) => {
 	return (
 		<div className="worldCereal-ProductViewer">
 			<Header />
-			<ConnectedMapSet
-				stateMapSetKey="productViewer-mapSet"
-				mapComponent={ReactLeafletMap}
-				connectedMapComponent={ConnectedMap}
-				wrapper={MapWrapper}
-			>
-				<SimpleLayersControl />
-				<MapControls
-					levelsBased
-					zoomOnly
-					viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
+			{allowComparison ? (
+				<ReactCompareSlider
+					onlyHandleDraggable
+					className="worldCereal-CompareSlider"
+					itemOne={
+						<Map
+							wrapper={MapWrapper}
+							wrapperProps={{noTools: true}}
+							mapComponent={ReactLeafletMap}
+							stateMapKey={mapsInUse[0]}
+						>
+							<MapScale className="worldCereal-MapScale" />
+							<MapAttribution />
+						</Map>
+					}
+					itemTwo={
+						<Map
+							wrapper={MapWrapper}
+							wrapperProps={{labelsRight: true, noTools: true}}
+							mapComponent={ReactLeafletMap}
+							stateMapKey={mapsInUse[1]}
+						>
+							<SimpleLayersControl />
+							<MapControls
+								levelsBased
+								zoomOnly
+								viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
+							/>
+						</Map>
+					}
 				/>
-				<MapScale className="worldCereal-MapScale" />
-				<MapAttribution />
-			</ConnectedMapSet>
+			) : (
+				<ConnectedMapSet
+					stateMapSetKey="productViewer-mapSet"
+					mapComponent={ReactLeafletMap}
+					connectedMapComponent={ConnectedMap}
+					wrapper={MapWrapper}
+				>
+					<SimpleLayersControl />
+					<MapControls
+						levelsBased
+						zoomOnly
+						viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
+					/>
+					<MapScale className="worldCereal-MapScale" />
+					<MapAttribution />
+				</ConnectedMapSet>
+			)}
 			<RetractableWindow
 				className="worldCereal-FilterWindow ptr-dark"
 				retracted

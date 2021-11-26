@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button} from '@gisatcz/ptr-atoms';
+import {Button, ButtonSwitch, ButtonSwitchOption} from '@gisatcz/ptr-atoms';
 
 import StatusLabel from '../atoms/StatusLabel';
 import {MAX_MAPS_IN_MAP_SET} from '../../constants/app';
@@ -13,6 +13,9 @@ class Header extends React.PureComponent {
 		addMap: PropTypes.func,
 		mapSetMapKeys: PropTypes.array,
 		showStatusInfo: PropTypes.bool,
+		mapCompareMode: PropTypes.bool,
+		setMapCompareMode: PropTypes.bool,
+		mapsInUse: PropTypes.array,
 	};
 
 	constructor(props) {
@@ -20,14 +23,21 @@ class Header extends React.PureComponent {
 	}
 
 	render() {
-		const {addMap, mapSetMapKeys, showStatusInfo} = this.props;
+		const {
+			addMap,
+			mapSetMapKeys,
+			showStatusInfo,
+			mapCompareMode,
+			setMapCompareMode,
+			mapsInUse,
+		} = this.props;
 		const mapsInMapSet = mapSetMapKeys?.length;
 
 		return (
 			<div className="worldCereal-Header">
 				<div className="worldCereal-Header-logo">
 					<div>
-					<img src={`data:image/jpeg;base64,${logoData}`}/>
+						<img src={`data:image/jpeg;base64,${logoData}`} />
 					</div>
 					<h1>
 						<span>World Cereal</span>
@@ -35,18 +45,27 @@ class Header extends React.PureComponent {
 					</h1>
 				</div>
 				<div className="worldCereal-Header-tools">
-					{/*{showStatusInfo ? (*/}
-					{/*	<StatusLabel small status="warning">*/}
-					{/*		Zoom in to work with layers!*/}
-					{/*	</StatusLabel>*/}
-					{/*) : null}*/}
+					<ButtonSwitch
+						className="ptr-dark"
+						ghost
+						small
+						onClick={setMapCompareMode}
+						disabled={mapsInUse.length !== 2}
+					>
+						<ButtonSwitchOption value={true} active={mapCompareMode}>
+							Slider
+						</ButtonSwitchOption>
+						<ButtonSwitchOption value={false} active={!mapCompareMode}>
+							Map set
+						</ButtonSwitchOption>
+					</ButtonSwitch>
 					<Button
 						className="ptr-dark"
 						onClick={addMap}
 						ghost
 						small
 						icon="plus-thick"
-						disabled={mapsInMapSet >= MAX_MAPS_IN_MAP_SET}
+						disabled={mapsInMapSet >= MAX_MAPS_IN_MAP_SET || mapCompareMode}
 					>
 						Add map
 					</Button>

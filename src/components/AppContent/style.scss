@@ -28,3 +28,15 @@
 .worldCereal-MapScale .ptr-MapScale-content > span {
   color: var(--base90);
 }
+
+.worldCereal-CompareSlider {
+  height: 100%;
+}
+
+div[data-rcs="handle-container"] {
+  z-index: 3;
+}
+
+div[data-rcs="clip-item"] {
+  z-index: 2;
+}

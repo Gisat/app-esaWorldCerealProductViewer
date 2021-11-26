@@ -46,6 +46,7 @@
 		"query-string": "^7.0.1",
 		"re-reselect": "^4.0.0",
 		"react": "^17.0.2",
+		"react-compare-slider": "^2.2.0",
 		"react-dom": "^17.0.2",
 		"react-helmet": "^6.1.0",
 		"react-loadable": "^5.5.0",

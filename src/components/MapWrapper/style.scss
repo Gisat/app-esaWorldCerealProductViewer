@@ -6,6 +6,7 @@
 
 .ptr-map-wrapper.worldCereal-MapWrapper.active::after {
   border: 2px dashed var(--accent50);
+  z-index: 1;
 }
 
 .worldCereal-MapProductLabelContainer {
@@ -18,6 +19,11 @@
   left: .4rem;
   z-index: 2;
   max-width: calc(100% - 2rem);
+}
+
+.worldCereal-MapProductLabelContainer.is-right {
+  left: auto;
+  right: .4rem;
 }
 
 .worldCereal-MapProductLabelContainer > div {

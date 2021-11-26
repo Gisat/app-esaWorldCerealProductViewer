@@ -7,6 +7,8 @@ import {mapSetKey} from '../../constants/app';
 const mapStateToProps = (state, ownProps) => {
 	return {
 		viewLimits: Select.maps.getMapSetViewLimits(state, mapSetKey),
+		mapsInUse: Select.maps.getAllMapsInUse(state),
+		mapCompareMode: Select.app.getLocalConfiguration(state, 'mapCompareMode'),
 	};
 };
 
