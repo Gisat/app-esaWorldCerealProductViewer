@@ -38,6 +38,7 @@ export default [
 		key: 'cereals',
 		data: {
 			nameDisplay: 'Cereals',
+			cogLayerStyle: '67950ddf-bfd3-4c0b-8b92-ef0580a67455',
 		},
 	},
 ];

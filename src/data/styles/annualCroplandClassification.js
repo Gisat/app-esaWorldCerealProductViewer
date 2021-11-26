@@ -11,6 +11,19 @@ export default {
 						},
 						{
 							bandIndex: 0,
+							legend: true,
+							values: {
+								0: {
+									color: null,
+								},
+								100: {
+									color: '#e41a1c',
+									name: 'Annual cropland',
+								},
+							},
+						},
+						{
+							bandIndex: 0,
 							valueClasses: [
 								{
 									interval: [0, 99],

@@ -1,13 +1,13 @@
 export default {
-	key: 'c2ea3a49-8da1-473d-ad7b-3860c95a4cc7',
+	key: '67950ddf-bfd3-4c0b-8b92-ef0580a67455',
 	data: {
-		nameInternal: 'Wheat - classification',
+		nameInternal: 'Cereals - classification',
 		definition: {
 			rules: [
 				{
 					styles: [
 						{
-							color: '#d97501',
+							color: '#ae3aba',
 						},
 						{
 							bandIndex: 0,
@@ -21,8 +21,8 @@ export default {
 									name: 'Other crop',
 								},
 								2: {
-									color: '#d97501',
-									name: 'Wheat',
+									color: '#ae3aba',
+									name: 'Cereals',
 								},
 							},
 						},
