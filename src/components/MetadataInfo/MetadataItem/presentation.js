@@ -25,7 +25,7 @@ const MetadataInfoItemRec = ({label, small, children}) => {
 
 class MetadataInfoItem extends React.PureComponent {
 	static propTypes = {
-		productMetadata: PropTypes.array,
+		productMetadata: PropTypes.object,
 	};
 
 	constructor(props) {
@@ -46,6 +46,7 @@ class MetadataInfoItem extends React.PureComponent {
 			model,
 			public: isPublic,
 			tiles,
+			merged,
 		} = productMetadata;
 
 		const productName = productTemplate?.data?.nameDisplay || product;
@@ -74,9 +75,13 @@ class MetadataInfoItem extends React.PureComponent {
 					{/*</div>*/}
 				</div>
 				<div className="worldCereal-MetadataInfoItemBasics">
-					<MetadataInfoItemRec label="Tile collection ID">
-						{id}
-					</MetadataInfoItemRec>
+					{tiles ? (
+						<MetadataInfoItemRec label="Tile collection ID">
+							{id}
+						</MetadataInfoItemRec>
+					) : (
+						<MetadataInfoItemRec label="ID">{merged.id}</MetadataInfoItemRec>
+					)}
 					<MetadataInfoItemRec label="product">
 						{productName}
 					</MetadataInfoItemRec>
@@ -92,18 +97,39 @@ class MetadataInfoItem extends React.PureComponent {
 					<MetadataInfoItemRec label="public">{isPublic}</MetadataInfoItemRec>
 					<MetadataInfoItemRec label="model">{model}</MetadataInfoItemRec>
 				</div>
-				<div className="worldCereal-MetadataInfoItemTiles">
-					<div className="worldCereal-MetadataInfoItemTiles-header">
-						Original data for S2 tiles:
+				{tiles ? (
+					<div className="worldCereal-MetadataInfoItemTiles">
+						<div className="worldCereal-MetadataInfoItemTiles-header">
+							Original data for S2 tiles:
+						</div>
+						<div className="worldCereal-MetadataInfoItemTiles-content">
+							{tiles.map(tile => (
+								<a
+									target="_blank"
+									rel="noopener noreferrer"
+									href={tile.product}
+								>
+									{tile.tile}
+								</a>
+							))}
+						</div>
 					</div>
-					<div className="worldCereal-MetadataInfoItemTiles-content">
-						{tiles.map(tile => (
-							<a target="_blank" rel="noopener noreferrer" href={tile.product}>
-								{tile.tile}
+				) : (
+					<div className="worldCereal-MetadataInfoItemTiles">
+						<div className="worldCereal-MetadataInfoItemTiles-header">
+							Download original data:
+						</div>
+						<div className="worldCereal-MetadataInfoItemTiles-content">
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href={merged.product}
+							>
+								{merged.id}
 							</a>
-						))}
+						</div>
 					</div>
-				</div>
+				)}
 			</div>
 		);
 	}

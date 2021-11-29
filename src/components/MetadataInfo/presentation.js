@@ -25,7 +25,10 @@ class MetadataInfo extends React.PureComponent {
 				<div className="worldCereal-MetadataInfo">
 					{productMetadata.map(productMetadataItem => {
 						return (
-							<MetadataInfoItem productMetadata={productMetadataItem?.data} />
+							<MetadataInfoItem
+								key={productMetadataItem.key}
+								productMetadata={productMetadataItem?.data}
+							/>
 						);
 					})}
 				</div>

@@ -179,7 +179,7 @@ function handleProductInActiveMap(productMetadataKey) {
 			productMetadataKey
 		);
 
-		const {tiles} = productMetadata.data;
+		const {tiles, merged} = productMetadata.data;
 
 		const isLayerPresent =
 			map?.data?.layers &&
@@ -191,17 +191,33 @@ function handleProductInActiveMap(productMetadataKey) {
 		// Remove or add layer(s)
 		if (isLayerPresent) {
 			dispatch(removeProductOutlineLayer(map.key, productMetadataKey));
-			dispatch(removeLayersForTiles(productMetadataKey, tiles, map.key));
+			if (tiles) {
+				dispatch(removeLayersForTiles(productMetadataKey, tiles, map.key));
+			} else if (merged) {
+				dispatch(removeLayerForMerged(productMetadataKey, merged, map.key));
+			}
 		} else {
 			dispatch(addProductOutlineLayer(map.key, productMetadata));
-			dispatch(
-				addLayersForTiles(
-					productMetadataKey,
-					tiles,
-					productMetadata?.data.product,
-					map.key
-				)
-			);
+
+			if (tiles) {
+				dispatch(
+					addLayersForTiles(
+						productMetadataKey,
+						tiles,
+						productMetadata?.data.product,
+						map.key
+					)
+				);
+			} else if (merged) {
+				dispatch(
+					addLayerForMerged(
+						productMetadataKey,
+						merged,
+						productMetadata?.data.product,
+						map.key
+					)
+				);
+			}
 		}
 	};
 }
@@ -225,6 +241,25 @@ function removeLayersForTiles(productMetadataKey, tiles, mapKey) {
 				dispatch(CommonAction.maps.removeMapLayer(mapKey, layerKey));
 			}
 		});
+	};
+}
+
+/**
+ * @param productMetadataKey {string} unique key of product metadata
+ * @param merged {Object}
+ * @param mapKey {string}
+ */
+function removeLayerForMerged(productMetadataKey, merged, mapKey) {
+	return (dispatch, getState) => {
+		const layerKey = getUniqueCogLayerKey(productMetadataKey);
+		const existingLayer = Select.maps.getMapLayerStateByMapKeyAndLayerKey(
+			getState(),
+			mapKey,
+			layerKey
+		);
+		if (existingLayer) {
+			dispatch(CommonAction.maps.removeMapLayer(mapKey, layerKey));
+		}
 	};
 }
 
@@ -264,6 +299,26 @@ function addLayersForTiles(productMetadataKey, tiles, product, mapKey) {
 }
 
 /**
+ * @param productMetadataKey {string} unique key of product metadata
+ * @param merged {Object}
+ * @param product {string} key of product (case)
+ * @param mapKey {string}
+ */
+function addLayerForMerged(productMetadataKey, merged, product, mapKey) {
+	return (dispatch, getState) => {
+		const layer = getCogLayerDefinition(
+			getState(),
+			productMetadataKey,
+			null,
+			product,
+			null,
+			merged
+		);
+		dispatch(CommonAction.maps.addMapLayers(mapKey, [layer]));
+	};
+}
+
+/**
  * @param mapKey {string}
  * @param productMetadata {Object}
  */
@@ -285,7 +340,11 @@ function addProductOutlineLayer(mapKey, productMetadata) {
  * @returns {string}
  */
 function getUniqueCogLayerKey(productMetadataKey, tile) {
-	return `${productMetadataKey}_${tile.tile}`;
+	if (tile) {
+		return `${productMetadataKey}_${tile.tile}`;
+	} else {
+		return `${productMetadataKey}_merged`;
+	}
 }
 
 /**
@@ -295,6 +354,7 @@ function getUniqueCogLayerKey(productMetadataKey, tile) {
  * @param tile {tile: Object, path: string}
  * @param product {string}
  * @param opacity {number}
+ * @param merged {id: string, product: string, stac: string}
  * @returns {Object} Panther.Layer
  */
 function getCogLayerDefinition(
@@ -302,17 +362,18 @@ function getCogLayerDefinition(
 	productMetadataKey,
 	tile,
 	product,
-	opacity
+	opacity,
+	merged
 ) {
 	return {
 		key: getUniqueCogLayerKey(productMetadataKey, tile),
 		layerKey: productMetadataKey,
 		productMetadataKey,
-		tileKey: tile.tile,
+		tileKey: tile?.tile,
 		type: 'cog',
-		opacity: opacity >= 0 ? opacity : 1,
+		opacity: opacity && opacity >= 0 ? opacity : 1,
 		options: {
-			url: tile.product,
+			url: tile ? tile.product : merged.product,
 			style: Select.worldCereal.getStyleDefinitionByProductTemplateKey(
 				state,
 				product
@@ -353,6 +414,7 @@ function getProductOutlineLayerDefinition(state, productMetadata) {
 						styles: [
 							{
 								fill: null,
+								outlineOpacity: 1,
 								outlineWidth: 1,
 								outlineColor: cogStyle?.rules?.[0]?.styles?.[0].color,
 							},
