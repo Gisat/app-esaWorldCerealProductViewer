@@ -71,7 +71,7 @@ ExpandableLabelBody.proptypes = {
 	height: PropTypes.number,
 };
 
-const ExpandableLabel = ({className, expanded, floating, children}) => {
+const ExpandableLabel = ({className, expanded, floating, zIndex, children}) => {
 	const [isExpanded, setExpanded] = useState(expanded);
 
 	const classes = classnames(`ptr-ExpandableLabel ${className || ''}`, {
@@ -80,7 +80,7 @@ const ExpandableLabel = ({className, expanded, floating, children}) => {
 	});
 
 	return (
-		<div className={classes}>
+		<div className={classes} style={{zIndex: zIndex ? zIndex : 0}}>
 			{React.Children.map(children, child => {
 				if (child.type === ExpandableLabelHeader) {
 					return React.cloneElement(child, {
@@ -106,6 +106,7 @@ ExpandableLabel.proptypes = {
 	className: PropTypes.string,
 	expanded: PropTypes.bool,
 	floating: PropTypes.bool,
+	zIndex: PropTypes.number,
 };
 
 export default ExpandableLabel;

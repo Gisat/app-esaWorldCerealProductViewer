@@ -25,6 +25,7 @@ const ProductLabel = ({
 	productMetadataKeys,
 	onProductRemove,
 	onOpacityChange,
+	zIndex,
 }) => {
 	const [modalIsOpen, setModalOpen] = React.useState(false);
 	const productCount = productMetadataKeys?.length;
@@ -34,7 +35,11 @@ const ProductLabel = ({
 
 	return (
 		<>
-			<ExpandableLabel floating className="worldCereal-ProductLabel">
+			<ExpandableLabel
+				floating
+				className="worldCereal-ProductLabel"
+				zIndex={zIndex}
+			>
 				<ExpandableLabelHeader>
 					<ProductLabelHeader
 						product={productTemplate?.data?.nameDisplay || productKey}

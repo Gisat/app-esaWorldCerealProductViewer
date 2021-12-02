@@ -25,7 +25,7 @@ $ExpandableLabelBorderRadius: .25rem;
 }
 
 .ptr-ExpandableLabel.is-floating {
-  box-shadow: 0 0 5px rgba(0,0,0,.7);
+  box-shadow: 0 3px 3px rgba(0,0,0,.25);
 }
 
 .ptr-ExpandableLabelHeader {
@@ -64,6 +64,10 @@ $ExpandableLabelBorderRadius: .25rem;
   background: var(--base10);
   position: absolute;
   z-index: 2;
+}
+
+.ptr-ExpandableLabel.is-floating .ptr-ExpandableLabelBody {
+  box-shadow: 0 3px 3px rgba(0,0,0,.35);
 }
 
 .ptr-ExpandableLabelBody > div {
