@@ -184,8 +184,14 @@ const ProductLabelLegend = ({style}) => {
 
 		return (
 			<div className="worldCereal-ProductLabelLegend">
-				{legendItems.map(item => {
-					return <ProductLabelLegendItem color={item.color} name={item.name} />;
+				{legendItems.map((item, i) => {
+					return (
+						<ProductLabelLegendItem
+							key={i}
+							color={item.color}
+							name={item.name}
+						/>
+					);
 				})}
 			</div>
 		);

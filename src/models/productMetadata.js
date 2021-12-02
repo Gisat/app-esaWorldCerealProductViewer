@@ -12,6 +12,7 @@ export default item => {
 		public: isPublic,
 		tiles,
 		related_products,
+		merged,
 		model,
 		training_refids,
 	} = item.data.data;
@@ -32,6 +33,7 @@ export default item => {
 			tiles,
 			relatedProducts: related_products,
 			model,
+			merged,
 			training_refids,
 		},
 	};
