@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button, ButtonSwitch, ButtonSwitchOption} from '@gisatcz/ptr-atoms';
+import {
+	Button,
+	ButtonSwitch,
+	ButtonSwitchOption,
+} from '@gisatcz/ptr-atoms';
 
-import StatusLabel from '../atoms/StatusLabel';
 import {MAX_MAPS_IN_MAP_SET} from '../../constants/app';
-import logo from '../../assests/logo.png';
 import logoData from './logo';
 import './style.scss';
 
@@ -52,11 +54,20 @@ class Header extends React.PureComponent {
 						onClick={setMapCompareMode}
 						disabled={mapsInUse.length !== 2}
 					>
-						<ButtonSwitchOption value={true} active={mapCompareMode}>
-							Slider
+						<ButtonSwitchOption
+							className="worldCereal-MapsModeOption-compare"
+							value={true}
+							active={mapCompareMode}
+							icon="expand"
+						>
+							Compare mode
 						</ButtonSwitchOption>
-						<ButtonSwitchOption value={false} active={!mapCompareMode}>
-							Map set
+						<ButtonSwitchOption
+							value={false}
+							active={!mapCompareMode}
+							icon="tilt-less"
+						>
+							Set mode
 						</ButtonSwitchOption>
 					</ButtonSwitch>
 					<Button
