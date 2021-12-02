@@ -25,8 +25,8 @@ const Map = MapContainer(PresentationMap);
 import './style.scss';
 import {ReactCompareSlider} from 'react-compare-slider';
 
-const App = ({onMount, onUnmount, viewLimits, mapsInUse, mapCompareMode}) => {
-	const allowComparison = mapsInUse.length === 2 && mapCompareMode;
+const App = ({onMount, onUnmount, viewLimits, maps, mapCompareMode}) => {
+	const allowComparison = maps?.length === 2 && mapCompareMode;
 
 	useEffect(() => {
 		if (typeof onMount === 'function') {
@@ -49,7 +49,7 @@ const App = ({onMount, onUnmount, viewLimits, mapsInUse, mapCompareMode}) => {
 							wrapper={MapWrapper}
 							wrapperProps={{noTools: true}}
 							mapComponent={ReactLeafletMap}
-							stateMapKey={mapsInUse[0]}
+							stateMapKey={maps[0].key}
 						>
 							<MapScale className="worldCereal-MapScale" />
 							<MapAttribution />
@@ -60,7 +60,7 @@ const App = ({onMount, onUnmount, viewLimits, mapsInUse, mapCompareMode}) => {
 							wrapper={MapWrapper}
 							wrapperProps={{labelsRight: true, noTools: true}}
 							mapComponent={ReactLeafletMap}
-							stateMapKey={mapsInUse[1]}
+							stateMapKey={maps[1].key}
 						>
 							<SimpleLayersControl />
 							<MapControls
