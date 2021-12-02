@@ -2,6 +2,7 @@
 
 .worldCereal-ProductLabel {
   background: var(--accent30);
+  min-width: 12rem;
 }
 
 // Header
@@ -59,7 +60,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-width: 10rem;
   background: var(--base10);
 }
 

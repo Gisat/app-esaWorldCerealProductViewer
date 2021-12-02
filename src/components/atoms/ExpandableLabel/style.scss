@@ -1,8 +1,25 @@
 @import '../../../styles/variables';
 
+$ExpandableLabelBorderRadius: .25rem;
+
+// container
+.ptr-ExpandableLabelsContainer {
+  display: block;
+}
+
+.ptr-ExpandableLabelsContainer > .ptr-ExpandableLabel {
+  float: left;
+  margin: 0 .35rem .35rem 0;
+}
+
+.ptr-ExpandableLabelsContainer.is-right > .ptr-ExpandableLabel {
+  margin: 0 0 .35rem .35rem;
+}
+
+// label
 .ptr-ExpandableLabel {
   background: var(--base0);
-  border-radius: .25rem;
+  border-radius: $ExpandableLabelBorderRadius;
   max-width: 20rem;
   position: relative;
 }
@@ -14,7 +31,7 @@
 .ptr-ExpandableLabelHeader {
   display: flex;
   width: 100%;
-  border-radius: .25rem;
+  border-radius: $ExpandableLabelBorderRadius;
 }
 
 .ptr-ExpandableLabelHeader-content {
@@ -26,6 +43,8 @@
   display: flex;
   align-items: center;
   padding: 0 .15rem;
+  border-top-right-radius: $ExpandableLabelBorderRadius;
+  border-bottom-right-radius: $ExpandableLabelBorderRadius;
 }
 
 .ptr-ExpandableLabelHeader-controlButton .ptr-icon {
@@ -40,9 +59,11 @@
   height: 0;
   overflow-y: hidden;
   transition: height .5s ease-in-out;
-  border-bottom-left-radius: .25rem;
-  border-bottom-right-radius: .25rem;
+  border-bottom-left-radius: $ExpandableLabelBorderRadius;
+  border-bottom-right-radius: $ExpandableLabelBorderRadius;
   background: var(--base10);
+  position: absolute;
+  z-index: 2;
 }
 
 .ptr-ExpandableLabelBody > div {
@@ -50,6 +71,11 @@
 }
 
 // Expanded
+.ptr-ExpandableLabel.is-expanded {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .ptr-ExpandableLabelHeader.is-expanded {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;

@@ -3,6 +3,7 @@ import {isEmpty as _isEmpty, forIn as _forIn} from 'lodash';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import {Button, Menu, MenuItem} from '@gisatcz/ptr-atoms';
+import ExpandableLabelsContainer from '../atoms/ExpandableLabel/ExpandableLabelsContainer';
 import ExpandableProductLabel from '../ProductLabel';
 import {MIN_PRODUCT_MAP_LABELS_FOR_GROUPING} from '../../constants/app';
 
@@ -52,9 +53,9 @@ class MapWrapper extends React.PureComponent {
 		return (
 			<div className={wrapperClasses}>
 				{!noMetadata ? (
-					<div className={labelContainerClasses}>
+					<ExpandableLabelsContainer className={labelContainerClasses}>
 						{this.renderMapProductLabels(productsMetadata)}
-					</div>
+					</ExpandableLabelsContainer>
 				) : null}
 				{!noTools ? (
 					<div className="worldCereal-MapTools">
