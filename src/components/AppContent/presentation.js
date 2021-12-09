@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react';
+import React from 'react';
+import {ReactCompareSlider} from 'react-compare-slider';
 import {connects} from '@gisatcz/ptr-state';
 import {
 	ReactLeafletMap,
@@ -21,7 +22,6 @@ const ConnectedMapSet = connects.MapSet(MapSet);
 const Map = MapContainer(PresentationMap);
 
 import './style.scss';
-import {ReactCompareSlider} from 'react-compare-slider';
 
 const App = ({viewLimits, maps, mapCompareMode}) => {
 	const allowComparison = maps?.length === 2 && mapCompareMode;
