@@ -21,6 +21,17 @@ const ConnectedMapSet = connects.MapSet(MapSet);
 
 const Map = MapContainer(PresentationMap);
 
+const MapInfoElements = props => {
+	const {children, ...restProps} = props;
+	return (
+		<div className={`worldWater-MapInfoElements`}>
+			{React.Children.map(children, child => {
+				return React.cloneElement(child, {...restProps});
+			})}
+		</div>
+	);
+};
+
 const Maps = ({mode, maps, viewLimits}) => {
 	return mode === 'compare' ? (
 		<ReactCompareSlider
@@ -33,8 +44,10 @@ const Maps = ({mode, maps, viewLimits}) => {
 					mapComponent={ReactLeafletMap}
 					stateMapKey={maps[0].key}
 				>
-					<MapScale className="worldCereal-MapScale" />
-					<MapAttribution />
+					<MapInfoElements>
+						<MapAttribution />
+						<MapScale className="worldCereal-MapScale" />
+					</MapInfoElements>
 				</Map>
 			}
 			itemTwo={
@@ -66,8 +79,10 @@ const Maps = ({mode, maps, viewLimits}) => {
 				zoomOnly
 				viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
 			/>
-			<MapScale className="worldCereal-MapScale" />
-			<MapAttribution />
+			<MapInfoElements>
+				<MapAttribution />
+				<MapScale className="worldCereal-MapScale" />
+			</MapInfoElements>
 		</ConnectedMapSet>
 	);
 };
