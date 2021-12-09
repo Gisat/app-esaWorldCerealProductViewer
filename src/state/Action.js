@@ -173,12 +173,16 @@ function removeAllLayersFromMapByLayerKeys(mapKey, layerKeys) {
 	return (dispatch, getState) => {
 		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);
 		if (mapLayers && layerKeys.length) {
+			let layersToRemove = [];
 			mapLayers.forEach(layer => {
 				if (layerKeys.indexOf(layer.layerKey) !== -1) {
-					// TODO create action to remove layers at once
-					dispatch(CommonAction.maps.removeMapLayer(mapKey, layer.key));
+					layersToRemove.push(layer.key);
 				}
 			});
+
+			if (layersToRemove.length) {
+				dispatch(CommonAction.maps.removeMapLayers(mapKey, layersToRemove));
+			}
 		}
 	};
 }

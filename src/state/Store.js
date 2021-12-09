@@ -56,7 +56,6 @@ const composeEnhancers =
 		window?.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?.({})) ||
 	compose;
 
-// TODO why request counter?
 function createEnhancer(requestCounter) {
 	return composeEnhancers(
 		reduxBatch,
@@ -74,7 +73,9 @@ function createEnhancer(requestCounter) {
  */
 function createAppStore(options, pregeneratedState = {}) {
 	const isPreloaded = !isServer && window.__PRELOADED_STATE__ != null;
-	const initialState = isPreloaded ? window.__PRELOADED_STATE__ : {...pregeneratedState};
+	const initialState = isPreloaded
+		? window.__PRELOADED_STATE__
+		: {...pregeneratedState};
 	if (isPreloaded) {
 		delete window.__PRELOADED_STATE__;
 	}

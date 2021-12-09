@@ -28,7 +28,7 @@
 		"@gisatcz/ptr-core": "^1.6.0",
 		"@gisatcz/ptr-maps": "^1.11.5",
 		"@gisatcz/ptr-router": "^0.0.4",
-		"@gisatcz/ptr-state": "2.0.0-dev.35",
+		"@gisatcz/ptr-state": "2.0.0-dev.36",
 		"@gisatcz/ptr-timeline": "^0.1.1",
 		"@gisatcz/ptr-utils": "^1.5.2",
 		"@react-hook/size": "^2.1.2",
