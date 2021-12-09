@@ -25,18 +25,12 @@ export default {
 					'ea10b274-dd71-4e58-b627-d2803ab891f7': {
 						key: 'ea10b274-dd71-4e58-b627-d2803ab891f7',
 					},
-					'494b969a-3f03-4b88-b776-39079687309b': {
-						key: '494b969a-3f03-4b88-b776-39079687309b',
-					},
 				},
 				sets: {
 					'productViewer-mapSet': {
 						key: 'productViewer-mapSet',
 						activeMapKey: 'ea10b274-dd71-4e58-b627-d2803ab891f7',
-						maps: [
-							'ea10b274-dd71-4e58-b627-d2803ab891f7',
-							'494b969a-3f03-4b88-b776-39079687309b',
-						],
+						maps: ['ea10b274-dd71-4e58-b627-d2803ab891f7'],
 						sync: {
 							center: true,
 							boxRange: true,
