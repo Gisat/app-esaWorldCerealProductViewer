@@ -8,14 +8,12 @@ import {
 	PresentationMap,
 } from '@gisatcz/ptr-maps';
 import Header from '../Header';
+import Filter from '../Filter';
 import MapContainer from '../Maps/MapContainer';
 import MapWrapper from '../Maps/MapWrapper';
 import MapAttribution from '../Maps/MapAttribution';
-import RetractableWindow from '../atoms/RetractableWindow';
 import SimpleLayersControl from '../Maps/SimpleLayersControl';
 import Timeline from '../Timeline';
-import ActiveFilterInfo from '../Filter/ActiveFilterInfo';
-import ProductFilter from '../Filter/ProductFilter';
 
 const ConnectedMap = MapContainer(PresentationMap);
 const ConnectedMapSet = connects.MapSet(MapSet);
@@ -25,17 +23,8 @@ const Map = MapContainer(PresentationMap);
 import './style.scss';
 import {ReactCompareSlider} from 'react-compare-slider';
 
-const App = ({onMount, onUnmount, viewLimits, maps, mapCompareMode}) => {
+const App = ({viewLimits, maps, mapCompareMode}) => {
 	const allowComparison = maps?.length === 2 && mapCompareMode;
-
-	useEffect(() => {
-		if (typeof onMount === 'function') {
-			onMount();
-		}
-		if (typeof onUnmount === 'function') {
-			return onUnmount();
-		}
-	}, []);
 
 	return (
 		<div className="worldCereal-ProductViewer">
@@ -88,18 +77,8 @@ const App = ({onMount, onUnmount, viewLimits, maps, mapCompareMode}) => {
 					<MapAttribution />
 				</ConnectedMapSet>
 			)}
-			<RetractableWindow
-				className="worldCereal-FilterWindow ptr-dark"
-				retracted
-				centered
-				bottomPosition={10}
-				bodyHeight={14}
-				controlBarContent={<ActiveFilterInfo />}
-			>
-				<ProductFilter />
-			</RetractableWindow>
+			<Filter />
 			<Timeline />
-			{/*<ControlPanel />*/}
 		</div>
 	);
 };
