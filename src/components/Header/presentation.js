@@ -10,7 +10,6 @@ class Header extends React.PureComponent {
 	static propTypes = {
 		addMap: PropTypes.func,
 		mapSetMapKeys: PropTypes.array,
-		showStatusInfo: PropTypes.bool,
 		mapsMode: PropTypes.string,
 		setMapsMode: PropTypes.func,
 		mapsInUse: PropTypes.array,
@@ -21,14 +20,8 @@ class Header extends React.PureComponent {
 	}
 
 	render() {
-		const {
-			addMap,
-			mapSetMapKeys,
-			showStatusInfo,
-			mapsMode,
-			setMapsMode,
-			mapsInUse,
-		} = this.props;
+		const {addMap, mapSetMapKeys, mapsMode, setMapsMode, mapsInUse} =
+			this.props;
 		const mapsInMapSet = mapSetMapKeys?.length;
 
 		return (

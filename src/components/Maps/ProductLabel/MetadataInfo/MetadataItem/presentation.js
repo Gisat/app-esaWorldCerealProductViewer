@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import {isArray as _isArray} from 'lodash';
 
 import './style.scss';
-import {Button, Icon} from '@gisatcz/ptr-atoms';
 
 const MetadataInfoItemRec = ({label, small, children}) => {
 	const classes = classnames('worldCereal-MetadataInfoItemRec', {
@@ -62,17 +61,6 @@ class MetadataInfoItem extends React.PureComponent {
 					<h4 className="worldCereal-MetadataInfoItemHeader-title">
 						{productName} - zone {aez} - season {season}
 					</h4>
-					{/*<div className="worldCereal-MetadataInfoItemHeader-tools">*/}
-					{/*	<Button*/}
-					{/*		className="worldCereal-MetadataInfoItemHeader-download"*/}
-					{/*		ghost*/}
-					{/*		small*/}
-					{/*		disabled*/}
-					{/*		icon="download"*/}
-					{/*	>*/}
-					{/*		Download*/}
-					{/*	</Button>*/}
-					{/*</div>*/}
 				</div>
 				<div className="worldCereal-MetadataInfoItemBasics">
 					{tiles ? (
