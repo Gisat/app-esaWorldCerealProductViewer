@@ -21,18 +21,18 @@ const ConnectedMapSet = connects.MapSet(MapSet);
 
 const Map = MapContainer(PresentationMap);
 
-const MapInfoElements = props => {
-	const {children, ...restProps} = props;
+const PropsDriller = props => {
+	const {children, className, ...restProps} = props;
 	return (
-		<div className={`worldWater-MapInfoElements`}>
+		<div className={className}>
 			{React.Children.map(children, child => {
-				return React.cloneElement(child, {...restProps});
+				return child ? React.cloneElement(child, {...restProps}) : null;
 			})}
 		</div>
 	);
 };
 
-const Maps = ({mode, maps, viewLimits}) => {
+const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {
 	return mode === 'compare' ? (
 		<ReactCompareSlider
 			onlyHandleDraggable
@@ -44,10 +44,17 @@ const Maps = ({mode, maps, viewLimits}) => {
 					mapComponent={ReactLeafletMap}
 					stateMapKey={maps[0].key}
 				>
-					<MapInfoElements>
-						<MapAttribution />
-						<MapScale className="worldCereal-MapScale" />
-					</MapInfoElements>
+					<PropsDriller className="worldCereal-MapInfoElements">
+						{overviewMap ? (
+							<PropsDriller className="worldCereal-OverviewMap">
+								<Map mapComponent={ReactLeafletMap} stateMapKey="overview" />
+							</PropsDriller>
+						) : null}
+						<PropsDriller className="worldCereal-AttributionScaleContainer">
+							{attribution ? <MapAttribution /> : null}
+							{scale ? <MapScale className="worldCereal-MapScale" /> : null}
+						</PropsDriller>
+					</PropsDriller>
 				</Map>
 			}
 			itemTwo={
@@ -79,17 +86,27 @@ const Maps = ({mode, maps, viewLimits}) => {
 				zoomOnly
 				viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
 			/>
-			<MapInfoElements>
-				<MapAttribution />
-				<MapScale className="worldCereal-MapScale" />
-			</MapInfoElements>
+			<PropsDriller className="worldCereal-MapInfoElements">
+				{overviewMap ? (
+					<PropsDriller className="worldCereal-OverviewMap">
+						<Map mapComponent={ReactLeafletMap} stateMapKey="overview" />
+					</PropsDriller>
+				) : null}
+				<PropsDriller className="worldCereal-AttributionScaleContainer">
+					{attribution ? <MapAttribution /> : null}
+					{scale ? <MapScale className="worldCereal-MapScale" /> : null}
+				</PropsDriller>
+			</PropsDriller>
 		</ConnectedMapSet>
 	);
 };
 
 Maps.propTypes = {
+	attribution: PropTypes.bool,
 	mode: PropTypes.string,
 	maps: PropTypes.array,
+	overviewMap: PropTypes.bool,
+	scale: PropTypes.bool,
 	viewLimits: PropTypes.object,
 };
 

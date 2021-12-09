@@ -5,7 +5,7 @@ import Select from './Select';
 
 require('dotenv').config();
 
-import {appKey} from '../constants/app';
+import {appKey, mapSetKey} from '../constants/app';
 
 import productMetadataActions from './worldCereal/ProductMetadata/actions';
 import productMetadataFilterActions from './worldCereal/ProductMetadataFilter/actions';
@@ -163,6 +163,51 @@ function updateMapView(mapKey, viewUpdate) {
 }
 
 /**
+ * Update overview map
+ * @returns {(function(*, *): void)|*}
+ */
+function updateOverviewMap() {
+	return (dispatch, getState) => {
+		const activeOverviewMap = Select.components.get(
+			getState(),
+			'Maps',
+			'overviewMap'
+		);
+		if (activeOverviewMap) {
+			const mapSetView = Select.maps.getMapSetActiveMapView(
+				getState(),
+				mapSetKey
+			);
+			const mapViewport = Select.maps.getMapSetActiveMapViewport(
+				getState(),
+				mapSetKey
+			);
+			const view = {...mapSetView};
+			if (view.boxRange) {
+				view.boxRange = view.boxRange * 4;
+			}
+			dispatch(CommonAction.maps.updateMapAndSetView('overview', view));
+			if (mapSetView && mapViewport) {
+				const feature = utils.getExtentFromMapViewAsFeature(
+					mapSetView,
+					mapViewport
+				);
+				if (feature) {
+					dispatch(
+						CommonAction.maps.setMapLayerOption(
+							'overview',
+							'extent',
+							'features',
+							[feature]
+						)
+					);
+				}
+			}
+		}
+	};
+}
+
+/**
  * Remove all layers from map with given layerKey parameters (layerKey (in contrast with key) could be common for multiple layers).
  * For given productMetadata is the layerKey same as productMetadataKey
  * @param mapKey {string}
@@ -212,5 +257,6 @@ export default {
 		setOpacityByLayerKeys,
 		removeAllLayersFromMapByLayerKeys,
 		updateMapView,
+		updateOverviewMap,
 	},
 };

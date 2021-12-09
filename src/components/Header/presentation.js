@@ -12,7 +12,6 @@ class Header extends React.PureComponent {
 		mapSetMapKeys: PropTypes.array,
 		mapsMode: PropTypes.string,
 		setMapsMode: PropTypes.func,
-		mapsInUse: PropTypes.array,
 	};
 
 	constructor(props) {
@@ -20,8 +19,7 @@ class Header extends React.PureComponent {
 	}
 
 	render() {
-		const {addMap, mapSetMapKeys, mapsMode, setMapsMode, mapsInUse} =
-			this.props;
+		const {addMap, mapSetMapKeys, mapsMode, setMapsMode} = this.props;
 		const mapsInMapSet = mapSetMapKeys?.length;
 
 		return (
@@ -41,7 +39,7 @@ class Header extends React.PureComponent {
 						ghost
 						small
 						onClick={setMapsMode}
-						disabled={mapsInUse.length !== 2}
+						disabled={mapsInMapSet !== 2}
 					>
 						<ButtonSwitchOption
 							className="worldCereal-MapsModeOption-compare"

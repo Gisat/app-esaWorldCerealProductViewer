@@ -10,7 +10,6 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		mapSetMapKeys: Select.maps.getMapSetMapKeys(state, mapSetKey),
 		mapsMode: Select.components.get(state, 'Maps', 'mode'),
-		mapsInUse: Select.maps.getAllMapsInUse(state),
 	};
 };
 

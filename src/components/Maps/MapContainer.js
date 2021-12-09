@@ -36,6 +36,7 @@ const mapDispatchToPropsFactory = () => {
 					Action.worldCereal.adjustInitialBoxRange(ownProps.stateMapKey)
 				);
 				dispatch(Action.maps.use(ownProps.stateMapKey, null, null));
+				dispatch(Action.worldCereal.updateOverviewMap());
 			},
 
 			onUnmount: () => {
@@ -48,6 +49,7 @@ const mapDispatchToPropsFactory = () => {
 				dispatch(
 					Action.worldCereal.updateMapView(ownProps.stateMapKey, update)
 				);
+				dispatch(Action.worldCereal.updateOverviewMap());
 			},
 
 			onPropViewChange: (update, mapWidth, mapHeight) => {

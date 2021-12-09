@@ -16,6 +16,9 @@ export default {
 				},
 				Maps: {
 					mode: 'set',
+					scale: true,
+					attribution: true,
+					overviewMap: true,
 				},
 			},
 			maps: {
@@ -24,6 +27,42 @@ export default {
 				maps: {
 					'ea10b274-dd71-4e58-b627-d2803ab891f7': {
 						key: 'ea10b274-dd71-4e58-b627-d2803ab891f7',
+					},
+					overview: {
+						key: 'overview',
+						data: {
+							backgroundLayer: backgroundLayers.esri_WorldGrayCanvas,
+							view: {
+								boxRange: 2000000,
+								center: {
+									lat: 47,
+									lon: 1,
+								},
+							},
+							viewLimits: {
+								boxRangeRange: [1000000, 100000000],
+							},
+							layers: [
+								{
+									key: 'extent',
+									type: 'vector',
+									options: {
+										style: {
+											rules: [
+												{
+													styles: [
+														{
+															outlineWidth: 2,
+															outlineColor: '#ff0000',
+														},
+													],
+												},
+											],
+										},
+									},
+								},
+							],
+						},
 					},
 				},
 				sets: {

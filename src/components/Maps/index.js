@@ -9,6 +9,9 @@ const mapStateToProps = (state, ownProps) => {
 		viewLimits: Select.maps.getMapSetViewLimits(state, mapSetKey),
 		maps: Select.maps.getMapSetMaps(state, mapSetKey),
 		mode: Select.components.get(state, 'Maps', 'mode'),
+		scale: Select.components.get(state, 'Maps', 'scale'),
+		attribution: Select.components.get(state, 'Maps', 'attribution'),
+		overviewMap: Select.components.get(state, 'Maps', 'overviewMap'),
 	};
 };
 
