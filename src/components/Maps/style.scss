@@ -1,0 +1,50 @@
+@use 'sass:math';
+@import '../../styles/variables';
+
+$mapBorder: 0.05rem solid var(--base50); // the width in rem fixes the ugly white space between border and content in Chrome
+
+// Map set
+.worldCereal-ProductViewer .ptr-map-set {
+  position: relative;
+  z-index: 2;
+}
+
+.ptr-map-grid .ptr-map-grid-cell .ptr-map {
+  border: 0;
+}
+
+.ptr-map-grid .ptr-map-grid-cell:not(.row1) .ptr-map {
+  border-top: $mapBorder;
+}
+
+.ptr-map-grid .ptr-map-grid-cell:not(.col1) .ptr-map {
+  border-left: $mapBorder;
+}
+
+// Map slider
+.worldCereal-CompareSlider {
+  height: 100%;
+}
+
+div[data-rcs="handle-container"] {
+  z-index: 3;
+}
+
+div[data-rcs="clip-item"] {
+  z-index: 2;
+}
+
+// Map scale
+.worldCereal-MapScale {
+  bottom: 1.25rem;
+}
+
+.worldCereal-MapScale .ptr-MapScale-content {
+  background: rgba(var(--base0rgb), .5);
+  border: 2px solid var(--base80);
+  border-top: 0;
+}
+
+.worldCereal-MapScale .ptr-MapScale-content > span {
+  color: var(--base90);
+}

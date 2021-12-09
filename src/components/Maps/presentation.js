@@ -14,6 +14,8 @@ import SimpleLayersControl from './SimpleLayersControl';
 import MapContainer from './MapContainer';
 import MapWrapper from './MapWrapper';
 
+import './style.scss';
+
 const ConnectedMap = MapContainer(PresentationMap);
 const ConnectedMapSet = connects.MapSet(MapSet);
 
