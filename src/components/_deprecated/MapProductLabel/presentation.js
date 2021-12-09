@@ -3,8 +3,8 @@ import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import RemovableLabel from '../../atoms/RemovableLabel';
 import ModalWindow from '../../atoms/ModalWindow';
-import {MetadataInfoTitle} from '../../MetadataInfo/presentation';
-import MetadataInfo from '../../MetadataInfo';
+import {MetadataInfoTitle} from '../../Maps/ProductLabel/MetadataInfo/presentation';
+import MetadataInfo from '../../Maps/ProductLabel/MetadataInfo';
 
 Modal.setAppElement('#root');
 

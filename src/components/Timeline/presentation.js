@@ -4,9 +4,9 @@ import classnames from 'classnames';
 import {find as _find} from 'lodash';
 import PropTypes from 'prop-types';
 import {Mouse} from '@gisatcz/ptr-timeline';
-import Months from '../MapTimeline/Months';
-import Years from '../MapTimeline/Years';
-import MapTimeline from '../MapTimeline';
+import Months from './MapTimeline/Months';
+import Years from './MapTimeline/Years';
+import MapTimeline from './MapTimeline';
 
 import './style.scss';
 

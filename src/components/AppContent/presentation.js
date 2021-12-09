@@ -8,14 +8,14 @@ import {
 	PresentationMap,
 } from '@gisatcz/ptr-maps';
 import Header from '../Header';
-import MapContainer from '../MapContainer';
-import MapWrapper from '../MapWrapper';
-import MapAttribution from '../MapAttribution';
+import MapContainer from '../Maps/MapContainer';
+import MapWrapper from '../Maps/MapWrapper';
+import MapAttribution from '../Maps/MapAttribution';
 import RetractableWindow from '../atoms/RetractableWindow';
-import SimpleLayersControl from '../SimpleLayersControl';
+import SimpleLayersControl from '../Maps/SimpleLayersControl';
 import Timeline from '../Timeline';
-import ActiveFilterInfo from '../ActiveFilterInfo';
-import ProductFilter from '../ProductFilter';
+import ActiveFilterInfo from '../Filter/ActiveFilterInfo';
+import ProductFilter from '../Filter/ProductFilter';
 
 const ConnectedMap = MapContainer(PresentationMap);
 const ConnectedMapSet = connects.MapSet(MapSet);
