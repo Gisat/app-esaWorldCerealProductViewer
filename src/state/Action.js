@@ -198,22 +198,6 @@ function setOpacityByLayerKeys(mapKey, layerKeys, opacity) {
 	};
 }
 
-// TODO create common action in maps
-/**
- * Remove all layers (except background) for given map
- * @param mapKey {string}
- */
-function removeAllMapLayers(mapKey) {
-	return (dispatch, getState) => {
-		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);
-		if (mapLayers) {
-			mapLayers.forEach(layer => {
-				dispatch(CommonAction.maps.removeMapLayer(mapKey, layer.key));
-			});
-		}
-	};
-}
-
 export default {
 	...CommonAction,
 	init,
@@ -224,7 +208,6 @@ export default {
 		adjustInitialBoxRange,
 		setOpacityByLayerKeys,
 		removeAllLayersFromMapByLayerKeys,
-		removeAllMapLayers,
 		updateMapView,
 	},
 };

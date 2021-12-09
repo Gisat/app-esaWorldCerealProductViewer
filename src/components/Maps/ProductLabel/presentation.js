@@ -178,7 +178,7 @@ const ProductLabelBodyItem = ({title, dangerous, onClick, children}) => {
 };
 
 const ProductLabelLegend = ({style}) => {
-	// TODO for cogs values only
+	// for cogs values only
 	if (style) {
 		let legendItems = [];
 		_forIn(style.values, (options, value) => {

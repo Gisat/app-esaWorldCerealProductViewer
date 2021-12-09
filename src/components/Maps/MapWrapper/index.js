@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 			dispatch(Action.maps.removeMap(mapKey));
 		},
 		removeAllLayers: mapKey => {
-			dispatch(Action.worldCereal.removeAllMapLayers(mapKey));
+			dispatch(Action.maps.removeAllMapLayers(mapKey));
 		},
 	};
 };
