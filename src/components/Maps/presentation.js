@@ -21,10 +21,8 @@ const ConnectedMapSet = connects.MapSet(MapSet);
 
 const Map = MapContainer(PresentationMap);
 
-const Maps = ({compareMode, maps, viewLimits}) => {
-	const allowComparison = maps?.length === 2 && compareMode;
-
-	return allowComparison ? (
+const Maps = ({mode, maps, viewLimits}) => {
+	return mode === 'compare' ? (
 		<ReactCompareSlider
 			onlyHandleDraggable
 			className="worldCereal-CompareSlider"
@@ -75,7 +73,7 @@ const Maps = ({compareMode, maps, viewLimits}) => {
 };
 
 Maps.propTypes = {
-	compareMode: PropTypes.bool,
+	mode: PropTypes.string,
 	maps: PropTypes.array,
 	viewLimits: PropTypes.object,
 };

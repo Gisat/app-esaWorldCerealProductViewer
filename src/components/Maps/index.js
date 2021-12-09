@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		viewLimits: Select.maps.getMapSetViewLimits(state, mapSetKey),
 		maps: Select.maps.getMapSetMaps(state, mapSetKey),
-		compareMode: Select.app.getLocalConfiguration(state, 'mapCompareMode'),
+		mode: Select.components.get(state, 'Maps', 'mode'),
 	};
 };
 

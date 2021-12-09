@@ -10,9 +10,12 @@ export default {
 				},
 			},
 			components: {
-				productFilter: {
+				ProductFilter: {
 					activeParameter: 'product',
 					parameterOrder: ['product', 'season', 'aez'],
+				},
+				Maps: {
+					mode: 'set',
 				},
 			},
 			maps: {

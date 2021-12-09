@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		mapSetMapKeys: Select.maps.getMapSetMapKeys(state, mapSetKey),
 		showStatusInfo: Select.worldCereal.isInteractivityLimited(state),
-		mapCompareMode: Select.app.getLocalConfiguration(state, 'mapCompareMode'),
+		mapsMode: Select.components.get(state, 'Maps', 'mode'),
 		mapsInUse: Select.maps.getAllMapsInUse(state),
 	};
 };
@@ -22,8 +22,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 			dispatch(Action.maps.addMap({key: mapKey}));
 			dispatch(Action.maps.addMapToSet(mapKey, mapSetKey));
 		},
-		setMapCompareMode: compareMode => {
-			dispatch(Action.app.setLocalConfiguration('mapCompareMode', compareMode));
+		setMapsMode: mode => {
+			dispatch(Action.components.set('Maps', 'mode', mode));
 		},
 	};
 };

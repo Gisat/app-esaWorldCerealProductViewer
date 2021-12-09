@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		activeParameter: Select.components.get(
 			state,
-			'productFilter',
+			'ProductFilter',
 			'activeParameter'
 		),
 		filterParameters:

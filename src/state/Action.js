@@ -43,7 +43,6 @@ function init(path) {
 		const config = getConfig(getAppEnvConfig());
 
 		dispatch(CommonAction.app.updateLocalConfiguration(config));
-		dispatch(CommonAction.app.setLocalConfiguration('mapCompareMode', false));
 		dispatch(CommonAction.app.setKey(appKey));
 
 		const localConfig = Select.app.getCompleteLocalConfiguration(getState());

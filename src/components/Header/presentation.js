@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	Button,
-	ButtonSwitch,
-	ButtonSwitchOption,
-} from '@gisatcz/ptr-atoms';
+import {Button, ButtonSwitch, ButtonSwitchOption} from '@gisatcz/ptr-atoms';
 
 import {MAX_MAPS_IN_MAP_SET} from '../../constants/app';
 import logoData from './logo';
@@ -15,8 +11,8 @@ class Header extends React.PureComponent {
 		addMap: PropTypes.func,
 		mapSetMapKeys: PropTypes.array,
 		showStatusInfo: PropTypes.bool,
-		mapCompareMode: PropTypes.bool,
-		setMapCompareMode: PropTypes.bool,
+		mapsMode: PropTypes.string,
+		setMapsMode: PropTypes.func,
 		mapsInUse: PropTypes.array,
 	};
 
@@ -29,8 +25,8 @@ class Header extends React.PureComponent {
 			addMap,
 			mapSetMapKeys,
 			showStatusInfo,
-			mapCompareMode,
-			setMapCompareMode,
+			mapsMode,
+			setMapsMode,
 			mapsInUse,
 		} = this.props;
 		const mapsInMapSet = mapSetMapKeys?.length;
@@ -51,20 +47,20 @@ class Header extends React.PureComponent {
 						className="ptr-dark"
 						ghost
 						small
-						onClick={setMapCompareMode}
+						onClick={setMapsMode}
 						disabled={mapsInUse.length !== 2}
 					>
 						<ButtonSwitchOption
 							className="worldCereal-MapsModeOption-compare"
-							value={true}
-							active={mapCompareMode}
+							value="compare"
+							active={mapsMode === 'compare'}
 							icon="expand"
 						>
 							Compare mode
 						</ButtonSwitchOption>
 						<ButtonSwitchOption
-							value={false}
-							active={!mapCompareMode}
+							value="set"
+							active={mapsMode === 'set'}
 							icon="tilt-less"
 						>
 							Set mode
@@ -76,7 +72,9 @@ class Header extends React.PureComponent {
 						ghost
 						small
 						icon="plus-thick"
-						disabled={mapsInMapSet >= MAX_MAPS_IN_MAP_SET || mapCompareMode}
+						disabled={
+							mapsInMapSet >= MAX_MAPS_IN_MAP_SET || mapsMode === 'compare'
+						}
 					>
 						Add map
 					</Button>
