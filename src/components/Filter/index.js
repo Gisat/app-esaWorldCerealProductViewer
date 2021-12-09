@@ -3,6 +3,8 @@ import RetractableWindow from '../atoms/RetractableWindow';
 import ActiveFilterInfo from './ActiveFilterInfo';
 import ProductFilter from './ProductFilter';
 
+import './style.scss';
+
 const Filter = () => {
 	return (
 		<RetractableWindow

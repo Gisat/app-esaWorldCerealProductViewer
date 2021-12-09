@@ -95,9 +95,3 @@
 	--accent100: #{$darkAccent100};
 	--accent100rgb: #{hexToRGB($darkAccent100)};
 }
-
-// Filter window
-.ptr-RetractableWindow.worldCereal-FilterWindow {
-	max-width: 60rem;
-	z-index: 3;
-}
