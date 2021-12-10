@@ -40,5 +40,9 @@
 .worldCereal-MapToolsButton.ptr-button {
   padding: 0 .15rem;
   border-radius: 0;
+  background: var(--base40);
+}
+
+.ptr-map-wrapper.worldCereal-MapWrapper.active .worldCereal-MapToolsButton.ptr-button {
   background: var(--accent30);
 }

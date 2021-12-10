@@ -50,10 +50,12 @@ const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {
 								<Map mapComponent={ReactLeafletMap} stateMapKey="overview" />
 							</PropsDriller>
 						) : null}
-						<PropsDriller className="worldCereal-AttributionScaleContainer">
-							{attribution ? <MapAttribution /> : null}
-							{scale ? <MapScale className="worldCereal-MapScale" /> : null}
-						</PropsDriller>
+						{attribution || scale ? (
+							<PropsDriller className="worldCereal-AttributionScaleContainer">
+								{attribution ? <MapAttribution /> : null}
+								{scale ? <MapScale className="worldCereal-MapScale" /> : null}
+							</PropsDriller>
+						) : null}
 					</PropsDriller>
 				</Map>
 			}
@@ -92,10 +94,12 @@ const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {
 						<Map mapComponent={ReactLeafletMap} stateMapKey="overview" />
 					</PropsDriller>
 				) : null}
-				<PropsDriller className="worldCereal-AttributionScaleContainer">
-					{attribution ? <MapAttribution /> : null}
-					{scale ? <MapScale className="worldCereal-MapScale" /> : null}
-				</PropsDriller>
+				{attribution || scale ? (
+					<PropsDriller className="worldCereal-AttributionScaleContainer">
+						{attribution ? <MapAttribution /> : null}
+						{scale ? <MapScale className="worldCereal-MapScale" /> : null}
+					</PropsDriller>
+				) : null}
 			</PropsDriller>
 		</ConnectedMapSet>
 	);

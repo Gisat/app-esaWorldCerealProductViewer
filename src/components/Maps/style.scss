@@ -38,16 +38,16 @@ div[data-rcs="clip-item"] {
 .worldCereal-MapInfoElements {
   position: absolute;
   bottom: .35rem;
-  left: .5rem;
+  left: .35rem;
   display: flex;
-  grid-gap: .5rem;
+  grid-gap: .35rem;
   flex-direction: column;
 }
 
 // AttributionScaleContainer
 .worldCereal-AttributionScaleContainer {
   display: flex;
-  grid-gap: .5rem;
+  grid-gap: .35rem;
 }
 
 // Map scale
@@ -72,7 +72,7 @@ div[data-rcs="clip-item"] {
   width: 10rem;
   height: 6rem;
   z-index: 2;
-  box-shadow: 0 0 5px rgba(0,0,0,.5);
+  box-shadow: 0 0 10px rgba(0,0,0,.2);
   border-radius: .25rem;
-  border: 2px solid var(--base20);
+  border: 2px solid var(--base10);
 }
