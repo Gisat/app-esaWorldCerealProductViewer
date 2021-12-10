@@ -45,6 +45,7 @@ const mapDispatchToPropsFactory = () => {
 				},
 				updateView: (update, mapKey) => {
 					dispatch(Action.worldCereal.updateMapView(mapKey, update));
+					dispatch(Action.worldCereal.updateOverviewMap());
 				},
 				resetHeading: mapKey => {},
 				onMapRemove: mapKey => {
