@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {ReactCompareSlider} from 'react-compare-slider';
-import {connects} from '@gisatcz/ptr-state';
 import {
 	MapControls,
 	MapScale,
@@ -12,12 +11,13 @@ import {
 import MapAttribution from './MapAttribution';
 import SimpleLayersControl from './SimpleLayersControl';
 import MapContainer from './MapContainer';
+import MapSetContainer from './MapSetContainer';
 import MapWrapper from './MapWrapper';
 
 import './style.scss';
 
 const ConnectedMap = MapContainer(PresentationMap);
-const ConnectedMapSet = connects.MapSet(MapSet);
+const ConnectedMapSet = MapSetContainer(MapSet);
 
 const Map = MapContainer(PresentationMap);
 
