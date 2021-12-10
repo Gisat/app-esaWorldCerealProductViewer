@@ -16,9 +16,9 @@ export default {
 				},
 				Maps: {
 					mode: 'set',
-					// scale: true,
+					scale: true,
 					attribution: true,
-					overviewMap: true,
+					// overviewMap: true,
 				},
 			},
 			maps: {
