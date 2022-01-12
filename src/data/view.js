@@ -18,7 +18,7 @@ export default {
 					mode: 'set',
 					scale: true,
 					attribution: true,
-					// overviewMap: true,
+					overviewMap: true,
 				},
 			},
 			maps: {
