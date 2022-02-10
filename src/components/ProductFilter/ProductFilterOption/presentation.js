@@ -1,11 +1,9 @@
-import React from 'react';
-
+import PropTypes from 'prop-types';
 import './style.scss';
 
 const ProductFilterOption = ({
 	value,
 	count,
-	parameterKey,
 	selected,
 	metadata,
 	onValueChange,
@@ -30,6 +28,19 @@ const ProductFilterOption = ({
 			</label>
 		</div>
 	);
+};
+
+ProductFilterOption.propTypes = {
+	count: PropTypes.number,
+	isInteractivityLimited: PropTypes.bool,
+	metadata: PropTypes.shape({
+		data: PropTypes.shape({
+			nameDisplay: PropTypes.string,
+		}),
+	}),
+	onValueChange: PropTypes.func,
+	selected: PropTypes.bool,
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default ProductFilterOption;

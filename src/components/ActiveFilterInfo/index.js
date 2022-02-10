@@ -4,7 +4,7 @@ import Select from '../../state/Select';
 
 import Presentation from './presentation';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
 	return {
 		activeFilterParameters:
 			Select.worldCereal.productMetadataFilter.getActiveFilterWithFilterParameters(
@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
 	return {
 		onValueRemove: (parameter, value) => {
 			dispatch(

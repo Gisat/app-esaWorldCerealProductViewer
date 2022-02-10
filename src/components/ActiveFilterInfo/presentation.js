@@ -1,4 +1,5 @@
-import React from 'react';
+import PropTypes, {array} from 'prop-types';
+import {Fragment} from 'react';
 import classnames from 'classnames';
 import {Button} from '@gisatcz/ptr-atoms';
 import {MIN_FILTER_PARAMETER_VALUES_FOR_GROUPING} from '../../constants/app';
@@ -28,7 +29,7 @@ const FilterParameterLabels = ({
 		);
 	} else {
 		return (
-			<React.Fragment key={parameter.key}>
+			<Fragment key={parameter.key}>
 				{parameter.values.map(value => {
 					const valueKey = value.key || value;
 					const valueName = value.data?.nameDisplay || value;
@@ -46,9 +47,22 @@ const FilterParameterLabels = ({
 						</RemovableLabel>
 					);
 				})}
-			</React.Fragment>
+			</Fragment>
 		);
 	}
+};
+
+FilterParameterLabels.propTypes = {
+	onAllValuesRemove: PropTypes.func,
+	onValueRemove: PropTypes.func,
+	parameter: PropTypes.shape({
+		key: PropTypes.any,
+		parameter: PropTypes.shape({
+			key: PropTypes.any,
+			name: PropTypes.any,
+		}),
+		values: PropTypes.array,
+	}),
 };
 
 const ActiveFilterInfo = ({
@@ -82,6 +96,7 @@ const ActiveFilterInfo = ({
 				<RemovableLabelContainer className="worldCereal-ActiveFilterInfo-filters">
 					{activeFilterParameters.map(parameter => (
 						<FilterParameterLabels
+							key={parameter}
 							parameter={parameter}
 							onValueRemove={onValueRemove}
 							onAllValuesRemove={onAllValuesRemove}
@@ -105,6 +120,15 @@ const ActiveFilterInfo = ({
 			) : null}
 		</div>
 	);
+};
+
+ActiveFilterInfo.propTypes = {
+	activeFilterParameters: array,
+	availableProductMetadata: PropTypes.array,
+	isInteractivityLimited: PropTypes.bool,
+	onAllValuesRemove: PropTypes.func,
+	onClearAll: PropTypes.func,
+	onValueRemove: PropTypes.func,
 };
 
 export default ActiveFilterInfo;

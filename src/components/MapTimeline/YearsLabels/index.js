@@ -7,17 +7,22 @@ import {utils} from '@gisatcz/ptr-timeline';
 // import MonthDash from '../Months/MonthDash';
 import './style.scss';
 
-
 const YearsLabel = props => {
-	const {period, getX, dayWidth, height, vertical} = props;
+	const {period, getX, height, vertical} = props;
 	const periodStart = moment(period.start);
 	const periodEnd = moment(period.end);
 	const yearsCfg = utils.interval.getYears(periodStart, periodEnd);
-	
+
 	const years = _map(yearsCfg, year => {
 		const labelXCorrection = -3;
 		let x = getX(year.start) + labelXCorrection;
-		let label = React.createElement(utils.textLabel.default, {label:year.year,vertical,x,height,className: 'ptr-timeline-year-label'});
+		let label = React.createElement(utils.textLabel.default, {
+			label: year.year,
+			vertical,
+			x,
+			height,
+			className: 'ptr-timeline-year-label',
+		});
 		return (
 			<g className={'ptr-timeline-year'} key={year.year}>
 				{label}
@@ -51,7 +56,6 @@ const YearsLabel = props => {
 		</g>
 	);
 };
-
 
 YearsLabel.propTypes = {
 	period: PropTypes.shape({

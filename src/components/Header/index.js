@@ -6,14 +6,14 @@ import {mapSetKey} from '../../constants/app';
 
 import Presentation from './presentation';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
 	return {
 		mapSetMapKeys: Select.maps.getMapSetMapKeys(state, mapSetKey),
 		showStatusInfo: Select.worldCereal.isInteractivityLimited(state),
 	};
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
 	return {
 		addMap: () => {
 			const mapKey = utils.uuid();

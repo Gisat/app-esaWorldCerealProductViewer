@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import PageSwitcher, {
 	PageSwitcherContent,
@@ -36,7 +36,7 @@ const ProductFilter = ({
 			</PageSwitcherMenu>
 			<PageSwitcherContent>
 				{filterParameters
-					? filterParameters.map((item, i) => (
+					? filterParameters.map(item => (
 							<PageSwitcherPage key={item.key} pageKey={item.key}>
 								<ProductFilterParameter parameterKey={item.key} {...item} />
 							</PageSwitcherPage>
@@ -45,6 +45,12 @@ const ProductFilter = ({
 			</PageSwitcherContent>
 		</PageSwitcher>
 	);
+};
+
+ProductFilter.propTypes = {
+	activeParameter: PropTypes.string,
+	filterParameters: PropTypes.array,
+	isInteractivityLimited: PropTypes.bool,
 };
 
 export default ProductFilter;

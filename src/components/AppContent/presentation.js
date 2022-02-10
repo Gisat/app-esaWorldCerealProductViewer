@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
+import {useEffect} from 'react';
 import {connects} from '@gisatcz/ptr-state';
 import {
 	ReactLeafletMap,
@@ -64,6 +65,12 @@ const App = ({onMount, onUnmount, viewLimits}) => {
 			{/*<ControlPanel />*/}
 		</div>
 	);
+};
+
+App.propTypes = {
+	onMount: PropTypes.func,
+	onUnmount: PropTypes.func,
+	viewLimits: PropTypes.object,
 };
 
 export default App;

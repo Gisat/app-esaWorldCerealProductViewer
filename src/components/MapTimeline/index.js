@@ -1,9 +1,11 @@
+/* eslint-disable */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import ReactResizeDetector from 'react-resize-detector';
 
-import {utils} from '@gisatcz/ptr-utils';
+import { utils } from '@gisatcz/ptr-utils';
 import {
 	Timeline,
 	Overlay,
@@ -16,12 +18,12 @@ import XAxis from './XAxis';
 import MapTimelineLegend from './MapTimelineLegend';
 import './style.scss';
 
-const {getIntersectionOverlays, overlap} = timelineUtils.overlays;
+const { getIntersectionOverlays, overlap } = timelineUtils.overlays;
 const CONTROLS_WIDTH = 0;
 const TOOLTIP_PADDING = 5;
 const MOUSEBUFFERWIDTH = 20;
 const MIN_TIMELINE_HEIGHT = 8;
-const {getTootlipPosition} = position;
+const { getTootlipPosition } = position;
 
 const getOverlayCfg = options => {
 	const otherOptions = options.options || {};
@@ -183,9 +185,9 @@ class MapTimeline extends React.PureComponent {
 
 	static defaultProps = {
 		dayWidth: 1.5,
-		onHover: () => {},
-		onClick: () => {},
-		onLayerClick: () => {},
+		onHover: () => { },
+		onClick: () => { },
+		onLayerClick: () => { },
 		width: 100,
 		height: 100,
 		selectMode: false,
@@ -202,7 +204,7 @@ class MapTimeline extends React.PureComponent {
 		this.getHoverContent = this.getHoverContent.bind(this);
 		this.wrapperRef = React.createRef();
 		this.state = {
-			period: {start: new Date(), end: new Date()},
+			period: { start: new Date(), end: new Date() },
 			dayWidth: null,
 			timelineWidth: null,
 		};
@@ -247,7 +249,7 @@ class MapTimeline extends React.PureComponent {
 	}
 
 	getHoverContent(x, time, evt) {
-		const {layers} = this.props;
+		const { layers } = this.props;
 		const overlays = getOverlaysCfg(layers);
 		let intersectionOverlays = getIntersectionOverlays(
 			time,
@@ -269,7 +271,7 @@ class MapTimeline extends React.PureComponent {
 					<div>
 						<span
 							className="dot"
-							style={{backgroundColor: overlay.backdroundColor}}
+							style={{ backgroundColor: overlay.backdroundColor }}
 						></span>
 					</div>
 					<div>
@@ -315,7 +317,7 @@ class MapTimeline extends React.PureComponent {
 					windowBBox,
 					TOOLTIP_PADDING
 				)(origPosX, origPosY, width, height, this.wrapperRef.current);
-				return {top: position.top, left: position.left};
+				return { top: position.top, left: position.left };
 			};
 		};
 	}
@@ -366,7 +368,7 @@ class MapTimeline extends React.PureComponent {
 								handleWidth
 								skipOnMount={false}
 								onResize={width => {
-									this.setState({timelineWidth: width});
+									this.setState({ timelineWidth: width });
 								}}
 							>
 								<HoverHandler getStyle={this.getHorizontalTootlipStyle()}>

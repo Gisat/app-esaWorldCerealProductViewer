@@ -38,6 +38,8 @@
 		"classnames": "^2.3.1",
 		"css-loader": "^6.4.0",
 		"dotenv": "^10.0.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-prettier": "^4.0.0",
 		"history": "^5.0.1",
 		"isomorphic-fetch": "^3.0.0",
 		"lodash": "^4.17.21",
@@ -88,7 +90,9 @@
 		"build": "NODE_ENV=production react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"prettier:write": "prettier --write 'src/**/*.js' 'server/**/*.js'"
+		"format": "prettier --write 'src/**/*.js' 'server/**/*.js'",
+		"lint": "eslint .",
+		"lintFix": "eslint . --fix"
 	},
 	"resolutions": {
 		"gl-matrix": "3.3.0"

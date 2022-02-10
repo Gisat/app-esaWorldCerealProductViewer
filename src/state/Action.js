@@ -46,14 +46,13 @@ function init(path) {
 		dispatch(CommonAction.app.setKey(appKey));
 
 		const localConfig = Select.app.getCompleteLocalConfiguration(getState());
-		const {'userKey': devUserKey} = localConfig;
+		const {userKey: devUserKey} = localConfig;
 		const activeUser = Select.users.getActiveKey(getState());
 		// For local development
 		// Set active user key from local config if exists
-		if(!activeUser && devUserKey) {
-			dispatch(CommonAction.users.setActiveKey(devUserKey))
+		if (!activeUser && devUserKey) {
+			dispatch(CommonAction.users.setActiveKey(devUserKey));
 		}
-
 
 		dispatch(resetSession());
 
@@ -107,7 +106,7 @@ function resetSession() {
 			const path = 'rest/project/worldCereal/user/sessionStart';
 			const url = `${apiBackendProtocol}://${apiBackendHost}/${apiBackendPath}/${path}`;
 			const method = 'GET';
-			
+
 			utils
 				.request(url, method, null, null, userKey)
 				.catch(

@@ -5,7 +5,7 @@ import Action from '../state/Action';
 import backgroundLayers from '../data/layers/backgroundLayers';
 import {mapSetKey} from '../constants/app';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
 	const mapSet = Select.maps.getMapSetByKey(state, mapSetKey);
 
 	return {
@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
 	return {
 		onSelect: layerKey => {
 			dispatch(

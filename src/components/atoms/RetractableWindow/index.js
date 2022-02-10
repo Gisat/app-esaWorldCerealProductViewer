@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
+import {useRef, useState, useEffect} from 'react';
 import useSize from '@react-hook/size';
 import classnames from 'classnames';
 import {Icon} from '@gisatcz/ptr-atoms';
@@ -11,8 +12,8 @@ const RetractableWindowControlBar = ({
 	onClick,
 	onHeightChange,
 }) => {
-	const ref = React.useRef(null);
-	const [width, height] = useSize(ref);
+	const ref = useRef(null);
+	const [, height] = useSize(ref);
 
 	const classes = classnames(`ptr-RetractableWindowControlBar`, {
 		'is-centered': centered,
@@ -40,6 +41,13 @@ const RetractableWindowControlBar = ({
 	);
 };
 
+RetractableWindowControlBar.propTypes = {
+	centered: PropTypes.bool,
+	children: PropTypes.node,
+	onClick: PropTypes.func,
+	onHeightChange: PropTypes.func,
+};
+
 const RetractableWindowBody = ({children, centered, height}) => {
 	const style = {
 		height: `${height}rem`,
@@ -56,6 +64,12 @@ const RetractableWindowBody = ({children, centered, height}) => {
 	);
 };
 
+RetractableWindowBody.propTypes = {
+	centered: PropTypes.bool,
+	children: PropTypes.node,
+	height: PropTypes.number,
+};
+
 const RetractableWindow = ({
 	children,
 	centered,
@@ -65,8 +79,8 @@ const RetractableWindow = ({
 	bodyHeight,
 	className,
 }) => {
-	const ref = React.useRef(null);
-	const [width, height] = useSize(ref);
+	const ref = useRef(null);
+	const [width] = useSize(ref);
 
 	const [isRetracted, handleRetraction] = useState(retracted);
 	const [verticalPositionOffset, handleVerticalPosition] = useState(0);
@@ -104,6 +118,16 @@ const RetractableWindow = ({
 			</RetractableWindowBody>
 		</div>
 	);
+};
+
+RetractableWindow.propTypes = {
+	bodyHeight: PropTypes.number,
+	bottomPosition: PropTypes.number,
+	centered: PropTypes.bool,
+	children: PropTypes.node,
+	className: PropTypes.string,
+	controlBarContent: PropTypes.node,
+	retracted: PropTypes.bool,
 };
 
 export default RetractableWindow;

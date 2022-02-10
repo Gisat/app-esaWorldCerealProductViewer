@@ -7,7 +7,6 @@ import MonthDash from './MonthDash';
 import YearDash from '../Years/YearDash';
 import './style.scss';
 
-
 const Months = props => {
 	const {period, getX, dayWidth, height, vertical} = props;
 	const periodStart = moment(period.start);
@@ -45,7 +44,6 @@ const Months = props => {
 	);
 };
 
-
 Months.propTypes = {
 	period: PropTypes.shape({
 		start: PropTypes.string,
@@ -60,7 +58,5 @@ Months.propTypes = {
 Months.defaultProps = {
 	vertical: false,
 };
-
-
 
 export default Months;

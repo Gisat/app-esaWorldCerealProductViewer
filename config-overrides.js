@@ -1,6 +1,4 @@
-var path = require('path');
-
-module.exports = function override(config, env) {
+module.exports = function override(config) {
 	// comment when using package from npm
 	config.resolve = {
 		alias: {

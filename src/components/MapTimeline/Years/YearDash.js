@@ -6,7 +6,7 @@ const YearsDash = props => {
 	const {x, label, vertical} = props;
 	return (
 		<g className={'ptr-timeline-year'}>
-			{React.createElement(utils.dash.D1, {x,vertical})}
+			{React.createElement(utils.dash.D1, {x, vertical})}
 			{label}
 		</g>
 	);

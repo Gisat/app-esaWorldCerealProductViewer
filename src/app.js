@@ -1,4 +1,3 @@
-import React from 'react';
 import Helmet from 'react-helmet';
 
 import {connects} from '@gisatcz/ptr-state';
@@ -18,7 +17,7 @@ import AppContent from './components/AppContent';
 
 const path = process.env.PUBLIC_URL;
 
-function createRoutes(Store, isPreloaded) {
+function createRoutes() {
 	return {
 		'': {
 			name: 'home',

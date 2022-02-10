@@ -5,7 +5,7 @@ import Select from '../../state/Select';
 import Presentation from './presentation';
 import {mapSetKey} from '../../constants/app';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
 	return {
 		productTemplates: Select.worldCereal.getProductTemplates(state),
 		productMetadata:
@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
 	return {
 		handleProductInActiveMap: data =>
 			dispatch(

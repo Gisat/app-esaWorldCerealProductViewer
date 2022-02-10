@@ -7,7 +7,6 @@ import {utils} from '@gisatcz/ptr-timeline';
 // import YearDash from '../Years/YearDash';
 import './style.scss';
 
-
 const MonthsLabel = props => {
 	const {period, getX, dayWidth, height, vertical} = props;
 	const periodStart = moment(period.start);
@@ -18,9 +17,18 @@ const MonthsLabel = props => {
 		if (month.month !== '01') {
 			const labelXCorrection = -3;
 			let x = getX(month.start) + labelXCorrection;
-			let label = React.createElement(utils.textLabel.default, {label:month.month,vertical,x,height,className: 'ptr-timeline-month-label'});
+			let label = React.createElement(utils.textLabel.default, {
+				label: month.month,
+				vertical,
+				x,
+				height,
+				className: 'ptr-timeline-month-label',
+			});
 			return (
-				<g className={'ptr-timeline-month'} key={`${month.year}-${month.month}`}>
+				<g
+					className={'ptr-timeline-month'}
+					key={`${month.year}-${month.month}`}
+				>
 					{label}
 				</g>
 			);
@@ -29,14 +37,8 @@ const MonthsLabel = props => {
 		}
 	});
 
-	
-	return (
-		<g className={'levels'}>
-			{months}
-		</g>
-	);
+	return <g className={'levels'}>{months}</g>;
 };
-
 
 MonthsLabel.propTypes = {
 	period: PropTypes.shape({
@@ -52,7 +54,5 @@ MonthsLabel.propTypes = {
 MonthsLabel.defaultProps = {
 	vertical: false,
 };
-
-
 
 export default MonthsLabel;
