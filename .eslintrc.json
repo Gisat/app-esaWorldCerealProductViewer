@@ -18,7 +18,8 @@
       {
         "endOfLine": "auto"
       }
-    ]
+    ],
+    "no-debugger":"off"
   },
   "env": {
     "browser": true,
