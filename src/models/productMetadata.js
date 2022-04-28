@@ -15,6 +15,7 @@ export default item => {
 		merged,
 		model,
 		training_refids,
+		dataSource,
 	} = item.data.data;
 
 	return {
@@ -35,6 +36,7 @@ export default item => {
 			model,
 			merged,
 			training_refids,
+			dataSource,
 		},
 	};
 };
