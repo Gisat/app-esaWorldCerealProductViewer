@@ -14,6 +14,7 @@ export default item => {
 		related_products,
 		model,
 		training_refids,
+		dataSource,
 	} = item.data.data;
 
 	return {
@@ -33,6 +34,7 @@ export default item => {
 			relatedProducts: related_products,
 			model,
 			training_refids,
+			dataSource,
 		},
 	};
 };

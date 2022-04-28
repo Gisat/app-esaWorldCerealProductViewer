@@ -5,6 +5,7 @@ import productMetadataModel from '../../../models/productMetadata';
 import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
 import {mapSetKey} from '../../../constants/app';
+import Action from '../../Action';
 
 const setActiveKeys = commonActions.setActiveKeys(
 	ActionTypes.WORLD_CEREAL.PRODUCT_METADATA
@@ -159,18 +160,54 @@ function handleLoadResponse(data) {
 }
 
 /**
+ *
+ * @param {string} mapKey
+ * @param {string} spatialDataSourceKey
+ * @param {string} productMetadataKey
+ * @returns {Promise}
+ */
+function handleDataSourceAndAddtoMap(
+	mapKey,
+	spatialDataSourceKey,
+	productMetadataKey
+) {
+	return dispatch => {
+		dispatch(
+			Action.data.spatialDataSources.useKeys([spatialDataSourceKey])
+		).then(() => {
+			//add ds
+			const ds =
+				Select.data.spatialDataSources.getByKeyObserver(spatialDataSourceKey);
+			const layer = {
+				key: `${spatialDataSourceKey}`,
+				layerKey: productMetadataKey,
+				spatialDataSourceKey,
+				type: 'wms',
+				options: {
+					fetchedTile: true,
+					params: {
+						layers: ds.data.layers,
+					},
+					url: ds.data.url,
+				},
+			};
+
+			dispatch(CommonAction.maps.addMapLayers(mapKey, [layer]));
+		});
+	};
+}
+
+/**
  * Add/remove the product to/from active map
  * @param productMetadataKey {string} unique key of product metadata
  */
-function handleProductInActiveMap(productMetadataKey) {
+function handleProductInActiveMap(productMetadataKey, spatialDataSourceKey) {
 	return (dispatch, getState) => {
 		const map = Select.maps.getMapSetActiveMap(getState(), mapSetKey);
 		const productMetadata = Select.worldCereal.productMetadata.getByKey(
 			getState(),
 			productMetadataKey
 		);
-
-		const {tiles} = productMetadata.data;
 
 		const isLayerPresent =
 			map?.data?.layers &&
@@ -182,40 +219,17 @@ function handleProductInActiveMap(productMetadataKey) {
 		// Remove or add layer(s)
 		if (isLayerPresent) {
 			dispatch(removeProductOutlineLayer(map.key, productMetadataKey));
-			dispatch(removeLayersForTiles(productMetadataKey, tiles, map.key));
+			dispatch(removeLayersDatasourceLayer(map.key, spatialDataSourceKey));
 		} else {
 			dispatch(addProductOutlineLayer(map.key, productMetadata));
 			dispatch(
-				addLayersForTiles(
-					productMetadataKey,
-					tiles,
-					productMetadata?.data.product,
-					map.key
+				handleDataSourceAndAddtoMap(
+					map.key,
+					spatialDataSourceKey,
+					productMetadataKey
 				)
 			);
 		}
-	};
-}
-
-/**
- * @param productMetadataKey {string} unique key of product metadata
- * @param tiles {Array} A collection of tiles
- * @param mapKey {string}
- */
-function removeLayersForTiles(productMetadataKey, tiles, mapKey) {
-	return (dispatch, getState) => {
-		tiles.forEach(tile => {
-			const layerKey = getUniqueCogLayerKey(productMetadataKey, tile);
-			const existingLayer = Select.maps.getMapLayerStateByMapKeyAndLayerKey(
-				getState(),
-				mapKey,
-				layerKey
-			);
-			if (existingLayer) {
-				// TODO remove multiple layers at once?
-				dispatch(CommonAction.maps.removeMapLayer(mapKey, layerKey));
-			}
-		});
 	};
 }
 
@@ -229,28 +243,9 @@ function removeProductOutlineLayer(mapKey, productMetadataKey) {
 	};
 }
 
-/**
- * @param productMetadataKey {string} unique key of product metadata
- * @param tiles {Array} A collection of tiles
- * @param product {string} key of product (case)
- * @param mapKey {string}
- */
-function addLayersForTiles(productMetadataKey, tiles, product, mapKey) {
-	return (dispatch, getState) => {
-		const layers = [];
-		const activeTiles = Select.worldCereal.productMetadata.getActiveTiles(
-			getState()
-		);
-
-		tiles.forEach(tile => {
-			if (activeTiles.indexOf(tile.tile) > -1) {
-				layers.push(
-					getCogLayerDefinition(getState(), productMetadataKey, tile, product)
-				);
-			}
-		});
-
-		dispatch(CommonAction.maps.addMapLayers(mapKey, layers));
+function removeLayersDatasourceLayer(mapKey, spatialDataSourceKey) {
+	return dispatch => {
+		dispatch(CommonAction.maps.removeMapLayer(mapKey, spatialDataSourceKey));
 	};
 }
 
@@ -288,7 +283,7 @@ function getUniqueCogLayerKey(productMetadataKey, tile) {
  * @returns {Object} Panther.Layer
  */
 function getCogLayerDefinition(state, productMetadataKey, tile, product) {
-	return {
+	const l = {
 		key: getUniqueCogLayerKey(productMetadataKey, tile),
 		layerKey: productMetadataKey,
 		productMetadataKey,
@@ -302,6 +297,8 @@ function getCogLayerDefinition(state, productMetadataKey, tile, product) {
 			),
 		},
 	};
+	console.log('unused', l);
+	return null;
 }
 
 /**
@@ -390,7 +387,6 @@ const actionSetActiveTiles = tiles => {
 
 export default {
 	add,
-	addLayersForTiles,
 	loadForMapSetView,
 
 	handleProductInActiveMap,

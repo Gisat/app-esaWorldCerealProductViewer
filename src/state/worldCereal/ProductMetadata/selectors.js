@@ -63,7 +63,7 @@ const getModelsByMapKey = createCachedSelector(
 	[getAllAsObject, getKeysByMapKey],
 	(models, keys) => {
 		if (keys?.length && models) {
-			return keys.map(key => models[key]);
+			return keys.map(key => models[key]).filter(i => i);
 		} else {
 			return null;
 		}

@@ -70,6 +70,7 @@ const getTimelineLayers = createSelector(
 							mapZIndex: index,
 							layerState: {
 								key: product.key, //used only as a key fot outline layer
+								spatialDataSourceKey: product.data.dataSource.product, //used only as a key fot outline layer
 							},
 						},
 					],
@@ -92,7 +93,6 @@ const getTimelineLayers = createSelector(
 				}
 			}
 		}
-		console.log('xxx timelineLayers', timelineLayers);
 		return timelineLayers;
 	}
 );
