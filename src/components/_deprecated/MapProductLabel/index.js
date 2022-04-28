@@ -1,4 +1,3 @@
-import React from 'react';
 import {connect} from '@gisatcz/ptr-state';
 import Action from '../../../state/Action';
 import Select from '../../../state/Select';

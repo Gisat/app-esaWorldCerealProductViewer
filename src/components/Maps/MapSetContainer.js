@@ -1,7 +1,6 @@
 import {connect} from '@gisatcz/ptr-state';
 import Action from '../../state/Action';
 import Select from '../../state/Select';
-import {utils} from '@gisatcz/ptr-utils';
 
 const mapStateToProps = (state, ownProps) => {
 	if (ownProps.stateMapSetKey) {
@@ -32,8 +31,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToPropsFactory = () => {
-	const componentId = 'MapSet_' + utils.randomString(6);
-
 	return (dispatch, ownProps) => {
 		if (ownProps.stateMapSetKey) {
 			return {
@@ -47,7 +44,7 @@ const mapDispatchToPropsFactory = () => {
 					dispatch(Action.worldCereal.updateMapView(mapKey, update));
 					dispatch(Action.worldCereal.updateOverviewMap());
 				},
-				resetHeading: mapKey => {},
+				resetHeading: () => {},
 				onMapRemove: mapKey => {
 					dispatch(
 						Action.maps.removeMapFromSet(ownProps.stateMapSetKey, mapKey)
@@ -55,7 +52,6 @@ const mapDispatchToPropsFactory = () => {
 				},
 			};
 		} else {
-			let setKey = ownProps.setKey || componentId;
 			return {
 				onMount: () => {},
 

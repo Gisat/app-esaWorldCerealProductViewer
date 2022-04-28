@@ -1,9 +1,9 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import ProductFilterOption from '../ProductFilterOption';
 
 import './style.scss';
 
-const ProductFilterParameter = ({name, options, parameterKey}) => {
+const ProductFilterParameter = ({options, parameterKey}) => {
 	return (
 		<div className="worldCereal-ProductFilterParameter">
 			{options.map(option => (
@@ -15,6 +15,11 @@ const ProductFilterParameter = ({name, options, parameterKey}) => {
 			))}
 		</div>
 	);
+};
+
+ProductFilterParameter.propTypes = {
+	options: PropTypes.array,
+	parameterKey: PropTypes.string,
 };
 
 export default ProductFilterParameter;

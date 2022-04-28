@@ -1,11 +1,9 @@
-import React from 'react';
-
+import PropTypes from 'prop-types';
 import './style.scss';
 
 const ProductFilterOption = ({
 	value,
 	count,
-	parameterKey,
 	selected,
 	metadata,
 	onValueChange,
@@ -30,6 +28,15 @@ const ProductFilterOption = ({
 			</label>
 		</div>
 	);
+};
+
+ProductFilterOption.propTypes = {
+	count: PropTypes.number,
+	isInteractivityLimited: PropTypes.bool,
+	metadata: PropTypes.object,
+	onValueChange: PropTypes.func,
+	selected: PropTypes.bool,
+	value: PropTypes.string,
 };
 
 export default ProductFilterOption;

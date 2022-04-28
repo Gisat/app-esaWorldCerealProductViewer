@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, {useEffect, useState} from 'react';
 import classnames from 'classnames';
 
@@ -49,10 +50,25 @@ export const PageSwitcherMenuItem = ({
 	);
 };
 
+PageSwitcherMenuItem.propTypes = {
+	active: PropTypes.bool,
+	activePageKey: PropTypes.string,
+	children: PropTypes.node,
+	disabled: PropTypes.bool,
+	pageKey: PropTypes.string,
+	setActivePage: PropTypes.func,
+};
+
 export const PageSwitcherPage = ({children, pageKey, activePageKey}) => {
 	return activePageKey === pageKey ? (
 		<div className="ptr-PageSwitcherPage">{children}</div>
 	) : null;
+};
+
+PageSwitcherPage.propTypes = {
+	activePageKey: PropTypes.string,
+	children: PropTypes.node,
+	pageKey: PropTypes.string,
 };
 
 export const PageSwitcherContent = ({
@@ -67,12 +83,24 @@ export const PageSwitcherContent = ({
 	return <div className="ptr-PageSwitcherContent">{childrenWithProps}</div>;
 };
 
+PageSwitcherContent.propTypes = {
+	activePageKey: PropTypes.string,
+	children: PropTypes.node,
+	setActivePage: PropTypes.func,
+};
+
 export const PageSwitcherMenu = ({children, activePageKey, setActivePage}) => {
 	const childrenWithProps = passPropsToChildren(
 		{activePageKey, setActivePage},
 		children
 	);
 	return <div className="ptr-PageSwitcherMenu">{childrenWithProps}</div>;
+};
+
+PageSwitcherMenu.propTypes = {
+	activePageKey: PropTypes.string,
+	children: PropTypes.node,
+	setActivePage: PropTypes.func,
 };
 
 const PageSwitcher = ({children, className, activeKey}) => {
@@ -83,6 +111,12 @@ const PageSwitcher = ({children, className, activeKey}) => {
 		children
 	);
 	return <div className={classes}>{childrenWithProps}</div>;
+};
+
+PageSwitcher.propTypes = {
+	activeKey: PropTypes.string,
+	children: PropTypes.node,
+	className: PropTypes.string,
 };
 
 export default PageSwitcher;

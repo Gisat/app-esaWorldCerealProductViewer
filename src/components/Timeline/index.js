@@ -1,26 +1,26 @@
 import {connect} from '@gisatcz/ptr-state';
 import Action from '../../state/Action';
 import Select from '../../state/Select';
-
-import Presentation from './presentation';
 import {mapSetKey} from '../../constants/app';
 
-const mapStateToProps = (state, ownProps) => {
+import Presentation from './presentation';
+
+const mapStateToProps = state => {
+	const layers = Select.worldCereal.timeline.getTimelineLayers(state);
+	const activeMapKey = Select.maps.getMapSetActiveMapKey(state, mapSetKey);
 	return {
-		productTemplates: Select.worldCereal.getProductTemplates(state),
-		productMetadata:
-			Select.worldCereal.getActiveProductMetadataByActiveFilter(state),
-		activeLayers: Select.maps.getMapSetActiveMapLayers(state, mapSetKey),
+		layers,
+		activeMapKey,
 		isInteractivityLimited: Select.worldCereal.isInteractivityLimited(state),
 	};
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
 	return {
-		handleProductInActiveMap: data =>
+		onLayerClick: (timelineLayerPeriodItem, timelineLayer) =>
 			dispatch(
 				Action.worldCereal.productMetadata.handleProductInActiveMap(
-					data.layerTemplateKey
+					timelineLayer?.layerState?.key
 				)
 			),
 	};

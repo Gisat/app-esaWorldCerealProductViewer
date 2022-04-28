@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import RemovableLabel from '../../atoms/RemovableLabel';
@@ -15,7 +15,7 @@ const MapProductLabel = ({
 	productMetadataKeys,
 	onProductRemove,
 }) => {
-	const [modalIsOpen, setModalOpen] = React.useState(false);
+	const [modalIsOpen, setModalOpen] = useState(false);
 
 	const productCount = productMetadataKeys?.length;
 	const color = productTemplate?.data?.style?.rules?.[0]?.styles?.[0]?.color;
@@ -53,6 +53,21 @@ const MapProductLabel = ({
 	}
 };
 
+MapProductLabel.propTypes = {
+	onProductRemove: PropTypes.func,
+	productKey: PropTypes.string,
+	productMetadata: PropTypes.object,
+	productMetadataKeys: PropTypes.array,
+	productTemplate: PropTypes.shape({
+		data: PropTypes.shape({
+			nameDisplay: PropTypes.string,
+			style: PropTypes.shape({
+				rules: PropTypes.array,
+			}),
+		}),
+	}),
+};
+
 MapProductLabel.proptypes = {
 	productMetadata: PropTypes.array,
 	productTemplate: PropTypes.object,
@@ -76,6 +91,12 @@ const MapProductLabelContent = ({count, product, productMetadata}) => {
 	}
 };
 
+MapProductLabelContent.propTypes = {
+	count: PropTypes.number,
+	product: PropTypes.object,
+	productMetadata: PropTypes.object,
+};
+
 const MapSingleProductLabelContent = ({product, zone, start, end}) => {
 	return (
 		<>
@@ -94,6 +115,13 @@ const MapSingleProductLabelContent = ({product, zone, start, end}) => {
 	);
 };
 
+MapSingleProductLabelContent.propTypes = {
+	end: PropTypes.string,
+	product: PropTypes.object,
+	start: PropTypes.string,
+	zone: PropTypes.string,
+};
+
 const MapMultipleProductLabelContent = ({product, count}) => {
 	return (
 		<>
@@ -107,6 +135,11 @@ const MapMultipleProductLabelContent = ({product, count}) => {
 			</div>
 		</>
 	);
+};
+
+MapMultipleProductLabelContent.propTypes = {
+	count: PropTypes.string,
+	product: PropTypes.object,
 };
 
 export default MapProductLabel;

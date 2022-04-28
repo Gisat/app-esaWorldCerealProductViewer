@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import ReactSlider from 'react-slider';
 
 import './style.scss';
@@ -14,6 +14,11 @@ const OpacitySlider = ({value, onChange}) => {
 			renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
 		/>
 	);
+};
+
+OpacitySlider.propTypes = {
+	onChange: PropTypes.func,
+	value: PropTypes.number,
 };
 
 export default OpacitySlider;

@@ -1,5 +1,4 @@
 import {connect, setRecomputeState as setState} from '@gisatcz/ptr-state';
-import {utils} from '@gisatcz/ptr-utils';
 import Action from '../../state/Action';
 import Select from '../../state/Select';
 
@@ -17,8 +16,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToPropsFactory = () => {
-	const componentId = 'Map_' + utils.randomString(6);
-
 	return (dispatch, ownProps) => {
 		return {
 			onMount: (mapWidth, mapHeight) => {
@@ -59,7 +56,7 @@ const mapDispatchToPropsFactory = () => {
 				dispatch(Action.maps.use(ownProps.stateMapKey, undefined, undefined));
 			},
 
-			onClick: view => {
+			onClick: () => {
 				dispatch(Action.maps.setMapSetActiveMapKey(ownProps.stateMapKey));
 			},
 			onLayerClick: (mapKey, layerKey, selectedFeatureKeys) => {

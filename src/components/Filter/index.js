@@ -1,4 +1,3 @@
-import React from 'react';
 import RetractableWindow from '../atoms/RetractableWindow';
 import ActiveFilterInfo from './ActiveFilterInfo';
 import ProductFilter from './ProductFilter';

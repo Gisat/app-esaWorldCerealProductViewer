@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {Button} from '@gisatcz/ptr-atoms';
 
@@ -8,6 +8,11 @@ export const RemovableLabelContainer = ({className, children}) => {
 	const classes = classnames('ptr-RemovableLabelContainer', className);
 
 	return <div className={classes}>{children}</div>;
+};
+
+RemovableLabelContainer.propTypes = {
+	children: PropTypes.node,
+	className: PropTypes.string,
 };
 
 const RemovableLabel = ({
@@ -45,6 +50,17 @@ const RemovableLabel = ({
 			) : null}
 		</div>
 	);
+};
+
+RemovableLabel.propTypes = {
+	active: PropTypes.bool,
+	children: PropTypes.node,
+	className: PropTypes.string,
+	floating: PropTypes.bool,
+	onClick: PropTypes.func,
+	onRemove: PropTypes.func,
+	small: PropTypes.bool,
+	stripColor: PropTypes.string,
 };
 
 export default RemovableLabel;

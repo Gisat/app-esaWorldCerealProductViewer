@@ -4,7 +4,7 @@ import utils from '../../../utils';
 import productMetadataModel from '../../../models/productMetadata';
 import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
-import {mapSetKey, defaultStyleKey} from '../../../constants/app';
+import {mapSetKey} from '../../../constants/app';
 
 const setActiveKeys = commonActions.setActiveKeys(
 	ActionTypes.WORLD_CEREAL.PRODUCT_METADATA
@@ -142,7 +142,7 @@ function checkExistingLayers() {
  * @param data {products: Array, tiles: Array} products: A collection of products metadata. tiles: List of S2 tiles for given mapView.
  **/
 function handleLoadResponse(data) {
-	return (dispatch, getState) => {
+	return dispatch => {
 		const {products, tiles} = data;
 
 		let models = [];
@@ -272,7 +272,7 @@ function removeLayerForMerged(productMetadataKey, merged, mapKey) {
  * @param productMetadataKey {string} unique key of product metadata
  */
 function removeProductOutlineLayer(mapKey, productMetadataKey) {
-	return (dispatch, getState) => {
+	return dispatch => {
 		dispatch(CommonAction.maps.removeMapLayer(mapKey, productMetadataKey));
 	};
 }

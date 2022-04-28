@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import {Button} from '@gisatcz/ptr-atoms';
@@ -28,6 +28,13 @@ export const ExpandableLabelHeader = ({
 			</div>
 		</div>
 	);
+};
+
+ExpandableLabelHeader.propTypes = {
+	children: PropTypes.node,
+	className: PropTypes.string,
+	expanded: PropTypes.bool,
+	onExpand: PropTypes.func,
 };
 
 ExpandableLabelHeader.proptypes = {
@@ -62,6 +69,13 @@ export const ExpandableLabelBody = ({
 			<div style={contentStyle}>{children}</div>
 		</div>
 	);
+};
+
+ExpandableLabelBody.propTypes = {
+	children: PropTypes.node,
+	className: PropTypes.string,
+	expanded: PropTypes.bool,
+	height: PropTypes.number,
 };
 
 ExpandableLabelBody.proptypes = {
@@ -99,6 +113,14 @@ const ExpandableLabel = ({className, expanded, floating, zIndex, children}) => {
 			})}
 		</div>
 	);
+};
+
+ExpandableLabel.propTypes = {
+	children: PropTypes.node,
+	className: PropTypes.string,
+	expanded: PropTypes.bool,
+	floating: PropTypes.bool,
+	zIndex: PropTypes.number,
 };
 
 ExpandableLabel.proptypes = {

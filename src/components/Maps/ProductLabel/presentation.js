@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -27,7 +27,7 @@ const ProductLabel = ({
 	onOpacityChange,
 	zIndex,
 }) => {
-	const [modalIsOpen, setModalOpen] = React.useState(false);
+	const [modalIsOpen, setModalOpen] = useState(false);
 	const productCount = productMetadataKeys?.length;
 	const styles = productTemplate?.data?.style?.rules?.[0]?.styles;
 	const styleForLegend = _find(styles, style => style.legend);
@@ -93,6 +93,9 @@ ProductLabel.propTypes = {
 	productMetadataKeys: PropTypes.array,
 	productKey: PropTypes.string,
 	onProductRemove: PropTypes.func,
+	layersOpacity: PropTypes.number,
+	onOpacityChange: PropTypes.func,
+	zIndex: PropTypes.number,
 };
 
 const ProductLabelHeader = ({count, product, productMetadata, color}) => {
@@ -116,6 +119,13 @@ const ProductLabelHeader = ({count, product, productMetadata, color}) => {
 			/>
 		);
 	}
+};
+
+ProductLabelHeader.propTypes = {
+	color: PropTypes.string,
+	count: PropTypes.number,
+	product: PropTypes.object,
+	productMetadata: PropTypes.obje,
 };
 
 const SingleProductLabelHeader = ({product, zone, start, end, color}) => {
@@ -142,6 +152,14 @@ const SingleProductLabelHeader = ({product, zone, start, end, color}) => {
 	);
 };
 
+SingleProductLabelHeader.propTypes = {
+	color: PropTypes.string,
+	end: PropTypes.string,
+	product: PropTypes.object,
+	start: PropTypes.string,
+	zone: PropTypes.string,
+};
+
 const MultipleProductLabelHeader = ({product, count, color}) => {
 	return (
 		<div className="worldCereal-ProductLabelHeader">
@@ -163,6 +181,12 @@ const MultipleProductLabelHeader = ({product, count, color}) => {
 	);
 };
 
+MultipleProductLabelHeader.propTypes = {
+	color: PropTypes.string,
+	count: PropTypes.string,
+	product: PropTypes.object,
+};
+
 const ProductLabelBodyItem = ({title, dangerous, onClick, children}) => {
 	const classes = classnames('worldCereal-ProductLabelBodyItem', {
 		'is-hoverable': !!onClick,
@@ -177,11 +201,18 @@ const ProductLabelBodyItem = ({title, dangerous, onClick, children}) => {
 	);
 };
 
+ProductLabelBodyItem.propTypes = {
+	children: PropTypes.node,
+	dangerous: PropTypes.bool,
+	onClick: PropTypes.func,
+	title: PropTypes.string,
+};
+
 const ProductLabelLegend = ({style}) => {
 	// for cogs values only
 	if (style) {
 		let legendItems = [];
-		_forIn(style.values, (options, value) => {
+		_forIn(style.values, options => {
 			if (options.name) {
 				legendItems.push(options);
 			}
@@ -205,6 +236,12 @@ const ProductLabelLegend = ({style}) => {
 	}
 };
 
+ProductLabelLegend.propTypes = {
+	style: PropTypes.shape({
+		values: PropTypes.array,
+	}),
+};
+
 const ProductLabelLegendItem = ({color, name}) => {
 	return (
 		<div className="worldCereal-ProductLabelLegendItem">
@@ -212,6 +249,11 @@ const ProductLabelLegendItem = ({color, name}) => {
 			<span>{name}</span>
 		</div>
 	);
+};
+
+ProductLabelLegendItem.propTypes = {
+	color: PropTypes.string,
+	name: PropTypes.string,
 };
 
 export default ProductLabel;

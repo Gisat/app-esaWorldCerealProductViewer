@@ -3,7 +3,7 @@ import Select from '../../../state/Select';
 
 import Presentation from './presentation';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
 	return {
 		activeParameter: Select.components.get(
 			state,
@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = () => {
 	return {};
 };
 

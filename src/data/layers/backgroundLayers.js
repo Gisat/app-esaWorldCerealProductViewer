@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default {
 	esri_WorldTopoMap: {
 		key: 'esri_WorldTopoMap',

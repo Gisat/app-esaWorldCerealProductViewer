@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import MetadataInfoItem from './MetadataItem';
 
@@ -8,35 +7,27 @@ export const MetadataInfoTitle = () => (
 	<h3 className="worldCereal-MetadataInfoTitle">Tile collection metadata</h3>
 );
 
-class MetadataInfo extends React.PureComponent {
-	static propTypes = {
-		productMetadata: PropTypes.array,
-	};
-
-	constructor(props) {
-		super(props);
+const MetadataInfo = ({productMetadata}) => {
+	if (productMetadata.length) {
+		return (
+			<div className="worldCereal-MetadataInfo">
+				{productMetadata.map(productMetadataItem => {
+					return (
+						<MetadataInfoItem
+							key={productMetadataItem.key}
+							productMetadata={productMetadataItem?.data}
+						/>
+					);
+				})}
+			</div>
+		);
+	} else {
+		return null;
 	}
+};
 
-	render() {
-		const {productMetadata} = this.props;
-
-		if (productMetadata.length) {
-			return (
-				<div className="worldCereal-MetadataInfo">
-					{productMetadata.map(productMetadataItem => {
-						return (
-							<MetadataInfoItem
-								key={productMetadataItem.key}
-								productMetadata={productMetadataItem?.data}
-							/>
-						);
-					})}
-				</div>
-			);
-		} else {
-			return null;
-		}
-	}
-}
+MetadataInfo.propTypes = {
+	productMetadata: PropTypes.array,
+};
 
 export default MetadataInfo;

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import './style.scss';
@@ -30,6 +29,10 @@ const BackgroundMapAttribution = ({layerKey}) => {
 	}
 };
 
+BackgroundMapAttribution.propTypes = {
+	layerKey: PropTypes.string,
+};
+
 const MapAttribution = ({backgroundLayer}) => {
 	return (
 		<div className="worldCereal-MapAttribution">
@@ -47,6 +50,7 @@ const MapAttribution = ({backgroundLayer}) => {
 };
 
 MapAttribution.propTypes = {
+	backgroundLayer: PropTypes.object,
 	backgroundLayerAttribution: PropTypes.element,
 };
 

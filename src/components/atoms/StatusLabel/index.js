@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import './style.scss';
@@ -12,6 +12,14 @@ const StatusLabel = ({status, floating, small, children, className}) => {
 	});
 
 	return <div className={classes}>{children}</div>;
+};
+
+StatusLabel.propTypes = {
+	children: PropTypes.node,
+	className: PropTypes.string,
+	floating: PropTypes.bool,
+	small: PropTypes.bool,
+	status: PropTypes.string,
 };
 
 export default StatusLabel;

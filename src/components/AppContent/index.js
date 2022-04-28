@@ -2,11 +2,11 @@ import {connect} from '@gisatcz/ptr-state';
 
 import Presentation from './presentation';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = () => {
 	return {};
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = () => {
 	return {};
 };
 

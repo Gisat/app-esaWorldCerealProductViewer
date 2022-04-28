@@ -1,4 +1,4 @@
-import React from 'react';
+import {Children, cloneElement} from 'react';
 import PropTypes from 'prop-types';
 import {ReactCompareSlider} from 'react-compare-slider';
 import {
@@ -21,15 +21,19 @@ const ConnectedMapSet = MapSetContainer(MapSet);
 
 const Map = MapContainer(PresentationMap);
 
-const PropsDriller = props => {
-	const {children, className, ...restProps} = props;
+const PropsDriller = ({children, className, ...restProps}) => {
 	return (
 		<div className={className}>
-			{React.Children.map(children, child => {
-				return child ? React.cloneElement(child, {...restProps}) : null;
+			{Children.map(children, child => {
+				return child ? cloneElement(child, {...restProps}) : null;
 			})}
 		</div>
 	);
+};
+
+PropsDriller.propTypes = {
+	children: PropTypes.node,
+	className: PropTypes.string,
 };
 
 const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {

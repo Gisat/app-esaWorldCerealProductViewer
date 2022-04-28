@@ -4,7 +4,7 @@ import Presentation from './presentation';
 import Select from '../../state/Select';
 import {mapSetKey} from '../../constants/app';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
 	return {
 		viewLimits: Select.maps.getMapSetViewLimits(state, mapSetKey),
 		maps: Select.maps.getMapSetMaps(state, mapSetKey),
@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = () => {
 	return {};
 };
 
