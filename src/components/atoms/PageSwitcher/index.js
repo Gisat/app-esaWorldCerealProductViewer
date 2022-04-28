@@ -1,14 +1,21 @@
 import PropTypes from 'prop-types';
-import React, {useEffect, useState} from 'react';
+import {
+	useEffect,
+	useState,
+	Children,
+	isValidElement,
+	cloneElement,
+} from 'react';
+
 import classnames from 'classnames';
 
 import './style.scss';
 
 // helpers
 function passPropsToChildren(props, children) {
-	return React.Children.map(children, child => {
-		if (React.isValidElement(child)) {
-			return React.cloneElement(child, props);
+	return Children.map(children, child => {
+		if (isValidElement(child)) {
+			return cloneElement(child, props);
 		}
 		return child;
 	});

@@ -124,8 +124,8 @@ const ProductLabelHeader = ({count, product, productMetadata, color}) => {
 ProductLabelHeader.propTypes = {
 	color: PropTypes.string,
 	count: PropTypes.number,
-	product: PropTypes.object,
-	productMetadata: PropTypes.obje,
+	product: PropTypes.string,
+	productMetadata: PropTypes.array,
 };
 
 const SingleProductLabelHeader = ({product, zone, start, end, color}) => {
@@ -155,9 +155,9 @@ const SingleProductLabelHeader = ({product, zone, start, end, color}) => {
 SingleProductLabelHeader.propTypes = {
 	color: PropTypes.string,
 	end: PropTypes.string,
-	product: PropTypes.object,
+	product: PropTypes.string,
 	start: PropTypes.string,
-	zone: PropTypes.string,
+	zone: PropTypes.number,
 };
 
 const MultipleProductLabelHeader = ({product, count, color}) => {
@@ -238,7 +238,7 @@ const ProductLabelLegend = ({style}) => {
 
 ProductLabelLegend.propTypes = {
 	style: PropTypes.shape({
-		values: PropTypes.array,
+		values: PropTypes.object,
 	}),
 };
 

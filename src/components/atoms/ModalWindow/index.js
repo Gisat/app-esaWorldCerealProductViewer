@@ -37,7 +37,7 @@ ModalWindow.propTypes = {
 	className: PropTypes.string,
 	isOpen: PropTypes.bool,
 	onClose: PropTypes.func,
-	title: PropTypes.string,
+	title: PropTypes.object,
 };
 
 export default ModalWindow;

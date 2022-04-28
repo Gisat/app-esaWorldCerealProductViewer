@@ -6,7 +6,6 @@ import {
 	timelineLayerElementHeight,
 	timelineLayerLineHeight,
 } from '../../../constants/app';
-console.log('xxx', worldCerealSelectors);
 const getTimelineLayers = createSelector(
 	[
 		worldCerealSelectors.getProductTemplates,

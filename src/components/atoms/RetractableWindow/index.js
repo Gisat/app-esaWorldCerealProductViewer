@@ -42,8 +42,8 @@ const RetractableWindowControlBar = ({
 };
 
 RetractableWindowControlBar.propTypes = {
-	children: PropTypes.node,
 	centered: PropTypes.bool,
+	children: PropTypes.node,
 	onClick: PropTypes.func,
 	onHeightChange: PropTypes.func,
 };
@@ -65,8 +65,8 @@ const RetractableWindowBody = ({children, centered, height}) => {
 };
 
 RetractableWindowBody.propTypes = {
-	children: PropTypes.node,
 	centered: PropTypes.bool,
+	children: PropTypes.node,
 	height: PropTypes.number,
 };
 
