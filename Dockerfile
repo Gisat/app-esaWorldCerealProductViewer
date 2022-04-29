@@ -1,9 +1,11 @@
-FROM python:slim
+FROM node:lts
 
-WORKDIR /srv/www/app
+ENV PORT=9000
 
-COPY ./build/ ./
+WORKDIR /usr/src/app
 
-EXPOSE 9000
+COPY ./dist/ .
 
-CMD ["python", "-m", "http.server", "9000"]
+RUN npm install
+
+CMD ["node", "./server/bundle.js"]
