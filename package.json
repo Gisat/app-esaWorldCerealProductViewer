@@ -82,8 +82,8 @@
 	},
 	"scripts": {
 		"analyze": "source-map-explorer 'build/static/js/*.js'",
-		"proxy": "lcp --proxyUrl https://ptr.gisat.cz --port 4444 --origin http://localhost:3000 --proxyPartial \"\" --credentials",
-		"proxy:ssr": "lcp --proxyUrl https://ptr.gisat.cz --port 4444 --origin http://localhost:3001 --proxyPartial \"\" --credentials",
+		"proxy": "lcp --proxyUrl https://worldcereal-dev.gisat.cz/ --port 4444 --origin http://localhost:3000 --proxyPartial \"\" --credentials",
+		"proxy:ssr": "lcp --proxyUrl https://worldcereal-dev.gisat.cz/ --port 4444 --origin http://localhost:3001 --proxyPartial \"\" --credentials",
 		"start": "react-app-rewired start",
 		"crau:start": "cra-universal start",
 		"start:ssr": "react-app-rewired start | cra-universal start",

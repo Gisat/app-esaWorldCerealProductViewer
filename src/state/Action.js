@@ -1,5 +1,5 @@
 import {config as getConfig} from '@gisatcz/ptr-core';
-import {Action as CommonAction, setFetch} from '@gisatcz/ptr-state';
+import {Action as CommonAction} from '@gisatcz/ptr-state';
 import {map as mapUtils} from '@gisatcz/ptr-utils';
 import Select from './Select';
 
@@ -36,36 +36,6 @@ const getAppEnvConfig = () => {
 	}
 };
 
-/**
- * Modify every fetch call
- * Add X-User-Info header for autentization
- * @param {*} getXUser
- */
-const setWindowFetch = getXUser => {
-	if (typeof window !== 'undefined') {
-		window.fetch = new Proxy(window.fetch, {
-			apply(fetch, that, args) {
-				// Forward function call to the original fetch
-				if (!args[1].headers) {
-					args[1].headers = {};
-				}
-
-				if (typeof args[1].headers.append === 'function') {
-					args[1].headers.append('X-User-Info', getXUser());
-				} else {
-					args[1].headers['X-User-Info'] = getXUser();
-				}
-
-				const result = fetch.apply(that, args);
-
-				return result;
-			},
-		});
-
-		setFetch(window.fetch);
-	}
-};
-
 function init(path) {
 	return (dispatch, getState) => {
 		dispatch(CommonAction.app.setBaseUrl(path));
@@ -83,9 +53,6 @@ function init(path) {
 		if (!activeUser && devUserKey) {
 			dispatch(CommonAction.users.setActiveKey(devUserKey));
 		}
-
-		//add utils to modify header
-		setWindowFetch(() => Select.users.getActiveKey(getState()));
 
 		dispatch(resetSession());
 
