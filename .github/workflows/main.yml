@@ -87,10 +87,10 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ false }}
     needs: [test, check, build]
     steps:
       -
         name: "Deploy application on remote server"
+        if: github.ref == 'refs/heads/dev'
         run: |
-          echo "No server to deploy was set!"
+          curl --location --fail "https://worldcereal-dev.gisat.cz/webhook/hooks/deploy?token=102aeeb9-233d-4e29-97c4-91cdc8852d97&service=app-esa_world_cereal_product_viewer_dev"
