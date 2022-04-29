@@ -42,26 +42,28 @@ const getAppEnvConfig = () => {
  * @param {*} getXUser
  */
 const setWindowFetch = getXUser => {
-	window.fetch = new Proxy(window.fetch, {
-		apply(fetch, that, args) {
-			// Forward function call to the original fetch
-			if (!args[1].headers) {
-				args[1].headers = {};
-			}
+	if (typeof window !== 'undefined') {
+		window.fetch = new Proxy(window.fetch, {
+			apply(fetch, that, args) {
+				// Forward function call to the original fetch
+				if (!args[1].headers) {
+					args[1].headers = {};
+				}
 
-			if (typeof args[1].headers.append === 'function') {
-				args[1].headers.append('X-User-Info', getXUser());
-			} else {
-				args[1].headers['X-User-Info'] = getXUser();
-			}
+				if (typeof args[1].headers.append === 'function') {
+					args[1].headers.append('X-User-Info', getXUser());
+				} else {
+					args[1].headers['X-User-Info'] = getXUser();
+				}
 
-			const result = fetch.apply(that, args);
+				const result = fetch.apply(that, args);
 
-			return result;
-		},
-	});
+				return result;
+			},
+		});
 
-	setFetch(window.fetch);
+		setFetch(window.fetch);
+	}
 };
 
 function init(path) {

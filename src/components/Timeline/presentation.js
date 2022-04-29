@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
 import {createElement, useEffect} from 'react';
 import classnames from 'classnames';
 import propTypes from 'prop-types';
