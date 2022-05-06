@@ -40,7 +40,7 @@ const LayerRowComponentWrapped = props => (
 
 const timelinePeriod = {
 	start: '2018-05-01',
-	end: '2020-03-31',
+	end: '2021-12-31',
 };
 
 const LEVELS = [
