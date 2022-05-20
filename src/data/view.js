@@ -78,14 +78,14 @@ export default {
 						data: {
 							backgroundLayer: backgroundLayers.esri_WorldImagery,
 							view: {
-								boxRange: 800000,
+								boxRange: 835000,
 								center: {
-									lat: 47,
-									lon: 1,
+									lat: 45.87,
+									lon: 31.84,
 								},
 							},
 							viewLimits: {
-								boxRangeRange: [1000, 10000000],
+								boxRangeRange: [400, 10000000],
 							},
 						},
 					},
