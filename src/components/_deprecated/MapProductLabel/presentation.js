@@ -18,7 +18,7 @@ const MapProductLabel = ({
 	const [modalIsOpen, setModalOpen] = useState(false);
 
 	const productCount = productMetadataKeys?.length;
-	const color = productTemplate?.data?.style?.rules?.[0]?.styles?.[0]?.color;
+	const color = productTemplate?.data?.color;
 
 	if (productCount) {
 		return (
@@ -61,9 +61,7 @@ MapProductLabel.propTypes = {
 	productTemplate: PropTypes.shape({
 		data: PropTypes.shape({
 			nameDisplay: PropTypes.string,
-			style: PropTypes.shape({
-				rules: PropTypes.array,
-			}),
+			color: PropTypes.string,
 		}),
 	}),
 };

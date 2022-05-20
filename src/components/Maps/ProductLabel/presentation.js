@@ -33,7 +33,7 @@ const ProductLabel = ({
 	const productCount = productMetadataKeys?.length;
 	const styles = productTemplate?.data?.style?.rules?.[0]?.styles;
 	const styleForLegend = _find(styles, style => style.legend);
-	const color = styles?.[0]?.color;
+	const color = productTemplate?.data?.color;
 
 	return (
 		<>

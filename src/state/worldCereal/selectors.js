@@ -73,32 +73,6 @@ const getProductTemplateByKey = createCachedSelector(
 )((state, productMetadataKey) => productMetadataKey);
 
 /**
- * Get product templates (cases) extended by style definition
- * @param {Object} state
- * @return {Object} Case models extended by style definition
- */
-const getProductTemplates = createSelector(
-	[CommonSelect.cases.getAllAsObject, CommonSelect.styles.getAllAsObject],
-	(cases, styles) => {
-		if (cases && styles) {
-			const productTemplates = {};
-			for (const [caseKey, caseData] of Object.entries(cases)) {
-				const style = getCogStyle(styles, caseData);
-				productTemplates[caseKey] = {
-					...caseData,
-				};
-				if (style) {
-					productTemplates[caseKey].data.style = style;
-				}
-			}
-			return productTemplates;
-		} else {
-			return null;
-		}
-	}
-);
-
-/**
  * Get style based on cogStyleKey in case
  * @param {Object} state
  * @param {string} productTemplateKey caseKey
@@ -232,7 +206,6 @@ const getMapLayersOpacity = createCachedSelector(
 export default {
 	getActiveProductMetadataByActiveFilter,
 	getProductMetadataCountForFilterOption,
-	getProductTemplates,
 	getProductTemplateByKey,
 	getStyleDefinitionByProductTemplateKey,
 	isInteractivityLimited,

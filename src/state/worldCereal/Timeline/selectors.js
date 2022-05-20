@@ -1,6 +1,7 @@
 import {createSelector} from 'reselect';
 import chroma from 'chroma-js';
 import worldCerealSelectors from '../selectors';
+import {Select as CommonSelect} from '@gisatcz/ptr-state';
 
 import {
 	timelineLayerElementHeight,
@@ -8,10 +9,10 @@ import {
 } from '../../../constants/app';
 const getTimelineLayers = createSelector(
 	[
-		worldCerealSelectors.getProductTemplates,
+		CommonSelect.cases.getAllAsObject,
 		worldCerealSelectors.getActiveProductMetadataByActiveFilter,
 	],
-	(productTemplates, productMetadata) => {
+	(cases, productMetadata) => {
 		let timelineLayers = [];
 		const layersByProducts = {};
 
@@ -21,7 +22,7 @@ const getTimelineLayers = createSelector(
 				const productID = product.data.product;
 				const seasonID = product.data.season;
 
-				const productTemplate = productTemplates[productID];
+				const productTemplate = cases[productID];
 				const productName = productTemplate?.data?.nameDisplay || productID;
 
 				if (!Object.hasOwn(layersByProducts, productID)) {
@@ -36,9 +37,7 @@ const getTimelineLayers = createSelector(
 					layersByProducts[productID][placeID][seasonID] = [];
 				}
 
-				const activeProductColor =
-					productTemplate?.data?.style?.data?.definition?.rules[0]?.styles[0]
-						?.color;
+				const activeProductColor = productTemplate?.data?.color;
 				const productColor = activeProductColor
 					? chroma(activeProductColor).desaturate(3).hex()
 					: null;
@@ -49,6 +48,7 @@ const getTimelineLayers = createSelector(
 					legend: {
 						title: productName,
 						subtitle: `(${seasonID}, zone ${placeID})`,
+						key: product.key,
 					},
 					items: [
 						{
@@ -68,7 +68,7 @@ const getTimelineLayers = createSelector(
 							activeStates: ['basic'],
 							mapZIndex: index,
 							layerState: {
-								key: product.key, //used only as a key fot outline layer
+								key: product.key, //used only as a key for outline layer
 								spatialDataSourceKey: product.data.dataSource.product, //used only as a key fot outline layer
 							},
 						},

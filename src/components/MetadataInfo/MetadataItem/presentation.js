@@ -44,7 +44,7 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 	} = productMetadata;
 
 	const productName = productTemplate?.data?.nameDisplay || product;
-	const color = productTemplate?.data?.style?.rules?.[0]?.styles?.[0]?.color;
+	const color = productTemplate?.data?.color;
 
 	const style = {
 		borderColor: color,
@@ -120,7 +120,7 @@ MetadataInfoItem.propTypes = {
 	productTemplate: PropTypes.shape({
 		data: PropTypes.shape({
 			nameDisplay: PropTypes.string,
-			style: PropTypes.object,
+			color: PropTypes.string,
 		}),
 	}),
 };

@@ -10,7 +10,7 @@ const MapTimelineLegend = ({layers, lineHeight = defaultLineHeight}) => {
 		return [
 			...acc,
 			<span
-				key={layer.key || `${layer.legend.title}_${layer.legend.subtitle}`}
+				key={layer.legend.key}
 				className={'ptr-maptimeline-legenditem'}
 				style={{lineHeight: `${lineHeight}px`}}
 				title={`${layer.legend.title}`}
