@@ -100,15 +100,16 @@ function handleDataSourceAndAddtoMap(
 	spatialDataSourceKey,
 	productMetadataKey
 ) {
-	return dispatch => {
+	return (dispatch, getState) => {
 		dispatch(
 			Action.data.spatialDataSources.useKeys([spatialDataSourceKey])
 		).then(() => {
 			//add ds
+			const layerKey = spatialDataSourceKey;
 			const ds =
 				Select.data.spatialDataSources.getByKeyObserver(spatialDataSourceKey);
 			const layer = {
-				key: `${spatialDataSourceKey}`,
+				key: layerKey,
 				layerKey: productMetadataKey,
 				spatialDataSourceKey,
 				type: 'wms',
@@ -121,7 +122,22 @@ function handleDataSourceAndAddtoMap(
 				},
 			};
 
-			dispatch(CommonAction.maps.addMapLayers(mapKey, [layer]));
+			const existingLayer = Select.maps.getLayerStateByLayerKeyAndMapKey(
+				getState(),
+				mapKey,
+				layerKey
+			);
+			const existingOutlineLayer = Select.maps.getLayerStateByLayerKeyAndMapKey(
+				getState(),
+				mapKey,
+				productMetadataKey
+			);
+
+			// Because of async, spatialDataSources could receive at the time, when layer wes already aggain removed
+			// It is important to check if layer should be in map (OutlineLayer is indicator)
+			if (!existingLayer && !!existingOutlineLayer) {
+				dispatch(CommonAction.maps.addMapLayers(mapKey, [layer]));
+			}
 		});
 	};
 }
@@ -147,8 +163,18 @@ function handleProductInActiveMap(productMetadataKey, spatialDataSourceKey) {
 
 		// Remove or add layer(s)
 		if (isLayerPresent) {
+			const existingLayer = Select.maps.getLayerStateByLayerKeyAndMapKey(
+				getState(),
+				map.key,
+				spatialDataSourceKey
+			);
+
+			//remove data layer only if is in map
+			if (existingLayer) {
+				dispatch(removeLayersDatasourceLayer(map.key, spatialDataSourceKey));
+			}
+
 			dispatch(removeProductOutlineLayer(map.key, productMetadataKey));
-			dispatch(removeLayersDatasourceLayer(map.key, spatialDataSourceKey));
 		} else {
 			dispatch(addProductOutlineLayer(map.key, productMetadata));
 			dispatch(

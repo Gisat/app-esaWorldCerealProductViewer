@@ -185,8 +185,8 @@ const MultipleProductLabelHeader = ({product, count, color}) => {
 
 MultipleProductLabelHeader.propTypes = {
 	color: PropTypes.string,
-	count: PropTypes.string,
-	product: PropTypes.object,
+	count: PropTypes.number,
+	product: PropTypes.string,
 };
 
 const ProductLabelBodyItem = ({title, dangerous, onClick, children}) => {
