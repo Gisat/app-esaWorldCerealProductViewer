@@ -12,7 +12,8 @@ export default {
 			components: {
 				ProductFilter: {
 					activeParameter: 'product',
-					parameterOrder: ['product', 'season', 'aez'],
+					// parameterOrder: ['product', 'season', 'aez'], //temporary remove "aez"
+					parameterOrder: ['product', 'season'],
 				},
 				Maps: {
 					mode: 'set',
