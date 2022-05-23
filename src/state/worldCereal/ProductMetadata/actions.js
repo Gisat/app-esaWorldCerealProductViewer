@@ -251,7 +251,10 @@ function getProductOutlineLayerDefinition(state, productMetadata) {
 						styles: [
 							{
 								fill: null,
-								outlineOpacity: 1,
+								// FIXME
+								// temporary set outline opacity to 0 to hide layer in map
+								// set opacity to 1
+								outlineOpacity: 0,
 								outlineWidth: 1,
 								outlineColor: cogStyle?.rules?.[0]?.styles?.[0].color,
 							},
