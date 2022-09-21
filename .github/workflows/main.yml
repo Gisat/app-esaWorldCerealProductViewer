@@ -2,6 +2,10 @@ name: ci
 
 on:
   push:
+    - 'main'
+    - 'dev'
+  tags:
+    - '*'
 
 jobs:
   test:
