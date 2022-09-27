@@ -17,6 +17,13 @@ const specificActionTypes = utils.deepKeyMirror({
 				SET: null,
 			},
 		},
+		CONFIGURATION: {
+			OPEN: {
+				ADD: null,
+				REMOVE: null,
+			},
+			UPDATE: null,
+		},
 	},
 });
 

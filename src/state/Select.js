@@ -2,6 +2,7 @@ import {Select as CommonSelect} from '@gisatcz/ptr-state';
 
 import productMetadataSelectors from './worldCereal/ProductMetadata/selectors';
 import productMetadataFilterSelectors from './worldCereal/ProductMetadataFilter/selectors';
+import configurationSelectors from './worldCereal/configuration/selectors';
 import timelineSelect from './worldCereal/Timeline/selectors';
 import worldCerealSelectors from './worldCereal/selectors';
 
@@ -11,6 +12,7 @@ export default {
 		productMetadata: productMetadataSelectors,
 		productMetadataFilter: productMetadataFilterSelectors,
 		timeline: timelineSelect,
+		configuration: configurationSelectors,
 
 		...worldCerealSelectors,
 	},

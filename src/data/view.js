@@ -8,6 +8,22 @@ export default {
 				productMetadataFilter: {
 					activeFilter: {},
 				},
+				configuration: {
+					mapSetTools: {
+						'productViewer-mapSet': {
+							open: [
+								'zoomControls',
+								'backgroundLayers',
+								'addMap',
+								'compareMaps',
+								'mapAttribution',
+								'scale',
+								'previewMap',
+							],
+							componentsByKey: {},
+						},
+					},
+				},
 			},
 			components: {
 				ProductFilter: {
@@ -36,8 +52,8 @@ export default {
 							view: {
 								boxRange: 2000000,
 								center: {
-									lat: 47,
-									lon: 1,
+									lat: -15,
+									lon: -50,
 								},
 							},
 							viewLimits: {
@@ -80,8 +96,8 @@ export default {
 							view: {
 								boxRange: 835000,
 								center: {
-									lat: 45.87,
-									lon: 31.84,
+									lat: -15,
+									lon: -50,
 								},
 							},
 							viewLimits: {

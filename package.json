@@ -26,6 +26,7 @@
 		"@gisatcz/ptr-state": "^2.1.6",
 		"@gisatcz/ptr-timeline": "^0.2.1",
 		"@gisatcz/ptr-utils": "^1.6.0",
+		"@gisatcz/visat-components": "^0.11.0",
 		"@react-hook/size": "^2.1.2",
 		"@turf/intersect": "^6.5.0",
 		"babel-plugin-file-loader": "^2.0.0",

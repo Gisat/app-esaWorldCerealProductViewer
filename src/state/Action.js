@@ -7,6 +7,7 @@ require('dotenv').config();
 
 import {appKey, mapSetKey} from '../constants/app';
 
+import configurationActions from './worldCereal/configuration/actions';
 import productMetadataActions from './worldCereal/ProductMetadata/actions';
 import productMetadataFilterActions from './worldCereal/ProductMetadataFilter/actions';
 
@@ -59,6 +60,11 @@ function init(path) {
 		// add & apply view
 		dispatch(CommonAction.views.add(view));
 		dispatch(CommonAction.views.applyAndSetActive(view.key, CommonAction));
+		dispatch(
+			configurationActions.updateStateFromView(
+				view.data.state.worldCereal.configuration
+			)
+		);
 		dispatch(
 			productMetadataFilterActions.setActiveFilter(
 				view.data.state.worldCereal.productMetadataFilter.activeFilter
@@ -250,6 +256,7 @@ export default {
 	...CommonAction,
 	init,
 	worldCereal: {
+		configuration: configurationActions,
 		productMetadata: productMetadataActions,
 		productMetadataFilter: productMetadataFilterActions,
 
