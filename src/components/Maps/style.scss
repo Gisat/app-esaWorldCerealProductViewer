@@ -34,6 +34,10 @@ div[data-rcs="clip-item"] {
   z-index: 2;
 }
 
+.ptr-map-controls-wrapper {
+  z-index: auto;
+}
+
 // MapInfoElements
 .worldCereal-MapInfoElements {
   position: absolute;
@@ -42,6 +46,7 @@ div[data-rcs="clip-item"] {
   display: flex;
   grid-gap: .35rem;
   flex-direction: column;
+  z-index: 9;
 }
 
 // AttributionScaleContainer
@@ -50,40 +55,8 @@ div[data-rcs="clip-item"] {
   grid-gap: .35rem;
 }
 
-// Map scale
-.worldCereal-MapScale {
-  position: relative;
-  bottom: 0;
-  left: 0;
-}
-
-.worldCereal-MapScale .ptr-MapScale-content {
-  background: rgba(var(--base0rgb), .5);
-  border: 2px solid var(--base80);
-  border-top: 0;
-}
-
-.worldCereal-MapScale .ptr-MapScale-content > span {
-  color: var(--base90);
-}
-
-// Overview map
-.worldCereal-OverviewMap {
-  width: 10rem;
-  height: 6rem;
-  z-index: 2;
-  box-shadow: 0 0 10px rgba(0,0,0,.2);
-  border-radius: .25rem;
-  border: 2px solid var(--base10);
-}
-
-
-.ptr-map-controls-wrapper {
-  z-index: auto;
-}
-
 // Map set controls
-.ptr-MapSetControls {
+.worldCereal-MapSetControls {
   position: absolute;
   right: .7rem;
   bottom: .7rem;

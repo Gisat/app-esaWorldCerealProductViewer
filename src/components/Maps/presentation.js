@@ -3,12 +3,7 @@ import React from 'react';
 import {Children, cloneElement} from 'react';
 import PropTypes from 'prop-types';
 import {ReactCompareSlider} from 'react-compare-slider';
-import {
-	MapScale,
-	MapSet,
-	PresentationMap,
-	ReactLeafletMap,
-} from '@gisatcz/ptr-maps';
+import {MapSet, PresentationMap, ReactLeafletMap} from '@gisatcz/ptr-maps';
 import MapAttribution from './MapAttribution';
 import MapContainer from './MapContainer';
 import MapSetContainer from './MapSetContainer';
@@ -17,6 +12,10 @@ import MapWrapper from './MapWrapper';
 import ZoomControls from './ZoomControls';
 import MapComponentsGroup from './MapComponentsGroup';
 import BackgroundLayersControl from './BackgroundLayersControl';
+import Scale from './Scale';
+import OverviewMap from './OverviewMap';
+
+import {mapSetKey} from '../../constants/app';
 
 import './style.scss';
 
@@ -40,7 +39,7 @@ PropsDriller.propTypes = {
 	className: PropTypes.string,
 };
 
-const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {
+const Maps = ({mode, maps, viewLimits}) => {
 	return mode === 'compare' ? (
 		<ReactCompareSlider
 			onlyHandleDraggable
@@ -51,21 +50,7 @@ const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {
 					wrapperProps={{noTools: true}}
 					mapComponent={ReactLeafletMap}
 					stateMapKey={maps[0].key}
-				>
-					<PropsDriller className="worldCereal-MapInfoElements">
-						{overviewMap ? (
-							<PropsDriller className="worldCereal-OverviewMap">
-								<Map mapComponent={ReactLeafletMap} stateMapKey="overview" />
-							</PropsDriller>
-						) : null}
-						{attribution || scale ? (
-							<PropsDriller className="worldCereal-AttributionScaleContainer">
-								{attribution ? <MapAttribution /> : null}
-								{scale ? <MapScale className="worldCereal-MapScale" /> : null}
-							</PropsDriller>
-						) : null}
-					</PropsDriller>
-				</Map>
+				/>
 			}
 			itemTwo={
 				<Map
@@ -74,7 +59,14 @@ const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {
 					mapComponent={ReactLeafletMap}
 					stateMapKey={maps[1].key}
 				>
-					<MapComponentsGroup className="ptr-MapSetControls">
+					<MapComponentsGroup className="worldCereal-MapInfoElements">
+						<OverviewMap overviewMapKey="overview" />
+						<MapComponentsGroup className="worldCereal-AttributionScaleContainer">
+							<MapAttribution mapSetKey={mapSetKey} />
+							<Scale />
+						</MapComponentsGroup>
+					</MapComponentsGroup>
+					<MapComponentsGroup className="worldCereal-MapSetControls">
 						<BackgroundLayersControl />
 						<ZoomControls viewLimits={viewLimits} />
 					</MapComponentsGroup>
@@ -88,33 +80,24 @@ const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {
 			connectedMapComponent={ConnectedMap}
 			wrapper={MapWrapper}
 		>
-			<MapComponentsGroup className="ptr-MapSetControls">
+			<MapComponentsGroup className="worldCereal-MapSetControls">
 				<BackgroundLayersControl />
 				<ZoomControls viewLimits={viewLimits} />
 			</MapComponentsGroup>
-			<PropsDriller className="worldCereal-MapInfoElements">
-				{overviewMap ? (
-					<PropsDriller className="worldCereal-OverviewMap">
-						<Map mapComponent={ReactLeafletMap} stateMapKey="overview" />
-					</PropsDriller>
-				) : null}
-				{attribution || scale ? (
-					<PropsDriller className="worldCereal-AttributionScaleContainer">
-						{attribution ? <MapAttribution /> : null}
-						{scale ? <MapScale className="worldCereal-MapScale" /> : null}
-					</PropsDriller>
-				) : null}
-			</PropsDriller>
+			<MapComponentsGroup className="worldCereal-MapInfoElements">
+				<OverviewMap overviewMapKey="overview" />
+				<MapComponentsGroup className="worldCereal-AttributionScaleContainer">
+					<MapAttribution mapSetKey={mapSetKey} />
+					<Scale />
+				</MapComponentsGroup>
+			</MapComponentsGroup>
 		</ConnectedMapSet>
 	);
 };
 
 Maps.propTypes = {
-	attribution: PropTypes.bool,
 	mode: PropTypes.string,
 	maps: PropTypes.array,
-	overviewMap: PropTypes.bool,
-	scale: PropTypes.bool,
 	viewLimits: PropTypes.object,
 };
 

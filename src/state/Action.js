@@ -174,12 +174,15 @@ function updateMapView(mapKey, viewUpdate) {
  */
 function updateOverviewMap() {
 	return (dispatch, getState) => {
-		const activeOverviewMap = Select.components.get(
-			getState(),
-			'Maps',
-			'overviewMap'
-		);
-		if (activeOverviewMap) {
+		const overviewMapConfig =
+			Select.worldCereal.configuration.getComponentConfiguration(
+				getState(),
+				'mapSetTools',
+				mapSetKey,
+				'overviewMap'
+			);
+
+		if (overviewMapConfig?.active) {
 			const mapSetView = Select.maps.getMapSetActiveMapView(
 				getState(),
 				mapSetKey

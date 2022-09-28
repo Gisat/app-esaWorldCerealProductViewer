@@ -1,0 +1,13 @@
+@use 'sass:math';
+@import '../../../styles/variables';
+
+// Overview map
+.ptr-OverviewMap {
+  width: 10rem;
+  height: 6rem;
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(0,0,0,.2);
+  border-radius: .25rem;
+  border: 2px solid var(--base10);
+  margin: .25rem;
+}

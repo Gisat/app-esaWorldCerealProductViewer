@@ -1,13 +1,13 @@
 @import '../../../styles/variables';
 
-.worldCereal-MapAttribution {
-  z-index: 1;
-  background: rgba(var(--base100rgb), 0.6);
-  font-size: $b0;
-  padding: 0.15rem 0.5rem;
-  color: var(--base30);
+.ptr-MapAttribution {
+  z-index: 2;
+  position: relative;
+  font-size: $a0;
+  color: var(--base50);
+  padding: .1rem .35rem;
 }
 
-.worldCereal-MapAttribution a {
-  color: var(--accent30);
+.ptr-MapAttribution a {
+  color: var(--base50);
 }

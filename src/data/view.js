@@ -18,7 +18,7 @@ export default {
 								'compareMaps',
 								'mapAttribution',
 								'scale',
-								'previewMap',
+								'overviewMap',
 							],
 							componentsByKey: {},
 						},
@@ -33,9 +33,6 @@ export default {
 				},
 				Maps: {
 					mode: 'set',
-					scale: true,
-					attribution: true,
-					overviewMap: true,
 				},
 			},
 			maps: {

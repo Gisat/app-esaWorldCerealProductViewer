@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import PropTypes from 'prop-types';
+import ComponentRenderer from '../ComponentRenderer';
 
 import './style.scss';
 
@@ -37,23 +38,29 @@ BackgroundMapAttribution.propTypes = {
 
 const MapAttribution = ({backgroundLayer}) => {
 	return (
-		<div className="worldCereal-MapAttribution">
-			<a
-				href="https://leafletjs.com/"
-				target="_blank"
-				rel="noreferrer noopener"
-			>
-				Leaflet
-			</a>{' '}
-			| Background map:{' '}
-			<BackgroundMapAttribution layerKey={backgroundLayer?.key} />
-		</div>
+		<ComponentRenderer
+			component={'mapAttribution'}
+			configurationGroupKey={'mapSetTools'}
+		>
+			<div className="ptr-MapAttribution">
+				<a
+					href="https://leafletjs.com/"
+					target="_blank"
+					rel="noreferrer noopener"
+				>
+					Leaflet
+				</a>{' '}
+				| Background map:{' '}
+				<BackgroundMapAttribution layerKey={backgroundLayer?.key} />
+			</div>
+		</ComponentRenderer>
 	);
 };
 
 MapAttribution.propTypes = {
-	backgroundLayer: PropTypes.object,
-	backgroundLayerAttribution: PropTypes.element,
+	backgroundLayer: PropTypes.shape({
+		key: PropTypes.string,
+	}),
 };
 
 export default MapAttribution;
