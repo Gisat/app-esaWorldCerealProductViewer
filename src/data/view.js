@@ -75,6 +75,9 @@ export default {
 				Map: {
 					mode: 'set',
 				},
+				IntroOverlay: {
+					open: true,
+				},
 			},
 			maps: {
 				activeMapKey: 'ea10b274-dd71-4e58-b627-d2803ab891f7',

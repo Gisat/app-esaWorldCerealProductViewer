@@ -1,0 +1,77 @@
+@use 'sass:math';
+@import '../../styles/variables';
+
+.worldCereal-Intro {
+  position: relative;
+  background-image: url("../../../src/assets/cereals.jpg");
+  background-size: cover;
+  background-position: center top;
+  height: 100%;
+  overflow-y: auto;
+  padding: m(3) m(1);
+}
+
+.worldCereal-Intro:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.8));
+}
+
+.worldCereal-Intro-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.worldCereal-Intro-header {
+  display: flex;
+  align-items: center;
+}
+
+.worldCereal-Intro-logo {
+  max-width: 8rem;
+  margin: 0 m(1);
+}
+
+.worldCereal-Intro-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.worldCereal-Intro-title h1 {
+  color: var(--base10);
+  font-family: "Sen" , "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: $b4;
+  max-width: 50rem;
+  line-height: 1.05;
+  margin: 0 0 1rem;
+  letter-spacing: -.5px;
+}
+
+.worldCereal-Intro-title h1 > em {
+  font-weight: 700;
+  color: var(--accent50);
+}
+
+.worldCereal-Intro-header p {
+  color: var(--base30);
+  max-width: 40rem;
+  font-family: "Sen" , "Roboto", sans-serif;
+}
+
+.worldCereal-Intro-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  grid-gap: m(1);
+  margin: m(3) 0;
+}

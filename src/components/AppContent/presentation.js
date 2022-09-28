@@ -6,10 +6,12 @@ import Filter from '../Filter';
 import Timeline from '../Timeline';
 
 import './style.scss';
+import IntroOverlay from '../IntroOverlay';
 
 const App = () => {
 	return (
 		<div className="worldCereal-ProductViewer">
+			<IntroOverlay />
 			<Header />
 			<Maps />
 			<Filter />

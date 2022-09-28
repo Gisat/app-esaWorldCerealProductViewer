@@ -18,7 +18,7 @@ import '@gisatcz/ptr-core/lib/styles/base.scss';
 import './styles/index.scss';
 
 import AppContent from './components/AppContent';
-import favicon from './assests/favicon.ico';
+import favicon from './assets/favicon.ico';
 
 const path = process.env.PUBLIC_URL;
 

@@ -4,6 +4,7 @@
   position: relative;
   z-index: 2;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 3.5rem;
   padding: 0 .5rem;
@@ -13,9 +14,9 @@
 }
 
 .worldCereal-Header-logo {
-  flex: 1;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .worldCereal-Header-logo > div {
@@ -28,16 +29,15 @@
 }
 
 .worldCereal-Header-logo h1 {
-  margin: .1rem 0 0;
+  margin: .2rem 0 0;
   color: var(--accent30);
   font-size: 1.125rem;
-  letter-spacing: .5px;
-  font-family: "Raleway" ,"Roboto", sans-serif;
+  font-family: "Sen" ,"Roboto", sans-serif;
 }
 
 .worldCereal-Header-logo h1 span {
   padding: 0 .5rem;
-  font-weight: 500;
+  font-weight: 800;
 }
 
 .worldCereal-Header-logo h1 span:first-child {

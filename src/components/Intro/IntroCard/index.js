@@ -1,18 +1,12 @@
 import {connect} from '@gisatcz/ptr-state';
-
 import Presentation from './presentation';
-import Action from '../../state/Action';
 
 const mapStateToProps = () => {
 	return {};
 };
 
-const mapDispatchToProps = dispatch => {
-	return {
-		openOverlay: () => {
-			dispatch(Action.components.set('IntroOverlay', 'open', true));
-		},
-	};
+const mapDispatchToProps = () => {
+	return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Presentation);
