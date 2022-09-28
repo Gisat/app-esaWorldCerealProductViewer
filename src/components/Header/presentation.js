@@ -1,19 +1,19 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import PropTypes from 'prop-types';
 import logoData from './logo';
 import AppConfigurationTool from './AppConfigurationTool';
 import './style.scss';
 
-const Header = () => {
+const Header = ({openOverlay}) => {
 	return (
 		<div className="worldCereal-Header">
-			<div className="worldCereal-Header-logo">
+			<div className="worldCereal-Header-logo" onClick={openOverlay}>
 				<div>
 					<img src={`data:image/jpeg;base64,${logoData}`} />
 				</div>
 				<h1>
 					<span>World Cereal</span>
-					<span>Product Viewer</span>
+					<span>Detailed exploration</span>
 				</h1>
 			</div>
 			<div className="worldCereal-Header-tools">
@@ -23,6 +23,8 @@ const Header = () => {
 	);
 };
 
-Header.propTypes = {};
+Header.propTypes = {
+	openOverlay: PropTypes.bool,
+};
 
 export default Header;
