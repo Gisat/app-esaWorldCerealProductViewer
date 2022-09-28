@@ -2,12 +2,12 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import {connects} from '@gisatcz/ptr-state';
+import {connects, setFetch} from '@gisatcz/ptr-state';
 import {create as createRouter} from '@gisatcz/ptr-router';
 import {AppContainer} from '@gisatcz/ptr-components';
 
 import Action from './state/Action';
-// import Select from './state/Select';
+import Select from './state/Select';
 import {init as initCore} from './core';
 import {appKey} from './constants/app';
 
@@ -33,30 +33,30 @@ function createRoutes() {
  * Add X-User-Info header for autentization
  * @param {*} getXUser
  */
-// const setWindowFetch = getXUser => {
-// 	if (typeof window !== 'undefined') {
-// 		window.fetch = new Proxy(window.fetch, {
-// 			apply(fetch, that, args) {
-// 				// Forward function call to the original fetch
-// 				if (!args[1].headers) {
-// 					args[1].headers = {};
-// 				}
-//
-// 				if (typeof args[1].headers.append === 'function') {
-// 					args[1].headers.append('X-User-Info', getXUser());
-// 				} else {
-// 					args[1].headers['X-User-Info'] = getXUser();
-// 				}
-//
-// 				const result = fetch.apply(that, args);
-//
-// 				return result;
-// 			},
-// 		});
-//
-// 		setFetch(window.fetch);
-// 	}
-// };
+const setWindowFetch = getXUser => {
+	if (typeof window !== 'undefined') {
+		window.fetch = new Proxy(window.fetch, {
+			apply(fetch, that, args) {
+				// Forward function call to the original fetch
+				if (!args[1].headers) {
+					args[1].headers = {};
+				}
+
+				if (typeof args[1].headers.append === 'function') {
+					args[1].headers.append('X-User-Info', getXUser());
+				} else {
+					args[1].headers['X-User-Info'] = getXUser();
+				}
+
+				const result = fetch.apply(that, args);
+
+				return result;
+			},
+		});
+
+		setFetch(window.fetch);
+	}
+};
 
 function initApp(Store, {absPath, isPreloaded, currentUrl, navHandler}) {
 	/**
@@ -77,7 +77,7 @@ function initApp(Store, {absPath, isPreloaded, currentUrl, navHandler}) {
 	initCore({router});
 
 	//add utils to modify header
-	// setWindowFetch(() => Select.users.getActiveKey(Store.getState()));
+	setWindowFetch(() => Select.users.getActiveKey(Store.getState()));
 
 	if (isPreloaded) {
 		return;
