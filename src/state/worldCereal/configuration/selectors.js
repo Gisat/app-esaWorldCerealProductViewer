@@ -88,7 +88,7 @@ const getConfigGroupAvailableComponentsConfiguration = createSelector(
 	[getConfigGroup],
 	configGroup => {
 		if (configGroup) {
-			return configGroup?.available.map(componentKey => {
+			return configGroup?.available?.map(componentKey => {
 				const configData = configGroup.componentsByKey[componentKey];
 				return getConfigContent(
 					componentKey,

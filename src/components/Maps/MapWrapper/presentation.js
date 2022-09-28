@@ -93,7 +93,7 @@ const MapWrapper = ({
 					{/*</Button>*/}
 					{mapSetMapKeys?.length > 1 ? (
 						<IconTool
-							className="visat-RemoveMapIcon"
+							className="worldCereal-RemoveMapIcon"
 							tooltip={{
 								text: 'Remove map',
 								position: 'left',
