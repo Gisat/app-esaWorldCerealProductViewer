@@ -96,3 +96,25 @@
 	--accent100: #{$darkAccent100};
 	--accent100rgb: #{hexToRGB($darkAccent100)};
 }
+
+// custom scrollbar
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--base40);
+	border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: var(--base50);
+}
