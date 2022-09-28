@@ -3,6 +3,7 @@ import IntroCard from './IntroCard';
 import {IntroCardText, IntroCardTitle} from './IntroCard/presentation';
 import './style.scss';
 import PropTypes from 'prop-types';
+import {Search, Globe1, User1, ChartVertical} from 'react-swm-icon-pack';
 
 const Intro = ({closeOverlay}) => {
 	return (
@@ -22,19 +23,19 @@ const Intro = ({closeOverlay}) => {
 					</div>
 				</div>
 				<div className="worldCereal-Intro-cards">
-					<IntroCard onClick={closeOverlay}>
+					<IntroCard onClick={closeOverlay} Icon={Search}>
 						<IntroCardTitle>Detailed exploration</IntroCardTitle>
 						<IntroCardText>of WorldCereal products</IntroCardText>
 					</IntroCard>
-					<IntroCard disabled>
+					<IntroCard disabled Icon={Globe1}>
 						<IntroCardTitle>Global view </IntroCardTitle>
 						<IntroCardText>on WorldCereal products</IntroCardText>
 					</IntroCard>
-					<IntroCard disabled>
+					<IntroCard disabled Icon={User1}>
 						<IntroCardTitle>User products</IntroCardTitle>
 						<IntroCardText>exploration</IntroCardText>
 					</IntroCard>
-					<IntroCard disabled>
+					<IntroCard disabled Icon={ChartVertical}>
 						<IntroCardTitle>Statistics</IntroCardTitle>
 						<IntroCardText>based on WorldCereal products</IntroCardText>
 					</IntroCard>

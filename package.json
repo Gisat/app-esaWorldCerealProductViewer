@@ -54,6 +54,7 @@
 		"react-scripts": "^5.0.1",
 		"react-slider": "^2.0.4",
 		"react-uid": "^2.3.2",
+		"react-swm-icon-pack": "1.0.13",
 		"reselect": "^4.1.6"
 	},
 	"devDependencies": {
