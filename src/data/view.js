@@ -31,7 +31,7 @@ export default {
 					// parameterOrder: ['product', 'season', 'aez'], //temporary remove "aez"
 					parameterOrder: ['product', 'season'],
 				},
-				Maps: {
+				Map: {
 					mode: 'set',
 				},
 			},

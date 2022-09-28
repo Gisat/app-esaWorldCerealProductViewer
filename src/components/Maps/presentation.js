@@ -14,8 +14,10 @@ import MapComponentsGroup from './MapComponentsGroup';
 import BackgroundLayersControl from './BackgroundLayersControl';
 import Scale from './Scale';
 import OverviewMap from './OverviewMap';
+import CompareMapsControl from './CompareMapsControl';
+import AddMapControl from './AddMapControl';
 
-import {mapSetKey} from '../../constants/app';
+import {mapSetKey, MAX_MAPS_IN_MAP_SET} from '../../constants/app';
 
 import './style.scss';
 
@@ -67,6 +69,11 @@ const Maps = ({mode, maps, viewLimits}) => {
 						</MapComponentsGroup>
 					</MapComponentsGroup>
 					<MapComponentsGroup className="worldCereal-MapSetControls">
+						<AddMapControl
+							mapSetKey={mapSetKey}
+							maxMapsCount={MAX_MAPS_IN_MAP_SET}
+						/>
+						<CompareMapsControl mapSetKey={mapSetKey} />
 						<BackgroundLayersControl />
 						<ZoomControls viewLimits={viewLimits} />
 					</MapComponentsGroup>
@@ -81,6 +88,11 @@ const Maps = ({mode, maps, viewLimits}) => {
 			wrapper={MapWrapper}
 		>
 			<MapComponentsGroup className="worldCereal-MapSetControls">
+				<AddMapControl
+					mapSetKey={mapSetKey}
+					maxMapsCount={MAX_MAPS_IN_MAP_SET}
+				/>
+				<CompareMapsControl mapSetKey={mapSetKey} />
 				<BackgroundLayersControl />
 				<ZoomControls viewLimits={viewLimits} />
 			</MapComponentsGroup>
