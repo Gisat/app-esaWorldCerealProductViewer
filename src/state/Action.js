@@ -48,12 +48,14 @@ function init(path) {
 
 		const localConfig = Select.app.getCompleteLocalConfiguration(getState());
 		const {userKey: devUserKey} = localConfig;
-		const activeUser = Select.users.getActiveKey(getState());
+		// const activeUser = Select.users.getActiveKey(getState());
 		// For local development
 		// Set active user key from local config if exists
-		if (!activeUser && devUserKey) {
-			dispatch(CommonAction.users.setActiveKey(devUserKey));
-		}
+		// TODO handle users (or SSR build)
+		// if (!activeUser && devUserKey) {
+		// 	dispatch(CommonAction.users.setActiveKey(devUserKey));
+		// }
+		dispatch(CommonAction.users.setActiveKey(devUserKey));
 
 		dispatch(resetSession());
 
