@@ -62,7 +62,7 @@ jobs:
       -
         name: "Build application"
         run: |
-          npm run build:ssr
+          npm run build
       -
         name: "Get docker image metadata"
         id: meta
