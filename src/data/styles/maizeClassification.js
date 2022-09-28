@@ -7,7 +7,7 @@ export default {
 				{
 					styles: [
 						{
-							color: '#e0cd00',
+							color: 'rgb(252, 207, 5)',
 						},
 						{
 							bandIndex: 0,
@@ -17,11 +17,11 @@ export default {
 									color: null,
 								},
 								1: {
-									color: '#a8a8a8',
+									color: 'rgb(186, 186, 186)',
 									name: 'Other crop',
 								},
 								2: {
-									color: '#e0cd00',
+									color: 'rgb(252, 207, 5)',
 									name: 'Maize',
 								},
 							},

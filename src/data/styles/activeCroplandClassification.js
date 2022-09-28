@@ -7,7 +7,7 @@ export default {
 				{
 					styles: [
 						{
-							color: '#2ca52a',
+							color: 'rgb(77, 216, 39)',
 						},
 						{
 							bandIndex: 0,
@@ -17,11 +17,11 @@ export default {
 									color: null,
 								},
 								1: {
-									color: '#a8a8a8',
-									name: 'Non-active cropland',
+									color: 'rgb(232, 55, 39)',
+									name: 'Inactive cropland',
 								},
 								2: {
-									color: '#2ca52a',
+									color: 'rgb(77, 216, 39)',
 									name: 'Active cropland',
 								},
 							},

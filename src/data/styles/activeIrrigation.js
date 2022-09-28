@@ -7,7 +7,7 @@ export default {
 				{
 					styles: [
 						{
-							color: '#0065ea',
+							color: 'rgb(104, 149, 197)',
 						},
 						{
 							bandIndex: 0,
@@ -17,11 +17,11 @@ export default {
 									color: null,
 								},
 								1: {
-									color: '#a8a8a8',
-									name: 'Non-irrigated',
+									color: 'rgb(255, 132, 132)',
+									name: 'Rainfed',
 								},
 								2: {
-									color: '#0065ea',
+									color: 'rgb(104, 149, 197)',
 									name: 'Irrigated',
 								},
 							},
