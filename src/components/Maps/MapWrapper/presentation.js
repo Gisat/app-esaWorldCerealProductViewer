@@ -24,6 +24,7 @@ const MapWrapper = ({
 }) => {
 	const wrapperClasses = classnames('ptr-map-wrapper worldCereal-MapWrapper', {
 		active: mapKey === activeMapKey,
+		'one-map': mapSetMapKeys?.length === 1,
 	});
 
 	const labelContainerClasses = classnames(
@@ -92,7 +93,7 @@ const MapWrapper = ({
 					{/*</Button>*/}
 					{mapSetMapKeys?.length > 1 ? (
 						<IconTool
-							className="visat-RemoveMapIcon"
+							className="worldCereal-RemoveMapIcon"
 							tooltip={{
 								text: 'Remove map',
 								position: 'left',

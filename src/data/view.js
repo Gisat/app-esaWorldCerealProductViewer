@@ -19,8 +19,49 @@ export default {
 								'mapAttribution',
 								'scale',
 								'overviewMap',
+								'searchPlace',
 							],
-							componentsByKey: {},
+							available: [
+								'searchPlace',
+								'addMap',
+								'compareMaps',
+								'backgroundLayersControl',
+								'zoomControls',
+								'overviewMap',
+							],
+							componentsByKey: {
+								addMap: {
+									icon: 'ri-add-map',
+									title: 'Add map',
+								},
+								compareMaps: {
+									icon: 'ri-compare',
+									title: 'Compare maps',
+								},
+								zoomControls: {
+									icon: 'plus-thick',
+									title: 'Zoom controls',
+									settings: {
+										horizontal: false,
+									},
+								},
+								mapAttribution: {
+									icon: 'info',
+									title: 'Map Attribution',
+								},
+								backgroundLayersControl: {
+									icon: 'layers',
+									title: 'Background layers control',
+								},
+								searchPlace: {
+									icon: 'ri-location-search',
+									title: 'Search place',
+								},
+								overviewMap: {
+									icon: 'ri-square',
+									title: 'Overview map',
+								},
+							},
 						},
 					},
 				},

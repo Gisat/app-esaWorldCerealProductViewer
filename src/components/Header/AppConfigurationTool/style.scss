@@ -1,0 +1,16 @@
+@use 'sass:math';
+@import '../../../styles/variables';
+
+.worldCereal-AppConfigurationModal {
+  width: 70%;
+  max-width: 50rem;
+}
+
+.worldCereal-AppTool {
+  color: var(--base10);
+}
+
+.worldCereal-AppTool:hover {
+  color: var(--base10);
+  background: rgba(255,255,255,.25);
+}
