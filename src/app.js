@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import Helmet from 'react-helmet';
+import Favicon from 'react-favicon';
 
 import {connects, setFetch} from '@gisatcz/ptr-state';
 import {create as createRouter} from '@gisatcz/ptr-router';
@@ -17,6 +18,7 @@ import '@gisatcz/ptr-core/lib/styles/base.scss';
 import './styles/index.scss';
 
 import AppContent from './components/AppContent';
+import favicon from './assests/favicon.ico';
 
 const path = process.env.PUBLIC_URL;
 
@@ -94,6 +96,7 @@ const ConnectedAppContainer = connects.AppContainer(AppContainer);
 const App = () => {
 	return (
 		<>
+			<Favicon url={favicon} />
 			<Helmet defaultTitle="WorldCereal | Product Viewer" />
 			<ConnectedAppContainer appKey={appKey}>
 				<AppContent />
