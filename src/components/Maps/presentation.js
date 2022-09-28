@@ -3,18 +3,21 @@ import React from 'react';
 import {Children, cloneElement} from 'react';
 import PropTypes from 'prop-types';
 import {ReactCompareSlider} from 'react-compare-slider';
-import {
-	MapControls,
-	MapScale,
-	MapSet,
-	PresentationMap,
-	ReactLeafletMap,
-} from '@gisatcz/ptr-maps';
+import {MapSet, PresentationMap, ReactLeafletMap} from '@gisatcz/ptr-maps';
 import MapAttribution from './MapAttribution';
-import SimpleLayersControl from './SimpleLayersControl';
 import MapContainer from './MapContainer';
 import MapSetContainer from './MapSetContainer';
 import MapWrapper from './MapWrapper';
+
+import ZoomControls from './ZoomControls';
+import MapComponentsGroup from './MapComponentsGroup';
+import BackgroundLayersControl from './BackgroundLayersControl';
+import Scale from './Scale';
+import OverviewMap from './OverviewMap';
+import CompareMapsControl from './CompareMapsControl';
+import AddMapControl from './AddMapControl';
+
+import {mapSetKey, MAX_MAPS_IN_MAP_SET} from '../../constants/app';
 
 import './style.scss';
 
@@ -38,7 +41,7 @@ PropsDriller.propTypes = {
 	className: PropTypes.string,
 };
 
-const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {
+const Maps = ({mode, maps, viewLimits}) => {
 	return mode === 'compare' ? (
 		<ReactCompareSlider
 			onlyHandleDraggable
@@ -49,21 +52,7 @@ const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {
 					wrapperProps={{noTools: true}}
 					mapComponent={ReactLeafletMap}
 					stateMapKey={maps[0].key}
-				>
-					<PropsDriller className="worldCereal-MapInfoElements">
-						{overviewMap ? (
-							<PropsDriller className="worldCereal-OverviewMap">
-								<Map mapComponent={ReactLeafletMap} stateMapKey="overview" />
-							</PropsDriller>
-						) : null}
-						{attribution || scale ? (
-							<PropsDriller className="worldCereal-AttributionScaleContainer">
-								{attribution ? <MapAttribution /> : null}
-								{scale ? <MapScale className="worldCereal-MapScale" /> : null}
-							</PropsDriller>
-						) : null}
-					</PropsDriller>
-				</Map>
+				/>
 			}
 			itemTwo={
 				<Map
@@ -72,12 +61,22 @@ const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {
 					mapComponent={ReactLeafletMap}
 					stateMapKey={maps[1].key}
 				>
-					<SimpleLayersControl />
-					<MapControls
-						levelsBased
-						zoomOnly
-						viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
-					/>
+					<MapComponentsGroup className="worldCereal-MapInfoElements">
+						<OverviewMap overviewMapKey="overview" />
+						<MapComponentsGroup className="worldCereal-AttributionScaleContainer">
+							<MapAttribution mapSetKey={mapSetKey} />
+							<Scale />
+						</MapComponentsGroup>
+					</MapComponentsGroup>
+					<MapComponentsGroup className="worldCereal-MapSetControls">
+						<AddMapControl
+							mapSetKey={mapSetKey}
+							maxMapsCount={MAX_MAPS_IN_MAP_SET}
+						/>
+						<CompareMapsControl mapSetKey={mapSetKey} />
+						<BackgroundLayersControl />
+						<ZoomControls viewLimits={viewLimits} />
+					</MapComponentsGroup>
 				</Map>
 			}
 		/>
@@ -88,35 +87,29 @@ const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {
 			connectedMapComponent={ConnectedMap}
 			wrapper={MapWrapper}
 		>
-			<SimpleLayersControl />
-			<MapControls
-				levelsBased
-				zoomOnly
-				viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
-			/>
-			<PropsDriller className="worldCereal-MapInfoElements">
-				{overviewMap ? (
-					<PropsDriller className="worldCereal-OverviewMap">
-						<Map mapComponent={ReactLeafletMap} stateMapKey="overview" />
-					</PropsDriller>
-				) : null}
-				{attribution || scale ? (
-					<PropsDriller className="worldCereal-AttributionScaleContainer">
-						{attribution ? <MapAttribution /> : null}
-						{scale ? <MapScale className="worldCereal-MapScale" /> : null}
-					</PropsDriller>
-				) : null}
-			</PropsDriller>
+			<MapComponentsGroup className="worldCereal-MapSetControls">
+				<AddMapControl
+					mapSetKey={mapSetKey}
+					maxMapsCount={MAX_MAPS_IN_MAP_SET}
+				/>
+				<CompareMapsControl mapSetKey={mapSetKey} />
+				<BackgroundLayersControl />
+				<ZoomControls viewLimits={viewLimits} />
+			</MapComponentsGroup>
+			<MapComponentsGroup className="worldCereal-MapInfoElements">
+				<OverviewMap overviewMapKey="overview" />
+				<MapComponentsGroup className="worldCereal-AttributionScaleContainer">
+					<MapAttribution mapSetKey={mapSetKey} />
+					<Scale />
+				</MapComponentsGroup>
+			</MapComponentsGroup>
 		</ConnectedMapSet>
 	);
 };
 
 Maps.propTypes = {
-	attribution: PropTypes.bool,
 	mode: PropTypes.string,
 	maps: PropTypes.array,
-	overviewMap: PropTypes.bool,
-	scale: PropTypes.bool,
 	viewLimits: PropTypes.object,
 };
 

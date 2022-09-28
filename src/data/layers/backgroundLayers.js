@@ -34,4 +34,22 @@ export default {
 			url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
 		},
 	},
+	cartoDB_LightNoLabels: {
+		key: 'cartoDB_LightNoLabels',
+		thumbnail: 'cartoDB_VoyagerNoLabels',
+		name: 'No labels',
+		type: 'wmts',
+		options: {
+			url: 'https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}{r}.png',
+		},
+	},
+	cartoDB_DarkMatter: {
+		key: 'cartoDB_DarkMatter',
+		thumbnail: 'cartoDB_DarkMatter',
+		name: 'Dark',
+		type: 'wmts',
+		options: {
+			url: 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}{r}.png',
+		},
+	},
 };

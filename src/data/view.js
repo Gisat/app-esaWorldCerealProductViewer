@@ -8,6 +8,22 @@ export default {
 				productMetadataFilter: {
 					activeFilter: {},
 				},
+				configuration: {
+					mapSetTools: {
+						'productViewer-mapSet': {
+							open: [
+								'zoomControls',
+								'backgroundLayersControl',
+								'addMap',
+								'compareMaps',
+								'mapAttribution',
+								'scale',
+								'overviewMap',
+							],
+							componentsByKey: {},
+						},
+					},
+				},
 			},
 			components: {
 				ProductFilter: {
@@ -15,11 +31,8 @@ export default {
 					// parameterOrder: ['product', 'season', 'aez'], //temporary remove "aez"
 					parameterOrder: ['product', 'season'],
 				},
-				Maps: {
+				Map: {
 					mode: 'set',
-					scale: true,
-					attribution: true,
-					overviewMap: true,
 				},
 			},
 			maps: {
@@ -36,8 +49,8 @@ export default {
 							view: {
 								boxRange: 2000000,
 								center: {
-									lat: 47,
-									lon: 1,
+									lat: -15,
+									lon: -50,
 								},
 							},
 							viewLimits: {
@@ -80,8 +93,8 @@ export default {
 							view: {
 								boxRange: 835000,
 								center: {
-									lat: 45.87,
-									lon: 31.84,
+									lat: -15,
+									lon: -50,
 								},
 							},
 							viewLimits: {

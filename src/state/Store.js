@@ -17,6 +17,7 @@ import {
 } from '@gisatcz/ptr-core';
 import {initApp} from '../app';
 
+import configuration from './worldCereal/configuration/reducers';
 import productMetadata from './worldCereal/ProductMetadata/reducers';
 import productMetadataFilter from './worldCereal/ProductMetadataFilter/reducers';
 
@@ -41,6 +42,7 @@ function createMiddleware(requestCounter, withoutLogger) {
 
 function createReducer() {
 	const reducers = combineReducers({
+		configuration,
 		productMetadata,
 		productMetadataFilter,
 	});
