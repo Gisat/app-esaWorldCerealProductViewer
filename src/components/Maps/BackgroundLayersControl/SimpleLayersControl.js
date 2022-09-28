@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 				key: layer.key,
 				data: {
 					nameDisplay: layer.name,
-					thumbnail: layer.key,
+					thumbnail: layer.thumbnail || layer.key,
 				},
 			};
 		}),

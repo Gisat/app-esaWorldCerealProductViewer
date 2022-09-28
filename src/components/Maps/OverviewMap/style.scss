@@ -6,8 +6,9 @@
   width: 10rem;
   height: 6rem;
   z-index: 2;
-  box-shadow: 0 0 10px rgba(0,0,0,.2);
-  border-radius: .25rem;
-  border: 2px solid var(--base10);
+  box-shadow: $floatingElementShadow;
+  border-radius: .5rem;
+  border: 0;
   margin: .25rem;
+  overflow: hidden;
 }
