@@ -38,7 +38,7 @@ const getAppEnvConfig = () => {
 };
 
 function init(path) {
-	return (dispatch, getState) => {
+	return dispatch => {
 		dispatch(CommonAction.app.setBaseUrl(path));
 
 		const config = getConfig(getAppEnvConfig());
@@ -46,8 +46,8 @@ function init(path) {
 		dispatch(CommonAction.app.updateLocalConfiguration(config));
 		dispatch(CommonAction.app.setKey(appKey));
 
-		const localConfig = Select.app.getCompleteLocalConfiguration(getState());
-		const {userKey: devUserKey} = localConfig;
+		// const localConfig = Select.app.getCompleteLocalConfiguration(getState());
+		// const {userKey: devUserKey} = localConfig;
 		// const activeUser = Select.users.getActiveKey(getState());
 		// For local development
 		// Set active user key from local config if exists
@@ -55,7 +55,9 @@ function init(path) {
 		// if (!activeUser && devUserKey) {
 		// 	dispatch(CommonAction.users.setActiveKey(devUserKey));
 		// }
-		dispatch(CommonAction.users.setActiveKey(devUserKey));
+		dispatch(
+			CommonAction.users.setActiveKey('3fdd158d-4b78-4d11-92c7-403b4adab4d8')
+		);
 
 		dispatch(resetSession());
 
