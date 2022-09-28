@@ -1,7 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ReactCompareSlider} from 'react-compare-slider';
+import {
+	ReactCompareSlider,
+	ReactCompareSliderHandle,
+} from 'react-compare-slider';
 import {MapSet, PresentationMap, ReactLeafletMap} from '@gisatcz/ptr-maps';
 import MapAttribution from './MapAttribution';
 import MapContainer from './MapContainer';
@@ -15,6 +18,7 @@ import Scale from './Scale';
 import OverviewMap from './OverviewMap';
 import CompareMapsControl from './CompareMapsControl';
 import AddMapControl from './AddMapControl';
+import SearchPlaceControl from './SearchPlaceControl';
 
 import {mapSetKey, MAX_MAPS_IN_MAP_SET} from '../../constants/app';
 
@@ -29,6 +33,11 @@ const Maps = ({mode, maps, viewLimits}) => {
 	return mode === 'compare' ? (
 		<ReactCompareSlider
 			onlyHandleDraggable
+			handle={
+				<ReactCompareSliderHandle
+					buttonStyle={{position: 'absolute', top: 'calc(50% - 30px)'}}
+				/>
+			}
 			className="worldCereal-CompareSlider"
 			itemOne={
 				<Map
@@ -53,6 +62,7 @@ const Maps = ({mode, maps, viewLimits}) => {
 						</MapComponentsGroup>
 					</MapComponentsGroup>
 					<MapComponentsGroup className="worldCereal-MapSetControls">
+						<SearchPlaceControl mapSetKey={mapSetKey} />
 						<AddMapControl
 							mapSetKey={mapSetKey}
 							maxMapsCount={MAX_MAPS_IN_MAP_SET}
@@ -72,6 +82,7 @@ const Maps = ({mode, maps, viewLimits}) => {
 			wrapper={MapWrapper}
 		>
 			<MapComponentsGroup className="worldCereal-MapSetControls">
+				<SearchPlaceControl mapSetKey={mapSetKey} />
 				<AddMapControl
 					mapSetKey={mapSetKey}
 					maxMapsCount={MAX_MAPS_IN_MAP_SET}

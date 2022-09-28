@@ -32,20 +32,23 @@ function createRoutes() {
  * Modify every fetch call
  * Add X-User-Info header for autentization
  * @param {*} getXUser
+ * TODO solve it better. Not every fetch has to be authorised
  */
 const setWindowFetch = getXUser => {
 	if (typeof window !== 'undefined') {
 		window.fetch = new Proxy(window.fetch, {
 			apply(fetch, that, args) {
 				// Forward function call to the original fetch
-				if (!args[1].headers) {
-					args[1].headers = {};
-				}
+				if (args.length > 1) {
+					if (!args[1].headers) {
+						args[1].headers = {};
+					}
 
-				if (typeof args[1].headers.append === 'function') {
-					args[1].headers.append('X-User-Info', getXUser());
-				} else {
-					args[1].headers['X-User-Info'] = getXUser();
+					if (typeof args[1].headers.append === 'function') {
+						args[1].headers.append('X-User-Info', getXUser());
+					} else {
+						args[1].headers['X-User-Info'] = getXUser();
+					}
 				}
 
 				const result = fetch.apply(that, args);

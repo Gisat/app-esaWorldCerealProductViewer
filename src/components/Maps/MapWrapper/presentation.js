@@ -24,6 +24,7 @@ const MapWrapper = ({
 }) => {
 	const wrapperClasses = classnames('ptr-map-wrapper worldCereal-MapWrapper', {
 		active: mapKey === activeMapKey,
+		'one-map': mapSetMapKeys?.length === 1,
 	});
 
 	const labelContainerClasses = classnames(

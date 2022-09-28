@@ -259,6 +259,23 @@ function setOpacityByLayerKeys(mapKey, layerKeys, opacity) {
 	};
 }
 
+function updateMapSetActiveMapView(mapSetKey, place) {
+	return (dispatch, getState) => {
+		if (place?.pantherMapView) {
+			const activeMapSetMapKey = Select.maps.getMapSetActiveMapKey(
+				getState(),
+				mapSetKey
+			);
+			dispatch(
+				CommonAction.maps.updateMapAndSetView(
+					activeMapSetMapKey,
+					place?.pantherMapView
+				)
+			);
+		}
+	};
+}
+
 export default {
 	...CommonAction,
 	init,
@@ -272,5 +289,6 @@ export default {
 		removeAllLayersFromMapByLayerKeys,
 		updateMapView,
 		updateOverviewMap,
+		updateMapSetActiveMapView,
 	},
 };

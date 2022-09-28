@@ -9,6 +9,11 @@
   z-index: 1;
 }
 
+.ptr-map-wrapper.worldCereal-MapWrapper.one-map.active:after,
+.ptr-map-wrapper.worldCereal-MapWrapper.not-highlight-active.active:after {
+  border: 0;
+}
+
 .worldCereal-MapProductLabelContainer {
   position: absolute;
   top: .4rem;

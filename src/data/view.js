@@ -19,6 +19,7 @@ export default {
 								'mapAttribution',
 								'scale',
 								'overviewMap',
+								'searchPlace',
 							],
 							componentsByKey: {},
 						},
