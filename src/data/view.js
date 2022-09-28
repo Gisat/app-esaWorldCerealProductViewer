@@ -13,7 +13,7 @@ export default {
 						'productViewer-mapSet': {
 							open: [
 								'zoomControls',
-								'backgroundLayers',
+								'backgroundLayersControl',
 								'addMap',
 								'compareMaps',
 								'mapAttribution',

@@ -1,0 +1,65 @@
+@use 'sass:math';
+@import '../../../styles/variables';
+
+.ptr-BackgroundLayersControl > .ptr-simple-layers-control {
+  position: relative;
+  bottom: auto !important;
+  right: auto !important;
+  margin-bottom: 0;
+}
+
+.ptr-BackgroundLayersControl .ptr-simple-layers-control {
+  width: $iconToolSize_medium;
+  height: $iconToolSize_medium;
+  border-radius: math.div($iconToolSize_medium,2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--base05);
+  box-shadow: $floatingElementShadow;
+}
+
+.ptr-dark .ptr-BackgroundLayersControl .ptr-simple-layers-control {
+  border: .05rem solid var(--base30);
+}
+
+.ptr-BackgroundLayersControl .ptr-simple-layers-control-menu {
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .15));
+  background: var(--base05);
+}
+
+.ptr-BackgroundLayersControl .ptr-simple-layers-control-menu.left:after {
+  border-left-color: var(--base05);
+}
+
+.ptr-BackgroundLayersControl .ptr-simple-layers-control.control > .ptr-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: none;
+  border-radius: math.div($iconToolSize_medium,2);
+  background: var(--base05);
+}
+
+.ptr-BackgroundLayersControl .ptr-simple-layers-control.control > .ptr-button:hover {
+  border-radius: math.div($iconToolSize_medium,2);
+  background: $hoverBackgroundColor;
+}
+
+.ptr-dark .ptr-BackgroundLayersControl .ptr-simple-layers-control .ptr-button:hover {
+  background: $hoverBackgroundColor-dark;
+}
+
+.ptr-BackgroundLayersControl .ptr-simple-layers-control .ptr-button > .ptr-icon {
+  width: $iconSize;
+  height: $iconSize;
+  color: $secondaryIconColor;
+}
+
+.ptr-BackgroundLayersControl .ptr-simple-layers-control .ptr-button:hover > .ptr-icon {
+  color: $baseIconColor;
+}
+
+.ptr-BackgroundLayersControl .ptr-simple-layers-control.open .ptr-button > .ptr-icon {
+  color: $accentedIconColor;
+}

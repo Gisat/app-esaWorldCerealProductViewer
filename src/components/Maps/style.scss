@@ -76,3 +76,19 @@ div[data-rcs="clip-item"] {
   border-radius: .25rem;
   border: 2px solid var(--base10);
 }
+
+
+.ptr-map-controls-wrapper {
+  z-index: auto;
+}
+
+// Map set controls
+.ptr-MapSetControls {
+  position: absolute;
+  right: .7rem;
+  bottom: .7rem;
+  grid-gap: .5rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 9;
+}

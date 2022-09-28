@@ -4,17 +4,19 @@ import {Children, cloneElement} from 'react';
 import PropTypes from 'prop-types';
 import {ReactCompareSlider} from 'react-compare-slider';
 import {
-	MapControls,
 	MapScale,
 	MapSet,
 	PresentationMap,
 	ReactLeafletMap,
 } from '@gisatcz/ptr-maps';
 import MapAttribution from './MapAttribution';
-import SimpleLayersControl from './SimpleLayersControl';
 import MapContainer from './MapContainer';
 import MapSetContainer from './MapSetContainer';
 import MapWrapper from './MapWrapper';
+
+import ZoomControls from './ZoomControls';
+import MapComponentsGroup from './MapComponentsGroup';
+import BackgroundLayersControl from './BackgroundLayersControl';
 
 import './style.scss';
 
@@ -72,12 +74,10 @@ const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {
 					mapComponent={ReactLeafletMap}
 					stateMapKey={maps[1].key}
 				>
-					<SimpleLayersControl />
-					<MapControls
-						levelsBased
-						zoomOnly
-						viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
-					/>
+					<MapComponentsGroup className="ptr-MapSetControls">
+						<BackgroundLayersControl />
+						<ZoomControls viewLimits={viewLimits} />
+					</MapComponentsGroup>
 				</Map>
 			}
 		/>
@@ -88,12 +88,10 @@ const Maps = ({attribution, mode, maps, overviewMap, scale, viewLimits}) => {
 			connectedMapComponent={ConnectedMap}
 			wrapper={MapWrapper}
 		>
-			<SimpleLayersControl />
-			<MapControls
-				levelsBased
-				zoomOnly
-				viewLimits={viewLimits} //hack for synced maps, viewLimits are not implemented for mapSet yet
-			/>
+			<MapComponentsGroup className="ptr-MapSetControls">
+				<BackgroundLayersControl />
+				<ZoomControls viewLimits={viewLimits} />
+			</MapComponentsGroup>
 			<PropsDriller className="worldCereal-MapInfoElements">
 				{overviewMap ? (
 					<PropsDriller className="worldCereal-OverviewMap">
