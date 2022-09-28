@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import {Children, cloneElement} from 'react';
 import PropTypes from 'prop-types';
 import {ReactCompareSlider} from 'react-compare-slider';
 import {MapSet, PresentationMap, ReactLeafletMap} from '@gisatcz/ptr-maps';
@@ -25,21 +24,6 @@ const ConnectedMap = MapContainer(PresentationMap);
 const ConnectedMapSet = MapSetContainer(MapSet);
 
 const Map = MapContainer(PresentationMap);
-
-const PropsDriller = ({children, className, ...restProps}) => {
-	return (
-		<div className={className}>
-			{Children.map(children, child => {
-				return child ? cloneElement(child, {...restProps}) : null;
-			})}
-		</div>
-	);
-};
-
-PropsDriller.propTypes = {
-	children: PropTypes.node,
-	className: PropTypes.string,
-};
 
 const Maps = ({mode, maps, viewLimits}) => {
 	return mode === 'compare' ? (

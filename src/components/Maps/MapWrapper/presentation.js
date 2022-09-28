@@ -3,7 +3,8 @@ import React from 'react';
 import {isEmpty as _isEmpty, forIn as _forIn} from 'lodash';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import {Button, Menu, MenuItem} from '@gisatcz/ptr-atoms';
+import {IconTool} from '@gisatcz/visat-components';
+import Tooltip from '../../Tooltip';
 import ExpandableLabelsContainer from '../../atoms/ExpandableLabel/ExpandableLabelsContainer';
 import ExpandableProductLabel from '../ProductLabel';
 import {MIN_PRODUCT_MAP_LABELS_FOR_GROUPING} from '../../../constants/app';
@@ -17,7 +18,7 @@ const MapWrapper = ({
 	removeMap,
 	mapSetMapKeys,
 	productsMetadata,
-	removeAllLayers,
+	// removeAllLayers,
 	noTools,
 	labelsRight,
 }) => {
@@ -72,31 +73,35 @@ const MapWrapper = ({
 			) : null}
 			{!noTools ? (
 				<div className="worldCereal-MapTools">
-					<Button
-						title="Options"
-						onClick={() => {}}
-						icon="dots"
-						invisible
-						small
-						className="worldCereal-MapToolsButton"
-					>
-						<Menu left>
-							<MenuItem
-								disabled={noMetadata}
-								onClick={() => removeAllLayers(mapKey)}
-							>
-								Remove all layers
-							</MenuItem>
-						</Menu>
-					</Button>
+					{/*<Button*/}
+					{/*	title="Options"*/}
+					{/*	onClick={() => {}}*/}
+					{/*	icon="dots"*/}
+					{/*	invisible*/}
+					{/*	small*/}
+					{/*	className="worldCereal-MapToolsButton"*/}
+					{/*>*/}
+					{/*	<Menu left>*/}
+					{/*		<MenuItem*/}
+					{/*			disabled={noMetadata}*/}
+					{/*			onClick={() => removeAllLayers(mapKey)}*/}
+					{/*		>*/}
+					{/*			Remove all layers*/}
+					{/*		</MenuItem>*/}
+					{/*	</Menu>*/}
+					{/*</Button>*/}
 					{mapSetMapKeys?.length > 1 ? (
-						<Button
-							title="Remove map"
-							icon="close"
-							invisible
-							small
-							className="worldCereal-MapToolsButton"
+						<IconTool
+							className="visat-RemoveMapIcon"
+							tooltip={{
+								text: 'Remove map',
+								position: 'left',
+								component: Tooltip,
+							}}
 							onClick={() => removeMap(mapKey)}
+							floating
+							medium
+							icon="ri-close"
 						/>
 					) : null}
 				</div>

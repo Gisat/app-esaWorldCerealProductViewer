@@ -28,13 +28,11 @@
 
 .worldCereal-MapTools {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: .5rem;
+  right: .5rem;
   z-index: 2;
   display: flex;
   grid-gap: .05rem;
-  background: var(--base50);
-  box-shadow: 0 0 5px rgba(var(--base100rgb), .5);
 }
 
 .worldCereal-MapToolsButton.ptr-button {
