@@ -24,7 +24,7 @@
 		"@gisatcz/ptr-maps": "^1.15.1",
 		"@gisatcz/ptr-router": "^0.3.0",
 		"@gisatcz/ptr-state": "^2.1.6",
-		"@gisatcz/ptr-timeline": "^0.1.12",
+		"@gisatcz/ptr-timeline": "^0.2.1",
 		"@gisatcz/ptr-utils": "^1.6.0",
 		"@gisatcz/visat-components": "^0.11.0",
 		"@react-hook/size": "^2.1.2",
@@ -43,18 +43,17 @@
 		"prop-types": "^15.8.1",
 		"query-string": "^7.1.1",
 		"re-reselect": "^4.0.1",
-		"react": "^17.0.2",
+		"react": "^18.2.0",
 		"react-compare-slider": "^2.2.0",
-		"react-dom": "^17.0.2",
-		"react-helmet": "^6.1.0",
+		"react-dom": "^18.2.0",
 		"react-favicon": "^1.0.1",
+		"react-helmet": "^6.1.0",
 		"react-loadable": "^5.5.0",
 		"react-modal": "^3.15.1",
-		"react-resize-detector": "^7.1.2",
 		"react-scripts": "^5.0.1",
 		"react-slider": "^2.0.4",
-		"react-uid": "^2.3.2",
 		"react-swm-icon-pack": "1.0.13",
+		"react-uid": "^2.3.2",
 		"reselect": "^4.1.6"
 	},
 	"devDependencies": {
@@ -77,9 +76,9 @@
 		"react-app-rewired": "^2.2.1",
 		"sass": "^1.54.9",
 		"sass-loader": "^13.0.2",
+		"source-map-explorer": "^2.5.2",
 		"style-loader": "^3.3.1",
-		"url-loader": "^4.1.1",
-		"source-map-explorer": "^2.5.2"
+		"url-loader": "^4.1.1"
 	},
 	"scripts": {
 		"analyze": "source-map-explorer 'build/static/js/*.js'",
