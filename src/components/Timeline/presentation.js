@@ -8,8 +8,10 @@ import {connects} from '@gisatcz/ptr-state';
 import {utils} from '@gisatcz/ptr-utils';
 
 import MapTimelineLegend from './MapTimelineLegend';
-
+import {timelineLayerLineHeight} from '../../constants/app';
 import './style.scss';
+
+const maximumTimelineVisibleRows = 6.5; //number of maximum visible rows
 
 const MapTimelinePresentation = MapTimeline.MapTimelinePresentation;
 const LayerRowPresentation = MapTimeline.LayerRowPresentation;
@@ -56,17 +58,15 @@ const LEVELS = [
 
 const MIN_TIMELINE_HEIGHT = 8;
 
-const Levels = props => {
-	const {activeLevel} = props;
+const Levels = ({activeLevel, ...restProps}) => {
 	switch (activeLevel) {
 		case 'year':
-			return createElement(Years, {...props, key: 'year'});
+			return createElement(Years, {...restProps, key: 'year'});
 		case 'month':
-			return createElement(Months, {...props, key: 'month'});
+			return createElement(Months, {...restProps, key: 'month'});
 	}
-	return createElement(Months, {...props, key: 'month'});
+	return createElement(Months, {...restProps, key: 'month'});
 };
-
 Levels.propTypes = {
 	activeLevel: propTypes.string,
 };
@@ -145,22 +145,29 @@ const Timeline = ({
 		disabled: isInteractivityLimited,
 	});
 
+	const contentHeight =
+		layers.length * timelineLayerLineHeight >
+		timelineLayerLineHeight * maximumTimelineVisibleRows
+			? timelineLayerLineHeight * maximumTimelineVisibleRows
+			: layers.length * timelineLayerLineHeight;
+
 	return (
 		<div className={classes}>
-			{layers ? (
+			{layers.length > 0 ? (
 				<MapTimelinePresentation
 					LayerRowComponent={LayerRowComponentWrapped}
 					mapKey={activeMapKey}
 					getHoverContent={(...rest) => getHoverContent(...rest, layers)}
+					onLayerClick={onLayerClick}
 					periodLimit={timelinePeriod}
 					initPeriod={timelinePeriod}
 					vertical={false}
 					levels={LEVELS}
 					selectMode={true}
 					layers={layers}
-					LegendComponent={MapTimelineLegend}
-					onLayerClick={onLayerClick}
 					minTimelineHeight={minTimelineHeight}
+					LegendComponent={MapTimelineLegend}
+					contentHeight={contentHeight + 4}
 				>
 					<Levels />
 					<Mouse mouseBufferWidth={20} key="mouse" />

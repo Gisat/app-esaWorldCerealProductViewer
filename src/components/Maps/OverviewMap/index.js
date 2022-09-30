@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import {PresentationMap, ReactLeafletMap} from '@gisatcz/ptr-maps';
+import {connects} from '@gisatcz/ptr-state';
 import ComponentRenderer from '../ComponentRenderer';
-import MapContainer from '../MapContainer';
 
 import './style.scss';
 
-const Map = MapContainer(PresentationMap);
+const Map = connects.Map(PresentationMap);
 
 const OverviewMap = ({overviewMapKey}) => {
 	return (
