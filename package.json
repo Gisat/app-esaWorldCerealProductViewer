@@ -52,7 +52,7 @@
 		"react-modal": "^3.15.1",
 		"react-scripts": "^5.0.1",
 		"react-slider": "^2.0.4",
-		"react-swm-icon-pack": "1.0.13",
+		"react-swm-icon-pack": "^1.0.14",
 		"react-uid": "^2.3.2",
 		"reselect": "^4.1.6"
 	},
