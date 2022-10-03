@@ -1,8 +1,7 @@
-// eslint-disable-next-line no-unused-vars
+//eslint-disable-next-line no-unused-vars
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import {Provider} from '@gisatcz/ptr-state';
-import {isServer} from '@gisatcz/ptr-core';
 
 import createStore from './state/Store';
 import {App} from './app';
@@ -16,10 +15,9 @@ const Application = () => (
 );
 
 function renderApp() {
-	const rootEl = document.getElementById('root');
-	const render =
-		isServer || rootEl.hasChildNodes() ? ReactDOM.hydrate : ReactDOM.render;
-	render(<Application />, rootEl);
+	const container = document.getElementById('root');
+	const root = createRoot(container); // createRoot(container!) if you use TypeScript
+	root.render(<Application />);
 }
 
 renderApp();
