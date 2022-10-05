@@ -1,4 +1,4 @@
-import {createSelector} from 'reselect';
+import {createCachedSelector} from 're-reselect';
 
 /**
  * Helper collecting the config data
@@ -25,50 +25,50 @@ const getSubstate = state => state.worldCereal.configuration;
  * @param path {string} [optional] Currently supporting just one nesting level
  * @return {Object}
  */
-const getConfigGroup = createSelector(
+const getConfigGroup = createCachedSelector(
 	[getSubstate, (state, key) => key, (state, key, path) => path],
 	(substate, key, path) => {
 		return path ? substate?.[key]?.[path] : substate?.[key];
 	}
-);
+)((state, groupKey, path) => `${groupKey}_${path || ''}`);
 
 /**
  * @param state {Object}
  * @param key {Object} group key (e.g. widgets, mapSetTools)
  * @return {Array} list of open component keys
  */
-const getConfigGroupOpenComponentKeys = createSelector(
+const getConfigGroupOpenComponentKeys = createCachedSelector(
 	[getConfigGroup],
 	configGroup => {
 		return configGroup?.open;
 	}
-);
+)((state, groupKey, path) => `${groupKey}_${path || ''}`);
 
 /**
  * @param state {Object}
  * @param key {Object} group key (e.g. widgets, mapSetTools)
  * @return {Array} list of disabled component keys
  */
-const getConfigGroupDisabledComponentKeys = createSelector(
+const getConfigGroupDisabledComponentKeys = createCachedSelector(
 	[getConfigGroup],
 	configGroup => {
 		return configGroup?.disabled;
 	}
-);
+)((state, groupKey, path) => `${groupKey}_${path || ''}`);
 
 /**
  * @param state {Object}
  * @param key {Object} group key (e.g. widgets, mapSetTools)
  * @return {Object} all config group components
  */
-const getAllConfigGroupComponents = createSelector(
+const getAllConfigGroupComponents = createCachedSelector(
 	[getConfigGroup],
 	configGroup => {
 		return configGroup?.componentsByKey;
 	}
-);
+)((state, groupKey, path) => `${groupKey}_${path || ''}`);
 
-const getComponentConfiguration = createSelector(
+const getComponentConfiguration = createCachedSelector(
 	[
 		(state, groupKey, path) =>
 			getConfigGroupOpenComponentKeys(state, groupKey, path),
@@ -82,9 +82,9 @@ const getComponentConfiguration = createSelector(
 		const configData = components?.[componentKey];
 		return getConfigContent(componentKey, open, disabled, configData);
 	}
-);
+)((state, groupKey, path) => `${groupKey}_${path || ''}`);
 
-const getConfigGroupAvailableComponentsConfiguration = createSelector(
+const getConfigGroupAvailableComponentsConfiguration = createCachedSelector(
 	[getConfigGroup],
 	configGroup => {
 		if (configGroup) {
@@ -101,9 +101,9 @@ const getConfigGroupAvailableComponentsConfiguration = createSelector(
 			return null;
 		}
 	}
-);
+)((state, groupKey, path) => `${groupKey}_${path || ''}`);
 
-const getConfigGroupOpenComponentsConfiguration = createSelector(
+const getConfigGroupOpenComponentsConfiguration = createCachedSelector(
 	[getConfigGroup],
 	configGroup => {
 		if (configGroup) {
@@ -120,7 +120,7 @@ const getConfigGroupOpenComponentsConfiguration = createSelector(
 			return null;
 		}
 	}
-);
+)((state, groupKey, path) => `${groupKey}_${path || ''}`);
 
 export default {
 	getComponentConfiguration,
