@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {PresentationMap, ReactLeafletMap} from '@gisatcz/ptr-maps';
+import {PresentationMap, DeckGlMap} from '@gisatcz/ptr-maps';
 import {connects} from '@gisatcz/ptr-state';
 import ComponentRenderer from '../ComponentRenderer';
 
@@ -14,7 +14,7 @@ const OverviewMap = ({overviewMapKey}) => {
 			configurationGroupKey={'mapSetTools'}
 		>
 			<div className={'ptr-OverviewMap'}>
-				<Map mapComponent={ReactLeafletMap} stateMapKey={overviewMapKey} />
+				<Map mapComponent={DeckGlMap} stateMapKey={overviewMapKey} />
 			</div>
 		</ComponentRenderer>
 	);

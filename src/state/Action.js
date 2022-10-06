@@ -157,18 +157,17 @@ function adjustInitialBoxRange(mapKey) {
  * @param viewUpdate {Object} Panther's mapView parameters to update
  */
 function updateMapView(mapKey, viewUpdate) {
-	return (dispatch, getState) => {
-		dispatch(CommonAction.maps.updateMapAndSetView(mapKey, viewUpdate));
+	return CommonAction.maps.updateMapAndSetView(mapKey, viewUpdate);
+}
 
-		// just to be sure, that map view was updated
-		setTimeout(() => {
-			const isInteractivityLimited = Select.worldCereal.isInteractivityLimited(
-				getState()
-			);
-			if (!isInteractivityLimited) {
-				dispatch(productMetadataActions.loadForMapSetView());
-			}
-		}, 10);
+function loadProducts() {
+	return (dispatch, getState) => {
+		const isInteractivityLimited = Select.worldCereal.isInteractivityLimited(
+			getState()
+		);
+		if (!isInteractivityLimited) {
+			dispatch(productMetadataActions.loadForMapSetView());
+		}
 	};
 }
 
@@ -290,5 +289,6 @@ export default {
 		updateMapView,
 		updateOverviewMap,
 		updateMapSetActiveMapView,
+		loadProducts,
 	},
 };

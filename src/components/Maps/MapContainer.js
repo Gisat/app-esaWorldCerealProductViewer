@@ -41,7 +41,12 @@ const mapDispatchToPropsFactory = () => {
 			},
 
 			refreshUse: () => {},
-
+			onZoomEnd: () => {
+				dispatch(Action.worldCereal.loadProducts());
+			},
+			onPanEnd: () => {
+				dispatch(Action.worldCereal.loadProducts());
+			},
 			onViewChange: update => {
 				dispatch(
 					Action.worldCereal.updateMapView(ownProps.stateMapKey, update)

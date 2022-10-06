@@ -16,6 +16,9 @@ const mapDispatchToProps = dispatch => {
 	return {
 		closeOverlay: () => {
 			dispatch(Action.components.set('IntroOverlay', 'open', false));
+
+			//make first load of filtered products
+			dispatch(Action.worldCereal.productMetadata.loadForMapSetView());
 		},
 	};
 };
