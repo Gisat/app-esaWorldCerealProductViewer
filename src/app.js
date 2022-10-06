@@ -8,7 +8,6 @@ import {create as createRouter} from '@gisatcz/ptr-router';
 import {AppContainer} from '@gisatcz/ptr-components';
 
 import Action from './state/Action';
-import Select from './state/Select';
 import {init as initCore} from './core';
 import {appKey} from './constants/app';
 
@@ -36,6 +35,7 @@ function createRoutes() {
  * @param {*} getXUser
  * TODO solve it better. Not every fetch has to be authorised
  */
+// eslint-disable-next-line no-unused-vars
 const setWindowFetch = getXUser => {
 	if (typeof window !== 'undefined') {
 		window.fetch = new Proxy(window.fetch, {
@@ -81,8 +81,9 @@ function initApp(Store, {absPath, isPreloaded, currentUrl, navHandler}) {
 
 	initCore({router});
 
-	//add utils to modify header
-	setWindowFetch(() => Select.users.getActiveKey(Store.getState()));
+	// Uncomment to allow modification of the request headers
+	// add utils to modify header
+	// setWindowFetch(() => Select.users.getActiveKey(Store.getState()));
 
 	if (isPreloaded) {
 		return;

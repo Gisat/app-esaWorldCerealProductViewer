@@ -74,12 +74,8 @@ const MapAttribution = ({backgroundLayer}) => {
 			configurationGroupKey={'mapSetTools'}
 		>
 			<div className="ptr-MapAttribution">
-				<a
-					href="https://leafletjs.com/"
-					target="_blank"
-					rel="noreferrer noopener"
-				>
-					Leaflet
+				<a href="https://deck.gl/" target="_blank" rel="noreferrer noopener">
+					deck.gl
 				</a>{' '}
 				| Background map:{' '}
 				<BackgroundMapAttribution layerKey={backgroundLayer?.key} />
