@@ -11,7 +11,7 @@ import MapTimelineLegend from './MapTimelineLegend';
 import {timelineLayerLineHeight} from '../../constants/app';
 import './style.scss';
 
-const maximumTimelineVisibleRows = 6.5; //number of maximum visible rows
+const maximumTimelineVisibleRows = 8; //number of maximum visible rows
 
 const MapTimelinePresentation = MapTimeline.MapTimelinePresentation;
 const LayerRowPresentation = MapTimeline.LayerRowPresentation;
