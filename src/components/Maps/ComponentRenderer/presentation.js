@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {cloneElement} from 'react';
+import {Children, cloneElement} from 'react';
 
 const ComponentRenderer = ({renderComponent, children, ...restProps}) => {
 	const isActive = restProps.componentConfiguration?.active;
@@ -7,7 +7,13 @@ const ComponentRenderer = ({renderComponent, children, ...restProps}) => {
 		if (renderComponent) {
 			return renderComponent(restProps);
 		} else {
-			return cloneElement(children, restProps);
+			return Children.map(children, child => {
+				if (typeof child.type === 'string') {
+					return child;
+				} else {
+					return cloneElement(child, restProps);
+				}
+			});
 		}
 	} else {
 		return null;
