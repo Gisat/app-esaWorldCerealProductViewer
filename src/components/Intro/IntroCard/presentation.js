@@ -40,7 +40,7 @@ const IntroCard = ({disabled, onClick, Icon, children}) => {
 IntroCard.propTypes = {
 	disabled: PropTypes.bool,
 	onClick: PropTypes.func,
-	Icon: PropTypes.node,
+	Icon: PropTypes.object,
 	children: PropTypes.node,
 };
 

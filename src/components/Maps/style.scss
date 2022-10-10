@@ -7,6 +7,7 @@ $mapBorder: 0.05rem solid var(--base50); // the width in rem fixes the ugly whit
 .worldCereal-ProductViewer .ptr-map-set {
   position: relative;
   z-index: 2;
+  margin-top: -1px;
 }
 
 .worldCereal-ProductViewer .ptr-map-grid .ptr-map-grid-cell .ptr-map {
@@ -24,6 +25,7 @@ $mapBorder: 0.05rem solid var(--base50); // the width in rem fixes the ugly whit
 // Map slider
 .worldCereal-CompareSlider {
   height: 100%;
+  margin-top: -1px;
 }
 
 div[data-rcs="handle-container"] {
