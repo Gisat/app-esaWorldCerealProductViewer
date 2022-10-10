@@ -1,4 +1,5 @@
 import {commonActions, Action as CommonAction} from '@gisatcz/ptr-state';
+import {GL} from '@gisatcz/ptr-maps';
 import {find as _find} from 'lodash';
 import utils from '../../../utils';
 import productMetadataModel from '../../../models/productMetadata';
@@ -119,6 +120,12 @@ function handleDataSourceAndAddtoMap(
 						layers: ds.data.layers,
 					},
 					url: ds.data.url,
+					textureParameters: {
+						[GL.TEXTURE_MIN_FILTER]: GL.NEAREST,
+						[GL.TEXTURE_MAG_FILTER]: GL.NEAREST,
+						[GL.TEXTURE_WRAP_S]: GL.CLAMP_TO_EDGE,
+						[GL.TEXTURE_WRAP_T]: GL.CLAMP_TO_EDGE,
+					},
 				},
 			};
 

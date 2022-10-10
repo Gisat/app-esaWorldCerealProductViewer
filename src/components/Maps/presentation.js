@@ -5,7 +5,7 @@ import {
 	ReactCompareSlider,
 	ReactCompareSliderHandle,
 } from 'react-compare-slider';
-import {MapSet, PresentationMap, ReactLeafletMap} from '@gisatcz/ptr-maps';
+import {MapSet, PresentationMap, DeckGlMap} from '@gisatcz/ptr-maps';
 import MapAttribution from './MapAttribution';
 import MapContainer from './MapContainer';
 import MapSetContainer from './MapSetContainer';
@@ -43,7 +43,7 @@ const Maps = ({mode, maps, viewLimits}) => {
 				<Map
 					wrapper={MapWrapper}
 					wrapperProps={{noTools: true}}
-					mapComponent={ReactLeafletMap}
+					mapComponent={DeckGlMap}
 					stateMapKey={maps[0].key}
 				/>
 			}
@@ -51,7 +51,7 @@ const Maps = ({mode, maps, viewLimits}) => {
 				<Map
 					wrapper={MapWrapper}
 					wrapperProps={{labelsRight: true, noTools: true}}
-					mapComponent={ReactLeafletMap}
+					mapComponent={DeckGlMap}
 					stateMapKey={maps[1].key}
 				>
 					<MapComponentsGroup className="worldCereal-MapInfoElements">
@@ -77,7 +77,7 @@ const Maps = ({mode, maps, viewLimits}) => {
 	) : (
 		<ConnectedMapSet
 			stateMapSetKey="productViewer-mapSet"
-			mapComponent={ReactLeafletMap}
+			mapComponent={DeckGlMap}
 			connectedMapComponent={ConnectedMap}
 			wrapper={MapWrapper}
 		>

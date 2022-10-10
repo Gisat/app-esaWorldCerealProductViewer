@@ -13,7 +13,7 @@ const Filter = () => {
 			retracted
 			centered
 			bottomPosition={10}
-			bodyHeight={14}
+			bodyHeight={8}
 			controlBarContent={<ActiveFilterInfo />}
 		>
 			<ProductFilter />

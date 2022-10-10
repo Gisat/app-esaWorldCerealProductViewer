@@ -40,6 +40,12 @@ const mapDispatchToPropsFactory = () => {
 				onUnmount: () => {
 					dispatch(Action.maps.mapSetUseClear(ownProps.stateMapSetKey));
 				},
+				onZoomEnd: () => {
+					dispatch(Action.worldCereal.loadProducts());
+				},
+				onPanEnd: () => {
+					dispatch(Action.worldCereal.loadProducts());
+				},
 				updateView: (update, mapKey) => {
 					dispatch(Action.worldCereal.updateMapView(mapKey, update));
 					dispatch(Action.worldCereal.updateOverviewMap());

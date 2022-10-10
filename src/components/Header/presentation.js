@@ -24,7 +24,7 @@ const Header = ({openOverlay}) => {
 };
 
 Header.propTypes = {
-	openOverlay: PropTypes.bool,
+	openOverlay: PropTypes.func,
 };
 
 export default Header;
