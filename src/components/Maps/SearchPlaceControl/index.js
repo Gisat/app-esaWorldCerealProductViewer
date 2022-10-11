@@ -13,6 +13,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 				Action.worldCereal.updateMapSetActiveMapView(ownProps.mapSetKey, place)
 			);
 			dispatch(Action.worldCereal.updateOverviewMap());
+			dispatch(Action.worldCereal.loadProducts());
 		},
 	};
 };

@@ -172,7 +172,11 @@ const Timeline = ({
 					<Levels />
 					<Mouse mouseBufferWidth={20} key="mouse" />
 				</MapTimelinePresentation>
-			) : null}
+			) : (
+				<div className="worldCereal-Timeline-noDataInfo">
+					No data in this area.
+				</div>
+			)}
 		</div>
 	);
 };
