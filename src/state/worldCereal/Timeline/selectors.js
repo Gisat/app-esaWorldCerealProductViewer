@@ -68,7 +68,8 @@ const getTimelineLayers = createSelector(
 							activeStates: ['basic'],
 							mapZIndex: index,
 							layerState: {
-								key: product.key, //used only as a key for outline layer
+								layerKey: product.key, //used only as a key for outline layer
+								key: product.data.dataSource.product, //used only as a key for outline layer
 								spatialDataSourceKey: product.data.dataSource.product, //used only as a key fot outline layer
 							},
 						},

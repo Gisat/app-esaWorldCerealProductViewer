@@ -185,7 +185,7 @@ const getMapLayersOpacity = createCachedSelector(
 	],
 	(layers, productMetadataKeys) => {
 		const selectedLayers = layers.filter(layer =>
-			_includes(productMetadataKeys, layer.productMetadataKey)
+			_includes(productMetadataKeys, layer.layerKey)
 		);
 
 		let opacitySum = 0;
