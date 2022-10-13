@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import logoData from './logo';
 import AppConfigurationTool from './AppConfigurationTool';
 import './style.scss';
+import EsaLogo from '../atoms/EsaLogo';
 
 const Header = ({openOverlay}) => {
 	return (
@@ -17,6 +18,7 @@ const Header = ({openOverlay}) => {
 				</h1>
 			</div>
 			<div className="worldCereal-Header-tools">
+				<EsaLogo className="worldCereal-Header-esaLogo" />
 				<AppConfigurationTool />
 			</div>
 		</div>

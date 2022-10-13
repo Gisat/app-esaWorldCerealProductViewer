@@ -1,9 +1,11 @@
-import logo from '../../assets/logo_name.png';
-import IntroCard from './IntroCard';
-import {IntroCardText, IntroCardTitle} from './IntroCard/presentation';
-import './style.scss';
 import PropTypes from 'prop-types';
 import {Search, Globe1, User1, ChartVertical} from 'react-swm-icon-pack';
+import IntroCard from './IntroCard';
+import {IntroCardText, IntroCardTitle} from './IntroCard/presentation';
+import EsaLogo from '../atoms/EsaLogo';
+import logo from '../../assets/logo_name.png';
+
+import './style.scss';
 
 const Intro = ({closeOverlay}) => {
 	return (
@@ -16,11 +18,8 @@ const Intro = ({closeOverlay}) => {
 							World<em>Cereal</em>, global cropland monitoring based on
 							Sentinels
 						</h1>
-						{/*<p>*/}
-						{/*	WorldCereal aims to develop an efficient, agile and robust EO based*/}
-						{/*	system for timely global crop monitoring at field scale.*/}
-						{/*</p>*/}
 					</div>
+					<EsaLogo />
 				</div>
 				<div className="worldCereal-Intro-cards">
 					<IntroCard onClick={closeOverlay} Icon={Search}>

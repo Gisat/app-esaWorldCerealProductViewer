@@ -45,6 +45,14 @@
   color: var(--base10);
 }
 
+.worldCereal-Header-esaLogo {
+  margin-right: .5rem;
+}
+
+.worldCereal-Header-esaLogo > svg {
+  width: 3rem;
+}
+
 .worldCereal-Header-tools {
   display: flex;
   grid-gap: 1rem;
