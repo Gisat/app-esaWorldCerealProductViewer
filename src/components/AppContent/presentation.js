@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import PropTypes from 'prop-types';
 import Header from '../Header';
 import Maps from '../Maps';
 import Filter from '../Filter';
@@ -8,16 +8,26 @@ import IntroOverlay from '../IntroOverlay';
 
 import './style.scss';
 
-const App = () => {
+const App = ({activeView}) => {
+	const view = activeView?.data?.nameInternal;
+
 	return (
 		<div className="worldCereal-ProductViewer">
 			<IntroOverlay />
 			<Header />
 			<Maps />
-			<Filter />
-			<Timeline />
+			{view === 'detailedExploration' ? (
+				<>
+					<Filter />
+					<Timeline />
+				</>
+			) : null}
 		</div>
 	);
+};
+
+App.propTypes = {
+	activeView: PropTypes.object,
 };
 
 export default App;

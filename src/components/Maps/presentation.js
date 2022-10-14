@@ -76,7 +76,7 @@ const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
 		/>
 	) : (
 		<ConnectedMapSet
-			stateMapSetKey="detailedExploration-mapSet"
+			stateMapSetKey={mapSetKey}
 			mapComponent={DeckGlMap}
 			connectedMapComponent={ConnectedMap}
 			wrapper={MapWrapper}

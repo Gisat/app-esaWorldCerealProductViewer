@@ -1,3 +1,4 @@
 import detailedExploration from './detailedExploration';
+import globalView from './globalView';
 
-export default [detailedExploration];
+export default [detailedExploration, globalView];

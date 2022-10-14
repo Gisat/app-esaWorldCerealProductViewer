@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 3.5rem;
+  max-height: 3rem;
   padding: 0 .5rem;
   background: var(--base100);
   box-shadow: 0 0 5px rgba(var(--base100rgb), .25);
