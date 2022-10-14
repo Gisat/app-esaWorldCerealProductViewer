@@ -4,7 +4,7 @@ import {isEmpty as _isEmpty, forIn as _forIn} from 'lodash';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import {Button, Menu, MenuItem} from '@gisatcz/ptr-atoms';
-import MapProductLabel from '../MapProductLabel';
+import MapProductLabel from '../Maps/ProductLabel';
 import {RemovableLabelContainer} from '../atoms/RemovableLabel';
 import {MIN_PRODUCT_MAP_LABELS_FOR_GROUPING} from '../../constants/app';
 

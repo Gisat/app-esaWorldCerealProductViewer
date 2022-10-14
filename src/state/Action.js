@@ -62,6 +62,7 @@ function init(path) {
 		dispatch(resetSession());
 
 		// add & apply view
+		// TODO load view from BE
 		dispatch(CommonAction.views.add(view));
 		dispatch(CommonAction.views.applyAndSetActive(view.key, CommonAction));
 		dispatch(

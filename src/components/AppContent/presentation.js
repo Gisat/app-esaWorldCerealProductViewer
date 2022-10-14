@@ -4,9 +4,9 @@ import Header from '../Header';
 import Maps from '../Maps';
 import Filter from '../Filter';
 import Timeline from '../Timeline';
+import IntroOverlay from '../IntroOverlay';
 
 import './style.scss';
-import IntroOverlay from '../IntroOverlay';
 
 const App = () => {
 	return (
