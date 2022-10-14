@@ -7,7 +7,7 @@ import Presentation from './presentation';
 const mapStateToProps = (state, ownProps) => {
 	return {
 		maps: Select.maps.getMapSetMapKeys(state, ownProps.mapSetKey),
-		mapMode: Select.components.get(state, 'Map', 'mode'),
+		mapMode: Select.components.get(state, 'Maps', 'mode'),
 	};
 };
 

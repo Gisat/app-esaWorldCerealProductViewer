@@ -1,9 +1,9 @@
 import {connect} from '@gisatcz/ptr-state';
 import Select from '../../../state/Select';
 import Presentation from './presentation';
-import {mapSetKey} from '../../../constants/app';
 
 const mapStateToProps = (state, ownProps) => {
+	const mapSetKey = Select.maps.getActiveSetKey(state);
 	const componentConfiguration =
 		Select.worldCereal.configuration.getComponentConfiguration(
 			state,

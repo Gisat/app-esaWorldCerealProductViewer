@@ -4,6 +4,8 @@ import Select from '../../../state/Select';
 import Presentation from './presentation';
 
 const mapStateToProps = state => {
+	const mapSetKey = Select.maps.getActiveSetKey(state);
+
 	return {
 		activeParameter: Select.components.get(
 			state,
@@ -14,7 +16,10 @@ const mapStateToProps = state => {
 			Select.worldCereal.productMetadataFilter.getFilterParametersOrdered(
 				state
 			),
-		isInteractivityLimited: Select.worldCereal.isInteractivityLimited(state),
+		isInteractivityLimited: Select.worldCereal.isInteractivityLimited(
+			state,
+			mapSetKey
+		),
 	};
 };
 

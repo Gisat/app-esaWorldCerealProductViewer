@@ -13,7 +13,7 @@ export default {
 				},
 				configuration: {
 					mapSetTools: {
-						'productViewer-mapSet': {
+						'detailedExploration-mapSet': {
 							open: [
 								'zoomControls',
 								'backgroundLayersControl',
@@ -72,19 +72,15 @@ export default {
 			components: {
 				ProductFilter: {
 					activeParameter: 'product',
-					// parameterOrder: ['product', 'season', 'aez'], //temporary remove "aez"
 					parameterOrder: ['product', 'season'],
 				},
-				Map: {
+				Maps: {
 					mode: 'set',
-				},
-				IntroOverlay: {
-					open: true,
 				},
 			},
 			maps: {
 				activeMapKey: 'ea10b274-dd71-4e58-b627-d2803ab891f7',
-				activeSetKey: 'productViewer-mapSet',
+				activeSetKey: 'detailedExploration-mapSet',
 				maps: {
 					'ea10b274-dd71-4e58-b627-d2803ab891f7': {
 						key: 'ea10b274-dd71-4e58-b627-d2803ab891f7',
@@ -127,8 +123,8 @@ export default {
 					},
 				},
 				sets: {
-					'productViewer-mapSet': {
-						key: 'productViewer-mapSet',
+					'detailedExploration-mapSet': {
+						key: 'detailedExploration-mapSet',
 						activeMapKey: 'ea10b274-dd71-4e58-b627-d2803ab891f7',
 						maps: ['ea10b274-dd71-4e58-b627-d2803ab891f7'],
 						sync: {

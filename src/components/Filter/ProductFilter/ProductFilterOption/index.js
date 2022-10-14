@@ -1,11 +1,12 @@
 import {connect} from '@gisatcz/ptr-state';
 import Action from '../../../../state/Action';
 import Select from '../../../../state/Select';
-import {mapSetKey} from '../../../../constants/app';
 
 import Presentation from './presentation';
 
 const mapStateToProps = (state, ownProps) => {
+	const mapSetKey = Select.maps.getActiveSetKey(state);
+
 	return {
 		selected: Select.worldCereal.productMetadataFilter.isValueInActiveFilter(
 			state,
@@ -23,7 +24,10 @@ const mapStateToProps = (state, ownProps) => {
 			ownProps.parameterKey,
 			ownProps.value
 		),
-		isInteractivityLimited: Select.worldCereal.isInteractivityLimited(state),
+		isInteractivityLimited: Select.worldCereal.isInteractivityLimited(
+			state,
+			mapSetKey
+		),
 	};
 };
 

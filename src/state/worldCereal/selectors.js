@@ -7,7 +7,6 @@ import productMetadataFilterSelectors from './ProductMetadataFilter/selectors';
 import productMetadataSelectors from './ProductMetadata/selectors';
 
 import {
-	mapSetKey,
 	defaultStyleKey,
 	MAX_BOX_RANGE_FOR_LAYERS_HANDLING,
 } from '../../constants/app';
@@ -144,7 +143,10 @@ const getProductMetadataCountForFilterOption = createCachedSelector(
 );
 
 const isInteractivityLimited = createSelector(
-	[state => CommonSelect.maps.getMapSetActiveMapView(state, mapSetKey)],
+	[
+		(state, mapSetKey) =>
+			CommonSelect.maps.getMapSetActiveMapView(state, mapSetKey),
+	],
 	mapView => {
 		return mapView?.boxRange > MAX_BOX_RANGE_FOR_LAYERS_HANDLING;
 	}

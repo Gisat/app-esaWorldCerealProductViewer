@@ -4,7 +4,6 @@ import {Action as CommonAction} from '@gisatcz/ptr-state';
 import productMetadataActions from './ProductMetadata/actions';
 import configurationActions from './configuration/actions';
 import productMetadataFilterActions from './ProductMetadataFilter/actions';
-import {mapSetKey} from '../../constants/app';
 import utils from '../../utils';
 
 /**
@@ -74,8 +73,11 @@ function updateMapView(mapKey, viewUpdate) {
 
 function loadProducts() {
 	return (dispatch, getState) => {
+		const state = getState();
+		const mapSetKey = Select.maps.getActiveSetKey(state);
 		const isInteractivityLimited = Select.worldCereal.isInteractivityLimited(
-			getState()
+			state,
+			mapSetKey
 		);
 		if (!isInteractivityLimited) {
 			dispatch(productMetadataActions.loadForMapSetView());
@@ -89,6 +91,8 @@ function loadProducts() {
  */
 function updateOverviewMap() {
 	return (dispatch, getState) => {
+		const state = getState();
+		const mapSetKey = Select.maps.getActiveSetKey(state);
 		const overviewMapConfig =
 			Select.worldCereal.configuration.getComponentConfiguration(
 				getState(),
@@ -98,12 +102,9 @@ function updateOverviewMap() {
 			);
 
 		if (overviewMapConfig?.active) {
-			const mapSetView = Select.maps.getMapSetActiveMapView(
-				getState(),
-				mapSetKey
-			);
+			const mapSetView = Select.maps.getMapSetActiveMapView(state, mapSetKey);
 			const mapViewport = Select.maps.getMapSetActiveMapViewport(
-				getState(),
+				state,
 				mapSetKey
 			);
 			const view = {...mapSetView};

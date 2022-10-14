@@ -20,7 +20,7 @@ import CompareMapsControl from './CompareMapsControl';
 import AddMapControl from './AddMapControl';
 import SearchPlaceControl from './SearchPlaceControl';
 
-import {mapSetKey, MAX_MAPS_IN_MAP_SET} from '../../constants/app';
+import {MAX_MAPS_IN_MAP_SET} from '../../constants/app';
 
 import './style.scss';
 
@@ -29,7 +29,7 @@ const ConnectedMapSet = MapSetContainer(MapSet);
 
 const Map = MapContainer(PresentationMap);
 
-const Maps = ({mode, maps, viewLimits}) => {
+const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
 	return mode === 'compare' ? (
 		<ReactCompareSlider
 			onlyHandleDraggable
@@ -68,7 +68,7 @@ const Maps = ({mode, maps, viewLimits}) => {
 							maxMapsCount={MAX_MAPS_IN_MAP_SET}
 						/>
 						<CompareMapsControl mapSetKey={mapSetKey} />
-						<BackgroundLayersControl />
+						<BackgroundLayersControl mapSetKey={mapSetKey} />
 						<ZoomControls viewLimits={viewLimits} />
 					</MapComponentsGroup>
 				</Map>
@@ -76,7 +76,7 @@ const Maps = ({mode, maps, viewLimits}) => {
 		/>
 	) : (
 		<ConnectedMapSet
-			stateMapSetKey="productViewer-mapSet"
+			stateMapSetKey="detailedExploration-mapSet"
 			mapComponent={DeckGlMap}
 			connectedMapComponent={ConnectedMap}
 			wrapper={MapWrapper}
@@ -105,6 +105,7 @@ const Maps = ({mode, maps, viewLimits}) => {
 Maps.propTypes = {
 	mode: PropTypes.string,
 	maps: PropTypes.array,
+	mapSetKey: PropTypes.string,
 	viewLimits: PropTypes.object,
 };
 

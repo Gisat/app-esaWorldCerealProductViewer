@@ -5,7 +5,6 @@ import utils from '../../../utils';
 import productMetadataModel from '../../../models/productMetadata';
 import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
-import {mapSetKey} from '../../../constants/app';
 import Action from '../../Action';
 
 const setActiveKeys = commonActions.setActiveKeys(
@@ -31,6 +30,7 @@ function add(items) {
 function loadForMapSetView() {
 	return (dispatch, getState) => {
 		const state = getState();
+		const mapSetKey = Select.maps.getActiveSetKey(state);
 		const viewAsFeature =
 			Select.worldCereal.productMetadata.getMapSetActiveMapExtentAsFeature(
 				state,
@@ -155,9 +155,11 @@ function handleDataSourceAndAddtoMap(
  */
 function handleProductInActiveMap(productMetadataKey, spatialDataSourceKey) {
 	return (dispatch, getState) => {
-		const map = Select.maps.getMapSetActiveMap(getState(), mapSetKey);
+		const state = getState();
+		const mapSetKey = Select.maps.getActiveSetKey(state);
+		const map = Select.maps.getMapSetActiveMap(state, mapSetKey);
 		const productMetadata = Select.worldCereal.productMetadata.getByKey(
-			getState(),
+			state,
 			productMetadataKey
 		);
 
@@ -171,7 +173,7 @@ function handleProductInActiveMap(productMetadataKey, spatialDataSourceKey) {
 		// Remove or add layer(s)
 		if (isLayerPresent) {
 			const existingLayer = Select.maps.getLayerStateByLayerKeyAndMapKey(
-				getState(),
+				state,
 				map.key,
 				spatialDataSourceKey
 			);
