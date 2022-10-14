@@ -13,8 +13,8 @@ import productMetadataFilterActions from './worldCereal/ProductMetadataFilter/ac
 
 // TODO load view from BE
 import view from '../data/view';
-import cases from '../data/cases';
-import styles from '../data/styles';
+import cases from '../data/metadata/cases';
+import styles from '../data/metadata/styles';
 import utils from '../utils';
 
 const getAppEnvConfig = () => {
@@ -42,9 +42,10 @@ function init(path) {
 		dispatch(CommonAction.app.setBaseUrl(path));
 
 		const config = getConfig(getAppEnvConfig());
-
 		dispatch(CommonAction.app.updateLocalConfiguration(config));
 		dispatch(CommonAction.app.setKey(appKey));
+
+		// user
 
 		// const localConfig = Select.app.getCompleteLocalConfiguration(getState());
 		// const {userKey: devUserKey} = localConfig;
@@ -58,7 +59,6 @@ function init(path) {
 		dispatch(
 			CommonAction.users.setActiveKey('3fdd158d-4b78-4d11-92c7-403b4adab4d8')
 		);
-
 		dispatch(resetSession());
 
 		// add & apply view
@@ -79,29 +79,6 @@ function init(path) {
 		// add metadata
 		dispatch(CommonAction.cases.add(cases));
 		dispatch(CommonAction.styles.add(styles));
-
-		// add mock data
-		// dispatch(productMetadataActions.add(productMetadata));
-		// dispatch(productMetadataActions.add(productMetadata_wheat));
-		// dispatch(
-		// 	productMetadataActions.add(productMetadata_annualcropland_diffTimes)
-		// );
-		// dispatch(productMetadataActions.add(productMetadata_france));
-
-		// add random metadata
-		// dispatch(productMetadataActions.add(randomMetadata));
-
-		// add test layers
-		// setTimeout(() => {
-		// 	dispatch(
-		// 		productMetadataActions.addLayersForTiles(
-		// 			'test',
-		// 			france_tiles_test,
-		// 			'annualcropland',
-		// 			Object.keys(view.data.state.maps.maps)[0]
-		// 		)
-		// 	);
-		// }, 500);
 	};
 }
 
