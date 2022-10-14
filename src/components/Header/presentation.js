@@ -5,7 +5,7 @@ import AppConfigurationTool from './AppConfigurationTool';
 import './style.scss';
 import EsaLogo from '../atoms/EsaLogo';
 
-const Header = ({openOverlay}) => {
+const Header = ({openOverlay, viewName}) => {
 	return (
 		<div className="worldCereal-Header">
 			<div className="worldCereal-Header-logo" onClick={openOverlay}>
@@ -14,7 +14,7 @@ const Header = ({openOverlay}) => {
 				</div>
 				<h1>
 					<span>World Cereal</span>
-					<span>Detailed exploration</span>
+					<span>{viewName}</span>
 				</h1>
 			</div>
 			<div className="worldCereal-Header-tools">
@@ -27,6 +27,7 @@ const Header = ({openOverlay}) => {
 
 Header.propTypes = {
 	openOverlay: PropTypes.func,
+	viewName: PropTypes.string,
 };
 
 export default Header;
