@@ -7,7 +7,22 @@ import logo from '../../assets/logo_name.png';
 
 import './style.scss';
 
-const Intro = ({onViewSelect}) => {
+const getIcon = name => {
+	switch (name) {
+		case 'detailedExploration':
+			return Search;
+		case 'globalView':
+			return Globe1;
+		case 'userProducts':
+			return User1;
+		case 'statistics':
+			return ChartVertical;
+		default:
+			return null;
+	}
+};
+
+const Intro = ({onViewSelect, views}) => {
 	return (
 		<div className="worldCereal-Intro">
 			<div className="worldCereal-Intro-content">
@@ -22,10 +37,16 @@ const Intro = ({onViewSelect}) => {
 					<EsaLogo />
 				</div>
 				<div className="worldCereal-Intro-cards">
-					<IntroCard onClick={onViewSelect} Icon={Search}>
-						<IntroCardTitle>Detailed exploration</IntroCardTitle>
-						<IntroCardText>of WorldCereal products</IntroCardText>
-					</IntroCard>
+					{views?.map(view => (
+						<IntroCard
+							key={view.key}
+							onClick={() => onViewSelect(view.key)}
+							Icon={getIcon(view.data.nameInternal)}
+						>
+							<IntroCardTitle>{view.data.nameDisplay}</IntroCardTitle>
+							<IntroCardText>{view.data.description}</IntroCardText>
+						</IntroCard>
+					))}
 					<IntroCard disabled Icon={Globe1}>
 						<IntroCardTitle>Global view </IntroCardTitle>
 						<IntroCardText>on WorldCereal products</IntroCardText>
@@ -48,6 +69,7 @@ const Intro = ({onViewSelect}) => {
 
 Intro.propTypes = {
 	onViewSelect: PropTypes.func,
+	views: PropTypes.array,
 };
 
 export default Intro;

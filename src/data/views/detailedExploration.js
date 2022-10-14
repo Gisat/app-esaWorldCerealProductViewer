@@ -1,8 +1,11 @@
-import backgroundLayers from './layers/backgroundLayers';
+import backgroundLayers from '../layers/backgroundLayers';
 
 export default {
 	key: '371846f9-0270-4e43-a46a-db009cd5946a',
 	data: {
+		nameDisplay: 'Detailed exploration',
+		nameInternal: 'detailedExploration',
+		description: 'of WorldCereal products',
 		state: {
 			worldCereal: {
 				productMetadataFilter: {

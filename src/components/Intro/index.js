@@ -1,16 +1,18 @@
 import {connect} from '@gisatcz/ptr-state';
 import Presentation from './presentation';
-// import Action from '../../state/Action';
-// import Select from '../../state/Select';
+import Action from '../../state/Action';
+import Select from '../../state/Select';
 
-const mapStateToProps = () => {
-	return {};
+const mapStateToProps = state => {
+	return {
+		views: Select.views.getAll(state),
+	};
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
 	return {
-		onViewSelect: () => {
-			ownProps.closeOverlay();
+		onViewSelect: viewKey => {
+			dispatch(Action.worldCereal.applyView(viewKey));
 		},
 	};
 };
