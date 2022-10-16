@@ -13,6 +13,7 @@ import utils from '../../utils';
 function applyView(viewKey) {
 	return (dispatch, getState) => {
 		const view = Select.views.getByKey(getState(), viewKey);
+		const viewName = view?.data?.nameInternal;
 		dispatch(CommonAction.views.applyAndSetActive(viewKey, CommonAction)).then(
 			() => {
 				dispatch(CommonAction.components.set('IntroOverlay', 'open', false));
@@ -22,20 +23,30 @@ function applyView(viewKey) {
 					)
 				);
 
-				// TODO specific for detailedExploration view
-				dispatch(
-					productMetadataFilterActions.setActiveFilter(
-						view.data.state.worldCereal.productMetadataFilter.activeFilter
-					)
-				);
-				dispatch(CommonAction.maps.updateStateFromView(view.data.state.maps));
-
-				// TODO handle differently
-				setTimeout(() => {
-					dispatch(productMetadataActions.loadForMapSetView());
-				}, 1000);
+				if (viewName === 'detailedExploration') {
+					dispatch(applyDetailedExplorationView(view));
+				}
 			}
 		);
+	};
+}
+
+/**
+ * Apply specific actions for detailed exploration view
+ * @param view {Object} detailed exploration view data
+ */
+function applyDetailedExplorationView(view) {
+	return dispatch => {
+		dispatch(
+			productMetadataFilterActions.setActiveFilter(
+				view.data.state.worldCereal.productMetadataFilter.activeFilter
+			)
+		);
+
+		// TODO handle differently
+		setTimeout(() => {
+			dispatch(productMetadataActions.loadForMapSetView());
+		}, 1000);
 	};
 }
 
