@@ -1,0 +1,11 @@
+@import '../../../styles/variables';
+
+.ptr-DeckTooltip {
+	background: var(--base0);
+	max-width: 20rem;
+	border-radius: .25rem;
+	padding: .5rem;
+	box-shadow: $floatingElementShadow;
+	color: $baseTextColor;
+	border: 1px solid var(--base30);
+  }

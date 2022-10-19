@@ -20,6 +20,9 @@ import CompareMapsControl from './CompareMapsControl';
 import AddMapControl from './AddMapControl';
 import SearchPlaceControl from './SearchPlaceControl';
 
+import MapTooltip from './MapTooltip';
+import GetFeatureInfoTooltipContent from './RasterTooltipContent';
+
 import {mapSetKey, MAX_MAPS_IN_MAP_SET} from '../../constants/app';
 
 import './style.scss';
@@ -28,6 +31,14 @@ const ConnectedMap = MapContainer(PresentationMap);
 const ConnectedMapSet = MapSetContainer(MapSet);
 
 const Map = MapContainer(PresentationMap);
+
+const Tooltip = props => {
+	return (
+		<MapTooltip {...props}>
+			<GetFeatureInfoTooltipContent />
+		</MapTooltip>
+	);
+};
 
 const Maps = ({mode, maps, viewLimits}) => {
 	return mode === 'compare' ? (
@@ -76,6 +87,8 @@ const Maps = ({mode, maps, viewLimits}) => {
 		/>
 	) : (
 		<ConnectedMapSet
+			Tooltip={Tooltip}
+			tooltipProps={{}}
 			stateMapSetKey="productViewer-mapSet"
 			mapComponent={DeckGlMap}
 			connectedMapComponent={ConnectedMap}

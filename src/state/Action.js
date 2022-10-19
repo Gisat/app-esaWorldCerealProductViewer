@@ -257,6 +257,25 @@ function setOpacityByLayerKeys(mapKey, layerKeys, opacity) {
 		}
 	};
 }
+function setLayerTooltipByLayerKeys(mapKey, layerKeys, active) {
+	return (dispatch, getState) => {
+		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);
+		if (mapLayers && layerKeys.length) {
+			mapLayers.forEach(layer => {
+				if (layerKeys.indexOf(layer.layerKey) !== -1) {
+					dispatch(
+						CommonAction.maps.setMapLayerOption(
+							mapKey,
+							layer.key,
+							'pickable',
+							active
+						)
+					);
+				}
+			});
+		}
+	};
+}
 
 function updateMapSetActiveMapView(mapSetKey, place) {
 	return (dispatch, getState) => {
@@ -285,6 +304,7 @@ export default {
 
 		adjustInitialBoxRange,
 		setOpacityByLayerKeys,
+		setLayerTooltipByLayerKeys,
 		removeAllLayersFromMapByLayerKeys,
 		updateMapView,
 		updateOverviewMap,

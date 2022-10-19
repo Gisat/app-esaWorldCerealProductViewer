@@ -202,6 +202,26 @@ const getMapLayersOpacity = createCachedSelector(
 		return Math.ceil((opacitySum / selectedLayers.length) * 100);
 	}
 )((state, mapKey) => mapKey);
+const getMapLayersTooltipActive = createCachedSelector(
+	[
+		CommonSelect.maps.getMapLayersStateByMapKey,
+		(state, mapKey, productMetadataKeys) => productMetadataKeys,
+	],
+	(layers, productMetadataKeys) => {
+		const selectedLayers = layers.filter(layer =>
+			_includes(productMetadataKeys, layer.layerKey)
+		);
+
+		let tooltipActive = false;
+		if (selectedLayers.length) {
+			tooltipActive = selectedLayers.some(selectedLayer => {
+				return selectedLayer.options.pickable;
+			});
+		}
+
+		return tooltipActive;
+	}
+)((state, mapKey) => mapKey);
 
 export default {
 	getActiveProductMetadataByActiveFilter,
@@ -210,4 +230,5 @@ export default {
 	getStyleDefinitionByProductTemplateKey,
 	isInteractivityLimited,
 	getMapLayersOpacity,
+	getMapLayersTooltipActive,
 };

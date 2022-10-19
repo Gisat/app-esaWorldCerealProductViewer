@@ -17,6 +17,11 @@ const mapStateToProps = (state, ownProps) => {
 			ownProps.mapKey,
 			ownProps.productMetadataKeys
 		),
+		layerTooltipActive: Select.worldCereal.getMapLayersTooltipActive(
+			state,
+			ownProps.mapKey,
+			ownProps.productMetadataKeys
+		),
 	};
 };
 
@@ -36,6 +41,15 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 					ownProps.mapKey,
 					ownProps.productMetadataKeys,
 					opacity / 100
+				)
+			);
+		},
+		onLayerTooltipActiveChange: active => {
+			dispatch(
+				Action.worldCereal.setLayerTooltipByLayerKeys(
+					ownProps.mapKey,
+					ownProps.productMetadataKeys,
+					active
 				)
 			);
 		},
