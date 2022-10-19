@@ -6,14 +6,14 @@ import Presentation from './presentation';
 const mapStateToProps = (state, ownProps) => {
 	return {
 		maps: Select.maps.getMapSetMapKeys(state, ownProps.mapSetKey),
-		mapMode: Select.components.get(state, 'Map', 'mode'),
+		mapMode: Select.components.get(state, 'Maps', 'mode'),
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
 		setMapMode: mode => {
-			dispatch(Action.components.set('Map', 'mode', mode));
+			dispatch(Action.components.set('Maps', 'mode', mode));
 		},
 	};
 };

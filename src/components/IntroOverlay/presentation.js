@@ -3,14 +3,14 @@ import classNames from 'classnames';
 import Intro from '../Intro';
 import './style.scss';
 
-const IntroOverlay = ({closeOverlay, open}) => {
+const IntroOverlay = ({open}) => {
 	const classes = classNames('worldCereal-IntroOverlay', {
 		'is-open': open,
 	});
 
 	return (
 		<div className={classes}>
-			<Intro closeOverlay={closeOverlay} />
+			<Intro />
 		</div>
 	);
 };

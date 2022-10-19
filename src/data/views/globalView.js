@@ -1,8 +1,11 @@
-import backgroundLayers from './layers/backgroundLayers';
+import backgroundLayers from '../layers/backgroundLayers';
 
 export default {
-	key: '371846f9-0270-4e43-a46a-db009cd5946a',
+	key: 'fc3aac1e-ffb2-4925-ae38-c95b8e8311c7',
 	data: {
+		nameDisplay: 'Global view',
+		nameInternal: 'globalView',
+		description: 'on WorldCereal products',
 		state: {
 			worldCereal: {
 				productMetadataFilter: {
@@ -10,34 +13,22 @@ export default {
 				},
 				configuration: {
 					mapSetTools: {
-						'productViewer-mapSet': {
+						'globalView-mapSet': {
 							open: [
 								'zoomControls',
 								'backgroundLayersControl',
-								'addMap',
-								'compareMaps',
 								'mapAttribution',
 								'scale',
-								'overviewMap',
 								'searchPlace',
+								'overviewMap',
 							],
 							available: [
 								'searchPlace',
-								'addMap',
-								'compareMaps',
 								'backgroundLayersControl',
 								'zoomControls',
 								'overviewMap',
 							],
 							componentsByKey: {
-								addMap: {
-									icon: 'ri-add-map',
-									title: 'Add map',
-								},
-								compareMaps: {
-									icon: 'ri-compare',
-									title: 'Compare maps',
-								},
 								zoomControls: {
 									icon: 'plus-thick',
 									title: 'Zoom controls',
@@ -66,25 +57,12 @@ export default {
 					},
 				},
 			},
-			components: {
-				ProductFilter: {
-					activeParameter: 'product',
-					// parameterOrder: ['product', 'season', 'aez'], //temporary remove "aez"
-					parameterOrder: ['product', 'season'],
-				},
-				Map: {
-					mode: 'set',
-				},
-				IntroOverlay: {
-					open: true,
-				},
-			},
 			maps: {
-				activeMapKey: 'ea10b274-dd71-4e58-b627-d2803ab891f7',
-				activeSetKey: 'productViewer-mapSet',
+				activeMapKey: '60ce4b74-d3ce-4f8b-a160-676fd0c6e0b7',
+				activeSetKey: 'globalView-mapSet',
 				maps: {
-					'ea10b274-dd71-4e58-b627-d2803ab891f7': {
-						key: 'ea10b274-dd71-4e58-b627-d2803ab891f7',
+					'60ce4b74-d3ce-4f8b-a160-676fd0c6e0b7': {
+						key: '60ce4b74-d3ce-4f8b-a160-676fd0c6e0b7',
 					},
 					overview: {
 						key: 'overview',
@@ -124,16 +102,16 @@ export default {
 					},
 				},
 				sets: {
-					'productViewer-mapSet': {
-						key: 'productViewer-mapSet',
-						activeMapKey: 'ea10b274-dd71-4e58-b627-d2803ab891f7',
-						maps: ['ea10b274-dd71-4e58-b627-d2803ab891f7'],
+					'globalView-mapSet': {
+						key: 'globalView-mapSet',
+						activeMapKey: '60ce4b74-d3ce-4f8b-a160-676fd0c6e0b7',
+						maps: ['60ce4b74-d3ce-4f8b-a160-676fd0c6e0b7'],
 						sync: {
 							center: true,
 							boxRange: true,
 						},
 						data: {
-							backgroundLayer: backgroundLayers.esri_WorldImagery,
+							backgroundLayer: backgroundLayers.esri_WorldTopoMap,
 							view: {
 								boxRange: 835000,
 								center: {

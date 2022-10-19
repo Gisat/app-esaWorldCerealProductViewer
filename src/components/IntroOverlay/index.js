@@ -1,6 +1,5 @@
 import {connect} from '@gisatcz/ptr-state';
 import Presentation from './presentation';
-import Action from '../../state/Action';
 import Select from '../../state/Select';
 
 const mapStateToProps = state => {
@@ -12,15 +11,4 @@ const mapStateToProps = state => {
 	};
 };
 
-const mapDispatchToProps = dispatch => {
-	return {
-		closeOverlay: () => {
-			dispatch(Action.components.set('IntroOverlay', 'open', false));
-
-			//make first load of filtered products
-			dispatch(Action.worldCereal.productMetadata.loadForMapSetView());
-		},
-	};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Presentation);
+export default connect(mapStateToProps)(Presentation);

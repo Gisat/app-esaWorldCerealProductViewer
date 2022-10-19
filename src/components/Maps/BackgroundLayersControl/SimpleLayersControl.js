@@ -3,10 +3,9 @@ import {SimpleLayersControl} from '@gisatcz/ptr-maps';
 import Select from '../../../state/Select';
 import Action from '../../../state/Action';
 import backgroundLayers from '../../../data/layers/backgroundLayers';
-import {mapSetKey} from '../../../constants/app';
 
-const mapStateToProps = state => {
-	const mapSet = Select.maps.getMapSetByKey(state, mapSetKey);
+const mapStateToProps = (state, ownProps) => {
+	const mapSet = Select.maps.getMapSetByKey(state, ownProps.mapSetKey);
 
 	return {
 		activeLayerTemplateKey: mapSet?.data?.backgroundLayer?.key,
@@ -22,12 +21,12 @@ const mapStateToProps = state => {
 	};
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onSelect: layerKey => {
 			dispatch(
 				Action.maps.setMapSetBackgroundLayer(
-					mapSetKey,
+					ownProps.mapSetKey,
 					backgroundLayers[layerKey]
 				)
 			);

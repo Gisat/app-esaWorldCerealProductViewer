@@ -18,7 +18,7 @@ const MapWrapper = ({
 	removeMap,
 	mapSetMapKeys,
 	productsMetadata,
-	// removeAllLayers,
+	removeAllLayers,
 	noTools,
 	labelsRight,
 }) => {
@@ -74,23 +74,20 @@ const MapWrapper = ({
 			) : null}
 			{!noTools ? (
 				<div className="worldCereal-MapTools">
-					{/*<Button*/}
-					{/*	title="Options"*/}
-					{/*	onClick={() => {}}*/}
-					{/*	icon="dots"*/}
-					{/*	invisible*/}
-					{/*	small*/}
-					{/*	className="worldCereal-MapToolsButton"*/}
-					{/*>*/}
-					{/*	<Menu left>*/}
-					{/*		<MenuItem*/}
-					{/*			disabled={noMetadata}*/}
-					{/*			onClick={() => removeAllLayers(mapKey)}*/}
-					{/*		>*/}
-					{/*			Remove all layers*/}
-					{/*		</MenuItem>*/}
-					{/*	</Menu>*/}
-					{/*</Button>*/}
+					{!noMetadata ? (
+						<IconTool
+							className="worldCereal-RemoveMapIcon"
+							tooltip={{
+								text: 'Remove all layers',
+								position: 'left',
+								component: Tooltip,
+							}}
+							onClick={() => removeAllLayers(mapKey)}
+							floating
+							medium
+							icon="ri-remove-layers"
+						/>
+					) : null}
 					{mapSetMapKeys?.length > 1 ? (
 						<IconTool
 							className="worldCereal-RemoveMapIcon"

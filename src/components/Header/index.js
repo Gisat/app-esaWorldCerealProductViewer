@@ -2,9 +2,12 @@ import {connect} from '@gisatcz/ptr-state';
 
 import Presentation from './presentation';
 import Action from '../../state/Action';
+import Select from '../../state/Select';
 
-const mapStateToProps = () => {
-	return {};
+const mapStateToProps = state => {
+	return {
+		viewName: Select.views.getActive(state)?.data?.nameDisplay,
+	};
 };
 
 const mapDispatchToProps = dispatch => {

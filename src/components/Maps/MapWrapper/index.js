@@ -3,9 +3,10 @@ import Action from '../../../state/Action';
 import Select from '../../../state/Select';
 
 import Presentation from './presentation';
-import {mapSetKey} from '../../../constants/app';
 
 const mapStateToProps = (state, ownProps) => {
+	const mapSetKey = Select.maps.getActiveSetKey(state);
+
 	return {
 		activeMapKey: Select.maps.getMapSetActiveMapKey(state, mapSetKey),
 		mapSetMapKeys: Select.maps.getMapSetMapKeys(state, mapSetKey),

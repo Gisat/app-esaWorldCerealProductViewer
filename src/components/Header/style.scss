@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 3.5rem;
+  max-height: 3rem;
   padding: 0 .5rem;
   background: var(--base100);
   box-shadow: 0 0 5px rgba(var(--base100rgb), .25);
@@ -43,6 +43,14 @@
 .worldCereal-Header-logo h1 span:first-child {
   border-right: 2px solid var(--base40);
   color: var(--base10);
+}
+
+.worldCereal-Header-esaLogo {
+  margin-right: .5rem;
+}
+
+.worldCereal-Header-esaLogo > svg {
+  width: 3rem;
 }
 
 .worldCereal-Header-tools {

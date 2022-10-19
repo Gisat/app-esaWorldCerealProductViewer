@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import Helmet from 'react-helmet';
 import Favicon from 'react-favicon';
 
 import {connects, setFetch} from '@gisatcz/ptr-state';
@@ -98,7 +97,6 @@ const App = () => {
 	return (
 		<>
 			<Favicon url={favicon} />
-			<Helmet defaultTitle="WorldCereal | Product Viewer" />
 			<ConnectedAppContainer appKey={appKey}>
 				<AppContent />
 			</ConnectedAppContainer>

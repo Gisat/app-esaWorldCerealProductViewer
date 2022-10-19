@@ -11,7 +11,7 @@ import MapTimelineLegend from './MapTimelineLegend';
 import {timelineLayerLineHeight} from '../../constants/app';
 import './style.scss';
 
-const maximumTimelineVisibleRows = 6.5; //number of maximum visible rows
+const maximumTimelineVisibleRows = 8; //number of maximum visible rows
 
 const MapTimelinePresentation = MapTimeline.MapTimelinePresentation;
 const LayerRowPresentation = MapTimeline.LayerRowPresentation;
@@ -41,8 +41,8 @@ const LayerRowComponentWrapped = props => (
 );
 
 const timelinePeriod = {
-	start: '2018-05-01',
-	end: '2021-12-31',
+	start: '2020-02-01',
+	end: '2022-03-31',
 };
 
 const LEVELS = [
@@ -172,7 +172,11 @@ const Timeline = ({
 					<Levels />
 					<Mouse mouseBufferWidth={20} key="mouse" />
 				</MapTimelinePresentation>
-			) : null}
+			) : (
+				<div className="worldCereal-Timeline-noDataInfo">
+					No data in this area.
+				</div>
+			)}
 		</div>
 	);
 };

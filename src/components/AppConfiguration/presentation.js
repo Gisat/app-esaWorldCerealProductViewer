@@ -1,11 +1,11 @@
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {Icon} from '@gisatcz/visat-components';
 import AppConfigurationSection from './AppConfigurationSection';
 import AppComponentsConfiguration from './AppComponentsConfiguration';
-import {mapSetKey} from '../../constants/app';
 import './style.scss';
 
-const AppConfiguration = () => {
+const AppConfiguration = ({mapSetKey}) => {
 	const classes = classnames('worldCereal-AppConfiguration', {});
 
 	return (
@@ -26,6 +26,8 @@ const AppConfiguration = () => {
 	);
 };
 
-AppConfiguration.propTypes = {};
+AppConfiguration.propTypes = {
+	mapSetKey: PropTypes.string,
+};
 
 export default AppConfiguration;
