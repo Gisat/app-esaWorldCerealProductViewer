@@ -1,11 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
-import Header from '../Header';
 import Maps from '../Maps';
-import Filter from '../Filter';
-import Timeline from '../Timeline';
 import IntroOverlay from '../IntroOverlay';
+import Header from '../views/common/Header';
+import Filter from '../views/detailedExploarion/Filter';
+import Timeline from '../views/detailedExploarion/Timeline';
 
 import './style.scss';
 
