@@ -64,7 +64,7 @@ const RasterContentWrapper = ({event, timeout = 200, children}) => {
 	const getChildren = () => {
 		switch (status) {
 			case 'EMPTY':
-				return <span className="info">Nothing received</span>;
+				return <span className="info">No data for this position</span>;
 			case 'LOADING':
 			case 'RECEIVED':
 			case 'PENDING':
