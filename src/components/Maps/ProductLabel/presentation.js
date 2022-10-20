@@ -53,7 +53,7 @@ const ProductLabel = ({
 						color={color}
 					/>
 				</ExpandableLabelHeader>
-				<ExpandableLabelBody height={styleForLegend ? 9.5 : 6}>
+				<ExpandableLabelBody height={styleForLegend ? 11.5 : 8}>
 					<div className="worldCereal-ProductLabelBody">
 						<div>
 							<ProductLabelBodyItem title="Set opacity">

@@ -11,10 +11,12 @@ const SingleProductLabelHeader = ({
 }) => {
 	return (
 		<div className="worldCereal-ProductLabelHeader">
-			<div
-				className="worldCereal-ProductLabelHeader-color"
-				style={{background: color}}
-			/>
+			{color ? (
+				<div
+					className="worldCereal-ProductLabelHeader-color"
+					style={{background: color}}
+				/>
+			) : null}
 			<div className="worldCereal-ProductLabelHeader-body">
 				<div className="worldCereal-ProductLabelHeader-title">
 					<span className="worldCereal-ProductLabelHeader-product">
@@ -55,10 +57,9 @@ const ProductTooltipContent = ({
 				zone={productMetadata?.data?.aez}
 				start={productMetadata?.data?.sos}
 				end={productMetadata?.data?.eos}
-				color={productTemplate?.data?.color}
 			>
 				<>
-					<ProductLabelLegendItem k color={`rgba(${color})`} name={value} />
+					<ProductLabelLegendItem color={`rgba(${color})`} name={value} />
 				</>
 			</SingleProductLabelHeader>
 		</>

@@ -25,14 +25,7 @@
 }
 
 .worldCereal-ProductLabelLegendItem{
-		display: flex;
-		flex-flow: row-reverse;
 		color: var(--base20);
-		justify-content: end;
-
-		> div{
-			margin-left: .8rem;
-		}
 	}
 
 	.worldCereal-ProductLabelHeader{
