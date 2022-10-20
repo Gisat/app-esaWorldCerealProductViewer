@@ -9,6 +9,38 @@ import IntroOverlay from '../IntroOverlay';
 
 import './style.scss';
 
+const getContent = view => {
+	switch (view) {
+		case 'detailedExploration':
+			return (
+				<>
+					<Header />
+					<Maps />
+					<Filter />
+					<Timeline />
+				</>
+			);
+		case 'globalView':
+			return (
+				<>
+					<Header />
+					<Maps />
+					{/*<GlobalProducts/>*/}
+				</>
+			);
+		case 'statistics':
+			return (
+				<>
+					<Header />
+					<Maps />
+					{/*<Analytics/>*/}
+				</>
+			);
+		default:
+			return null;
+	}
+};
+
 const App = ({activeView, open}) => {
 	const view = activeView?.data?.nameInternal;
 	const title = activeView?.data?.nameDisplay;
@@ -20,14 +52,7 @@ const App = ({activeView, open}) => {
 			/>
 			<div className="worldCereal-ProductViewer">
 				<IntroOverlay />
-				<Header />
-				<Maps />
-				{view === 'detailedExploration' ? (
-					<>
-						<Filter />
-						<Timeline />
-					</>
-				) : null}
+				{getContent(view)}
 			</div>
 		</>
 	);

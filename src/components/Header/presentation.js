@@ -13,7 +13,7 @@ const Header = ({openOverlay, viewName}) => {
 					<img src={`data:image/jpeg;base64,${logoData}`} />
 				</div>
 				<h1>
-					<span>World Cereal</span>
+					<span>WorldCereal</span>
 					<span>{viewName}</span>
 				</h1>
 			</div>
