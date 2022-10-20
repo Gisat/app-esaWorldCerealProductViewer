@@ -1,7 +1,13 @@
 import {cloneElement} from 'react';
 import PropTypes from 'prop-types';
 import GetFeatureInfoTooltip from '../GetFeatureInfoTooltip';
-const RasterMapTooltip = ({children, onLoadEnd, round, ...props}) => {
+const RasterMapTooltip = ({
+	children,
+	onLoadEnd,
+	onLoadStart,
+	round,
+	...props
+}) => {
 	const viewport = props?.layer?.layer?.context?.viewport;
 	const bbox = viewport && viewport.getBounds();
 	const coordinates = props.layer.coordinate;
@@ -25,6 +31,7 @@ const RasterMapTooltip = ({children, onLoadEnd, round, ...props}) => {
 			y={props.event.y}
 			crs={'EPSG:4326'}
 			onLoadEnd={onLoadEnd}
+			onLoadStart={onLoadStart}
 			round={round}
 		>
 			{childWithProps}
@@ -41,6 +48,7 @@ RasterMapTooltip.propTypes = {
 	mapKey: PropTypes.string,
 	layer: PropTypes.object,
 	onLoadEnd: PropTypes.func,
+	onLoadStart: PropTypes.func,
 	round: PropTypes.number,
 };
 

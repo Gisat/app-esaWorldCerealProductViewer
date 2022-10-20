@@ -37,6 +37,7 @@ const GetFeatureInfoTooltip = ({
 	crs,
 	children,
 	onLoadEnd,
+	onLoadStart,
 	round,
 }) => {
 	const [jsonResponse, setJsonResponse] = useState([]);
@@ -61,6 +62,7 @@ const GetFeatureInfoTooltip = ({
 	};
 
 	useEffect(() => {
+		onLoadStart(round);
 		queryData();
 	}, [x, y]);
 
@@ -84,6 +86,7 @@ GetFeatureInfoTooltip.propTypes = {
 	crs: PropTypes.string,
 	children: PropTypes.node,
 	onLoadEnd: PropTypes.func,
+	onLoadStart: PropTypes.func,
 	round: PropTypes.number,
 };
 
