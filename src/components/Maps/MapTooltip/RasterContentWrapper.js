@@ -86,20 +86,16 @@ const RasterContentWrapper = ({event, timeout = 200, children}) => {
 						})
 					);
 					if (status === 'LOADING' || status === 'PENDING') {
-						childrens.push(<span className="info">Loading</span>);
+						childrens.push(<span className="info">Loading...</span>);
 					}
 					return childrens;
 				} else {
 					return (
-						<span className="info">
-							Hold mouse on same position to get info
-						</span>
+						<span className="info">Don&#39;t move cursor to get info</span>
 					);
 				}
 			case 'HOVERING':
-				return (
-					<span className="info">Hold mouse on same position to get info</span>
-				);
+				return <span className="info">Don&#39;t move cursor to get info</span>;
 		}
 	};
 
