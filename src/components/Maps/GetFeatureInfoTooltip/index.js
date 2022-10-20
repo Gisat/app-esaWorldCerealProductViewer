@@ -53,12 +53,16 @@ const GetFeatureInfoTooltip = ({
 			y,
 			crs
 		);
-		const response = await fetch(queryUrl);
-		let responseText = await response.text();
-		responseText = responseText.replaceAll(/\n/g, '').replaceAll('}{', '},{');
-		const parsedResponse = JSON.parse(`[${responseText}]`);
-		setJsonResponse(parsedResponse);
-		onLoadEnd(round, parsedResponse.length > 0);
+		try {
+			const response = await fetch(queryUrl);
+			let responseText = await response.text();
+			responseText = responseText.replaceAll(/\n/g, '').replaceAll('}{', '},{');
+			const parsedResponse = JSON.parse(`[${responseText}]`);
+			setJsonResponse(parsedResponse);
+			onLoadEnd(round, parsedResponse.length > 0);
+		} catch (error) {
+			onLoadEnd(round, false);
+		}
 	};
 
 	useEffect(() => {

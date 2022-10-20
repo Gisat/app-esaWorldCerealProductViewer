@@ -1,13 +1,39 @@
 @import '../../../styles/variables';
 
 .ptr-DeckTooltip {
-	background: var(--base0);
+	backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: .25rem;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+
+
+
 	max-width: 20rem;
-	border-radius: .25rem;
+	// border-radius: .25rem;
 	box-shadow: $floatingElementShadow;
-	color: $baseTextColor;
-	border: 1px solid var(--base30);
+	// color: $baseTextColor;
+	// border: 1px solid var(--base30);
 	border-left: none;
+	color: var(--base30);
+
+	.worldCereal-ProductLabelHeader{
+		// width: 100%;
+	}
+.worldCereal-ProductLabelHeader-body{
+	width: 100%;
+}
+
+.worldCereal-ProductLabelLegendItem{
+		display: flex;
+		flex-flow: row-reverse;
+		color: var(--base20);
+		justify-content: end;
+
+		> div{
+			margin-left: .8rem;
+		}
+	}
 
 	.worldCereal-ProductLabelHeader{
 		border-right: none;

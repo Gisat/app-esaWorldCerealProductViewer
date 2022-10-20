@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import {ProductLabelLegendItem} from '../ProductLabel/presentation';
-import './style.scss';
 
 const SingleProductLabelHeader = ({
 	product,
