@@ -1,56 +1,52 @@
 @import '../../../styles/variables';
 
 .ptr-DeckTooltip {
-	backdrop-filter: blur(6px) saturate(180%);
-    -webkit-backdrop-filter: blur(6px) saturate(180%);
-    background-color: rgba(17, 25, 40, 0.75);
-    border-radius: .25rem;
-    border: 1px solid rgba(255, 255, 255, 0.125);
+  backdrop-filter: blur(6px) saturate(180%);
+  -webkit-backdrop-filter: blur(6px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  border-radius: .25rem;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  max-width: 20rem;
+  box-shadow: $floatingElementShadow;
+  border-left: none;
+  color: var(--base30);
 
-
-
-	max-width: 20rem;
-	// border-radius: .25rem;
-	box-shadow: $floatingElementShadow;
-	// color: $baseTextColor;
-	// border: 1px solid var(--base30);
-	border-left: none;
-	color: var(--base30);
-
-	.worldCereal-ProductLabelHeader{
-		// width: 100%;
-	}
-.worldCereal-ProductLabelHeader-body{
-	width: 100%;
-}
-
-.worldCereal-ProductLabelLegendItem{
-		color: var(--base20);
-	}
-
-	.worldCereal-ProductLabelHeader{
-		border-right: none;
-	}
-
-	.worldCereal-ProductLabelHeader-color{
-		border-top-left-radius: 0px;
-		border-bottom-left-radius: 0px;
-	}
-
-
-	.ptr-FeatureTooltip-content:first-of-type{
-		.worldCereal-ProductLabelHeader-color{
-			border-top-left-radius: .25rem;
-		}
-	}
-	.ptr-FeatureTooltip-content:last-of-type .worldCereal-ProductLabelHeader-color{
-			border-bottom-left-radius: .25rem;
-	}
-
-	.info{
-		display: flex;;
-		padding: .5rem;
-		font-size: $b1;
-		font-style: italic;
-	}
+  .worldCereal-ProductLabelHeader {
+    // width: 100%;
   }
+
+  .worldCereal-ProductLabelHeader-body {
+    width: 100%;
+  }
+
+  .worldCereal-ProductLabelLegendItem {
+    color: var(--base20);
+  }
+
+  .worldCereal-ProductLabelHeader {
+    border-right: none;
+  }
+
+  .worldCereal-ProductLabelHeader-color {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+
+
+  .ptr-FeatureTooltip-content:first-of-type {
+    .worldCereal-ProductLabelHeader-color {
+      border-top-left-radius: .25rem;
+    }
+  }
+
+  .ptr-FeatureTooltip-content:last-of-type .worldCereal-ProductLabelHeader-color {
+    border-bottom-left-radius: .25rem;
+  }
+
+  .info {
+    display: flex;;
+    padding: .5rem;
+    font-size: $b1;
+    font-style: italic;
+  }
+}
