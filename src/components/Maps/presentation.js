@@ -101,7 +101,7 @@ const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
 					maxMapsCount={MAX_MAPS_IN_MAP_SET}
 				/>
 				<CompareMapsControl mapSetKey={mapSetKey} />
-				<BackgroundLayersControl />
+				<BackgroundLayersControl mapSetKey={mapSetKey} />
 				<ZoomControls viewLimits={viewLimits} />
 			</MapComponentsGroup>
 			<MapComponentsGroup className="worldCereal-MapInfoElements">
