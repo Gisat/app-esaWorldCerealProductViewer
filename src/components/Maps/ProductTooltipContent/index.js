@@ -12,9 +12,14 @@ const mapStateToProps = (state, ownProps) => {
 		state,
 		productMetadata?.data?.product
 	);
+	const value = Select.worldCereal.getMapValue(
+		productTemplate.key,
+		ownProps.response.value_list
+	);
 	return {
 		productMetadata,
 		productTemplate,
+		value,
 	};
 };
 

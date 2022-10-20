@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
+import {ProductLabelLegendItem} from '../ProductLabel/presentation';
 import './style.scss';
-// import {zones} from '../../enumerations';
 
 const SingleProductLabelHeader = ({
 	product,
@@ -45,9 +45,9 @@ SingleProductLabelHeader.propTypes = {
 
 const ProductTooltipContent = ({
 	productTemplate,
-	response,
 	productMetadata,
 	color,
+	value,
 }) => {
 	return (
 		<>
@@ -59,13 +59,7 @@ const ProductTooltipContent = ({
 				color={productTemplate?.data?.color}
 			>
 				<>
-					<span
-						className="dot"
-						style={{
-							backgroundColor: `rgba(${color})`,
-						}}
-					></span>
-					value: {response.value_list}
+					<ProductLabelLegendItem k color={`rgba(${color})`} name={value} />
 				</>
 			</SingleProductLabelHeader>
 		</>
@@ -79,6 +73,7 @@ ProductTooltipContent.propTypes = {
 	productTemplate: PropTypes.object,
 	productMetadata: PropTypes.object,
 	color: PropTypes.string,
+	value: PropTypes.string,
 };
 
 export default ProductTooltipContent;

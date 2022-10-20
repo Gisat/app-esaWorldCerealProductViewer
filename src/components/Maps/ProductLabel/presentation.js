@@ -253,7 +253,7 @@ ProductLabelLegend.propTypes = {
 	}),
 };
 
-const ProductLabelLegendItem = ({color, name}) => {
+export const ProductLabelLegendItem = ({color, name}) => {
 	return (
 		<div className="worldCereal-ProductLabelLegendItem">
 			<div style={{background: color}} />
