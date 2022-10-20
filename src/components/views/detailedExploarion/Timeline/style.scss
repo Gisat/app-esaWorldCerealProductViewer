@@ -111,3 +111,26 @@
   }
 
 }
+
+.ptr-maptimeline .ptr-popup{
+	backdrop-filter: blur(6px) saturate(180%);
+    -webkit-backdrop-filter: blur(6px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: .25rem;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+
+    color: var(--base30);
+    
+    .ptr-timeline-tooltip-layer{
+      color: var(--base30);
+    }
+
+    .ptr-timeline-tooltip-layer > div:nth-child(2) {
+      color: var(--base50);
+      
+      em{
+        color: var(--base30);
+
+      }
+    }
+}
