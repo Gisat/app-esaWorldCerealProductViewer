@@ -1,11 +1,13 @@
 // eslint-disable-next-line no-unused-vars
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
+import {AdjustableColumns} from '@gisatcz/ptr-atoms';
 import Maps from '../Maps';
 import IntroOverlay from '../IntroOverlay';
 import Header from '../views/common/Header';
 import Filter from '../views/detailedExploarion/Filter';
 import Timeline from '../views/detailedExploarion/Timeline';
+import AnalyticsPanel from '../views/statistics/AnalyticsPanel';
 
 import './style.scss';
 
@@ -32,8 +34,22 @@ const getContent = view => {
 			return (
 				<>
 					<Header />
-					<Maps />
-					{/*<Analytics/>*/}
+					<AdjustableColumns
+						fixed
+						content={[
+							{
+								width: '35%',
+								minWidth: '25rem',
+								maxWidth: '35rem',
+								className: 'worldCereal-statistics-analytics-column',
+								component: AnalyticsPanel,
+							},
+							{
+								component: Maps,
+								className: 'worldCereal-statistics-map-column',
+							},
+						]}
+					/>
 				</>
 			);
 		default:

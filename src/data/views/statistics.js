@@ -59,9 +59,9 @@ export default {
 						data: {
 							backgroundLayer: backgroundLayers.openStreetMap_Mapnik,
 							view: {
-								boxRange: 10000000,
+								boxRange: 12000000,
 								center: {
-									lat: 20,
+									lat: 40,
 									lon: 0,
 								},
 							},
