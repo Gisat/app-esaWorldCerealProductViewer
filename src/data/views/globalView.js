@@ -18,6 +18,8 @@ export default {
 								'zoomControls',
 								'backgroundLayersControl',
 								'mapAttribution',
+								'addMap',
+								'compareMaps',
 								'scale',
 								'searchPlace',
 								'overviewMap',
@@ -25,6 +27,8 @@ export default {
 							available: [
 								'searchPlace',
 								'backgroundLayersControl',
+								'addMap',
+								'compareMaps',
 								'zoomControls',
 								'overviewMap',
 							],
@@ -51,6 +55,14 @@ export default {
 								overviewMap: {
 									icon: 'ri-square',
 									title: 'Overview map',
+								},
+								addMap: {
+									icon: 'ri-add-map',
+									title: 'Add map',
+								},
+								compareMaps: {
+									icon: 'ri-compare',
+									title: 'Compare maps',
 								},
 							},
 						},

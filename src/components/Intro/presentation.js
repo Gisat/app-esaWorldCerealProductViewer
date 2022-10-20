@@ -51,10 +51,6 @@ const Intro = ({onViewSelect, views}) => {
 						<IntroCardTitle>User products</IntroCardTitle>
 						<IntroCardText>exploration</IntroCardText>
 					</IntroCard>
-					<IntroCard disabled Icon={ChartVertical}>
-						<IntroCardTitle>Statistics</IntroCardTitle>
-						<IntroCardText>based on WorldCereal products</IntroCardText>
-					</IntroCard>
 				</div>
 				<div className="worldCereal-Intro-body"></div>
 				<div className="worldCereal-Intro-footer"></div>
