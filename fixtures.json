@@ -1,0 +1,30 @@
+{
+    "metadata": {
+        "cases": [
+            {
+                "key": "577b253f-754f-421e-94a2-092f092b4947",
+                "data": {
+                    "applicationKey": "esaWorldCerealProductViewer",
+                    "nameDisplay": "Annual cropland",
+                    "nameInternal": "case_annualCropland"
+                }
+            },
+            {
+                "key": "33caa296-cf88-4d5c-a67d-ffba11376d4a",
+                "data": {
+                    "applicationKey": "esaWorldCerealProductViewer",
+                    "nameDisplay": "Active cropland",
+                    "nameInternal": "case_activeCropland"
+                }
+            },
+            {
+                "key": "66f490a6-d8df-45a3-adcb-d3648715ddd5",
+                "data": {
+                    "applicationKey": "esaWorldCerealProductViewer",
+                    "nameDisplay": "Active irrigation",
+                    "nameInternal": "case_activeIrrigation"
+                }
+            }
+        ]
+    }
+}
