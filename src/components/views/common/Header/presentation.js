@@ -3,17 +3,13 @@ import PropTypes from 'prop-types';
 import logoData from './logo';
 import AppConfigurationTool from './AppConfigurationTool';
 import EsaLogo from '../../../atoms/EsaLogo';
+import StatisticsHeaderContent from '../../statistics/StatisticsHeaderContent';
 import './style.scss';
 
 const getContent = view => {
 	switch (view) {
 		case 'statistics':
-			// TODO replace with component
-			return (
-				<div
-					style={{background: 'red', flex: 1, height: '100%', margin: '0 2rem'}}
-				/>
-			);
+			return <StatisticsHeaderContent />;
 		default:
 			return null;
 	}

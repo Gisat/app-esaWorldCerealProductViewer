@@ -72,6 +72,9 @@ export default {
 					},
 				},
 			},
+			cases: {
+				activeKey: 'annualcropland', // TODO set uuid
+			},
 		},
 	},
 };
