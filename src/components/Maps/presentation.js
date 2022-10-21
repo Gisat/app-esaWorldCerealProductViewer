@@ -20,6 +20,9 @@ import CompareMapsControl from './CompareMapsControl';
 import AddMapControl from './AddMapControl';
 import SearchPlaceControl from './SearchPlaceControl';
 
+import MapTooltip from './MapTooltip';
+import GetFeatureInfoTooltipContent from './RasterTooltipContent';
+
 import {MAX_MAPS_IN_MAP_SET} from '../../constants/app';
 
 import './style.scss';
@@ -28,6 +31,14 @@ const ConnectedMap = MapContainer(PresentationMap);
 const ConnectedMapSet = MapSetContainer(MapSet);
 
 const Map = MapContainer(PresentationMap);
+
+const Tooltip = props => {
+	return (
+		<MapTooltip {...props}>
+			<GetFeatureInfoTooltipContent />
+		</MapTooltip>
+	);
+};
 
 const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
 	return mode === 'compare' ? (
@@ -76,6 +87,8 @@ const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
 		/>
 	) : (
 		<ConnectedMapSet
+			Tooltip={Tooltip}
+			tooltipProps={{}}
 			stateMapSetKey={mapSetKey}
 			mapComponent={DeckGlMap}
 			connectedMapComponent={ConnectedMap}
@@ -88,7 +101,7 @@ const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
 					maxMapsCount={MAX_MAPS_IN_MAP_SET}
 				/>
 				<CompareMapsControl mapSetKey={mapSetKey} />
-				<BackgroundLayersControl />
+				<BackgroundLayersControl mapSetKey={mapSetKey} />
 				<ZoomControls viewLimits={viewLimits} />
 			</MapComponentsGroup>
 			<MapComponentsGroup className="worldCereal-MapInfoElements">
