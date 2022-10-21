@@ -5,6 +5,7 @@ import {Select as CommonSelect} from '@gisatcz/ptr-state';
 
 import productMetadataFilterSelectors from './ProductMetadataFilter/selectors';
 import productMetadataSelectors from './ProductMetadata/selectors';
+import ProductValueMap from '../../data/ProductValueMap';
 
 import {
 	defaultStyleKey,
@@ -183,7 +184,7 @@ const getMapLayersOpacity = createCachedSelector(
 	],
 	(layers, productMetadataKeys) => {
 		const selectedLayers = layers.filter(layer =>
-			_includes(productMetadataKeys, layer.productMetadataKey)
+			_includes(productMetadataKeys, layer.layerKey)
 		);
 
 		let opacitySum = 0;
@@ -200,6 +201,33 @@ const getMapLayersOpacity = createCachedSelector(
 		return Math.ceil((opacitySum / selectedLayers.length) * 100);
 	}
 )((state, mapKey) => mapKey);
+const getMapLayersTooltipActive = createCachedSelector(
+	[
+		CommonSelect.maps.getMapLayersStateByMapKey,
+		(state, mapKey, productMetadataKeys) => productMetadataKeys,
+	],
+	(layers, productMetadataKeys) => {
+		const selectedLayers = layers.filter(layer =>
+			_includes(productMetadataKeys, layer.layerKey)
+		);
+
+		let tooltipActive = false;
+		if (selectedLayers.length) {
+			tooltipActive = selectedLayers.some(selectedLayer => {
+				return selectedLayer.options.pickable;
+			});
+		}
+
+		return tooltipActive;
+	}
+)((state, mapKey) => mapKey);
+
+const getProductValue = createCachedSelector(
+	[product => product, (product, value) => value],
+	(product, value) => {
+		return ProductValueMap[product][value];
+	}
+)((product, value) => `${product}_${value}`);
 
 export default {
 	getActiveProductMetadataByActiveFilter,
@@ -208,4 +236,6 @@ export default {
 	getStyleDefinitionByProductTemplateKey,
 	isInteractivityLimited,
 	getMapLayersOpacity,
+	getMapLayersTooltipActive,
+	getProductValue,
 };

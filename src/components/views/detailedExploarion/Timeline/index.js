@@ -23,7 +23,7 @@ const mapDispatchToProps = dispatch => {
 		onLayerClick: (timelineLayerPeriodItem, timelineLayer) =>
 			dispatch(
 				Action.worldCereal.productMetadata.handleProductInActiveMap(
-					timelineLayer?.layerState?.key,
+					timelineLayer?.layerState?.layerKey,
 					timelineLayer?.layerState?.spatialDataSourceKey
 				)
 			),
