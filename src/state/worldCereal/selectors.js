@@ -5,7 +5,7 @@ import {Select as CommonSelect} from '@gisatcz/ptr-state';
 
 import productMetadataFilterSelectors from './ProductMetadataFilter/selectors';
 import productMetadataSelectors from './ProductMetadata/selectors';
-import valuemap from '../../data/valuemap';
+import ProductValueMap from '../../data/ProductValueMap';
 
 import {
 	defaultStyleKey,
@@ -221,10 +221,11 @@ const getMapLayersTooltipActive = createCachedSelector(
 		return tooltipActive;
 	}
 )((state, mapKey) => mapKey);
-const getMapValue = createCachedSelector(
+
+const getProductValue = createCachedSelector(
 	[product => product, (product, value) => value],
 	(product, value) => {
-		return valuemap[product][value];
+		return ProductValueMap[product][value];
 	}
 )((product, value) => `${product}_${value}`);
 
@@ -236,5 +237,5 @@ export default {
 	isInteractivityLimited,
 	getMapLayersOpacity,
 	getMapLayersTooltipActive,
-	getMapValue,
+	getProductValue,
 };

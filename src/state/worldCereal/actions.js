@@ -182,7 +182,7 @@ function setOpacityByLayerKeys(mapKey, layerKeys, opacity) {
 	};
 }
 
-function setLayerTooltipByLayerKeys(mapKey, layerKeys, active) {
+function setLayersPickableByLayerKeys(mapKey, layerKeys, active) {
 	return (dispatch, getState) => {
 		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);
 		if (mapLayers && layerKeys.length) {
@@ -223,7 +223,7 @@ export default {
 	applyView,
 	adjustInitialBoxRange,
 	setOpacityByLayerKeys,
-	setLayerTooltipByLayerKeys,
+	setLayersPickableByLayerKeys,
 	removeAllLayersFromMapByLayerKeys,
 	updateMapView,
 	updateOverviewMap,

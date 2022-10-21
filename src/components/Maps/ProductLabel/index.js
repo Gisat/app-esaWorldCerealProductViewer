@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 		},
 		onLayerTooltipActiveChange: active => {
 			dispatch(
-				Action.worldCereal.setLayerTooltipByLayerKeys(
+				Action.worldCereal.setLayersPickableByLayerKeys(
 					ownProps.mapKey,
 					ownProps.productMetadataKeys,
 					active

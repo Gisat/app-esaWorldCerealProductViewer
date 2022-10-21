@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 		state,
 		productMetadata?.data?.product
 	);
-	const value = Select.worldCereal.getMapValue(
+	const value = Select.worldCereal.getProductValue(
 		productTemplate.key,
 		ownProps.response.value_list
 	);

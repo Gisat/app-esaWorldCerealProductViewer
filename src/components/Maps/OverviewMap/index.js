@@ -8,12 +8,32 @@ import './style.scss';
 const Map = connects.Map(PresentationMap);
 
 const OverviewMap = ({overviewMapKey}) => {
+	const stopPropagation = event => {
+		//onwheel still buble
+		event.stopPropagation();
+		event.preventDefault();
+		return false;
+	};
 	return (
 		<ComponentRenderer
 			component={'overviewMap'}
 			configurationGroupKey={'mapSetTools'}
 		>
-			<div className={'ptr-OverviewMap'}>
+			<div
+				className={'ptr-OverviewMap'}
+				onPointerDown={stopPropagation}
+				onPointerMove={stopPropagation}
+				onPointerUp={stopPropagation}
+				onGotPointerCapture={stopPropagation}
+				onClick={stopPropagation}
+				onDoubleClick={stopPropagation}
+				onMouseDown={stopPropagation}
+				onMouseUp={stopPropagation}
+				onWheel={stopPropagation}
+				onScroll={stopPropagation}
+				onTouchStart={stopPropagation}
+				onTouchMove={stopPropagation}
+			>
 				<Map mapComponent={ReactLeafletMap} stateMapKey={overviewMapKey} />
 			</div>
 		</ComponentRenderer>
