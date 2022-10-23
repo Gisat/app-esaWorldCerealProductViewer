@@ -13,16 +13,16 @@ const StatisticsHeaderSelect = ({
 	const customStyles = {
 		control: (provided, state) => ({
 			...provided,
-			background: state.isFocused ? 'var(--accent25)' : 'var(--accent45)',
+			background: state.isFocused ? 'var(--accent50)' : 'var(--accent35)',
 			height: '100%',
 			padding: '3px 10px 0 5px',
 			borderWidth: '0',
 			borderRadius: '0',
 			boxShadow: '0',
-			color: state.isFocused ? 'var(--base95)' : 'var(--base95)',
+			color: state.isFocused ? 'var(--base100)' : 'var(--base90)',
 			'&:hover': {
 				color: state.isFocused ? 'var(--base95)' : 'var(--base95)',
-				background: state.isFocused ? 'var(--accent25)' : 'var(--accent25)',
+				background: state.isFocused ? 'var(--accent50)' : 'var(--accent50)',
 			},
 			width: '12rem',
 		}),
@@ -35,17 +35,20 @@ const StatisticsHeaderSelect = ({
 			...provided,
 			display: 'none',
 		}),
-		dropdownIndicator: provided => ({
-			...provided,
-			padding: '0',
-			cursor: 'pointer',
-			color: 'inherit',
-			opacity: 0.5,
-			transition: 0,
-			':hover': {
-				color: 'inherit',
-			},
-		}),
+		dropdownIndicator: (provided, state) => {
+			return {
+				...provided,
+				padding: '0',
+				cursor: 'pointer',
+				color: 'var(--base100)',
+				opacity: 0.5,
+				transition: 0,
+				':hover': {
+					color: 'inherit',
+				},
+				transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : '',
+			};
+		},
 		input: provided => ({
 			...provided,
 			padding: '0',
@@ -75,15 +78,15 @@ const StatisticsHeaderSelect = ({
 			borderRadius: '.15rem',
 			background: 'var(--base75)',
 		}),
-		option: provided => ({
+		option: (provided, state) => ({
 			...provided,
 			cursor: 'pointer',
-			color: 'var(--base0)',
+			color: state.isSelected ? 'var(--base100)' : 'var(--base0)',
 			fontSize: '.875rem',
 			fontFamily: 'Roboto, sans-serif',
 			padding: '7px 15px',
 			'&:hover': {
-				background: 'var(--accent65)',
+				background: state.isSelected ? 'var(--accent50)' : 'var(--accent70)',
 			},
 		}),
 	};
@@ -96,8 +99,8 @@ const StatisticsHeaderSelect = ({
 				...theme,
 				colors: {
 					...theme.colors,
-					primary25: 'var(--accent65)',
-					primary50: 'var(--accent40)',
+					primary25: 'var(--accent70)',
+					primary50: 'var(--accent50)',
 					primary: 'var(--accent50)',
 					neutral0: 'var(--base10)',
 					neutral20: 'var(--base50)',

@@ -7,6 +7,7 @@ const StatisticsHeaderContent = () => {
 		<div className="worldCereal-StatisticsHeaderContent">
 			<ProductSelect />
 			<ProductSelect />
+			<ProductSelect />
 		</div>
 	);
 };
