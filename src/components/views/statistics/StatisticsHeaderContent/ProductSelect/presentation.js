@@ -33,6 +33,7 @@ const ProductSelect = ({
 		<StatisticsHeaderSelect
 			options={options}
 			value={value}
+			title="Product"
 			onChange={setActiveCaseKey}
 		/>
 	);

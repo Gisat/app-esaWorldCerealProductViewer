@@ -1,8 +1,27 @@
 import PropTypes from 'prop-types';
-import ReactSelect from 'react-select';
+import ReactSelect, {components} from 'react-select';
 import './style.scss';
 
+const CustomSingleValue = ({children, title, ...props}) => (
+	<>
+		<components.SingleValue {...props}>
+			{title ? (
+				<span className="worldCereal-StatisticsHeaderSelect-label">
+					{title}
+				</span>
+			) : null}
+			{children}
+		</components.SingleValue>
+	</>
+);
+
+CustomSingleValue.propTypes = {
+	children: PropTypes.node,
+	title: PropTypes.string,
+};
+
 const StatisticsHeaderSelect = ({
+	title,
 	options,
 	value,
 	isMulti,
@@ -15,7 +34,7 @@ const StatisticsHeaderSelect = ({
 			...provided,
 			background: state.isFocused ? 'var(--accent50)' : 'var(--accent35)',
 			height: '100%',
-			padding: '3px 10px 0 5px',
+			padding: '3px 10px 1px 5px',
 			borderWidth: '0',
 			borderRadius: '0',
 			boxShadow: '0',
@@ -63,6 +82,9 @@ const StatisticsHeaderSelect = ({
 			letterSpacing: '-.5px',
 			color: 'inherit',
 			cursor: 'pointer',
+			display: 'flex',
+			flexDirection: 'column',
+			lineHeight: 1.15,
 		}),
 		valueContainer: provided => ({
 			...provided,
@@ -84,7 +106,7 @@ const StatisticsHeaderSelect = ({
 			color: state.isSelected ? 'var(--base100)' : 'var(--base0)',
 			fontSize: '.875rem',
 			fontFamily: 'Roboto, sans-serif',
-			padding: '7px 15px',
+			padding: '12px 15px',
 			'&:hover': {
 				background: state.isSelected ? 'var(--accent50)' : 'var(--accent70)',
 			},
@@ -115,6 +137,9 @@ const StatisticsHeaderSelect = ({
 			value={value}
 			isDisabled={disabled}
 			onChange={onChange}
+			components={{
+				SingleValue: props => <CustomSingleValue title={title} {...props} />,
+			}}
 		/>
 	);
 };
@@ -128,6 +153,7 @@ StatisticsHeaderSelect.propTypes = {
 	small: PropTypes.bool,
 	menuPosition: PropTypes.string,
 	menuWidth: PropTypes.string,
+	title: PropTypes.string,
 	onChange: PropTypes.func,
 };
 
