@@ -61,7 +61,6 @@ $ExpandableLabelBorderRadius: .25rem;
   transition: height .5s ease-in-out;
   border-bottom-left-radius: $ExpandableLabelBorderRadius;
   border-bottom-right-radius: $ExpandableLabelBorderRadius;
-  background: var(--base10);
   position: absolute;
   z-index: 2;
 }

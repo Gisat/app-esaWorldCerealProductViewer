@@ -23,6 +23,11 @@
     left: 0;
 }
 
+@mixin frozenGlassEffect {
+    backdrop-filter: blur(6px) saturate(180%);
+    -webkit-backdrop-filter: blur(6px) saturate(180%);
+}
+
 $lightAccent0: hsl(40, 100%, 99.41%);
 $lightAccent05: hsl(42.5, 85.71%, 94.51%);
 $lightAccent10: hsl(44, 84.91%, 89.61%);
