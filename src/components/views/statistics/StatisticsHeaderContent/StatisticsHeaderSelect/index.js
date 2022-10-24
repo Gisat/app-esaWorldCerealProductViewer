@@ -44,6 +44,7 @@ const StatisticsHeaderSelect = ({
 				background: state.isFocused ? 'var(--accent50)' : 'var(--accent50)',
 			},
 			width: '12rem',
+			cursor: 'pointer',
 		}),
 		container: provided => ({
 			...provided,
