@@ -10,6 +10,7 @@ import worldCerealActions from './worldCereal/actions';
 import configurationActions from './worldCereal/configuration/actions';
 import productMetadataActions from './worldCereal/ProductMetadata/actions';
 import productMetadataFilterActions from './worldCereal/ProductMetadataFilter/actions';
+import globalProductMetadataActions from './worldCereal/GlobalProductMetadata/actions';
 
 // TODO load view from BE
 import views from '../data/views';
@@ -100,6 +101,7 @@ export default {
 	worldCereal: {
 		configuration: configurationActions,
 		productMetadata: productMetadataActions,
+		globalProductMetadata: globalProductMetadataActions,
 		productMetadataFilter: productMetadataFilterActions,
 		...worldCerealActions,
 	},

@@ -8,6 +8,7 @@ import Header from '../views/common/Header';
 import Filter from '../views/detailedExploarion/Filter';
 import Timeline from '../views/detailedExploarion/Timeline';
 import AnalyticsPanel from '../views/statistics/AnalyticsPanel';
+import GlobalProducts from '../views/global/GlobalProducts';
 
 import './style.scss';
 
@@ -27,7 +28,7 @@ const getContent = view => {
 				<>
 					<Header />
 					<Maps />
-					{/*<GlobalProducts/>*/}
+					<GlobalProducts />
 				</>
 			);
 		case 'statistics':
