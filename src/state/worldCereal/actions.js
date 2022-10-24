@@ -12,10 +12,13 @@ import utils from '../../utils';
  */
 function applyView(viewKey) {
 	return (dispatch, getState) => {
-		const view = Select.views.getByKey(getState(), viewKey);
-		const viewName = view?.data?.nameInternal;
-		dispatch(CommonAction.views.applyAndSetActive(viewKey, CommonAction)).then(
-			() => {
+		const activeViewKey = Select.views.getActiveKey(getState());
+		if (activeViewKey !== viewKey) {
+			const view = Select.views.getByKey(getState(), viewKey);
+			const viewName = view?.data?.nameInternal;
+			dispatch(
+				CommonAction.views.applyAndSetActive(viewKey, CommonAction)
+			).then(() => {
 				dispatch(CommonAction.components.set('IntroOverlay', 'open', false));
 				dispatch(
 					configurationActions.updateStateFromView(
@@ -26,8 +29,10 @@ function applyView(viewKey) {
 				if (viewName === 'detailedExploration') {
 					dispatch(applyDetailedExplorationView(view));
 				}
-			}
-		);
+			});
+		} else {
+			dispatch(CommonAction.components.set('IntroOverlay', 'open', false));
+		}
 	};
 }
 

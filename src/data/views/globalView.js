@@ -69,6 +69,11 @@ export default {
 					},
 				},
 			},
+			components: {
+				Maps: {
+					mode: 'set',
+				},
+			},
 			maps: {
 				activeMapKey: '60ce4b74-d3ce-4f8b-a160-676fd0c6e0b7',
 				activeSetKey: 'globalView-mapSet',

@@ -39,6 +39,11 @@ export default {
 					},
 				},
 			},
+			components: {
+				Maps: {
+					mode: 'set',
+				},
+			},
 			maps: {
 				activeMapKey: 'e44839a8-b1f5-4f6f-8049-30aeb967eecf',
 				activeSetKey: 'statistics-mapSet',
