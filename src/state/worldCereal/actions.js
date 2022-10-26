@@ -86,11 +86,12 @@ function loadProducts() {
 	return (dispatch, getState) => {
 		const state = getState();
 		const mapSetKey = Select.maps.getActiveSetKey(state);
+		const disabledMapSetKey = 'globalView-mapSet';
 		const isInteractivityLimited = Select.worldCereal.isInteractivityLimited(
 			state,
 			mapSetKey
 		);
-		if (!isInteractivityLimited) {
+		if (!isInteractivityLimited && mapSetKey !== disabledMapSetKey) {
 			dispatch(productMetadataActions.loadForMapSetView());
 		}
 	};

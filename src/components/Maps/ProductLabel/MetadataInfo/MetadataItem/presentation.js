@@ -63,9 +63,9 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 					<MetadataInfoItemRec label="Tile collection ID">
 						{id}
 					</MetadataInfoItemRec>
-				) : (
+				) : merged?.id ? (
 					<MetadataInfoItemRec label="ID">{merged.id}</MetadataInfoItemRec>
-				)}
+				) : null}
 				<MetadataInfoItemRec label="product">{productName}</MetadataInfoItemRec>
 				<MetadataInfoItemRec label="season">{season}</MetadataInfoItemRec>
 				<MetadataInfoItemRec label="start of season">{sos}</MetadataInfoItemRec>
@@ -101,8 +101,8 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 						Download original data:
 					</div>
 					<div className="worldCereal-MetadataInfoItemTiles-content">
-						<a target="_blank" rel="noopener noreferrer" href={merged.product}>
-							{merged.id}
+						<a target="_blank" rel="noopener noreferrer" href={merged?.product}>
+							{merged?.id}
 						</a>
 					</div>
 				</div>

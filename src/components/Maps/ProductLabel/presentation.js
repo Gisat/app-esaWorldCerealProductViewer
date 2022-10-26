@@ -151,9 +151,11 @@ const SingleProductLabelHeader = ({product, zone, start, end, color}) => {
 					<span className="worldCereal-ProductLabelHeader-product">
 						{product}
 					</span>
-					<span className="worldCereal-ProductLabelHeader-zone">
-						(zone {zone})
-					</span>
+					{zone ? (
+						<span className="worldCereal-ProductLabelHeader-zone">
+							(zone {zone})
+						</span>
+					) : null}
 				</div>
 				<div className="worldCereal-ProductLabelHeader-period">
 					{start} / {end}

@@ -3,6 +3,7 @@ import utils from '../../../utils';
 import globalProductMetadata from '../../../models/globalProductMetadata';
 import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
+import ProductMetadataActions from '../ProductMetadata/actions';
 
 /**
  * Add models to store
@@ -31,7 +32,6 @@ function load() {
 			const path = 'rest/project/worldCereal/product/global';
 			const url = `${apiBackendProtocol}://${apiBackendHost}/${apiBackendPath}/${path}`;
 			const method = 'GET';
-			const payload = {};
 
 			utils
 				.request(url, method, null, null)
@@ -70,7 +70,19 @@ function handleLoadResponse(data) {
 	};
 }
 
+const addProductToMap = product => {
+	return dispatch => {
+		dispatch(
+			ProductMetadataActions.handleProductInActiveMap(
+				product.key,
+				product.data.dataSource.product
+			)
+		);
+	};
+};
+
 export default {
 	add,
 	load,
+	addProductToMap,
 };

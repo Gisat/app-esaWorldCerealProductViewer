@@ -1,41 +1,77 @@
+import {createCachedSelector} from 're-reselect';
 import {uniq as _uniq, groupBy as _groupBy} from 'lodash';
 import {createSelector} from 'reselect';
-import {createCachedSelector} from 're-reselect';
-import intersect from '@turf/intersect';
 import {commonSelectors, Select as CommonSelect} from '@gisatcz/ptr-state';
-import utils from '../../../utils';
 
-const getSubstate = state => state.worldCereal.productMetadata;
+const getSubstate = state => state.worldCereal.globalProductMetadata;
 
 const getActiveModels = commonSelectors.getActiveModels(getSubstate);
 const getActiveKeys = commonSelectors.getActiveKeys(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
 const getAllAsObject = commonSelectors.getAllAsObject(getSubstate);
 
-const getActiveTiles = state => state.worldCereal.productMetadata.activeTiles;
+const getProductYear = product => {
+	return Number.parseInt(product.data.eos.split('-')[0]);
+};
 
-// helpers ----------------------------------------------
-
-/**
- * Return active map view as polygon feature
- * @param {Object} state
- * @return {GeoJSON.Feature|null}
- */
-const getMapSetActiveMapExtentAsFeature = createSelector(
+const getAll = createSelector(
 	[
-		CommonSelect.maps.getMapSetActiveMapView,
-		CommonSelect.maps.getMapSetActiveMapViewport,
+		getAllAsObject,
+		CommonSelect.maps.getLayersStateByMapKey,
+		CommonSelect.cases.getAllAsObject,
 	],
-	(view, viewport) => {
-		if (view && viewport) {
-			return utils.getExtentFromMapViewAsFeature(view, viewport);
-		} else {
-			return null;
-		}
+	(products, layers, cases) => {
+		const productsAsArray = products ? Object.values(products) : [];
+		const transformed = productsAsArray.reduce((acc, val) => {
+			const product = val.data.product;
+			const productIndex = acc.findIndex(i => i.product === product);
+			const productYear = getProductYear(val);
+			const active = layers ? layers.some(l => l.layerKey === val.key) : false;
+			if (productIndex > -1) {
+				if (acc[productIndex].products[productYear]) {
+					acc[productIndex].products[productYear].push({
+						...val,
+						active,
+					});
+				} else {
+					acc[productIndex].products[productYear] = [
+						{
+							...val,
+							active,
+						},
+					];
+				}
+			} else {
+				acc.push({
+					product,
+					nameDisplay: cases?.[product]?.data?.nameDisplay,
+					products: {
+						[productYear]: [
+							{
+								...val,
+								active,
+							},
+						],
+					},
+				});
+			}
+			return acc;
+		}, []);
+
+		return transformed;
 	}
 );
 
-// selectors ---------------------------------------------
+const getYears = createSelector(getAll, products => {
+	const years = new Set();
+
+	for (const product of products) {
+		for (const year of Object.keys(product.products)) {
+			years.add(year);
+		}
+	}
+	return [...years].sort();
+});
 
 /**
  * @param {Object} state
@@ -86,26 +122,6 @@ const getModelsByMapKeyGroupedByParam = createCachedSelector(
 	}
 )((state, mapKey, parameter) => `${mapKey}_${parameter}`);
 
-/**
- * @param {Object} state
- * @param {string} productMetadataKey
- * @return {boolean} true if given product is in current map extent
- */
-const isModelInMapExtent = createCachedSelector(
-	[
-		(state, productMetadataKey, mapSetKey) =>
-			getMapSetActiveMapExtentAsFeature(state, mapSetKey),
-		getByKey,
-	],
-	(mapExtentAsFeature, model) => {
-		if (mapExtentAsFeature && model) {
-			return !!intersect(model.data.geometry, mapExtentAsFeature);
-		} else {
-			return false;
-		}
-	}
-)((state, productMetadataKey) => productMetadataKey);
-
 export default {
 	getSubstate,
 
@@ -113,14 +129,9 @@ export default {
 
 	getActiveModels,
 	getActiveKeys,
-	getActiveTiles,
 	getAllAsObject,
 
-	getKeysByMapKey,
-	getModelsByMapKey,
+	getAll,
+	getYears,
 	getModelsByMapKeyGroupedByParam,
-
-	getMapSetActiveMapExtentAsFeature,
-
-	isModelInMapExtent,
 };

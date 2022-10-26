@@ -8,16 +8,21 @@ const mapStateToProps = (state, ownProps) => {
 		state,
 		ownProps.productKey
 	);
+	const globalProductMetadata =
+		Select.worldCereal.globalProductMetadata.getByKey(
+			state,
+			ownProps.productKey
+		);
 	const productTemplate = Select.worldCereal.getProductTemplateByKey(
 		state,
-		productMetadata?.data?.product
+		productMetadata?.data?.product || globalProductMetadata?.data?.product
 	);
 	const value = Select.worldCereal.getProductValue(
-		productTemplate.key,
+		productTemplate?.key,
 		ownProps.response.value_list
 	);
 	return {
-		productMetadata,
+		productMetadata: productMetadata || globalProductMetadata,
 		productTemplate,
 		value,
 	};

@@ -74,9 +74,9 @@ const RasterContentWrapper = ({event, timeout = 200, children}) => {
 					x === coordsState[0] &&
 					y === coordsState[1]
 				) {
-					const childrens = Children.map(children, (child, i) =>
+					const childrens = Children.map(children, child =>
 						cloneElement(child, {
-							key: `${i}_${coordsState[0]}_${coordsState[1]}`,
+							key: `${child.props?.layer?.layer.id}_${coordsState[0]}_${coordsState[1]}`,
 							...child.props,
 							x: coordsState[0],
 							y: coordsState[1],

@@ -201,7 +201,8 @@ const getMapLayersOpacity = createCachedSelector(
 		return Math.ceil((opacitySum / selectedLayers.length) * 100);
 	}
 )((state, mapKey) => mapKey);
-const getMapLayersTooltipActive = createCachedSelector(
+
+const getMapLayersTooltipActive = createSelector(
 	[
 		CommonSelect.maps.getMapLayersStateByMapKey,
 		(state, mapKey, productMetadataKeys) => productMetadataKeys,
@@ -220,12 +221,12 @@ const getMapLayersTooltipActive = createCachedSelector(
 
 		return tooltipActive;
 	}
-)((state, mapKey) => mapKey);
+);
 
 const getProductValue = createCachedSelector(
 	[product => product, (product, value) => value],
 	(product, value) => {
-		return ProductValueMap[product][value];
+		return ProductValueMap?.[product]?.[value];
 	}
 )((product, value) => `${product}_${value}`);
 
