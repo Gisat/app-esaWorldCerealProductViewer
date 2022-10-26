@@ -10,7 +10,7 @@ const OpacitySlider = ({value, onChange}) => {
 		<ReactSlider
 			value={value}
 			onChange={onChange}
-			className="ptr-OpacitySlider"
+			className="ptr-OpacitySlider ptr-dark"
 			thumbClassName="ptr-OpacitySlider-thumb"
 			trackClassName="ptr-OpacitySlider-track"
 			renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}

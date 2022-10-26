@@ -9,7 +9,7 @@ const TooltipControl = ({active, onChange}) => {
 			key="tootips"
 			onClick={() => onChange(!active)}
 		>
-			<Toggle notInteractive on={active} />
+			<Toggle className="ptr-dark" notInteractive on={active} />
 		</LayerLabelTool>
 	);
 };

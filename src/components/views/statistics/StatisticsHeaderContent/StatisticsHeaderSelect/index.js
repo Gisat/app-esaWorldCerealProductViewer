@@ -44,6 +44,7 @@ const StatisticsHeaderSelect = ({
 				background: state.isFocused ? 'var(--accent50)' : 'var(--accent50)',
 			},
 			width: '12rem',
+			cursor: 'pointer',
 		}),
 		container: provided => ({
 			...provided,
@@ -96,9 +97,10 @@ const StatisticsHeaderSelect = ({
 			...provided,
 			zIndex: 1000,
 			minWidth: '12.2rem',
-			border: '0',
+			border: '1px solid var(--base75)',
 			borderRadius: '.15rem',
-			background: 'var(--base75)',
+			background: 'rgba(var(--base100rgb),.75)',
+			backdropFilter: 'blur(6px) saturate(180%)',
 		}),
 		option: (provided, state) => ({
 			...provided,
@@ -108,7 +110,9 @@ const StatisticsHeaderSelect = ({
 			fontFamily: 'Roboto, sans-serif',
 			padding: '12px 15px',
 			'&:hover': {
-				background: state.isSelected ? 'var(--accent50)' : 'var(--accent70)',
+				background: state.isSelected
+					? 'var(--accent50)'
+					: 'rgba(var(--accent50rgb), .5)',
 			},
 		}),
 	};
@@ -121,7 +125,7 @@ const StatisticsHeaderSelect = ({
 				...theme,
 				colors: {
 					...theme.colors,
-					primary25: 'var(--accent70)',
+					primary25: 'rgba(var(--accent50rgb), .5)',
 					primary50: 'var(--accent50)',
 					primary: 'var(--accent50)',
 					neutral0: 'var(--base10)',

@@ -7,8 +7,8 @@
   font-size: $b1;
   align-items: center;
   padding: 0 .5rem;
-  color: $secondaryIconColor;
-  border-top: 1px solid var(--base25);
+  color: var(--base10);
+  border-top: 1px solid var(--base80);
   text-decoration: none;
 }
 
@@ -22,7 +22,7 @@
 
 .ptr-LayerLabelTool.is-hoverable:hover,
 a.ptr-LayerLabelTool.is-hoverable:hover {
-  background: $hoverBackgroundColor;
+  background: rgba(var(--base50rgb), .5);
   color: $baseTextColor;
 }
 
@@ -42,14 +42,10 @@ a.ptr-LayerLabelTool.is-hoverable:hover {
 .ptr-LayerLabelTool-title {
   flex: 1;
   white-space: nowrap;
-  color: $secondaryTextColor;
+  color: var(--base10);
   @include maxWidth('x-small') {
     font-size: $b1;
   }
-}
-
-.ptr-LayerLabelTool.is-hoverable:hover .ptr-LayerLabelTool-title {
-  color: $baseTextColor;
 }
 
 .ptr-LayerLabelTool-control {

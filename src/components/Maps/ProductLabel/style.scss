@@ -60,7 +60,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: var(--base10);
+  background: rgba(var(--base100rgb), .75);
+  @include frozenGlassEffect();
 }
 
 .worldCereal-ProductLabelBodyItem {
@@ -69,12 +70,12 @@
   font-size: $b1;
   align-items: center;
   padding: 0 .5rem;
-  color: var(--base80);
-  border-top: 1px solid var(--base30);
+  color: var(--base10);
+  border-top: 1px solid var(--base80);
 }
 
 .worldCereal-ProductLabelBodyItem:last-of-type {
-  border-bottom: 1px solid var(--base30);
+  border-bottom: 1px solid var(--base80);
 }
 
 .worldCereal-ProductLabelBodyItem.is-hoverable {
@@ -82,7 +83,7 @@
 }
 
 .worldCereal-ProductLabelBodyItem.is-hoverable:hover {
-  background: var(--base20);
+  background: rgba(var(--base50rgb), .5);
 }
 
 .worldCereal-ProductLabelBodyItem.is-dangerous {
@@ -110,7 +111,7 @@
 }
 
 .worldCereal-ProductLabelBodyItem .ptr-icon .line {
-  fill: var(--base70);
+  fill: var(--base20);
 }
 
 .worldCereal-ProductLabelBodyItem.is-dangerous .ptr-icon .line {
@@ -119,9 +120,10 @@
 
 // legend
 .worldCereal-ProductLabelLegend {
-  background: var(--base25);
+  background: var(--base75);
   height: 3.5rem;
   padding: .5rem;
+  border-top: 1px solid var(--base80);
 }
 
 .worldCereal-ProductLabelLegendItem {
@@ -129,7 +131,7 @@
   font-style: italic;
   display: flex;
   align-items: center;
-  color: var(--base80);
+  color: var(--base10);
 }
 
 .worldCereal-ProductLabelLegendItem > div {
