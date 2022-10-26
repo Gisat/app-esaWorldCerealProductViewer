@@ -21,6 +21,7 @@ export default item => {
 	return {
 		key: item.key,
 		data: {
+			isGlobal: true,
 			id: tile_collection_id,
 			sos,
 			eos,

@@ -5,9 +5,17 @@ import MetadataInfoItem from './MetadataItem';
 
 import './style.scss';
 
-export const MetadataInfoTitle = () => (
-	<h3 className="worldCereal-MetadataInfoTitle">Tile collection metadata</h3>
-);
+export const MetadataInfoTitle = ({isGlobal}) => {
+	return isGlobal ? (
+		<h3 className="worldCereal-MetadataInfoTitle">Product metadata</h3>
+	) : (
+		<h3 className="worldCereal-MetadataInfoTitle">Tile collection metadata</h3>
+	);
+};
+
+MetadataInfoTitle.propTypes = {
+	isGlobal: PropTypes.bool,
+};
 
 const MetadataInfo = ({productMetadata}) => {
 	if (productMetadata.length) {

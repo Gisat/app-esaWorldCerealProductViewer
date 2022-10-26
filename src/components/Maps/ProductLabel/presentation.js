@@ -85,7 +85,11 @@ const ProductLabel = ({
 				</ExpandableLabelBody>
 			</ExpandableLabel>
 			<ModalWindow
-				title={<MetadataInfoTitle />}
+				title={
+					<MetadataInfoTitle
+						isGlobal={!!productMetadata?.[0]?.data?.isGlobal}
+					/>
+				}
 				isOpen={modalIsOpen}
 				onClose={() => setModalOpen(false)}
 				className="worldCereal-Modal"

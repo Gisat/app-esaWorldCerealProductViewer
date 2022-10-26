@@ -6,13 +6,13 @@ import './style.scss';
 const getShortSeason = season => {
 	switch (season) {
 		case 'summer1':
-			return 'S1';
+			return 'Summer1';
 		case 'summer2':
-			return 'S2';
+			return 'Summer2';
 		case 'winter':
-			return 'W';
+			return 'Winter';
 		case 'annual':
-			return 'A';
+			return 'Annual';
 	}
 };
 
