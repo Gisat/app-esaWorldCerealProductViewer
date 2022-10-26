@@ -3,6 +3,19 @@ import propTypes from 'prop-types';
 import {Button} from '@gisatcz/ptr-atoms';
 import './style.scss';
 
+const getShortSeason = season => {
+	switch (season) {
+		case 'summer1':
+			return 'S1';
+		case 'summer2':
+			return 'S2';
+		case 'winter':
+			return 'W';
+		case 'annual':
+			return 'A';
+	}
+};
+
 const LegendColumn = ({products}) => {
 	return (
 		<div>
@@ -27,7 +40,7 @@ const Product = ({product, onProductClick}) => {
 			onClick={() => onProductClick(product)}
 			primary={product.active}
 		>
-			{product.data.season}
+			{getShortSeason(product.data.season)}
 		</Button>
 	);
 };
@@ -36,6 +49,22 @@ Product.propTypes = {
 	product: propTypes.object,
 	onProductClick: propTypes.func,
 };
+
+//sort products by end of season
+const sortByEos = (a, b) => {
+	const nameA = a.data.eos;
+	const nameB = b.data.eos;
+	if (nameA < nameB) {
+		return -1;
+	}
+	if (nameA > nameB) {
+		return 1;
+	}
+
+	// names must be equal
+	return 0;
+};
+
 const YearColumn = ({year, products, onProductClick}) => {
 	return (
 		<div>
@@ -44,13 +73,15 @@ const YearColumn = ({year, products, onProductClick}) => {
 				return (
 					<div key={`${product.product}_${year}`}>
 						{product.products?.[year] ? (
-							product.products?.[year].map(p => (
-								<Product
-									key={p.key}
-									product={p}
-									onProductClick={onProductClick}
-								/>
-							))
+							product.products?.[year]
+								.sort(sortByEos)
+								.map(p => (
+									<Product
+										key={p.key}
+										product={p}
+										onProductClick={onProductClick}
+									/>
+								))
 						) : (
 							<div className={'worldCereal-GlobalProducts-cell'}></div>
 						)}
