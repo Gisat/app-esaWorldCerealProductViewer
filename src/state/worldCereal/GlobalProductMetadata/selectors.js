@@ -45,6 +45,7 @@ const getAll = createSelector(
 				acc.push({
 					product,
 					nameDisplay: cases?.[product]?.data?.nameDisplay,
+					color: cases?.[product]?.data?.color,
 					products: {
 						[productYear]: [
 							{
