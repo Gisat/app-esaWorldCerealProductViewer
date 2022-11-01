@@ -5,9 +5,9 @@ import {Select as CommonSelect} from '@gisatcz/ptr-state';
 
 import productMetadataFilterSelectors from './ProductMetadataFilter/selectors';
 import productMetadataSelectors from './ProductMetadata/selectors';
+import ProductValueMap from '../../data/ProductValueMap';
 
 import {
-	mapSetKey,
 	defaultStyleKey,
 	MAX_BOX_RANGE_FOR_LAYERS_HANDLING,
 } from '../../constants/app';
@@ -144,7 +144,10 @@ const getProductMetadataCountForFilterOption = createCachedSelector(
 );
 
 const isInteractivityLimited = createSelector(
-	[state => CommonSelect.maps.getMapSetActiveMapView(state, mapSetKey)],
+	[
+		(state, mapSetKey) =>
+			CommonSelect.maps.getMapSetActiveMapView(state, mapSetKey),
+	],
 	mapView => {
 		return mapView?.boxRange > MAX_BOX_RANGE_FOR_LAYERS_HANDLING;
 	}
@@ -158,11 +161,7 @@ const isInteractivityLimited = createSelector(
  */
 function filterMetadata(productMetadata, filter) {
 	return _filter(productMetadata, item => {
-		// TODO add other filter params
-		const {aez, product, season} = item.data;
-		if (filter.aez && filter.aez.indexOf(aez) === -1) {
-			return false;
-		}
+		const {product, season} = item.data;
 		if (filter.product && filter.product.indexOf(product) === -1) {
 			return false;
 		}
@@ -185,7 +184,7 @@ const getMapLayersOpacity = createCachedSelector(
 	],
 	(layers, productMetadataKeys) => {
 		const selectedLayers = layers.filter(layer =>
-			_includes(productMetadataKeys, layer.productMetadataKey)
+			_includes(productMetadataKeys, layer.layerKey)
 		);
 
 		let opacitySum = 0;
@@ -203,6 +202,34 @@ const getMapLayersOpacity = createCachedSelector(
 	}
 )((state, mapKey) => mapKey);
 
+const getMapLayersTooltipActive = createSelector(
+	[
+		CommonSelect.maps.getMapLayersStateByMapKey,
+		(state, mapKey, productMetadataKeys) => productMetadataKeys,
+	],
+	(layers, productMetadataKeys) => {
+		const selectedLayers = layers.filter(layer =>
+			_includes(productMetadataKeys, layer.layerKey)
+		);
+
+		let tooltipActive = false;
+		if (selectedLayers.length) {
+			tooltipActive = selectedLayers.some(selectedLayer => {
+				return selectedLayer.options.pickable;
+			});
+		}
+
+		return tooltipActive;
+	}
+);
+
+const getProductValue = createCachedSelector(
+	[product => product, (product, value) => value],
+	(product, value) => {
+		return ProductValueMap?.[product]?.[value];
+	}
+)((product, value) => `${product}_${value}`);
+
 export default {
 	getActiveProductMetadataByActiveFilter,
 	getProductMetadataCountForFilterOption,
@@ -210,4 +237,6 @@ export default {
 	getStyleDefinitionByProductTemplateKey,
 	isInteractivityLimited,
 	getMapLayersOpacity,
+	getMapLayersTooltipActive,
+	getProductValue,
 };

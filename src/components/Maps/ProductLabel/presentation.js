@@ -13,6 +13,7 @@ import ExpandableLabel, {
 import ModalWindow from '../../atoms/ModalWindow';
 import {MetadataInfoTitle} from './MetadataInfo/presentation';
 import MetadataInfo from './MetadataInfo';
+import TooltipControl from './TooltipControl';
 import OpacitySlider from '../../atoms/OpacitySlider';
 
 import './style.scss';
@@ -21,6 +22,8 @@ Modal.setAppElement('#root');
 
 const ProductLabel = ({
 	layersOpacity,
+	layerTooltipActive,
+	onLayerTooltipActiveChange,
 	productMetadata,
 	productTemplate,
 	productKey,
@@ -50,7 +53,7 @@ const ProductLabel = ({
 						color={color}
 					/>
 				</ExpandableLabelHeader>
-				<ExpandableLabelBody height={styleForLegend ? 9.5 : 6}>
+				<ExpandableLabelBody height={styleForLegend ? 11.5 : 8}>
 					<div className="worldCereal-ProductLabelBody">
 						<div>
 							<ProductLabelBodyItem title="Set opacity">
@@ -72,13 +75,21 @@ const ProductLabel = ({
 							>
 								<Icon icon="close" />
 							</ProductLabelBodyItem>
+							<TooltipControl
+								active={layerTooltipActive}
+								onChange={onLayerTooltipActiveChange}
+							/>
 						</div>
 						<ProductLabelLegend style={styleForLegend} />
 					</div>
 				</ExpandableLabelBody>
 			</ExpandableLabel>
 			<ModalWindow
-				title={<MetadataInfoTitle />}
+				title={
+					<MetadataInfoTitle
+						isGlobal={!!productMetadata?.[0]?.data?.isGlobal}
+					/>
+				}
 				isOpen={modalIsOpen}
 				onClose={() => setModalOpen(false)}
 				className="worldCereal-Modal"
@@ -98,6 +109,8 @@ ProductLabel.propTypes = {
 	layersOpacity: PropTypes.number,
 	onOpacityChange: PropTypes.func,
 	zIndex: PropTypes.number,
+	layerTooltipActive: PropTypes.bool,
+	onLayerTooltipActiveChange: PropTypes.func,
 };
 
 const ProductLabelHeader = ({count, product, productMetadata, color}) => {
@@ -142,9 +155,11 @@ const SingleProductLabelHeader = ({product, zone, start, end, color}) => {
 					<span className="worldCereal-ProductLabelHeader-product">
 						{product}
 					</span>
-					<span className="worldCereal-ProductLabelHeader-zone">
-						(zone {zone})
-					</span>
+					{zone ? (
+						<span className="worldCereal-ProductLabelHeader-zone">
+							(zone {zone})
+						</span>
+					) : null}
 				</div>
 				<div className="worldCereal-ProductLabelHeader-period">
 					{start} / {end}
@@ -244,7 +259,7 @@ ProductLabelLegend.propTypes = {
 	}),
 };
 
-const ProductLabelLegendItem = ({color, name}) => {
+export const ProductLabelLegendItem = ({color, name}) => {
 	return (
 		<div className="worldCereal-ProductLabelLegendItem">
 			<div style={{background: color}} />

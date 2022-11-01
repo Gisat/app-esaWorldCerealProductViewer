@@ -3,6 +3,9 @@ import {utils} from '@gisatcz/ptr-utils';
 
 const specificActionTypes = utils.deepKeyMirror({
 	WORLD_CEREAL: {
+		GLOBAL_PRODUCT_METADATA: {
+			ADD: null,
+		},
 		PRODUCT_METADATA: {
 			ADD: null,
 			SET_ACTIVE_KEYS: null,

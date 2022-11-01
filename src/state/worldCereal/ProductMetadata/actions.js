@@ -5,7 +5,6 @@ import utils from '../../../utils';
 import productMetadataModel from '../../../models/productMetadata';
 import Select from '../../Select';
 import ActionTypes from '../../../constants/ActionTypes';
-import {mapSetKey} from '../../../constants/app';
 import Action from '../../Action';
 
 const setActiveKeys = commonActions.setActiveKeys(
@@ -31,6 +30,7 @@ function add(items) {
 function loadForMapSetView() {
 	return (dispatch, getState) => {
 		const state = getState();
+		const mapSetKey = Select.maps.getActiveSetKey(state);
 		const viewAsFeature =
 			Select.worldCereal.productMetadata.getMapSetActiveMapExtentAsFeature(
 				state,
@@ -115,7 +115,9 @@ function handleDataSourceAndAddtoMap(
 				spatialDataSourceKey,
 				type: 'wms',
 				options: {
-					fetchedTile: true,
+					pickable: true,
+					hoverable: true,
+					transparentColor: [255, 255, 255, 0], // white border, transparent background
 					params: {
 						layers: ds.data.layers,
 					},
@@ -134,15 +136,10 @@ function handleDataSourceAndAddtoMap(
 				mapKey,
 				layerKey
 			);
-			const existingOutlineLayer = Select.maps.getLayerStateByLayerKeyAndMapKey(
-				getState(),
-				mapKey,
-				productMetadataKey
-			);
 
 			// Because of async, spatialDataSources could receive at the time, when layer wes already aggain removed
 			// It is important to check if layer should be in map (OutlineLayer is indicator)
-			if (!existingLayer && !!existingOutlineLayer) {
+			if (!existingLayer) {
 				dispatch(CommonAction.maps.addMapLayers(mapKey, [layer]));
 			}
 		});
@@ -153,25 +150,24 @@ function handleDataSourceAndAddtoMap(
  * Add/remove the product to/from active map
  * @param productMetadataKey {string} unique key of product metadata
  */
-function handleProductInActiveMap(productMetadataKey, spatialDataSourceKey) {
+function handleProductInActiveMap(layerKey, spatialDataSourceKey) {
 	return (dispatch, getState) => {
-		const map = Select.maps.getMapSetActiveMap(getState(), mapSetKey);
-		const productMetadata = Select.worldCereal.productMetadata.getByKey(
-			getState(),
-			productMetadataKey
-		);
+		const state = getState();
+		const mapSetKey = Select.maps.getActiveSetKey(state);
+		const map = Select.maps.getMapSetActiveMap(state, mapSetKey);
+		// const productMetadata = Select.worldCereal.productMetadata.getByKey(
+		// 	state,
+		// 	productMetadataKey
+		// );
 
 		const isLayerPresent =
 			map?.data?.layers &&
-			!!_find(
-				map.data.layers,
-				layer => layer.productMetadataKey === productMetadataKey
-			);
+			!!_find(map.data.layers, layer => layer.layerKey === layerKey);
 
 		// Remove or add layer(s)
 		if (isLayerPresent) {
 			const existingLayer = Select.maps.getLayerStateByLayerKeyAndMapKey(
-				getState(),
+				state,
 				map.key,
 				spatialDataSourceKey
 			);
@@ -180,28 +176,11 @@ function handleProductInActiveMap(productMetadataKey, spatialDataSourceKey) {
 			if (existingLayer) {
 				dispatch(removeLayersDatasourceLayer(map.key, spatialDataSourceKey));
 			}
-
-			dispatch(removeProductOutlineLayer(map.key, productMetadataKey));
 		} else {
-			dispatch(addProductOutlineLayer(map.key, productMetadata));
 			dispatch(
-				handleDataSourceAndAddtoMap(
-					map.key,
-					spatialDataSourceKey,
-					productMetadataKey
-				)
+				handleDataSourceAndAddtoMap(map.key, spatialDataSourceKey, layerKey)
 			);
 		}
-	};
-}
-
-/**
- * @param mapKey {string}
- * @param productMetadataKey {string} unique key of product metadata
- */
-function removeProductOutlineLayer(mapKey, productMetadataKey) {
-	return dispatch => {
-		dispatch(CommonAction.maps.removeMapLayer(mapKey, productMetadataKey));
 	};
 }
 
@@ -211,69 +190,7 @@ function removeLayersDatasourceLayer(mapKey, spatialDataSourceKey) {
 	};
 }
 
-/**
- * @param mapKey {string}
- * @param productMetadata {Object}
- */
-function addProductOutlineLayer(mapKey, productMetadata) {
-	return (dispatch, getState) => {
-		const outlineLayer = getProductOutlineLayerDefinition(
-			getState(),
-			productMetadata
-		);
-		dispatch(CommonAction.maps.addMapLayerToIndex(mapKey, outlineLayer));
-	};
-}
-
 // helpers ---------------------------------------------------------------------------------------
-/**
- * Get product outline layer definition
- * @param state {Object}
- * @param productMetadata {Object}
- * @returns {Object} Panther.Layer
- */
-function getProductOutlineLayerDefinition(state, productMetadata) {
-	const {key, data} = productMetadata;
-	const {geometry} = data;
-	const outline = {
-		type: 'Feature',
-		geometry,
-	};
-
-	const cogStyle = Select.worldCereal.getStyleDefinitionByProductTemplateKey(
-		state,
-		productMetadata.data.product
-	);
-
-	return {
-		key,
-		layerKey: key,
-		productMetadataKey: key,
-		type: 'vector',
-		options: {
-			renderingTechnique: 'canvas',
-			style: {
-				rules: [
-					{
-						styles: [
-							{
-								fill: null,
-								// FIXME
-								// temporary set outline opacity to 0 to hide layer in map
-								// set opacity to 1
-								outlineOpacity: 0,
-								outlineWidth: 1,
-								outlineColor: cogStyle?.rules?.[0]?.styles?.[0].color,
-							},
-						],
-					},
-				],
-			},
-			features: [outline],
-		},
-	};
-}
-
 // Creators --------------------------------------------------------------------------------------
 /**
  * Set active tiles

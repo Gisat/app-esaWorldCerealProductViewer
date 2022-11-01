@@ -90,6 +90,10 @@
 	--accent100rgb: #{hexToRGB($darkAccent100)};
 }
 
+input {
+	accent-color: var(--accent60);
+}
+
 // custom scrollbar
 /* width */
 ::-webkit-scrollbar {

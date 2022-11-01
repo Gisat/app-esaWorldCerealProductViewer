@@ -42,6 +42,7 @@ div[data-rcs="clip-item"] {
 
 // MapInfoElements
 .worldCereal-MapInfoElements {
+  pointer-events: none;
   position: absolute;
   bottom: .35rem;
   left: .35rem;

@@ -20,6 +20,7 @@ import {initApp} from '../app';
 import configuration from './worldCereal/configuration/reducers';
 import productMetadata from './worldCereal/ProductMetadata/reducers';
 import productMetadataFilter from './worldCereal/ProductMetadataFilter/reducers';
+import globalProductMetadata from './worldCereal/GlobalProductMetadata/reducers';
 
 export const history = isServer
 	? createMemoryHistory()
@@ -45,6 +46,7 @@ function createReducer() {
 		configuration,
 		productMetadata,
 		productMetadataFilter,
+		globalProductMetadata,
 	});
 
 	return combineReducers({

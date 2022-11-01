@@ -1,0 +1,12 @@
+@use 'sass:math';
+@import '../../../../styles/variables';
+
+.worldCereal-StatisticsHeaderContent {
+  display: flex;
+  grid-gap: .05rem;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  margin: 0 2rem;
+}
+

@@ -3,18 +3,25 @@ import Action from '../../../state/Action';
 import Select from '../../../state/Select';
 
 import Presentation from './presentation';
-import {mapSetKey} from '../../../constants/app';
 
 const mapStateToProps = (state, ownProps) => {
+	const mapSetKey = Select.maps.getActiveSetKey(state);
+	const productsMetadata =
+		Select.worldCereal.productMetadata.getModelsByMapKeyGroupedByParam(
+			state,
+			ownProps.mapKey,
+			'product'
+		);
+	const globalProductsMetadata =
+		Select.worldCereal.globalProductMetadata.getModelsByMapKeyGroupedByParam(
+			state,
+			ownProps.mapKey,
+			'product'
+		);
 	return {
 		activeMapKey: Select.maps.getMapSetActiveMapKey(state, mapSetKey),
 		mapSetMapKeys: Select.maps.getMapSetMapKeys(state, mapSetKey),
-		productsMetadata:
-			Select.worldCereal.productMetadata.getModelsByMapKeyGroupedByParam(
-				state,
-				ownProps.mapKey,
-				'product'
-			),
+		productsMetadata: productsMetadata || globalProductsMetadata,
 	};
 };
 

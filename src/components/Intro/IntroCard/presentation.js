@@ -27,7 +27,7 @@ const IntroCard = ({disabled, onClick, Icon, children}) => {
 		<div className={classes} onClick={onClick}>
 			{Icon
 				? createElement(Icon, {
-						color: disabled ? 'rgb(110, 110, 110)' : 'rgb(210, 160, 20)',
+						color: disabled ? 'rgb(110, 110, 110)' : 'rgb(239,180,9)',
 						set: 'duotone',
 						size: '50',
 				  })

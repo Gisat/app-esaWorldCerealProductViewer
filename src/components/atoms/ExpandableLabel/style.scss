@@ -18,7 +18,6 @@ $ExpandableLabelBorderRadius: .25rem;
 
 // label
 .ptr-ExpandableLabel {
-  background: var(--base0);
   border-radius: $ExpandableLabelBorderRadius;
   max-width: 20rem;
   position: relative;
@@ -61,7 +60,6 @@ $ExpandableLabelBorderRadius: .25rem;
   transition: height .5s ease-in-out;
   border-bottom-left-radius: $ExpandableLabelBorderRadius;
   border-bottom-right-radius: $ExpandableLabelBorderRadius;
-  background: var(--base10);
   position: absolute;
   z-index: 2;
 }
