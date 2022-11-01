@@ -1,5 +1,65 @@
 {
+    "application": {
+        "applications": [
+            {
+                "key": "esaWorldCerealProductViewer",
+                "data": {
+                    "nameDisplay": "esaWorldCerealProductViewer",
+                    "nameInternal": "esaWorldCerealProductViewer"
+                }
+            }
+        ],
+        "configurations": [
+            {
+                "key": "3bb19ea5-a2c9-415d-91c8-0774ce3a5594",
+                "data": {
+                    "applicationKey": "esaWorldCerealProductViewer",
+                    "data": {
+                        "configByCaseKey": {
+                            "577b253f-754f-421e-94a2-092f092b4947": {
+                                "name": "Annual cropland",
+                                "styleKey": "af4c5310-405f-426d-9bbd-098593ea2ac4",
+                                "absoluteAttributeKey": "4fb212bb-ff1a-46d7-8fce-e341e7f08376",
+                                "relativeAttributeKey": "73e3bd86-8701-47e4-b27b-9d2555d68304"
+                            }
+                        },
+                        "componentsBySelectedFeaturesCount": {
+                            "no-selected": [],
+                            "one-selected": [],
+                            "multiple-selected": []
+                        },
+                        "placeKeyByCountryFeatureKey": {
+                            "BRA": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
+                            "UKR": "b1a913a9-a1f3-4fe7-9932-73d376a2f95a"
+                        }
+                    }
+                }
+            }
+        ]
+    },
     "metadata": {
+        "attributes": [
+            {
+                "key": "4fb212bb-ff1a-46d7-8fce-e341e7f08376",
+                "data": {
+                    "nameDisplay": "Annual cropland area",
+                    "nameInternal": "attribute_annualCroplandArea",
+                    "unit": "ha",
+                    "type": "numeric",
+                    "color": "#e41a1c"
+                }
+            },
+            {
+                "key": "73e3bd86-8701-47e4-b27b-9d2555d68304",
+                "data": {
+                    "nameDisplay": "Annual cropland share",
+                    "nameInternal": "attribute_annualCroplandShare",
+                    "unit": "%",
+                    "type": "numeric",
+                    "color": "#e41a1c"
+                }
+            }
+        ],
         "cases": [
             {
                 "key": "577b253f-754f-421e-94a2-092f092b4947",
@@ -10,19 +70,92 @@
                 }
             },
             {
-                "key": "33caa296-cf88-4d5c-a67d-ffba11376d4a",
-                "data": {
-                    "applicationKey": "esaWorldCerealProductViewer",
-                    "nameDisplay": "Active cropland",
-                    "nameInternal": "case_activeCropland"
-                }
-            },
-            {
                 "key": "66f490a6-d8df-45a3-adcb-d3648715ddd5",
                 "data": {
                     "applicationKey": "esaWorldCerealProductViewer",
                     "nameDisplay": "Active irrigation",
                     "nameInternal": "case_activeIrrigation"
+                }
+            },
+            {
+                "key": "33caa296-cf88-4d5c-a67d-ffba11376d4a",
+                "data": {
+                    "applicationKey": "esaWorldCerealProductViewer",
+                    "nameDisplay": "Maize",
+                    "nameInternal": "case_maize"
+                }
+            },
+            {
+                "key": "d439a6db-8f7b-4123-9e93-3892cad157f7",
+                "data": {
+                    "applicationKey": "esaWorldCerealProductViewer",
+                    "nameDisplay": "Spring cereals",
+                    "nameInternal": "case_springCereals"
+                }
+            },
+            {
+                "key": "d5c6a16c-d581-44ae-afc9-ad3858413c4a",
+                "data": {
+                    "applicationKey": "esaWorldCerealProductViewer",
+                    "nameDisplay": "Winter cereals",
+                    "nameInternal": "case_winterCereals"
+                }
+            }
+        ],
+        "places": [
+            {
+                "key": "eaee3d97-2938-497c-b008-b43d5d5dbe89",
+                "data": {
+                    "applicationKey": "esaWorldCerealProductViewer",
+                    "nameDisplay": "Brazil",
+                    "nameInternal": "place_Brazil",
+                    "scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3"
+                }
+            },
+            {
+                "key": "b1a913a9-a1f3-4fe7-9932-73d376a2f95a",
+                "data": {
+                    "applicationKey": "esaWorldCerealProductViewer",
+                    "nameDisplay": "Ukraine",
+                    "nameInternal": "place_Ukraine",
+                    "scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3"
+                }
+            }
+        ],
+        "scopes": [
+            {
+                "key": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
+                "data": {
+                    "applicationKey": "esaWorldCerealProductViewer",
+                    "nameDisplay": "Statistics",
+                    "nameInternal": "scope_statistics"
+                }
+            }
+        ],
+        "styles": [
+            {
+                "key": "af4c5310-405f-426d-9bbd-098593ea2ac4",
+                "data": {
+                    "nameDisplay": "style_annualCropland",
+                    "nameInternal": "style_annualCropland",
+                    "definition": {
+                        "rules": [
+                            {
+                                "styles": [
+                                    {
+                                        "fill": "rgb(150,150,150)",
+                                        "fillOpacity": 0.5,
+                                        "outlineColor": "#232323",
+                                        "outlineWidth": 1,
+                                        "outlineOpacity": 1
+                                    },
+                                    {
+                                        "attributeKey": "73e3bd86-8701-47e4-b27b-9d2555d68304"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 }
             }
         ]
