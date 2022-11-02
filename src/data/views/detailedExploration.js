@@ -16,7 +16,7 @@ export default {
 						'detailedExploration-mapSet': {
 							open: [
 								'zoomControls',
-								'backgroundLayersControl',
+								'layerControls',
 								'addMap',
 								'compareMaps',
 								'mapAttribution',
@@ -28,7 +28,7 @@ export default {
 								'searchPlace',
 								'addMap',
 								'compareMaps',
-								'backgroundLayersControl',
+								'layerControls',
 								'zoomControls',
 								'overviewMap',
 							],
@@ -52,7 +52,7 @@ export default {
 									icon: 'info',
 									title: 'Map Attribution',
 								},
-								backgroundLayersControl: {
+								layerControls: {
 									icon: 'layers',
 									title: 'Background layers control',
 								},
