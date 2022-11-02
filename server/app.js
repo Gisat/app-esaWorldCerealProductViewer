@@ -1,5 +1,4 @@
 import path from 'path';
-import React from 'react';
 import {createReactAppExpress} from '@cra-express/core';
 import {Provider, initialStates} from '@gisatcz/ptr-state';
 import createStore from '../src/state/Store';
