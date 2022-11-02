@@ -2,7 +2,6 @@
 @import '../../../../../styles/variables';
 
 .worldCereal-LevelSwitch {
-  padding: 0 $analyticsPanelHorizontalPadding;
   font-family: "Sen" , "Roboto", sans-serif;
 }
 
@@ -11,12 +10,22 @@
 
 }
 
-.worldCereal-ButtonSwitch.ptr-button-switch .ptr-button.active .ptr-button-caption {
-  font-weight: bold;
-}
-
 .worldCereal-ButtonSwitch.ptr-button-switch .ptr-button {
   border-radius: .1rem;
+  border: 0;
+}
+
+.worldCereal-ButtonSwitch.ptr-button-switch .ptr-button .ptr-button-caption {
+  padding-left: .35rem;
+  padding-right: .35rem;
+}
+
+.worldCereal-ButtonSwitch.ptr-button-switch .ptr-button.active {
+  background: var(--accent65);
+}
+
+.worldCereal-ButtonSwitch.ptr-button-switch .ptr-button.active .ptr-button-caption {
+  font-weight: bold;
 }
 
 .worldCereal-ButtonSwitch.ptr-button-group .ptr-button:not(:last-child), .worldCereal-ButtonSwitch.ptr-button-group .ptr-button:not(:last-child):after {

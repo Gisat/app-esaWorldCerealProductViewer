@@ -1,27 +1,9 @@
 import PropTypes from 'prop-types';
-import ReactSelect, {components} from 'react-select';
+import ReactSelect from 'react-select';
 import './style.scss';
+import StatisticsConfigurationItem from '../StatisticsConfigurationItem';
 
-const CustomSingleValue = ({children, title, ...props}) => (
-	<>
-		<components.SingleValue {...props}>
-			{title ? (
-				<span className="worldCereal-StatisticsHeaderSelect-label">
-					{title}
-				</span>
-			) : null}
-			{children}
-		</components.SingleValue>
-	</>
-);
-
-CustomSingleValue.propTypes = {
-	children: PropTypes.node,
-	title: PropTypes.string,
-};
-
-const StatisticsHeaderSelect = ({
-	title,
+const StatisticsSelect = ({
 	options,
 	value,
 	isMulti,
@@ -32,18 +14,17 @@ const StatisticsHeaderSelect = ({
 	const customStyles = {
 		control: (provided, state) => ({
 			...provided,
-			background: state.isFocused ? 'var(--accent50)' : 'var(--accent35)',
-			height: '100%',
-			padding: '3px 10px 1px 5px',
+			background: state.isFocused ? 'var(--accent35)' : 'var(--base70)',
+			padding: '0 10px 0 0',
 			borderWidth: '0',
 			borderRadius: '0',
 			boxShadow: '0',
-			color: state.isFocused ? 'var(--base100)' : 'var(--base90)',
+			color: state.isFocused ? 'var(--base100)' : 'var(--base10)',
 			'&:hover': {
-				color: state.isFocused ? 'var(--base95)' : 'var(--base95)',
-				background: state.isFocused ? 'var(--accent50)' : 'var(--accent50)',
+				color: state.isFocused ? 'var(--base100)' : 'var(--base100)',
+				background: state.isFocused ? 'var(--accent35)' : 'var(--accent35)',
 			},
-			width: '12rem',
+			width: '100%',
 			cursor: 'pointer',
 		}),
 		container: provided => ({
@@ -60,11 +41,11 @@ const StatisticsHeaderSelect = ({
 				...provided,
 				padding: '0',
 				cursor: 'pointer',
-				color: 'var(--base100)',
+				color: 'var(--base0)',
 				opacity: 0.5,
 				transition: 0,
 				':hover': {
-					color: 'inherit',
+					color: 'var(--base100)',
 				},
 				transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : '',
 			};
@@ -111,44 +92,43 @@ const StatisticsHeaderSelect = ({
 			padding: '12px 15px',
 			'&:hover': {
 				background: state.isSelected
-					? 'var(--accent50)'
-					: 'rgba(var(--accent50rgb), .5)',
+					? 'var(--accent30)'
+					: 'rgba(var(--accent30rgb), .5)',
 			},
 		}),
 	};
 
 	return (
-		<ReactSelect
-			className="cure-StatisticsHeaderSelect"
-			styles={customStyles}
-			theme={theme => ({
-				...theme,
-				colors: {
-					...theme.colors,
-					primary25: 'rgba(var(--accent50rgb), .5)',
-					primary50: 'var(--accent50)',
-					primary: 'var(--accent50)',
-					neutral0: 'var(--base10)',
-					neutral20: 'var(--base50)',
-					neutral80: 'var(--base80)',
-					neutral90: 'var(--base90)',
-				},
-			})}
-			isMulti={isMulti}
-			isClearable={false}
-			isSearchable={false}
-			options={options}
-			value={value}
-			isDisabled={disabled}
-			onChange={onChange}
-			components={{
-				SingleValue: props => <CustomSingleValue title={title} {...props} />,
-			}}
-		/>
+		<StatisticsConfigurationItem label="Product">
+			<ReactSelect
+				className="cure-StatisticsSelect"
+				styles={customStyles}
+				theme={theme => ({
+					...theme,
+					colors: {
+						...theme.colors,
+						primary25: 'rgba(var(--accent30rgb), .5)',
+						primary50: 'var(--accent35)',
+						primary: 'var(--accent35)',
+						neutral0: 'var(--base10)',
+						neutral20: 'var(--base50)',
+						neutral80: 'var(--base80)',
+						neutral90: 'var(--base90)',
+					},
+				})}
+				isMulti={isMulti}
+				isClearable={false}
+				isSearchable={false}
+				options={options}
+				value={value}
+				isDisabled={disabled}
+				onChange={onChange}
+			/>
+		</StatisticsConfigurationItem>
 	);
 };
 
-StatisticsHeaderSelect.propTypes = {
+StatisticsSelect.propTypes = {
 	isMulti: PropTypes.bool,
 	disabled: PropTypes.bool,
 	highlighted: PropTypes.bool,
@@ -157,8 +137,7 @@ StatisticsHeaderSelect.propTypes = {
 	small: PropTypes.bool,
 	menuPosition: PropTypes.string,
 	menuWidth: PropTypes.string,
-	title: PropTypes.string,
 	onChange: PropTypes.func,
 };
 
-export default StatisticsHeaderSelect;
+export default StatisticsSelect;

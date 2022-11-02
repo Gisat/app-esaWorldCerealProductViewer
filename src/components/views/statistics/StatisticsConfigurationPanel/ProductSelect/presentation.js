@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import {useEffect} from 'react';
-import StatisticsHeaderSelect from '../StatisticsHeaderSelect';
+import StatisticsSelect from '../StatisticsSelect';
 import './style.scss';
 
 const ProductSelect = ({
@@ -30,10 +30,10 @@ const ProductSelect = ({
 	};
 
 	return (
-		<StatisticsHeaderSelect
+		<StatisticsSelect
+			label="Product"
 			options={options}
 			value={value}
-			title="Product"
 			onChange={setActiveCaseKey}
 		/>
 	);

@@ -1,0 +1,26 @@
+@use 'sass:math';
+@import '../../../../styles/variables';
+
+.worldCereal-StatisticsConfigurationPanel {
+  background: var(--base100);
+  width: 20rem;
+  height: 100%;
+  padding: m(1) 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.worldCereal-StatisticsConfigurationPanel .worldCereal-Title {
+  justify-content: center;
+  margin-left: -.1rem;
+}
+
+.worldCereal-StatisticsConfigurationPanel-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: m(1) 0;
+  padding: 1rem 1rem 1rem .75rem;
+  grid-gap: m(1);
+}
+
