@@ -55,7 +55,7 @@
 			{
 				"key": "a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47",
 				"data": {
-					"nameDisplay": "Global",
+					"nameDisplay": "Global level",
 					"nameInternal": "areaTreeLevel_global",
 					"level": 1,
 					"applicationKey": "esaWorldCerealProductViewer",
@@ -66,8 +66,8 @@
 			{
 				"key": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
 				"data": {
-					"nameDisplay": "Regional",
-					"nameInternal": "areaTreeLevel_regional",
+					"nameDisplay": "Country level",
+					"nameInternal": "areaTreeLevel_country",
 					"level": 2,
 					"applicationKey": "esaWorldCerealProductViewer",
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",

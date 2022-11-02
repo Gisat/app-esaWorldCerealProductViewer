@@ -2,7 +2,12 @@
 @import '../../../../styles/variables';
 
 .worldCereal-AnalyticsPanel {
-  background: var(--base100);
+  background: var(--base0);
   height: 100%;
+}
+
+.worldCereal-AnalyticsPanel-header {
+  padding: m(1) 0;
+  border-bottom: 1px solid var(--base30);
 }
 

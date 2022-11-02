@@ -1,0 +1,30 @@
+@use 'sass:math';
+@import '../../../../../styles/variables';
+
+.worldCereal-LevelSwitch {
+  padding: 0 $analyticsPanelHorizontalPadding;
+  font-family: "Sen" , "Roboto", sans-serif;
+}
+
+// General styling for world cereal button switch
+.worldCereal-ButtonSwitch {
+
+}
+
+.worldCereal-ButtonSwitch.ptr-button-switch .ptr-button.active .ptr-button-caption {
+  font-weight: bold;
+}
+
+.worldCereal-ButtonSwitch.ptr-button-switch .ptr-button {
+  border-radius: .1rem;
+}
+
+.worldCereal-ButtonSwitch.ptr-button-group .ptr-button:not(:last-child), .worldCereal-ButtonSwitch.ptr-button-group .ptr-button:not(:last-child):after {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.worldCereal-ButtonSwitch.ptr-button-group .ptr-button:not(:first-child), .worldCereal-ButtonSwitch.ptr-button-group .ptr-button:not(:first-child):after {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
