@@ -16,6 +16,7 @@
                     "applicationKey": "esaWorldCerealProductViewer",
                     "data": {
                         "scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
+                        "areaTreeKey": "79b65d72-9d4c-4959-a7fa-579c3a372406",
                         "configByCaseKey": {
                             "577b253f-754f-421e-94a2-092f092b4947": {
                                 "name": "Annual cropland",
