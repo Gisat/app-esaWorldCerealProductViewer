@@ -14,18 +14,19 @@ const StatisticsSelect = ({
 	const customStyles = {
 		control: (provided, state) => ({
 			...provided,
-			background: state.isFocused ? 'var(--accent35)' : 'var(--base70)',
+			background: state.isFocused ? 'var(--accent35)' : 'var(--base75)',
 			padding: '0 10px 0 0',
 			borderWidth: '0',
 			borderRadius: '0',
 			boxShadow: '0',
 			color: state.isFocused ? 'var(--base100)' : 'var(--base10)',
 			'&:hover': {
-				color: state.isFocused ? 'var(--base100)' : 'var(--base100)',
-				background: state.isFocused ? 'var(--accent35)' : 'var(--accent35)',
+				color: state.isFocused ? 'var(--base100)' : 'var(--base10)',
+				background: state.isFocused ? 'var(--accent35)' : 'var(--base65)',
 			},
 			width: '100%',
 			cursor: 'pointer',
+			minHeight: '2.25rem',
 		}),
 		container: provided => ({
 			...provided,
@@ -41,12 +42,9 @@ const StatisticsSelect = ({
 				...provided,
 				padding: '0',
 				cursor: 'pointer',
-				color: 'var(--base0)',
+				color: state.isFocused ? 'var(--base100)' : 'var(--base0)',
 				opacity: 0.5,
 				transition: 0,
-				':hover': {
-					color: 'var(--base100)',
-				},
 				transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : '',
 			};
 		},
@@ -77,7 +75,7 @@ const StatisticsSelect = ({
 		menu: provided => ({
 			...provided,
 			zIndex: 1000,
-			minWidth: '12.2rem',
+			minWidth: '11.15rem',
 			border: '1px solid var(--base75)',
 			borderRadius: '.15rem',
 			background: 'rgba(var(--base100rgb),.75)',
@@ -89,11 +87,11 @@ const StatisticsSelect = ({
 			color: state.isSelected ? 'var(--base100)' : 'var(--base0)',
 			fontSize: '.875rem',
 			fontFamily: 'Roboto, sans-serif',
-			padding: '12px 15px',
+			padding: '10px',
 			'&:hover': {
 				background: state.isSelected
 					? 'var(--accent30)'
-					: 'rgba(var(--accent30rgb), .5)',
+					: 'rgba(var(--base50rgb), .5)',
 			},
 		}),
 	};
@@ -107,7 +105,7 @@ const StatisticsSelect = ({
 					...theme,
 					colors: {
 						...theme.colors,
-						primary25: 'rgba(var(--accent30rgb), .5)',
+						primary25: 'rgba(var(--base50rgb), .5)',
 						primary50: 'var(--accent35)',
 						primary: 'var(--accent35)',
 						neutral0: 'var(--base10)',

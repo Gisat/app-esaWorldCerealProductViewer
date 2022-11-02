@@ -1,7 +1,7 @@
 // import PropTypes from 'prop-types';
 import {ButtonSwitch, ButtonSwitchOption} from '@gisatcz/ptr-atoms';
-import './style.scss';
 import StatisticsConfigurationItem from '../StatisticsConfigurationItem';
+import './style.scss';
 
 const LevelSwitch = () => {
 	return (
@@ -13,7 +13,7 @@ const LevelSwitch = () => {
 				<ButtonSwitchOption key="1" value="global" active>
 					Global
 				</ButtonSwitchOption>
-				<ButtonSwitchOption key="2" value="country">
+				<ButtonSwitchOption key="2" value="country" disabled>
 					Country
 				</ButtonSwitchOption>
 			</ButtonSwitch>

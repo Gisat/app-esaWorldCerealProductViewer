@@ -32,7 +32,7 @@ const getContent = view => {
 			);
 		case 'statistics':
 			return (
-				<div style={{display: 'flex', height: '100%'}}>
+				<div className="worldCereal-statistics">
 					<StatisticsConfigurationPanel />
 					<Maps />
 				</div>

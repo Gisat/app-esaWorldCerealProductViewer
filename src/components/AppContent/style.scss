@@ -9,3 +9,12 @@
   flex-direction: column;
   overflow: hidden;
 }
+
+.worldCereal-statistics {
+  display: flex;
+  height: 100%;
+}
+
+.worldCereal-statistics > .ptr-map-set {
+  flex: 1;
+}

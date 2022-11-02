@@ -7,7 +7,7 @@
 
 // General styling for world cereal button switch
 .worldCereal-ButtonSwitch {
-
+  height: 2.2rem;
 }
 
 .worldCereal-ButtonSwitch.ptr-button-switch .ptr-button {
@@ -16,8 +16,7 @@
 }
 
 .worldCereal-ButtonSwitch.ptr-button-switch .ptr-button .ptr-button-caption {
-  padding-left: .35rem;
-  padding-right: .35rem;
+  padding: .6rem .4rem .5rem;
 }
 
 .worldCereal-ButtonSwitch.ptr-button-switch .ptr-button.active {
