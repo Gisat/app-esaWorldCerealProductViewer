@@ -43,6 +43,15 @@ export default {
 				Maps: {
 					mode: 'set',
 				},
+				NoSelectedComponent: {
+					name: 'No selected feature',
+				},
+				OneSelectedComponent: {
+					name: 'One selected feature',
+				},
+				MultipleSelectedComponent: {
+					name: 'Multiple selected feature',
+				},
 			},
 			maps: {
 				activeMapKey: 'e44839a8-b1f5-4f6f-8049-30aeb967eecf',

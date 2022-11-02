@@ -16,7 +16,6 @@
                     "applicationKey": "esaWorldCerealProductViewer",
                     "data": {
                         "scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-                        "viewKey": "2725269b-94e1-45f9-90f0-8f61eacac47d",
                         "configByCaseKey": {
                             "577b253f-754f-421e-94a2-092f092b4947": {
                                 "name": "Annual cropland",
@@ -261,61 +260,6 @@
                                 ]
                             }
                         ]
-                    }
-                }
-            }
-        ]
-    },
-    "views": {
-        "views": [
-            {
-                "key": "2725269b-94e1-45f9-90f0-8f61eacac47d",
-                "data": {
-                    "nameInternal": "view-statistics",
-                    "state": {
-                        "components": {
-                            "NoSelectedComponent": {
-                                "name": "No selected feature"
-                            },
-                            "OneSelectedComponent": {
-                                "name": "One selected feature"
-                            },
-                            "MultipleSelectedComponent": {
-                                "name": "Multiple selected feature"
-                            }
-                        },
-                        "maps": {
-                            "maps": {
-                                "map-statistics": {
-                                    "key": "map-statistics",
-                                    "data": {
-                                        "layers": []
-                                    }
-                                }
-                            },
-                            "sets": {
-                                "map-set-statistics": {
-                                    "key": "map-set-statistics",
-                                    "data": {
-                                        "backgroundLayer": {
-                                            "key": "cartoDB_LightNoLabels",
-                                            "type": "wmts",
-                                            "options": {
-                                                "url": "https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}{r}.png"
-                                            }
-                                        }
-                                    },
-                                    "maps": [
-                                        "map-statistics"
-                                    ],
-                                    "sync": {
-                                        "center": true,
-                                        "boxRange": true
-                                    },
-                                    "activeMapKey": "map-statistics"
-                                }
-                            }
-                        }
                     }
                 }
             }
