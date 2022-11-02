@@ -15,6 +15,8 @@
                 "data": {
                     "applicationKey": "esaWorldCerealProductViewer",
                     "data": {
+                        "scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
+                        "viewKey": "2725269b-94e1-45f9-90f0-8f61eacac47d",
                         "configByCaseKey": {
                             "577b253f-754f-421e-94a2-092f092b4947": {
                                 "name": "Annual cropland",
@@ -24,9 +26,9 @@
                             }
                         },
                         "componentsBySelectedFeaturesCount": {
-                            "no-selected": [],
-                            "one-selected": [],
-                            "multiple-selected": []
+                            "no-selected": ["NoSelectedComponent"],
+                            "one-selected": ["OneSelectedComponent"],
+                            "multiple-selected": ["MultipleSelectedComponent"]
                         },
                         "placeKeyByCountryFeatureKey": {
                             "BRA": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
@@ -38,6 +40,41 @@
         ]
     },
     "metadata": {
+        "areaTrees": [
+            {
+                "key": "79b65d72-9d4c-4959-a7fa-579c3a372406",
+                "data": {
+                    "nameDisplay": "Levels",
+                    "nameInternal": "areaTree_levels",
+                    "scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
+                    "applicationKey": "esaWorldCerealProductViewer"
+                }
+            }
+        ],
+        "areaTreeLevels": [
+            {
+                "key": "a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47",
+                "data": {
+                    "nameDisplay": "Global",
+                    "nameInternal": "areaTreeLevel_global",
+                    "level": 1,
+                    "applicationKey": "esaWorldCerealProductViewer",
+                    "scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
+                    "areaTreeKey": "79b65d72-9d4c-4959-a7fa-579c3a372406"
+                }
+            },
+            {
+                "key": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
+                "data": {
+                    "nameDisplay": "Regional",
+                    "nameInternal": "areaTreeLevel_regional",
+                    "level": 2,
+                    "applicationKey": "esaWorldCerealProductViewer",
+                    "scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
+                    "areaTreeKey": "79b65d72-9d4c-4959-a7fa-579c3a372406"
+                }
+            }
+        ],
         "attributes": [
             {
                 "key": "4fb212bb-ff1a-46d7-8fce-e341e7f08376",
@@ -46,7 +83,8 @@
                     "nameInternal": "attribute_annualCroplandArea",
                     "unit": "ha",
                     "type": "numeric",
-                    "color": "#e41a1c"
+                    "color": "#e41a1c",
+                    "applicationKey": "esaWorldCerealProductViewer"
                 }
             },
             {
@@ -56,7 +94,8 @@
                     "nameInternal": "attribute_annualCroplandShare",
                     "unit": "%",
                     "type": "numeric",
-                    "color": "#e41a1c"
+                    "color": "#e41a1c",
+                    "applicationKey": "esaWorldCerealProductViewer"
                 }
             }
         ],
@@ -138,6 +177,7 @@
                 "data": {
                     "nameDisplay": "style_annualCropland",
                     "nameInternal": "style_annualCropland",
+                    "applicationKey": "esaWorldCerealProductViewer",
                     "definition": {
                         "rules": [
                             {
@@ -155,6 +195,61 @@
                                 ]
                             }
                         ]
+                    }
+                }
+            }
+        ]
+    },
+    "views": {
+        "views": [
+            {
+                "key": "2725269b-94e1-45f9-90f0-8f61eacac47d",
+                "data": {
+                    "nameInternal": "view-statistics",
+                    "state": {
+                        "components": {
+                            "NoSelectedComponent": {
+                                "name": "No selected feature"
+                            },
+                            "OneSelectedComponent": {
+                                "name": "One selected feature"
+                            },
+                            "MultipleSelectedComponent": {
+                                "name": "Multiple selected feature"
+                            }
+                        },
+                        "maps": {
+                            "maps": {
+                                "map-statistics": {
+                                    "key": "map-statistics",
+                                    "data": {
+                                        "layers": []
+                                    }
+                                }
+                            },
+                            "sets": {
+                                "map-set-statistics": {
+                                    "key": "map-set-statistics",
+                                    "data": {
+                                        "backgroundLayer": {
+                                            "key": "cartoDB_LightNoLabels",
+                                            "type": "wmts",
+                                            "options": {
+                                                "url": "https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}{r}.png"
+                                            }
+                                        }
+                                    },
+                                    "maps": [
+                                        "map-statistics"
+                                    ],
+                                    "sync": {
+                                        "center": true,
+                                        "boxRange": true
+                                    },
+                                    "activeMapKey": "map-statistics"
+                                }
+                            }
+                        }
                     }
                 }
             }
