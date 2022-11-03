@@ -45,7 +45,7 @@ const PlaceSelect = ({
 };
 
 PlaceSelect.propTypes = {
-	activePlaceKeys: PropTypes.string,
+	activePlaceKeys: PropTypes.array,
 	places: PropTypes.array,
 	onActivePlacesChange: PropTypes.func,
 	onMount: PropTypes.func,

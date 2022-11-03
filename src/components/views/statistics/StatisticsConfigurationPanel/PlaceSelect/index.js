@@ -18,7 +18,7 @@ const mapStateToProps = state => {
 			{
 				key: 'u',
 				data: {
-					nameDisplay: 'United Kingdom of Great Britain and North Ireland',
+					nameDisplay: 'United Kingdom of Great Britain and Northern Ireland',
 				},
 			},
 		],

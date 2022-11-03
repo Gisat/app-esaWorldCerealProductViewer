@@ -11,7 +11,6 @@ const StatisticsSelect = ({
 	isMulti,
 	isSearchable,
 	disabled,
-	highlighted,
 	onChange,
 }) => {
 	const customStyles = {
@@ -49,17 +48,35 @@ const StatisticsSelect = ({
 				opacity: 0.5,
 				transition: 0,
 				transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : '',
+				'&:hover': {
+					opacity: 1,
+					color: 'inherit',
+				},
+			};
+		},
+		clearIndicator: (provided, state) => {
+			return {
+				...provided,
+				padding: '5px',
+				cursor: 'pointer',
+				color: state.isFocused ? 'var(--base100)' : 'var(--base0)',
+				opacity: 0.5,
+				transition: 0,
+				'&:hover': {
+					opacity: 1,
+					color: 'inherit',
+				},
 			};
 		},
 		input: provided => ({
 			...provided,
-			padding: '0',
+			padding: isMulti ? '0 7px' : '0',
 			margin: 0,
 			cursor: 'pointer',
 		}),
 		singleValue: provided => ({
 			...provided,
-			fontWeight: highlighted ? '800' : '600',
+			fontWeight: 'bold',
 			fontSize: '1rem',
 			fontFamily: 'Sen, Roboto, sans-serif',
 			letterSpacing: '-.5px',
@@ -69,11 +86,36 @@ const StatisticsSelect = ({
 			flexDirection: 'column',
 			lineHeight: 1.15,
 		}),
+		multiValue: provided => ({
+			...provided,
+			background: 'var(--base55)',
+		}),
+		multiValueLabel: provided => ({
+			...provided,
+			color: 'var(--base0)',
+			fontWeight: 'bold',
+			fontSize: '.875rem',
+			padding: '3px 5px 2px',
+			fontFamily: 'Sen, Roboto, sans-serif',
+		}),
+		multiValueRemove: provided => ({
+			...provided,
+			color: 'var(--base0)',
+			cursor: 'pointer',
+			'&:hover': {
+				color: 'var(--base10)',
+				background: 'var(--base40)',
+			},
+		}),
 		valueContainer: provided => ({
 			...provided,
 			color: disabled ? 'var(--base40)' : provided.color,
-			padding: '0px 10px',
+			padding: isMulti ? '3px' : '0px 10px',
 			cursor: 'text',
+		}),
+		placeholder: provided => ({
+			...provided,
+			padding: isMulti ? '0 5px' : '0px',
 		}),
 		menu: provided => ({
 			...provided,
@@ -119,7 +161,7 @@ const StatisticsSelect = ({
 				})}
 				placeholder={placeholder || 'Select...'}
 				isMulti={isMulti}
-				isClearable={false}
+				isClearable={isMulti}
 				isSearchable={isSearchable}
 				options={options}
 				value={value}
@@ -136,9 +178,8 @@ StatisticsSelect.propTypes = {
 	isMulti: PropTypes.bool,
 	isSearchable: PropTypes.bool,
 	disabled: PropTypes.bool,
-	highlighted: PropTypes.bool,
 	options: PropTypes.array,
-	value: PropTypes.object,
+	value: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 	small: PropTypes.bool,
 	menuPosition: PropTypes.string,
 	menuWidth: PropTypes.string,
