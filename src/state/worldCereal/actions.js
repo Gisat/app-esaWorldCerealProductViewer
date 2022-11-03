@@ -64,9 +64,17 @@ function applyDetailedExplorationView(view) {
  */
 function applyStatisticsView(view) {
 	return dispatch => {
+		// set active area tree level
 		dispatch(
 			CommonAction.areas.areaTreeLevels.setActiveKey(
 				view.data.state.areas.areaTreeLevels.activeKey
+			)
+		);
+
+		// add selections
+		dispatch(
+			CommonAction.selections.updateStateFromViewWithData(
+				view.data.state.selections
 			)
 		);
 	};

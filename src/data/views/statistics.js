@@ -59,6 +59,30 @@ export default {
 				maps: {
 					'e44839a8-b1f5-4f6f-8049-30aeb967eecf': {
 						key: 'e44839a8-b1f5-4f6f-8049-30aeb967eecf',
+						data: {
+							layers: [
+								{
+									key: 'statistics-global',
+									layerKey: 'statistics-global',
+									options: {
+										hoverable: true,
+										selectable: true,
+										selected: {
+											'764ff34a-2eee-4d82-8ffe-87da6ed1a3f7': {},
+										},
+										nameAttributeKey: '5f6a119b-addf-467e-ab1f-e07e4cdf79a6',
+									},
+									styleKey: 'af4c5310-405f-426d-9bbd-098593ea2ac4',
+									filterByActive: {
+										application: true,
+										scope: true,
+										place: true,
+										areaTreeLevel: true,
+									},
+									metadataModifiers: {},
+								},
+							],
+						},
 					},
 				},
 				sets: {
@@ -99,6 +123,18 @@ export default {
 			},
 			periods: {
 				activeKey: '1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08',
+			},
+			selections: {
+				activeKey: '764ff34a-2eee-4d82-8ffe-87da6ed1a3f7',
+				data: [
+					{
+						key: '764ff34a-2eee-4d82-8ffe-87da6ed1a3f7',
+						data: {
+							color: '#00fffe',
+							hoveredColor: '#1efbff',
+						},
+					},
+				],
 			},
 		},
 	},
