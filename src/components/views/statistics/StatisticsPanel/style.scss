@@ -1,7 +1,7 @@
 @use 'sass:math';
 @import '../../../../styles/variables';
 
-.worldCereal-StatisticsConfigurationPanel {
+.worldCereal-StatisticsPanel {
   background: var(--base100);
   width: 36.5rem;
   height: 100%;
@@ -10,7 +10,7 @@
   flex-direction: column;
 }
 
-.worldCereal-StatisticsConfigurationPanel-header {
+.worldCereal-StatisticsPanel-header {
   display: flex;
   justify-content: space-between;
   padding: 0 .75rem;
@@ -18,14 +18,14 @@
   min-height: 3rem;
 }
 
-.worldCereal-StatisticsConfigurationPanel-configurations {
+.worldCereal-StatisticsPanel-configurations {
   display: flex;
   flex-direction: column;
   grid-gap: 1rem;
   padding: m(1) 1rem m(math.div(4,3)) .75rem;
 }
 
-.worldCereal-StatisticsConfigurationPanel-configurations > div {
+.worldCereal-StatisticsPanel-configurations > div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

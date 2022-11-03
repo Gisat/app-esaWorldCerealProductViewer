@@ -6,14 +6,14 @@ import LevelSwitch from './LevelSwitch';
 import PlaceSelect from './PlaceSelect';
 import './style.scss';
 
-const StatisticsConfigurationPanel = () => {
+const StatisticsPanel = () => {
 	return (
-		<div className="worldCereal-StatisticsConfigurationPanel">
-			<div className="worldCereal-StatisticsConfigurationPanel-header">
+		<div className="worldCereal-StatisticsPanel">
+			<div className="worldCereal-StatisticsPanel-header">
 				<Title />
 				<EsaLogo className="worldCereal-Header-esaLogo" />
 			</div>
-			<div className="worldCereal-StatisticsConfigurationPanel-configurations">
+			<div className="worldCereal-StatisticsPanel-configurations">
 				<div>
 					<ProductSelect />
 					<ProductSelect />
@@ -27,6 +27,6 @@ const StatisticsConfigurationPanel = () => {
 	);
 };
 
-StatisticsConfigurationPanel.propTypes = {};
+StatisticsPanel.propTypes = {};
 
-export default StatisticsConfigurationPanel;
+export default StatisticsPanel;

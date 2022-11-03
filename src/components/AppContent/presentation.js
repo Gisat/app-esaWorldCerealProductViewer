@@ -7,7 +7,7 @@ import Header from '../views/common/Header';
 import Filter from '../views/detailedExploarion/Filter';
 import Timeline from '../views/detailedExploarion/Timeline';
 import GlobalProducts from '../views/global/GlobalProducts';
-import StatisticsConfigurationPanel from '../views/statistics/StatisticsConfigurationPanel';
+import StatisticsPanel from '../views/statistics/StatisticsPanel';
 
 import './style.scss';
 
@@ -33,7 +33,7 @@ const getContent = view => {
 		case 'statistics':
 			return (
 				<div className="worldCereal-statistics">
-					<StatisticsConfigurationPanel />
+					<StatisticsPanel />
 					<Maps />
 				</div>
 			);
