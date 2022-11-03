@@ -4,6 +4,7 @@ import EsaLogo from '../../../atoms/EsaLogo';
 import ProductSelect from './ProductSelect';
 import LevelSwitch from './LevelSwitch';
 import PlaceSelect from './PlaceSelect';
+import PeriodSelect from './PeriodSelect';
 import './style.scss';
 
 const StatisticsPanel = () => {
@@ -16,7 +17,7 @@ const StatisticsPanel = () => {
 			<div className="worldCereal-StatisticsPanel-configurations">
 				<div>
 					<ProductSelect />
-					<ProductSelect />
+					<PeriodSelect />
 					<LevelSwitch />
 				</div>
 				<div>

@@ -92,6 +92,9 @@ export default {
 			scopes: {
 				activeKey: '10de783b-810b-4f8a-aceb-4c9e9f91d4d3',
 			},
+			periods: {
+				activeKey: '1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08',
+			},
 		},
 	},
 };
