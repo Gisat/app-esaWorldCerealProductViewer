@@ -13,7 +13,7 @@ import MapWrapper from './MapWrapper';
 
 import ZoomControls from './ZoomControls';
 import MapComponentsGroup from './MapComponentsGroup';
-import BackgroundLayersControl from './BackgroundLayersControl';
+import LayersControl from './LayersControl';
 import Scale from './Scale';
 import OverviewMap from './OverviewMap';
 import CompareMapsControl from './CompareMapsControl';
@@ -79,7 +79,7 @@ const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
 							maxMapsCount={MAX_MAPS_IN_MAP_SET}
 						/>
 						<CompareMapsControl mapSetKey={mapSetKey} />
-						<BackgroundLayersControl mapSetKey={mapSetKey} />
+						<LayersControl mapSetKey={mapSetKey} />
 						<ZoomControls viewLimits={viewLimits} />
 					</MapComponentsGroup>
 				</Map>
@@ -101,7 +101,7 @@ const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
 					maxMapsCount={MAX_MAPS_IN_MAP_SET}
 				/>
 				<CompareMapsControl mapSetKey={mapSetKey} />
-				<BackgroundLayersControl mapSetKey={mapSetKey} />
+				<LayersControl mapSetKey={mapSetKey} />
 				<ZoomControls viewLimits={viewLimits} />
 			</MapComponentsGroup>
 			<MapComponentsGroup className="worldCereal-MapInfoElements">

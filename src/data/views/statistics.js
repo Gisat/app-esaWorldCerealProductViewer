@@ -13,11 +13,11 @@ export default {
 						'statistics-mapSet': {
 							open: [
 								'zoomControls',
-								'backgroundLayersControl',
+								'layerControls',
 								'mapAttribution',
 								'scale',
 							],
-							available: ['backgroundLayersControl', 'zoomControls'],
+							available: ['layerControls', 'zoomControls'],
 							componentsByKey: {
 								zoomControls: {
 									icon: 'plus-thick',
@@ -30,7 +30,7 @@ export default {
 									icon: 'info',
 									title: 'Map Attribution',
 								},
-								backgroundLayersControl: {
+								layerControls: {
 									icon: 'layers',
 									title: 'Background layers control',
 								},

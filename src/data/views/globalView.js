@@ -16,7 +16,7 @@ export default {
 						'globalView-mapSet': {
 							open: [
 								'zoomControls',
-								'backgroundLayersControl',
+								'layerControls',
 								'mapAttribution',
 								'addMap',
 								'compareMaps',
@@ -26,7 +26,7 @@ export default {
 							],
 							available: [
 								'searchPlace',
-								'backgroundLayersControl',
+								'layerControls',
 								'addMap',
 								'compareMaps',
 								'zoomControls',
@@ -44,7 +44,7 @@ export default {
 									icon: 'info',
 									title: 'Map Attribution',
 								},
-								backgroundLayersControl: {
+								layerControls: {
 									icon: 'layers',
 									title: 'Background layers control',
 								},
