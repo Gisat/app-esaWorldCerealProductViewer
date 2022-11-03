@@ -1,12 +1,60 @@
 import {connect} from '@gisatcz/ptr-state';
+import {utils} from '@gisatcz/ptr-utils';
+import Select from '../../../../../state/Select';
+import Action from '../../../../../state/Action';
 import Presentation from './presentation';
 
-const mapStateToProps = () => {
-	return {};
+export const levelsFilter = {
+	filterByActive: {application: true, scope: true},
+	filter: {
+		areaTreeKey: '79b65d72-9d4c-4959-a7fa-579c3a372406',
+	},
+	order: [['level', 'ascending']],
+	start: 1,
+	length: 2,
 };
 
-const mapDispatchToProps = () => {
-	return {};
+const mapStateToProps = state => {
+	return {
+		activeLevelKey: Select.areas.areaTreeLevels.getActiveKey(state),
+		levels: Select.areas.areaTreeLevels.getIndexed(
+			state,
+			levelsFilter.filterByActive,
+			levelsFilter.filter,
+			levelsFilter.order,
+			levelsFilter.start,
+			levelsFilter.length
+		),
+	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Presentation);
+const mapDispatchToPropsFactory = dispatch => {
+	const componentId = `LevelSwitch_${utils.uuid()}`;
+	return () => {
+		return {
+			onActiveLevelChange: activeLevelKey => {
+				dispatch(Action.areas.areaTreeLevels.setActiveKey(activeLevelKey));
+			},
+			onMount: () => {
+				dispatch(
+					Action.areas.areaTreeLevels.useIndexed(
+						levelsFilter.filterByActive,
+						levelsFilter.filter,
+						levelsFilter.order,
+						levelsFilter.start,
+						levelsFilter.length,
+						componentId
+					)
+				);
+			},
+			onUnmount: () => {
+				dispatch(Action.periods.useIndexedClear(componentId));
+			},
+		};
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToPropsFactory
+)(Presentation);
