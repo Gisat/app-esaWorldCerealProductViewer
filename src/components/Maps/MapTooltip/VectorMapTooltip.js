@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 const VectorMapTooltip = ({layer}) => {
 	return (
 		<div className={'VectorMapTooltip-layer'}>
-			<span className="VectorMapTooltip-header">Zone</span>
-			<span className="VectorMapTooltip-value">
-				<label>zone ID</label>:{layer?.object?.properties?.zoneID}
-			</span>
+			<label>Zone:</label>
+			<div>{layer?.object?.properties?.zoneID}</div>
 		</div>
 	);
 };
