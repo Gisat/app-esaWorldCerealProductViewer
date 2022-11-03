@@ -4,6 +4,7 @@ import StatisticsSelect from '../StatisticsSelect';
 import './style.scss';
 
 const PlaceSelect = ({
+	activeLevel,
 	activePlaceKeys,
 	places,
 	onActivePlacesChange,
@@ -37,6 +38,7 @@ const PlaceSelect = ({
 			placeholder="Select one or multiple countries to see detailed statistics..."
 			options={options}
 			value={values}
+			disabled={activeLevel?.data?.level === 2}
 			onChange={setActivePlaceKeys}
 			isSearchable
 			isMulti
@@ -45,6 +47,7 @@ const PlaceSelect = ({
 };
 
 PlaceSelect.propTypes = {
+	activeLevel: PropTypes.object,
 	activePlaceKeys: PropTypes.array,
 	places: PropTypes.array,
 	onActivePlacesChange: PropTypes.func,

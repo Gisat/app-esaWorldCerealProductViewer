@@ -16,7 +16,11 @@ const StatisticsSelect = ({
 	const customStyles = {
 		control: (provided, state) => ({
 			...provided,
-			background: state.isFocused ? 'var(--accent35)' : 'var(--base75)',
+			background: state.isFocused
+				? 'var(--accent35)'
+				: state.isDisabled
+				? 'var(--base90)'
+				: 'var(--base75)',
 			padding: '0 10px 0 0',
 			borderWidth: '0',
 			borderRadius: '0',
@@ -45,7 +49,7 @@ const StatisticsSelect = ({
 				padding: '0',
 				cursor: 'pointer',
 				color: state.isFocused ? 'var(--base100)' : 'var(--base0)',
-				opacity: 0.5,
+				opacity: state.isDisabled ? 0.1 : 0.5,
 				transition: 0,
 				transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : '',
 				'&:hover': {
@@ -98,9 +102,10 @@ const StatisticsSelect = ({
 			padding: '3px 5px 2px',
 			fontFamily: 'Sen, Roboto, sans-serif',
 		}),
-		multiValueRemove: provided => ({
+		multiValueRemove: (provided, state) => ({
 			...provided,
 			color: 'var(--base0)',
+			opacity: state.isDisabled ? 0.1 : 1,
 			cursor: 'pointer',
 			'&:hover': {
 				color: 'var(--base10)',

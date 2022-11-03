@@ -14,6 +14,7 @@ export const placesFilter = {
 
 const mapStateToProps = state => {
 	return {
+		activeLevel: Select.areas.areaTreeLevels.getActive(state),
 		activePlaceKeys: Select.places.getActiveKeys(state),
 		places: Select.places.getIndexed(
 			state,
