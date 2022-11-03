@@ -8,6 +8,7 @@ const LevelSwitch = ({
 	onMount,
 	onUnmount,
 	activeLevelKey,
+	activePlaceKeys,
 	levels,
 	onActiveLevelChange,
 }) => {
@@ -32,6 +33,7 @@ const LevelSwitch = ({
 						key={level.key}
 						value={level.key}
 						active={level.key === activeLevelKey}
+						disabled={activePlaceKeys?.length !== 1}
 					>
 						{level.data.nameDisplay}
 					</ButtonSwitchOption>
@@ -43,6 +45,7 @@ const LevelSwitch = ({
 
 LevelSwitch.propTypes = {
 	activeLevelKey: PropTypes.string,
+	activePlaceKeys: PropTypes.array,
 	onActiveLevelChange: PropTypes.func,
 	levels: PropTypes.array,
 	onMount: PropTypes.func,

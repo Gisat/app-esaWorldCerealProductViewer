@@ -86,6 +86,11 @@ export default {
 					},
 				},
 			},
+			areas: {
+				areaTreeLevels: {
+					activeKey: 'a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47',
+				},
+			},
 			cases: {
 				activeKey: '577b253f-754f-421e-94a2-092f092b4947',
 			},
