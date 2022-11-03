@@ -3,6 +3,7 @@ import Title from '../../common/Title';
 import EsaLogo from '../../../atoms/EsaLogo';
 import ProductSelect from './ProductSelect';
 import LevelSwitch from './LevelSwitch';
+import PlaceSelect from './PlaceSelect';
 import './style.scss';
 
 const StatisticsConfigurationPanel = () => {
@@ -19,7 +20,7 @@ const StatisticsConfigurationPanel = () => {
 					<LevelSwitch />
 				</div>
 				<div>
-					<ProductSelect />
+					<PlaceSelect />
 				</div>
 			</div>
 		</div>

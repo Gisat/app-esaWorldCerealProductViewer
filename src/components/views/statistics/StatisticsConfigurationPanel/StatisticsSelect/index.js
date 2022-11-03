@@ -4,9 +4,12 @@ import './style.scss';
 import StatisticsConfigurationItem from '../StatisticsConfigurationItem';
 
 const StatisticsSelect = ({
+	label,
+	placeholder,
 	options,
 	value,
 	isMulti,
+	isSearchable,
 	disabled,
 	highlighted,
 	onChange,
@@ -97,7 +100,7 @@ const StatisticsSelect = ({
 	};
 
 	return (
-		<StatisticsConfigurationItem label="Product">
+		<StatisticsConfigurationItem label={label}>
 			<ReactSelect
 				className="cure-StatisticsSelect"
 				styles={customStyles}
@@ -114,9 +117,10 @@ const StatisticsSelect = ({
 						neutral90: 'var(--base90)',
 					},
 				})}
+				placeholder={placeholder || 'Select...'}
 				isMulti={isMulti}
 				isClearable={false}
-				isSearchable={false}
+				isSearchable={isSearchable}
 				options={options}
 				value={value}
 				isDisabled={disabled}
@@ -127,7 +131,10 @@ const StatisticsSelect = ({
 };
 
 StatisticsSelect.propTypes = {
+	label: PropTypes.string,
+	placeholder: PropTypes.string,
 	isMulti: PropTypes.bool,
+	isSearchable: PropTypes.bool,
 	disabled: PropTypes.bool,
 	highlighted: PropTypes.bool,
 	options: PropTypes.array,
