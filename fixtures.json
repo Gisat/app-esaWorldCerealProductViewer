@@ -132,17 +132,8 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"nameDisplay": "Spring cereals",
+					"nameDisplay": "Cereals",
 					"nameInternal": "case_springCereals"
-				}
-			},
-			{
-				"key": "d5c6a16c-d581-44ae-afc9-ad3858413c4a",
-				"data": {
-					"applicationKey": "esaWorldCerealProductViewer",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"nameDisplay": "Winter cereals",
-					"nameInternal": "case_winterCereals"
 				}
 			}
 		],
@@ -164,16 +155,6 @@
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
 					"nameDisplay": "2019 - summer1",
 					"nameInternal": "period_2019summer1",
-					"period": "2019"
-				}
-			},
-			{
-				"key": "3dcfb290-7d8c-4cf3-b11f-c6aed76e2574",
-				"data": {
-					"applicationKey": "esaWorldCerealProductViewer",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"nameDisplay": "2019 - summer2",
-					"nameInternal": "period_2019summer2",
 					"period": "2019"
 				}
 			},
@@ -204,16 +185,6 @@
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
 					"nameDisplay": "2020 - summer1",
 					"nameInternal": "period_2020summer1",
-					"period": "2020"
-				}
-			},
-			{
-				"key": "af345d50-2e08-4ce8-96ea-ca09b1f043dc",
-				"data": {
-					"applicationKey": "esaWorldCerealProductViewer",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"nameDisplay": "2020 - summer2",
-					"nameInternal": "period_2020summer2",
 					"period": "2020"
 				}
 			},
