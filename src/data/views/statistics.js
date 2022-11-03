@@ -89,6 +89,9 @@ export default {
 			cases: {
 				activeKey: 'annualcropland', // TODO set uuid
 			},
+			scopes: {
+				activeKey: '10de783b-810b-4f8a-aceb-4c9e9f91d4d3',
+			},
 		},
 	},
 };

@@ -24,7 +24,7 @@ const PlaceSelect = ({
 		return {value: place.key, label: place.data.nameDisplay};
 	});
 	const values =
-		activePlaceKeys?.length &&
+		activePlaceKeys?.length > 0 &&
 		options?.filter(option => activePlaceKeys.includes(option.value));
 
 	const setActivePlaceKeys = places => {

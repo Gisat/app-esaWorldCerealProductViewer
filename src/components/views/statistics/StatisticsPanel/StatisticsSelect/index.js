@@ -179,7 +179,11 @@ StatisticsSelect.propTypes = {
 	isSearchable: PropTypes.bool,
 	disabled: PropTypes.bool,
 	options: PropTypes.array,
-	value: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+	value: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.array,
+		PropTypes.bool,
+	]),
 	small: PropTypes.bool,
 	menuPosition: PropTypes.string,
 	menuWidth: PropTypes.string,
