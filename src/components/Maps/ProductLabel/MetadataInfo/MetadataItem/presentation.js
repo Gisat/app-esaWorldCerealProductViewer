@@ -3,9 +3,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {isArray as _isArray} from 'lodash';
+import {IconTool, Tooltip} from '@gisatcz/visat-components';
 import WmsUrl from './WmsUrl';
 
 import './style.scss';
+import {useState} from 'react';
 
 const MetadataInfoItemRec = ({label, small, children}) => {
 	const classes = classnames('worldCereal-MetadataInfoItemRec', {
@@ -31,6 +33,7 @@ MetadataInfoItemRec.propTypes = {
 };
 
 const MetadataInfoItem = ({productMetadata, productTemplate}) => {
+	const [showAllTiles, setShowAllTiles] = useState(true);
 	const {
 		isGlobal,
 		product,
@@ -85,7 +88,7 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 					<MetadataInfoItemRec label="model">{model}</MetadataInfoItemRec>
 				) : null}
 			</div>
-			<div className="worldCereal-MetadataInfoItemBasics">
+			<div className="worldCereal-MetadataInfoItemUrl">
 				<MetadataInfoItemRec label="wms url">
 					<WmsUrl spatialDataSourceKey={dataSource.product} />
 				</MetadataInfoItemRec>
@@ -93,36 +96,65 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 			{!isGlobal ? (
 				tiles ? (
 					<div className="worldCereal-MetadataInfoItemTiles">
-						<div className="worldCereal-MetadataInfoItemTiles-header">
-							Original data for S2 tiles:
-						</div>
-						<div className="worldCereal-MetadataInfoItemTiles-content">
-							{tiles.map(tile => (
-								<a
-									key={tile.tile}
-									target="_blank"
-									rel="noopener noreferrer"
-									href={tile.product}
-								>
-									{tile.tile}
-								</a>
-							))}
+						<MetadataInfoItemRec
+							label={'Original data for S2 tiles (' + tiles.length + ')'}
+						>
+							<a
+								key={tiles[0].tile}
+								target="_blank"
+								rel="noopener noreferrer"
+								href={tiles[0].product}
+								className="worldCereal-MetadataInfoItemTiles-content"
+							>
+								{tiles[0].tile}
+							</a>
+						</MetadataInfoItemRec>
+						{!showAllTiles
+							? tiles.map((tile, index) =>
+									index > 0 ? (
+										<a
+											key={tile.tile}
+											target="_blank"
+											rel="noopener noreferrer"
+											href={tile.product}
+											className="worldCereal-MetadataInfoItemTiles-content"
+										>
+											{tile.tile}
+										</a>
+									) : null
+							  )
+							: null}
+						<div
+							className="worldCereal-MetadataInfoItemTiles-BtnShowTiles"
+							style={
+								showAllTiles
+									? {transform: 'rotate(0deg)'}
+									: {transform: 'rotate(180deg)'}
+							}
+						>
+							<IconTool
+								icon={'ri-read-more'}
+								tooltip={{
+									text: showAllTiles ? 'Show all' : '',
+									position: 'right',
+									component: Tooltip,
+								}}
+								onClick={() => setShowAllTiles(!showAllTiles)}
+							/>
 						</div>
 					</div>
 				) : (
 					<div className="worldCereal-MetadataInfoItemTiles">
-						<div className="worldCereal-MetadataInfoItemTiles-header">
-							Download original data:
-						</div>
-						<div className="worldCereal-MetadataInfoItemTiles-content">
+						<MetadataInfoItemRec label="Download original data">
 							<a
 								target="_blank"
 								rel="noopener noreferrer"
 								href={merged?.product}
+								className="worldCereal-MetadataInfoItemTiles-content"
 							>
 								{merged?.id}
 							</a>
-						</div>
+						</MetadataInfoItemRec>
 					</div>
 				)
 			) : null}

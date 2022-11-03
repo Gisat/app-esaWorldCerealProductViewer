@@ -53,3 +53,16 @@
 .worldCereal-MetadataInfoItemRec .worldCereal-MetadataInfoItemRec-value {
   overflow-wrap: break-word;
 }
+
+.worldCereal-MetadataInfoItemUrl {
+	margin-top: m(math.div(1,3));
+}
+
+.worldCereal-MetadataInfoItemTiles-BtnShowTiles {
+	transition: 0.5s;
+}
+
+.worldCereal-MetadataInfoItemTiles-content {
+	font-size: $b1;
+	margin: 0 .5rem 0 0;
+}
