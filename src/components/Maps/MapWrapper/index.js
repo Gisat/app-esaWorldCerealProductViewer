@@ -18,10 +18,17 @@ const mapStateToProps = (state, ownProps) => {
 			ownProps.mapKey,
 			'product'
 		);
+
+	const overlayLayer = Select.maps.getLayerStateByLayerKeyAndMapKey(
+		state,
+		ownProps.mapKey,
+		'aez'
+	);
 	return {
 		activeMapKey: Select.maps.getMapSetActiveMapKey(state, mapSetKey),
 		mapSetMapKeys: Select.maps.getMapSetMapKeys(state, mapSetKey),
 		productsMetadata: productsMetadata || globalProductsMetadata,
+		overlayLayer,
 	};
 };
 

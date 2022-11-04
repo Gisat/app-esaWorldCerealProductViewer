@@ -7,14 +7,18 @@ import './style.scss';
 const MapTooltip = ({children, event, raster, vector}) => {
 	const vectorContent = [];
 	const rasterContent = [];
+	let i = 0;
 	for (const vectorLayer of vector) {
 		// vector tooltip should come here
 		vectorContent.push(
 			<VectorMapTooltip
-				key={vectorLayer.layer.props.layerKey || vectorLayer.layer.props.key}
+				key={`${i}_${
+					vectorLayer.layer.props.layerKey || vectorLayer.layer.props.key
+				}`}
 				{...{layer: vectorLayer, event}}
 			></VectorMapTooltip>
 		);
+		i++;
 	}
 	for (const rasterLayer of raster) {
 		rasterContent.push(

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import {IconTool, Tooltip} from '@gisatcz/visat-components';
 import ExpandableLabelsContainer from '../../atoms/ExpandableLabel/ExpandableLabelsContainer';
 import ExpandableProductLabel from '../ProductLabel';
+import ExpandableLayerLabel from '../ExpandableLayerLabel';
 import {MIN_PRODUCT_MAP_LABELS_FOR_GROUPING} from '../../../constants/app';
 
 import './style.scss';
@@ -20,6 +21,7 @@ const MapWrapper = ({
 	removeAllLayers,
 	noTools,
 	labelsRight,
+	overlayLayer,
 }) => {
 	const wrapperClasses = classnames('ptr-map-wrapper worldCereal-MapWrapper', {
 		active: mapKey === activeMapKey,
@@ -49,6 +51,10 @@ const MapWrapper = ({
 		);
 	};
 
+	const renderMapOverlayLayerLabel = layer => {
+		return <ExpandableLayerLabel key={'key'} layer={layer} mapKey={mapKey} />;
+	};
+
 	const renderMapProductLabels = productsMetadata => {
 		let labels = [];
 		_forIn(productsMetadata, (models, product) => {
@@ -66,14 +72,15 @@ const MapWrapper = ({
 
 	return (
 		<div className={wrapperClasses}>
-			{!noMetadata ? (
+			{!noMetadata || overlayLayer ? (
 				<ExpandableLabelsContainer className={labelContainerClasses}>
-					{renderMapProductLabels(productsMetadata)}
+					{noMetadata ? <></> : renderMapProductLabels(productsMetadata)}
+					{overlayLayer ? [renderMapOverlayLayerLabel(overlayLayer)] : <></>}
 				</ExpandableLabelsContainer>
 			) : null}
 			{!noTools ? (
 				<div className="worldCereal-MapTools">
-					{!noMetadata ? (
+					{!noMetadata || overlayLayer ? (
 						<IconTool
 							className="worldCereal-RemoveMapIcon"
 							tooltip={{
@@ -118,6 +125,7 @@ MapWrapper.propTypes = {
 	noTools: PropTypes.bool,
 	removeMap: PropTypes.func,
 	removeAllLayers: PropTypes.func,
+	overlayLayer: PropTypes.object,
 };
 
 export default MapWrapper;
