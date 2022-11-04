@@ -73,11 +73,11 @@ export default {
 										nameAttributeKey: '5f6a119b-addf-467e-ab1f-e07e4cdf79a6',
 									},
 									styleKey: 'af4c5310-405f-426d-9bbd-098593ea2ac4',
+									areaTreeLevelKey: 'a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47',
 									filterByActive: {
 										application: true,
 										scope: true,
 										place: true,
-										areaTreeLevel: true,
 									},
 									metadataModifiers: {},
 								},
