@@ -1,6 +1,10 @@
 @use 'sass:math';
 @import '../../../styles/variables';
 
+.worldCereal-LayerControls .line {
+	fill: var(--base60);
+}
+
 // menu
 .worldCereal-LayerControls-menu {
 	right: calc(100% + 1.5rem);

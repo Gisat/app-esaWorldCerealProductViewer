@@ -15,10 +15,10 @@ export const aez = {
 				{
 					styles: [
 						{
-							outlineWidth: 3,
+							outlineWidth: 2,
 							outlineColor: '#000000',
 							fill: '#ffffff',
-							fillOpacity: 0.3,
+							fillOpacity: 0.4,
 						},
 					],
 				},

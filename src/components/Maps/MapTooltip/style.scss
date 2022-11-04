@@ -49,22 +49,19 @@
 	}
 
 	.VectorMapTooltip-layer {
-		padding: 0.25rem 0.75rem 0.25rem 0.5rem;
-	}
-	.VectorMapTooltip-header {
-		margin-right: 0.25rem;
+
+    display: flex;
+		padding: 0.5rem 0.75rem 0.25rem 0.5rem;
+
+    label{
+      margin-right: 0.25rem;
 		font-weight: bold;
 		font-size: 0.75rem;
-	}
-	.VectorMapTooltip-value {
-		label {
-			color: var(--base30);
-		}
-
-		color: var(--base20);
-		font-size: 0.75rem;
-		font-style: italic;
-		display: flex;
-		align-items: center;
+    }
+    div{
+      color: var(--base20);
+      font-size: 0.75rem;
+      font-style: italic;
+    }	
 	}
 }
