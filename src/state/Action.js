@@ -11,6 +11,7 @@ import configurationActions from './worldCereal/configuration/actions';
 import productMetadataActions from './worldCereal/ProductMetadata/actions';
 import productMetadataFilterActions from './worldCereal/ProductMetadataFilter/actions';
 import globalProductMetadataActions from './worldCereal/GlobalProductMetadata/actions';
+import statisticsActions from './worldCereal/Statistics/actions';
 
 // TODO load view from BE
 import views from '../data/views';
@@ -45,6 +46,7 @@ function init(path) {
 		const config = getConfig(getAppEnvConfig());
 		dispatch(CommonAction.app.updateLocalConfiguration(config));
 		dispatch(CommonAction.app.setKey(appKey));
+		dispatch(CommonAction.app.loadConfiguration());
 
 		// user
 
@@ -103,6 +105,7 @@ export default {
 		productMetadata: productMetadataActions,
 		globalProductMetadata: globalProductMetadataActions,
 		productMetadataFilter: productMetadataFilterActions,
+		statistics: statisticsActions,
 		...worldCerealActions,
 	},
 };
