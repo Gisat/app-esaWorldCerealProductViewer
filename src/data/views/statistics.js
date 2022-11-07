@@ -43,14 +43,27 @@ export default {
 				Maps: {
 					mode: 'set',
 				},
-				NoSelectedComponent: {
-					name: 'No selected feature',
+				GlobalTopTenBarChart: {
+					name: 'Global: Top 10 whatever',
 				},
-				OneSelectedComponent: {
-					name: 'One selected feature',
+				GlobalSharePieChart: {
+					name: 'Global: Product share',
 				},
-				MultipleSelectedComponent: {
-					name: 'Multiple selected feature',
+				GlobalCountriesBarChart: {
+					name: 'Global: Product in countries',
+				},
+			},
+			data: {
+				sets: {
+					GlobalNoSelected: {
+						components: ['GlobalTopTenBarChart'],
+					},
+					GlobalOneSelected: {
+						components: ['GlobalSharePieChart'],
+					},
+					GlobalCountriesBarChart: {
+						components: ['GlobalCountriesBarChart'],
+					},
 				},
 			},
 			maps: {

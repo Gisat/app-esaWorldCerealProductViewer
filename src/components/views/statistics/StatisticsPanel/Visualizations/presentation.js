@@ -4,7 +4,7 @@ import './style.scss';
 const Visualizations = ({components}) => {
 	return (
 		<div className="worldCereal-Visualizations ptr-dark">
-			{components.map(component => component.name)}
+			{components?.map(component => component?.name)}
 		</div>
 	);
 };
