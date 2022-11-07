@@ -71,6 +71,10 @@ export default {
 											'764ff34a-2eee-4d82-8ffe-87da6ed1a3f7': {},
 										},
 										nameAttributeKey: '5f6a119b-addf-467e-ab1f-e07e4cdf79a6',
+										attributeFilter: {
+											caseKey: '577b253f-754f-421e-94a2-092f092b4947',
+											periodKey: '6a7a4193-1339-4172-b54d-817c3e8cd6f7',
+										},
 									},
 									styleKey: 'af4c5310-405f-426d-9bbd-098593ea2ac4',
 									areaTreeLevelKey: 'a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47',
@@ -78,6 +82,7 @@ export default {
 										application: true,
 										scope: true,
 										place: true,
+										areaTreeLevel: true,
 									},
 									metadataModifiers: {},
 								},
