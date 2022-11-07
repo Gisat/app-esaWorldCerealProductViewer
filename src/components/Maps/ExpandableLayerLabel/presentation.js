@@ -27,7 +27,7 @@ const ProductLabel = ({
 		<>
 			<ExpandableLabel
 				floating
-				className="worldCereal-ProductLabel"
+				className="worldCereal-ProductLabel worldCereal-LayerLabel"
 				zIndex={zIndex}
 			>
 				<ExpandableLabelHeader>
