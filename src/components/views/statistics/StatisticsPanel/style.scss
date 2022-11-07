@@ -1,6 +1,9 @@
 @use 'sass:math';
 @import '../../../../styles/variables';
 
+$statisticsPanelPaddingLeft: .75rem;
+$statisticsPanelPaddingRight: 1rem;
+
 .worldCereal-StatisticsPanel {
   background: var(--base100);
   width: 36.5rem;
@@ -22,7 +25,7 @@
   display: flex;
   flex-direction: column;
   grid-gap: 1rem;
-  padding: m(1) 1rem m(math.div(4,3)) .75rem;
+  padding: m(1) $statisticsPanelPaddingRight m(1) $statisticsPanelPaddingLeft;
 }
 
 .worldCereal-StatisticsPanel-configurations > div {
@@ -30,5 +33,10 @@
   flex-direction: row;
   justify-content: space-between;
   grid-gap: 1rem;
+}
+
+.worldCereal-StatisticsPanel-visualizations {
+  flex: 1;
+  padding: m(1) $statisticsPanelPaddingRight m(1) $statisticsPanelPaddingLeft;
 }
 

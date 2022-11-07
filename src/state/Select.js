@@ -5,6 +5,7 @@ import productMetadataSelectors from './worldCereal/ProductMetadata/selectors';
 import productMetadataFilterSelectors from './worldCereal/ProductMetadataFilter/selectors';
 import configurationSelectors from './worldCereal/configuration/selectors';
 import timelineSelect from './worldCereal/Timeline/selectors';
+import statisticsSelectors from './worldCereal/Statistics/selectors';
 import worldCerealSelectors from './worldCereal/selectors';
 
 export default {
@@ -15,6 +16,7 @@ export default {
 		productMetadataFilter: productMetadataFilterSelectors,
 		timeline: timelineSelect,
 		configuration: configurationSelectors,
+		statistics: statisticsSelectors,
 
 		...worldCerealSelectors,
 	},

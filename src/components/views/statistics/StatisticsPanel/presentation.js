@@ -5,6 +5,7 @@ import ProductSelect from './ProductSelect';
 import LevelSwitch from './LevelSwitch';
 import PlaceSelect from './PlaceSelect';
 import PeriodSelect from './PeriodSelect';
+import Visualizations from './Visualizations';
 import './style.scss';
 
 const StatisticsPanel = () => {
@@ -23,6 +24,9 @@ const StatisticsPanel = () => {
 				<div>
 					<PlaceSelect />
 				</div>
+			</div>
+			<div className="worldCereal-StatisticsPanel-visualizations">
+				<Visualizations />
 			</div>
 		</div>
 	);
