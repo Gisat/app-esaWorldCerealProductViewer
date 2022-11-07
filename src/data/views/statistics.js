@@ -81,7 +81,6 @@ export default {
 									filterByActive: {
 										application: true,
 										scope: true,
-										place: true,
 										areaTreeLevel: true,
 									},
 									metadataModifiers: {},
