@@ -32,7 +32,11 @@ const mapDispatchToPropsFactory = dispatch => {
 	return () => {
 		return {
 			onActivePlacesChange: activePlaceKeys => {
-				dispatch(Action.places.setActiveKeys(activePlaceKeys));
+				dispatch(
+					Action.places.setActiveKeys(
+						activePlaceKeys?.length ? activePlaceKeys : null
+					)
+				);
 			},
 			onMount: () => {
 				dispatch(
