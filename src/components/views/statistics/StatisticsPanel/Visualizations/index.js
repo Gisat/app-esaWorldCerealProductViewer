@@ -6,7 +6,8 @@ const mapStateToProps = state => {
 	setRecomputeState(state);
 
 	return {
-		components: Select.worldCereal.statistics.getVisualizationComponents(state),
+		componentSet:
+			Select.worldCereal.statistics.getVisualizationComponentSet(state),
 	};
 };
 

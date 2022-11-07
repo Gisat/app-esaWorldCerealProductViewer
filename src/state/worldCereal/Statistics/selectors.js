@@ -5,50 +5,58 @@ import {
 	Select as CommonSelect,
 } from '@gisatcz/ptr-state';
 
-const getComponentsBySelectedFeaturesCountConfig = createRecomputeObserver(
-	state =>
+const getComponentSetByLevelKeyBySelectedFeaturesCountConfig =
+	createRecomputeObserver(state =>
 		CommonSelect.app.getConfiguration(
 			state,
-			'componentsBySelectedFeaturesCount'
+			'componentSetByLevelKeyBySelectedFeaturesCount'
 		)
-);
+	);
 
 const getActiveSelection = createRecomputeObserver(
 	CommonSelect.selections.getActive
 );
 
-const getComponentKeysByNumberOfSelectedFeatureKeys = createRecomputeSelector(
-	() => {
-		const componentKeysConfig = getComponentsBySelectedFeaturesCountConfig();
+const getActiveLevelKey = createRecomputeObserver(
+	CommonSelect.areas.areaTreeLevels.getActiveKey
+);
+
+const getComponentSetByKey = createRecomputeObserver(
+	CommonSelect.data.components.getSetStateByKey
+);
+
+const getComponentSetKeyByActivePlaceNumberOfSelectedFeatureKeys =
+	createRecomputeSelector(() => {
+		const componentSetsConfig =
+			getComponentSetByLevelKeyBySelectedFeaturesCountConfig();
 		const activeSelection = getActiveSelection();
 		const numberOfSelectedFeatures =
 			activeSelection?.data?.featureKeysFilter?.keys?.length;
+		const activeLevelKey = getActiveLevelKey();
 
-		if (componentKeysConfig) {
+		if (activeLevelKey && componentSetsConfig) {
 			if (numberOfSelectedFeatures > 1) {
-				return componentKeysConfig['multiple-selected'];
+				return componentSetsConfig[activeLevelKey]?.['multiple-selected'];
 			} else if (numberOfSelectedFeatures === 1) {
-				return componentKeysConfig['one-selected'];
+				return componentSetsConfig[activeLevelKey]?.['one-selected'];
 			} else {
-				return componentKeysConfig['no-selected'];
+				return componentSetsConfig[activeLevelKey]?.['no-selected'];
 			}
 		} else {
 			return null;
 		}
-	}
-);
+	});
 
-const getVisualizationComponents = createRecomputeSelector(() => {
-	const componentKeys = getComponentKeysByNumberOfSelectedFeatureKeys();
-	if (componentKeys?.length) {
-		return componentKeys?.map(componentKey =>
-			CommonSelect.components.getByComponentKey_recompute(componentKey)
-		);
-	} else {
-		return null;
-	}
+/**
+ * Get component set state
+ * @returns {Object} state of component set
+ */
+const getVisualizationComponentSet = createRecomputeSelector(() => {
+	const componentSetKey =
+		getComponentSetKeyByActivePlaceNumberOfSelectedFeatureKeys();
+	return getComponentSetByKey(componentSetKey);
 }, recomputeSelectorOptions);
 
 export default {
-	getVisualizationComponents,
+	getVisualizationComponentSet,
 };

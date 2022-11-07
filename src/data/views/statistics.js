@@ -61,7 +61,7 @@ export default {
 					GlobalOneSelected: {
 						components: ['GlobalSharePieChart'],
 					},
-					GlobalCountriesBarChart: {
+					GlobalMultipleSelected: {
 						components: ['GlobalCountriesBarChart'],
 					},
 				},

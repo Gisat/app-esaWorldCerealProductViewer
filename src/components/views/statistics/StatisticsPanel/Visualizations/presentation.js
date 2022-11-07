@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 import './style.scss';
 
-const Visualizations = ({components}) => {
+const Visualizations = ({componentSet}) => {
 	return (
 		<div className="worldCereal-Visualizations ptr-dark">
-			{components?.map(component => component?.name)}
+			{componentSet?.components?.map(component => component)}
 		</div>
 	);
 };
 
 Visualizations.propTypes = {
-	components: PropTypes.array,
+	componentSet: PropTypes.object,
 };
 
 export default Visualizations;

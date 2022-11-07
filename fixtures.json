@@ -24,11 +24,11 @@
 								"relativeAttributeKey": "73e3bd86-8701-47e4-b27b-9d2555d68304"
 							}
 						},
-						"componentSetsByLevelKeySelectedFeaturesCount": {
+						"componentSetByLevelKeyBySelectedFeaturesCount": {
 							"a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47": {
-								"no-selected": ["GlobalNoSelected"],
-								"one-selected": ["GlobalOneSelected"],
-								"multiple-selected": ["GlobalMultipleSelected"]
+								"no-selected": "GlobalNoSelected",
+								"one-selected": "GlobalOneSelected",
+								"multiple-selected": "GlobalMultipleSelected"
 							}
 						},
 						"placeKeyByCountryFeatureKey": {
