@@ -1,17 +1,20 @@
 import {Action as CommonAction} from '@gisatcz/ptr-state';
+import {forIn as _forIn} from 'lodash';
 import Select from '../../Select';
 
 /**
- * Set active place keys by selected feature keys. The linking should be stored in app configuration.
- * @param featureKeys {Array} A list of selected feature keys
+ * Set active place keys by active selection feature keys. The linking should be stored in app configuration.
  */
-function setActivePlaceKeysByFeatureKeys(featureKeys) {
+function setActivePlaceKeysByActiveSelectionFeatureKeys() {
 	return (dispatch, getState) => {
 		const placeKeyByFeatureKey = Select.app.getConfiguration(
 			getState(),
 			'placeKeyByCountryFeatureKey'
 		);
-		if (placeKeyByFeatureKey) {
+		const featureKeys = Select.selections.getActive(getState())?.data
+			?.featureKeysFilter?.keys;
+
+		if (placeKeyByFeatureKey && featureKeys) {
 			const placeKeys = featureKeys.map(
 				featureKey => placeKeyByFeatureKey[featureKey]
 			);
@@ -22,6 +25,38 @@ function setActivePlaceKeysByFeatureKeys(featureKeys) {
 	};
 }
 
+/**
+ * Set selected feature keys in active selection by place keys. The linking should be stored in app configuration.
+ */
+function setActiveSelectionFeatureKeysByActivePlaceKeys() {
+	return (dispatch, getState) => {
+		const placeKeyByFeatureKey = Select.app.getConfiguration(
+			getState(),
+			'placeKeyByCountryFeatureKey'
+		);
+
+		const placeKeys = Select.places.getActiveKeys(getState());
+
+		if (placeKeyByFeatureKey) {
+			const featureKeys = [];
+			placeKeys?.forEach(placeKey => {
+				_forIn(placeKeyByFeatureKey, (value, featureKey) => {
+					if (placeKey === value) {
+						featureKeys.push(featureKey);
+					}
+				});
+			});
+
+			dispatch(
+				CommonAction.selections.setActiveSelectionFeatureKeysFilterKeys(
+					featureKeys
+				)
+			);
+		}
+	};
+}
+
 export default {
-	setActivePlaceKeysByFeatureKeys,
+	setActiveSelectionFeatureKeysByActivePlaceKeys,
+	setActivePlaceKeysByActiveSelectionFeatureKeys,
 };

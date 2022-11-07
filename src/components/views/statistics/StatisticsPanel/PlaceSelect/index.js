@@ -37,6 +37,9 @@ const mapDispatchToPropsFactory = dispatch => {
 						activePlaceKeys?.length ? activePlaceKeys : null
 					)
 				);
+				dispatch(
+					Action.worldCereal.statistics.setActiveSelectionFeatureKeysByActivePlaceKeys()
+				);
 			},
 			onMount: () => {
 				dispatch(
