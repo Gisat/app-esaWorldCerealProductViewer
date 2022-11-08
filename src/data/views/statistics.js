@@ -44,7 +44,58 @@ export default {
 					mode: 'set',
 				},
 				GlobalTopTenBarChart: {
-					name: 'Global: Top 10 whatever',
+					title: 'Title',
+					subtitle: 'Subtitle',
+					settings: {
+						indexBy: 'id',
+						margin: {top: 10, right: 10, bottom: 35, left: 55},
+						padding: 0.05,
+						valueScale: {type: 'linear'},
+						indexScale: {type: 'band', round: true},
+						axisTop: null,
+						axisRight: null,
+						axisBottom: {
+							enable: true,
+							legend: 'Units',
+							legendPosition: 'middle',
+							legendOffset: 28,
+							tickPadding: 2,
+						},
+						axisLeft: {
+							tickSize: 0,
+							tickPadding: 3,
+							legend: 'Area [ha]',
+							legendPosition: 'middle',
+							legendOffset: -50,
+						},
+						groupMode: 'grouped',
+						enableGridY: true,
+						enableLabel: false,
+						labelSkipHeight: 13,
+						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
+						theme: {
+							fontSize: 11,
+							textColor: 'var(--base40)',
+							axis: {
+								legend: {
+									text: {
+										fontSize: 12,
+										fontWeight: 'bold',
+									},
+								},
+								ticks: {
+									line: {
+										stroke: 'var(--base40)',
+									},
+								},
+							},
+							grid: {
+								line: {
+									stroke: 'var(--base20)',
+								},
+							},
+						},
+					},
 				},
 				GlobalSharePieChart: {
 					name: 'Global: Product share',
@@ -54,6 +105,23 @@ export default {
 				},
 			},
 			data: {
+				components: {
+					GlobalTopTenBarChart: {
+						type: 'barChart',
+						metadataModifiers: {},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+							period: true,
+							case: true,
+						},
+						areaTreeLevelKey: 'a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47',
+						attributeKeys: ['4fb212bb-ff1a-46d7-8fce-e341e7f08376'],
+						start: 1,
+						length: 300,
+					},
+				},
 				sets: {
 					GlobalNoSelected: {
 						components: ['GlobalTopTenBarChart'],

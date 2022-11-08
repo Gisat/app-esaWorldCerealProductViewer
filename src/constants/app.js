@@ -9,3 +9,6 @@ export const MIN_PRODUCT_MAP_LABELS_FOR_GROUPING = 3;
 export const timelineLayerLineHeight = 16; //px
 
 export const timelineLayerElementHeight = 10; //px, rest is for line padding
+
+export const baseChartColorPalette = ['#97e2d5', '#d6a1ff'];
+export const highlightedChartColorPalette = ['#11bda3', '#a552e5'];

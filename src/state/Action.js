@@ -7,6 +7,7 @@ require('dotenv').config();
 import {appKey} from '../constants/app';
 
 import worldCerealActions from './worldCereal/actions';
+import chartsActions from './worldCereal/charts/actions';
 import configurationActions from './worldCereal/configuration/actions';
 import productMetadataActions from './worldCereal/ProductMetadata/actions';
 import productMetadataFilterActions from './worldCereal/ProductMetadataFilter/actions';
@@ -101,6 +102,7 @@ export default {
 	...CommonAction,
 	init,
 	worldCereal: {
+		charts: chartsActions,
 		configuration: configurationActions,
 		productMetadata: productMetadataActions,
 		globalProductMetadata: globalProductMetadataActions,
