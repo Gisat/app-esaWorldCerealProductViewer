@@ -56,6 +56,7 @@ const BarChart = ({
 					return colorMap[id]?.base || '#97e2d5';
 				}
 			}}
+			tooltip={() => {}}
 			{...settings}
 		/>
 	);
