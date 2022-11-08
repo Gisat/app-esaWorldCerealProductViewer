@@ -3,6 +3,10 @@
 .worldCereal-ProductLabel {
   background: var(--accent30);
   min-width: 12rem;
+
+  &.worldCereal-LayerLabel .ptr-ExpandableLabelHeader > div > div.ptr-button{
+    min-height: unset;
+  }
 }
 
 // Header

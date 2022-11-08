@@ -8,7 +8,6 @@ export const aez = {
 	opacity: 0.8,
 	options: {
 		features: aezGeometries.features,
-		pickable: true,
 		selectable: true,
 		style: {
 			rules: [

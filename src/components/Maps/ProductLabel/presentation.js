@@ -115,13 +115,21 @@ ProductLabel.propTypes = {
 
 const ProductLabelHeader = ({count, product, productMetadata, color}) => {
 	if (count === 1) {
-		const {sos, eos, aez} = productMetadata[0].data;
+		const {sos, eos, aez, season, isGlobal} = productMetadata[0].data;
+
+		const startDate = isGlobal
+			? season[0].toUpperCase() + season.slice(1, season.length) + ' - '
+			: sos;
+		const endDate = isGlobal ? eos.slice(0, 4) : eos;
+		const fullDate = isGlobal
+			? startDate + endDate
+			: startDate + ' / ' + endDate;
+
 		return (
 			<SingleProductLabelHeader
 				product={product}
 				zone={aez}
-				start={sos}
-				end={eos}
+				date={fullDate}
 				color={color}
 			/>
 		);
@@ -143,7 +151,7 @@ ProductLabelHeader.propTypes = {
 	productMetadata: PropTypes.array,
 };
 
-const SingleProductLabelHeader = ({product, zone, start, end, color}) => {
+const SingleProductLabelHeader = ({product, zone, color, date}) => {
 	return (
 		<div className="worldCereal-ProductLabelHeader">
 			<div
@@ -161,9 +169,7 @@ const SingleProductLabelHeader = ({product, zone, start, end, color}) => {
 						</span>
 					) : null}
 				</div>
-				<div className="worldCereal-ProductLabelHeader-period">
-					{start} / {end}
-				</div>
+				<div className="worldCereal-ProductLabelHeader-period">{date}</div>
 			</div>
 		</div>
 	);
@@ -171,10 +177,9 @@ const SingleProductLabelHeader = ({product, zone, start, end, color}) => {
 
 SingleProductLabelHeader.propTypes = {
 	color: PropTypes.string,
-	end: PropTypes.string,
 	product: PropTypes.string,
-	start: PropTypes.string,
 	zone: PropTypes.number,
+	date: PropTypes.string,
 };
 
 const MultipleProductLabelHeader = ({product, count, color}) => {
