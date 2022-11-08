@@ -10,5 +10,5 @@ export const timelineLayerLineHeight = 16; //px
 
 export const timelineLayerElementHeight = 10; //px, rest is for line padding
 
-export const baseChartColorPalette = ['#97e2d5', '#d6a1ff'];
-export const highlightedChartColorPalette = ['#11bda3', '#a552e5'];
+export const baseChartColorPalette = ['#f0c85b', '#11bda3', '#a552e5'];
+export const highlightedChartColorPalette = ['#f0c85b', '#11bda3', '#a552e5'];

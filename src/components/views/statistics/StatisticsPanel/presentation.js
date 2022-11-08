@@ -15,18 +15,20 @@ const StatisticsPanel = () => {
 				<Title />
 				<EsaLogo className="worldCereal-Header-esaLogo" />
 			</div>
-			<div className="worldCereal-StatisticsPanel-configurations">
-				<div>
-					<ProductSelect />
-					<PeriodSelect />
-					<LevelSwitch />
+			<div className="worldCereal-StatisticsPanel-body">
+				<div className="worldCereal-StatisticsPanel-configurations">
+					<div>
+						<ProductSelect />
+						<PeriodSelect />
+						<LevelSwitch />
+					</div>
+					<div>
+						<PlaceSelect />
+					</div>
 				</div>
-				<div>
-					<PlaceSelect />
+				<div className="worldCereal-StatisticsPanel-visualizations">
+					<Visualizations />
 				</div>
-			</div>
-			<div className="worldCereal-StatisticsPanel-visualizations">
-				<Visualizations />
 			</div>
 		</div>
 	);

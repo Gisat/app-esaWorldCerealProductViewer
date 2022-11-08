@@ -25,6 +25,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 		onMount: () => dispatch(Action.data.components.use(ownProps.componentKey)),
 		onClick: keys => {
 			dispatch(Action.selections.setActiveSelectionFeatureKeysFilterKeys(keys));
+			dispatch(
+				Action.worldCereal.statistics.setActivePlaceKeysByActiveSelectionFeatureKeys()
+			);
 		},
 	};
 };

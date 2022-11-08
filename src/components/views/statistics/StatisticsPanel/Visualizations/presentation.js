@@ -8,6 +8,9 @@ const Visualizations = ({componentSet}) => {
 			{componentSet?.components?.map(component => (
 				<ChartWrapper key={component} componentKey={component} />
 			))}
+			{componentSet?.components?.map(component => (
+				<ChartWrapper key={component} componentKey={component} />
+			))}
 		</div>
 	);
 };

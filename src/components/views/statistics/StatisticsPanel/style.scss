@@ -21,11 +21,15 @@ $statisticsPanelPaddingRight: 1rem;
   min-height: 3rem;
 }
 
+.worldCereal-StatisticsPanel-body {
+  overflow-y: auto;
+}
+
 .worldCereal-StatisticsPanel-configurations {
   display: flex;
   flex-direction: column;
   grid-gap: 1rem;
-  padding: m(1) $statisticsPanelPaddingRight m(1) $statisticsPanelPaddingLeft;
+  padding: m(1) $statisticsPanelPaddingRight 1rem $statisticsPanelPaddingLeft;
 }
 
 .worldCereal-StatisticsPanel-configurations > div {
@@ -37,6 +41,6 @@ $statisticsPanelPaddingRight: 1rem;
 
 .worldCereal-StatisticsPanel-visualizations {
   flex: 1;
-  padding: m(1) $statisticsPanelPaddingRight m(1) $statisticsPanelPaddingLeft;
+  padding: 1rem $statisticsPanelPaddingRight 1rem $statisticsPanelPaddingLeft;
 }
 
