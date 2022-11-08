@@ -202,6 +202,29 @@ const getMapLayersOpacity = createCachedSelector(
 	}
 )((state, mapKey) => mapKey);
 
+const getMapLayerOpacity = createCachedSelector(
+	[
+		CommonSelect.maps.getMapLayersStateByMapKey,
+		(state, mapKey, layerKey) => layerKey,
+	],
+	(layers, layerKey) => {
+		const selectedLayer = layers.find(layer =>
+			_includes(layerKey, layer.layerKey)
+		);
+
+		let opacitySum = 0;
+		if (selectedLayer) {
+			if (selectedLayer.opacity >= 0) {
+				opacitySum += selectedLayer.opacity;
+			} else {
+				opacitySum += 1;
+			}
+		}
+
+		return opacitySum * 100;
+	}
+)((state, mapKey) => mapKey);
+
 const getMapLayersTooltipActive = createSelector(
 	[
 		CommonSelect.maps.getMapLayersStateByMapKey,
@@ -222,6 +245,41 @@ const getMapLayersTooltipActive = createSelector(
 		return tooltipActive;
 	}
 );
+const getMapLayerTooltipActive = createSelector(
+	[
+		CommonSelect.maps.getMapLayersStateByMapKey,
+		(state, mapKey, layerKey) => layerKey,
+	],
+	(layers, layerKey) => {
+		const selectedLayer = layers.find(layer =>
+			_includes(layerKey, layer.layerKey)
+		);
+
+		let tooltipActive = false;
+		if (selectedLayer) {
+			tooltipActive = selectedLayer.options.pickable;
+		}
+
+		return tooltipActive;
+	}
+);
+
+const getMapLayerOptionValueByKey = createSelector(
+	[
+		CommonSelect.maps.getMapLayersStateByMapKey,
+		(state, mapKey, layerKey) => layerKey,
+		(state, mapKey, layerKey, optionKey) => optionKey,
+	],
+	(layers, layerKey, optionKey) => {
+		const layer = layers.find(layer => _includes(layerKey, layer.layerKey));
+
+		if (layer) {
+			return layer.options?.[optionKey];
+		} else {
+			return null;
+		}
+	}
+);
 
 const getProductValue = createCachedSelector(
 	[product => product, (product, value) => value],
@@ -239,4 +297,7 @@ export default {
 	getMapLayersOpacity,
 	getMapLayersTooltipActive,
 	getProductValue,
+	getMapLayerTooltipActive,
+	getMapLayerOpacity,
+	getMapLayerOptionValueByKey,
 };

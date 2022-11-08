@@ -1,14 +1,7 @@
 import PropTypes from 'prop-types';
 import {ProductLabelLegendItem} from '../ProductLabel/presentation';
 
-const SingleProductLabelHeader = ({
-	product,
-	zone,
-	start,
-	end,
-	color,
-	children,
-}) => {
+const SingleProductLabelHeader = ({product, zone, color, children, date}) => {
 	return (
 		<div className="worldCereal-ProductLabelHeader">
 			{color ? (
@@ -28,9 +21,7 @@ const SingleProductLabelHeader = ({
 						</span>
 					) : null}
 				</div>
-				<div className="worldCereal-ProductLabelHeader-period">
-					{start} / {end}
-				</div>
+				<div className="worldCereal-ProductLabelHeader-period">{date}</div>
 				<div className="worldCereal-ProductLabelHeader-value">{children}</div>
 			</div>
 		</div>
@@ -39,11 +30,10 @@ const SingleProductLabelHeader = ({
 
 SingleProductLabelHeader.propTypes = {
 	color: PropTypes.string,
-	end: PropTypes.string,
 	product: PropTypes.string,
-	start: PropTypes.string,
 	zone: PropTypes.number,
 	children: PropTypes.node,
+	date: PropTypes.string,
 };
 
 const ProductTooltipContent = ({
@@ -52,13 +42,21 @@ const ProductTooltipContent = ({
 	color,
 	value,
 }) => {
+	console.log(productTemplate);
+	const {aez, sos, eos, season, isGlobal} = productMetadata.data;
+
+	const startDate = isGlobal
+		? season[0].toUpperCase() + season.slice(1, season.length) + ' - '
+		: sos;
+	const endDate = isGlobal ? eos.slice(0, 4) : eos;
+	const fullDate = isGlobal ? startDate + endDate : startDate + ' / ' + endDate;
+
 	return (
 		<>
 			<SingleProductLabelHeader
 				product={productTemplate?.data?.nameDisplay}
-				zone={productMetadata?.data?.aez}
-				start={productMetadata?.data?.sos}
-				end={productMetadata?.data?.eos}
+				zone={aez}
+				date={fullDate}
 			>
 				<>
 					<ProductLabelLegendItem color={`rgba(${color})`} name={value} />

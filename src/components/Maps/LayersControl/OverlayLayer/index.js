@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 		onChange: aezIsActive => {
 			aezIsActive
 				? dispatch(Action.maps.removeMapLayer(ownProps.mapKey, 'aez'))
-				: dispatch(Action.maps.addMapLayerToIndex(ownProps.mapKey, aez));
+				: dispatch(Action.maps.addMapLayers(ownProps.mapKey, [aez]));
 		},
 	};
 };
