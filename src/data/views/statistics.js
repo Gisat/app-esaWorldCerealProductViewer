@@ -308,8 +308,8 @@ export default {
 										attributeFilter: {},
 									},
 									styleKey: 'af4c5310-405f-426d-9bbd-098593ea2ac4',
-									areaTreeLevelKey: 'a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47',
-									// areaTreeLevelKey: 'b8a2f8d0-41b6-4afc-ba3f-a0df21632975',
+									// areaTreeLevelKey: 'a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47',
+									areaTreeLevelKey: 'b8a2f8d0-41b6-4afc-ba3f-a0df21632975',
 
 									filterByActive: {
 										application: true,
@@ -318,7 +318,7 @@ export default {
 									},
 									metadataModifiers: {
 										placeKey: 'eaee3d97-2938-497c-b008-b43d5d5dbe89', //potom se to bude brát pokud je level country, tak z aktivní
-										// periodKey: '6a7a4193-1339-4172-b54d-817c3e8cd6f7', //přidá se podle výběru
+										periodKey: '6a7a4193-1339-4172-b54d-817c3e8cd6f7', //přidá se podle výběru
 									},
 								},
 							],
