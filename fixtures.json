@@ -29,6 +29,11 @@
 								"no-selected": "GlobalNoSelected",
 								"one-selected": "GlobalOneSelected",
 								"multiple-selected": "GlobalMultipleSelected"
+							},
+							"b8a2f8d0-41b6-4afc-ba3f-a0df21632975": {
+								"no-selected": "CountryNoSelectedRegion",
+								"one-selected": "CountryOneSelectedRegion",
+								"multiple-selected": "CountryMultipleSelectedRegions"
 							}
 						},
 						"placeKeyByCountryFeatureKey": {
