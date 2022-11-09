@@ -44,12 +44,12 @@ export default {
 					mode: 'set',
 				},
 				GlobalTopTenBarChart: {
-					title: 'Top 10 - No selected country chart',
-					subtitle: 'With short subtitle',
+					title: 'Top 10 countries',
+					subtitle: 'by total product area [ha]',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 10, right: 25, bottom: 40, left: 35},
+						margin: {top: 10, right: 25, bottom: 20, left: 35},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -58,7 +58,7 @@ export default {
 						axisBottom: {
 							values: false,
 							enable: true,
-							legend: 'Area [ha]',
+							// legend: 'Area [ha]',
 							legendPosition: 'middle',
 							legendOffset: 33,
 							tickPadding: 0,
@@ -103,48 +103,47 @@ export default {
 					},
 				},
 				GlobalSharePieChart: {
-					title: 'One selected area',
-					subtitle: 'With short subtitle',
+					title: 'Product share',
+					subtitle: 'on total country area [%]',
 					settings: {
 						indexBy: 'id',
-						margin: {top: 10, right: 10, bottom: 35, left: 55},
-						padding: 0.05,
+						layout: 'horizontal',
+						margin: {top: 10, right: 25, bottom: 20, left: 35},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
+						valueFormat: ' >-,d',
 						axisTop: null,
 						axisRight: null,
 						axisBottom: {
+							values: false,
 							enable: true,
-							legend: 'Units',
+							// legend: 'Area [ha]',
 							legendPosition: 'middle',
-							legendOffset: 28,
-							tickPadding: 2,
+							legendOffset: 33,
+							tickPadding: 0,
+							tickValues: 4,
+							format: ' >-,d',
 						},
-						axisLeft: {
-							tickSize: 0,
-							tickPadding: 3,
-							legend: '% of total area',
-							legendPosition: 'middle',
-							legendOffset: -50,
-						},
+						padding: 0.5,
 						groupMode: 'grouped',
-						enableGridY: true,
-						enableLabel: false,
+						enableGridY: false,
+						enableGridX: true,
+						enableLabel: true,
 						labelSkipHeight: 13,
 						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
 						theme: {
 							fontSize: 11,
-							textColor: 'var(--base40)',
+							textColor: 'var(--base70)',
 							axis: {
 								legend: {
 									text: {
-										fontSize: 12,
+										fontSize: 13,
 										fontWeight: 'bold',
 									},
 								},
 								ticks: {
 									line: {
-										stroke: 'var(--base40)',
+										stroke: 'var(--base20)',
 									},
 								},
 							},
@@ -153,11 +152,73 @@ export default {
 									stroke: 'var(--base20)',
 								},
 							},
+							labels: {
+								text: {
+									fontSize: 13,
+									fontWeight: 'bold',
+								},
+							},
 						},
 					},
 				},
 				GlobalCountriesBarChart: {
-					name: 'Global: Product in countries',
+					title: 'Product share',
+					subtitle: 'on total country area [%]',
+					settings: {
+						indexBy: 'id',
+						layout: 'horizontal',
+						margin: {top: 10, right: 25, bottom: 20, left: 35},
+						valueScale: {type: 'linear'},
+						indexScale: {type: 'band', round: true},
+						valueFormat: ' >-,d',
+						axisTop: null,
+						axisRight: null,
+						axisBottom: {
+							values: false,
+							enable: true,
+							// legend: 'Area [ha]',
+							legendPosition: 'middle',
+							legendOffset: 33,
+							tickPadding: 0,
+							tickValues: 4,
+							format: ' >-,d',
+						},
+						padding: 0.5,
+						groupMode: 'grouped',
+						enableGridY: false,
+						enableGridX: true,
+						enableLabel: true,
+						labelSkipHeight: 13,
+						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
+						theme: {
+							fontSize: 11,
+							textColor: 'var(--base70)',
+							axis: {
+								legend: {
+									text: {
+										fontSize: 13,
+										fontWeight: 'bold',
+									},
+								},
+								ticks: {
+									line: {
+										stroke: 'var(--base20)',
+									},
+								},
+							},
+							grid: {
+								line: {
+									stroke: 'var(--base20)',
+								},
+							},
+							labels: {
+								text: {
+									fontSize: 13,
+									fontWeight: 'bold',
+								},
+							},
+						},
+					},
 				},
 			},
 			data: {
@@ -194,6 +255,24 @@ export default {
 						attributeKeys: ['73e3bd86-8701-47e4-b27b-9d2555d68304'],
 						start: 1,
 						length: 1,
+					},
+					GlobalCountriesBarChart: {
+						type: 'barChart',
+						options: {
+							selectedFeaturesOnly: true,
+						},
+						metadataModifiers: {},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+							period: true,
+							case: true,
+						},
+						areaTreeLevelKey: 'a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47',
+						attributeKeys: ['73e3bd86-8701-47e4-b27b-9d2555d68304'],
+						start: 1,
+						length: 100,
 					},
 				},
 				sets: {

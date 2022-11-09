@@ -7,7 +7,11 @@ import {
 	commonHelpers,
 } from '@gisatcz/ptr-state';
 import {createCachedSelector} from 're-reselect';
-import {without as _without, orderBy as _orderBy} from 'lodash';
+import {
+	without as _without,
+	orderBy as _orderBy,
+	compact as _compact,
+} from 'lodash';
 
 const getChartMetadata = createCachedSelector(
 	[
@@ -74,10 +78,17 @@ const getDataForNivoBarChart = createRecomputeSelector(componentKey => {
 		if (chartData) {
 			const finalData =
 				chartData &&
-				chartData.map(item => {
-					return {...item.data, id: item.key};
-				});
+				_compact(
+					chartData.map(item => {
+						if (item) {
+							return {...item.data, id: item.key};
+						} else {
+							return null;
+						}
+					})
+				);
 
+			// TODO add option for this case
 			// TODO return just first 10 areas for now
 			return _orderBy(
 				finalData,
