@@ -1,21 +1,29 @@
-import {connect} from '@gisatcz/ptr-state';
-// import {utils} from '@gisatcz/ptr-utils';
-// import Action from '../../../../../state/Action';
-// import Select from '../../../../../state/Select';
+import {connect, setRecomputeState} from '@gisatcz/ptr-state';
+import Action from '../../../../../state/Action';
+import Select from '../../../../../state/Select';
 import Presentation from './presentation';
 
-const mapStateToProps = () => {
-	return {};
-};
+const componentKey = 'RegionSelect';
 
-const mapDispatchToPropsFactory = () => {
-	// const componentId = `RegionSelect_${utils.uuid()}`;
-	return () => {
-		return {};
+const mapStateToProps = state => {
+	setRecomputeState(state);
+
+	return {
+		regions: Select.worldCereal.statistics.getRegions(componentKey),
+		activeRegionKeys:
+			Select.selections.getActive(state)?.data?.featureKeysFilter?.keys,
 	};
 };
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToPropsFactory
-)(Presentation);
+const mapDispatchToProps = dispatch => {
+	return {
+		onMount: () => dispatch(Action.data.components.use(componentKey)),
+		onUnmount: () =>
+			dispatch(Action.data.components.componentUseClear(componentKey)),
+		onActiveRegionChange: keys => {
+			dispatch(Action.selections.setActiveSelectionFeatureKeysFilterKeys(keys));
+		},
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Presentation);

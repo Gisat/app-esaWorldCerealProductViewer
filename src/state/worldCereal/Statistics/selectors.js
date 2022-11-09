@@ -57,6 +57,28 @@ const getVisualizationComponentSet = createRecomputeSelector(() => {
 	return getComponentSetByKey(componentSetKey);
 }, recomputeSelectorOptions);
 
+/**
+ * Get regions from attribute data
+ */
+const getRegions = createRecomputeSelector(componentKey => {
+	const data = CommonSelect.data.components.getData(componentKey);
+	const metadata =
+		CommonSelect.data.components.getComponentStateByKeyObserver(componentKey);
+	const nameAttributeKey = metadata?.attributeKeys[0];
+
+	if (data && nameAttributeKey) {
+		return data.map(item => {
+			return {
+				key: item.key,
+				name: item.data[nameAttributeKey],
+			};
+		});
+	} else {
+		return null;
+	}
+}, recomputeSelectorOptions);
+
 export default {
 	getVisualizationComponentSet,
+	getRegions,
 };

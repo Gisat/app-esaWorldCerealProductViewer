@@ -21,7 +21,7 @@ const RegionSelect = ({
 	}, []);
 
 	const options = regions?.map(region => {
-		return {value: region.key, label: region.data.nameDisplay};
+		return {value: region.key, label: region.name};
 	});
 	const values =
 		activeRegionKeys?.length > 0 &&

@@ -400,6 +400,18 @@ export default {
 			},
 			data: {
 				components: {
+					RegionSelect: {
+						metadataModifiers: {},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+							place: true,
+						},
+						attributeKeys: ['5f6a119b-addf-467e-ab1f-e07e4cdf79a6'],
+						start: 1,
+						length: 300,
+					},
 					GlobalTopTenBarChart: {
 						type: 'barChart',
 						metadataModifiers: {},
