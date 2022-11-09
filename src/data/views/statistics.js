@@ -220,6 +220,65 @@ export default {
 						},
 					},
 				},
+				CountryTopTenBarChart: {
+					title: 'Top 10 regions',
+					subtitle: 'by total product area [ha]',
+					settings: {
+						indexBy: 'id',
+						layout: 'horizontal',
+						margin: {top: 10, right: 25, bottom: 20, left: 35},
+						valueScale: {type: 'linear'},
+						indexScale: {type: 'band', round: true},
+						valueFormat: ' >-,d',
+						axisTop: null,
+						axisRight: null,
+						axisBottom: {
+							values: false,
+							enable: true,
+							// legend: 'Area [ha]',
+							legendPosition: 'middle',
+							legendOffset: 33,
+							tickPadding: 0,
+							tickValues: 4,
+							format: ' >-,d',
+						},
+						padding: 0.5,
+						groupMode: 'grouped',
+						enableGridY: false,
+						enableGridX: true,
+						enableLabel: true,
+						labelSkipHeight: 13,
+						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
+						theme: {
+							fontSize: 11,
+							textColor: 'var(--base70)',
+							axis: {
+								legend: {
+									text: {
+										fontSize: 13,
+										fontWeight: 'bold',
+									},
+								},
+								ticks: {
+									line: {
+										stroke: 'var(--base20)',
+									},
+								},
+							},
+							grid: {
+								line: {
+									stroke: 'var(--base20)',
+								},
+							},
+							labels: {
+								text: {
+									fontSize: 13,
+									fontWeight: 'bold',
+								},
+							},
+						},
+					},
+				},
 			},
 			data: {
 				components: {
@@ -271,6 +330,21 @@ export default {
 						start: 1,
 						length: 100,
 					},
+					CountryTopTenBarChart: {
+						type: 'barChart',
+						metadataModifiers: {},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+							period: true,
+							case: true,
+							place: true,
+						},
+						attributeKeys: ['4fb212bb-ff1a-46d7-8fce-e341e7f08376'],
+						start: 1,
+						length: 300,
+					},
 				},
 				sets: {
 					GlobalNoSelected: {
@@ -281,6 +355,15 @@ export default {
 					},
 					GlobalMultipleSelected: {
 						components: ['GlobalCountriesBarChart'],
+					},
+					CountryNoSelectedRegion: {
+						components: ['CountryTopTenBarChart'],
+					},
+					CountryOneSelectedRegion: {
+						components: ['CountrySharePieChart'],
+					},
+					CountryMultipleSelectedRegions: {
+						components: ['CountryRegionsBarChart'],
 					},
 				},
 			},
@@ -369,6 +452,13 @@ export default {
 						data: {
 							color: '#00fffe',
 							hoveredColor: '#1efbff',
+						},
+					},
+					{
+						key: 'b35beddf-0656-4294-acef-e8af91e86fa3',
+						data: {
+							color: '#e600ff',
+							hoveredColor: '#e600ff',
 						},
 					},
 				],

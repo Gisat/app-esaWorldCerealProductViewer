@@ -48,6 +48,10 @@
 								"multiple-selected": "CountryMultipleSelectedRegions"
 							}
 						},
+						"selectionByAreaTreeLevelKey": {
+							"a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47": "764ff34a-2eee-4d82-8ffe-87da6ed1a3f7",
+							"b8a2f8d0-41b6-4afc-ba3f-a0df21632975": "b35beddf-0656-4294-acef-e8af91e86fa3"
+						},
 						"placeKeyByCountryFeatureKey": {
 							"BRA": "eaee3d97-2938-497c-b008-b43d5d5dbe89",
 							"UKR": "b1a913a9-a1f3-4fe7-9932-73d376a2f95a"
