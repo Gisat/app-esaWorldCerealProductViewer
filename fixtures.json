@@ -51,10 +51,6 @@
 						"placeKeyByCountryFeatureKey": {
 							"BRA": "eaee3d97-2938-497c-b008-b43d5d5dbe89",
 							"UKR": "b1a913a9-a1f3-4fe7-9932-73d376a2f95a"
-						},
-						"styleKeyByCaseKey":{
-							"577b253f-754f-421e-94a2-092f092b4947": "af4c5310-405f-426d-9bbd-098593ea2ac4",
-							"66f490a6-d8df-45a3-adcb-d3648715ddd5": "da1a27e1-a718-4a9a-b054-c7d94328f1a9"
 						}
 					}
 				}
@@ -519,21 +515,21 @@
 				}
 			},
 			{
-                "key": "e59efff3-4076-4cc4-97ee-3b040cc9e917",
-                "data": {
-                    "nameInternal": "relation_area_brazil_2020_anual",
-                    "areaTreeKey": null,
-                    "areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
-                    "fidColumnName": null,
-                    "parentFidColumnName": null,
-                    "spatialDataSourceKey": "63383601-cc3d-41a9-90db-f27112f562da",
-                    "scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-                    "placeKey": "eaee3d97-2938-497c-b008-b43d5d5dbe89",
-                    "periodKey": "1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08",
-                    "caseKey": null,
-                    "scenarioKey": null,
-                    "applicationKey": "esaWorldCerealProductViewer"
-                }
+				"key": "e59efff3-4076-4cc4-97ee-3b040cc9e917",
+				"data": {
+					"nameInternal": "relation_area_brazil_2020_anual",
+					"areaTreeKey": null,
+					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
+					"fidColumnName": null,
+					"parentFidColumnName": null,
+					"spatialDataSourceKey": "63383601-cc3d-41a9-90db-f27112f562da",
+					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
+					"placeKey": "eaee3d97-2938-497c-b008-b43d5d5dbe89",
+					"periodKey": "1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08",
+					"caseKey": null,
+					"scenarioKey": null,
+					"applicationKey": "esaWorldCerealProductViewer"
+				}
 			},
 			{
 				"key": "fce02b7a-fa89-4254-8bf4-ed1b17608f3a",
