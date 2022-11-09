@@ -22,6 +22,18 @@
 								"styleKey": "af4c5310-405f-426d-9bbd-098593ea2ac4",
 								"absoluteAttributeKey": "4fb212bb-ff1a-46d7-8fce-e341e7f08376",
 								"relativeAttributeKey": "73e3bd86-8701-47e4-b27b-9d2555d68304"
+							},
+							"66f490a6-d8df-45a3-adcb-d3648715ddd5": {
+								"name": "Active irrigation",
+								"styleKey": "da1a27e1-a718-4a9a-b054-c7d94328f1a9"
+							},
+							"33caa296-cf88-4d5c-a67d-ffba11376d4a": {
+								"name": "Maize",
+								"styleKey": "todo style key"
+							},
+							"d439a6db-8f7b-4123-9e93-3892cad157f7": {
+								"name": "Cereals",
+								"styleKey": "todo style key"
 							}
 						},
 						"componentSetByLevelKeyBySelectedFeaturesCount": {
@@ -39,6 +51,10 @@
 						"placeKeyByCountryFeatureKey": {
 							"BRA": "eaee3d97-2938-497c-b008-b43d5d5dbe89",
 							"UKR": "b1a913a9-a1f3-4fe7-9932-73d376a2f95a"
+						},
+						"styleKeyByCaseKey":{
+							"577b253f-754f-421e-94a2-092f092b4947": "af4c5310-405f-426d-9bbd-098593ea2ac4",
+							"66f490a6-d8df-45a3-adcb-d3648715ddd5": "da1a27e1-a718-4a9a-b054-c7d94328f1a9"
 						}
 					}
 				}
@@ -284,6 +300,26 @@
 						]
 					}
 				}
+			},
+			{
+				"key": "da1a27e1-a718-4a9a-b054-c7d94328f1a9",
+				"data": {
+					"nameDisplay": "style_activeIrrigation",
+					"nameInternal": "style_activeIrrigation",
+					"applicationKey": "esaWorldCerealProductViewer",
+					"definition": {
+						"rules": [
+							{
+								"styles": [
+									{
+										"attributeKey": "todo_activeIrrigationShare_attributeKey",
+										"attributeClasses": []
+									}
+								]
+							}
+						]
+					}
+				}
 			}
 		]
 	},
@@ -498,7 +534,7 @@
                     "scenarioKey": null,
                     "applicationKey": "esaWorldCerealProductViewer"
                 }
-			}
+			},
 			{
 				"key": "fce02b7a-fa89-4254-8bf4-ed1b17608f3a",
 				"data": {
