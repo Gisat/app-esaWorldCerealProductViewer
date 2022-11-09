@@ -34,7 +34,11 @@ const mapDispatchToPropsFactory = dispatch => {
 	return () => {
 		return {
 			onActiveLevelChange: activeLevelKey => {
+				// TODO clear use for all data components
 				dispatch(Action.areas.areaTreeLevels.setActiveKey(activeLevelKey));
+				dispatch(
+					Action.worldCereal.statistics.setActiveSelectionForActiveAreaTreeLevel()
+				);
 			},
 			onMount: () => {
 				dispatch(

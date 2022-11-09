@@ -56,7 +56,28 @@ function setActiveSelectionFeatureKeysByActivePlaceKeys() {
 	};
 }
 
+/**
+ * Set selected feature keys in active selection by place keys. The linking should be stored in app configuration.
+ */
+function setActiveSelectionForActiveAreaTreeLevel() {
+	return (dispatch, getState) => {
+		const selectionConfig = Select.app.getConfiguration(
+			getState(),
+			'selectionByAreaTreeLevelKey'
+		);
+		const activeAreaTreeLevelKey = Select.areas.areaTreeLevels.getActiveKey(
+			getState()
+		);
+		const selectionKey = selectionConfig?.[activeAreaTreeLevelKey];
+
+		if (selectionKey) {
+			dispatch(CommonAction.selections.setActiveKey(selectionKey));
+		}
+	};
+}
+
 export default {
 	setActiveSelectionFeatureKeysByActivePlaceKeys,
 	setActivePlaceKeysByActiveSelectionFeatureKeys,
+	setActiveSelectionForActiveAreaTreeLevel,
 };

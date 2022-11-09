@@ -23,6 +23,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onMount: () => dispatch(Action.data.components.use(ownProps.componentKey)),
+		onUnmount: () =>
+			dispatch(Action.data.components.componentUseClear(ownProps.componentKey)),
 		onClick: keys => {
 			dispatch(Action.selections.setActiveSelectionFeatureKeysFilterKeys(keys));
 
