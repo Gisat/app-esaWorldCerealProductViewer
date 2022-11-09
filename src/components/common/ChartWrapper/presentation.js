@@ -4,12 +4,12 @@ import BarChart from '../charts/BarChart';
 
 import './style.scss';
 
-const ChartWrapper = ({componentKey, title, subtitle, type}) => {
+const ChartWrapper = ({componentKey, title, subtitle, type, onChartClick}) => {
 	let content = null;
 
 	switch (type) {
 		case 'barChart':
-			content = <BarChart componentKey={componentKey} />;
+			content = <BarChart componentKey={componentKey} onClick={onChartClick} />;
 			break;
 		// case 'scatterChart':
 		// 	content = <ScatterChart componentKey={componentKey} />;
@@ -38,6 +38,7 @@ ChartWrapper.propTypes = {
 	title: PropTypes.string,
 	subtitle: PropTypes.string,
 	type: PropTypes.string,
+	onChartClick: PropTypes.func,
 };
 
 export default ChartWrapper;
