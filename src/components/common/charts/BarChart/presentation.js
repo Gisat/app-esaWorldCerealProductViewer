@@ -13,8 +13,9 @@ const BarChart = ({
 	metadata,
 	selectedFeatureKeys,
 	onClick,
+	onSelectedFeaturesChange,
 }) => {
-	const {valueAttributeKeys, settings} = metadata;
+	const {valueAttributeKeys, settings, options} = metadata;
 	const colorMap = colorUtils.getColorMap(valueAttributeKeys);
 
 	useEffect(() => {
@@ -25,6 +26,12 @@ const BarChart = ({
 			return onUnmount;
 		}
 	}, []);
+
+	useEffect(() => {
+		if (options?.selectedFeaturesOnly) {
+			onSelectedFeaturesChange(selectedFeatureKeys);
+		}
+	}, [selectedFeatureKeys]);
 
 	const onColumnClick = (chartData, e) => {
 		const {data} = chartData;
@@ -69,6 +76,7 @@ BarChart.propTypes = {
 	data: PropTypes.array,
 	metadata: PropTypes.object,
 	selectedFeatureKeys: PropTypes.array,
+	onSelectedFeaturesChange: PropTypes.func,
 };
 
 export default BarChart;

@@ -57,7 +57,26 @@ function onAttributeChange(chartComponentKey, attributeKeys) {
 	};
 }
 
+function onSelectedFeaturesChange(chartComponentKey, featureKeys) {
+	return (dispatch, getState) => {
+		const componentState = Select.data.components.getComponentStateByKey(
+			getState(),
+			chartComponentKey
+		);
+
+		if (componentState) {
+			dispatch(
+				CommonAction.data.components.updateComponent(chartComponentKey, {
+					featureKeys,
+				})
+			);
+			dispatch(CommonAction.data.components.use(chartComponentKey));
+		}
+	};
+}
+
 export default {
 	onAttributeChange,
+	onSelectedFeaturesChange,
 	useAvailableAttributes,
 };

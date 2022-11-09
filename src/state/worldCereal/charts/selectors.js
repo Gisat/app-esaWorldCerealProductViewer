@@ -70,6 +70,7 @@ const getDataForNivoBarChart = createRecomputeSelector(componentKey => {
 	if (metadata && data) {
 		const {valueAttributeKeys} = metadata;
 		const {data: chartData} = data;
+
 		if (chartData) {
 			const finalData =
 				chartData &&
@@ -83,44 +84,8 @@ const getDataForNivoBarChart = createRecomputeSelector(componentKey => {
 				item => {
 					return item[valueAttributeKeys[0]]; // TODO take value attribute key for now
 				},
-				'desc'
+				'asc' // TODO to draw in horizontal bar chart properly
 			).slice(0, 10);
-		} else {
-			return null;
-		}
-	} else {
-		return null;
-	}
-}, recomputeSelectorOptions);
-
-const getDataForNivoScatterChart = createRecomputeSelector(componentKey => {
-	const data = CommonSelect.data.components.getDataForCartesianChart({
-		stateComponentKey: componentKey,
-	});
-	const metadata = getChartMetadataObserver(componentKey);
-
-	if (metadata && data) {
-		const {valueAttributeKeys} = metadata;
-		const {data: chartData} = data;
-		if (chartData?.length && valueAttributeKeys?.length === 2) {
-			const attributeKeysMapping = {
-				x: valueAttributeKeys[0],
-				y: valueAttributeKeys[1],
-			};
-
-			const finalData =
-				chartData &&
-				chartData.map(item => {
-					const itemData = {
-						...item.data,
-						x: item?.data?.[attributeKeysMapping.x],
-						y: item?.data?.[attributeKeysMapping.y],
-					};
-
-					return {data: [itemData], id: item.key};
-				});
-
-			return finalData;
 		} else {
 			return null;
 		}
@@ -133,5 +98,4 @@ export default {
 	getChartMetadata,
 	getAvailableAttributeKeys,
 	getDataForNivoBarChart,
-	getDataForNivoScatterChart,
 };

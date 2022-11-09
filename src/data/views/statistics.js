@@ -179,6 +179,9 @@ export default {
 					},
 					GlobalSharePieChart: {
 						type: 'barChart',
+						options: {
+							selectedFeaturesOnly: true,
+						},
 						metadataModifiers: {},
 						filterByActive: {
 							application: true,
@@ -189,7 +192,6 @@ export default {
 						},
 						areaTreeLevelKey: 'a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47',
 						attributeKeys: ['73e3bd86-8701-47e4-b27b-9d2555d68304'],
-						// featureKeys: ['BRA'],
 						start: 1,
 						length: 1,
 					},

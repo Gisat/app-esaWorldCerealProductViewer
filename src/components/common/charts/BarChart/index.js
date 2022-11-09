@@ -25,8 +25,18 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 		onMount: () => dispatch(Action.data.components.use(ownProps.componentKey)),
 		onClick: keys => {
 			dispatch(Action.selections.setActiveSelectionFeatureKeysFilterKeys(keys));
+
+			// TODO handle this specific action out of this component
 			dispatch(
 				Action.worldCereal.statistics.setActivePlaceKeysByActiveSelectionFeatureKeys()
+			);
+		},
+		onSelectedFeaturesChange: keys => {
+			dispatch(
+				Action.worldCereal.charts.onSelectedFeaturesChange(
+					ownProps.componentKey,
+					keys
+				)
 			);
 		},
 	};
