@@ -32,8 +32,13 @@ const mapDispatchToPropsFactory = dispatch => {
 		return {
 			onActiveCaseChange: activeCaseKey => {
 				dispatch(Action.cases.setActiveKey(activeCaseKey));
+				dispatch(
+					Action.worldCereal.statistics.setMapLayerActiveStyleKeyByCaseKey(
+						activeCaseKey
+					)
+				);
 			},
-			onMount: () => {
+			onMount: activeCaseKey => {
 				dispatch(
 					Action.cases.useIndexed(
 						casesFilter.filterByActive,
@@ -42,6 +47,11 @@ const mapDispatchToPropsFactory = dispatch => {
 						casesFilter.start,
 						casesFilter.length,
 						componentId
+					)
+				);
+				dispatch(
+					Action.worldCereal.statistics.setMapLayerActiveStyleKeyByCaseKey(
+						activeCaseKey
 					)
 				);
 			},

@@ -1,6 +1,9 @@
 import {Action as CommonAction} from '@gisatcz/ptr-state';
 import {forIn as _forIn} from 'lodash';
+import Action from '../../Action';
 import Select from '../../Select';
+
+const STATISTICSLAYERKEY = 'statistics-global';
 
 /**
  * Set active place keys by active selection feature keys. The linking should be stored in app configuration.
@@ -76,8 +79,31 @@ function setActiveSelectionForActiveAreaTreeLevel() {
 	};
 }
 
+/**
+ * Set statistics layer styleKey based on active caseKey
+ */
+function setMapLayerActiveStyleKeyByCaseKey(caseKey) {
+	return (dispatch, getState) => {
+		const configByCaseKey = Select.app.getConfiguration(
+			getState(),
+			'configByCaseKey'
+		);
+
+		const caseConfiguration = configByCaseKey?.[caseKey];
+		const styleKey = caseConfiguration?.styleKey;
+
+		if (styleKey) {
+			const mapKey = Select.maps.getActiveMapKey(getState());
+			dispatch(
+				Action.maps.setMapLayerStyleKey(mapKey, STATISTICSLAYERKEY, styleKey)
+			);
+		}
+	};
+}
+
 export default {
 	setActiveSelectionFeatureKeysByActivePlaceKeys,
 	setActivePlaceKeysByActiveSelectionFeatureKeys,
 	setActiveSelectionForActiveAreaTreeLevel,
+	setMapLayerActiveStyleKeyByCaseKey,
 };

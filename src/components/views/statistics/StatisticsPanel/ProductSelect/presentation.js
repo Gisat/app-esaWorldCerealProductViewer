@@ -12,7 +12,7 @@ const ProductSelect = ({
 }) => {
 	useEffect(() => {
 		if (onMount && typeof onMount === 'function') {
-			onMount();
+			onMount(activeCaseKey);
 		}
 
 		if (onUnmount && typeof onUnmount === 'function') {
