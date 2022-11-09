@@ -47,10 +47,6 @@ const Intro = ({onViewSelect, views}) => {
 							<IntroCardText>{view.data.description}</IntroCardText>
 						</IntroCard>
 					))}
-					<IntroCard disabled Icon={ChartVertical}>
-						<IntroCardTitle>Statistics</IntroCardTitle>
-						<IntroCardText>based on WorldCereal products</IntroCardText>
-					</IntroCard>
 					<IntroCard disabled Icon={User1}>
 						<IntroCardTitle>User products</IntroCardTitle>
 						<IntroCardText>exploration</IntroCardText>

@@ -7,10 +7,12 @@ require('dotenv').config();
 import {appKey} from '../constants/app';
 
 import worldCerealActions from './worldCereal/actions';
+import chartsActions from './worldCereal/charts/actions';
 import configurationActions from './worldCereal/configuration/actions';
 import productMetadataActions from './worldCereal/ProductMetadata/actions';
 import productMetadataFilterActions from './worldCereal/ProductMetadataFilter/actions';
 import globalProductMetadataActions from './worldCereal/GlobalProductMetadata/actions';
+import statisticsActions from './worldCereal/Statistics/actions';
 
 // TODO load view from BE
 import views from '../data/views';
@@ -45,6 +47,7 @@ function init(path) {
 		const config = getConfig(getAppEnvConfig());
 		dispatch(CommonAction.app.updateLocalConfiguration(config));
 		dispatch(CommonAction.app.setKey(appKey));
+		dispatch(CommonAction.app.loadConfiguration());
 
 		// user
 
@@ -99,10 +102,12 @@ export default {
 	...CommonAction,
 	init,
 	worldCereal: {
+		charts: chartsActions,
 		configuration: configurationActions,
 		productMetadata: productMetadataActions,
 		globalProductMetadata: globalProductMetadataActions,
 		productMetadataFilter: productMetadataFilterActions,
+		statistics: statisticsActions,
 		...worldCerealActions,
 	},
 };

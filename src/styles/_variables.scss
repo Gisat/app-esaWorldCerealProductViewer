@@ -1,6 +1,8 @@
 @import '~@gisatcz/ptr-core/lib/styles/_variables';
 @import '~@gisatcz/visat-components/lib/styles/_variables';
 
+$analyticsPanelHorizontalPadding: .75rem;
+
 @function hexToRGB($color) {
     // @return rgb(red($color), green($color), blue($color))
     @return red($color), green($color), blue($color);
