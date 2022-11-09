@@ -542,16 +542,17 @@ export default {
 										attributeFilter: {},
 									},
 									// areaTreeLevelKey: 'a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47',
-									areaTreeLevelKey: 'b8a2f8d0-41b6-4afc-ba3f-a0df21632975', //FIXME - by settings
+									// areaTreeLevelKey: 'b8a2f8d0-41b6-4afc-ba3f-a0df21632975', //FIXME - by settings
 
 									filterByActive: {
 										application: true,
 										scope: true,
-										areaTreeLevel: true,
+										period: true,
+										// areaTreeLevel: true,
 									},
 									metadataModifiers: {
-										placeKey: 'eaee3d97-2938-497c-b008-b43d5d5dbe89', //FIXME - by settings
-										periodKey: '6a7a4193-1339-4172-b54d-817c3e8cd6f7', //FIXME - by settings
+										// placeKey: 'eaee3d97-2938-497c-b008-b43d5d5dbe89', //FIXME - by settings
+										// periodKey: '6a7a4193-1339-4172-b54d-817c3e8cd6f7', //FIXME - by settings
 									},
 								},
 							],

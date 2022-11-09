@@ -499,12 +499,36 @@
 			{
 				"key": "bbcb6660-dda0-4cba-8115-aecd59838b08",
 				"data": {
-					"nameInternal": "relation_area_global",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"spatialDataSourceKey": "3ff59d73-9915-4e5d-9410-a7d298195f7a",
-					"areaTreeLevelKey": "a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47",
-					"applicationKey": "esaWorldCerealProductViewer"
-				}
+                    "nameInternal": "relation_area_global_2019annual",
+                    "areaTreeKey": null,
+                    "areaTreeLevelKey": "a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47",
+                    "fidColumnName": null,
+                    "parentFidColumnName": null,
+                    "spatialDataSourceKey": "3ff59d73-9915-4e5d-9410-a7d298195f7a",
+                    "scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
+                    "placeKey": null,
+                    "periodKey": "1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08",
+                    "caseKey": null,
+                    "scenarioKey": null,
+                    "applicationKey": "esaWorldCerealProductViewer"
+                }
+			},
+			{
+				"key": "0c66321e-d925-4844-9fa8-4c12ba6e9a87",
+				"data": {
+                    "nameInternal": "relation_area_global_2020annual",
+                    "areaTreeKey": null,
+                    "areaTreeLevelKey": "a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47",
+                    "fidColumnName": null,
+                    "parentFidColumnName": null,
+                    "spatialDataSourceKey": "3ff59d73-9915-4e5d-9410-a7d298195f7a",
+                    "scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
+                    "placeKey": null,
+                    "periodKey": "6a7a4193-1339-4172-b54d-817c3e8cd6f7",
+                    "caseKey": null,
+                    "scenarioKey": null,
+                    "applicationKey": "esaWorldCerealProductViewer"
+                }
 			},
 			{
 				"key": "2cda4eab-2c72-4e0b-ad9b-82be81537461",

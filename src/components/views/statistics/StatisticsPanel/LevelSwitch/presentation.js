@@ -7,6 +7,7 @@ import './style.scss';
 const LevelSwitch = ({
 	onMount,
 	onUnmount,
+	setLayer,
 	activeLevelKey,
 	activePlaceKeys,
 	levels,
@@ -14,13 +15,16 @@ const LevelSwitch = ({
 }) => {
 	useEffect(() => {
 		if (onMount && typeof onMount === 'function') {
-			onMount();
+			onMount(activeLevelKey);
 		}
 
 		if (onUnmount && typeof onUnmount === 'function') {
 			return onUnmount;
 		}
 	}, []);
+	useEffect(() => {
+		setLayer(activeLevelKey);
+	}, [activeLevelKey]);
 
 	return (
 		<StatisticsConfigurationItem label="Level">
@@ -50,6 +54,7 @@ LevelSwitch.propTypes = {
 	levels: PropTypes.array,
 	onMount: PropTypes.func,
 	onUnmount: PropTypes.func,
+	setLayer: PropTypes.func,
 };
 
 export default LevelSwitch;

@@ -100,9 +100,36 @@ function setMapLayerActiveStyleKeyByCaseKey(caseKey) {
 	};
 }
 
+/**
+ * Set statistics layer areaTreeLevelKey
+ */
+function setMapLayerActiveAreaTreeLevelKey(areaTreeLevelKey) {
+	return (dispatch, getState) => {
+		const mapKey = Select.maps.getActiveMapKey(getState());
+		const layer = Select.maps.getLayerStateByLayerKeyAndMapKey(
+			getState(),
+			mapKey,
+			STATISTICSLAYERKEY
+		);
+
+		const layerSettings = {
+			areaTreeLevelKey,
+			key: layer.key,
+			leyerKey: layer.leyerKey,
+			filterByActive: layer.filterByActive,
+			metadataModifiers: layer.metadataModifiers,
+			options: layer.options,
+			styleKey: layer.styleKey,
+		};
+		dispatch(Action.maps.removeMapLayer(mapKey, STATISTICSLAYERKEY));
+		dispatch(Action.maps.addMapLayers(mapKey, [layerSettings]));
+	};
+}
+
 export default {
 	setActiveSelectionFeatureKeysByActivePlaceKeys,
 	setActivePlaceKeysByActiveSelectionFeatureKeys,
 	setActiveSelectionForActiveAreaTreeLevel,
 	setMapLayerActiveStyleKeyByCaseKey,
+	setMapLayerActiveAreaTreeLevelKey,
 };

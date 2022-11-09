@@ -40,6 +40,13 @@ const mapDispatchToPropsFactory = dispatch => {
 					Action.worldCereal.statistics.setActiveSelectionForActiveAreaTreeLevel()
 				);
 			},
+			setLayer: activeLevelKey => {
+				dispatch(
+					Action.worldCereal.statistics.setMapLayerActiveAreaTreeLevelKey(
+						activeLevelKey
+					)
+				);
+			},
 			onMount: () => {
 				dispatch(
 					Action.areas.areaTreeLevels.useIndexed(
