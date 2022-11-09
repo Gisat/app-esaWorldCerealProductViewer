@@ -338,7 +338,7 @@ export default {
 						},
 					},
 				},
-				CountryMultipleSelectedRegions: {
+				CountryRegionsBarChart: {
 					title: 'Product share',
 					subtitle: 'on total region area [%]',
 					settings: {
@@ -489,11 +489,11 @@ export default {
 							case: true,
 							place: true,
 						},
-						attributeKeys: ['4fb212bb-ff1a-46d7-8fce-e341e7f08376'],
+						attributeKeys: ['73e3bd86-8701-47e4-b27b-9d2555d68304'],
 						start: 1,
 						length: 1,
 					},
-					CountryMultipleSelectedRegions: {
+					CountryRegionsBarChart: {
 						type: 'barChart',
 						options: {
 							selectedFeaturesOnly: true,
@@ -507,7 +507,7 @@ export default {
 							case: true,
 							place: true,
 						},
-						attributeKeys: ['4fb212bb-ff1a-46d7-8fce-e341e7f08376'],
+						attributeKeys: ['73e3bd86-8701-47e4-b27b-9d2555d68304'],
 						start: 1,
 						length: 300,
 					},
