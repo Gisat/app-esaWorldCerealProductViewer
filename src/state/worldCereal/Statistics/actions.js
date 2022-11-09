@@ -2,8 +2,7 @@ import {Action as CommonAction} from '@gisatcz/ptr-state';
 import {forIn as _forIn} from 'lodash';
 import Action from '../../Action';
 import Select from '../../Select';
-
-const STATISTICSLAYERKEY = 'statistics-global';
+import {STATISTICSLAYERKEY} from '../../../constants/app';
 
 /**
  * Set active place keys by active selection feature keys. The linking should be stored in app configuration.
