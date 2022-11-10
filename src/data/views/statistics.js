@@ -414,6 +414,10 @@ export default {
 					},
 					GlobalTopTenBarChart: {
 						type: 'barChart',
+						options: {
+							limit: 10,
+						},
+						attributeOrder: [['4fb212bb-ff1a-46d7-8fce-e341e7f08376', 'desc']],
 						metadataModifiers: {},
 						filterByActive: {
 							application: true,
@@ -462,6 +466,10 @@ export default {
 					},
 					CountryTopTenBarChart: {
 						type: 'barChart',
+						options: {
+							limit: 10,
+						},
+						attributeOrder: [['4fb212bb-ff1a-46d7-8fce-e341e7f08376', 'desc']],
 						metadataModifiers: {},
 						filterByActive: {
 							application: true,

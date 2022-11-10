@@ -72,11 +72,11 @@ const getDataForNivoBarChart = createRecomputeSelector(componentKey => {
 	const metadata = getChartMetadataObserver(componentKey);
 
 	if (metadata && data) {
-		const {valueAttributeKeys} = metadata;
+		const {attributeOrder, options, settings} = metadata;
 		const {data: chartData} = data;
 
 		if (chartData) {
-			const finalData =
+			let adjustedData =
 				chartData &&
 				_compact(
 					chartData.map(item => {
@@ -88,15 +88,29 @@ const getDataForNivoBarChart = createRecomputeSelector(componentKey => {
 					})
 				);
 
-			// TODO add option for this case
-			// TODO return just first 10 areas for now
-			return _orderBy(
-				finalData,
-				item => {
-					return item?.[valueAttributeKeys?.[0]]; // TODO take value attribute key for now
-				},
-				'asc' // TODO to draw in horizontal bar chart properly
-			).slice(0, 10);
+			// sort data
+			if (attributeOrder) {
+				const [attributeForOrdering, orderDirection] = attributeOrder[0]; // TODO order just by one attribute
+				adjustedData = _orderBy(
+					adjustedData,
+					item => {
+						return item?.[attributeForOrdering];
+					},
+					orderDirection
+				);
+			}
+
+			// trim data
+			if (options?.limit) {
+				adjustedData = adjustedData.slice(0, options?.limit);
+			}
+
+			// flip data
+			if (settings?.layout === 'horizontal') {
+				adjustedData.reverse();
+			}
+
+			return adjustedData;
 		} else {
 			return null;
 		}
