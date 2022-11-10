@@ -1,8 +1,8 @@
 import {Action as CommonAction} from '@gisatcz/ptr-state';
-import {forIn as _forIn} from 'lodash';
+import {forIn as _forIn, omit as _omit} from 'lodash';
 import Action from '../../Action';
 import Select from '../../Select';
-import {STATISTICSLAYERKEY} from '../../../constants/app';
+import {STATISTICSLAYERKEY, globalAreaLevelKey} from '../../../constants/app';
 
 function clearCountryLevelSelection() {
 	return (dispatch, getState) => {
@@ -136,6 +136,13 @@ function setMapLayerActiveAreaTreeLevelKey(areaTreeLevelKey) {
 		};
 		dispatch(Action.maps.removeMapLayer(mapKey, STATISTICSLAYERKEY));
 		dispatch(Action.maps.addMapLayers(mapKey, [layerSettings]));
+
+		if (areaTreeLevelKey === globalAreaLevelKey) {
+			dispatch(setMapLayerActivePlaceKey([]));
+		} else {
+			const activePlaceKey = Select.places.getActiveKeys(getState());
+			dispatch(setMapLayerActivePlaceKey(activePlaceKey));
+		}
 	};
 }
 
@@ -144,7 +151,6 @@ function setMapLayerActiveAreaTreeLevelKey(areaTreeLevelKey) {
  */
 function setMapLayerActivePlaceKey(activePlaceKeys) {
 	return (dispatch, getState) => {
-		console.log('xxx_activePlaceKeys', activePlaceKeys);
 		const mapKey = Select.maps.getActiveMapKey(getState());
 		const layer = Select.maps.getLayerStateByLayerKeyAndMapKey(
 			getState(),
@@ -158,7 +164,7 @@ function setMapLayerActivePlaceKey(activePlaceKeys) {
 			leyerKey: layer.leyerKey,
 			filterByActive: layer.filterByActive,
 			metadataModifiers: {
-				...layer.metadataModifiers,
+				..._omit(layer.metadataModifiers, 'placeKey'),
 				...(activePlaceKeys?.length ? {placeKey: activePlaceKeys[0]} : {}),
 			},
 			options: layer.options,
