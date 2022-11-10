@@ -7,6 +7,7 @@ import Select from '../../../../state/Select';
 const mapStateToProps = state => {
 	return {
 		view: Select.views.getActive(state),
+		tourGuideIsOpen: Select.components.get(state, 'tourGuide', 'isOpen'),
 	};
 };
 

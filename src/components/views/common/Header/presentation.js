@@ -1,5 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import PropTypes from 'prop-types';
+import {IconTool, Tooltip} from '@gisatcz/visat-components';
+import {useTour} from '@reactour/tour';
+import classNames from 'classnames';
 import logoData from './logo';
 import AppConfigurationTool from './AppConfigurationTool';
 import EsaLogo from '../../../atoms/EsaLogo';
@@ -15,7 +18,9 @@ const getContent = view => {
 	}
 };
 
-const Header = ({openOverlay, view}) => {
+const Header = ({openOverlay, view, tourGuideIsOpen}) => {
+	const {setIsOpen} = useTour();
+
 	const title = view?.data.nameDisplay;
 	const viewName = view?.data.nameInternal;
 
@@ -34,6 +39,17 @@ const Header = ({openOverlay, view}) => {
 			<div className="worldCereal-Header-tools">
 				<EsaLogo className="worldCereal-Header-esaLogo" />
 				<AppConfigurationTool />
+				<IconTool
+					className={classNames(
+						'worldCereal-Header-tourIcon',
+						{},
+						tourGuideIsOpen ? 'is-active' : ''
+					)}
+					icon={'ri-help'}
+					medium
+					onClick={() => setIsOpen(true)}
+					tooltip={{text: 'Tourguide', position: 'bottom', component: Tooltip}}
+				/>
 			</div>
 		</div>
 	);
@@ -42,6 +58,7 @@ const Header = ({openOverlay, view}) => {
 Header.propTypes = {
 	openOverlay: PropTypes.func,
 	view: PropTypes.object,
+	tourGuideIsOpen: PropTypes.bool,
 };
 
 export default Header;

@@ -28,6 +28,7 @@
 		"@gisatcz/ptr-utils": "^1.6.0",
 		"@gisatcz/visat-components": "^0.12.0",
 		"@react-hook/size": "^2.1.2",
+		"@reactour/tour": "^3.1.2",
 		"@turf/helpers": "^6.5.0",
 		"@turf/intersect": "^6.5.0",
 		"@turf/projection": "^6.5.0",

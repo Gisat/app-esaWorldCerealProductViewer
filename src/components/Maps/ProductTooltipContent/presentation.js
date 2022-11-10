@@ -42,7 +42,6 @@ const ProductTooltipContent = ({
 	color,
 	value,
 }) => {
-	console.log(productTemplate);
 	const {aez, sos, eos, season, isGlobal} = productMetadata.data;
 
 	const startDate = isGlobal

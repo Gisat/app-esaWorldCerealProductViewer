@@ -1,24 +1,21 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react';
-import RetractableWindow from '../../../atoms/RetractableWindow';
-import ActiveFilterInfo from './ActiveFilterInfo';
-import ProductFilter from './ProductFilter';
+import {connect} from '@gisatcz/ptr-state';
+import Select from '../../../../state/Select';
 
-import './style.scss';
+import Presentation from './presentation';
 
-const Filter = () => {
-	return (
-		<RetractableWindow
-			className="worldCereal-FilterWindow ptr-dark"
-			retracted
-			centered
-			bottomPosition={10}
-			bodyHeight={8}
-			controlBarContent={<ActiveFilterInfo />}
-		>
-			<ProductFilter />
-		</RetractableWindow>
-	);
+const mapStateToProps = state => {
+	return {
+		tourGuideFilterExpanded: Select.components.get(
+			state,
+			'tourGuide',
+			'filterWindow'
+		),
+		tourGuideIsOpen: Select.components.get(state, 'tourGuide', 'isOpen'),
+	};
 };
 
-export default Filter;
+const mapDispatchToProps = () => {
+	return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Presentation);

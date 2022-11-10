@@ -79,6 +79,8 @@ const RetractableWindow = ({
 	retracted,
 	bottomPosition,
 	bodyHeight,
+	tourGuideFilterExpanded,
+	tourGuideIsOpen,
 	className,
 }) => {
 	const ref = useRef(null);
@@ -87,6 +89,10 @@ const RetractableWindow = ({
 	const [isRetracted, handleRetraction] = useState(retracted);
 	const [verticalPositionOffset, handleVerticalPosition] = useState(0);
 	const [horizontalPositionOffset, handleHorizontalPosition] = useState(0);
+
+	useEffect(() => {
+		handleRetraction(!tourGuideFilterExpanded);
+	}, [tourGuideFilterExpanded, tourGuideIsOpen]);
 
 	const classes = classnames(`ptr-RetractableWindow ${className}`, {
 		'is-retracted': isRetracted,
@@ -129,6 +135,8 @@ RetractableWindow.propTypes = {
 	retracted: PropTypes.bool,
 	bottomPosition: PropTypes.number,
 	bodyHeight: PropTypes.number,
+	tourGuideFilterExpanded: PropTypes.bool,
+	tourGuideIsOpen: PropTypes.bool,
 	className: PropTypes.string,
 };
 

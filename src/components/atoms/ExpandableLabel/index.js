@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import {Button} from '@gisatcz/ptr-atoms';
@@ -85,8 +85,20 @@ ExpandableLabelBody.proptypes = {
 	height: PropTypes.number,
 };
 
-const ExpandableLabel = ({className, expanded, floating, zIndex, children}) => {
+const ExpandableLabel = ({
+	className,
+	expanded,
+	tourGuideProductLabelExpanded,
+	tourGuideIsOpen,
+	floating,
+	zIndex,
+	children,
+}) => {
 	const [isExpanded, setExpanded] = useState(expanded);
+
+	useEffect(() => {
+		setExpanded(tourGuideProductLabelExpanded);
+	}, [tourGuideProductLabelExpanded, tourGuideIsOpen]);
 
 	const classes = classnames(`ptr-ExpandableLabel ${className || ''}`, {
 		'is-expanded': isExpanded,
@@ -121,6 +133,8 @@ ExpandableLabel.propTypes = {
 	expanded: PropTypes.bool,
 	floating: PropTypes.bool,
 	zIndex: PropTypes.number,
+	tourGuideProductLabelExpanded: PropTypes.bool,
+	tourGuideIsOpen: PropTypes.bool,
 };
 
 ExpandableLabel.proptypes = {

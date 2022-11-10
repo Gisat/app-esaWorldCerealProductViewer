@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import {IconTool, Tooltip} from '@gisatcz/visat-components';
+import {useTour} from '@reactour/tour';
 import {Search, Globe1, User1, ChartVertical} from 'react-swm-icon-pack';
 import IntroCard from './IntroCard';
 import {IntroCardText, IntroCardTitle} from './IntroCard/presentation';
@@ -6,6 +8,7 @@ import EsaLogo from '../atoms/EsaLogo';
 import logo from '../../assets/logo_name.png';
 
 import './style.scss';
+import classNames from 'classnames';
 
 const getIcon = name => {
 	switch (name) {
@@ -22,10 +25,22 @@ const getIcon = name => {
 	}
 };
 
-const Intro = ({onViewSelect, views}) => {
+const Intro = ({onViewSelect, views, tourGuideIsOpen}) => {
+	const {setIsOpen} = useTour();
+
 	return (
 		<div className="worldCereal-Intro">
 			<div className="worldCereal-Intro-content">
+				<IconTool
+					className={classNames(
+						'worldCereal-Intro-tourIcon',
+						{},
+						tourGuideIsOpen ? 'is-active' : ''
+					)}
+					icon={'ri-help'}
+					onClick={() => setIsOpen(true)}
+					tooltip={{text: 'Tourguide', position: 'left', component: Tooltip}}
+				/>
 				<div className="worldCereal-Intro-header">
 					<img className="worldCereal-Intro-logo" src={logo} />
 					<div className="worldCereal-Intro-title">
@@ -66,6 +81,7 @@ const Intro = ({onViewSelect, views}) => {
 Intro.propTypes = {
 	onViewSelect: PropTypes.func,
 	views: PropTypes.array,
+	tourGuideIsOpen: PropTypes.bool,
 };
 
 export default Intro;

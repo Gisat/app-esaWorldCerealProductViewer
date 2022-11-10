@@ -31,6 +31,8 @@ const ProductLabel = ({
 	onProductRemove,
 	onOpacityChange,
 	zIndex,
+	tourGuideProductLabelExpanded,
+	tourGuideIsOpen,
 }) => {
 	const [modalIsOpen, setModalOpen] = useState(false);
 	const productCount = productMetadataKeys?.length;
@@ -44,6 +46,8 @@ const ProductLabel = ({
 				floating
 				className="worldCereal-ProductLabel"
 				zIndex={zIndex}
+				tourGuideProductLabelExpanded={tourGuideProductLabelExpanded?.expanded}
+				tourGuideIsOpen={tourGuideIsOpen}
 			>
 				<ExpandableLabelHeader>
 					<ProductLabelHeader
@@ -111,6 +115,8 @@ ProductLabel.propTypes = {
 	zIndex: PropTypes.number,
 	layerTooltipActive: PropTypes.bool,
 	onLayerTooltipActiveChange: PropTypes.func,
+	tourGuideProductLabelExpanded: PropTypes.object,
+	tourGuideIsOpen: PropTypes.bool,
 };
 
 const ProductLabelHeader = ({count, product, productMetadata, color}) => {
