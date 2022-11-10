@@ -58,9 +58,9 @@ const BarChart = ({
 					indexValue &&
 					selectedFeatureKeys.includes(indexValue.toString())
 				) {
-					return colorMap[id]?.highlighted || '#11bda3';
+					return colorMap?.[id]?.highlighted || '#11bda3';
 				} else {
-					return colorMap[id]?.base || '#97e2d5';
+					return colorMap?.[id]?.base || '#97e2d5';
 				}
 			}}
 			tooltip={() => {}}

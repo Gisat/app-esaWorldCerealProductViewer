@@ -1,8 +1,11 @@
 import {connect} from '@gisatcz/ptr-state';
 import Presentation from './presentation';
+import Select from '../../../../state/Select';
 
-const mapStateToProps = () => {
-	return {};
+const mapStateToProps = state => {
+	return {
+		activeAreaTreeLevel: Select.areas.areaTreeLevels.getActive(state),
+	};
 };
 
 const mapDispatchToProps = () => {

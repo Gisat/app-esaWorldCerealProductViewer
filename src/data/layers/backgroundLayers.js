@@ -31,7 +31,7 @@ export default {
 		name: 'OpenStreetMap',
 		type: 'wmts',
 		options: {
-			url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+			url: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
 		},
 	},
 	cartoDB_LightNoLabels: {

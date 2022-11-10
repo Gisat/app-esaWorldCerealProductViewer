@@ -1,3 +1,5 @@
+import {createSelector} from 'reselect';
+import {find as _find} from 'lodash';
 import {
 	recomputeSelectorOptions,
 	createRecomputeSelector,
@@ -57,6 +59,53 @@ const getVisualizationComponentSet = createRecomputeSelector(() => {
 	return getComponentSetByKey(componentSetKey);
 }, recomputeSelectorOptions);
 
+/**
+ * Get regions from attribute data
+ */
+const getRegions = createRecomputeSelector(componentKey => {
+	const data = CommonSelect.data.components.getData(componentKey);
+	const metadata =
+		CommonSelect.data.components.getComponentStateByKeyObserver(componentKey);
+	const nameAttributeKey = metadata?.attributeKeys[0];
+
+	if (data && nameAttributeKey) {
+		return data.map(item => {
+			return {
+				key: item.key,
+				name: item.data[nameAttributeKey],
+			};
+		});
+	} else {
+		return null;
+	}
+}, recomputeSelectorOptions);
+
+/**
+ * Get selection associated wit country level
+ * @returns {string}
+ */
+const getSelectionKeyForCountryLevel = createSelector(
+	[
+		CommonSelect.areas.areaTreeLevels.getAll,
+		state =>
+			CommonSelect.app.getConfiguration(state, 'selectionByAreaTreeLevelKey'),
+	],
+	(levels, selectionByLevelKey) => {
+		if (levels && selectionByLevelKey) {
+			const countryLevel = _find(levels, level => level.data.level === 2);
+			if (countryLevel) {
+				return selectionByLevelKey[countryLevel.key];
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
+	}
+);
+
 export default {
 	getVisualizationComponentSet,
+	getRegions,
+	getSelectionKeyForCountryLevel,
 };

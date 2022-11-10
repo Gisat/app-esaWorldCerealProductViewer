@@ -93,7 +93,7 @@ const getDataForNivoBarChart = createRecomputeSelector(componentKey => {
 			return _orderBy(
 				finalData,
 				item => {
-					return item[valueAttributeKeys[0]]; // TODO take value attribute key for now
+					return item?.[valueAttributeKeys?.[0]]; // TODO take value attribute key for now
 				},
 				'asc' // TODO to draw in horizontal bar chart properly
 			).slice(0, 10);

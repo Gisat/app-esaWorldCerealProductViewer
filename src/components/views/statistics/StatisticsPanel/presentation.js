@@ -1,14 +1,18 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Title from '../../common/Title';
 import EsaLogo from '../../../atoms/EsaLogo';
 import ProductSelect from './ProductSelect';
 import LevelSwitch from './LevelSwitch';
 import PlaceSelect from './PlaceSelect';
 import PeriodSelect from './PeriodSelect';
+import RegionSelect from './RegionSelect';
 import Visualizations from './Visualizations';
+
 import './style.scss';
 
-const StatisticsPanel = () => {
+const StatisticsPanel = ({activeAreaTreeLevel}) => {
+	const level = activeAreaTreeLevel?.data?.level;
+
 	return (
 		<div className="worldCereal-StatisticsPanel">
 			<div className="worldCereal-StatisticsPanel-header">
@@ -25,6 +29,11 @@ const StatisticsPanel = () => {
 					<div>
 						<PlaceSelect />
 					</div>
+					{level === 2 ? (
+						<div>
+							<RegionSelect />
+						</div>
+					) : null}
 				</div>
 				<div className="worldCereal-StatisticsPanel-visualizations">
 					<Visualizations />
@@ -34,6 +43,8 @@ const StatisticsPanel = () => {
 	);
 };
 
-StatisticsPanel.propTypes = {};
+StatisticsPanel.propTypes = {
+	activeAreaTreeLevel: PropTypes.object,
+};
 
 export default StatisticsPanel;

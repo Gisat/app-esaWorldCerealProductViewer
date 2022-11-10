@@ -4,6 +4,16 @@ import Action from '../../Action';
 import Select from '../../Select';
 import {STATISTICSLAYERKEY} from '../../../constants/app';
 
+function clearCountryLevelSelection() {
+	return (dispatch, getState) => {
+		const selectionKey =
+			Select.worldCereal.statistics.getSelectionKeyForCountryLevel(getState());
+		if (selectionKey) {
+			dispatch(CommonAction.selections.clearFeatureKeysFilter(selectionKey));
+		}
+	};
+}
+
 /**
  * Set active place keys by active selection feature keys. The linking should be stored in app configuration.
  */
@@ -20,6 +30,8 @@ function setActivePlaceKeysByActiveSelectionFeatureKeys() {
 			const placeKeys = featureKeys.map(
 				featureKey => placeKeyByFeatureKey[featureKey]
 			);
+
+			dispatch(clearCountryLevelSelection());
 			dispatch(
 				CommonAction.places.setActiveKeys(placeKeys.length ? placeKeys : null)
 			);
@@ -49,6 +61,7 @@ function setActiveSelectionFeatureKeysByActivePlaceKeys() {
 				});
 			});
 
+			dispatch(clearCountryLevelSelection());
 			dispatch(
 				CommonAction.selections.setActiveSelectionFeatureKeysFilterKeys(
 					featureKeys
