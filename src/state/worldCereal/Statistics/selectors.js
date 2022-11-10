@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {find as _find} from 'lodash';
+import {find as _find, omit as _omit} from 'lodash';
 import {
 	recomputeSelectorOptions,
 	createRecomputeSelector,
@@ -104,8 +104,37 @@ const getSelectionKeyForCountryLevel = createSelector(
 	}
 );
 
+/**
+ * @param state,
+ * @param mapKey,
+ * @param layerKey,
+ */
+const getUpdatedLayerStateByPlaces = createSelector(
+	[
+		CommonSelect.maps.getActiveMapKey,
+		CommonSelect.maps.getLayerStateByLayerKeyAndMapKey,
+		(state, mapKey, layerKey, activePlaceKeys) => activePlaceKeys,
+	],
+	(mapKey, layer, activePlaceKeys) => {
+		const layerSettings = {
+			areaTreeLevelKey: layer.areaTreeLevelKey,
+			key: layer.key,
+			leyerKey: layer.leyerKey,
+			filterByActive: layer.filterByActive,
+			metadataModifiers: {
+				..._omit(layer.metadataModifiers, 'placeKey'),
+				...(activePlaceKeys?.length ? {placeKey: activePlaceKeys[0]} : {}),
+			},
+			options: layer.options,
+			styleKey: layer.styleKey,
+		};
+		return layerSettings;
+	}
+);
+
 export default {
 	getVisualizationComponentSet,
 	getRegions,
 	getSelectionKeyForCountryLevel,
+	getUpdatedLayerStateByPlaces,
 };

@@ -1,5 +1,5 @@
 import {Action as CommonAction} from '@gisatcz/ptr-state';
-import {forIn as _forIn, omit as _omit} from 'lodash';
+import {forIn as _forIn} from 'lodash';
 import Action from '../../Action';
 import Select from '../../Select';
 import {STATISTICSLAYERKEY, globalAreaLevelKey} from '../../../constants/app';
@@ -119,30 +119,40 @@ function setMapLayerActiveStyleKeyByCaseKey(caseKey) {
 function setMapLayerActiveAreaTreeLevelKey(areaTreeLevelKey) {
 	return (dispatch, getState) => {
 		const mapKey = Select.maps.getActiveMapKey(getState());
-		const layer = Select.maps.getLayerStateByLayerKeyAndMapKey(
-			getState(),
-			mapKey,
-			STATISTICSLAYERKEY
-		);
+		const activeSelectionKey = Select.selections.getActiveKey(getState());
 
-		const layerSettings = {
+		let layerSettings = null;
+		if (areaTreeLevelKey === globalAreaLevelKey) {
+			layerSettings =
+				Select.worldCereal.statistics.getUpdatedLayerStateByPlaces(
+					getState(),
+					mapKey,
+					STATISTICSLAYERKEY,
+					[]
+				);
+		} else {
+			const activePlaceKey = Select.places.getActiveKeys(getState());
+			layerSettings =
+				Select.worldCereal.statistics.getUpdatedLayerStateByPlaces(
+					getState(),
+					mapKey,
+					STATISTICSLAYERKEY,
+					activePlaceKey
+				);
+		}
+
+		layerSettings = {
+			...layerSettings,
 			areaTreeLevelKey,
-			key: layer.key,
-			leyerKey: layer.leyerKey,
-			filterByActive: layer.filterByActive,
-			metadataModifiers: layer.metadataModifiers,
-			options: layer.options,
-			styleKey: layer.styleKey,
+			key: layerSettings.key,
+			leyerKey: layerSettings.leyerKey,
+			filterByActive: layerSettings.filterByActive,
+			metadataModifiers: layerSettings.metadataModifiers,
+			options: {...layerSettings.options, selected: {[activeSelectionKey]: {}}},
+			styleKey: layerSettings.styleKey,
 		};
 		dispatch(Action.maps.removeMapLayer(mapKey, STATISTICSLAYERKEY));
 		dispatch(Action.maps.addMapLayers(mapKey, [layerSettings]));
-
-		if (areaTreeLevelKey === globalAreaLevelKey) {
-			dispatch(setMapLayerActivePlaceKey([]));
-		} else {
-			const activePlaceKey = Select.places.getActiveKeys(getState());
-			dispatch(setMapLayerActivePlaceKey(activePlaceKey));
-		}
 	};
 }
 
@@ -152,26 +162,32 @@ function setMapLayerActiveAreaTreeLevelKey(areaTreeLevelKey) {
 function setMapLayerActivePlaceKey(activePlaceKeys) {
 	return (dispatch, getState) => {
 		const mapKey = Select.maps.getActiveMapKey(getState());
-		const layer = Select.maps.getLayerStateByLayerKeyAndMapKey(
-			getState(),
-			mapKey,
-			STATISTICSLAYERKEY
-		);
 
-		const layerSettings = {
-			areaTreeLevelKey: layer.areaTreeLevelKey,
-			key: layer.key,
-			leyerKey: layer.leyerKey,
-			filterByActive: layer.filterByActive,
-			metadataModifiers: {
-				..._omit(layer.metadataModifiers, 'placeKey'),
-				...(activePlaceKeys?.length ? {placeKey: activePlaceKeys[0]} : {}),
-			},
-			options: layer.options,
-			styleKey: layer.styleKey,
-		};
+		const layerSettings =
+			Select.worldCereal.statistics.getUpdatedLayerStateByPlaces(
+				getState(),
+				mapKey,
+				STATISTICSLAYERKEY,
+				activePlaceKeys
+			);
 		dispatch(Action.maps.removeMapLayer(mapKey, STATISTICSLAYERKEY));
 		dispatch(Action.maps.addMapLayers(mapKey, [layerSettings]));
+	};
+}
+
+/**
+ * Set active place by featureKeys on global areaLevel
+ */
+function onLayerClick() {
+	return (dispatch, getState) => {
+		const activeAreaTreeLevelKey = Select.areas.areaTreeLevels.getActiveKey(
+			getState()
+		);
+		if (activeAreaTreeLevelKey === globalAreaLevelKey) {
+			dispatch(
+				Action.worldCereal.statistics.setActivePlaceKeysByActiveSelectionFeatureKeys()
+			);
+		}
 	};
 }
 
@@ -182,4 +198,5 @@ export default {
 	setMapLayerActiveStyleKeyByCaseKey,
 	setMapLayerActiveAreaTreeLevelKey,
 	setMapLayerActivePlaceKey,
+	onLayerClick,
 };
