@@ -66,9 +66,10 @@ function onSelectedFeaturesChange(chartComponentKey, featureKeys) {
 
 		if (componentState) {
 			dispatch(
-				CommonAction.data.components.updateComponent(chartComponentKey, {
-					featureKeys,
-				})
+				CommonAction.data.components.setFeatureKeys(
+					chartComponentKey,
+					featureKeys
+				)
 			);
 			dispatch(CommonAction.data.components.use(chartComponentKey));
 		}
