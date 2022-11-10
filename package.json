@@ -23,7 +23,7 @@
 		"@gisatcz/ptr-core": "^1.7.0",
 		"@gisatcz/ptr-maps": "^1.17.1",
 		"@gisatcz/ptr-router": "^0.3.0",
-		"@gisatcz/ptr-state": "^2.1.6",
+		"@gisatcz/ptr-state": "^2.3.0",
 		"@gisatcz/ptr-timeline": "^0.2.1",
 		"@gisatcz/ptr-utils": "^1.6.0",
 		"@gisatcz/visat-components": "^0.12.0",
