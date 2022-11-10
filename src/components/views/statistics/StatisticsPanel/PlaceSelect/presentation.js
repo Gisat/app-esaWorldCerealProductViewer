@@ -10,6 +10,7 @@ const PlaceSelect = ({
 	onActivePlacesChange,
 	onMount,
 	onUnmount,
+	setLayer,
 }) => {
 	useEffect(() => {
 		if (onMount && typeof onMount === 'function') {
@@ -20,6 +21,9 @@ const PlaceSelect = ({
 			return onUnmount;
 		}
 	}, []);
+	useEffect(() => {
+		setLayer(activePlaceKeys);
+	}, [activePlaceKeys]);
 
 	const options = places?.map(place => {
 		return {value: place.key, label: place.data.nameDisplay};
@@ -53,6 +57,7 @@ PlaceSelect.propTypes = {
 	onActivePlacesChange: PropTypes.func,
 	onMount: PropTypes.func,
 	onUnmount: PropTypes.func,
+	setLayer: PropTypes.func,
 };
 
 export default PlaceSelect;
