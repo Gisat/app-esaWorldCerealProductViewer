@@ -12,6 +12,7 @@ const AppTour = ({
 
 	openIntroOverlay,
 	redirectToDetailedView,
+	redirectToGlobalView,
 
 	controlTourGuide,
 	activateDefaultLayer,
@@ -40,14 +41,16 @@ const AppTour = ({
 		}),
 	};
 
+	// on tour open
 	const setTourIsOpen = () => {
+		// set the current step depending on the user's location
 		if (introOverlayIsOpen) {
 			setStep(0);
 		} else if (activeView?.data?.nameInternal === 'detailedExploration') {
 			setStep(2);
 		}
 
-		// if layer is default layer is already in map
+		// if default layer is already added to the map
 		if (
 			activeLayers?.data?.layers?.length > 0 &&
 			activeView?.data?.nameInternal === 'detailedExploration' &&
@@ -70,7 +73,7 @@ const AppTour = ({
 		controlTourGuide(true);
 	};
 
-	// layer toggle
+	// add default layer
 	if (
 		!openMapLayer &&
 		activeView?.data?.nameInternal === 'detailedExploration' &&
@@ -130,12 +133,21 @@ const AppTour = ({
 				expandProductLabel(false);
 				expandFilterWindow(true);
 				break;
+			case 6:
+				openIntroOverlay(false);
+				redirectToGlobalView();
+				expandProductLabel(false);
+				expandFilterWindow(false);
+				break;
 			default:
 				break;
 		}
 		setStep(step);
 	};
 
+	// when the user skips directly to the 5th step, in order to add the default filter,
+	// it is necessary to wait for the active filters to get set, otherwise the filters get cleaned up.
+	// I found out that it is just fine to wait for the active layer and then set the default filter.
 	useEffect(() => {
 		step === 5 && !activeFilters?.product?.length > 0 && openTour
 			? addDefaultFillter()
@@ -150,6 +162,7 @@ const AppTour = ({
 			setCurrentStep={setCurrentStep}
 			afterOpen={setTourIsOpen}
 			beforeClose={() => {
+				// clean up
 				setOpenTour(false);
 				setOpenMapLayer(false);
 				expandProductLabel(false);
@@ -168,6 +181,7 @@ AppTour.propTypes = {
 	children: PropTypes.node,
 	openIntroOverlay: PropTypes.func,
 	redirectToDetailedView: PropTypes.func,
+	redirectToGlobalView: PropTypes.func,
 	activeView: PropTypes.object,
 	introOverlayIsOpen: PropTypes.bool,
 	activateDefaultLayer: PropTypes.func,

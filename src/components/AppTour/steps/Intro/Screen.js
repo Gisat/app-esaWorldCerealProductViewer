@@ -6,6 +6,10 @@ const Screen = () => (
 			Welcome to the <b>WorldCereal portal</b> - a web application for
 			monitoring global croplands.
 		</p>
+		<p>
+			This is a tour guide that presents the basic functionalities and
+			principles of the application.
+		</p>
 	</div>
 );
 

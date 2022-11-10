@@ -1,3 +1,5 @@
+import classnames from 'classnames';
+
 import '../style.scss';
 
 const Map = () => (
@@ -14,8 +16,7 @@ const Map = () => (
 				</p>
 			</div>
 			<div
-				className="worldCereal-tour-steps-Section"
-				style={{marginLeft: '1rem'}}
+				className={classnames('worldCereal-tour-steps-Section', {}, 'is-right')}
 			>
 				<p>
 					<b>Minimap</b> - shows your view on larger scale.

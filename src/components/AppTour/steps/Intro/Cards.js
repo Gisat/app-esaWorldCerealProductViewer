@@ -1,9 +1,11 @@
+import classnames from 'classnames';
+
 import '../style.scss';
 
 const Cards = () => (
 	<div className="worldCereal-tour-steps-Container">
 		<h3 style={{margin: '0 0 0.4rem 0'}}>Cards</h3>
-		<p>Cards serve for navigation between map views.</p>
+		<p>Cards serve for navigation between map views (by clicking on it).</p>
 		<div className="worldCereal-tour-steps-SectionsContainer">
 			<div className="worldCereal-tour-steps-Section">
 				<p>
@@ -14,8 +16,7 @@ const Cards = () => (
 				</p>
 			</div>
 			<div
-				className="worldCereal-tour-steps-Section"
-				style={{marginLeft: '1rem'}}
+				className={classnames('worldCereal-tour-steps-Section', {}, 'is-right')}
 			>
 				<p>
 					<b>Statistics</b> - statistical view on WorldCereal products.

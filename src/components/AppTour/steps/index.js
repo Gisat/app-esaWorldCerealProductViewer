@@ -4,6 +4,7 @@ import DetailViewHeader from './DetailView/Header';
 import DetailViewMap from './DetailView/Map';
 import DetailViewTimeline from './DetailView/Timeline';
 import DetailViewFilters from './DetailView/Filters';
+import GlobalView from './GlobalView/GlobalView';
 
 export default [
 	{
@@ -29,5 +30,9 @@ export default [
 	{
 		selector: '.worldCereal-FilterWindow',
 		content: DetailViewFilters,
+	},
+	{
+		selector: '.worldCereal-ProductViewer',
+		content: GlobalView,
 	},
 ];

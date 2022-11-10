@@ -23,6 +23,11 @@ const mapDispatchToProps = dispatch => {
 				Action.worldCereal.applyView('371846f9-0270-4e43-a46a-db009cd5946a')
 			);
 		},
+		redirectToGlobalView: () => {
+			dispatch(
+				Action.worldCereal.applyView('fc3aac1e-ffb2-4925-ae38-c95b8e8311c7')
+			);
+		},
 		activateDefaultLayer: () => {
 			dispatch(
 				Action.worldCereal.productMetadata.handleProductInActiveMap(
