@@ -7,7 +7,7 @@ const mapStateToProps = state => {
 	return {
 		activeView: Select.views.getActive(state),
 		introOverlayIsOpen: Select.components.get(state, 'IntroOverlay', 'open'),
-		activeLayers: Select.maps.getActiveMap(state),
+		activeMap: Select.maps.getActiveMap(state),
 		activeFilters:
 			Select.worldCereal.productMetadataFilter.getActiveFilter(state),
 	};
@@ -54,7 +54,7 @@ const mapDispatchToProps = dispatch => {
 				Action.worldCereal.productMetadataFilter.removeAllValuesFromActiveFilter()
 			);
 		},
-		addDefaultFillter: () => {
+		addDefaultFilter: () => {
 			dispatch(
 				Action.worldCereal.productMetadataFilter.addValueToActiveFilter(
 					'product',

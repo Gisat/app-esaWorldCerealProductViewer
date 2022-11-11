@@ -19,10 +19,10 @@ const AppTour = ({
 	expandProductLabel,
 	expandFilterWindow,
 	removeAllFilters,
-	addDefaultFillter,
+	addDefaultFilter,
 
 	activeFilters,
-	activeLayers,
+	activeMap,
 }) => {
 	const [openTour, setOpenTour] = useState(false);
 	const [step, setStep] = useState(0);
@@ -54,12 +54,12 @@ const AppTour = ({
 
 		// if default layer is already added to the map
 		if (
-			activeLayers?.data?.layers?.length > 0 &&
+			activeMap?.data?.layers?.length > 0 &&
 			activeView?.data?.nameInternal === 'detailedExploration' &&
 			!openMapLayer
 		) {
 			setOpenMapLayer(true);
-			activeLayers?.data?.layers
+			activeMap?.data?.layers
 				.map(layer => {
 					return layer.layerKey === 'b8ae22a1-5444-52db-bcd3-096faf2315cc';
 				})
@@ -152,9 +152,9 @@ const AppTour = ({
 	// I found out that it is just fine to wait for the active layer and then set the default filter.
 	useEffect(() => {
 		step === 5 && !activeFilters?.product?.length > 0 && openTour
-			? addDefaultFillter()
+			? addDefaultFilter()
 			: null;
-	}, [step, activeLayers]);
+	}, [step, activeMap]);
 
 	return (
 		<TourProvider
@@ -188,10 +188,10 @@ AppTour.propTypes = {
 	introOverlayIsOpen: PropTypes.bool,
 	activateDefaultLayer: PropTypes.func,
 	expandProductLabel: PropTypes.func,
-	activeLayers: PropTypes.object,
+	activeMap: PropTypes.object,
 	expandFilterWindow: PropTypes.func,
 	removeAllFilters: PropTypes.func,
-	addDefaultFillter: PropTypes.func,
+	addDefaultFilter: PropTypes.func,
 	controlTourGuide: PropTypes.func,
 	activeFilters: PropTypes.object,
 };
