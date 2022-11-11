@@ -166,33 +166,20 @@ export default {
 					subtitle: 'on total country area [%]',
 					settings: {
 						indexBy: 'id',
-						layout: 'horizontal',
-						margin: {top: 10, right: 25, bottom: 20, left: 35},
-						valueScale: {type: 'linear'},
-						indexScale: {type: 'band', round: true},
-						valueFormat: ' >-,d',
-						axisTop: null,
-						axisRight: null,
-						axisBottom: {
-							values: false,
-							enable: true,
-							// legend: 'Area [ha]',
-							legendPosition: 'middle',
-							legendOffset: 33,
-							tickPadding: 0,
-							tickValues: 4,
-							format: ' >-,d',
-						},
-						padding: 0.5,
-						groupMode: 'grouped',
-						enableGridY: false,
-						enableGridX: true,
-						enableLabel: true,
-						labelSkipHeight: 13,
-						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
+						margin: {top: 10, right: 10, bottom: 10, left: 10},
+						innerRadius: 0.7,
+						padAngle: 1,
+						cornerRadius: 0,
+						activeOuterRadiusOffset: 8,
+						arcLabelsTextColor: 'theme',
+						enableArcLinkLabels: false,
+						enableArcLabels: false,
+						isInteractive: false,
+						motionConfig: 'slow',
+						transitionMode: 'startAngle',
 						theme: {
 							fontSize: 11,
-							textColor: 'var(--base70)',
+							textColor: 'var(--base30)',
 							axis: {
 								legend: {
 									text: {
@@ -508,9 +495,15 @@ export default {
 						length: 300,
 					},
 					GlobalSharePieChart: {
-						type: 'barChart',
+						type: 'donutChart',
 						options: {
-							selectedFeaturesOnly: true,
+							valuesAsPercentage: true,
+							oneValue: true,
+							centeredMetric: {
+								fontSize: '1.5rem',
+								fontWeight: 700,
+								fill: 'var(--base85)',
+							},
 						},
 						metadataModifiers: {},
 						filterByActive: {

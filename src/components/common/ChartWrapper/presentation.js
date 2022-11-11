@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import BarChart from '../charts/BarChart';
-// import ScatterChart from '../charts/ScatterChart';
+import DonutChart from '../charts/DonutChart';
 
 import './style.scss';
 
@@ -11,9 +11,9 @@ const ChartWrapper = ({componentKey, title, subtitle, type, onChartClick}) => {
 		case 'barChart':
 			content = <BarChart componentKey={componentKey} onClick={onChartClick} />;
 			break;
-		// case 'scatterChart':
-		// 	content = <ScatterChart componentKey={componentKey} />;
-		// 	break;
+		case 'donutChart':
+			content = <DonutChart componentKey={componentKey} />;
+			break;
 	}
 
 	return (

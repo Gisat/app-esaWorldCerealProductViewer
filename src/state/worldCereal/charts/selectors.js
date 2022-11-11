@@ -11,6 +11,7 @@ import {
 	without as _without,
 	orderBy as _orderBy,
 	compact as _compact,
+	forIn as _forIn,
 } from 'lodash';
 
 const getChartMetadata = createCachedSelector(
@@ -119,8 +120,49 @@ const getDataForNivoBarChart = createRecomputeSelector(componentKey => {
 	}
 }, recomputeSelectorOptions);
 
+const getDataForNivoDonutChart = createRecomputeSelector(componentKey => {
+	const data = CommonSelect.data.components.getDataForCartesianChart({
+		stateComponentKey: componentKey,
+	});
+	const metadata = getChartMetadataObserver(componentKey);
+
+	if (metadata && data) {
+		const {options} = metadata;
+		const {data: chartData} = data;
+
+		if (chartData?.length) {
+			const {key, data: attributes} = chartData[0];
+			const fragments = [];
+			let total = 0;
+			_forIn(attributes, value => {
+				total += value;
+				fragments.push({
+					key,
+					value,
+					color: 'var(--accent70)',
+				});
+			});
+
+			if (options?.valuesAsPercentage) {
+				fragments.push({
+					key: 'rest',
+					value: 100 - total,
+					color: 'rgba(var(--base50rgb), .5)',
+				});
+			}
+
+			return fragments;
+		} else {
+			return null;
+		}
+	} else {
+		return null;
+	}
+}, recomputeSelectorOptions);
+
 export default {
 	getChartMetadata,
 	getAvailableAttributeKeys,
 	getDataForNivoBarChart,
+	getDataForNivoDonutChart,
 };
