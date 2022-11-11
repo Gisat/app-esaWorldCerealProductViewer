@@ -44,8 +44,67 @@ export default {
 					mode: 'set',
 				},
 				GlobalTopTenBarChart: {
-					title: 'Top 10 countries',
-					subtitle: 'by total product area [ha]',
+					title: 'Total product area',
+					subtitle: 'in hectares',
+					settings: {
+						indexBy: 'id',
+						layout: 'horizontal',
+						margin: {top: 10, right: 25, bottom: 20, left: 35},
+						valueScale: {type: 'linear'},
+						indexScale: {type: 'band', round: true},
+						valueFormat: ' >-,d',
+						axisTop: null,
+						axisRight: null,
+						axisBottom: {
+							values: false,
+							enable: true,
+							// legend: 'Area [ha]',
+							legendPosition: 'middle',
+							legendOffset: 33,
+							tickPadding: 0,
+							tickValues: 4,
+							format: ' >-,d',
+						},
+						padding: 0.5,
+						groupMode: 'grouped',
+						enableGridY: false,
+						enableGridX: true,
+						enableLabel: true,
+						labelSkipHeight: 13,
+						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
+						theme: {
+							fontSize: 11,
+							textColor: 'var(--base70)',
+							axis: {
+								legend: {
+									text: {
+										fontSize: 13,
+										fontWeight: 'bold',
+									},
+								},
+								ticks: {
+									line: {
+										stroke: 'var(--base20)',
+									},
+								},
+							},
+							grid: {
+								line: {
+									stroke: 'var(--base20)',
+								},
+							},
+							labels: {
+								text: {
+									fontSize: 13,
+									fontWeight: 'bold',
+								},
+							},
+						},
+					},
+				},
+				GlobalTopTenBarChartShare: {
+					title: 'Product area share',
+					subtitle: 'in total country area [ha]',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
@@ -430,6 +489,24 @@ export default {
 						start: 1,
 						length: 300,
 					},
+					GlobalTopTenBarChartShare: {
+						type: 'barChart',
+						options: {
+							limit: 10,
+						},
+						attributeOrder: [['73e3bd86-8701-47e4-b27b-9d2555d68304', 'desc']],
+						metadataModifiers: {},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+							period: true,
+							case: true,
+						},
+						attributeKeys: ['73e3bd86-8701-47e4-b27b-9d2555d68304'],
+						start: 1,
+						length: 300,
+					},
 					GlobalSharePieChart: {
 						type: 'barChart',
 						options: {
@@ -522,7 +599,7 @@ export default {
 				},
 				sets: {
 					GlobalNoSelected: {
-						components: ['GlobalTopTenBarChart'],
+						components: ['GlobalTopTenBarChart', 'GlobalTopTenBarChartShare'],
 					},
 					GlobalOneSelected: {
 						components: ['GlobalSharePieChart'],
