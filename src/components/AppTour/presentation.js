@@ -4,6 +4,8 @@ import {TourProvider} from '@reactour/tour';
 
 import steps from './steps';
 
+import './style.scss';
+
 const AppTour = ({
 	children,
 
@@ -172,7 +174,7 @@ const AppTour = ({
 				removeAllFilters();
 				controlTourGuide(false);
 			}}
-			padding={step === 5 ? {mask: [10, 130], popover: [10, 70]} : {}}
+			padding={step === 5 ? {mask: [-85, 165], popover: [85, 87]} : {}}
 		>
 			{children}
 		</TourProvider>

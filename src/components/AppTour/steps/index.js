@@ -27,8 +27,9 @@ export default [
 		selector: '.worldCereal-Timeline',
 		content: DetailViewTimeline,
 	},
+	// because filter is a toggle window, it is better to highlight the timeline and add padding to show timeline + filters
 	{
-		selector: '.worldCereal-FilterWindow',
+		selector: '.worldCereal-Timeline',
 		content: DetailViewFilters,
 	},
 	{
