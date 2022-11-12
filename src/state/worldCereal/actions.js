@@ -29,6 +29,9 @@ function applyView(viewKey) {
 				if (viewName === 'detailedExploration') {
 					dispatch(applyDetailedExplorationView(view));
 				}
+				if (viewName === 'statistics') {
+					dispatch(applyStatisticsView(view));
+				}
 			});
 		} else {
 			dispatch(CommonAction.components.set('IntroOverlay', 'open', false));
@@ -52,6 +55,28 @@ function applyDetailedExplorationView(view) {
 		setTimeout(() => {
 			dispatch(productMetadataActions.loadForMapSetView());
 		}, 1000);
+	};
+}
+
+/**
+ * Apply specific actions for statistics view
+ * @param view {Object} statistics view data
+ */
+function applyStatisticsView(view) {
+	return dispatch => {
+		// set active area tree level
+		dispatch(
+			CommonAction.areas.areaTreeLevels.setActiveKey(
+				view.data.state.areas.areaTreeLevels.activeKey
+			)
+		);
+
+		// add selections
+		dispatch(
+			CommonAction.selections.updateStateFromViewWithData(
+				view.data.state.selections
+			)
+		);
 	};
 }
 

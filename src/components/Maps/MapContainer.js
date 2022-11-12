@@ -72,6 +72,8 @@ const mapDispatchToPropsFactory = () => {
 						selectedFeatureKeys
 					)
 				);
+
+				dispatch(Action.worldCereal.statistics.onLayerClick());
 			},
 		};
 	};
