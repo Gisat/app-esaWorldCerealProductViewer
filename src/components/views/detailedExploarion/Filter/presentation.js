@@ -12,7 +12,7 @@ const Filter = ({tourGuideFilterExpanded, tourGuideIsOpen}) => {
 		<RetractableWindow
 			className="worldCereal-FilterWindow ptr-dark"
 			retracted
-			tourGuideFilterExpanded={tourGuideFilterExpanded?.expanded}
+			tourGuideFilterExpanded={tourGuideFilterExpanded}
 			tourGuideIsOpen={tourGuideIsOpen}
 			centered
 			bottomPosition={10}

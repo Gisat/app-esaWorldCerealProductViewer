@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {IconTool, Tooltip} from '@gisatcz/visat-components';
 import {useTour} from '@reactour/tour';
 import {Search, Globe1, User1, ChartVertical} from 'react-swm-icon-pack';
@@ -8,7 +9,6 @@ import EsaLogo from '../atoms/EsaLogo';
 import logo from '../../assets/logo_name.png';
 
 import './style.scss';
-import classNames from 'classnames';
 
 const getIcon = name => {
 	switch (name) {

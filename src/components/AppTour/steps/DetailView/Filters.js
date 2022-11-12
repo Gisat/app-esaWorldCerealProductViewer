@@ -1,10 +1,12 @@
+import TourStepsContainer from '../components/TourStepsContainer';
+
 import '../style.scss';
 
 const Filters = () => (
-	<div className="worldCereal-tour-steps-Container">
+	<TourStepsContainer>
 		<h3 style={{margin: '0 0 0.4rem 0'}}>Filters</h3>
 		<p style={{marginBottom: 0}}>Filter layers by product or season.</p>
-	</div>
+	</TourStepsContainer>
 );
 
 export default Filters;

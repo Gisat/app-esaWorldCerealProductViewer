@@ -1,12 +1,14 @@
-import classnames from 'classnames';
+import TourStepsContainer from '../components/TourStepsContainer';
+import TourStepsSectionsContainer from '../components/TourStepsSectionsContainer';
+import TourStepsSection from '../components/TourStepsSection';
 
 import '../style.scss';
 
 const Map = () => (
-	<div className="worldCereal-tour-steps-Container">
+	<TourStepsContainer>
 		<h3 style={{margin: '0 0 0.4rem 0'}}>Map window</h3>
-		<div className="worldCereal-tour-steps-SectionsContainer">
-			<div className="worldCereal-tour-steps-Section">
+		<TourStepsSectionsContainer>
+			<TourStepsSection>
 				<p>
 					<b>Map</b> - background layer and added layers.
 				</p>
@@ -14,19 +16,17 @@ const Map = () => (
 					<b>Layer info</b> - information and basic interactions for added
 					layers.
 				</p>
-			</div>
-			<div
-				className={classnames('worldCereal-tour-steps-Section', {}, 'is-right')}
-			>
+			</TourStepsSection>
+			<TourStepsSection isRight>
 				<p>
 					<b>Minimap</b> - shows your view on larger scale.
 				</p>
 				<p style={{marginBottom: 0}}>
 					<b>Map tools</b> - tools for controlling the map window.
 				</p>
-			</div>
-		</div>
-	</div>
+			</TourStepsSection>
+		</TourStepsSectionsContainer>
+	</TourStepsContainer>
 );
 
 export default Map;

@@ -25,7 +25,7 @@ const mapStateToProps = (state, ownProps) => {
 		tourGuideProductLabelExpanded: Select.components.get(
 			state,
 			'tourGuide',
-			'productLabel'
+			'productLabel.expanded'
 		),
 		tourGuideIsOpen: Select.components.get(state, 'tourGuide', 'isOpen'),
 	};

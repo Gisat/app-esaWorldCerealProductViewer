@@ -8,7 +8,7 @@ const mapStateToProps = state => {
 		tourGuideFilterExpanded: Select.components.get(
 			state,
 			'tourGuide',
-			'filterWindow'
+			'filterWindow.expanded'
 		),
 		tourGuideIsOpen: Select.components.get(state, 'tourGuide', 'isOpen'),
 	};

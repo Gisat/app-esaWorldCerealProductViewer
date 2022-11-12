@@ -46,7 +46,7 @@ const ProductLabel = ({
 				floating
 				className="worldCereal-ProductLabel"
 				zIndex={zIndex}
-				tourGuideProductLabelExpanded={tourGuideProductLabelExpanded?.expanded}
+				tourGuideProductLabelExpanded={tourGuideProductLabelExpanded}
 				tourGuideIsOpen={tourGuideIsOpen}
 			>
 				<ExpandableLabelHeader>

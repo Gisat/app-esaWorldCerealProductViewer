@@ -1,32 +1,32 @@
-import classnames from 'classnames';
+import TourStepsContainer from '../components/TourStepsContainer';
+import TourStepsSectionsContainer from '../components/TourStepsSectionsContainer';
+import TourStepsSection from '../components/TourStepsSection';
 
 import '../style.scss';
 
 const Cards = () => (
-	<div className="worldCereal-tour-steps-Container">
+	<TourStepsContainer>
 		<h3 style={{margin: '0 0 0.4rem 0'}}>Cards</h3>
 		<p>Cards serve for navigation between map views (by clicking on it).</p>
-		<div className="worldCereal-tour-steps-SectionsContainer">
-			<div className="worldCereal-tour-steps-Section">
+		<TourStepsSectionsContainer>
+			<TourStepsSection>
 				<p>
 					<b>Detailed exploration</b> - detail map exploration.
 				</p>
 				<p style={{marginBottom: 0}}>
 					<b>Global view</b> - global map exploration.
 				</p>
-			</div>
-			<div
-				className={classnames('worldCereal-tour-steps-Section', {}, 'is-right')}
-			>
+			</TourStepsSection>
+			<TourStepsSection isRight>
 				<p>
 					<b>Statistics</b> - statistical view on WorldCereal products.
 				</p>
 				<p style={{marginBottom: 0}}>
 					<b>User products</b> - explore your products.
 				</p>
-			</div>
-		</div>
-	</div>
+			</TourStepsSection>
+		</TourStepsSectionsContainer>
+	</TourStepsContainer>
 );
 
 export default Cards;
