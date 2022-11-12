@@ -158,6 +158,16 @@ const AppTour = ({
 			: null;
 	}, [step, activeMap]);
 
+	const getTourPadding = () => {
+		if (step === 2) {
+			return {popover: [12, 12]};
+		} else if (step === 5) {
+			return {mask: [-1, 165], popover: [13, 85.5]};
+		} else {
+			return {popover: [13, 8]};
+		}
+	};
+
 	return (
 		<TourProvider
 			styles={style}
@@ -174,7 +184,7 @@ const AppTour = ({
 				removeAllFilters();
 				controlTourGuide(false);
 			}}
-			padding={step === 5 ? {mask: [-85, 165], popover: [85, 87]} : {}}
+			padding={getTourPadding()}
 		>
 			{children}
 		</TourProvider>

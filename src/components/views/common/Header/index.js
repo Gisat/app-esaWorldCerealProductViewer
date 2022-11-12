@@ -1,5 +1,5 @@
 import {connect} from '@gisatcz/ptr-state';
-import Select from '../../state/Select';
+import Select from '../../../../state/Select';
 
 import Presentation from './presentation';
 
