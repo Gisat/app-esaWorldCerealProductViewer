@@ -1,0 +1,15 @@
+@use 'sass:math';
+@import '../../../styles/variables';
+
+.worldCereal-tour-steps-Container {
+	padding: 0.5rem;
+}
+
+.worldCereal-tour-steps-SectionsContainer {
+	display: flex;
+	flex-direction: row;
+}
+
+.worldCereal-tour-steps-Section.is-right {
+	margin-left: 1rem;
+}

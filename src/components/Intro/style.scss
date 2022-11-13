@@ -66,3 +66,20 @@
   grid-gap: m(1);
   margin: m(3) 0;
 }
+
+.worldCereal-Intro-tourIcon {
+	position: absolute;
+	right: 0.5rem;
+	top: 0.5rem;
+	color: white;
+}
+
+.worldCereal-Intro-tourIcon:hover {
+	color: var(--accent50);
+	background-color: transparent;
+}
+
+.worldCereal-Intro-tourIcon .ptr-react-icon {
+	width: 1.5rem;
+	height: 1.5rem;
+}
