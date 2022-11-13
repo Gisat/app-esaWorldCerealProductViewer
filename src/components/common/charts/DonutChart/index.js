@@ -22,7 +22,17 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		onMount: () => dispatch(Action.data.components.use(ownProps.componentKey)),
+		onMount: selectedFeatureKeys => {
+			if (selectedFeatureKeys) {
+				dispatch(
+					Action.data.components.setFeatureKeys(
+						ownProps.componentKey,
+						selectedFeatureKeys
+					)
+				);
+			}
+			dispatch(Action.data.components.use(ownProps.componentKey));
+		},
 		onUnmount: () =>
 			dispatch(Action.data.components.componentUseClear(ownProps.componentKey)),
 		onClick: keys => {
