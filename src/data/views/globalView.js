@@ -128,7 +128,7 @@ export default {
 							boxRange: true,
 						},
 						data: {
-							backgroundLayer: backgroundLayers.esri_WorldTopoMap,
+							backgroundLayer: backgroundLayers.esri_WorldImagery,
 							view: {
 								boxRange: 12000000,
 								center: {
