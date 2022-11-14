@@ -39,7 +39,7 @@ const Intro = ({onViewSelect, views, tourGuideIsOpen}) => {
 					)}
 					icon={'ri-help'}
 					onClick={() => setIsOpen(true)}
-					tooltip={{text: 'Tourguide', position: 'left', component: Tooltip}}
+					tooltip={{text: 'TourGuide', position: 'left', component: Tooltip}}
 				/>
 				<div className="worldCereal-Intro-header">
 					<img className="worldCereal-Intro-logo" src={logo} />
