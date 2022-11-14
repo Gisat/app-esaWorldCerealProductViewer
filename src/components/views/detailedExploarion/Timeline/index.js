@@ -20,13 +20,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onLayerClick: (timelineLayerPeriodItem, timelineLayer) =>
+		onLayerClick: (timelineLayerPeriodItem, timelineLayer) => {
 			dispatch(
 				Action.worldCereal.productMetadata.handleProductInActiveMap(
 					timelineLayer?.layerState?.layerKey,
 					timelineLayer?.layerState?.spatialDataSourceKey
 				)
-			),
+			);
+		},
 	};
 };
 

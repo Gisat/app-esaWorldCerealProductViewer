@@ -66,3 +66,38 @@
   grid-gap: m(1);
   margin: m(3) 0;
 }
+
+.worldCereal-Intro-tourIcon {
+	position: absolute;
+	right: 0.8rem;
+	top: 0.8rem;
+	color: white;
+}
+
+.worldCereal-Intro-tourIcon:hover {
+	color: var(--accent50);
+	background-color: transparent;
+}
+
+.worldCereal-Intro-tourIcon .ptr-react-icon {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+
+	animation-name: tourAnimationIcon;
+	animation-duration: 0.65s;
+	animation-iteration-count: 15;
+	animation-direction: alternate;
+	animation-timing-function: ease;
+}
+
+@keyframes tourAnimationIcon {
+	from {
+		transform: scale(1);
+		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+	  }
+	to {
+		transform: scale(1.3);
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+	}
+}

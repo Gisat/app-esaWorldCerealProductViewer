@@ -32,3 +32,12 @@
   transform: rotate(45deg);
   margin-right: .25rem;
 }
+
+.worldCereal-Header-tourIcon {
+	color: var(--base10);
+}
+
+.worldCereal-Header-tourIcon:hover {
+	color: var(--base10);
+	background-color: rgba(255, 255, 255, 0.25);
+}

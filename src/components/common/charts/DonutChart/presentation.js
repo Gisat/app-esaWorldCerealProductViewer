@@ -38,7 +38,7 @@ const DonutChart = ({
 
 	useEffect(() => {
 		if (typeof onMount === 'function') {
-			onMount();
+			onMount(selectedFeatureKeys); // TODO is this common?
 		}
 		if (typeof onUnmount === 'function') {
 			return onUnmount;
@@ -49,7 +49,6 @@ const DonutChart = ({
 		onSelectedFeaturesChange(selectedFeatureKeys);
 	}, [selectedFeatureKeys]);
 
-	console.log(data);
 	if (options?.oneValue && options?.valuesAsPercentage) {
 		return (
 			<ResponsivePie
