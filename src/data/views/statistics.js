@@ -633,6 +633,7 @@ export default {
 									},
 
 									filterByActive: {
+										period: true,
 										application: true,
 										scope: true,
 									},

@@ -1,5 +1,5 @@
 import {Action as CommonAction} from '@gisatcz/ptr-state';
-import {forIn as _forIn} from 'lodash';
+import {forIn as _forIn, isEqual as _isEqual, isNumber} from 'lodash';
 import Action from '../../Action';
 import Select from '../../Select';
 import {STATISTICSLAYERKEY, globalAreaLevelKey} from '../../../constants/app';
@@ -196,7 +196,101 @@ function onLayerClick() {
  */
 function recalculateStatisticLayerStyle(statisticLayer) {
 	return (dispatch, getState) => {
-		console.log('xxx', statisticLayer, dispatch, getState);
+		const CLASSES_COUNT = 5;
+		const COLORS = ['#ffffb2', '#fecc5c', '#fd8d3c', '#f03b20', '#bd0026'];
+		const layerStyle = statisticLayer?.options?.style;
+		const layerFeatures = statisticLayer?.options?.features || [];
+		const attributeKey = layerStyle?.rules?.[0]?.styles?.[1]?.attributeKey;
+
+		let minValue = null;
+		let maxValue = null;
+
+		layerFeatures.forEach(feature => {
+			const value = feature?.properties?.[attributeKey];
+			if (isNumber(value)) {
+				if (minValue == null) {
+					minValue = value;
+				} else {
+					minValue = value < minValue ? value : minValue;
+				}
+
+				if (maxValue == null) {
+					maxValue = value;
+				} else {
+					maxValue = value > maxValue ? value : maxValue;
+				}
+			}
+		});
+
+		const range = maxValue - minValue;
+		const classRange = range / CLASSES_COUNT;
+
+		const mapKey = Select.maps.getActiveMapKey(getState());
+		const layer = Select.maps.getLayerStateByLayerKeyAndMapKey(
+			getState(),
+			mapKey,
+			statisticLayer?.layerKey
+		);
+		const style = Select.styles.getByKey(getState(), layer?.styleKey);
+
+		let attributeClasses = [];
+
+		for (let i = 0; i < CLASSES_COUNT; i++) {
+			const max =
+				i === CLASSES_COUNT ? maxValue : minValue + (i + 1) * classRange;
+			attributeClasses.push({
+				fill: COLORS[i],
+				interval: [minValue + i * classRange, max],
+			});
+		}
+
+		const activeCaseKey = Select.cases.getActiveKey(getState());
+		const configByCaseKey = Select.app.getConfiguration(
+			getState(),
+			'configByCaseKey'
+		);
+
+		const caseConfiguration = configByCaseKey?.[activeCaseKey];
+		const relativeAttributeKey = caseConfiguration?.relativeAttributeKey;
+
+		const styles = [
+			{
+				fill: 'rgb(150,150,150)',
+				fillOpacity: 0.5,
+				outlineColor: '#232323',
+				outlineWidth: 1,
+				outlineOpacity: 1,
+			},
+			{
+				attributeKey: relativeAttributeKey,
+				attributeClasses,
+			},
+		];
+
+		//check if same style is not applied to prevent cycle of changes
+		if (!_isEqual(style?.data?.definition?.rules?.[0]?.styles, styles)) {
+			dispatch(
+				Action.styles.add({
+					key: 'af4c5310-405f-426d-9bbd-098593ea2ac4',
+					data: {
+						nameDisplay: 'style_annualCropland',
+						nameInternal: 'style_annualCropland',
+						description: null,
+						source: null,
+						nameGeoserver: null,
+						definition: {
+							rules: [
+								{
+									styles,
+								},
+							],
+						},
+						applicationKey: 'esaWorldCerealProductViewer',
+						tagKeys: null,
+					},
+				})
+			);
+		}
 	};
 }
 
