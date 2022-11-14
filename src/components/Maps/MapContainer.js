@@ -72,9 +72,8 @@ const mapDispatchToPropsFactory = () => {
 						selectedFeatureKeys
 					)
 				);
-				dispatch(
-					Action.worldCereal.statistics.setActivePlaceKeysByActiveSelectionFeatureKeys()
-				);
+
+				dispatch(Action.worldCereal.statistics.onLayerClick());
 			},
 		};
 	};

@@ -103,7 +103,6 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 								key={tiles[0].tile}
 								target="_blank"
 								rel="noopener noreferrer"
-								href={tiles[0].product}
 								className="worldCereal-MetadataInfoItemTiles-content"
 							>
 								{tiles[0].tile}
@@ -116,7 +115,6 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 											key={tile.tile}
 											target="_blank"
 											rel="noopener noreferrer"
-											href={tile.product}
 											className="worldCereal-MetadataInfoItemTiles-content"
 										>
 											{tile.tile}

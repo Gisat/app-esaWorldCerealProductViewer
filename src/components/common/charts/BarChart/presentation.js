@@ -20,7 +20,7 @@ const BarChart = ({
 
 	useEffect(() => {
 		if (typeof onMount === 'function') {
-			onMount();
+			onMount(selectedFeatureKeys); // TODO is this common?
 		}
 		if (typeof onUnmount === 'function') {
 			return onUnmount;

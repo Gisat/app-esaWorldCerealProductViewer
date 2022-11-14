@@ -11,6 +11,7 @@ import {
 	without as _without,
 	orderBy as _orderBy,
 	compact as _compact,
+	forIn as _forIn,
 } from 'lodash';
 
 const getChartMetadata = createCachedSelector(
@@ -72,11 +73,11 @@ const getDataForNivoBarChart = createRecomputeSelector(componentKey => {
 	const metadata = getChartMetadataObserver(componentKey);
 
 	if (metadata && data) {
-		const {valueAttributeKeys} = metadata;
+		const {attributeOrder, options, settings} = metadata;
 		const {data: chartData} = data;
 
 		if (chartData) {
-			const finalData =
+			let adjustedData =
 				chartData &&
 				_compact(
 					chartData.map(item => {
@@ -88,15 +89,69 @@ const getDataForNivoBarChart = createRecomputeSelector(componentKey => {
 					})
 				);
 
-			// TODO add option for this case
-			// TODO return just first 10 areas for now
-			return _orderBy(
-				finalData,
-				item => {
-					return item?.[valueAttributeKeys?.[0]]; // TODO take value attribute key for now
-				},
-				'asc' // TODO to draw in horizontal bar chart properly
-			).slice(0, 10);
+			// sort data
+			if (attributeOrder) {
+				const [attributeForOrdering, orderDirection] = attributeOrder[0]; // TODO order just by one attribute
+				adjustedData = _orderBy(
+					adjustedData,
+					item => {
+						return item?.[attributeForOrdering];
+					},
+					orderDirection
+				);
+			}
+
+			// trim data
+			if (options?.limit) {
+				adjustedData = adjustedData.slice(0, options?.limit);
+			}
+
+			// flip data
+			if (settings?.layout === 'horizontal') {
+				adjustedData.reverse();
+			}
+
+			return adjustedData;
+		} else {
+			return null;
+		}
+	} else {
+		return null;
+	}
+}, recomputeSelectorOptions);
+
+const getDataForNivoDonutChart = createRecomputeSelector(componentKey => {
+	const data = CommonSelect.data.components.getDataForCartesianChart({
+		stateComponentKey: componentKey,
+	});
+	const metadata = getChartMetadataObserver(componentKey);
+
+	if (metadata && data) {
+		const {options} = metadata;
+		const {data: chartData} = data;
+
+		if (chartData?.length) {
+			const {key, data: attributes} = chartData[0];
+			const fragments = [];
+			let total = 0;
+			_forIn(attributes, value => {
+				total += value;
+				fragments.push({
+					key,
+					value,
+					color: 'var(--accent70)',
+				});
+			});
+
+			if (options?.valuesAsPercentage) {
+				fragments.push({
+					key: 'rest',
+					value: 100 - total,
+					color: 'rgba(var(--base50rgb), .5)',
+				});
+			}
+
+			return fragments;
 		} else {
 			return null;
 		}
@@ -109,4 +164,5 @@ export default {
 	getChartMetadata,
 	getAvailableAttributeKeys,
 	getDataForNivoBarChart,
+	getDataForNivoDonutChart,
 };

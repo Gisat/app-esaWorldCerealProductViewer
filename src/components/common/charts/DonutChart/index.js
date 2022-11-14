@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
 	const activeSelection = Select.selections.getActive(state);
 
 	return {
-		data: Select.worldCereal.charts.getDataForNivoBarChart(
+		data: Select.worldCereal.charts.getDataForNivoDonutChart(
 			ownProps.componentKey
 		),
 		metadata: Select.worldCereal.charts.getChartMetadata(

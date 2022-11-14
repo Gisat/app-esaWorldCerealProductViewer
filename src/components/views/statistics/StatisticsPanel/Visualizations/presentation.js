@@ -6,6 +6,7 @@ import './style.scss';
 const getComponent = component => {
 	switch (component) {
 		case 'GlobalTopTenBarChart':
+		case 'GlobalTopTenBarChartShare':
 		case 'GlobalSharePieChart':
 		case 'GlobalCountriesBarChart':
 			return <GlobalChart key={component} componentKey={component} />;

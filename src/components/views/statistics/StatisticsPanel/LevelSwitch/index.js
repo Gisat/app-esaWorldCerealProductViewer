@@ -35,6 +35,19 @@ const mapDispatchToPropsFactory = dispatch => {
 		return {
 			onActiveLevelChange: activeLevelKey => {
 				// TODO clear use for all data components
+				dispatch(
+					Action.data.components.componentUseClear('GlobalSharePieChart')
+				);
+				dispatch(
+					Action.data.components.componentUseClear('CountryTopTenBarChart')
+				);
+				dispatch(
+					Action.data.components.componentUseClear('CountrySharePieChart')
+				);
+				dispatch(
+					Action.data.components.componentUseClear('CountryRegionsBarChart')
+				);
+
 				dispatch(Action.areas.areaTreeLevels.setActiveKey(activeLevelKey));
 				dispatch(
 					Action.worldCereal.statistics.setActiveSelectionForActiveAreaTreeLevel()

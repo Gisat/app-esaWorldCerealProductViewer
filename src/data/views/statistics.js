@@ -44,12 +44,12 @@ export default {
 					mode: 'set',
 				},
 				GlobalTopTenBarChart: {
-					title: 'Top 10 countries',
-					subtitle: 'by total product area [ha]',
+					title: 'Total product area',
+					subtitle: 'in hectares',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 10, right: 25, bottom: 20, left: 35},
+						margin: {top: 0, right: 25, bottom: 20, left: 35},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -66,6 +66,66 @@ export default {
 							format: ' >-,d',
 						},
 						padding: 0.5,
+						groupMode: 'grouped',
+						enableGridY: false,
+						enableGridX: true,
+						enableLabel: true,
+						labelSkipHeight: 13,
+						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
+						theme: {
+							fontSize: 11,
+							textColor: 'var(--base70)',
+							axis: {
+								legend: {
+									text: {
+										fontSize: 13,
+										fontWeight: 'bold',
+									},
+								},
+								ticks: {
+									line: {
+										stroke: 'var(--base20)',
+									},
+								},
+							},
+							grid: {
+								line: {
+									stroke: 'var(--base20)',
+								},
+							},
+							labels: {
+								text: {
+									fontSize: 13,
+									fontWeight: 'bold',
+								},
+							},
+						},
+					},
+				},
+				GlobalTopTenBarChartShare: {
+					title: 'Product area share',
+					subtitle: 'in total country area [ha]',
+					settings: {
+						indexBy: 'id',
+						layout: 'horizontal',
+						margin: {top: 0, right: 25, bottom: 20, left: 35},
+						valueScale: {type: 'linear'},
+						indexScale: {type: 'band', round: true},
+						valueFormat: ' >-,d',
+						axisTop: null,
+						axisRight: null,
+						axisBottom: {
+							values: false,
+							enable: true,
+							// legend: 'Area [ha]',
+							legendPosition: 'middle',
+							legendOffset: 33,
+							tickPadding: 0,
+							tickValues: 4,
+							format: ' >-,d',
+						},
+						padding: 0.5,
+						maxValue: 100,
 						groupMode: 'grouped',
 						enableGridY: false,
 						enableGridX: true,
@@ -107,33 +167,20 @@ export default {
 					subtitle: 'on total country area [%]',
 					settings: {
 						indexBy: 'id',
-						layout: 'horizontal',
-						margin: {top: 10, right: 25, bottom: 20, left: 35},
-						valueScale: {type: 'linear'},
-						indexScale: {type: 'band', round: true},
-						valueFormat: ' >-,d',
-						axisTop: null,
-						axisRight: null,
-						axisBottom: {
-							values: false,
-							enable: true,
-							// legend: 'Area [ha]',
-							legendPosition: 'middle',
-							legendOffset: 33,
-							tickPadding: 0,
-							tickValues: 4,
-							format: ' >-,d',
-						},
-						padding: 0.5,
-						groupMode: 'grouped',
-						enableGridY: false,
-						enableGridX: true,
-						enableLabel: true,
-						labelSkipHeight: 13,
-						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
+						margin: {top: 10, right: 10, bottom: 10, left: 10},
+						innerRadius: 0.7,
+						padAngle: 1,
+						cornerRadius: 0,
+						activeOuterRadiusOffset: 8,
+						arcLabelsTextColor: 'theme',
+						enableArcLinkLabels: false,
+						enableArcLabels: false,
+						isInteractive: false,
+						motionConfig: 'slow',
+						transitionMode: 'startAngle',
 						theme: {
 							fontSize: 11,
-							textColor: 'var(--base70)',
+							textColor: 'var(--base30)',
 							axis: {
 								legend: {
 									text: {
@@ -167,7 +214,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 10, right: 25, bottom: 20, left: 35},
+						margin: {top: 0, right: 25, bottom: 20, left: 35},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -183,6 +230,7 @@ export default {
 							tickValues: 4,
 							format: ' >-,d',
 						},
+						maxValue: 100,
 						padding: 0.5,
 						groupMode: 'grouped',
 						enableGridY: false,
@@ -226,7 +274,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 10, right: 25, bottom: 20, left: 60},
+						margin: {top: 0, right: 25, bottom: 20, left: 60},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -284,33 +332,20 @@ export default {
 					subtitle: 'on total region area [%]',
 					settings: {
 						indexBy: 'id',
-						layout: 'horizontal',
-						margin: {top: 10, right: 25, bottom: 20, left: 60},
-						valueScale: {type: 'linear'},
-						indexScale: {type: 'band', round: true},
-						valueFormat: ' >-,d',
-						axisTop: null,
-						axisRight: null,
-						axisBottom: {
-							values: false,
-							enable: true,
-							// legend: 'Area [ha]',
-							legendPosition: 'middle',
-							legendOffset: 33,
-							tickPadding: 0,
-							tickValues: 4,
-							format: ' >-,d',
-						},
-						padding: 0.5,
-						groupMode: 'grouped',
-						enableGridY: false,
-						enableGridX: true,
-						enableLabel: true,
-						labelSkipHeight: 13,
-						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
+						margin: {top: 10, right: 10, bottom: 10, left: 10},
+						innerRadius: 0.7,
+						padAngle: 1,
+						cornerRadius: 0,
+						activeOuterRadiusOffset: 8,
+						arcLabelsTextColor: 'theme',
+						enableArcLinkLabels: false,
+						enableArcLabels: false,
+						isInteractive: false,
+						motionConfig: 'slow',
+						transitionMode: 'startAngle',
 						theme: {
 							fontSize: 11,
-							textColor: 'var(--base70)',
+							textColor: 'var(--base30)',
 							axis: {
 								legend: {
 									text: {
@@ -344,7 +379,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 10, right: 25, bottom: 20, left: 60},
+						margin: {top: 0, right: 25, bottom: 20, left: 60},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -361,6 +396,7 @@ export default {
 							format: ' >-,d',
 						},
 						padding: 0.5,
+						maxValue: 100,
 						groupMode: 'grouped',
 						enableGridY: false,
 						enableGridX: true,
@@ -414,6 +450,10 @@ export default {
 					},
 					GlobalTopTenBarChart: {
 						type: 'barChart',
+						options: {
+							limit: 10,
+						},
+						attributeOrder: [['4fb212bb-ff1a-46d7-8fce-e341e7f08376', 'desc']],
 						metadataModifiers: {},
 						filterByActive: {
 							application: true,
@@ -426,10 +466,34 @@ export default {
 						start: 1,
 						length: 300,
 					},
-					GlobalSharePieChart: {
+					GlobalTopTenBarChartShare: {
 						type: 'barChart',
 						options: {
-							selectedFeaturesOnly: true,
+							limit: 10,
+						},
+						attributeOrder: [['73e3bd86-8701-47e4-b27b-9d2555d68304', 'desc']],
+						metadataModifiers: {},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+							period: true,
+							case: true,
+						},
+						attributeKeys: ['73e3bd86-8701-47e4-b27b-9d2555d68304'],
+						start: 1,
+						length: 300,
+					},
+					GlobalSharePieChart: {
+						type: 'donutChart',
+						options: {
+							valuesAsPercentage: true,
+							oneValue: true,
+							centeredMetric: {
+								fontSize: '1.5rem',
+								fontWeight: 700,
+								fill: 'var(--base85)',
+							},
 						},
 						metadataModifiers: {},
 						filterByActive: {
@@ -462,6 +526,10 @@ export default {
 					},
 					CountryTopTenBarChart: {
 						type: 'barChart',
+						options: {
+							limit: 10,
+						},
+						attributeOrder: [['4fb212bb-ff1a-46d7-8fce-e341e7f08376', 'desc']],
 						metadataModifiers: {},
 						filterByActive: {
 							application: true,
@@ -476,9 +544,15 @@ export default {
 						length: 300,
 					},
 					CountrySharePieChart: {
-						type: 'barChart',
+						type: 'donutChart',
 						options: {
-							selectedFeaturesOnly: true,
+							valuesAsPercentage: true,
+							oneValue: true,
+							centeredMetric: {
+								fontSize: '1.5rem',
+								fontWeight: 700,
+								fill: 'var(--base85)',
+							},
 						},
 						metadataModifiers: {},
 						filterByActive: {
@@ -514,7 +588,7 @@ export default {
 				},
 				sets: {
 					GlobalNoSelected: {
-						components: ['GlobalTopTenBarChart'],
+						components: ['GlobalTopTenBarChart', 'GlobalTopTenBarChartShare'],
 					},
 					GlobalOneSelected: {
 						components: ['GlobalSharePieChart'],
@@ -553,19 +627,12 @@ export default {
 										nameAttributeKey: '5f6a119b-addf-467e-ab1f-e07e4cdf79a6',
 										attributeFilter: {},
 									},
-									// areaTreeLevelKey: 'a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47',
-									// areaTreeLevelKey: 'b8a2f8d0-41b6-4afc-ba3f-a0df21632975', //FIXME - by settings
 
 									filterByActive: {
 										application: true,
 										scope: true,
-										period: true,
-										// areaTreeLevel: true,
 									},
-									metadataModifiers: {
-										// placeKey: 'eaee3d97-2938-497c-b008-b43d5d5dbe89', //FIXME - by settings
-										// periodKey: '6a7a4193-1339-4172-b54d-817c3e8cd6f7', //FIXME - by settings
-									},
+									metadataModifiers: {},
 								},
 							],
 						},
