@@ -191,6 +191,15 @@ function onLayerClick() {
 	};
 }
 
+/**
+ * Set active place by featureKeys on global areaLevel
+ */
+function recalculateStatisticLayerStyle(statisticLayer) {
+	return (dispatch, getState) => {
+		console.log('xxx', statisticLayer, dispatch, getState);
+	};
+}
+
 export default {
 	setActiveSelectionFeatureKeysByActivePlaceKeys,
 	setActivePlaceKeysByActiveSelectionFeatureKeys,
@@ -199,4 +208,5 @@ export default {
 	setMapLayerActiveAreaTreeLevelKey,
 	setMapLayerActivePlaceKey,
 	onLayerClick,
+	recalculateStatisticLayerStyle,
 };

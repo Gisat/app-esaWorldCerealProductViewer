@@ -6,6 +6,7 @@ import {
 	createRecomputeObserver,
 	Select as CommonSelect,
 } from '@gisatcz/ptr-state';
+import {STATISTICSLAYERKEY} from '../../../constants/app';
 
 const getComponentSetByLevelKeyBySelectedFeaturesCountConfig =
 	createRecomputeObserver(state =>
@@ -106,6 +107,14 @@ const getSelectionKeyForCountryLevel = createSelector(
 
 /**
  * @param state,
+ */
+const getStatisticsLayerForActiveMap = createRecomputeSelector(mapKey => {
+	const mapLayers = CommonSelect.maps.getMapLayers(mapKey);
+	return mapLayers?.find(l => l?.layerKey === STATISTICSLAYERKEY);
+});
+
+/**
+ * @param state,
  * @param mapKey,
  * @param layerKey,
  */
@@ -137,4 +146,5 @@ export default {
 	getRegions,
 	getSelectionKeyForCountryLevel,
 	getUpdatedLayerStateByPlaces,
+	getStatisticsLayerForActiveMap,
 };

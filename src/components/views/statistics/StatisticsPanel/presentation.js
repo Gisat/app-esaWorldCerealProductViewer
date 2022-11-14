@@ -9,8 +9,17 @@ import RegionSelect from './RegionSelect';
 import Visualizations from './Visualizations';
 
 import './style.scss';
+import {useEffect} from 'react';
 
-const StatisticsPanel = ({activeAreaTreeLevel}) => {
+const StatisticsPanel = ({
+	activeAreaTreeLevel,
+	statisticLayerState,
+	recalculateStatisticLayerStyle,
+}) => {
+	useEffect(() => {
+		console.log('xxx_layer changed', statisticLayerState);
+		recalculateStatisticLayerStyle(statisticLayerState);
+	}, [statisticLayerState]);
 	const level = activeAreaTreeLevel?.data?.level;
 
 	return (
@@ -45,6 +54,8 @@ const StatisticsPanel = ({activeAreaTreeLevel}) => {
 
 StatisticsPanel.propTypes = {
 	activeAreaTreeLevel: PropTypes.object,
+	statisticLayerState: PropTypes.object,
+	recalculateStatisticLayerStyle: PropTypes.func,
 };
 
 export default StatisticsPanel;
