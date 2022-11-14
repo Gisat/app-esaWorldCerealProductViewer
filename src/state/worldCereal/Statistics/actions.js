@@ -244,40 +244,23 @@ function recalculateStatisticLayerStyle(statisticLayer) {
 			});
 		}
 
-		const activeCaseKey = Select.cases.getActiveKey(getState());
-		const configByCaseKey = Select.app.getConfiguration(
-			getState(),
-			'configByCaseKey'
-		);
-
-		const caseConfiguration = configByCaseKey?.[activeCaseKey];
-		const relativeAttributeKey = caseConfiguration?.relativeAttributeKey;
-
 		const styles = [
+			{...(style?.data?.definition?.rules?.[0]?.styles?.[0] || {})},
 			{
-				fill: 'rgb(150,150,150)',
-				fillOpacity: 0.5,
-				outlineColor: '#232323',
-				outlineWidth: 1,
-				outlineOpacity: 1,
-			},
-			{
-				attributeKey: relativeAttributeKey,
+				attributeKey: attributeKey,
 				attributeClasses,
 			},
 		];
-
 		//check if same style is not applied to prevent cycle of changes
-		if (!_isEqual(style?.data?.definition?.rules?.[0]?.styles, styles)) {
+		if (
+			!_isEqual(style?.data?.definition?.rules?.[0]?.styles, styles) &&
+			style?.key
+		) {
 			dispatch(
 				Action.styles.add({
-					key: 'af4c5310-405f-426d-9bbd-098593ea2ac4',
+					key: style?.key,
 					data: {
-						nameDisplay: 'style_annualCropland',
-						nameInternal: 'style_annualCropland',
-						description: null,
-						source: null,
-						nameGeoserver: null,
+						...style?.data,
 						definition: {
 							rules: [
 								{
@@ -285,8 +268,6 @@ function recalculateStatisticLayerStyle(statisticLayer) {
 								},
 							],
 						},
-						applicationKey: 'esaWorldCerealProductViewer',
-						tagKeys: null,
 					},
 				})
 			);
