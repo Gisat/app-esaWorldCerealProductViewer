@@ -51,7 +51,7 @@ const AppTour = ({
 		} else if (activeView?.data?.nameInternal === 'detailedExploration') {
 			setStep(2);
 		} else if (activeView?.data?.nameInternal === 'globalView') {
-			setStep(6);
+			setStep(7);
 		}
 
 		// if default layer is already added to the map
@@ -77,7 +77,7 @@ const AppTour = ({
 		controlTourGuide(true);
 	};
 
-	// add default layer
+	// add or remove default layer
 	if (
 		!openMapLayer &&
 		activeView?.data?.nameInternal === 'detailedExploration' &&
@@ -88,10 +88,13 @@ const AppTour = ({
 		setOpenMapLayer(true);
 	} else if (
 		openMapLayer &&
-		(activeView?.data?.nameInternal != 'detailedExploration' ||
-			introOverlayIsOpen) &&
+		activeView?.data?.nameInternal === 'globalView' &&
+		!introOverlayIsOpen &&
 		openTour
 	) {
+		// layers get removed just by changing views
+		setOpenMapLayer(false);
+	} else if (openMapLayer && introOverlayIsOpen && openTour) {
 		activateDefaultLayer();
 		setOpenMapLayer(false);
 	}
@@ -120,14 +123,14 @@ const AppTour = ({
 			case 3:
 				openIntroOverlay(false);
 				redirectToDetailedView();
-				expandProductLabel(true);
+				expandProductLabel(false);
 				expandFilterWindow(false);
 				removeAllFilters();
 				break;
 			case 4:
 				openIntroOverlay(false);
 				redirectToDetailedView();
-				expandProductLabel(false);
+				expandProductLabel(true);
 				expandFilterWindow(false);
 				removeAllFilters();
 				break;
@@ -135,9 +138,16 @@ const AppTour = ({
 				openIntroOverlay(false);
 				redirectToDetailedView();
 				expandProductLabel(false);
-				expandFilterWindow(true);
+				expandFilterWindow(false);
+				removeAllFilters();
 				break;
 			case 6:
+				openIntroOverlay(false);
+				redirectToDetailedView();
+				expandProductLabel(false);
+				expandFilterWindow(true);
+				break;
+			case 7:
 				openIntroOverlay(false);
 				redirectToGlobalView();
 				expandProductLabel(false);
@@ -153,15 +163,15 @@ const AppTour = ({
 	// it is necessary to wait for the active filters to get set, otherwise the filters get cleaned up.
 	// I found out that it is just fine to wait for the active layer and then set the default filter.
 	useEffect(() => {
-		step === 5 && !activeFilters?.product?.length > 0 && openTour
+		step === 6 && !activeFilters?.product?.length > 0 && openTour
 			? addDefaultFilter()
 			: null;
 	}, [step, activeMap]);
 
 	const getTourPadding = () => {
-		if (step === 2) {
+		if (step === 3) {
 			return {popover: [12, 12]};
-		} else if (step === 5) {
+		} else if (step === 6) {
 			return {mask: [-1, 165], popover: [13, 85.5]};
 		} else {
 			return {popover: [13, 8]};

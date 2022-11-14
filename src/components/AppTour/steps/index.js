@@ -5,6 +5,7 @@ import DetailViewMap from './DetailView/Map';
 import DetailViewTimeline from './DetailView/Timeline';
 import DetailViewFilters from './DetailView/Filters';
 import GlobalView from './GlobalView/GlobalView';
+import DetailViewIntro from './DetailView/Intro';
 
 export default [
 	{
@@ -14,6 +15,10 @@ export default [
 	{
 		selector: '.worldCereal-Intro-cards',
 		content: IntroCards,
+	},
+	{
+		selector: '.worldCereal-Title',
+		content: DetailViewIntro,
 	},
 	{
 		selector: '.worldCereal-Header',
@@ -33,7 +38,7 @@ export default [
 		content: DetailViewFilters,
 	},
 	{
-		selector: '.worldCereal-ProductViewer',
+		selector: '.worldCereal-Title',
 		content: GlobalView,
 	},
 ];
