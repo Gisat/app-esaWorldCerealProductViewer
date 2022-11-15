@@ -296,10 +296,13 @@ function recalculateStatisticLayerStyle(statisticLayer) {
 
 		for (let i = 0; i < CLASSES_COUNT; i++) {
 			const max =
-				i === CLASSES_COUNT ? maxValue : minValue + (i + 1) * classRange;
+				i === CLASSES_COUNT - 1 ? maxValue : minValue + (i + 1) * classRange;
+			const min =
+				i === 0 ? minValue + i * classRange : minValue + i * classRange;
 			attributeClasses.push({
+				intervalBounds: [true, i === CLASSES_COUNT - 1 ? true : false],
 				fill: COLORS[i],
-				interval: [minValue + i * classRange, max],
+				interval: [min, max],
 			});
 		}
 
