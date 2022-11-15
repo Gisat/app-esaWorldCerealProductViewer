@@ -22,6 +22,7 @@ const AppTour = ({
 	expandFilterWindow,
 	removeAllFilters,
 	addDefaultFilter,
+	zoomInMap,
 
 	activeFilters,
 	activeMap,
@@ -159,13 +160,20 @@ const AppTour = ({
 		setStep(step);
 	};
 
-	// when the user skips directly to the 5th step, in order to add the default filter,
+	// when the user skips directly to the 6th step, in order to add the default filter (4,5,6 for zoom in the map),
 	// it is necessary to wait for the active filters to get set, otherwise the filters get cleaned up.
 	// I found out that it is just fine to wait for the active layer and then set the default filter.
 	useEffect(() => {
-		step === 6 && !activeFilters?.product?.length > 0 && openTour
-			? addDefaultFilter()
-			: null;
+		if (
+			(step === 4 || step === 5) &&
+			!activeFilters?.product?.length > 0 &&
+			openTour
+		) {
+			zoomInMap();
+		} else if (step === 6 && !activeFilters?.product?.length > 0 && openTour) {
+			zoomInMap();
+			addDefaultFilter();
+		}
 	}, [step, activeMap]);
 
 	const getTourPadding = () => {
@@ -216,6 +224,7 @@ AppTour.propTypes = {
 	addDefaultFilter: PropTypes.func,
 	controlTourGuide: PropTypes.func,
 	activeFilters: PropTypes.object,
+	zoomInMap: PropTypes.func,
 };
 
 export default AppTour;

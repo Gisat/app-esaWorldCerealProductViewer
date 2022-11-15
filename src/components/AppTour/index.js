@@ -62,6 +62,16 @@ const mapDispatchToProps = dispatch => {
 				)
 			);
 		},
+		zoomInMap: () => {
+			dispatch(
+				Action.maps.updateSetView('detailedExploration-mapSet', {
+					boxRange: 2172324.668919344,
+					center: {lat: -3.3839640766864236, lon: -54.54809768288524},
+				})
+			);
+			dispatch(Action.worldCereal.updateOverviewMap());
+			dispatch(Action.worldCereal.loadProducts());
+		},
 	};
 };
 
