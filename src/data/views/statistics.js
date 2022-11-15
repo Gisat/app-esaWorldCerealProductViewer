@@ -451,6 +451,7 @@ export default {
 					GlobalTopTenBarChart: {
 						type: 'barChart',
 						options: {
+							attributeType: 'absolute',
 							limit: 10,
 						},
 						attributeOrder: [['4fb212bb-ff1a-46d7-8fce-e341e7f08376', 'desc']],
@@ -469,6 +470,7 @@ export default {
 					GlobalTopTenBarChartShare: {
 						type: 'barChart',
 						options: {
+							attributeType: 'relative',
 							limit: 10,
 						},
 						attributeOrder: [['73e3bd86-8701-47e4-b27b-9d2555d68304', 'desc']],
@@ -487,6 +489,7 @@ export default {
 					GlobalSharePieChart: {
 						type: 'donutChart',
 						options: {
+							attributeType: 'relative',
 							valuesAsPercentage: true,
 							oneValue: true,
 							centeredMetric: {
@@ -510,6 +513,7 @@ export default {
 					GlobalCountriesBarChart: {
 						type: 'barChart',
 						options: {
+							attributeType: 'relative',
 							selectedFeaturesOnly: true,
 						},
 						metadataModifiers: {},
@@ -527,6 +531,7 @@ export default {
 					CountryTopTenBarChart: {
 						type: 'barChart',
 						options: {
+							attributeType: 'absolute',
 							limit: 10,
 						},
 						attributeOrder: [['4fb212bb-ff1a-46d7-8fce-e341e7f08376', 'desc']],
@@ -546,6 +551,7 @@ export default {
 					CountrySharePieChart: {
 						type: 'donutChart',
 						options: {
+							attributeType: 'relative',
 							valuesAsPercentage: true,
 							oneValue: true,
 							centeredMetric: {
@@ -570,6 +576,7 @@ export default {
 					CountryRegionsBarChart: {
 						type: 'barChart',
 						options: {
+							attributeType: 'relative',
 							selectedFeaturesOnly: true,
 						},
 						metadataModifiers: {},

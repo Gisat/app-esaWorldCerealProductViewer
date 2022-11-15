@@ -114,6 +114,65 @@ function setMapLayerActiveStyleKeyByCaseKey(caseKey) {
 }
 
 /**
+ * Set statistics layer styleKey based on active caseKey
+ */
+function setCaseDependentChartsAttributeByActiveCaseKey(caseKey) {
+	return (dispatch, getState) => {
+		const configByCaseKey = Select.app.getConfiguration(
+			getState(),
+			'configByCaseKey'
+		);
+
+		const caseConfiguration = configByCaseKey?.[caseKey];
+		const components = Select.data.components.getAllComponentsAsObject(
+			getState()
+		);
+
+		if (components && caseConfiguration) {
+			const absoluteAttributeKey = caseConfiguration?.absoluteAttributeKey;
+			const relativeAttributeKey = caseConfiguration?.relativeAttributeKey;
+
+			_forIn(components, (metadata, key) => {
+				const attributeType = metadata?.options?.attributeType;
+				const attributeOrder = metadata?.attributeOrder;
+				if (attributeType) {
+					if (attributeType === 'absolute') {
+						dispatch(
+							CommonAction.data.components.setAttributeKeys(key, [
+								absoluteAttributeKey,
+							])
+						);
+
+						if (attributeOrder) {
+							dispatch(
+								CommonAction.data.components.setAttributeOrder(key, [
+									[absoluteAttributeKey, attributeOrder[0][1]],
+								])
+							);
+						}
+					}
+
+					if (attributeType === 'relative') {
+						dispatch(
+							CommonAction.data.components.setAttributeKeys(key, [
+								relativeAttributeKey,
+							])
+						);
+						if (attributeOrder) {
+							dispatch(
+								CommonAction.data.components.setAttributeOrder(key, [
+									[relativeAttributeKey, attributeOrder[0][1]],
+								])
+							);
+						}
+					}
+				}
+			});
+		}
+	};
+}
+
+/**
  * Set statistics layer areaTreeLevelKey
  */
 function setMapLayerActiveAreaTreeLevelKey(areaTreeLevelKey) {
@@ -279,6 +338,7 @@ export default {
 	setActiveSelectionFeatureKeysByActivePlaceKeys,
 	setActivePlaceKeysByActiveSelectionFeatureKeys,
 	setActiveSelectionForActiveAreaTreeLevel,
+	setCaseDependentChartsAttributeByActiveCaseKey,
 	setMapLayerActiveStyleKeyByCaseKey,
 	setMapLayerActiveAreaTreeLevelKey,
 	setMapLayerActivePlaceKey,

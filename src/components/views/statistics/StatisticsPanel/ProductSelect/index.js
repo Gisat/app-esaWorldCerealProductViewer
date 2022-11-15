@@ -31,6 +31,11 @@ const mapDispatchToPropsFactory = dispatch => {
 	return () => {
 		return {
 			onActiveCaseChange: activeCaseKey => {
+				dispatch(
+					Action.worldCereal.statistics.setCaseDependentChartsAttributeByActiveCaseKey(
+						activeCaseKey
+					)
+				);
 				dispatch(Action.cases.setActiveKey(activeCaseKey));
 				dispatch(
 					Action.worldCereal.statistics.setMapLayerActiveStyleKeyByCaseKey(
