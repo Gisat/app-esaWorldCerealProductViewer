@@ -15,6 +15,7 @@ const AppTour = ({
 	openIntroOverlay,
 	redirectToDetailedView,
 	redirectToGlobalView,
+	redirectToStatisticsView,
 
 	controlTourGuide,
 	activateDefaultLayer,
@@ -22,6 +23,7 @@ const AppTour = ({
 	expandFilterWindow,
 	removeAllFilters,
 	addDefaultFilter,
+	zoomInMap,
 
 	activeFilters,
 	activeMap,
@@ -40,6 +42,8 @@ const AppTour = ({
 			...base,
 			backgroundColor: 'rgb(233, 177, 22)',
 			color: 'black',
+			height: step > 8 ? '2.5em' : '1.875em',
+			lineHeight: step > 8 ? 2.6 : 2,
 		}),
 	};
 
@@ -52,6 +56,8 @@ const AppTour = ({
 			setStep(2);
 		} else if (activeView?.data?.nameInternal === 'globalView') {
 			setStep(7);
+		} else if (activeView?.data?.nameInternal === 'statistics') {
+			setStep(8);
 		}
 
 		// if default layer is already added to the map
@@ -89,6 +95,14 @@ const AppTour = ({
 	} else if (
 		openMapLayer &&
 		activeView?.data?.nameInternal === 'globalView' &&
+		!introOverlayIsOpen &&
+		openTour
+	) {
+		// layers get removed just by changing views
+		setOpenMapLayer(false);
+	} else if (
+		openMapLayer &&
+		activeView?.data?.nameInternal === 'statistics' &&
 		!introOverlayIsOpen &&
 		openTour
 	) {
@@ -153,19 +167,44 @@ const AppTour = ({
 				expandProductLabel(false);
 				expandFilterWindow(false);
 				break;
+			case 8:
+				openIntroOverlay(false);
+				redirectToStatisticsView();
+				expandProductLabel(false);
+				expandFilterWindow(false);
+				break;
+			case 9:
+				openIntroOverlay(false);
+				redirectToStatisticsView();
+				expandProductLabel(false);
+				expandFilterWindow(false);
+				break;
+			case 10:
+				openIntroOverlay(false);
+				redirectToStatisticsView();
+				expandProductLabel(false);
+				expandFilterWindow(false);
+				break;
 			default:
 				break;
 		}
 		setStep(step);
 	};
 
-	// when the user skips directly to the 5th step, in order to add the default filter,
+	// when the user skips directly to the 6th step, in order to add the default filter (4,5,6 for zoom in the map),
 	// it is necessary to wait for the active filters to get set, otherwise the filters get cleaned up.
 	// I found out that it is just fine to wait for the active layer and then set the default filter.
 	useEffect(() => {
-		step === 6 && !activeFilters?.product?.length > 0 && openTour
-			? addDefaultFilter()
-			: null;
+		if (
+			(step === 4 || step === 5) &&
+			!activeFilters?.product?.length > 0 &&
+			openTour
+		) {
+			zoomInMap();
+		} else if (step === 6 && !activeFilters?.product?.length > 0 && openTour) {
+			zoomInMap();
+			addDefaultFilter();
+		}
 	}, [step, activeMap]);
 
 	const getTourPadding = () => {
@@ -206,6 +245,7 @@ AppTour.propTypes = {
 	openIntroOverlay: PropTypes.func,
 	redirectToDetailedView: PropTypes.func,
 	redirectToGlobalView: PropTypes.func,
+	redirectToStatisticsView: PropTypes.func,
 	activeView: PropTypes.object,
 	introOverlayIsOpen: PropTypes.bool,
 	activateDefaultLayer: PropTypes.func,
@@ -216,6 +256,7 @@ AppTour.propTypes = {
 	addDefaultFilter: PropTypes.func,
 	controlTourGuide: PropTypes.func,
 	activeFilters: PropTypes.object,
+	zoomInMap: PropTypes.func,
 };
 
 export default AppTour;

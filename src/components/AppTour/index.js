@@ -28,6 +28,11 @@ const mapDispatchToProps = dispatch => {
 				Action.worldCereal.applyView('fc3aac1e-ffb2-4925-ae38-c95b8e8311c7')
 			);
 		},
+		redirectToStatisticsView: () => {
+			dispatch(
+				Action.worldCereal.applyView('95ad1c41-9027-4546-9fd4-f7210cdbf493')
+			);
+		},
 		activateDefaultLayer: () => {
 			dispatch(
 				Action.worldCereal.productMetadata.handleProductInActiveMap(
@@ -61,6 +66,16 @@ const mapDispatchToProps = dispatch => {
 					'annualcropland'
 				)
 			);
+		},
+		zoomInMap: () => {
+			dispatch(
+				Action.maps.updateSetView('detailedExploration-mapSet', {
+					boxRange: 2172324.668919344,
+					center: {lat: -3.3839640766864236, lon: -54.54809768288524},
+				})
+			);
+			dispatch(Action.worldCereal.updateOverviewMap());
+			dispatch(Action.worldCereal.loadProducts());
 		},
 	};
 };

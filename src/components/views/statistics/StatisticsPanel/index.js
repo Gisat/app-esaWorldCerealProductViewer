@@ -13,6 +13,7 @@ const mapStateToProps = state => {
 	return {
 		activeAreaTreeLevel: Select.areas.areaTreeLevels.getActive(state),
 		statisticLayerState: statisticsLayer,
+		tourGuideIsOpen: Select.components.get(state, 'tourGuide', 'isOpen'),
 	};
 };
 
