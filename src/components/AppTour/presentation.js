@@ -15,6 +15,7 @@ const AppTour = ({
 	openIntroOverlay,
 	redirectToDetailedView,
 	redirectToGlobalView,
+	redirectToStatisticsView,
 
 	controlTourGuide,
 	activateDefaultLayer,
@@ -41,6 +42,8 @@ const AppTour = ({
 			...base,
 			backgroundColor: 'rgb(233, 177, 22)',
 			color: 'black',
+			height: step > 8 ? '2.5em' : '1.875em',
+			lineHeight: step > 8 ? 2.6 : 2,
 		}),
 	};
 
@@ -53,6 +56,8 @@ const AppTour = ({
 			setStep(2);
 		} else if (activeView?.data?.nameInternal === 'globalView') {
 			setStep(7);
+		} else if (activeView?.data?.nameInternal === 'statistics') {
+			setStep(8);
 		}
 
 		// if default layer is already added to the map
@@ -90,6 +95,14 @@ const AppTour = ({
 	} else if (
 		openMapLayer &&
 		activeView?.data?.nameInternal === 'globalView' &&
+		!introOverlayIsOpen &&
+		openTour
+	) {
+		// layers get removed just by changing views
+		setOpenMapLayer(false);
+	} else if (
+		openMapLayer &&
+		activeView?.data?.nameInternal === 'statistics' &&
 		!introOverlayIsOpen &&
 		openTour
 	) {
@@ -154,6 +167,24 @@ const AppTour = ({
 				expandProductLabel(false);
 				expandFilterWindow(false);
 				break;
+			case 8:
+				openIntroOverlay(false);
+				redirectToStatisticsView();
+				expandProductLabel(false);
+				expandFilterWindow(false);
+				break;
+			case 9:
+				openIntroOverlay(false);
+				redirectToStatisticsView();
+				expandProductLabel(false);
+				expandFilterWindow(false);
+				break;
+			case 10:
+				openIntroOverlay(false);
+				redirectToStatisticsView();
+				expandProductLabel(false);
+				expandFilterWindow(false);
+				break;
 			default:
 				break;
 		}
@@ -214,6 +245,7 @@ AppTour.propTypes = {
 	openIntroOverlay: PropTypes.func,
 	redirectToDetailedView: PropTypes.func,
 	redirectToGlobalView: PropTypes.func,
+	redirectToStatisticsView: PropTypes.func,
 	activeView: PropTypes.object,
 	introOverlayIsOpen: PropTypes.bool,
 	activateDefaultLayer: PropTypes.func,
