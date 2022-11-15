@@ -39,7 +39,7 @@ const BarChart = ({
 		if (data) {
 			onClick(
 				helpers.getSelectedFeatureKeysOnClick(
-					data.id.toString(),
+					data.key.toString(),
 					ctrlKey || metaKey,
 					selectedFeatureKeys
 				)
