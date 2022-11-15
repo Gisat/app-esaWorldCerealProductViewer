@@ -6,7 +6,7 @@ import {
 	createRecomputeObserver,
 	Select as CommonSelect,
 } from '@gisatcz/ptr-state';
-import {STATISTICSLAYERKEY} from '../../../constants/app';
+import {STATISTICSLAYERKEY, globalAreaLevelKey} from '../../../constants/app';
 
 const getComponentSetByLevelKeyBySelectedFeaturesCountConfig =
 	createRecomputeObserver(state =>
@@ -140,6 +140,27 @@ const getUpdatedLayerStateByPlaces = createSelector(
 		return layerSettings;
 	}
 );
+/**
+ * @param state,
+ * @param mapKey,
+ * @param layerKey,
+ */
+const getTooltipTitle = createSelector(
+	[
+		CommonSelect.areas.areaTreeLevels.getActiveKey,
+		CommonSelect.places.getAllAsObject,
+		CommonSelect.app.getCompleteConfiguration,
+		(state, featureName) => featureName,
+	],
+	(activeAreaLevelKey, placesAsObject, configuration, featureName) => {
+		if (activeAreaLevelKey === globalAreaLevelKey) {
+			const placeKey =
+				configuration?.placeKeyByCountryFeatureKey?.[featureName];
+
+			return placesAsObject?.[placeKey]?.data?.nameDisplay;
+		}
+	}
+);
 
 export default {
 	getVisualizationComponentSet,
@@ -147,4 +168,5 @@ export default {
 	getSelectionKeyForCountryLevel,
 	getUpdatedLayerStateByPlaces,
 	getStatisticsLayerForActiveMap,
+	getTooltipTitle,
 };

@@ -50,18 +50,28 @@
 
 	.VectorMapTooltip-layer {
 
-    display: flex;
+    	display: flex;
 		padding: 0.5rem 0.75rem 0.25rem 0.5rem;
+		flex-direction: column;
+		
+		h4{
+			color: var(--base20);
+			margin: 0.2rem 0rem;
+		}
 
-    label{
-      margin-right: 0.25rem;
-		font-weight: bold;
-		font-size: 0.75rem;
-    }
-    div{
-      color: var(--base20);
-      font-size: 0.75rem;
-      font-style: italic;
-    }	
+		>div{
+			display: flex;
+			flex-flow: row;
+			label{
+				margin-right: 0.25rem;
+				font-weight: bold;
+				font-size: 0.75rem;
+			}
+			div{
+				color: var(--base20);
+				font-size: 0.75rem;
+				font-style: italic;
+			}	
+		}
 	}
 }
