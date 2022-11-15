@@ -31,11 +31,15 @@
 							},
 							"33caa296-cf88-4d5c-a67d-ffba11376d4a": {
 								"name": "Maize",
-								"styleKey": "todo style key"
+								"styleKey": "7ae3bcd9-aa57-4fb1-9b6f-5b909d392328",
+								"absoluteAttributeKey": "55cb5a4a-8ce3-40a1-9f12-1a6b211f4255",
+								"relativeAttributeKey": "8e71e4da-5a90-4222-9350-f1c1f1bad5c5"
 							},
 							"d439a6db-8f7b-4123-9e93-3892cad157f7": {
 								"name": "Cereals",
-								"styleKey": "todo style key"
+								"styleKey": "2afcdbd6-fdc8-4756-a96b-0bf7d07637b0",
+								"absoluteAttributeKey": "6c8e8332-b01b-4c56-bf8e-2025a5abc465",
+								"relativeAttributeKey": "eb9dce86-39c6-480b-b7e3-2fac2101eac0"
 							}
 						},
 						"componentSetByLevelKeyBySelectedFeaturesCount": {
@@ -2728,7 +2732,61 @@
 										"outlineOpacity": 1
 									},
 									{
-										"attributeKey": "901ff005-2a62-41d4-afc4-e8d1b1f5d088",
+										"attributeKey": "934a9fa2-ddb9-49a8-b4b2-170e39ef531e",
+										"attributeClasses": []
+									}
+								]
+							}
+						]
+					},
+					"applicationKey": "esaWorldCerealProductViewer"
+				}
+			},
+			{
+				"key": "7ae3bcd9-aa57-4fb1-9b6f-5b909d392328",
+				"data": {
+					"nameDisplay": "style_maize",
+					"nameInternal": "style_maize",
+					"definition": {
+						"rules": [
+							{
+								"styles": [
+									{
+										"fill": "rgb(150,150,150)",
+										"fillOpacity": 0.5,
+										"outlineColor": "#232323",
+										"outlineWidth": 1,
+										"outlineOpacity": 1
+									},
+									{
+										"attributeKey": "8e71e4da-5a90-4222-9350-f1c1f1bad5c5",
+										"attributeClasses": []
+									}
+								]
+							}
+						]
+					},
+					"applicationKey": "esaWorldCerealProductViewer"
+				}
+			},
+			{
+				"key": "2afcdbd6-fdc8-4756-a96b-0bf7d07637b0",
+				"data": {
+					"nameDisplay": "style_cereals",
+					"nameInternal": "style_cereals",
+					"definition": {
+						"rules": [
+							{
+								"styles": [
+									{
+										"fill": "rgb(150,150,150)",
+										"fillOpacity": 0.5,
+										"outlineColor": "#232323",
+										"outlineWidth": 1,
+										"outlineOpacity": 1
+									},
+									{
+										"attributeKey": "eb9dce86-39c6-480b-b7e3-2fac2101eac0",
 										"attributeClasses": []
 									}
 								]
