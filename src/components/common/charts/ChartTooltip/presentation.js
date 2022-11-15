@@ -35,11 +35,15 @@ const ChartTooltip = ({
 				<div className="ptr-ChartTooltip-body">
 					{_map(attributes, (value, key) => {
 						const attributeMetadata = attributesMetadata[key];
+						const formattedValue =
+							value % 1 === 0 ? value.toLocaleString() : value;
 						if (attributeMetadata) {
 							return (
 								<div key={key} className="ptr-ChartTooltip-item">{`${
 									attributeMetadata?.data?.nameDisplay
-								}: ${value} ${attributeMetadata?.data?.unit || null}`}</div>
+								}: ${formattedValue} ${
+									attributeMetadata?.data?.unit || null
+								}`}</div>
 							);
 						} else {
 							return null;
