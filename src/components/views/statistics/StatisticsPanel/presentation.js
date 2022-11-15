@@ -9,15 +9,46 @@ import RegionSelect from './RegionSelect';
 import Visualizations from './Visualizations';
 
 import './style.scss';
+import {useEffect} from 'react';
+import {IconTool, Tooltip} from '@gisatcz/visat-components';
+import {useTour} from '@reactour/tour';
+import classNames from 'classnames';
 
-const StatisticsPanel = ({activeAreaTreeLevel}) => {
+const StatisticsPanel = ({
+	activeAreaTreeLevel,
+	statisticLayerState,
+	recalculateStatisticLayerStyle,
+	tourGuideIsOpen,
+}) => {
+	const {setIsOpen} = useTour();
+	useEffect(() => {
+		console.log('xxx_layer changed', statisticLayerState);
+		recalculateStatisticLayerStyle(statisticLayerState);
+	}, [statisticLayerState]);
 	const level = activeAreaTreeLevel?.data?.level;
 
 	return (
 		<div className="worldCereal-StatisticsPanel">
 			<div className="worldCereal-StatisticsPanel-header">
 				<Title />
-				<EsaLogo className="worldCereal-Header-esaLogo" />
+				<div className="worldCereal-StatisticsPanel-header-isRight">
+					<EsaLogo className="worldCereal-Header-esaLogo" />
+					<IconTool
+						className={classNames(
+							'worldCereal-Header-tourIcon',
+							{},
+							tourGuideIsOpen ? 'is-active' : ''
+						)}
+						icon={'ri-help'}
+						medium
+						onClick={() => setIsOpen(true)}
+						tooltip={{
+							text: 'Tourguide',
+							position: 'bottom',
+							component: Tooltip,
+						}}
+					/>
+				</div>
 			</div>
 			<div className="worldCereal-StatisticsPanel-body">
 				<div className="worldCereal-StatisticsPanel-configurations">
@@ -45,6 +76,9 @@ const StatisticsPanel = ({activeAreaTreeLevel}) => {
 
 StatisticsPanel.propTypes = {
 	activeAreaTreeLevel: PropTypes.object,
+	statisticLayerState: PropTypes.object,
+	recalculateStatisticLayerStyle: PropTypes.func,
+	tourGuideIsOpen: PropTypes.bool,
 };
 
 export default StatisticsPanel;

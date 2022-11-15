@@ -1,10 +1,14 @@
 import IntroScreen from './Intro/Screen';
 import IntroCards from './Intro/Cards';
+import DetailViewIntro from './DetailView/Intro';
 import DetailViewHeader from './DetailView/Header';
 import DetailViewMap from './DetailView/Map';
 import DetailViewTimeline from './DetailView/Timeline';
 import DetailViewFilters from './DetailView/Filters';
-import GlobalView from './GlobalView/GlobalView';
+import GlobalViewIntro from './GlobalView/Intro';
+import StatisticsViewIntro from './StatisticsView/Intro';
+import Map from './StatisticsView/Map';
+import Panel from './StatisticsView/Panel';
 
 export default [
 	{
@@ -14,6 +18,10 @@ export default [
 	{
 		selector: '.worldCereal-Intro-cards',
 		content: IntroCards,
+	},
+	{
+		selector: '.worldCereal-Title',
+		content: DetailViewIntro,
 	},
 	{
 		selector: '.worldCereal-Header',
@@ -33,7 +41,19 @@ export default [
 		content: DetailViewFilters,
 	},
 	{
-		selector: '.worldCereal-ProductViewer',
-		content: GlobalView,
+		selector: '.worldCereal-Title',
+		content: GlobalViewIntro,
+	},
+	{
+		selector: '.worldCereal-Title',
+		content: StatisticsViewIntro,
+	},
+	{
+		selector: '.ptr-map-set',
+		content: Map,
+	},
+	{
+		selector: '.worldCereal-StatisticsPanel',
+		content: Panel,
 	},
 ];

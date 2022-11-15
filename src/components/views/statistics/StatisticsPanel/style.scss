@@ -21,6 +21,14 @@ $statisticsPanelPaddingRight: 1rem;
   min-height: 3rem;
 }
 
+.worldCereal-StatisticsPanel-header-isRight {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	grid-gap: 1rem;
+}
+
 .worldCereal-StatisticsPanel-body {
   overflow-y: auto;
 }

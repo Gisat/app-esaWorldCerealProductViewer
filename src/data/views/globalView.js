@@ -86,8 +86,11 @@ export default {
 						data: {
 							backgroundLayer: backgroundLayers.esri_WorldGrayCanvas,
 							view: {
-								boxRange: 2000000,
-								center: {lat: -4.663388012226106, lon: 121.76396656144975},
+								boxRange: 12000000,
+								center: {
+									lat: 40,
+									lon: 0,
+								},
 							},
 							viewLimits: {
 								boxRangeRange: [1000000, 100000000],
@@ -125,10 +128,13 @@ export default {
 							boxRange: true,
 						},
 						data: {
-							backgroundLayer: backgroundLayers.esri_WorldTopoMap,
+							backgroundLayer: backgroundLayers.esri_WorldImagery,
 							view: {
-								boxRange: 835000,
-								center: {lat: -4.663388012226106, lon: 121.76396656144975},
+								boxRange: 12000000,
+								center: {
+									lat: 40,
+									lon: 0,
+								},
 							},
 							viewLimits: {
 								boxRangeRange: [400, 10000000],

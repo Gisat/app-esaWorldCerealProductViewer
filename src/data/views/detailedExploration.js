@@ -90,10 +90,10 @@ export default {
 						data: {
 							backgroundLayer: backgroundLayers.esri_WorldGrayCanvas,
 							view: {
-								boxRange: 2000000,
+								boxRange: 12000000,
 								center: {
-									lat: -15,
-									lon: -50,
+									lat: 40,
+									lon: 0,
 								},
 							},
 							viewLimits: {
@@ -134,10 +134,10 @@ export default {
 						data: {
 							backgroundLayer: backgroundLayers.esri_WorldImagery,
 							view: {
-								boxRange: 835000,
+								boxRange: 12000000,
 								center: {
-									lat: -15,
-									lon: -50,
+									lat: 40,
+									lon: 0,
 								},
 							},
 							viewLimits: {

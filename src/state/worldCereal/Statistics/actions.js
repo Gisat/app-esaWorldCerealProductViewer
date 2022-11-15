@@ -1,5 +1,5 @@
 import {Action as CommonAction} from '@gisatcz/ptr-state';
-import {forIn as _forIn} from 'lodash';
+import {forIn as _forIn, isEqual as _isEqual, isNumber} from 'lodash';
 import Action from '../../Action';
 import Select from '../../Select';
 import {STATISTICSLAYERKEY, globalAreaLevelKey} from '../../../constants/app';
@@ -114,6 +114,65 @@ function setMapLayerActiveStyleKeyByCaseKey(caseKey) {
 }
 
 /**
+ * Set statistics layer styleKey based on active caseKey
+ */
+function setCaseDependentChartsAttributeByActiveCaseKey(caseKey) {
+	return (dispatch, getState) => {
+		const configByCaseKey = Select.app.getConfiguration(
+			getState(),
+			'configByCaseKey'
+		);
+
+		const caseConfiguration = configByCaseKey?.[caseKey];
+		const components = Select.data.components.getAllComponentsAsObject(
+			getState()
+		);
+
+		if (components && caseConfiguration) {
+			const absoluteAttributeKey = caseConfiguration?.absoluteAttributeKey;
+			const relativeAttributeKey = caseConfiguration?.relativeAttributeKey;
+
+			_forIn(components, (metadata, key) => {
+				const attributeType = metadata?.options?.attributeType;
+				const attributeOrder = metadata?.attributeOrder;
+				if (attributeType) {
+					if (attributeType === 'absolute') {
+						dispatch(
+							CommonAction.data.components.setAttributeKeys(key, [
+								absoluteAttributeKey,
+							])
+						);
+
+						if (attributeOrder) {
+							dispatch(
+								CommonAction.data.components.setAttributeOrder(key, [
+									[absoluteAttributeKey, attributeOrder[0][1]],
+								])
+							);
+						}
+					}
+
+					if (attributeType === 'relative') {
+						dispatch(
+							CommonAction.data.components.setAttributeKeys(key, [
+								relativeAttributeKey,
+							])
+						);
+						if (attributeOrder) {
+							dispatch(
+								CommonAction.data.components.setAttributeOrder(key, [
+									[relativeAttributeKey, attributeOrder[0][1]],
+								])
+							);
+						}
+					}
+				}
+			});
+		}
+	};
+}
+
+/**
  * Set statistics layer areaTreeLevelKey
  */
 function setMapLayerActiveAreaTreeLevelKey(areaTreeLevelKey) {
@@ -191,12 +250,101 @@ function onLayerClick() {
 	};
 }
 
+/**
+ * Set active place by featureKeys on global areaLevel
+ */
+function recalculateStatisticLayerStyle(statisticLayer) {
+	return (dispatch, getState) => {
+		const CLASSES_COUNT = 5;
+		const COLORS = ['#ffffb2', '#fecc5c', '#fd8d3c', '#f03b20', '#bd0026'];
+		const layerStyle = statisticLayer?.options?.style;
+		const layerFeatures = statisticLayer?.options?.features || [];
+		const attributeKey = layerStyle?.rules?.[0]?.styles?.[1]?.attributeKey;
+
+		let minValue = null;
+		let maxValue = null;
+
+		layerFeatures.forEach(feature => {
+			const value = feature?.properties?.[attributeKey];
+			if (isNumber(value)) {
+				if (minValue == null) {
+					minValue = value;
+				} else {
+					minValue = value < minValue ? value : minValue;
+				}
+
+				if (maxValue == null) {
+					maxValue = value;
+				} else {
+					maxValue = value > maxValue ? value : maxValue;
+				}
+			}
+		});
+
+		const range = maxValue - minValue;
+		const classRange = range / CLASSES_COUNT;
+
+		const mapKey = Select.maps.getActiveMapKey(getState());
+		const layer = Select.maps.getLayerStateByLayerKeyAndMapKey(
+			getState(),
+			mapKey,
+			statisticLayer?.layerKey
+		);
+		const style = Select.styles.getByKey(getState(), layer?.styleKey);
+
+		let attributeClasses = [];
+
+		for (let i = 0; i < CLASSES_COUNT; i++) {
+			const max =
+				i === CLASSES_COUNT - 1 ? maxValue : minValue + (i + 1) * classRange;
+			const min =
+				i === 0 ? minValue + i * classRange : minValue + i * classRange;
+			attributeClasses.push({
+				intervalBounds: [true, i === CLASSES_COUNT - 1 ? true : false],
+				fill: COLORS[i],
+				interval: [min, max],
+			});
+		}
+
+		const styles = [
+			{...(style?.data?.definition?.rules?.[0]?.styles?.[0] || {})},
+			{
+				attributeKey: attributeKey,
+				attributeClasses,
+			},
+		];
+		//check if same style is not applied to prevent cycle of changes
+		if (
+			!_isEqual(style?.data?.definition?.rules?.[0]?.styles, styles) &&
+			style?.key
+		) {
+			dispatch(
+				Action.styles.add({
+					key: style?.key,
+					data: {
+						...style?.data,
+						definition: {
+							rules: [
+								{
+									styles,
+								},
+							],
+						},
+					},
+				})
+			);
+		}
+	};
+}
+
 export default {
 	setActiveSelectionFeatureKeysByActivePlaceKeys,
 	setActivePlaceKeysByActiveSelectionFeatureKeys,
 	setActiveSelectionForActiveAreaTreeLevel,
+	setCaseDependentChartsAttributeByActiveCaseKey,
 	setMapLayerActiveStyleKeyByCaseKey,
 	setMapLayerActiveAreaTreeLevelKey,
 	setMapLayerActivePlaceKey,
 	onLayerClick,
+	recalculateStatisticLayerStyle,
 };
