@@ -32,19 +32,15 @@ const mapStateToProps = (state, ownProps) => {
 	// const place = Select.places.getIndexed(state, placeKey);
 	const title = Select.worldCereal.statistics.getTooltipTitle(state, placeKey);
 
+	const relativeAttributeKey =
+		Select.worldCereal.statistics.getActiveRelativeAttributeKey(state);
 	//get absolute data
 	// const absoluteData = Select.data.attributeData.get
 	return {
 		name: title,
 		placename: ownProps?.layer?.object?.properties?.[fidColumnName],
-		areaShare:
-			ownProps?.layer?.object?.properties?.[
-				'73e3bd86-8701-47e4-b27b-9d2555d68304'
-			],
-		areaTotal:
-			ownProps?.layer?.object?.properties?.[
-				'73e3bd86-8701-47e4-b27b-9d2555d68304'
-			],
+		areaShare: ownProps?.layer?.object?.properties?.[relativeAttributeKey],
+		// areaTotal:
 	};
 };
 

@@ -161,6 +161,16 @@ const getTooltipTitle = createSelector(
 		}
 	}
 );
+/**
+ * @param state,
+ */
+const getActiveRelativeAttributeKey = createSelector(
+	[CommonSelect.cases.getActiveKey, CommonSelect.app.getCompleteConfiguration],
+	(activeCaseKey, configuration) => {
+		const configByCaseKey = configuration?.['configByCaseKey'];
+		return configByCaseKey?.[activeCaseKey]?.['relativeAttributeKey'];
+	}
+);
 
 export default {
 	getVisualizationComponentSet,
@@ -169,4 +179,5 @@ export default {
 	getUpdatedLayerStateByPlaces,
 	getStatisticsLayerForActiveMap,
 	getTooltipTitle,
+	getActiveRelativeAttributeKey,
 };
