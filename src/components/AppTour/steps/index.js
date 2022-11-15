@@ -6,7 +6,7 @@ import DetailViewMap from './DetailView/Map';
 import DetailViewTimeline from './DetailView/Timeline';
 import DetailViewFilters from './DetailView/Filters';
 import GlobalViewIntro from './GlobalView/Intro';
-import StatisticsViewIntro from './GlobalView/Intro';
+import StatisticsViewIntro from './StatisticsView/Intro';
 import Map from './StatisticsView/Map';
 import Panel from './StatisticsView/Panel';
 
