@@ -3,6 +3,7 @@ import {useEffect} from 'react';
 import {ResponsiveBar} from '@nivo/bar';
 import colorUtils from '../../../../utils/colors';
 import helpers from '../helpers';
+import ChartTooltip from '../ChartTooltip';
 
 import './style.scss';
 
@@ -63,7 +64,6 @@ const BarChart = ({
 					return colorMap?.[id]?.base || '#97e2d5';
 				}
 			}}
-			tooltip={() => {}}
 			axisLeft={{
 				...settings.axisLeft,
 				format: v => {
@@ -77,6 +77,22 @@ const BarChart = ({
 						v
 					);
 				},
+			}}
+			tooltip={properties => {
+				const data = {...properties.data};
+				if (data) {
+					const {key, id, name, ...attributes} = data;
+					return (
+						<ChartTooltip
+							attributes={attributes}
+							featureKey={key}
+							id={id}
+							name={name}
+						/>
+					);
+				} else {
+					return null;
+				}
 			}}
 			{...settings}
 		/>
