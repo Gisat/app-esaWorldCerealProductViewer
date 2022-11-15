@@ -64,6 +64,20 @@ const BarChart = ({
 				}
 			}}
 			tooltip={() => {}}
+			axisLeft={{
+				...settings.axisLeft,
+				format: v => {
+					const length = settings.margin.left / 6;
+					return v.length > length ? (
+						<tspan>
+							{v.substring(0, length) + '...'}
+							<title>{v}</title>
+						</tspan>
+					) : (
+						v
+					);
+				},
+			}}
 			{...settings}
 		/>
 	);

@@ -82,7 +82,7 @@ const getDataForNivoBarChart = createRecomputeSelector(componentKey => {
 				_compact(
 					chartData.map(item => {
 						if (item) {
-							return {...item.data, id: item.key};
+							return {...item.data, id: item.name};
 						} else {
 							return null;
 						}

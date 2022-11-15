@@ -49,7 +49,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 35},
+						margin: {top: 0, right: 25, bottom: 20, left: 100},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -108,7 +108,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 35},
+						margin: {top: 0, right: 25, bottom: 20, left: 100},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -214,7 +214,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 35},
+						margin: {top: 0, right: 25, bottom: 20, left: 100},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -274,7 +274,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 60},
+						margin: {top: 0, right: 25, bottom: 20, left: 100},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -379,7 +379,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 60},
+						margin: {top: 0, right: 25, bottom: 20, left: 100},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -448,9 +448,21 @@ export default {
 						start: 1,
 						length: 300,
 					},
+					CountryNames: {
+						metadataModifiers: {},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+						},
+						attributeKeys: ['5f6a119b-addf-467e-ab1f-e07e4cdf79a6'],
+						start: 1,
+						length: 300,
+					},
 					GlobalTopTenBarChart: {
 						type: 'barChart',
 						options: {
+							nameComponentKey: 'CountryNames',
 							attributeType: 'absolute',
 							limit: 10,
 						},
@@ -470,6 +482,7 @@ export default {
 					GlobalTopTenBarChartShare: {
 						type: 'barChart',
 						options: {
+							nameComponentKey: 'CountryNames',
 							attributeType: 'relative',
 							limit: 10,
 						},
@@ -513,6 +526,7 @@ export default {
 					GlobalCountriesBarChart: {
 						type: 'barChart',
 						options: {
+							nameComponentKey: 'CountryNames',
 							attributeType: 'relative',
 							selectedFeaturesOnly: true,
 						},
@@ -531,6 +545,7 @@ export default {
 					CountryTopTenBarChart: {
 						type: 'barChart',
 						options: {
+							nameComponentKey: 'RegionSelect',
 							attributeType: 'absolute',
 							limit: 10,
 						},
@@ -576,6 +591,7 @@ export default {
 					CountryRegionsBarChart: {
 						type: 'barChart',
 						options: {
+							nameComponentKey: 'RegionSelect',
 							attributeType: 'relative',
 							selectedFeaturesOnly: true,
 						},
