@@ -67,7 +67,7 @@ const BarChart = ({
 			axisLeft={{
 				...settings.axisLeft,
 				format: v => {
-					const length = settings.margin.left / 6;
+					const length = settings.margin.left / 7;
 					return v.length > length ? (
 						<tspan>
 							{v.substring(0, length) + '...'}

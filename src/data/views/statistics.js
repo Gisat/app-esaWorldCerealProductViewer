@@ -697,10 +697,7 @@ export default {
 						components: ['GlobalTopTenBarChart', 'GlobalTopTenBarChartShare'],
 					},
 					GlobalOneSelected: {
-						components: [
-							'GlobalSharePieChart',
-							'GlobalShareCountryProductsBarChart',
-						],
+						components: ['GlobalSharePieChart'],
 					},
 					GlobalMultipleSelected: {
 						components: ['GlobalCountriesBarChart'],
