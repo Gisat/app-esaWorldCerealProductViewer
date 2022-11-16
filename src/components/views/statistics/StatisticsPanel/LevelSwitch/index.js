@@ -16,6 +16,8 @@ export const levelsFilter = {
 
 const mapStateToProps = state => {
 	return {
+		countryLevelDisabled:
+			Select.worldCereal.statistics.isCountryLevelDisabled(state),
 		activeLevelKey: Select.areas.areaTreeLevels.getActiveKey(state),
 		activePlaceKeys: Select.places.getActiveKeys(state),
 		levels: Select.areas.areaTreeLevels.getIndexed(

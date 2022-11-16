@@ -12,6 +12,7 @@ const LevelSwitch = ({
 	activePlaceKeys,
 	levels,
 	onActiveLevelChange,
+	countryLevelDisabled,
 }) => {
 	useEffect(() => {
 		if (onMount && typeof onMount === 'function') {
@@ -37,7 +38,7 @@ const LevelSwitch = ({
 						key={level.key}
 						value={level.key}
 						active={level.key === activeLevelKey}
-						disabled={activePlaceKeys?.length !== 1}
+						disabled={activePlaceKeys?.length !== 1 || countryLevelDisabled}
 					>
 						{level.data.nameDisplay}
 					</ButtonSwitchOption>
@@ -55,6 +56,7 @@ LevelSwitch.propTypes = {
 	onMount: PropTypes.func,
 	onUnmount: PropTypes.func,
 	setLayer: PropTypes.func,
+	countryLevelDisabled: PropTypes.bool,
 };
 
 export default LevelSwitch;

@@ -81,6 +81,9 @@ const getRegions = createRecomputeSelector(componentKey => {
 	}
 }, recomputeSelectorOptions);
 
+/**
+ * TODO for now there is a limitation in configuration
+ */
 const getPeriods = createSelector(
 	[
 		CommonSelect.periods.getIndexed,
@@ -96,6 +99,26 @@ const getPeriods = createSelector(
 		} else {
 			return null;
 		}
+	}
+);
+
+/**
+ * TODO for now there is a limitation in configuration
+ */
+const isCountryLevelDisabled = createSelector(
+	[
+		CommonSelect.places.getActiveKeys,
+		state =>
+			CommonSelect.app.getConfiguration(
+				state,
+				'availableCountryLevelForPlaceKey'
+			),
+	],
+	(activePlaceKeys, availableForPlaceKey) => {
+		return !(
+			activePlaceKeys?.length === 1 &&
+			activePlaceKeys[0] === availableForPlaceKey
+		);
 	}
 );
 
@@ -221,6 +244,7 @@ const getActiveRelativeAttributeName = createSelector(
 );
 
 export default {
+	isCountryLevelDisabled,
 	getVisualizationComponentSet,
 	getPeriods,
 	getRegions,
