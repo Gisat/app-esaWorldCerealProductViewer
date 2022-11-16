@@ -149,7 +149,7 @@ const StatisticsSelect = ({
 	return (
 		<StatisticsConfigurationItem label={label}>
 			<ReactSelect
-				className="cure-StatisticsSelect"
+				className="worldCereal-StatisticsSelect"
 				styles={customStyles}
 				theme={theme => ({
 					...theme,

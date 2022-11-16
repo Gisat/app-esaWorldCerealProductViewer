@@ -140,6 +140,18 @@ const getUpdatedLayerStateByPlaces = createSelector(
 		return layerSettings;
 	}
 );
+
+/**
+ * @param state,
+ * @param mapKey,
+ * @param layerKey,
+ */
+const getStyleKeyForActiveMapAndLayerKey = createSelector(
+	[CommonSelect.maps.getLayerStateByLayerKeyAndMapKey],
+	layer => {
+		return layer?.styleKey;
+	}
+);
 /**
  * @param state,
  * @param mapKey,
@@ -180,4 +192,5 @@ export default {
 	getStatisticsLayerForActiveMap,
 	getTooltipTitle,
 	getActiveRelativeAttributeKey,
+	getStyleKeyForActiveMapAndLayerKey,
 };

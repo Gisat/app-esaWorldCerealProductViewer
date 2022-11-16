@@ -19,6 +19,7 @@ import OverviewMap from './OverviewMap';
 import CompareMapsControl from './CompareMapsControl';
 import AddMapControl from './AddMapControl';
 import SearchPlaceControl from './SearchPlaceControl';
+import StyleBasedLegend from '../common/maps/MapLegends/StyleBasedLegend';
 
 import MapTooltip from './MapTooltip';
 import GetFeatureInfoTooltipContent from './RasterTooltipContent';
@@ -41,6 +42,18 @@ const Tooltip = props => {
 };
 
 const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
+	const componentsByLayer = [
+		{
+			layerKey: 'statistics-global',
+			legend: {
+				component: StyleBasedLegend,
+				props: {
+					title: 'Product area share',
+					unit: '%',
+				},
+			},
+		},
+	];
 	return mode === 'compare' ? (
 		<ReactCompareSlider
 			onlyHandleDraggable
@@ -53,7 +66,7 @@ const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
 			itemOne={
 				<Map
 					wrapper={MapWrapper}
-					wrapperProps={{noTools: true}}
+					wrapperProps={{noTools: true, componentsByLayer}}
 					mapComponent={DeckGlMap}
 					stateMapKey={maps[0].key}
 				/>
@@ -61,7 +74,7 @@ const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
 			itemTwo={
 				<Map
 					wrapper={MapWrapper}
-					wrapperProps={{labelsRight: true, noTools: true}}
+					wrapperProps={{labelsRight: true, noTools: true, componentsByLayer}}
 					mapComponent={DeckGlMap}
 					stateMapKey={maps[1].key}
 				>
@@ -93,6 +106,9 @@ const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
 			mapComponent={DeckGlMap}
 			connectedMapComponent={ConnectedMap}
 			wrapper={MapWrapper}
+			wrapperProps={{
+				componentsByLayer,
+			}}
 		>
 			<MapComponentsGroup className="worldCereal-MapSetControls">
 				<SearchPlaceControl mapSetKey={mapSetKey} />
@@ -120,6 +136,7 @@ Maps.propTypes = {
 	maps: PropTypes.array,
 	mapSetKey: PropTypes.string,
 	viewLimits: PropTypes.object,
+	componentsByLayer: PropTypes.array,
 };
 
 export default Maps;

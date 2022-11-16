@@ -310,7 +310,7 @@ function recalculateStatisticLayerStyle(statisticLayer) {
 			{...(style?.data?.definition?.rules?.[0]?.styles?.[0] || {})},
 			{
 				attributeKey: attributeKey,
-				attributeClasses,
+				...(range === 0 ? {attributeClasses: []} : {attributeClasses}),
 			},
 		];
 		//check if same style is not applied to prevent cycle of changes

@@ -7,6 +7,7 @@ import {IconTool, Tooltip} from '@gisatcz/visat-components';
 import ExpandableLabelsContainer from '../../atoms/ExpandableLabel/ExpandableLabelsContainer';
 import ExpandableProductLabel from '../ProductLabel';
 import ExpandableLayerLabel from '../ExpandableLayerLabel';
+import MapLegends from '../../common/maps/MapLegends/';
 import {MIN_PRODUCT_MAP_LABELS_FOR_GROUPING} from '../../../constants/app';
 
 import './style.scss';
@@ -22,6 +23,8 @@ const MapWrapper = ({
 	noTools,
 	labelsRight,
 	overlayLayer,
+	componentsByLayer,
+	layersState,
 }) => {
 	const wrapperClasses = classnames('ptr-map-wrapper worldCereal-MapWrapper', {
 		active: mapKey === activeMapKey,
@@ -110,6 +113,13 @@ const MapWrapper = ({
 					) : null}
 				</div>
 			) : null}
+			<MapLegends
+				layersState={layersState}
+				componentsByLayer={componentsByLayer}
+				className={'worldCereal-MapLegends is-left'}
+				mapKey={mapKey}
+			/>
+
 			{children}
 		</div>
 	);
@@ -126,6 +136,8 @@ MapWrapper.propTypes = {
 	removeMap: PropTypes.func,
 	removeAllLayers: PropTypes.func,
 	overlayLayer: PropTypes.object,
+	componentsByLayer: PropTypes.array,
+	layersState: PropTypes.array,
 };
 
 export default MapWrapper;

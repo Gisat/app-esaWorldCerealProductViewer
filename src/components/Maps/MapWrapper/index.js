@@ -28,6 +28,7 @@ const mapStateToProps = (state, ownProps) => {
 		activeMapKey: Select.maps.getMapSetActiveMapKey(state, mapSetKey),
 		mapSetMapKeys: Select.maps.getMapSetMapKeys(state, mapSetKey),
 		productsMetadata: productsMetadata || globalProductsMetadata,
+		layersState: Select.maps.getLayersStateByMapKey(state, ownProps.mapKey),
 		overlayLayer,
 	};
 };
