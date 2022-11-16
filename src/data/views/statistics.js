@@ -758,7 +758,7 @@ export default {
 							boxRange: true,
 						},
 						data: {
-							backgroundLayer: backgroundLayers.openStreetMap_Mapnik,
+							backgroundLayer: backgroundLayers.esri_WorldImagery,
 							view: {
 								boxRange: 12000000,
 								center: {
