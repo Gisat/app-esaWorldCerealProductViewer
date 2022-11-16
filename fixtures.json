@@ -16,6 +16,7 @@
 					"applicationKey": "esaWorldCerealProductViewer",
 					"data": {
 						"nameAttributeKey": "5f6a119b-addf-467e-ab1f-e07e4cdf79a6",
+						"unavailablePeriodKeys": ["1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08","2a293769-d7ba-4c83-800e-8184b457ac85","df428b66-5a83-4943-93b2-56dea2805509"],
 						"configByCaseKey": {
 							"577b253f-754f-421e-94a2-092f092b4947": {
 								"name": "Annual cropland",
@@ -485,7 +486,7 @@
 					"applicationKey": "esaWorldCerealProductViewer",
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
 					"nameInternal": "period_2019annual",
-					"nameDisplay": "2019 - annual",
+					"nameDisplay": "2019",
 					"period": "2019"
 				}
 			},
@@ -515,7 +516,7 @@
 					"applicationKey": "esaWorldCerealProductViewer",
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
 					"nameInternal": "period_2020annual",
-					"nameDisplay": "2020 - annual",
+					"nameDisplay": "2020",
 					"period": "2020"
 				}
 			},
