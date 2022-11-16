@@ -11,8 +11,20 @@ export const timelineLayerLineHeight = 16; //px
 
 export const timelineLayerElementHeight = 10; //px, rest is for line padding
 
-export const baseChartColorPalette = ['#f0c85b', '#11bda3', '#a552e5'];
-export const highlightedChartColorPalette = ['#f0c85b', '#11bda3', '#a552e5'];
+export const baseChartColorPalette = [
+	'#f0c85b',
+	'#BF9C2F',
+	'#907200',
+	'#624A00',
+	'#3D2600',
+];
+export const highlightedChartColorPalette = [
+	'#f0c85b',
+	'#BF9C2F',
+	'#907200',
+	'#624A00',
+	'#3D2600',
+];
 
 export const STATISTICSLAYERKEY = 'statistics-global';
 export const AEZLAYERKEY = 'aez';
