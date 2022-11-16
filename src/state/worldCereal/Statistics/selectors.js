@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {find as _find, omit as _omit} from 'lodash';
+import {find as _find, omit as _omit, includes as _includes} from 'lodash';
 import {
 	recomputeSelectorOptions,
 	createRecomputeSelector,
@@ -80,6 +80,24 @@ const getRegions = createRecomputeSelector(componentKey => {
 		return null;
 	}
 }, recomputeSelectorOptions);
+
+const getPeriods = createSelector(
+	[
+		CommonSelect.periods.getIndexed,
+		state => CommonSelect.app.getConfiguration(state, 'unavailablePeriodKeys'),
+	],
+	(periods, unavailablePeriodKeys) => {
+		if (periods) {
+			return periods.filter(period =>
+				unavailablePeriodKeys
+					? !_includes(unavailablePeriodKeys, period.key)
+					: period
+			);
+		} else {
+			return null;
+		}
+	}
+);
 
 /**
  * Get selection associated wit country level
@@ -204,6 +222,7 @@ const getActiveRelativeAttributeName = createSelector(
 
 export default {
 	getVisualizationComponentSet,
+	getPeriods,
 	getRegions,
 	getSelectionKeyForCountryLevel,
 	getUpdatedLayerStateByPlaces,
