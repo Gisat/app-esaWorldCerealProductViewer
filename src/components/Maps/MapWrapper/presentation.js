@@ -25,6 +25,7 @@ const MapWrapper = ({
 	overlayLayer,
 	componentsByLayer,
 	layersState,
+	showRemoveAllLayers,
 }) => {
 	const wrapperClasses = classnames('ptr-map-wrapper worldCereal-MapWrapper', {
 		active: mapKey === activeMapKey,
@@ -83,7 +84,7 @@ const MapWrapper = ({
 			) : null}
 			{!noTools ? (
 				<div className="worldCereal-MapTools">
-					{!noMetadata || overlayLayer ? (
+					{(!noMetadata || overlayLayer) && showRemoveAllLayers ? (
 						<IconTool
 							className="worldCereal-RemoveMapIcon"
 							tooltip={{
@@ -138,6 +139,7 @@ MapWrapper.propTypes = {
 	overlayLayer: PropTypes.object,
 	componentsByLayer: PropTypes.array,
 	layersState: PropTypes.array,
+	showRemoveAllLayers: PropTypes.bool,
 };
 
 export default MapWrapper;
