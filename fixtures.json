@@ -2842,42 +2842,6 @@
 				}
 			},
 			{
-				"key": "a8ce2e4e-7424-482d-8712-2a68fe09dedc",
-				"data": {
-					"nameInternal": "dataSource_attribute_global-annualCropland-2019-absolute",
-					"tableName": "global",
-					"columnName": "Crop_19",
-					"fidColumnName": "GID_0"
-				}
-			},
-			{
-				"key": "533537cb-a221-4b87-aa1c-958cfc6aba8d",
-				"data": {
-					"nameInternal": "dataSource_attribute_global-annualCropland-2019-relative",
-					"tableName": "global",
-					"columnName": "Crop_19p",
-					"fidColumnName": "GID_0"
-				}
-			},
-			{
-				"key": "f48583d8-35c8-4a56-9e20-9cfe46076561",
-				"data": {
-					"nameInternal": "dataSource_attribute_global-annualCropland-2020-absolute",
-					"tableName": "global",
-					"columnName": "Crop_20",
-					"fidColumnName": "GID_0"
-				}
-			},
-			{
-				"key": "8383a042-024c-45a6-81a1-0dbb77b6863f",
-				"data": {
-					"nameInternal": "dataSource_attribute_global-annualCropland-2020-relative",
-					"tableName": "global",
-					"columnName": "Crop_20p",
-					"fidColumnName": "GID_0"
-				}
-			},
-			{
 				"key": "5f23c32f-c035-4cb6-8fa4-50f88545e3ff",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine-name",
@@ -2887,83 +2851,11 @@
 				}
 			},
 			{
-				"key": "cd5416da-c7b8-4ad1-8600-0963d5009d28",
-				"data": {
-					"nameInternal": "dataSource_attribute_ukraine-annualCropland-2019-absolute",
-					"tableName": "ukraine",
-					"columnName": "Crop_19",
-					"fidColumnName": "GID_1"
-				}
-			},
-			{
-				"key": "18b9894b-f335-4d5e-a3b1-acb702433351",
-				"data": {
-					"nameInternal": "dataSource_attribute_ukraine-annualCropland-2019-relative",
-					"tableName": "ukraine",
-					"columnName": "Crop_19p",
-					"fidColumnName": "GID_1"
-				}
-			},
-			{
-				"key": "afa6a2dd-04e7-486e-9678-310ba0ea54dc",
-				"data": {
-					"nameInternal": "dataSource_attribute_ukraine-annualCropland-2020-absolute",
-					"tableName": "ukraine",
-					"columnName": "Crop_20",
-					"fidColumnName": "GID_1"
-				}
-			},
-			{
-				"key": "4cafdef0-153e-4a22-b4ae-9ea46c86449b",
-				"data": {
-					"nameInternal": "dataSource_attribute_ukraine-annualCropland-2020-relative",
-					"tableName": "ukraine",
-					"columnName": "Crop_20p",
-					"fidColumnName": "GID_1"
-				}
-			},
-			{
 				"key": "18f4a5cd-cd00-4fb8-b033-078dd09ba3a4",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil-name",
 					"tableName": "brazil",
 					"columnName": "NAME_1",
-					"fidColumnName": "GID_1"
-				}
-			},
-			{
-				"key": "b379f6d1-3741-4de2-b5cc-33da81a3fea3",
-				"data": {
-					"nameInternal": "dataSource_attribute_brazil-annualCropland-2019-absolute",
-					"tableName": "brazil",
-					"columnName": "Crop_19",
-					"fidColumnName": "GID_1"
-				}
-			},
-			{
-				"key": "3fd70768-3af2-4605-8d4f-0c1eb8c5cfaf",
-				"data": {
-					"nameInternal": "dataSource_attribute_brazil-annualCropland-2019-relative",
-					"tableName": "brazil",
-					"columnName": "Crop_19p",
-					"fidColumnName": "GID_1"
-				}
-			},
-			{
-				"key": "926a43f9-c9ba-458d-aa79-bea669694e31",
-				"data": {
-					"nameInternal": "dataSource_attribute_brazil-annualCropland-2020-absolute",
-					"tableName": "brazil",
-					"columnName": "Crop_20",
-					"fidColumnName": "GID_1"
-				}
-			},
-			{
-				"key": "09b7a3e2-30fb-488f-a76f-d3b8a992ed7a",
-				"data": {
-					"nameInternal": "dataSource_attribute_brazil-annualCropland-2020-relative",
-					"tableName": "brazil",
-					"columnName": "Crop_20p",
 					"fidColumnName": "GID_1"
 				}
 			},
@@ -3187,7 +3079,7 @@
 				"key": "80666a5c-90b3-479d-b4ba-84fd8b6f7827",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Crop_19-relative",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Crop_19p",
 					"fidColumnName": "GID_1"
 				}
@@ -3196,7 +3088,7 @@
 				"key": "6933796f-bd1a-46b7-b249-72a7e1da3713",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Irig_19-absolute",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Irig_19",
 					"fidColumnName": "GID_1"
 				}
@@ -3205,7 +3097,7 @@
 				"key": "7e52faef-0e21-46d9-9cc6-236e13fe0e77",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Irig_19-relative",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Irig_19p",
 					"fidColumnName": "GID_1"
 				}
@@ -3214,7 +3106,7 @@
 				"key": "3be7d1ce-b9af-403a-904a-280f3ab8a848",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Maize_19-absolute",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Maize_19",
 					"fidColumnName": "GID_1"
 				}
@@ -3223,7 +3115,7 @@
 				"key": "6848a697-c202-40f5-8f88-66811b95c20b",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Maize_19-relative",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Maize_19p",
 					"fidColumnName": "GID_1"
 				}
@@ -3232,7 +3124,7 @@
 				"key": "e2a0cc17-6a67-4a91-9513-2773b34a9bd5",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Spring_19-absolute",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Spring_19",
 					"fidColumnName": "GID_1"
 				}
@@ -3241,7 +3133,7 @@
 				"key": "108512cf-d3c4-402a-bde4-ba2807ca6867",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Spring_19-relative",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Spring_19p",
 					"fidColumnName": "GID_1"
 				}
@@ -3250,7 +3142,7 @@
 				"key": "401463f4-dc31-4446-93a9-ee03196bbe7b",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Winter_19-absolute",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Winter_19",
 					"fidColumnName": "GID_1"
 				}
@@ -3259,7 +3151,7 @@
 				"key": "2b4ee5e7-4a71-4255-b0fa-15cd34890dcf",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Winter_19-relative",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Winter_19p",
 					"fidColumnName": "GID_1"
 				}
@@ -3268,7 +3160,7 @@
 				"key": "0bc4870a-a177-4212-8094-09bbf1b4b365",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Crop_20-absolute",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Crop_20",
 					"fidColumnName": "GID_1"
 				}
@@ -3277,7 +3169,7 @@
 				"key": "2df4eff3-966d-4098-a713-365a9a7f5d23",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Crop_20-relative",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Crop_20p",
 					"fidColumnName": "GID_1"
 				}
@@ -3286,7 +3178,7 @@
 				"key": "7b5eda6a-8fe0-4fd0-8004-757143b511f5",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Irig_20-absolute",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Irig_20",
 					"fidColumnName": "GID_1"
 				}
@@ -3295,7 +3187,7 @@
 				"key": "c5dba55c-6c7d-4eb0-95e5-b7bbfbe7fa1c",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Irig_20-relative",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Irig_20p",
 					"fidColumnName": "GID_1"
 				}
@@ -3304,7 +3196,7 @@
 				"key": "d967b16b-ad5a-4689-89b3-e3a2cc631883",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Maize_20-absolute",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Maize_20",
 					"fidColumnName": "GID_1"
 				}
@@ -3313,7 +3205,7 @@
 				"key": "de3a341b-6f68-4fc5-8651-4ee754a9b73a",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Maize_20-relative",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Maize_20p",
 					"fidColumnName": "GID_1"
 				}
@@ -3322,7 +3214,7 @@
 				"key": "fac79097-ed39-44ce-af05-1f1926b36b06",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Spring_20-absolute",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Spring_20",
 					"fidColumnName": "GID_1"
 				}
@@ -3331,7 +3223,7 @@
 				"key": "b84ad176-ba50-4e48-97cb-243876071817",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Spring_20-relative",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Spring_20p",
 					"fidColumnName": "GID_1"
 				}
@@ -3340,7 +3232,7 @@
 				"key": "800e7234-9fbb-49ad-9ac7-eeeea061db0b",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Winter_20-absolute",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Winter_20",
 					"fidColumnName": "GID_1"
 				}
@@ -3349,7 +3241,7 @@
 				"key": "121852f2-0fa3-486c-ba6b-318d43b52c59",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Winter_20-relative",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Winter_20p",
 					"fidColumnName": "GID_1"
 				}
@@ -3358,7 +3250,7 @@
 				"key": "968fe184-247d-4996-83f1-effa5d326b01",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Crop_19-absolute",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Crop_19",
 					"fidColumnName": "GID_1"
 				}
@@ -3367,7 +3259,7 @@
 				"key": "3ead00ba-8325-4069-a3e9-cdbc852974ee",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Crop_19-relative",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Crop_19p",
 					"fidColumnName": "GID_1"
 				}
@@ -3376,7 +3268,7 @@
 				"key": "1b688dd8-d4f4-48fb-a139-f2ecbbca4bf6",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Irig_19-absolute",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Irig_19",
 					"fidColumnName": "GID_1"
 				}
@@ -3385,7 +3277,7 @@
 				"key": "46bab1e7-b5d6-428a-b584-ffeb4eca1230",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Irig_19-relative",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Irig_19p",
 					"fidColumnName": "GID_1"
 				}
@@ -3394,7 +3286,7 @@
 				"key": "00caeefe-7caa-4972-9b21-02b7cb72f397",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Maize_19-absolute",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Maize_19",
 					"fidColumnName": "GID_1"
 				}
@@ -3403,7 +3295,7 @@
 				"key": "b92b5142-87da-4798-9bfb-875dab1e769d",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Maize_19-relative",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Maize_19p",
 					"fidColumnName": "GID_1"
 				}
@@ -3412,7 +3304,7 @@
 				"key": "bf2cc395-614e-41f3-920c-983ae29e0f5b",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Spring_19-absolute",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Spring_19",
 					"fidColumnName": "GID_1"
 				}
@@ -3421,7 +3313,7 @@
 				"key": "5ced8cef-9eec-42f2-942a-307788e368a0",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Spring_19-relative",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Spring_19p",
 					"fidColumnName": "GID_1"
 				}
@@ -3430,7 +3322,7 @@
 				"key": "9546a29b-d9e2-4d09-8c11-8ccc8a63d270",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Winter_19-absolute",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Winter_19",
 					"fidColumnName": "GID_1"
 				}
@@ -3439,7 +3331,7 @@
 				"key": "709b0d99-b690-452c-a0ad-8d419b904410",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Winter_19-relative",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Winter_19p",
 					"fidColumnName": "GID_1"
 				}
@@ -3448,7 +3340,7 @@
 				"key": "0ea96fec-1e70-44ca-abd9-967e8cb90954",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Crop_20-absolute",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Crop_20",
 					"fidColumnName": "GID_1"
 				}
@@ -3457,7 +3349,7 @@
 				"key": "256020f4-6d3e-4064-8dc9-5c3b809bf07a",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Crop_20-relative",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Crop_20p",
 					"fidColumnName": "GID_1"
 				}
@@ -3466,7 +3358,7 @@
 				"key": "9f4d4028-01e0-4484-8bc1-38c2f461b2fe",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Irig_20-absolute",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Irig_20",
 					"fidColumnName": "GID_1"
 				}
@@ -3475,7 +3367,7 @@
 				"key": "45c611ec-cbbc-4310-be5e-327f29b9e60f",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Irig_20-relative",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Irig_20p",
 					"fidColumnName": "GID_1"
 				}
@@ -3484,7 +3376,7 @@
 				"key": "abf4d633-2f61-46fe-b881-7bda3f0bba4c",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Maize_20-absolute",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Maize_20",
 					"fidColumnName": "GID_1"
 				}
@@ -3493,7 +3385,7 @@
 				"key": "45f4a2d3-4512-4a86-8f9f-6ce7e7abd5b9",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Maize_20-relative",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Maize_20p",
 					"fidColumnName": "GID_1"
 				}
@@ -3502,7 +3394,7 @@
 				"key": "3842cd78-0991-41d2-9073-5a87d2675c08",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Spring_20-absolute",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Spring_20",
 					"fidColumnName": "GID_1"
 				}
@@ -3511,7 +3403,7 @@
 				"key": "8f1c86d9-4362-4382-8012-46049189db3f",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Spring_20-relative",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Spring_20p",
 					"fidColumnName": "GID_1"
 				}
@@ -3520,7 +3412,7 @@
 				"key": "7ef6e078-ea79-4740-a349-6b7d0dd6bb4f",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Winter_20-absolute",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Winter_20",
 					"fidColumnName": "GID_1"
 				}
@@ -3529,7 +3421,7 @@
 				"key": "20144815-0533-454d-99e4-6756e939be63",
 				"data": {
 					"nameInternal": "dataSource_attribute_ukraine_-Winter_20-relative",
-					"tableName": "global",
+					"tableName": "ukraine",
 					"columnName": "Winter_20p",
 					"fidColumnName": "GID_1"
 				}
@@ -3786,74 +3678,6 @@
 				}
 			},
 			{
-				"key": "000e8f22-b45b-405c-b01f-b61227ea7d34",
-				"data": {
-					"nameInternal": "relation_attribute_global-annualCropland-2019-absolute",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"periodKey": "1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08",
-					"placeKey": null,
-					"attributeDataSourceKey": "a8ce2e4e-7424-482d-8712-2a68fe09dedc",
-					"layerTemplateKey": null,
-					"scenarioKey": null,
-					"caseKey": "577b253f-754f-421e-94a2-092f092b4947",
-					"attributeSetKey": null,
-					"attributeKey": "4fb212bb-ff1a-46d7-8fce-e341e7f08376",
-					"areaTreeLevelKey": "a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47",
-					"applicationKey": "esaWorldCerealProductViewer"
-				}
-			},
-			{
-				"key": "a37524a7-c1fd-4e53-aecb-4a9dde4229c8",
-				"data": {
-					"nameInternal": "relation_attribute_global-annualCropland-2020-absolute",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"periodKey": "6a7a4193-1339-4172-b54d-817c3e8cd6f7",
-					"placeKey": null,
-					"attributeDataSourceKey": "f48583d8-35c8-4a56-9e20-9cfe46076561",
-					"layerTemplateKey": null,
-					"scenarioKey": null,
-					"caseKey": "577b253f-754f-421e-94a2-092f092b4947",
-					"attributeSetKey": null,
-					"attributeKey": "4fb212bb-ff1a-46d7-8fce-e341e7f08376",
-					"areaTreeLevelKey": "a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47",
-					"applicationKey": "esaWorldCerealProductViewer"
-				}
-			},
-			{
-				"key": "9978ca6c-e988-4053-ab03-e4611ac267c9",
-				"data": {
-					"nameInternal": "relation_attribute_global-annualCropland-2019-relative",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"periodKey": "1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08",
-					"placeKey": null,
-					"attributeDataSourceKey": "533537cb-a221-4b87-aa1c-958cfc6aba8d",
-					"layerTemplateKey": null,
-					"scenarioKey": null,
-					"caseKey": "577b253f-754f-421e-94a2-092f092b4947",
-					"attributeSetKey": null,
-					"attributeKey": "73e3bd86-8701-47e4-b27b-9d2555d68304",
-					"areaTreeLevelKey": "a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47",
-					"applicationKey": "esaWorldCerealProductViewer"
-				}
-			},
-			{
-				"key": "b25e6029-362f-4f88-8d6b-36781e2ce666",
-				"data": {
-					"nameInternal": "relation_attribute_global-annualCropland-2020-relative",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"periodKey": "6a7a4193-1339-4172-b54d-817c3e8cd6f7",
-					"placeKey": null,
-					"attributeDataSourceKey": "8383a042-024c-45a6-81a1-0dbb77b6863f",
-					"layerTemplateKey": null,
-					"scenarioKey": null,
-					"caseKey": "577b253f-754f-421e-94a2-092f092b4947",
-					"attributeSetKey": null,
-					"attributeKey": "73e3bd86-8701-47e4-b27b-9d2555d68304",
-					"areaTreeLevelKey": "a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47",
-					"applicationKey": "esaWorldCerealProductViewer"
-				}
-			},
-			{
 				"key": "3114282b-d669-47a0-97e0-875c71c2faf5",
 				"data": {
 					"nameInternal": "relation_attribute_ukraine-name",
@@ -3871,74 +3695,6 @@
 				}
 			},
 			{
-				"key": "a6c917da-8e40-46ca-af91-0b185a2061dd",
-				"data": {
-					"nameInternal": "relation_attribute_ukraine-annualCropland-2019-absolute",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"periodKey": "1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08",
-					"placeKey": "b1a913a9-a1f3-4fe7-9932-73d376a2f95a",
-					"attributeDataSourceKey": "cd5416da-c7b8-4ad1-8600-0963d5009d28",
-					"layerTemplateKey": null,
-					"scenarioKey": null,
-					"caseKey": "577b253f-754f-421e-94a2-092f092b4947",
-					"attributeSetKey": null,
-					"attributeKey": "4fb212bb-ff1a-46d7-8fce-e341e7f08376",
-					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
-					"applicationKey": "esaWorldCerealProductViewer"
-				}
-			},
-			{
-				"key": "dc69d563-9815-4eef-83e6-f827367218ca",
-				"data": {
-					"nameInternal": "relation_attribute_ukraine-annualCropland-2019-relative",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"periodKey": "1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08",
-					"placeKey": "b1a913a9-a1f3-4fe7-9932-73d376a2f95a",
-					"attributeDataSourceKey": "18b9894b-f335-4d5e-a3b1-acb702433351",
-					"layerTemplateKey": null,
-					"scenarioKey": null,
-					"caseKey": "577b253f-754f-421e-94a2-092f092b4947",
-					"attributeSetKey": null,
-					"attributeKey": "73e3bd86-8701-47e4-b27b-9d2555d68304",
-					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
-					"applicationKey": "esaWorldCerealProductViewer"
-				}
-			},
-			{
-				"key": "0802aa0c-65dd-4a40-9595-3262a15247e2",
-				"data": {
-					"nameInternal": "relation_attribute_ukraine-annualCropland-2020-absolute",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"periodKey": "6a7a4193-1339-4172-b54d-817c3e8cd6f7",
-					"placeKey": "b1a913a9-a1f3-4fe7-9932-73d376a2f95a",
-					"attributeDataSourceKey": "afa6a2dd-04e7-486e-9678-310ba0ea54dc",
-					"layerTemplateKey": null,
-					"scenarioKey": null,
-					"caseKey": "577b253f-754f-421e-94a2-092f092b4947",
-					"attributeSetKey": null,
-					"attributeKey": "4fb212bb-ff1a-46d7-8fce-e341e7f08376",
-					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
-					"applicationKey": "esaWorldCerealProductViewer"
-				}
-			},
-			{
-				"key": "bc097766-3ea6-4aa9-841e-bfca0179786e",
-				"data": {
-					"nameInternal": "relation_attribute_ukraine-annualCropland-2020-relative",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"periodKey": "6a7a4193-1339-4172-b54d-817c3e8cd6f7",
-					"placeKey": "b1a913a9-a1f3-4fe7-9932-73d376a2f95a",
-					"attributeDataSourceKey": "4cafdef0-153e-4a22-b4ae-9ea46c86449b",
-					"layerTemplateKey": null,
-					"scenarioKey": null,
-					"caseKey": "577b253f-754f-421e-94a2-092f092b4947",
-					"attributeSetKey": null,
-					"attributeKey": "73e3bd86-8701-47e4-b27b-9d2555d68304",
-					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
-					"applicationKey": "esaWorldCerealProductViewer"
-				}
-			},
-			{
 				"key": "333456a0-e1c5-440a-88e2-5661b8503997",
 				"data": {
 					"nameInternal": "relation_attribute_brazil-name",
@@ -3951,74 +3707,6 @@
 					"caseKey": null,
 					"attributeSetKey": null,
 					"attributeKey": "5f6a119b-addf-467e-ab1f-e07e4cdf79a6",
-					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
-					"applicationKey": "esaWorldCerealProductViewer"
-				}
-			},
-			{
-				"key": "93c2abae-48a4-4cd1-9dc0-92bc25fd6c36",
-				"data": {
-					"nameInternal": "relation_attribute_brazil-annualCropland-2019-absolute",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"periodKey": "1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08",
-					"placeKey": "eaee3d97-2938-497c-b008-b43d5d5dbe89",
-					"attributeDataSourceKey": "b379f6d1-3741-4de2-b5cc-33da81a3fea3",
-					"layerTemplateKey": null,
-					"scenarioKey": null,
-					"caseKey": "577b253f-754f-421e-94a2-092f092b4947",
-					"attributeSetKey": null,
-					"attributeKey": "4fb212bb-ff1a-46d7-8fce-e341e7f08376",
-					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
-					"applicationKey": "esaWorldCerealProductViewer"
-				}
-			},
-			{
-				"key": "a5a3c4ca-e145-4933-9863-2df40d8c1d6f",
-				"data": {
-					"nameInternal": "relation_attribute_brazil-annualCropland-2019-relative",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"periodKey": "1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08",
-					"placeKey": "eaee3d97-2938-497c-b008-b43d5d5dbe89",
-					"attributeDataSourceKey": "3fd70768-3af2-4605-8d4f-0c1eb8c5cfaf",
-					"layerTemplateKey": null,
-					"scenarioKey": null,
-					"caseKey": "577b253f-754f-421e-94a2-092f092b4947",
-					"attributeSetKey": null,
-					"attributeKey": "73e3bd86-8701-47e4-b27b-9d2555d68304",
-					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
-					"applicationKey": "esaWorldCerealProductViewer"
-				}
-			},
-			{
-				"key": "375b289b-3128-4ba4-8882-002438f3686f",
-				"data": {
-					"nameInternal": "relation_attribute_brazil-annualCropland-2020-absolute",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"periodKey": "6a7a4193-1339-4172-b54d-817c3e8cd6f7",
-					"placeKey": "eaee3d97-2938-497c-b008-b43d5d5dbe89",
-					"attributeDataSourceKey": "926a43f9-c9ba-458d-aa79-bea669694e31",
-					"layerTemplateKey": null,
-					"scenarioKey": null,
-					"caseKey": "577b253f-754f-421e-94a2-092f092b4947",
-					"attributeSetKey": null,
-					"attributeKey": "4fb212bb-ff1a-46d7-8fce-e341e7f08376",
-					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
-					"applicationKey": "esaWorldCerealProductViewer"
-				}
-			},
-			{
-				"key": "e82d61e9-a8be-4670-a3dc-916a328f6542",
-				"data": {
-					"nameInternal": "relation_attribute_brazil-annualCropland-2020-relative",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"periodKey": "6a7a4193-1339-4172-b54d-817c3e8cd6f7",
-					"placeKey": "eaee3d97-2938-497c-b008-b43d5d5dbe89",
-					"attributeDataSourceKey": "09b7a3e2-30fb-488f-a76f-d3b8a992ed7a",
-					"layerTemplateKey": null,
-					"scenarioKey": null,
-					"caseKey": "577b253f-754f-421e-94a2-092f092b4947",
-					"attributeSetKey": null,
-					"attributeKey": "73e3bd86-8701-47e4-b27b-9d2555d68304",
 					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
 					"applicationKey": "esaWorldCerealProductViewer"
 				}

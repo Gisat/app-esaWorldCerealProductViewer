@@ -22,7 +22,6 @@ const StatisticsPanel = ({
 }) => {
 	const {setIsOpen} = useTour();
 	useEffect(() => {
-		console.log('xxx_layer changed', statisticLayerState);
 		recalculateStatisticLayerStyle(statisticLayerState);
 	}, [statisticLayerState]);
 	const level = activeAreaTreeLevel?.data?.level;

@@ -3,6 +3,7 @@ import {useEffect} from 'react';
 import {ResponsiveBar} from '@nivo/bar';
 import colorUtils from '../../../../utils/colors';
 import helpers from '../helpers';
+import ChartTooltip from '../ChartTooltip';
 
 import './style.scss';
 
@@ -39,7 +40,7 @@ const BarChart = ({
 		if (data) {
 			onClick(
 				helpers.getSelectedFeatureKeysOnClick(
-					data.id.toString(),
+					data.key.toString(),
 					ctrlKey || metaKey,
 					selectedFeatureKeys
 				)
@@ -63,7 +64,36 @@ const BarChart = ({
 					return colorMap?.[id]?.base || '#97e2d5';
 				}
 			}}
-			tooltip={() => {}}
+			axisLeft={{
+				...settings.axisLeft,
+				format: v => {
+					const length = settings.margin.left / 6;
+					return v.length > length ? (
+						<tspan>
+							{v.substring(0, length) + '...'}
+							<title>{v}</title>
+						</tspan>
+					) : (
+						v
+					);
+				},
+			}}
+			tooltip={properties => {
+				const data = {...properties.data};
+				if (data) {
+					const {key, id, name, ...attributes} = data;
+					return (
+						<ChartTooltip
+							attributes={attributes}
+							featureKey={key}
+							id={id}
+							name={name}
+						/>
+					);
+				} else {
+					return null;
+				}
+			}}
 			{...settings}
 		/>
 	);
