@@ -80,18 +80,16 @@ const Intro = ({onViewSelect, views, tourGuideIsOpen}) => {
 					</div>
 				</div>
 				<div className="worldCereal-Intro-body"></div>
-				<div className="worldCereal-Intro-footer-wrapper">
-					<div className="worldCereal-Intro-footer-content">
-						<img className="worldCereal-Intro-footer-logo" src={valencia} />
-						<img className="worldCereal-Intro-footer-logo" src={cs} />
-						<img className="worldCereal-Intro-footer-logo" src={esa} />
-						<img className="worldCereal-Intro-footer-logo" src={gisat} />
-						<img className="worldCereal-Intro-footer-logo" src={iiasa} />
-						<img className="worldCereal-Intro-footer-logo" src={strasbourg} />
-						<img className="worldCereal-Intro-footer-logo" src={eleaf} />
-						<img className="worldCereal-Intro-footer-logo" src={vito} />
-						<img className="worldCereal-Intro-footer-logo" src={wageningen} />
-					</div>
+				<div className="worldCereal-Intro-footer">
+					<img className="worldCereal-Intro-footer-logo" src={valencia} />
+					<img className="worldCereal-Intro-footer-logo" src={cs} />
+					<img className="worldCereal-Intro-footer-logo" src={esa} />
+					<img className="worldCereal-Intro-footer-logo" src={gisat} />
+					<img className="worldCereal-Intro-footer-logo" src={iiasa} />
+					<img className="worldCereal-Intro-footer-logo" src={strasbourg} />
+					<img className="worldCereal-Intro-footer-logo" src={eleaf} />
+					<img className="worldCereal-Intro-footer-logo" src={vito} />
+					<img className="worldCereal-Intro-footer-logo" src={wageningen} />
 				</div>
 			</div>
 		</div>
