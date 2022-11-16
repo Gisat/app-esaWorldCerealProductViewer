@@ -3070,7 +3070,7 @@
 				"key": "bf8712af-780e-42d7-8a4c-c85de5147807",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Crop_19-absolute",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Crop_19",
 					"fidColumnName": "GID_1"
 				}
