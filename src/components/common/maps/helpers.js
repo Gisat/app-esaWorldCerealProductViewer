@@ -11,8 +11,9 @@ function getConfigByLayerState(configs, layerState) {
 		const {key: layerKey, layerTemplateKey} = layerState;
 		return _filter(configs, component => {
 			return (
-				component.layerKey === layerKey ||
-				component.layerTemplateKey === layerTemplateKey
+				(component.layerKey && component.layerKey === layerKey) ||
+				(component.layerTemplateKey &&
+					component.layerTemplateKey === layerTemplateKey)
 			);
 		});
 	} else {
