@@ -6,6 +6,7 @@ const StatisticLayerTooltip = ({
 	name,
 	// areaTotal,
 	ensureAbsoluteData,
+	relativeAttributeName,
 }) => {
 	useEffect(() => {
 		ensureAbsoluteData();
@@ -14,8 +15,13 @@ const StatisticLayerTooltip = ({
 		<div className={'VectorMapTooltip-layer'}>
 			<h4>{name}</h4>
 			<div>
-				<label>Area share:</label>
-				<div>{`${areaShare} %`}</div>
+				{areaShare ? (
+					<>
+						<label>{relativeAttributeName}</label>
+						<label>Area share:</label>
+						<div>{`${areaShare} %`}</div>
+					</>
+				) : null}
 			</div>
 			{/* <label>Total area:</label>
 			<div>{`${areaTotal} %`}</div> */}
@@ -28,6 +34,7 @@ StatisticLayerTooltip.propTypes = {
 	areaTotal: PropTypes.string,
 	name: PropTypes.string,
 	ensureAbsoluteData: PropTypes.string,
+	relativeAttributeName: PropTypes.string,
 };
 
 export default StatisticLayerTooltip;
