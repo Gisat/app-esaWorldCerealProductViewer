@@ -18,4 +18,14 @@
 
 .ptr-ChartTooltip-item {
   font-size: $b1;
+  color: var(--base75);
+  display: flex;
+}
+
+.ptr-ChartTooltip-item-attribute {
+  margin-right: .2rem;
+}
+
+.ptr-ChartTooltip-item-value {
+  font-weight: bold;
 }
