@@ -6,6 +6,8 @@ const mapStateToProps = state => {
 	setRecomputeState(state);
 
 	return {
+		noDataForCurrentSettings:
+			!Select.worldCereal.statistics.isDataForCurrentSettings(state),
 		componentSet:
 			Select.worldCereal.statistics.getVisualizationComponentSet(state),
 	};

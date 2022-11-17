@@ -246,6 +246,7 @@ const getActiveRelativeAttributeName = createSelector(
 /**
  * Get available periods from config
  * @param state {Object}
+ * @param {Array}
  */
 const getAvailablePeriodsForActiveCase = createSelector(
 	[
@@ -257,8 +258,25 @@ const getAvailablePeriodsForActiveCase = createSelector(
 	}
 );
 
+/**
+ * Is data for current case-period combination
+ * @param state {Object}
+ * @returns {boolean}
+ */
+const isDataForCurrentSettings = createSelector(
+	[CommonSelect.periods.getActiveKey, getAvailablePeriodsForActiveCase],
+	(activePeriodKey, availablePeriods) => {
+		return (
+			availablePeriods &&
+			availablePeriods &&
+			_includes(availablePeriods, activePeriodKey)
+		);
+	}
+);
+
 export default {
 	isCountryLevelDisabled,
+	isDataForCurrentSettings,
 	getVisualizationComponentSet,
 	getPeriods,
 	getAvailablePeriodsForActiveCase,

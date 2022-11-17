@@ -15,16 +15,23 @@ const getComponent = component => {
 	}
 };
 
-const Visualizations = ({componentSet}) => {
+const Visualizations = ({componentSet, noDataForCurrentSettings}) => {
 	return (
 		<div className="worldCereal-Visualizations ptr-dark">
-			{componentSet?.components?.map(component => getComponent(component))}
+			{noDataForCurrentSettings ? (
+				<div className="worldCereal-Visualizations-noDataInfo">
+					No data for selected period! Please choose another one.
+				</div>
+			) : (
+				componentSet?.components?.map(component => getComponent(component))
+			)}
 		</div>
 	);
 };
 
 Visualizations.propTypes = {
 	componentSet: PropTypes.object,
+	noDataForCurrentSettings: PropTypes.string,
 };
 
 export default Visualizations;

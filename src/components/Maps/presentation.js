@@ -41,19 +41,27 @@ const Tooltip = props => {
 	);
 };
 
-const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
-	const componentsByLayer = [
-		{
-			layerKey: 'statistics-global',
-			legend: {
-				component: StyleBasedLegend,
-				props: {
-					title: 'Product area share',
-					unit: '%',
+const Maps = ({
+	mode,
+	mapSetKey,
+	maps,
+	viewLimits,
+	noDataForCurrentSettings,
+}) => {
+	const componentsByLayer = !noDataForCurrentSettings
+		? [
+				{
+					layerKey: 'statistics-global',
+					legend: {
+						component: StyleBasedLegend,
+						props: {
+							title: 'Product area share',
+							unit: '%',
+						},
+					},
 				},
-			},
-		},
-	];
+		  ]
+		: null;
 	return mode === 'compare' ? (
 		<ReactCompareSlider
 			onlyHandleDraggable
@@ -138,7 +146,7 @@ Maps.propTypes = {
 	maps: PropTypes.array,
 	mapSetKey: PropTypes.string,
 	viewLimits: PropTypes.object,
-	componentsByLayer: PropTypes.array,
+	noDataForCurrentSettings: PropTypes.bool,
 };
 
 export default Maps;
