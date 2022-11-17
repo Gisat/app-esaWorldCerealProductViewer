@@ -169,7 +169,7 @@ const getUpdatedLayerStateByPlaces = createSelector(
 		const layerSettings = {
 			areaTreeLevelKey: layer.areaTreeLevelKey,
 			key: layer.key,
-			leyerKey: layer.leyerKey,
+			layerKey: layer.layerKey,
 			filterByActive: layer.filterByActive,
 			metadataModifiers: {
 				..._omit(layer.metadataModifiers, 'placeKey'),

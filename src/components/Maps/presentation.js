@@ -101,7 +101,9 @@ const Maps = ({mode, mapSetKey, maps, viewLimits}) => {
 	) : (
 		<ConnectedMapSet
 			Tooltip={Tooltip}
-			tooltipProps={{}}
+			tooltipProps={{
+				width: 250,
+			}}
 			stateMapSetKey={mapSetKey}
 			mapComponent={DeckGlMap}
 			connectedMapComponent={ConnectedMap}

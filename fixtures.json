@@ -2681,7 +2681,7 @@
 								"styles": [
 									{
 										"fill": "rgb(150,150,150)",
-										"fillOpacity": 0.65,
+										"fillOpacity": 0.8,
 										"outlineColor": "#232323",
 										"outlineWidth": 1,
 										"outlineOpacity": 1
@@ -2708,7 +2708,7 @@
 								"styles": [
 									{
 										"fill": "rgb(150,150,150)",
-										"fillOpacity": 0.65,
+										"fillOpacity": 0.8,
 										"outlineColor": "#232323",
 										"outlineWidth": 1,
 										"outlineOpacity": 1
@@ -2735,7 +2735,7 @@
 								"styles": [
 									{
 										"fill": "rgb(150,150,150)",
-										"fillOpacity": 0.65,
+										"fillOpacity": 0.8,
 										"outlineColor": "#232323",
 										"outlineWidth": 1,
 										"outlineOpacity": 1
@@ -2762,7 +2762,7 @@
 								"styles": [
 									{
 										"fill": "rgb(150,150,150)",
-										"fillOpacity": 0.65,
+										"fillOpacity": 0.8,
 										"outlineColor": "#232323",
 										"outlineWidth": 1,
 										"outlineOpacity": 1

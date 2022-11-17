@@ -3,27 +3,28 @@ import MapLegendClassItem from './MapLegendClassItem';
 import './style.scss';
 
 const roundValue = value => {
-	try {
-		let specialCharacter = '';
-		if (value.includes('=')) {
+	let specialCharacter = '';
+	if (typeof value === 'string') {
+		if (value?.includes('=')) {
 			value = value.replace('=', '');
 			specialCharacter = '=';
 		}
-		if (value.includes('<')) {
+		if (value?.includes('<')) {
 			value = value.replace('<', '');
 			specialCharacter = '<';
 		}
 
-		if (value.includes('>')) {
+		if (value?.includes('>')) {
 			value = value.replace('>', '');
 			specialCharacter = '>';
 		}
-		const valueFloat = Number.parseFloat(value);
-
-		return `${specialCharacter} ${Math.round(valueFloat * 1000) / 1000}`;
-	} catch (error) {
-		return value;
 	}
+
+	const valueFloat = typeof value === 'string' && Number.parseFloat(value);
+
+	return value
+		? `${specialCharacter} ${Math.round((valueFloat || value) * 1000) / 1000}`
+		: value;
 };
 
 const ClassesBarLabel = ({children}) => (
@@ -39,7 +40,10 @@ const ClassesBar = ({intervals}) => (
 		{intervals.map(interval => (
 			<div
 				title={
-					interval.name || `${interval.interval[0]} - ${interval.interval[1]}`
+					interval.name ||
+					`${roundValue(interval?.interval[0])} - ${roundValue(
+						interval?.interval[1]
+					)}`
 				}
 				key={interval.interval}
 				style={{background: interval.fill}}

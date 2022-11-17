@@ -2,7 +2,8 @@
 @import '../../../../../styles/variables';
 
 .worldCereal-StyleBasedLegend {
-  background: var(--base05);
+  @include frozenGlassEffect();
+  background: rgba(var(--base0rgb), .8);
   border-radius: .25rem;
   box-shadow: $floatingElementShadow;
   width: 20rem;

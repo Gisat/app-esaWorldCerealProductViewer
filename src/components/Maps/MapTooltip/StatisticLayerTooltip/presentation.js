@@ -17,9 +17,10 @@ const StatisticLayerTooltip = ({
 			<div>
 				{areaShare ? (
 					<>
-						<label>{relativeAttributeName}</label>
-						<label>Area share:</label>
-						<div>{`${areaShare} %`}</div>
+						<div className="VectorMapTooltip-attribute">
+							{relativeAttributeName}:{' '}
+						</div>
+						<div className="VectorMapTooltip-value">{`${areaShare} %`}</div>
 					</>
 				) : null}
 			</div>
