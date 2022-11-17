@@ -23,6 +23,8 @@ const mapStateToProps = state => {
 			periodsFilter.start,
 			periodsFilter.length
 		),
+		availablePeriods:
+			Select.worldCereal.statistics.getAvailablePeriodsForActiveCase(state),
 	};
 };
 

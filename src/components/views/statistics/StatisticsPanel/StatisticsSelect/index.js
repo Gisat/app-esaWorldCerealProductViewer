@@ -133,8 +133,13 @@ const StatisticsSelect = ({
 		}),
 		option: (provided, state) => ({
 			...provided,
+			pointerEvents: state.isDisabled ? 'none' : 'auto',
 			cursor: 'pointer',
-			color: state.isSelected ? 'var(--base100)' : 'var(--base0)',
+			color: state.isDisabled
+				? 'var(--base65)'
+				: state.isSelected
+				? 'var(--base100)'
+				: 'var(--base0)',
 			fontSize: '.875rem',
 			fontFamily: 'Roboto, sans-serif',
 			padding: '10px',

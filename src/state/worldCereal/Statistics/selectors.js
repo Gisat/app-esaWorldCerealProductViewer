@@ -243,10 +243,25 @@ const getActiveRelativeAttributeName = createSelector(
 	}
 );
 
+/**
+ * Get available periods from config
+ * @param state {Object}
+ */
+const getAvailablePeriodsForActiveCase = createSelector(
+	[
+		CommonSelect.cases.getActiveKey,
+		state => CommonSelect.app.getConfiguration(state, 'configByCaseKey'),
+	],
+	(activeCaseKey, configByCaseKey) => {
+		return configByCaseKey?.[activeCaseKey]?.availablePeriodKeys || null;
+	}
+);
+
 export default {
 	isCountryLevelDisabled,
 	getVisualizationComponentSet,
 	getPeriods,
+	getAvailablePeriodsForActiveCase,
 	getRegions,
 	getSelectionKeyForCountryLevel,
 	getUpdatedLayerStateByPlaces,

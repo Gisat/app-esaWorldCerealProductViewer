@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import {useEffect} from 'react';
+import {includes as _includes} from 'lodash';
 import StatisticsSelect from '../StatisticsSelect';
 import './style.scss';
 
 const PeriodSelect = ({
+	availablePeriods,
 	activePeriodKey,
 	periods,
 	onActivePeriodChange,
@@ -21,7 +23,11 @@ const PeriodSelect = ({
 	}, []);
 
 	const options = periods?.map(periodItem => {
-		return {value: periodItem.key, label: periodItem.data.nameDisplay};
+		return {
+			value: periodItem.key,
+			label: periodItem.data.nameDisplay,
+			isDisabled: !_includes(availablePeriods, periodItem.key),
+		};
 	});
 	const value = options?.find(option => option.value === activePeriodKey);
 
@@ -41,6 +47,7 @@ const PeriodSelect = ({
 
 PeriodSelect.propTypes = {
 	activePeriodKey: PropTypes.string,
+	availablePeriods: PropTypes.array,
 	periods: PropTypes.array,
 	onActivePeriodChange: PropTypes.func,
 	onMount: PropTypes.func,
