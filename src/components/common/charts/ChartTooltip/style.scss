@@ -5,10 +5,10 @@
   background-color: rgba(var(--base0rgb), 0.75);
   min-width: 15rem;
   border-radius: .25rem;
-  padding: .5rem;
+  padding: .75rem;
   box-shadow: $floatingElementShadow;
   color: $baseTextColor;
-  border: 1px solid var(--base30);
+  border: 1px solid var(--base35);
 }
 
 .ptr-ChartTooltip-header {
@@ -18,4 +18,14 @@
 
 .ptr-ChartTooltip-item {
   font-size: $b1;
+  color: var(--base75);
+  display: flex;
+}
+
+.ptr-ChartTooltip-item-attribute {
+  margin-right: .2rem;
+}
+
+.ptr-ChartTooltip-item-value {
+  font-weight: bold;
 }

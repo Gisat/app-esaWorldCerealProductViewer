@@ -39,11 +39,14 @@ const ChartTooltip = ({
 							value % 1 === 0 ? value.toLocaleString() : value;
 						if (attributeMetadata) {
 							return (
-								<div key={key} className="ptr-ChartTooltip-item">{`${
-									attributeMetadata?.data?.nameDisplay
-								}: ${formattedValue} ${
-									attributeMetadata?.data?.unit || null
-								}`}</div>
+								<div key={key} className="ptr-ChartTooltip-item">
+									<div className="ptr-ChartTooltip-item-attribute">{`${attributeMetadata?.data?.nameDisplay}: `}</div>
+									<div className="ptr-ChartTooltip-item-value">
+										{`${formattedValue} ${
+											attributeMetadata?.data?.unit || null
+										}`}
+									</div>
+								</div>
 							);
 						} else {
 							return null;

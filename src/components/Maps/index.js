@@ -11,6 +11,8 @@ const mapStateToProps = state => {
 		viewLimits: Select.maps.getMapSetViewLimits(state, mapSetKey),
 		maps: Select.maps.getMapSetMaps(state, mapSetKey),
 		mode: Select.components.get(state, 'Maps', 'mode'),
+		noDataForCurrentSettings:
+			!Select.worldCereal.statistics.isDataForCurrentSettings(state),
 	};
 };
 

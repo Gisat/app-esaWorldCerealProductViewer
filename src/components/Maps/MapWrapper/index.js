@@ -1,6 +1,7 @@
 import {connect} from '@gisatcz/ptr-state';
 import Action from '../../../state/Action';
 import Select from '../../../state/Select';
+import {disabledRemoveAllLayerForViewName} from '../../../constants/app';
 
 import Presentation from './presentation';
 
@@ -24,11 +25,17 @@ const mapStateToProps = (state, ownProps) => {
 		ownProps.mapKey,
 		'aez'
 	);
+
+	const activeView = Select.views.getActive(state);
+	const view = activeView?.data?.nameInternal;
+	const showRemoveAllLayers = view !== disabledRemoveAllLayerForViewName;
 	return {
 		activeMapKey: Select.maps.getMapSetActiveMapKey(state, mapSetKey),
 		mapSetMapKeys: Select.maps.getMapSetMapKeys(state, mapSetKey),
 		productsMetadata: productsMetadata || globalProductsMetadata,
+		layersState: Select.maps.getLayersStateByMapKey(state, ownProps.mapKey),
 		overlayLayer,
+		showRemoveAllLayers,
 	};
 };
 

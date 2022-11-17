@@ -697,10 +697,7 @@ export default {
 						components: ['GlobalTopTenBarChart', 'GlobalTopTenBarChartShare'],
 					},
 					GlobalOneSelected: {
-						components: [
-							'GlobalSharePieChart',
-							'GlobalShareCountryProductsBarChart',
-						],
+						components: ['GlobalSharePieChart'],
 					},
 					GlobalMultipleSelected: {
 						components: ['GlobalCountriesBarChart'],
@@ -758,7 +755,7 @@ export default {
 							boxRange: true,
 						},
 						data: {
-							backgroundLayer: backgroundLayers.openStreetMap_Mapnik,
+							backgroundLayer: backgroundLayers.esri_WorldImagery,
 							view: {
 								boxRange: 12000000,
 								center: {
@@ -785,7 +782,7 @@ export default {
 				activeKey: '10de783b-810b-4f8a-aceb-4c9e9f91d4d3',
 			},
 			periods: {
-				activeKey: '1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08',
+				activeKey: '6a7a4193-1339-4172-b54d-817c3e8cd6f7',
 			},
 			selections: {
 				activeKey: '764ff34a-2eee-4d82-8ffe-87da6ed1a3f7',

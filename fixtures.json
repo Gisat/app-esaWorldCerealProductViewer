@@ -16,30 +16,35 @@
 					"applicationKey": "esaWorldCerealProductViewer",
 					"data": {
 						"nameAttributeKey": "5f6a119b-addf-467e-ab1f-e07e4cdf79a6",
+						"unavailablePeriodKeys": ["1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08","2a293769-d7ba-4c83-800e-8184b457ac85","df428b66-5a83-4943-93b2-56dea2805509"],
 						"configByCaseKey": {
 							"577b253f-754f-421e-94a2-092f092b4947": {
 								"name": "Annual cropland",
 								"styleKey": "af4c5310-405f-426d-9bbd-098593ea2ac4",
 								"absoluteAttributeKey": "4fb212bb-ff1a-46d7-8fce-e341e7f08376",
-								"relativeAttributeKey": "73e3bd86-8701-47e4-b27b-9d2555d68304"
+								"relativeAttributeKey": "73e3bd86-8701-47e4-b27b-9d2555d68304",
+								"availablePeriodKeys": ["6a7a4193-1339-4172-b54d-817c3e8cd6f7"]
 							},
 							"66f490a6-d8df-45a3-adcb-d3648715ddd5": {
 								"name": "Active irrigation",
 								"styleKey": "da1a27e1-a718-4a9a-b054-c7d94328f1a9",
 								"absoluteAttributeKey": "901ff005-2a62-41d4-afc4-e8d1b1f5d088",
-								"relativeAttributeKey": "934a9fa2-ddb9-49a8-b4b2-170e39ef531e"
+								"relativeAttributeKey": "934a9fa2-ddb9-49a8-b4b2-170e39ef531e",
+								"availablePeriodKeys": ["f3293b7c-4725-49a6-beeb-19718083ab6c"]
 							},
 							"33caa296-cf88-4d5c-a67d-ffba11376d4a": {
 								"name": "Maize",
 								"styleKey": "7ae3bcd9-aa57-4fb1-9b6f-5b909d392328",
 								"absoluteAttributeKey": "55cb5a4a-8ce3-40a1-9f12-1a6b211f4255",
-								"relativeAttributeKey": "8e71e4da-5a90-4222-9350-f1c1f1bad5c5"
+								"relativeAttributeKey": "8e71e4da-5a90-4222-9350-f1c1f1bad5c5",
+								"availablePeriodKeys": ["f3293b7c-4725-49a6-beeb-19718083ab6c"]
 							},
 							"d439a6db-8f7b-4123-9e93-3892cad157f7": {
 								"name": "Cereals",
 								"styleKey": "2afcdbd6-fdc8-4756-a96b-0bf7d07637b0",
 								"absoluteAttributeKey": "6c8e8332-b01b-4c56-bf8e-2025a5abc465",
-								"relativeAttributeKey": "eb9dce86-39c6-480b-b7e3-2fac2101eac0"
+								"relativeAttributeKey": "eb9dce86-39c6-480b-b7e3-2fac2101eac0",
+								"availablePeriodKeys": ["f3293b7c-4725-49a6-beeb-19718083ab6c", "d93a6ec5-e6e2-4f9a-a368-8a8f2aa8c0fe"]
 							}
 						},
 						"componentSetByLevelKeyBySelectedFeaturesCount": {
@@ -294,7 +299,8 @@
 							"ZMB": "23c2e926-ed09-4f32-93e1-3988d6e46cf6",
 							"ZNC": "96c708f3-e854-45d7-b086-1d6dc62b2bd2",
 							"ZWE": "71eb4895-0733-4f25-ab6d-40b0abd0d5bd"
-						}
+						},
+						"availableCountryLevelForPlaceKey": "eaee3d97-2938-497c-b008-b43d5d5dbe89"
 					}
 				}
 			}
@@ -424,7 +430,7 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"nameInternal": "attribute_springWheatArea",
-					"nameDisplay": "Spring wheat area",
+					"nameDisplay": "Wheat area",
 					"type": "number",
 					"unit": "ha"
 				}
@@ -434,27 +440,7 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"nameInternal": "attribute_springWheatShare",
-					"nameDisplay": "Spring wheat share",
-					"type": "number",
-					"unit": "%"
-				}
-			},
-			{
-				"key": "52266523-9dd0-4c64-9a46-1469ef9d25d1",
-				"data": {
-					"applicationKey": "esaWorldCerealProductViewer",
-					"nameInternal": "attribute_winterWheatArea",
-					"nameDisplay": "Winter wheat area",
-					"type": "number",
-					"unit": "ha"
-				}
-			},
-			{
-				"key": "989077c4-453c-495f-b485-7c6b8de778fb",
-				"data": {
-					"applicationKey": "esaWorldCerealProductViewer",
-					"nameInternal": "attribute_winterWheatShare",
-					"nameDisplay": "Winter wheat share",
+					"nameDisplay": "Wheat share",
 					"type": "number",
 					"unit": "%"
 				}
@@ -492,7 +478,7 @@
 				"key": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
-					"nameInternal": "case_cereals",
+					"nameInternal": "case_cereals_summer",
 					"nameDisplay": "Cereals",
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3"
 				}
@@ -505,7 +491,7 @@
 					"applicationKey": "esaWorldCerealProductViewer",
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
 					"nameInternal": "period_2019annual",
-					"nameDisplay": "2019 - annual",
+					"nameDisplay": "2019",
 					"period": "2019"
 				}
 			},
@@ -535,7 +521,7 @@
 					"applicationKey": "esaWorldCerealProductViewer",
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
 					"nameInternal": "period_2020annual",
-					"nameDisplay": "2020 - annual",
+					"nameDisplay": "2020",
 					"period": "2020"
 				}
 			},
@@ -2699,7 +2685,7 @@
 								"styles": [
 									{
 										"fill": "rgb(150,150,150)",
-										"fillOpacity": 0.5,
+										"fillOpacity": 0.8,
 										"outlineColor": "#232323",
 										"outlineWidth": 1,
 										"outlineOpacity": 1
@@ -2726,7 +2712,7 @@
 								"styles": [
 									{
 										"fill": "rgb(150,150,150)",
-										"fillOpacity": 0.5,
+										"fillOpacity": 0.8,
 										"outlineColor": "#232323",
 										"outlineWidth": 1,
 										"outlineOpacity": 1
@@ -2753,7 +2739,7 @@
 								"styles": [
 									{
 										"fill": "rgb(150,150,150)",
-										"fillOpacity": 0.5,
+										"fillOpacity": 0.8,
 										"outlineColor": "#232323",
 										"outlineWidth": 1,
 										"outlineOpacity": 1
@@ -2780,7 +2766,7 @@
 								"styles": [
 									{
 										"fill": "rgb(150,150,150)",
-										"fillOpacity": 0.5,
+										"fillOpacity": 0.8,
 										"outlineColor": "#232323",
 										"outlineWidth": 1,
 										"outlineOpacity": 1
@@ -3070,7 +3056,7 @@
 				"key": "bf8712af-780e-42d7-8a4c-c85de5147807",
 				"data": {
 					"nameInternal": "dataSource_attribute_brazil_-Crop_19-absolute",
-					"tableName": "global",
+					"tableName": "brazil",
 					"columnName": "Crop_19",
 					"fidColumnName": "GID_1"
 				}
@@ -3859,7 +3845,7 @@
 					"scenarioKey": null,
 					"caseKey": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 					"attributeSetKey": null,
-					"attributeKey": "52266523-9dd0-4c64-9a46-1469ef9d25d1",
+					"attributeKey": "6c8e8332-b01b-4c56-bf8e-2025a5abc465",
 					"areaTreeLevelKey": "a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47",
 					"applicationKey": "esaWorldCerealProductViewer"
 				}
@@ -3876,7 +3862,7 @@
 					"scenarioKey": null,
 					"caseKey": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 					"attributeSetKey": null,
-					"attributeKey": "989077c4-453c-495f-b485-7c6b8de778fb",
+					"attributeKey": "eb9dce86-39c6-480b-b7e3-2fac2101eac0",
 					"areaTreeLevelKey": "a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47",
 					"applicationKey": "esaWorldCerealProductViewer"
 				}
@@ -4029,7 +4015,7 @@
 					"scenarioKey": null,
 					"caseKey": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 					"attributeSetKey": null,
-					"attributeKey": "52266523-9dd0-4c64-9a46-1469ef9d25d1",
+					"attributeKey": "6c8e8332-b01b-4c56-bf8e-2025a5abc465",
 					"areaTreeLevelKey": "a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47",
 					"applicationKey": "esaWorldCerealProductViewer"
 				}
@@ -4046,7 +4032,7 @@
 					"scenarioKey": null,
 					"caseKey": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 					"attributeSetKey": null,
-					"attributeKey": "989077c4-453c-495f-b485-7c6b8de778fb",
+					"attributeKey": "eb9dce86-39c6-480b-b7e3-2fac2101eac0",
 					"areaTreeLevelKey": "a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47",
 					"applicationKey": "esaWorldCerealProductViewer"
 				}
@@ -4199,7 +4185,7 @@
 					"scenarioKey": null,
 					"caseKey": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 					"attributeSetKey": null,
-					"attributeKey": "52266523-9dd0-4c64-9a46-1469ef9d25d1",
+					"attributeKey": "6c8e8332-b01b-4c56-bf8e-2025a5abc465",
 					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
 					"applicationKey": "esaWorldCerealProductViewer"
 				}
@@ -4216,7 +4202,7 @@
 					"scenarioKey": null,
 					"caseKey": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 					"attributeSetKey": null,
-					"attributeKey": "989077c4-453c-495f-b485-7c6b8de778fb",
+					"attributeKey": "eb9dce86-39c6-480b-b7e3-2fac2101eac0",
 					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
 					"applicationKey": "esaWorldCerealProductViewer"
 				}
@@ -4369,7 +4355,7 @@
 					"scenarioKey": null,
 					"caseKey": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 					"attributeSetKey": null,
-					"attributeKey": "52266523-9dd0-4c64-9a46-1469ef9d25d1",
+					"attributeKey": "6c8e8332-b01b-4c56-bf8e-2025a5abc465",
 					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
 					"applicationKey": "esaWorldCerealProductViewer"
 				}
@@ -4386,7 +4372,7 @@
 					"scenarioKey": null,
 					"caseKey": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 					"attributeSetKey": null,
-					"attributeKey": "989077c4-453c-495f-b485-7c6b8de778fb",
+					"attributeKey": "eb9dce86-39c6-480b-b7e3-2fac2101eac0",
 					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
 					"applicationKey": "esaWorldCerealProductViewer"
 				}
@@ -4539,7 +4525,7 @@
 					"scenarioKey": null,
 					"caseKey": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 					"attributeSetKey": null,
-					"attributeKey": "52266523-9dd0-4c64-9a46-1469ef9d25d1",
+					"attributeKey": "6c8e8332-b01b-4c56-bf8e-2025a5abc465",
 					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
 					"applicationKey": "esaWorldCerealProductViewer"
 				}
@@ -4556,7 +4542,7 @@
 					"scenarioKey": null,
 					"caseKey": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 					"attributeSetKey": null,
-					"attributeKey": "989077c4-453c-495f-b485-7c6b8de778fb",
+					"attributeKey": "eb9dce86-39c6-480b-b7e3-2fac2101eac0",
 					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
 					"applicationKey": "esaWorldCerealProductViewer"
 				}
@@ -4709,7 +4695,7 @@
 					"scenarioKey": null,
 					"caseKey": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 					"attributeSetKey": null,
-					"attributeKey": "52266523-9dd0-4c64-9a46-1469ef9d25d1",
+					"attributeKey": "6c8e8332-b01b-4c56-bf8e-2025a5abc465",
 					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
 					"applicationKey": "esaWorldCerealProductViewer"
 				}
@@ -4726,7 +4712,7 @@
 					"scenarioKey": null,
 					"caseKey": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 					"attributeSetKey": null,
-					"attributeKey": "989077c4-453c-495f-b485-7c6b8de778fb",
+					"attributeKey": "eb9dce86-39c6-480b-b7e3-2fac2101eac0",
 					"areaTreeLevelKey": "b8a2f8d0-41b6-4afc-ba3f-a0df21632975",
 					"applicationKey": "esaWorldCerealProductViewer"
 				}

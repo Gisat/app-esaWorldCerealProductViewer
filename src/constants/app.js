@@ -28,3 +28,4 @@ export const highlightedChartColorPalette = [
 
 export const STATISTICSLAYERKEY = 'statistics-global';
 export const AEZLAYERKEY = 'aez';
+export const disabledRemoveAllLayerForViewName = 'statistics';

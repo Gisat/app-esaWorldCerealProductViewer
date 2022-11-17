@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {find as _find, omit as _omit} from 'lodash';
+import {find as _find, omit as _omit, includes as _includes} from 'lodash';
 import {
 	recomputeSelectorOptions,
 	createRecomputeSelector,
@@ -82,6 +82,47 @@ const getRegions = createRecomputeSelector(componentKey => {
 }, recomputeSelectorOptions);
 
 /**
+ * TODO for now there is a limitation in configuration
+ */
+const getPeriods = createSelector(
+	[
+		CommonSelect.periods.getIndexed,
+		state => CommonSelect.app.getConfiguration(state, 'unavailablePeriodKeys'),
+	],
+	(periods, unavailablePeriodKeys) => {
+		if (periods) {
+			return periods.filter(period =>
+				unavailablePeriodKeys
+					? !_includes(unavailablePeriodKeys, period.key)
+					: period
+			);
+		} else {
+			return null;
+		}
+	}
+);
+
+/**
+ * TODO for now there is a limitation in configuration
+ */
+const isCountryLevelDisabled = createSelector(
+	[
+		CommonSelect.places.getActiveKeys,
+		state =>
+			CommonSelect.app.getConfiguration(
+				state,
+				'availableCountryLevelForPlaceKey'
+			),
+	],
+	(activePlaceKeys, availableForPlaceKey) => {
+		return !(
+			activePlaceKeys?.length === 1 &&
+			activePlaceKeys[0] === availableForPlaceKey
+		);
+	}
+);
+
+/**
  * Get selection associated wit country level
  * @returns {string}
  */
@@ -128,7 +169,7 @@ const getUpdatedLayerStateByPlaces = createSelector(
 		const layerSettings = {
 			areaTreeLevelKey: layer.areaTreeLevelKey,
 			key: layer.key,
-			leyerKey: layer.leyerKey,
+			layerKey: layer.layerKey,
 			filterByActive: layer.filterByActive,
 			metadataModifiers: {
 				..._omit(layer.metadataModifiers, 'placeKey'),
@@ -138,6 +179,18 @@ const getUpdatedLayerStateByPlaces = createSelector(
 			styleKey: layer.styleKey,
 		};
 		return layerSettings;
+	}
+);
+
+/**
+ * @param state,
+ * @param mapKey,
+ * @param layerKey,
+ */
+const getStyleKeyForActiveMapAndLayerKey = createSelector(
+	[CommonSelect.maps.getLayerStateByLayerKeyAndMapKey],
+	layer => {
+		return layer?.styleKey;
 	}
 );
 /**
@@ -161,6 +214,7 @@ const getTooltipTitle = createSelector(
 		}
 	}
 );
+
 /**
  * @param state,
  */
@@ -172,12 +226,66 @@ const getActiveRelativeAttributeKey = createSelector(
 	}
 );
 
+/**
+ * @param state,
+ */
+const getActiveRelativeAttributeName = createSelector(
+	[
+		CommonSelect.cases.getActiveKey,
+		CommonSelect.app.getCompleteConfiguration,
+		CommonSelect.attributes.getAllAsObject,
+	],
+	(activeCaseKey, configuration, attributes) => {
+		const configByCaseKey = configuration?.['configByCaseKey'];
+		const relativeAttributeKey =
+			configByCaseKey?.[activeCaseKey]?.['relativeAttributeKey'];
+		return attributes?.[relativeAttributeKey]?.data?.nameDisplay;
+	}
+);
+
+/**
+ * Get available periods from config
+ * @param state {Object}
+ * @param {Array}
+ */
+const getAvailablePeriodsForActiveCase = createSelector(
+	[
+		CommonSelect.cases.getActiveKey,
+		state => CommonSelect.app.getConfiguration(state, 'configByCaseKey'),
+	],
+	(activeCaseKey, configByCaseKey) => {
+		return configByCaseKey?.[activeCaseKey]?.availablePeriodKeys || null;
+	}
+);
+
+/**
+ * Is data for current case-period combination
+ * @param state {Object}
+ * @returns {boolean}
+ */
+const isDataForCurrentSettings = createSelector(
+	[CommonSelect.periods.getActiveKey, getAvailablePeriodsForActiveCase],
+	(activePeriodKey, availablePeriods) => {
+		return (
+			availablePeriods &&
+			availablePeriods &&
+			_includes(availablePeriods, activePeriodKey)
+		);
+	}
+);
+
 export default {
+	isCountryLevelDisabled,
+	isDataForCurrentSettings,
 	getVisualizationComponentSet,
+	getPeriods,
+	getAvailablePeriodsForActiveCase,
 	getRegions,
 	getSelectionKeyForCountryLevel,
 	getUpdatedLayerStateByPlaces,
 	getStatisticsLayerForActiveMap,
 	getTooltipTitle,
 	getActiveRelativeAttributeKey,
+	getActiveRelativeAttributeName,
+	getStyleKeyForActiveMapAndLayerKey,
 };

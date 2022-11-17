@@ -51,27 +51,28 @@
 	.VectorMapTooltip-layer {
 
     	display: flex;
-		padding: 0.5rem 0.75rem 0.25rem 0.5rem;
+		padding: .75rem 1rem .75rem .75rem;
 		flex-direction: column;
 		
 		h4{
 			color: var(--base20);
-			margin: 0.2rem 0rem;
+			margin: 0 0 .2rem;
 		}
 
 		>div{
 			display: flex;
-			flex-flow: row;
-			label{
-				margin-right: 0.25rem;
-				font-weight: bold;
-				font-size: 0.75rem;
-			}
-			div{
-				color: var(--base20);
-				font-size: 0.75rem;
-				font-style: italic;
-			}	
+			align-items: flex-end;
 		}
+	}
+
+	.VectorMapTooltip-attribute {
+		color: var(--base25);
+		font-size: $b1;
+		margin-right: .2rem;
+	}
+	.VectorMapTooltip-value{
+		color: var(--base25);
+		font-size: $b1;
+		font-weight: bold;
 	}
 }

@@ -34,12 +34,17 @@ const mapStateToProps = (state, ownProps) => {
 
 	const relativeAttributeKey =
 		Select.worldCereal.statistics.getActiveRelativeAttributeKey(state);
+
+	const relativeAttributeName =
+		Select.worldCereal.statistics.getActiveRelativeAttributeName(state);
 	//get absolute data
 	// const absoluteData = Select.data.attributeData.get
 	return {
 		name: title,
 		placename: ownProps?.layer?.object?.properties?.[fidColumnName],
 		areaShare: ownProps?.layer?.object?.properties?.[relativeAttributeKey],
+		relativeAttributeName,
+		// color?
 		// areaTotal:
 	};
 };

@@ -4,6 +4,9 @@ import Action from '../../Action';
 import Select from '../../Select';
 import {STATISTICSLAYERKEY, globalAreaLevelKey} from '../../../constants/app';
 
+const CLASSES_COUNT = 5;
+const COLORS = ['#ffffb2', '#fecc5c', '#fd8d3c', '#f03b20', '#bd0026'];
+
 function clearCountryLevelSelection() {
 	return (dispatch, getState) => {
 		const selectionKey =
@@ -204,7 +207,7 @@ function setMapLayerActiveAreaTreeLevelKey(areaTreeLevelKey) {
 			...layerSettings,
 			areaTreeLevelKey,
 			key: layerSettings.key,
-			leyerKey: layerSettings.leyerKey,
+			layerKey: layerSettings.layerKey,
 			filterByActive: layerSettings.filterByActive,
 			metadataModifiers: layerSettings.metadataModifiers,
 			options: {...layerSettings.options, selected: {[activeSelectionKey]: {}}},
@@ -255,8 +258,6 @@ function onLayerClick() {
  */
 function recalculateStatisticLayerStyle(statisticLayer) {
 	return (dispatch, getState) => {
-		const CLASSES_COUNT = 5;
-		const COLORS = ['#ffffb2', '#fecc5c', '#fd8d3c', '#f03b20', '#bd0026'];
 		const layerStyle = statisticLayer?.options?.style;
 		const layerFeatures = statisticLayer?.options?.features || [];
 		const attributeKey = layerStyle?.rules?.[0]?.styles?.[1]?.attributeKey;
@@ -310,7 +311,7 @@ function recalculateStatisticLayerStyle(statisticLayer) {
 			{...(style?.data?.definition?.rules?.[0]?.styles?.[0] || {})},
 			{
 				attributeKey: attributeKey,
-				attributeClasses,
+				...(range === 0 ? {attributeClasses: []} : {attributeClasses}),
 			},
 		];
 		//check if same style is not applied to prevent cycle of changes

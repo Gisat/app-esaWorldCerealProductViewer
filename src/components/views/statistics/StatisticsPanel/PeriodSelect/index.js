@@ -15,7 +15,7 @@ export const periodsFilter = {
 const mapStateToProps = state => {
 	return {
 		activePeriodKey: Select.periods.getActiveKey(state),
-		periods: Select.periods.getIndexed(
+		periods: Select.worldCereal.statistics.getPeriods(
 			state,
 			periodsFilter.filterByActive,
 			periodsFilter.filter,
@@ -23,6 +23,8 @@ const mapStateToProps = state => {
 			periodsFilter.start,
 			periodsFilter.length
 		),
+		availablePeriods:
+			Select.worldCereal.statistics.getAvailablePeriodsForActiveCase(state),
 	};
 };
 

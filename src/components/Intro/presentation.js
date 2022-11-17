@@ -6,7 +6,17 @@ import {Search, Globe1, User1, ChartVertical} from 'react-swm-icon-pack';
 import IntroCard from './IntroCard';
 import {IntroCardText, IntroCardTitle} from './IntroCard/presentation';
 import EsaLogo from '../atoms/EsaLogo';
+
 import logo from '../../assets/logo_name.png';
+import cs from '../../assets/cs.jpg';
+import eleaf from '../../assets/eleaf.jpg';
+import esa from '../../assets/esa.jpg';
+import gisat from '../../assets/gisat.jpg';
+import iiasa from '../../assets/iiasa.jpg';
+import strasbourg from '../../assets/strasbourg.jpg';
+import valencia from '../../assets/valencia.jpg';
+import vito from '../../assets/vito.jpg';
+import wageningen from '../../assets/wageningen.jpg';
 
 import './style.scss';
 
@@ -41,34 +51,46 @@ const Intro = ({onViewSelect, views, tourGuideIsOpen}) => {
 					onClick={() => setIsOpen(true)}
 					tooltip={{text: 'TourGuide', position: 'left', component: Tooltip}}
 				/>
-				<div className="worldCereal-Intro-header">
-					<img className="worldCereal-Intro-logo" src={logo} />
-					<div className="worldCereal-Intro-title">
-						<h1>
-							World<em>Cereal</em>, global cropland monitoring based on
-							Sentinels
-						</h1>
+				<div className="worldCereal-Intro-topSection">
+					<div className="worldCereal-Intro-header">
+						<img className="worldCereal-Intro-logo" src={logo} />
+						<div className="worldCereal-Intro-title">
+							<h1>
+								World<em>Cereal</em>, global cropland monitoring based on
+								Sentinels
+							</h1>
+						</div>
+						<EsaLogo />
 					</div>
-					<EsaLogo />
-				</div>
-				<div className="worldCereal-Intro-cards">
-					{views?.map(view => (
-						<IntroCard
-							key={view.key}
-							onClick={() => onViewSelect(view.key)}
-							Icon={getIcon(view.data.nameInternal)}
-						>
-							<IntroCardTitle>{view.data.nameDisplay}</IntroCardTitle>
-							<IntroCardText>{view.data.description}</IntroCardText>
+					<div className="worldCereal-Intro-cards">
+						{views?.map(view => (
+							<IntroCard
+								key={view.key}
+								onClick={() => onViewSelect(view.key)}
+								Icon={getIcon(view.data.nameInternal)}
+							>
+								<IntroCardTitle>{view.data.nameDisplay}</IntroCardTitle>
+								<IntroCardText>{view.data.description}</IntroCardText>
+							</IntroCard>
+						))}
+						<IntroCard disabled Icon={User1}>
+							<IntroCardTitle>User products</IntroCardTitle>
+							<IntroCardText>exploration</IntroCardText>
 						</IntroCard>
-					))}
-					<IntroCard disabled Icon={User1}>
-						<IntroCardTitle>User products</IntroCardTitle>
-						<IntroCardText>exploration</IntroCardText>
-					</IntroCard>
+					</div>
 				</div>
 				<div className="worldCereal-Intro-body"></div>
-				<div className="worldCereal-Intro-footer"></div>
+				<div className="worldCereal-Intro-footer">
+					<img className="worldCereal-Intro-footer-logo" src={valencia} />
+					<img className="worldCereal-Intro-footer-logo" src={cs} />
+					<img className="worldCereal-Intro-footer-logo" src={esa} />
+					<img className="worldCereal-Intro-footer-logo" src={gisat} />
+					<img className="worldCereal-Intro-footer-logo" src={iiasa} />
+					<img className="worldCereal-Intro-footer-logo" src={strasbourg} />
+					<img className="worldCereal-Intro-footer-logo" src={eleaf} />
+					<img className="worldCereal-Intro-footer-logo" src={vito} />
+					<img className="worldCereal-Intro-footer-logo" src={wageningen} />
+				</div>
 			</div>
 		</div>
 	);
