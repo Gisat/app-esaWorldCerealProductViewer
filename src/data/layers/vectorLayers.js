@@ -3,9 +3,9 @@ import aezGeometries from '../geometries/aez.json';
 export const aez = {
 	key: 'aez',
 	layerKey: 'aez',
-	name: 'AEZ',
+	name: 'Agro-ecological zones (AEZ)',
 	type: 'vector',
-	opacity: 0.8,
+	opacity: 1,
 	options: {
 		features: aezGeometries.features,
 		selectable: true,
@@ -17,7 +17,7 @@ export const aez = {
 							outlineWidth: 2,
 							outlineColor: '#000000',
 							fill: '#ffffff',
-							fillOpacity: 0.4,
+							fillOpacity: 1,
 						},
 					],
 				},

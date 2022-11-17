@@ -20,9 +20,9 @@ const OverlayLayer = ({onChange, aezIsActive}) => {
 				/>
 				<label
 					className="worldCereal-LayersControl-layerName "
-					title={'Zone layer'}
+					title={'Agro-ecological zones (AEZ)'}
 				>
-					Zones
+					Agro-ecological zones (AEZ)
 				</label>
 			</div>
 		</div>
