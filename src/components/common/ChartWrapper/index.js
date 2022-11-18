@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
 			state,
 			ownProps.componentKey
 		)?.type,
-		title: Select.components.get(state, ownProps.componentKey, 'title'),
+		title: Select.cases.getActive(state)?.data?.nameDisplay,
 		subtitle: Select.components.get(state, ownProps.componentKey, 'subtitle'),
 	};
 };
