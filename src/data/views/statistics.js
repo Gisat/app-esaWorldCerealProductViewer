@@ -44,8 +44,8 @@ export default {
 					mode: 'set',
 				},
 				GlobalTopTenBarChart: {
-					title: 'Total product area',
-					subtitle: 'in hectares',
+					title: '',
+					subtitle: 'Top 10 countries: Total product area [ha]',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
@@ -103,8 +103,9 @@ export default {
 					},
 				},
 				GlobalTopTenBarChartShare: {
-					title: 'Product area share',
-					subtitle: 'in total country area [ha]',
+					title: '',
+					subtitle:
+						'Top 10 countries: Share of product in total country area [%]',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
@@ -163,8 +164,8 @@ export default {
 					},
 				},
 				GlobalSharePieChart: {
-					title: 'Product share',
-					subtitle: 'on total country area [%]',
+					title: '',
+					subtitle: 'Share of product in total country area [%]',
 					settings: {
 						indexBy: 'id',
 						margin: {top: 10, right: 10, bottom: 10, left: 10},
@@ -209,8 +210,8 @@ export default {
 					},
 				},
 				GlobalShareCountryProductsBarChart: {
-					title: 'Products share',
-					subtitle: 'on total country area [%]',
+					title: '',
+					subtitle: 'Share of product in total country area [%]',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
@@ -270,8 +271,8 @@ export default {
 					},
 				},
 				GlobalCountriesBarChart: {
-					title: 'Product share',
-					subtitle: 'on total country area [%]',
+					title: '',
+					subtitle: 'Share of product in total country area [%]',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
@@ -330,8 +331,8 @@ export default {
 					},
 				},
 				CountryTopTenBarChart: {
-					title: 'Top 10 regions',
-					subtitle: 'by total product area [ha]',
+					title: '',
+					subtitle: 'Top 10 regions: Total product area [ha]',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
@@ -389,8 +390,8 @@ export default {
 					},
 				},
 				CountrySharePieChart: {
-					title: 'Product share',
-					subtitle: 'on total region area [%]',
+					title: '',
+					subtitle: 'Share of product in total country area [%]',
 					settings: {
 						indexBy: 'id',
 						margin: {top: 10, right: 10, bottom: 10, left: 10},
@@ -435,8 +436,8 @@ export default {
 					},
 				},
 				CountryRegionsBarChart: {
-					title: 'Product share',
-					subtitle: 'on total region area [%]',
+					title: '',
+					subtitle: 'Share of product in total country area [%]',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',

@@ -81,15 +81,57 @@ const Intro = ({onViewSelect, views, tourGuideIsOpen}) => {
 				</div>
 				<div className="worldCereal-Intro-body"></div>
 				<div className="worldCereal-Intro-footer">
-					<img className="worldCereal-Intro-footer-logo" src={valencia} />
-					<img className="worldCereal-Intro-footer-logo" src={cs} />
-					<img className="worldCereal-Intro-footer-logo" src={esa} />
-					<img className="worldCereal-Intro-footer-logo" src={gisat} />
-					<img className="worldCereal-Intro-footer-logo" src={iiasa} />
-					<img className="worldCereal-Intro-footer-logo" src={strasbourg} />
-					<img className="worldCereal-Intro-footer-logo" src={eleaf} />
-					<img className="worldCereal-Intro-footer-logo" src={vito} />
-					<img className="worldCereal-Intro-footer-logo" src={wageningen} />
+					<a
+						className="worldCereal-Intro-footer-logo"
+						href="https://www.uv.es/uvweb/college/en/university-valencia-1285845048380.html"
+					>
+						<img src={valencia} />
+					</a>
+					<a
+						className="worldCereal-Intro-footer-logo"
+						href="https://www.csgroup.eu/en/"
+					>
+						<img src={cs} />
+					</a>
+					<a
+						className="worldCereal-Intro-footer-logo"
+						href="https://www.esa.int/"
+					>
+						<img src={esa} />
+					</a>
+					<a className="worldCereal-Intro-footer-logo" href="https://gisat.cz/">
+						<img src={gisat} />
+					</a>
+					<a
+						className="worldCereal-Intro-footer-logo"
+						href="https://iiasa.ac.at/"
+					>
+						<img src={iiasa} />
+					</a>
+					<a
+						className="worldCereal-Intro-footer-logo"
+						href="https://en.unistra.fr/"
+					>
+						<img src={strasbourg} />
+					</a>
+					<a
+						className="worldCereal-Intro-footer-logo"
+						href="https://eleaf.com/"
+					>
+						<img src={eleaf} />
+					</a>
+					<a
+						className="worldCereal-Intro-footer-logo"
+						href="https://vito.be/en"
+					>
+						<img src={vito} />
+					</a>
+					<a
+						className="worldCereal-Intro-footer-logo"
+						href="https://www.wur.nl/en.htm"
+					>
+						<img src={wageningen} />
+					</a>
 				</div>
 			</div>
 		</div>

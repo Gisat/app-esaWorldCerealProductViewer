@@ -31,7 +31,7 @@ const Visualizations = ({componentSet, noDataForCurrentSettings}) => {
 
 Visualizations.propTypes = {
 	componentSet: PropTypes.object,
-	noDataForCurrentSettings: PropTypes.string,
+	noDataForCurrentSettings: PropTypes.bool,
 };
 
 export default Visualizations;

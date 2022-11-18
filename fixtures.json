@@ -294,7 +294,6 @@
 							"XCA": "c4c3efd4-e8a6-4089-bc28-ed9b7fbd2aba",
 							"XKO": "d8d8a4a2-9537-4b2c-a4c0-6125b1326f6f",
 							"YEM": "d008f82b-3fde-4756-a8cc-4473c7765f71",
-							"Z06": "398501b3-6a32-4a96-85f0-ca8e3b209e46",
 							"ZAF": "313d6496-68e9-42cf-b6b5-27cba5be7cc8",
 							"ZMB": "23c2e926-ed09-4f32-93e1-3988d6e46cf6",
 							"ZNC": "96c708f3-e854-45d7-b086-1d6dc62b2bd2",
@@ -2615,15 +2614,6 @@
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
 					"nameInternal": "place_YEM",
 					"nameDisplay": "Yemen"
-				}
-			},
-			{
-				"key": "398501b3-6a32-4a96-85f0-ca8e3b209e46",
-				"data": {
-					"applicationKey": "esaWorldCerealProductViewer",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"nameInternal": "place_Z06",
-					"nameDisplay": "Pakistan"
 				}
 			},
 			{
