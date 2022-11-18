@@ -54,10 +54,6 @@ const Maps = ({
 					layerKey: 'statistics-global',
 					legend: {
 						component: StyleBasedLegend,
-						props: {
-							title: 'Product area share',
-							unit: '%',
-						},
 					},
 				},
 		  ]
