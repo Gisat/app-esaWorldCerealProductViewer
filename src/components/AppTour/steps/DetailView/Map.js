@@ -6,23 +6,25 @@ import '../style.scss';
 
 const Map = () => (
 	<TourStepsContainer>
-		<h3 style={{margin: '0 0 0.4rem 0'}}>Map window</h3>
+		<h3 style={{margin: '0 0 1rem 0'}}>Map window</h3>
 		<TourStepsSectionsContainer>
 			<TourStepsSection>
 				<p>
-					<b>Map</b> - background layer and added layers.
+					<b>Map</b> - Main window to visualise WorldCereals products and
+					supporting datasets.
 				</p>
 				<p style={{marginBottom: 0}}>
-					<b>Layer info</b> - information and basic interactions for added
-					layers.
+					<b>Product Tag</b> - Get the metadata information about displayed
+					product and define basic visualisation parameters.
 				</p>
 			</TourStepsSection>
 			<TourStepsSection isRight>
 				<p>
-					<b>Minimap</b> - shows your view on larger scale.
+					<b>Minimap</b> - See the location of current Area of Interest (AOI) on
+					global map.
 				</p>
 				<p style={{marginBottom: 0}}>
-					<b>Map tools</b> - tools for controlling the map window.
+					<b>Map toolbar</b> - Open tools for controlling the map window.
 				</p>
 			</TourStepsSection>
 		</TourStepsSectionsContainer>

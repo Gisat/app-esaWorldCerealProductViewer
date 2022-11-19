@@ -7,22 +7,24 @@ import '../style.scss';
 const Header = () => (
 	<TourStepsContainer>
 		<h3 style={{margin: '0 0 0.4rem 0'}}>Header</h3>
-		<p>Header is a simple navigation in the application.</p>
+		<p>
+			The header includes the basic navigation tools within the application.
+		</p>
 		<TourStepsSectionsContainer>
 			<TourStepsSection>
 				<p>
-					<b>Logo + title</b> - back to introduction.
+					<b>Project Logo & Title</b> - Go back to the portal home page.
 				</p>
 				<p style={{marginBottom: 0}}>
-					<b>ESA logo</b> - link to ESA.
+					<b>ESA Logo</b> - Link to the ESA home page.
 				</p>
 			</TourStepsSection>
 			<TourStepsSection isRight>
 				<p>
-					<b>Configuration</b> - configuration for basic tools.
+					<b>Configuration </b> - Open configuration panel for Map toolbar.
 				</p>
 				<p style={{marginBottom: 0}}>
-					<b>Tour</b> - tour guide through application.
+					<b>Tour</b> - Start the application tour guide.
 				</p>
 			</TourStepsSection>
 		</TourStepsSectionsContainer>

@@ -35,7 +35,7 @@ const AppTour = ({
 	const style = {
 		popover: base => ({
 			...base,
-			maxWidth: '90%',
+			maxWidth: '80%',
 			'--reactour-accent': 'rgb(233, 177, 22)',
 		}),
 		badge: base => ({
