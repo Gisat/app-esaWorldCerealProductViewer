@@ -44,7 +44,7 @@ const getChartTitle = createCachedSelector(
 		(state, componentKey, title) => title,
 	],
 	(componentTitle, givenTitle) => {
-		return `${componentTitle}${givenTitle}`;
+		return `${componentTitle}${givenTitle || ''}`;
 	}
 )((state, componentKey) => componentKey);
 
@@ -55,7 +55,7 @@ const getChartSubtitle = createCachedSelector(
 		(state, componentKey, subtitle) => subtitle,
 	],
 	(componentSubtitle, givenSubtitle) => {
-		return `${componentSubtitle}${givenSubtitle}`;
+		return `${componentSubtitle}${givenSubtitle || ''}`;
 	}
 )((state, componentKey) => componentKey);
 

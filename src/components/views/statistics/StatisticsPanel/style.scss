@@ -39,7 +39,7 @@ $statisticsPanelPaddingRight: 1rem;
   display: flex;
   flex-direction: column;
   grid-gap: 1rem;
-  padding: m(1) $statisticsPanelPaddingRight 1rem $statisticsPanelPaddingLeft;
+  padding: 1rem $statisticsPanelPaddingRight .5rem $statisticsPanelPaddingLeft;
 }
 
 .worldCereal-StatisticsPanel-configurations > div {

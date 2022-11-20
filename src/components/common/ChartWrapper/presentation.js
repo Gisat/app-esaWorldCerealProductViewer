@@ -1,10 +1,21 @@
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import BarChart from '../charts/BarChart';
 import DonutChart from '../charts/DonutChart';
 
 import './style.scss';
 
-const ChartWrapper = ({componentKey, title, subtitle, type, onChartClick}) => {
+const ChartWrapper = ({
+	small,
+	componentKey,
+	title,
+	subtitle,
+	type,
+	onChartClick,
+}) => {
+	const classes = classnames('ptr-ChartWrapper', {
+		'is-small': small,
+	});
 	let content = null;
 
 	switch (type) {
@@ -17,7 +28,7 @@ const ChartWrapper = ({componentKey, title, subtitle, type, onChartClick}) => {
 	}
 
 	return (
-		<div className={'ptr-ChartWrapper'}>
+		<div className={classes}>
 			<div className={'ptr-ChartWrapper-header'}>
 				<div>
 					<div className={'ptr-ChartWrapper-title'}>{title}</div>
@@ -39,6 +50,7 @@ ChartWrapper.propTypes = {
 	subtitle: PropTypes.string,
 	type: PropTypes.string,
 	onChartClick: PropTypes.func,
+	small: PropTypes.bool,
 };
 
 export default ChartWrapper;

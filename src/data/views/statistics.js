@@ -208,6 +208,190 @@ export default {
 						},
 					},
 				},
+				GlobalSharePieChartActiveIrrigation2020Summer1: {
+					title: 'Active irrigation (summer1)',
+					subtitle: 'Irrigated/cropland area share [%]',
+					settings: {
+						indexBy: 'id',
+						margin: {top: 5, right: 5, bottom: 5, left: 5},
+						innerRadius: 0.7,
+						padAngle: 1,
+						cornerRadius: 0,
+						activeOuterRadiusOffset: 8,
+						arcLabelsTextColor: 'theme',
+						enableArcLinkLabels: false,
+						enableArcLabels: false,
+						isInteractive: false,
+						motionConfig: 'slow',
+						transitionMode: 'startAngle',
+						theme: {
+							fontSize: 11,
+							textColor: 'var(--base30)',
+							axis: {
+								legend: {
+									text: {
+										fontSize: 13,
+										fontWeight: 'bold',
+									},
+								},
+								ticks: {
+									line: {
+										stroke: 'var(--base20)',
+									},
+								},
+							},
+							grid: {
+								line: {
+									stroke: 'var(--base20)',
+								},
+							},
+							labels: {
+								text: {
+									fontSize: 13,
+									fontWeight: 'bold',
+								},
+							},
+						},
+					},
+				},
+				GlobalSharePieChartMaize2020Summer1: {
+					title: 'Maize (summer1)',
+					subtitle: 'Maize/cropland area share [%]',
+					settings: {
+						indexBy: 'id',
+						margin: {top: 5, right: 5, bottom: 5, left: 5},
+						innerRadius: 0.7,
+						padAngle: 1,
+						cornerRadius: 0,
+						activeOuterRadiusOffset: 8,
+						arcLabelsTextColor: 'theme',
+						enableArcLinkLabels: false,
+						enableArcLabels: false,
+						isInteractive: false,
+						motionConfig: 'slow',
+						transitionMode: 'startAngle',
+						theme: {
+							fontSize: 11,
+							textColor: 'var(--base30)',
+							axis: {
+								legend: {
+									text: {
+										fontSize: 13,
+										fontWeight: 'bold',
+									},
+								},
+								ticks: {
+									line: {
+										stroke: 'var(--base20)',
+									},
+								},
+							},
+							grid: {
+								line: {
+									stroke: 'var(--base20)',
+								},
+							},
+							labels: {
+								text: {
+									fontSize: 13,
+									fontWeight: 'bold',
+								},
+							},
+						},
+					},
+				},
+				GlobalSharePieChartCereals2020Summer1: {
+					title: 'Cereals (summer1)',
+					subtitle: 'Cereals/cropland area share [%]',
+					settings: {
+						indexBy: 'id',
+						margin: {top: 5, right: 5, bottom: 5, left: 5},
+						innerRadius: 0.7,
+						padAngle: 1,
+						cornerRadius: 0,
+						activeOuterRadiusOffset: 8,
+						arcLabelsTextColor: 'theme',
+						enableArcLinkLabels: false,
+						enableArcLabels: false,
+						isInteractive: false,
+						motionConfig: 'slow',
+						transitionMode: 'startAngle',
+						theme: {
+							fontSize: 11,
+							textColor: 'var(--base30)',
+							axis: {
+								legend: {
+									text: {
+										fontSize: 13,
+										fontWeight: 'bold',
+									},
+								},
+								ticks: {
+									line: {
+										stroke: 'var(--base20)',
+									},
+								},
+							},
+							grid: {
+								line: {
+									stroke: 'var(--base20)',
+								},
+							},
+							labels: {
+								text: {
+									fontSize: 13,
+									fontWeight: 'bold',
+								},
+							},
+						},
+					},
+				},
+				GlobalSharePieChartCereals2020Winter: {
+					title: 'Cereals (winter)',
+					subtitle: 'Cereals/cropland area share [%]',
+					settings: {
+						indexBy: 'id',
+						margin: {top: 5, right: 5, bottom: 5, left: 5},
+						innerRadius: 0.7,
+						padAngle: 1,
+						cornerRadius: 0,
+						activeOuterRadiusOffset: 8,
+						arcLabelsTextColor: 'theme',
+						enableArcLinkLabels: false,
+						enableArcLabels: false,
+						isInteractive: false,
+						motionConfig: 'slow',
+						transitionMode: 'startAngle',
+						theme: {
+							fontSize: 11,
+							textColor: 'var(--base30)',
+							axis: {
+								legend: {
+									text: {
+										fontSize: 13,
+										fontWeight: 'bold',
+									},
+								},
+								ticks: {
+									line: {
+										stroke: 'var(--base20)',
+									},
+								},
+							},
+							grid: {
+								line: {
+									stroke: 'var(--base20)',
+								},
+							},
+							labels: {
+								text: {
+									fontSize: 13,
+									fontWeight: 'bold',
+								},
+							},
+						},
+					},
+				},
 				GlobalShareCountryProductsBarChart: {
 					title: '',
 					subtitle: '',
@@ -584,6 +768,102 @@ export default {
 						start: 1,
 						length: 1,
 					},
+					GlobalSharePieChartActiveIrrigation2020Summer1: {
+						type: 'donutChart',
+						options: {
+							valuesAsPercentage: true,
+							oneValue: true,
+							centeredMetric: {
+								fontSize: '1.15rem',
+								fontWeight: 700,
+								fill: 'var(--base85)',
+							},
+						},
+						metadataModifiers: {
+							caseKey: '66f490a6-d8df-45a3-adcb-d3648715ddd5',
+							periodKey: 'f3293b7c-4725-49a6-beeb-19718083ab6c',
+						},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+						},
+						attributeKeys: ['934a9fa2-ddb9-49a8-b4b2-170e39ef531e'],
+						start: 1,
+						length: 1,
+					},
+					GlobalSharePieChartMaize2020Summer1: {
+						type: 'donutChart',
+						options: {
+							valuesAsPercentage: true,
+							oneValue: true,
+							centeredMetric: {
+								fontSize: '1.15rem',
+								fontWeight: 700,
+								fill: 'var(--base85)',
+							},
+						},
+						metadataModifiers: {
+							caseKey: '33caa296-cf88-4d5c-a67d-ffba11376d4a',
+							periodKey: 'f3293b7c-4725-49a6-beeb-19718083ab6c',
+						},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+						},
+						attributeKeys: ['8e71e4da-5a90-4222-9350-f1c1f1bad5c5'],
+						start: 1,
+						length: 1,
+					},
+					GlobalSharePieChartCereals2020Summer1: {
+						type: 'donutChart',
+						options: {
+							valuesAsPercentage: true,
+							oneValue: true,
+							centeredMetric: {
+								fontSize: '1.15rem',
+								fontWeight: 700,
+								fill: 'var(--base85)',
+							},
+						},
+						metadataModifiers: {
+							caseKey: 'd439a6db-8f7b-4123-9e93-3892cad157f7',
+							periodKey: 'f3293b7c-4725-49a6-beeb-19718083ab6c',
+						},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+						},
+						attributeKeys: ['eb9dce86-39c6-480b-b7e3-2fac2101eac0'],
+						start: 1,
+						length: 1,
+					},
+					GlobalSharePieChartCereals2020Winter: {
+						type: 'donutChart',
+						options: {
+							valuesAsPercentage: true,
+							oneValue: true,
+							centeredMetric: {
+								fontSize: '1.15rem',
+								fontWeight: 700,
+								fill: 'var(--base85)',
+							},
+						},
+						metadataModifiers: {
+							caseKey: 'd439a6db-8f7b-4123-9e93-3892cad157f7',
+							periodKey: 'd93a6ec5-e6e2-4f9a-a368-8a8f2aa8c0fe',
+						},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+						},
+						attributeKeys: ['eb9dce86-39c6-480b-b7e3-2fac2101eac0'],
+						start: 1,
+						length: 1,
+					},
 					GlobalShareCountryProductsBarChart: {
 						type: 'barChart',
 						options: {
@@ -700,7 +980,13 @@ export default {
 						components: ['GlobalSharePieChart'],
 					},
 					GlobalOneSelectedAnnualCropland: {
-						components: ['GlobalSharePieChart'],
+						components: [
+							'GlobalSharePieChart',
+							'GlobalSharePieChartActiveIrrigation2020Summer1',
+							'GlobalSharePieChartMaize2020Summer1',
+							'GlobalSharePieChartCereals2020Winter',
+							'GlobalSharePieChartCereals2020Summer1',
+						],
 					},
 					GlobalMultipleSelected: {
 						components: ['GlobalCountriesBarChart'],
