@@ -10,6 +10,7 @@ const mapStateToProps = state => {
 	return {
 		years: Select.worldCereal.globalProductMetadata.getYears(state),
 		products: Select.worldCereal.globalProductMetadata.getAll(state, mapKey),
+		isCollapsed: Select.components.get(state, 'GlobalProducts', 'collapsed'),
 	};
 };
 
@@ -22,6 +23,11 @@ const mapDispatchToProps = () => {
 			onProductClick: product => {
 				dispatch(
 					Action.worldCereal.globalProductMetadata.addProductToMap(product)
+				);
+			},
+			onCollapse: collapsed => {
+				dispatch(
+					Action.components.set('GlobalProducts', 'collapsed', collapsed)
 				);
 			},
 		};
