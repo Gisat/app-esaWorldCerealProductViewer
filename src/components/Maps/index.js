@@ -8,6 +8,7 @@ const mapStateToProps = state => {
 
 	return {
 		mapSetKey,
+		view: Select.views.getActive(state),
 		viewLimits: Select.maps.getMapSetViewLimits(state, mapSetKey),
 		maps: Select.maps.getMapSetMaps(state, mapSetKey),
 		mode: Select.components.get(state, 'Maps', 'mode'),

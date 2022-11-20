@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import {
 	ReactCompareSlider,
 	ReactCompareSliderHandle,
@@ -46,6 +47,7 @@ const Maps = ({
 	mapSetKey,
 	maps,
 	viewLimits,
+	view,
 	noDataForCurrentSettings,
 }) => {
 	const componentsByLayer = !noDataForCurrentSettings
@@ -58,6 +60,14 @@ const Maps = ({
 				},
 		  ]
 		: null;
+
+	const attributionScaleContainerClasses = classnames(
+		'worldCereal-AttributionScaleContainer',
+		{
+			'is-shifted': view?.data?.nameInternal === 'globalView',
+		}
+	);
+
 	return mode === 'compare' ? (
 		<ReactCompareSlider
 			onlyHandleDraggable
@@ -84,7 +94,7 @@ const Maps = ({
 				>
 					<MapComponentsGroup className="worldCereal-MapInfoElements">
 						<OverviewMap overviewMapKey="overview" />
-						<MapComponentsGroup className="worldCereal-AttributionScaleContainer">
+						<MapComponentsGroup className={attributionScaleContainerClasses}>
 							<MapAttribution mapSetKey={mapSetKey} />
 							<Scale />
 						</MapComponentsGroup>
@@ -128,7 +138,7 @@ const Maps = ({
 			</MapComponentsGroup>
 			<MapComponentsGroup className="worldCereal-MapInfoElements">
 				<OverviewMap overviewMapKey="overview" />
-				<MapComponentsGroup className="worldCereal-AttributionScaleContainer">
+				<MapComponentsGroup className={attributionScaleContainerClasses}>
 					<MapAttribution mapSetKey={mapSetKey} />
 					<Scale />
 				</MapComponentsGroup>
@@ -142,6 +152,7 @@ Maps.propTypes = {
 	maps: PropTypes.array,
 	mapSetKey: PropTypes.string,
 	viewLimits: PropTypes.object,
+	view: PropTypes.object,
 	noDataForCurrentSettings: PropTypes.bool,
 };
 

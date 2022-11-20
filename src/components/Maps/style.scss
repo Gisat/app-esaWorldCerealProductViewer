@@ -56,6 +56,10 @@ div[data-rcs="clip-item"] {
 .worldCereal-AttributionScaleContainer {
   display: flex;
   grid-gap: .35rem;
+  position: relative;
+}
+.worldCereal-AttributionScaleContainer.is-shifted {
+  left: 2.75rem;
 }
 
 // Map set controls

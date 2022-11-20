@@ -248,7 +248,7 @@ const ProductLabelLegend = ({style}) => {
 
 		return (
 			<div className="worldCereal-ProductLabelLegend">
-				{legendItems.map((item, i) => {
+				{legendItems.reverse().map((item, i) => {
 					return (
 						<ProductLabelLegendItem
 							key={i}
