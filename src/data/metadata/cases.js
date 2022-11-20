@@ -59,7 +59,7 @@ export default [
 		key: 'cereals',
 		data: {
 			nameDisplay: 'Cereals',
-			cogStyleKey: 'c2ea3a49-8da1-473d-ad7b-3860c95a4cc7',
+			cogStyleKey: '67950ddf-bfd3-4c0b-8b92-ef0580a67455',
 			color: '#d97501',
 		},
 	},
@@ -67,7 +67,7 @@ export default [
 		key: 'springcereals',
 		data: {
 			nameDisplay: 'Spring cereals',
-			cogStyleKey: 'c2ea3a49-8da1-473d-ad7b-3860c95a4cc7',
+			cogStyleKey: '67950ddf-bfd3-4c0b-8b92-ef0580a67455',
 			color: '#d97501',
 		},
 	},
@@ -75,7 +75,7 @@ export default [
 		key: 'wintercereals',
 		data: {
 			nameDisplay: 'Winter cereals',
-			cogStyleKey: 'c2ea3a49-8da1-473d-ad7b-3860c95a4cc7',
+			cogStyleKey: '67950ddf-bfd3-4c0b-8b92-ef0580a67455',
 			color: '#d97501',
 		},
 	},
