@@ -47,10 +47,15 @@
 								"availablePeriodKeys": ["f3293b7c-4725-49a6-beeb-19718083ab6c", "d93a6ec5-e6e2-4f9a-a368-8a8f2aa8c0fe"]
 							}
 						},
-						"componentSetByLevelKeyBySelectedFeaturesCount": {
+						"componentSetByLevelKeyBySelectedFeaturesCountByCaseKey": {
 							"a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47": {
 								"no-selected": "GlobalNoSelected",
-								"one-selected": "GlobalOneSelected",
+								"one-selected": {
+									"577b253f-754f-421e-94a2-092f092b4947": "GlobalOneSelectedAnnualCropland",
+									"66f490a6-d8df-45a3-adcb-d3648715ddd5": "GlobalOneSelected",
+									"33caa296-cf88-4d5c-a67d-ffba11376d4a": "GlobalOneSelected",
+									"d439a6db-8f7b-4123-9e93-3892cad157f7": "GlobalOneSelected"
+								},
 								"multiple-selected": "GlobalMultipleSelected"
 							},
 							"b8a2f8d0-41b6-4afc-ba3f-a0df21632975": {

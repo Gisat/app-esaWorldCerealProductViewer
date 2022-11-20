@@ -699,6 +699,9 @@ export default {
 					GlobalOneSelected: {
 						components: ['GlobalSharePieChart'],
 					},
+					GlobalOneSelectedAnnualCropland: {
+						components: ['GlobalSharePieChart'],
+					},
 					GlobalMultipleSelected: {
 						components: ['GlobalCountriesBarChart'],
 					},
