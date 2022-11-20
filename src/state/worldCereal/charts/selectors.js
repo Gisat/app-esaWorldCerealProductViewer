@@ -3,8 +3,6 @@ import {
 	createRecomputeSelector,
 	createRecomputeObserver,
 	recomputeSelectorOptions,
-	commonSelectors,
-	commonHelpers,
 } from '@gisatcz/ptr-state';
 import {createCachedSelector} from 're-reselect';
 import {
@@ -39,32 +37,27 @@ const getChartMetadata = createCachedSelector(
 
 const getChartMetadataObserver = createRecomputeObserver(getChartMetadata);
 
-const getAvailableAttributeKeys = createRecomputeSelector(chartComponentKey => {
-	const componentState =
-		CommonSelect.data.components.getComponentStateByKeyObserver(
-			chartComponentKey
-		);
-
-	if (componentState) {
-		const activeKeys = commonSelectors.getAllActiveKeysObserver();
-		let fullFilter = commonHelpers.mergeFilters(
-			activeKeys,
-			componentState.filterByActive,
-			componentState.filter
-		);
-		const relations = CommonSelect.data.attributeRelations.getIndexed({
-			...fullFilter,
-			layerTemplateKey: componentState.layerTemplateKey,
-		});
-		if (relations?.length) {
-			return relations.map(relation => relation.data.attributeKey);
-		} else {
-			return null;
-		}
-	} else {
-		return null;
+const getChartTitle = createCachedSelector(
+	[
+		(state, componentKey) =>
+			CommonSelect.components.get(state, componentKey, 'title'),
+		(state, componentKey, title) => title,
+	],
+	(componentTitle, givenTitle) => {
+		return `${componentTitle}${givenTitle}`;
 	}
-}, recomputeSelectorOptions);
+)((state, componentKey) => componentKey);
+
+const getChartSubtitle = createCachedSelector(
+	[
+		(state, componentKey) =>
+			CommonSelect.components.get(state, componentKey, 'subtitle'),
+		(state, componentKey, subtitle) => subtitle,
+	],
+	(componentSubtitle, givenSubtitle) => {
+		return `${componentSubtitle}${givenSubtitle}`;
+	}
+)((state, componentKey) => componentKey);
 
 const getDataForNivoBarChart = createRecomputeSelector(componentKey => {
 	const data = CommonSelect.data.components.getDataForCartesianChart({
@@ -167,7 +160,8 @@ const getDataForNivoDonutChart = createRecomputeSelector(componentKey => {
 
 export default {
 	getChartMetadata,
-	getAvailableAttributeKeys,
+	getChartTitle,
+	getChartSubtitle,
 	getDataForNivoBarChart,
 	getDataForNivoDonutChart,
 };

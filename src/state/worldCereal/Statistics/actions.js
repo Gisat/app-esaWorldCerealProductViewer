@@ -146,6 +146,13 @@ function setCaseDependentChartsAttributeByActiveCaseKey(caseKey) {
 							])
 						);
 
+						dispatch(
+							CommonAction.attributes.useKeys(
+								[absoluteAttributeKey],
+								'setCaseDependentChartsAttributeByActiveCaseKey'
+							)
+						);
+
 						if (attributeOrder) {
 							dispatch(
 								CommonAction.data.components.setAttributeOrder(key, [
@@ -338,6 +345,22 @@ function recalculateStatisticLayerStyle(statisticLayer) {
 	};
 }
 
+/**
+ * Use attributes for component
+ */
+function useChartAttributes(componentKey, componentId) {
+	return (dispatch, getState) => {
+		const componentState = Select.data.components.getComponentStateByKey(
+			getState(),
+			componentKey
+		);
+		const attributeKeys = componentState?.attributeKeys;
+		if (attributeKeys?.length) {
+			dispatch(Action.attributes.useKeys(attributeKeys, componentId));
+		}
+	};
+}
+
 export default {
 	setActiveSelectionFeatureKeysByActivePlaceKeys,
 	setActivePlaceKeysByActiveSelectionFeatureKeys,
@@ -348,4 +371,5 @@ export default {
 	setMapLayerActivePlaceKey,
 	onLayerClick,
 	recalculateStatisticLayerStyle,
+	useChartAttributes,
 };

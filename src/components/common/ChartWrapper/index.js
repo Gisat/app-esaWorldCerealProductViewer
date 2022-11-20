@@ -9,8 +9,16 @@ const mapStateToProps = (state, ownProps) => {
 			state,
 			ownProps.componentKey
 		)?.type,
-		title: Select.cases.getActive(state)?.data?.nameDisplay,
-		subtitle: Select.components.get(state, ownProps.componentKey, 'subtitle'),
+		title: Select.worldCereal.charts.getChartTitle(
+			state,
+			ownProps.componentKey,
+			ownProps.title
+		),
+		subtitle: Select.worldCereal.charts.getChartSubtitle(
+			state,
+			ownProps.componentKey,
+			ownProps.subtitle
+		),
 	};
 };
 

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import ChartWrapper from '../../../../common/ChartWrapper';
-import GlobalChart from './charts/GlobalChart';
+import GlobalChartWrapper from './charts/GlobalChartWrapper';
+import WordCerealBaseChartWrapper from './charts/WordCerealBaseChartWrapper';
 import './style.scss';
 
 const getComponent = component => {
@@ -9,9 +10,19 @@ const getComponent = component => {
 		case 'GlobalTopTenBarChartShare':
 		case 'GlobalSharePieChart':
 		case 'GlobalCountriesBarChart':
-			return <GlobalChart key={component} componentKey={component} />;
+			return (
+				<GlobalChartWrapper>
+					<WordCerealBaseChartWrapper key={component} componentKey={component}>
+						<ChartWrapper />
+					</WordCerealBaseChartWrapper>
+				</GlobalChartWrapper>
+			);
 		default:
-			return <ChartWrapper key={component} componentKey={component} />;
+			return (
+				<WordCerealBaseChartWrapper key={component} componentKey={component}>
+					<ChartWrapper />
+				</WordCerealBaseChartWrapper>
+			);
 	}
 };
 

@@ -368,7 +368,7 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"nameInternal": "attribute_annualCroplandShare",
-					"nameDisplay": "Share of cropland area in total country area",
+					"nameDisplay": "Share of cropland area in total area",
 					"type": "number",
 					"unit": "%",
 					"color": "#e41a1c"
