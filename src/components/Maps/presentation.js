@@ -106,7 +106,7 @@ const Maps = ({
 		<ConnectedMapSet
 			Tooltip={Tooltip}
 			tooltipProps={{
-				width: 250,
+				width: 350,
 			}}
 			stateMapSetKey={mapSetKey}
 			mapComponent={DeckGlMap}
