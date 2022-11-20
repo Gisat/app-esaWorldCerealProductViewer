@@ -357,7 +357,7 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"nameInternal": "attribute_annualCroplandArea",
-					"nameDisplay": "Annual cropland area",
+					"nameDisplay": "Total cropland area",
 					"type": "number",
 					"unit": "ha",
 					"color": "#e41a1c"
@@ -368,7 +368,7 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"nameInternal": "attribute_annualCroplandShare",
-					"nameDisplay": "Annual cropland share",
+					"nameDisplay": "Share of cropland area in total area",
 					"type": "number",
 					"unit": "%",
 					"color": "#e41a1c"
@@ -389,7 +389,7 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"nameInternal": "attribute_annualIrrigationArea",
-					"nameDisplay": "Annual irrigation area",
+					"nameDisplay": "Total irrigation area",
 					"type": "number",
 					"unit": "ha"
 				}
@@ -399,7 +399,7 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"nameInternal": "attribute_annualIrrigationShare",
-					"nameDisplay": "Annual irrigation share",
+					"nameDisplay": "Share of irrigation area in total cropland area",
 					"type": "number",
 					"unit": "%"
 				}
@@ -409,7 +409,7 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"nameInternal": "attribute_annualMaizeArea",
-					"nameDisplay": "Annual Maize area",
+					"nameDisplay": "Total maize area",
 					"type": "number",
 					"unit": "ha"
 				}
@@ -419,7 +419,7 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"nameInternal": "attribute_annualMaizeShare",
-					"nameDisplay": "Annual Maize share",
+					"nameDisplay": "Share of maize area in total cropland area",
 					"type": "number",
 					"unit": "%"
 				}
@@ -429,7 +429,7 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"nameInternal": "attribute_springWheatArea",
-					"nameDisplay": "Wheat area",
+					"nameDisplay": "Total cereals area",
 					"type": "number",
 					"unit": "ha"
 				}
@@ -439,7 +439,7 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"nameInternal": "attribute_springWheatShare",
-					"nameDisplay": "Wheat share",
+					"nameDisplay": "Share of cereals area in total cropland area",
 					"type": "number",
 					"unit": "%"
 				}

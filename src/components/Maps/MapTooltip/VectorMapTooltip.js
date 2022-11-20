@@ -12,8 +12,10 @@ const VectorMapTooltip = ({layer}) => {
 			return (
 				<div className={'VectorMapTooltip-layer'}>
 					<div>
-						<label>Zone:</label>
-						<div>{layer?.object?.properties?.zoneID}</div>
+						<div className="VectorMapTooltip-attribute">AEZ: </div>
+						<div className="VectorMapTooltip-value">
+							{layer?.object?.properties?.aez_id}
+						</div>
 					</div>
 				</div>
 			);

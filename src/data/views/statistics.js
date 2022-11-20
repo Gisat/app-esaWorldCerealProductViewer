@@ -45,7 +45,7 @@ export default {
 				},
 				GlobalTopTenBarChart: {
 					title: '',
-					subtitle: 'Top 10 countries: Total product area [ha]',
+					subtitle: 'Top 10 countries: ',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
@@ -104,8 +104,7 @@ export default {
 				},
 				GlobalTopTenBarChartShare: {
 					title: '',
-					subtitle:
-						'Top 10 countries: Share of product in total country area [%]',
+					subtitle: 'Top 10 countries: ',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
@@ -165,7 +164,7 @@ export default {
 				},
 				GlobalSharePieChart: {
 					title: '',
-					subtitle: 'Share of product in total country area [%]',
+					subtitle: '',
 					settings: {
 						indexBy: 'id',
 						margin: {top: 10, right: 10, bottom: 10, left: 10},
@@ -211,7 +210,7 @@ export default {
 				},
 				GlobalShareCountryProductsBarChart: {
 					title: '',
-					subtitle: 'Share of product in total country area [%]',
+					subtitle: '',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
@@ -272,7 +271,7 @@ export default {
 				},
 				GlobalCountriesBarChart: {
 					title: '',
-					subtitle: 'Share of product in total country area [%]',
+					subtitle: '',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
@@ -332,7 +331,7 @@ export default {
 				},
 				CountryTopTenBarChart: {
 					title: '',
-					subtitle: 'Top 10 regions: Total product area [ha]',
+					subtitle: 'Top 10 regions: ',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
@@ -391,7 +390,7 @@ export default {
 				},
 				CountrySharePieChart: {
 					title: '',
-					subtitle: 'Share of product in total country area [%]',
+					subtitle: '',
 					settings: {
 						indexBy: 'id',
 						margin: {top: 10, right: 10, bottom: 10, left: 10},
@@ -437,7 +436,7 @@ export default {
 				},
 				CountryRegionsBarChart: {
 					title: '',
-					subtitle: 'Share of product in total country area [%]',
+					subtitle: '',
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',

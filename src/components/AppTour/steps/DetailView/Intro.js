@@ -4,10 +4,13 @@ import '../style.scss';
 
 const Intro = () => (
 	<TourStepsContainer>
-		<p>
-			Welcome to the <b>Detailed view</b> exploration.
+		<p style={{marginBottom: '0.4rem'}}>
+			Welcome to the <b>Detailed exploration</b> template.
 		</p>
-		<p style={{marginBottom: 0}}>In this view you can explore...</p>
+		<p style={{marginBottom: 0}}>
+			You can explore all individual products that are based on Agro-ecological
+			zones (AEZ) within this mapping template.
+		</p>
 	</TourStepsContainer>
 );
 

@@ -53,7 +53,7 @@ export default [
 		content: Map,
 	},
 	{
-		selector: '.worldCereal-StatisticsPanel',
+		selector: '.worldCereal-StatisticsPanel-body',
 		content: Panel,
 	},
 ];

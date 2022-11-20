@@ -7,6 +7,7 @@ import {
 	Select as CommonSelect,
 } from '@gisatcz/ptr-state';
 import {STATISTICSLAYERKEY, globalAreaLevelKey} from '../../../constants/app';
+import {createCachedSelector} from 're-reselect';
 
 const getComponentSetByLevelKeyBySelectedFeaturesCountConfig =
 	createRecomputeObserver(state =>
@@ -244,6 +245,30 @@ const getActiveRelativeAttributeName = createSelector(
 );
 
 /**
+ * @param state,
+ */
+const getSubtitleForBaseChartWrapper = createCachedSelector(
+	[
+		CommonSelect.data.components.getComponentStateByKey,
+		CommonSelect.attributes.getAllAsObject,
+	],
+	(componentState, attributes) => {
+		if (componentState && attributes) {
+			const attributeKey = componentState.attributeKeys?.[0];
+			const attributeMetadata = attributes[attributeKey];
+			if (attributeMetadata) {
+				const {nameDisplay, unit} = attributeMetadata.data;
+				return `${nameDisplay || ''} ${unit ? `[${unit}]` : ''}`;
+			} else {
+				return '';
+			}
+		} else {
+			return '';
+		}
+	}
+)((state, componentKey) => componentKey);
+
+/**
  * Get available periods from config
  * @param state {Object}
  * @param {Array}
@@ -288,4 +313,5 @@ export default {
 	getActiveRelativeAttributeKey,
 	getActiveRelativeAttributeName,
 	getStyleKeyForActiveMapAndLayerKey,
+	getSubtitleForBaseChartWrapper,
 };

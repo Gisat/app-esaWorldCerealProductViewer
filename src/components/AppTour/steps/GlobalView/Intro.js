@@ -4,10 +4,13 @@ import '../style.scss';
 
 const Intro = () => (
 	<TourStepsContainer>
-		<p>
-			Welcome to the <b>Global view</b> exploration.
+		<p style={{marginBottom: '0.4rem'}}>
+			Welcome to the <b>Global view</b> template.
 		</p>
-		<p>In this view you can explore...</p>
+		<p style={{marginBottom: 0}}>
+			You can explore all WorldCereal products aggregated by products categories
+			and individual seasons within this mapping template.
+		</p>
 	</TourStepsContainer>
 );
 

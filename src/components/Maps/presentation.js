@@ -54,10 +54,6 @@ const Maps = ({
 					layerKey: 'statistics-global',
 					legend: {
 						component: StyleBasedLegend,
-						props: {
-							title: 'Product area share',
-							unit: '%',
-						},
 					},
 				},
 		  ]
@@ -110,7 +106,7 @@ const Maps = ({
 		<ConnectedMapSet
 			Tooltip={Tooltip}
 			tooltipProps={{
-				width: 250,
+				width: 350,
 			}}
 			stateMapSetKey={mapSetKey}
 			mapComponent={DeckGlMap}

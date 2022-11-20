@@ -7,6 +7,7 @@ export const aez = {
 	type: 'vector',
 	opacity: 1,
 	options: {
+		fidColumnName: 'aez_id',
 		features: aezGeometries.features,
 		selectable: true,
 		style: {
@@ -14,10 +15,10 @@ export const aez = {
 				{
 					styles: [
 						{
-							outlineWidth: 2,
+							outlineWidth: 1,
 							outlineColor: '#000000',
 							fill: '#ffffff',
-							fillOpacity: 1,
+							fillOpacity: 0.2,
 						},
 					],
 				},
