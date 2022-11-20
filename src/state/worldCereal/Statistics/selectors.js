@@ -1,5 +1,10 @@
 import {createSelector} from 'reselect';
-import {find as _find, omit as _omit, includes as _includes} from 'lodash';
+import {
+	find as _find,
+	omit as _omit,
+	includes as _includes,
+	isObject as _isObject,
+} from 'lodash';
 import {
 	recomputeSelectorOptions,
 	createRecomputeSelector,
@@ -9,11 +14,11 @@ import {
 import {STATISTICSLAYERKEY, globalAreaLevelKey} from '../../../constants/app';
 import {createCachedSelector} from 're-reselect';
 
-const getComponentSetByLevelKeyBySelectedFeaturesCountConfig =
+const getComponentSetByLevelKeyBySelectedFeaturesCountByCaseKeyConfig =
 	createRecomputeObserver(state =>
 		CommonSelect.app.getConfiguration(
 			state,
-			'componentSetByLevelKeyBySelectedFeaturesCount'
+			'componentSetByLevelKeyBySelectedFeaturesCountByCaseKey'
 		)
 	);
 
@@ -21,10 +26,13 @@ const getActiveSelection = createRecomputeObserver(
 	CommonSelect.selections.getActive
 );
 
+const getActiveCaseKey = createRecomputeObserver(
+	CommonSelect.cases.getActiveKey
+);
+
 const getActiveLevelKey = createRecomputeObserver(
 	CommonSelect.areas.areaTreeLevels.getActiveKey
 );
-
 const getComponentSetByKey = createRecomputeObserver(
 	CommonSelect.data.components.getSetStateByKey
 );
@@ -32,20 +40,27 @@ const getComponentSetByKey = createRecomputeObserver(
 const getComponentSetKeyByActivePlaceNumberOfSelectedFeatureKeys =
 	createRecomputeSelector(() => {
 		const componentSetsConfig =
-			getComponentSetByLevelKeyBySelectedFeaturesCountConfig();
+			getComponentSetByLevelKeyBySelectedFeaturesCountByCaseKeyConfig();
 		const activeSelection = getActiveSelection();
 		const numberOfSelectedFeatures =
 			activeSelection?.data?.featureKeysFilter?.keys?.length;
 		const activeLevelKey = getActiveLevelKey();
+		const activeCaseKey = getActiveCaseKey();
 
-		if (activeLevelKey && componentSetsConfig) {
+		if (activeLevelKey && activeCaseKey && componentSetsConfig) {
+			let configByCaseKey;
 			if (numberOfSelectedFeatures > 1) {
-				return componentSetsConfig[activeLevelKey]?.['multiple-selected'];
+				configByCaseKey =
+					componentSetsConfig[activeLevelKey]?.['multiple-selected'];
 			} else if (numberOfSelectedFeatures === 1) {
-				return componentSetsConfig[activeLevelKey]?.['one-selected'];
+				configByCaseKey = componentSetsConfig[activeLevelKey]?.['one-selected'];
 			} else {
-				return componentSetsConfig[activeLevelKey]?.['no-selected'];
+				configByCaseKey = componentSetsConfig[activeLevelKey]?.['no-selected'];
 			}
+
+			return _isObject(configByCaseKey)
+				? configByCaseKey[activeCaseKey]
+				: configByCaseKey;
 		} else {
 			return null;
 		}
