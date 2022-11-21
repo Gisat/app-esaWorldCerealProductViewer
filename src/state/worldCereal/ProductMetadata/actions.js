@@ -115,7 +115,7 @@ function handleDataSourceAndAddtoMap(
 				spatialDataSourceKey,
 				type: 'wms',
 				options: {
-					pickable: true,
+					pickable: false,
 					hoverable: true,
 					transparentColor: [255, 255, 255, 0], // white border, transparent background
 					params: {
