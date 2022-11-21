@@ -11,6 +11,7 @@ const mapStateToProps = state => {
 			'filterWindow.expanded'
 		),
 		tourGuideIsOpen: Select.components.get(state, 'tourGuide', 'isOpen'),
+		isTimelineCollapsed: Select.components.get(state, 'Timeline', 'collapsed'),
 	};
 };
 
