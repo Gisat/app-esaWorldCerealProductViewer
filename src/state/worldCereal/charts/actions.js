@@ -65,13 +65,16 @@ function onSelectedFeaturesChange(chartComponentKey, featureKeys) {
 		);
 
 		if (componentState) {
-			dispatch(
-				CommonAction.data.components.setFeatureKeys(
-					chartComponentKey,
-					featureKeys
-				)
-			);
-			dispatch(CommonAction.data.components.use(chartComponentKey));
+			const prevFeatureKeys = componentState?.featureKeys;
+			if (JSON.stringify(featureKeys) !== JSON.stringify(prevFeatureKeys)) {
+				dispatch(
+					CommonAction.data.components.setFeatureKeys(
+						chartComponentKey,
+						featureKeys
+					)
+				);
+				dispatch(CommonAction.data.components.use(chartComponentKey));
+			}
 		}
 	};
 }

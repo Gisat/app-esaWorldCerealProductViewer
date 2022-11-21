@@ -63,7 +63,7 @@ const getAll = createSelector(
 	}
 );
 
-const getYears = createSelector(getAll, products => {
+const getYears = createSelector([getAll], products => {
 	const years = new Set();
 
 	for (const product of products) {
