@@ -10,6 +10,7 @@ const getComponent = component => {
 		case 'GlobalTopTenBarChartShare':
 		case 'GlobalSharePieChart':
 		case 'GlobalCountriesBarChart':
+		case 'GlobalCountriesBarChartShare':
 			return (
 				<GlobalChartWrapper key={component}>
 					<WordCerealBaseChartWrapper componentKey={component}>
@@ -26,6 +27,10 @@ const getComponent = component => {
 					<ChartWrapper small componentKey={component} />
 				</GlobalChartWrapper>
 			);
+		case 'CountrySharePieChartMaize2020Summer1':
+		case 'CountrySharePieChartCereals2020Summer1':
+		case 'CountrySharePieChartCereals2020Winter':
+			return <ChartWrapper small key={component} componentKey={component} />;
 		default:
 			return (
 				<WordCerealBaseChartWrapper key={component} componentKey={component}>
