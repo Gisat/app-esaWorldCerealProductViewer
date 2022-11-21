@@ -8,6 +8,7 @@ import {connects} from '@gisatcz/ptr-state';
 import {utils} from '@gisatcz/ptr-utils';
 
 import MapTimelineLegend from './MapTimelineLegend';
+import TimelineControlButton from '../../common/TimelineControlButton';
 import {timelineLayerLineHeight} from '../../../../constants/app';
 import './style.scss';
 
@@ -134,6 +135,8 @@ const Timeline = ({
 	onMount,
 	activeMapKey,
 	isInteractivityLimited,
+	isCollapsed,
+	onCollapse,
 }) => {
 	useEffect(() => {
 		if (typeof onMount === 'function') {
@@ -143,6 +146,7 @@ const Timeline = ({
 
 	const classes = classnames('worldCereal-Timeline', {
 		disabled: isInteractivityLimited,
+		'is-collapsed': isCollapsed,
 	});
 
 	const contentHeight =
@@ -153,6 +157,7 @@ const Timeline = ({
 
 	return (
 		<div className={classes}>
+			<TimelineControlButton collapsed={isCollapsed} onClick={onCollapse} />
 			{layers.length > 0 ? (
 				<MapTimelinePresentation
 					LayerRowComponent={LayerRowComponentWrapped}
@@ -188,6 +193,8 @@ Timeline.propTypes = {
 	layers: propTypes.array,
 	onLayerClick: propTypes.func,
 	onMount: propTypes.func,
+	onCollapse: propTypes.func,
+	isCollapsed: propTypes.bool,
 };
 
 export default Timeline;

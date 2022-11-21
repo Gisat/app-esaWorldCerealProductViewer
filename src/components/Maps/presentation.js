@@ -64,7 +64,7 @@ const Maps = ({
 	const attributionScaleContainerClasses = classnames(
 		'worldCereal-AttributionScaleContainer',
 		{
-			'is-shifted': view?.data?.nameInternal === 'globalView',
+			'is-shifted': view?.data?.nameInternal !== 'statistics',
 		}
 	);
 

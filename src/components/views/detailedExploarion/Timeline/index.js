@@ -15,6 +15,7 @@ const mapStateToProps = state => {
 			state,
 			mapSetKey
 		),
+		isCollapsed: Select.components.get(state, 'Timeline', 'collapsed'),
 	};
 };
 
@@ -27,6 +28,9 @@ const mapDispatchToProps = dispatch => {
 					timelineLayer?.layerState?.spatialDataSourceKey
 				)
 			);
+		},
+		onCollapse: collapsed => {
+			dispatch(Action.components.set('Timeline', 'collapsed', collapsed));
 		},
 	};
 };

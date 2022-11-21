@@ -28,6 +28,15 @@
     }
   }
 
+  .worldCereal-Timeline.is-collapsed {
+    height: 0;
+    min-height: 0;
+  }
+
+  .worldCereal-Timeline.is-collapsed.disabled:after {
+    display: none;
+  }
+
   .worldCereal-Timeline.disabled {
     border-top: 1px solid var(--base95);
   }
