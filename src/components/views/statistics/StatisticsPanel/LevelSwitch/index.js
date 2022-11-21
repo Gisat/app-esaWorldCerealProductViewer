@@ -54,6 +54,11 @@ const mapDispatchToPropsFactory = dispatch => {
 				dispatch(
 					Action.worldCereal.statistics.setActiveSelectionForActiveAreaTreeLevel()
 				);
+
+				//zoom to place
+				dispatch(
+					Action.worldCereal.statistics.zoomToActivePlace(activeLevelKey)
+				);
 			},
 			setLayer: activeLevelKey => {
 				dispatch(
