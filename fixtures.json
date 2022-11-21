@@ -311,6 +311,16 @@
 		]
 	},
 	"metadata": {
+		"scopes": [
+			{
+				"key": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
+				"data": {
+					"applicationKey": "esaWorldCerealProductViewer",
+					"nameInternal": "scope_statistics",
+					"nameDisplay": "Statistics"
+				}
+			}
+		],
 		"areaTrees": [
 			{
 				"key": "79b65d72-9d4c-4959-a7fa-579c3a372406",
@@ -2655,16 +2665,6 @@
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
 					"nameInternal": "place_ZWE",
 					"nameDisplay": "Zimbabwe"
-				}
-			}
-		],
-		"scopes": [
-			{
-				"key": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-				"data": {
-					"applicationKey": "esaWorldCerealProductViewer",
-					"nameInternal": "scope_statistics",
-					"nameDisplay": "Statistics"
 				}
 			}
 		],
