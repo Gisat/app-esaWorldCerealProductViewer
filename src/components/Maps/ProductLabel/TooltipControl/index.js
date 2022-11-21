@@ -5,7 +5,7 @@ import LayerLabelTool from '../LayerLabelTool';
 const TooltipControl = ({active, onChange}) => {
 	return (
 		<LayerLabelTool
-			title="Enable tooltips"
+			title="Data query"
 			key="tootips"
 			onClick={() => onChange(!active)}
 		>
