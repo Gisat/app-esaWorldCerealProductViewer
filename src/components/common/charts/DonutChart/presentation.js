@@ -59,6 +59,7 @@ const DonutChart = ({
 					props => <CenteredMetric style={options.centeredMetric} {...props} />,
 				]}
 				colors={datum => datum.data.color || 'var(--accent70)'}
+				animate={false}
 				{...settings}
 			/>
 		);
