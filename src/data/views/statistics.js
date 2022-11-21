@@ -480,7 +480,8 @@ export default {
 						enableGridY: false,
 						enableGridX: true,
 						enableLabel: true,
-						labelSkipHeight: 13,
+						labelSkipHeight: 15,
+						labelSkipWidth: 60,
 						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
 						theme: {
 							fontSize: 11,
@@ -521,7 +522,7 @@ export default {
 						margin: {top: 0, right: 25, bottom: 20, left: 100},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
-						valueFormat: ' >-,d',
+						valueFormat: ' >-.2r',
 						axisTop: null,
 						axisRight: null,
 						axisBottom: {
@@ -540,7 +541,8 @@ export default {
 						enableGridY: false,
 						enableGridX: true,
 						enableLabel: true,
-						labelSkipHeight: 13,
+						labelSkipHeight: 15,
+						labelSkipWidth: 20,
 						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
 						theme: {
 							fontSize: 11,
