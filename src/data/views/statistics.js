@@ -475,7 +475,6 @@ export default {
 							tickValues: 4,
 							format: ' >-,d',
 						},
-						maxValue: 100,
 						padding: 0.5,
 						groupMode: 'grouped',
 						enableGridY: false,
@@ -536,6 +535,7 @@ export default {
 							format: ' >-,d',
 						},
 						padding: 0.5,
+						maxValue: 100,
 						groupMode: 'grouped',
 						enableGridY: false,
 						enableGridX: true,
@@ -631,6 +631,66 @@ export default {
 						},
 					},
 				},
+				CountryTopTenBarChartShare: {
+					title: '',
+					subtitle: 'Top 10 regions: ',
+					settings: {
+						indexBy: 'id',
+						layout: 'horizontal',
+						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						valueScale: {type: 'linear'},
+						indexScale: {type: 'band', round: true},
+						valueFormat: ' >-,d',
+						axisTop: null,
+						axisRight: null,
+						axisBottom: {
+							values: false,
+							enable: true,
+							// legend: 'Area [ha]',
+							legendPosition: 'middle',
+							legendOffset: 33,
+							tickPadding: 0,
+							tickValues: 4,
+							format: ' >-,d',
+						},
+						padding: 0.5,
+						groupMode: 'grouped',
+						enableGridY: false,
+						enableGridX: true,
+						enableLabel: true,
+						labelSkipHeight: 13,
+						maxValue: 100,
+						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
+						theme: {
+							fontSize: 11,
+							textColor: 'var(--base70)',
+							axis: {
+								legend: {
+									text: {
+										fontSize: 13,
+										fontWeight: 'bold',
+									},
+								},
+								ticks: {
+									line: {
+										stroke: 'var(--base20)',
+									},
+								},
+							},
+							grid: {
+								line: {
+									stroke: 'var(--base20)',
+								},
+							},
+							labels: {
+								text: {
+									fontSize: 13,
+									fontWeight: 'bold',
+								},
+							},
+						},
+					},
+				},
 				CountrySharePieChart: {
 					title: '',
 					subtitle: '',
@@ -678,6 +738,65 @@ export default {
 					},
 				},
 				CountryRegionsBarChart: {
+					title: '',
+					subtitle: '',
+					settings: {
+						indexBy: 'id',
+						layout: 'horizontal',
+						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						valueScale: {type: 'linear'},
+						indexScale: {type: 'band', round: true},
+						valueFormat: ' >-,d',
+						axisTop: null,
+						axisRight: null,
+						axisBottom: {
+							values: false,
+							enable: true,
+							// legend: 'Area [ha]',
+							legendPosition: 'middle',
+							legendOffset: 33,
+							tickPadding: 0,
+							tickValues: 4,
+							format: ' >-,d',
+						},
+						padding: 0.5,
+						groupMode: 'grouped',
+						enableGridY: false,
+						enableGridX: true,
+						enableLabel: true,
+						labelSkipHeight: 13,
+						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
+						theme: {
+							fontSize: 11,
+							textColor: 'var(--base70)',
+							axis: {
+								legend: {
+									text: {
+										fontSize: 13,
+										fontWeight: 'bold',
+									},
+								},
+								ticks: {
+									line: {
+										stroke: 'var(--base20)',
+									},
+								},
+							},
+							grid: {
+								line: {
+									stroke: 'var(--base20)',
+								},
+							},
+							labels: {
+								text: {
+									fontSize: 13,
+									fontWeight: 'bold',
+								},
+							},
+						},
+					},
+				},
+				CountryRegionsBarChartShare: {
 					title: '',
 					subtitle: '',
 					settings: {
@@ -949,25 +1068,6 @@ export default {
 						type: 'barChart',
 						options: {
 							nameComponentKey: 'CountryNames',
-							attributeType: 'relative',
-							selectedFeaturesOnly: true,
-						},
-						metadataModifiers: {},
-						filterByActive: {
-							application: true,
-							scope: true,
-							areaTreeLevel: true,
-							period: true,
-							case: true,
-						},
-						attributeKeys: ['73e3bd86-8701-47e4-b27b-9d2555d68304'],
-						start: 1,
-						length: 100,
-					},
-					GlobalCountriesBarChartShare: {
-						type: 'barChart',
-						options: {
-							nameComponentKey: 'CountryNames',
 							attributeType: 'absolute',
 							selectedFeaturesOnly: true,
 						},
@@ -980,6 +1080,25 @@ export default {
 							case: true,
 						},
 						attributeKeys: ['4fb212bb-ff1a-46d7-8fce-e341e7f08376'],
+						start: 1,
+						length: 100,
+					},
+					GlobalCountriesBarChartShare: {
+						type: 'barChart',
+						options: {
+							nameComponentKey: 'CountryNames',
+							attributeType: 'relative',
+							selectedFeaturesOnly: true,
+						},
+						metadataModifiers: {},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+							period: true,
+							case: true,
+						},
+						attributeKeys: ['73e3bd86-8701-47e4-b27b-9d2555d68304'],
 						start: 1,
 						length: 100,
 					},
@@ -1001,6 +1120,27 @@ export default {
 							place: true,
 						},
 						attributeKeys: ['4fb212bb-ff1a-46d7-8fce-e341e7f08376'],
+						start: 1,
+						length: 300,
+					},
+					CountryTopTenBarChartShare: {
+						type: 'barChart',
+						options: {
+							nameComponentKey: 'RegionSelect',
+							attributeType: 'relative',
+							limit: 10,
+						},
+						attributeOrder: [['73e3bd86-8701-47e4-b27b-9d2555d68304', 'desc']],
+						metadataModifiers: {},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+							period: true,
+							case: true,
+							place: true,
+						},
+						attributeKeys: ['73e3bd86-8701-47e4-b27b-9d2555d68304'],
 						start: 1,
 						length: 300,
 					},
@@ -1030,6 +1170,26 @@ export default {
 						length: 1,
 					},
 					CountryRegionsBarChart: {
+						type: 'barChart',
+						options: {
+							nameComponentKey: 'RegionSelect',
+							attributeType: 'absolute',
+							selectedFeaturesOnly: true,
+						},
+						metadataModifiers: {},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+							period: true,
+							case: true,
+							place: true,
+						},
+						attributeKeys: ['4fb212bb-ff1a-46d7-8fce-e341e7f08376'],
+						start: 1,
+						length: 300,
+					},
+					CountryRegionsBarChartShare: {
 						type: 'barChart',
 						options: {
 							nameComponentKey: 'RegionSelect',
@@ -1073,13 +1233,16 @@ export default {
 						],
 					},
 					CountryNoSelectedRegion: {
-						components: ['CountryTopTenBarChart'],
+						components: ['CountryTopTenBarChart', 'CountryTopTenBarChartShare'],
 					},
 					CountryOneSelectedRegion: {
 						components: ['CountrySharePieChart'],
 					},
 					CountryMultipleSelectedRegions: {
-						components: ['CountryRegionsBarChart'],
+						components: [
+							'CountryRegionsBarChart',
+							'CountryRegionsBarChartShare',
+						],
 					},
 				},
 			},
