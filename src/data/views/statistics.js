@@ -1238,6 +1238,9 @@ export default {
 					CountryOneSelectedRegion: {
 						components: ['CountrySharePieChart'],
 					},
+					CountryOneSelectedRegionAnnualCropland: {
+						components: ['CountrySharePieChart'],
+					},
 					CountryMultipleSelectedRegions: {
 						components: [
 							'CountryRegionsBarChart',
