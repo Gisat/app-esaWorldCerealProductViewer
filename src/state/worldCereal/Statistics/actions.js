@@ -3,6 +3,7 @@ import {forIn as _forIn, isEqual as _isEqual, isNumber} from 'lodash';
 import Action from '../../Action';
 import Select from '../../Select';
 import {STATISTICSLAYERKEY, globalAreaLevelKey} from '../../../constants/app';
+import {map as mapUtils} from '@gisatcz/ptr-utils';
 
 const CLASSES_COUNT = 5;
 const COLORS = ['#ffffb2', '#fecc5c', '#fd8d3c', '#f03b20', '#bd0026'];
@@ -90,6 +91,29 @@ function setActiveSelectionForActiveAreaTreeLevel() {
 
 		if (selectionKey) {
 			dispatch(CommonAction.selections.setActiveKey(selectionKey));
+		}
+	};
+}
+
+/**
+ * Zoom to active place when switching from global level to regional level.
+ */
+function zoomToActivePlace(activeLevelKey) {
+	return (dispatch, getState) => {
+		if (activeLevelKey !== globalAreaLevelKey) {
+			const activePlaceKeys = Select.places.getActiveKeys(getState());
+			if (activePlaceKeys?.length === 1) {
+				const activePlaceKey = activePlaceKeys[0];
+				const activePlace = Select.places.getByKey(getState(), activePlaceKey);
+
+				const view = mapUtils.view.getViewFromBoundingBox(
+					activePlace.data.extent.map(p => Number.parseFloat(p))
+				);
+
+				const mapSetKey = Select.maps.getActiveSetKey(getState());
+
+				dispatch(CommonAction.maps.updateSetView(mapSetKey, view));
+			}
 		}
 	};
 }
@@ -372,4 +396,5 @@ export default {
 	onLayerClick,
 	recalculateStatisticLayerStyle,
 	useChartAttributes,
+	zoomToActivePlace,
 };
