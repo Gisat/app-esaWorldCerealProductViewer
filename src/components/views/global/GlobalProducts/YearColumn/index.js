@@ -5,21 +5,6 @@ import Product from '../Product';
 
 import './style.scss';
 
-//sort products by end of season
-const sortByEos = (a, b) => {
-	const nameA = a.data.eos;
-	const nameB = b.data.eos;
-	if (nameA < nameB) {
-		return -1;
-	}
-	if (nameA > nameB) {
-		return 1;
-	}
-
-	// names must be equal
-	return 0;
-};
-
 const YearColumn = ({year, products, onProductClick}) => {
 	return (
 		<GlobalProductsColumn className="worldCereal-YearColumn">
@@ -33,15 +18,13 @@ const YearColumn = ({year, products, onProductClick}) => {
 						key={`${product.product}_${year}`}
 					>
 						{product.products?.[year]
-							? product.products?.[year]
-									.sort(sortByEos)
-									.map(p => (
-										<Product
-											key={p.key}
-											product={p}
-											onProductClick={onProductClick}
-										/>
-									))
+							? product.products?.[year].map(p => (
+									<Product
+										key={p.key}
+										product={p}
+										onProductClick={onProductClick}
+									/>
+							  ))
 							: null}
 					</GlobalProductsCell>
 				);

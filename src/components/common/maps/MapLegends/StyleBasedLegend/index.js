@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
 	if (ownProps.style) {
 		style = ownProps.style;
 	} else {
-		style = Select.styles.getByKey(state, styleKey);
+		style = styleKey ? Select.styles.getByKey(state, styleKey) : null;
 	}
 
 	return {

@@ -22,7 +22,7 @@ const mapDispatchToPropsFactory = () => {
 				dispatch(
 					Action.maps.setMapViewport(ownProps.stateMapKey, mapWidth, mapHeight)
 				);
-				dispatch(Action.maps.use(ownProps.stateMapKey, null, null));
+				dispatch(Action.maps.use(ownProps.stateMapKey));
 			},
 
 			onResize: (mapWidth, mapHeight) => {
@@ -32,7 +32,7 @@ const mapDispatchToPropsFactory = () => {
 				dispatch(
 					Action.worldCereal.adjustInitialBoxRange(ownProps.stateMapKey)
 				);
-				dispatch(Action.maps.use(ownProps.stateMapKey, null, null));
+				dispatch(Action.maps.use(ownProps.stateMapKey));
 				dispatch(Action.worldCereal.updateOverviewMap());
 			},
 
@@ -58,7 +58,7 @@ const mapDispatchToPropsFactory = () => {
 				dispatch(
 					Action.maps.setMapViewport(ownProps.stateMapKey, mapWidth, mapHeight)
 				);
-				dispatch(Action.maps.use(ownProps.stateMapKey, undefined, undefined));
+				dispatch(Action.maps.use(ownProps.stateMapKey));
 			},
 
 			onClick: () => {

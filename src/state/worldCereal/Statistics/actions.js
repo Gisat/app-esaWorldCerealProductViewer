@@ -317,12 +317,14 @@ function recalculateStatisticLayerStyle(statisticLayer) {
 		const classRange = range / CLASSES_COUNT;
 
 		const mapKey = Select.maps.getActiveMapKey(getState());
-		const layer = Select.maps.getLayerStateByLayerKeyAndMapKey(
-			getState(),
-			mapKey,
-			statisticLayer?.layerKey
-		);
-		const style = Select.styles.getByKey(getState(), layer?.styleKey);
+		const layer =
+			statisticLayer &&
+			Select.maps.getLayerStateByLayerKeyAndMapKey(
+				getState(),
+				mapKey,
+				statisticLayer?.layerKey
+			);
+		const style = layer && Select.styles.getByKey(getState(), layer?.styleKey);
 
 		let attributeClasses = [];
 
