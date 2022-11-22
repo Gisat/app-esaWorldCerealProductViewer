@@ -5,21 +5,25 @@ import VectorMapTooltip from './VectorMapTooltip';
 import './style.scss';
 
 const MapTooltip = ({children, event, raster, vector}) => {
-	const vectorContent = [];
+	const vectorIDs = [];
 	const rasterContent = [];
-	let i = 0;
-	for (const vectorLayer of vector) {
+
+	const vectorContent = vector.reduce((acc, val, i) => {
 		// vector tooltip should come here
-		vectorContent.push(
-			<VectorMapTooltip
-				key={`${i}_${
-					vectorLayer.layer.props.layerKey || vectorLayer.layer.props.key
-				}`}
-				{...{layer: vectorLayer, event}}
-			></VectorMapTooltip>
-		);
-		i++;
-	}
+		if (!vectorIDs.includes(val.layer.id)) {
+			vectorIDs.push(val.layer.id);
+			return [
+				...acc,
+				<VectorMapTooltip
+					key={`${i}_${val.layer.props.layerKey || val.layer.props.key}`}
+					{...{layer: val, event}}
+				></VectorMapTooltip>,
+			];
+		} else {
+			return acc;
+		}
+	}, []);
+
 	for (const rasterLayer of raster) {
 		rasterContent.push(
 			<RasterMapTooltip
