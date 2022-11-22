@@ -34,27 +34,11 @@ const mapDispatchToPropsFactory = () => {
 	return (dispatch, ownProps) => {
 		if (ownProps.stateMapSetKey) {
 			return {
-				onMount: () => {
-					dispatch(Action.maps.mapSetUseRegister(ownProps.stateMapSetKey));
-				},
-				onUnmount: () => {
-					dispatch(Action.maps.mapSetUseClear(ownProps.stateMapSetKey));
-				},
-				onZoomEnd: () => {
-					dispatch(Action.worldCereal.loadProducts());
-				},
-				onPanEnd: () => {
-					dispatch(Action.worldCereal.loadProducts());
-				},
+				// This handler is executed only by interaction with zoom controls
 				updateView: (update, mapKey) => {
 					dispatch(Action.worldCereal.updateMapView(mapKey, update));
 					dispatch(Action.worldCereal.updateOverviewMap());
-				},
-				resetHeading: () => {},
-				onMapRemove: mapKey => {
-					dispatch(
-						Action.maps.removeMapFromSet(ownProps.stateMapSetKey, mapKey)
-					);
+					dispatch(Action.worldCereal.loadProducts());
 				},
 			};
 		} else {

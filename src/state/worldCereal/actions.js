@@ -112,16 +112,20 @@ function updateMapView(mapKey, viewUpdate) {
 	return CommonAction.maps.updateMapAndSetView(mapKey, viewUpdate);
 }
 
+/**
+ * Load products only if active MapSetKey is detailedExploration-mapSet
+ * @returns
+ */
 function loadProducts() {
 	return (dispatch, getState) => {
 		const state = getState();
 		const mapSetKey = Select.maps.getActiveSetKey(state);
-		const disabledMapSetKey = 'globalView-mapSet';
+		const allowedMapSetKey = 'detailedExploration-mapSet';
 		const isInteractivityLimited = Select.worldCereal.isInteractivityLimited(
 			state,
 			mapSetKey
 		);
-		if (!isInteractivityLimited && mapSetKey !== disabledMapSetKey) {
+		if (!isInteractivityLimited && mapSetKey === allowedMapSetKey) {
 			dispatch(productMetadataActions.loadForMapSetView());
 		}
 	};
