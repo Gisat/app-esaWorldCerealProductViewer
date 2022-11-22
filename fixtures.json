@@ -16,7 +16,11 @@
 					"applicationKey": "esaWorldCerealProductViewer",
 					"data": {
 						"nameAttributeKey": "5f6a119b-addf-467e-ab1f-e07e4cdf79a6",
-						"unavailablePeriodKeys": ["1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08","2a293769-d7ba-4c83-800e-8184b457ac85","df428b66-5a83-4943-93b2-56dea2805509"],
+						"unavailablePeriodKeys": [
+							"1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08",
+							"2a293769-d7ba-4c83-800e-8184b457ac85",
+							"df428b66-5a83-4943-93b2-56dea2805509"
+						],
 						"configByCaseKey": {
 							"577b253f-754f-421e-94a2-092f092b4947": {
 								"name": "Annual cropland",
@@ -44,7 +48,10 @@
 								"styleKey": "2afcdbd6-fdc8-4756-a96b-0bf7d07637b0",
 								"absoluteAttributeKey": "6c8e8332-b01b-4c56-bf8e-2025a5abc465",
 								"relativeAttributeKey": "eb9dce86-39c6-480b-b7e3-2fac2101eac0",
-								"availablePeriodKeys": ["f3293b7c-4725-49a6-beeb-19718083ab6c", "d93a6ec5-e6e2-4f9a-a368-8a8f2aa8c0fe"]
+								"availablePeriodKeys": [
+									"f3293b7c-4725-49a6-beeb-19718083ab6c",
+									"d93a6ec5-e6e2-4f9a-a368-8a8f2aa8c0fe"
+								]
 							}
 						},
 						"componentSetByLevelKeyBySelectedFeaturesCountByCaseKey": {
@@ -834,7 +841,18 @@
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
 					"nameInternal": "place_BRA",
 					"nameDisplay": "Brazil",
-					"extent": [-73,953, -33,744, -34,793, 5,244]
+					"bbox": {
+						"coordinates": [
+							[
+								[-33.630787104309235, 6.349926576018717],
+								[-74.41203710430955, 6.349926576018717],
+								[-74.41203710430955, -34.71297793996753],
+								[-33.630787104309235, -34.71297793996753],
+								[-33.630787104309235, 6.349926576018717]
+							]
+						],
+						"type": "Polygon"
+					}
 				}
 			},
 			{
