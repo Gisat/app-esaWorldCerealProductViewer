@@ -106,9 +106,7 @@ function zoomToActivePlace(activeLevelKey) {
 				const activePlaceKey = activePlaceKeys[0];
 				const activePlace = Select.places.getByKey(getState(), activePlaceKey);
 
-				const view = mapUtils.view.getViewFromBoundingBox(
-					activePlace.data.extent.map(p => Number.parseFloat(p))
-				);
+				const view = mapUtils.view.getViewFromGeometry(activePlace.data.bbox);
 
 				const mapSetKey = Select.maps.getActiveSetKey(getState());
 
