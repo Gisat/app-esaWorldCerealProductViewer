@@ -6,6 +6,7 @@ import {Select as CommonSelect} from '@gisatcz/ptr-state';
 import {
 	timelineLayerElementHeight,
 	timelineLayerLineHeight,
+	timelineLayerOrder,
 } from '../../../constants/app';
 const getTimelineLayers = createSelector(
 	[
@@ -93,6 +94,15 @@ const getTimelineLayers = createSelector(
 				}
 			}
 		}
+
+		// sort layers
+		timelineLayers?.sort((a, b) => {
+			return (
+				timelineLayerOrder.indexOf(a.legend.title) -
+				timelineLayerOrder.indexOf(b.legend.title)
+			);
+		});
+
 		return timelineLayers;
 	}
 );

@@ -29,3 +29,14 @@ export const highlightedChartColorPalette = [
 export const STATISTICSLAYERKEY = 'statistics-global';
 export const AEZLAYERKEY = 'aez';
 export const disabledRemoveAllLayerForViewName = 'statistics';
+
+export const timelineLayerOrder = [
+	'Annual cropland',
+	'Winter cereals',
+	'Spring cereals',
+	'Maize',
+	'Active irrigation',
+	'Active cropland',
+];
+
+export const timelinePeriodOrder = ['annual', 'winter', 'summer1', 'summer2'];

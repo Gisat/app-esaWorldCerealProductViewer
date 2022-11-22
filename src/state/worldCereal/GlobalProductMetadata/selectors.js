@@ -2,6 +2,7 @@ import {createCachedSelector} from 're-reselect';
 import {uniq as _uniq, groupBy as _groupBy} from 'lodash';
 import {createSelector} from 'reselect';
 import {commonSelectors, Select as CommonSelect} from '@gisatcz/ptr-state';
+import {timelineLayerOrder, timelinePeriodOrder} from '../../../constants/app';
 
 const getSubstate = state => state.worldCereal.globalProductMetadata;
 
@@ -58,6 +59,26 @@ const getAll = createSelector(
 			}
 			return acc;
 		}, []);
+
+		// sort layers
+		transformed?.sort((a, b) => {
+			return (
+				timelineLayerOrder.indexOf(a.nameDisplay) -
+				timelineLayerOrder.indexOf(b.nameDisplay)
+			);
+		});
+
+		// sort periods
+		transformed?.forEach(l => {
+			for (const year of Object.keys(l.products)) {
+				l.products?.[year]?.sort((a, b) => {
+					return (
+						timelinePeriodOrder.indexOf(a.data.season) -
+						timelinePeriodOrder.indexOf(b.data.season)
+					);
+				});
+			}
+		});
 
 		return transformed;
 	}
