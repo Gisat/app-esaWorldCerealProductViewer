@@ -7,10 +7,20 @@ const StatisticLayerTooltip = ({
 	// areaTotal,
 	ensureAbsoluteData,
 	relativeAttributeName,
+	onFidChange,
+	fid,
+	nameAttributeKey,
 }) => {
 	useEffect(() => {
 		ensureAbsoluteData();
 	}, [name]);
+
+	useEffect(() => {
+		if (!name) {
+			onFidChange(fid, nameAttributeKey);
+		}
+	}, [name, fid, nameAttributeKey]);
+
 	return (
 		<div className={'VectorMapTooltip-layer'}>
 			<h4>{name}</h4>
@@ -31,11 +41,14 @@ const StatisticLayerTooltip = ({
 };
 
 StatisticLayerTooltip.propTypes = {
-	areaShare: PropTypes.string,
+	areaShare: PropTypes.number,
 	areaTotal: PropTypes.string,
 	name: PropTypes.string,
-	ensureAbsoluteData: PropTypes.string,
+	ensureAbsoluteData: PropTypes.func,
 	relativeAttributeName: PropTypes.string,
+	onFidChange: PropTypes.func,
+	nameAttributeKey: PropTypes.string,
+	fid: PropTypes.string,
 };
 
 export default StatisticLayerTooltip;

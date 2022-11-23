@@ -1,5 +1,5 @@
 import {connect} from '@gisatcz/ptr-state';
-// import Action from '../../../../state/Action';
+import Action from '../../../../state/Action';
 import Select from '../../../../state/Select';
 
 import Presentation from './presentation';
@@ -32,6 +32,30 @@ const mapStateToProps = (state, ownProps) => {
 	// const place = Select.places.getIndexed(state, placeKey);
 	const title = Select.worldCereal.statistics.getTooltipTitle(state, placeKey);
 
+	const layerKey = ownProps?.layer?.sourceLayer?.props?.layerKey;
+	const activeMapKey = Select.maps.getActiveMapKey(state);
+	const layer = Select.maps.getLayerStateByLayerKeyAndMapKey(
+		state,
+		activeMapKey,
+		layerKey
+	);
+	const nameAttributeKey = layer?.options?.nameAttributeKey;
+	const fid = ownProps?.layer?.object?.key;
+
+	const regionTitle = Select.worldCereal.statistics.getRegionName(
+		state,
+		{
+			filter: {attributeKeys: [nameAttributeKey]},
+			filterByActive: {
+				areaTreeLevel: true,
+				place: true,
+				scope: true,
+				application: true,
+			},
+		},
+		fid
+	);
+
 	const relativeAttributeKey =
 		Select.worldCereal.statistics.getActiveRelativeAttributeKey(state);
 
@@ -40,18 +64,25 @@ const mapStateToProps = (state, ownProps) => {
 	//get absolute data
 	// const absoluteData = Select.data.attributeData.get
 	return {
-		name: title,
+		name: title || regionTitle,
 		placename: ownProps?.layer?.object?.properties?.[fidColumnName],
 		areaShare: ownProps?.layer?.object?.properties?.[relativeAttributeKey],
 		relativeAttributeName,
+		nameAttributeKey,
+		fid,
 		// color?
 		// areaTotal:
 	};
 };
 
 const mapDispatchToProps = () => {
-	return () => {
+	return dispatch => {
 		return {
+			onFidChange: (fid, nameAttributeKey) => {
+				dispatch(
+					Action.worldCereal.statistics.ensureRegionName(fid, nameAttributeKey)
+				);
+			},
 			ensureAbsoluteData: () => {
 				// console.log('xxx_ensureAbsoluteData');
 				// dispatch(Action.data.components.loadIndexedPage(...filter));

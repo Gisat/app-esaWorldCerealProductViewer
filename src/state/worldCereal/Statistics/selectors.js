@@ -10,6 +10,8 @@ import {
 	createRecomputeSelector,
 	createRecomputeObserver,
 	Select as CommonSelect,
+	commonSelectors,
+	commonHelpers,
 } from '@gisatcz/ptr-state';
 import {STATISTICSLAYERKEY, globalAreaLevelKey} from '../../../constants/app';
 import {createCachedSelector} from 're-reselect';
@@ -314,6 +316,46 @@ const isDataForCurrentSettings = createSelector(
 	}
 );
 
+/**
+ * Get subregion name by FID and attributeKeys
+ */
+const getRegionName = createSelector(
+	[
+		commonSelectors.getAllActiveKeys,
+		(state, filter) => filter,
+		(state, filter, fid) => fid,
+	],
+	(activeKeys, filter, fid) => {
+		let fullFilter = commonHelpers.mergeFilters(
+			activeKeys,
+			filter.filterByActive,
+			filter.filter
+		);
+
+		const finalFilter = {
+			attributeKeys: fullFilter.attributeKeys,
+			areaTreeLevelKey: fullFilter.areaTreeLevelKey,
+			modifiers: {
+				placeKey: fullFilter.placeKey,
+				scopeKey: fullFilter.scopeKey,
+				applicationKey: fullFilter.applicationKey,
+			},
+		};
+
+		const DS = CommonSelect.data.attributeRelations.getIndexed(finalFilter);
+
+		const attributeDSKey = DS?.[0]?.data?.attributeDataSourceKey;
+		const attributeName = 'title';
+		const regionNameData =
+			CommonSelect.data.attributeData.getAttributesByDataSourceKeysForFeatureKey(
+				{[attributeDSKey]: attributeName},
+				fid
+			);
+
+		return regionNameData?.[attributeName];
+	}
+);
+
 export default {
 	isCountryLevelDisabled,
 	isDataForCurrentSettings,
@@ -329,4 +371,5 @@ export default {
 	getActiveRelativeAttributeName,
 	getStyleKeyForActiveMapAndLayerKey,
 	getSubtitleForBaseChartWrapper,
+	getRegionName,
 };
