@@ -9,10 +9,7 @@ import {utils} from '@gisatcz/ptr-utils';
 
 import MapTimelineLegend from './MapTimelineLegend';
 import TimelineControlButton from '../../common/TimelineControlButton';
-import {timelineLayerLineHeight} from '../../../../constants/app';
 import './style.scss';
-
-const maximumTimelineVisibleRows = 8; //number of maximum visible rows
 
 const MapTimelinePresentation = MapTimeline.MapTimelinePresentation;
 const LayerRowPresentation = MapTimeline.LayerRowPresentation;
@@ -149,12 +146,6 @@ const Timeline = ({
 		'is-collapsed': isCollapsed,
 	});
 
-	const contentHeight =
-		layers.length * timelineLayerLineHeight >
-		timelineLayerLineHeight * maximumTimelineVisibleRows
-			? timelineLayerLineHeight * maximumTimelineVisibleRows
-			: layers.length * timelineLayerLineHeight;
-
 	return (
 		<div className={classes}>
 			<TimelineControlButton collapsed={isCollapsed} onClick={onCollapse} />
@@ -172,7 +163,6 @@ const Timeline = ({
 					layers={layers}
 					minTimelineHeight={minTimelineHeight}
 					LegendComponent={MapTimelineLegend}
-					contentHeight={contentHeight + 4}
 				>
 					<Levels />
 					<Mouse mouseBufferWidth={20} key="mouse" />
