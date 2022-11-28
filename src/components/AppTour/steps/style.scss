@@ -13,3 +13,22 @@
 .worldCereal-tour-steps-Section.is-right {
 	margin-left: 1rem;
 }
+
+.worldCereal-tour-steps-descriptionSections {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.worldCereal-tour-steps-mapIcons .ptr-IconTool {
+	cursor: default;
+}
+
+.worldCereal-tour-steps-mapIconsDescription {
+	margin-bottom: 0;
+}
+
+.worldCereal-tour-steps-mapIcons {
+	height: fit-content;
+}

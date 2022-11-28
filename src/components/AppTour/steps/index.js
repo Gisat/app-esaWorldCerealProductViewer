@@ -3,12 +3,14 @@ import IntroCards from './Intro/Cards';
 import DetailViewIntro from './DetailView/Intro';
 import DetailViewHeader from './DetailView/Header';
 import DetailViewMap from './DetailView/Map';
+import DetailViewMultipleMaps from './DetailView/MultipleMaps';
+import DetailViewActiveMaps from './DetailView/ActiveMaps';
 import DetailViewTimeline from './DetailView/Timeline';
 import DetailViewFilters from './DetailView/Filters';
 import GlobalViewIntro from './GlobalView/Intro';
 import StatisticsViewIntro from './StatisticsView/Intro';
-import Map from './StatisticsView/Map';
-import Panel from './StatisticsView/Panel';
+import StatisticsMap from './StatisticsView/Map';
+import StatisticsPanel from './StatisticsView/Panel';
 
 export default [
 	{
@@ -32,6 +34,14 @@ export default [
 		content: DetailViewMap,
 	},
 	{
+		selector: '.worldCereal-ProductViewer .ptr-map-set',
+		content: DetailViewMultipleMaps,
+	},
+	{
+		selector: '.ptr-map-grid-cell.row1.col2',
+		content: DetailViewActiveMaps,
+	},
+	{
 		selector: '.worldCereal-Timeline',
 		content: DetailViewTimeline,
 	},
@@ -50,10 +60,10 @@ export default [
 	},
 	{
 		selector: '.ptr-map-set',
-		content: Map,
+		content: StatisticsMap,
 	},
 	{
 		selector: '.worldCereal-StatisticsPanel-body',
-		content: Panel,
+		content: StatisticsPanel,
 	},
 ];
