@@ -13,6 +13,7 @@ import productMetadataActions from './worldCereal/ProductMetadata/actions';
 import productMetadataFilterActions from './worldCereal/ProductMetadataFilter/actions';
 import globalProductMetadataActions from './worldCereal/GlobalProductMetadata/actions';
 import statisticsActions from './worldCereal/Statistics/actions';
+import routerActions from './router/actions';
 
 // TODO load view from BE
 import views from '../data/views';
@@ -108,6 +109,7 @@ export default {
 		globalProductMetadata: globalProductMetadataActions,
 		productMetadataFilter: productMetadataFilterActions,
 		statistics: statisticsActions,
+		router: routerActions,
 		...worldCerealActions,
 	},
 };

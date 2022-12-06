@@ -3,12 +3,12 @@ import React from 'react';
 import Favicon from 'react-favicon';
 
 import {connects, setFetch} from '@gisatcz/ptr-state';
-import {create as createRouter} from '@gisatcz/ptr-router';
 import {AppContainer} from '@gisatcz/ptr-components';
 
 import Action from './state/Action';
 import {init as initCore} from './core';
 import {appKey} from './constants/app';
+import {initRouter} from './router';
 
 // base styles need to be imported before all components
 import '@gisatcz/ptr-core/lib/styles/reset.css';
@@ -19,14 +19,6 @@ import AppContent from './components/AppContent';
 import favicon from './assets/favicon.ico';
 
 const path = process.env.PUBLIC_URL;
-
-function createRoutes() {
-	return {
-		'': {
-			name: 'home',
-		},
-	};
-}
 
 /**
  * Modify every fetch call
@@ -71,12 +63,13 @@ function initApp(Store, {absPath, isPreloaded, currentUrl, navHandler}) {
 	 * into some the component.
 	 *
 	 */
-	const router = createRouter({
-		rootUrl: absPath,
+	const router = initRouter(
+		absPath,
 		currentUrl,
-		routes: createRoutes(Store, isPreloaded),
-		navHandler,
-	});
+		Store,
+		isPreloaded,
+		navHandler
+	);
 
 	initCore({router});
 

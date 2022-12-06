@@ -8,12 +8,16 @@ import Filter from '../views/detailedExploarion/Filter';
 import Timeline from '../views/detailedExploarion/Timeline';
 import GlobalProducts from '../views/global/GlobalProducts';
 import StatisticsPanel from '../views/statistics/StatisticsPanel';
+import {screens} from '../../constants/app';
 
 import './style.scss';
 
 const getContent = view => {
 	switch (view) {
-		case 'detailedExploration':
+		case screens['home']:
+			return <IntroOverlay />;
+
+		case screens['exploration']:
 			return (
 				<>
 					<Header />
@@ -22,7 +26,7 @@ const getContent = view => {
 					<Timeline />
 				</>
 			);
-		case 'globalView':
+		case screens['globalView']:
 			return (
 				<>
 					<Header />
@@ -30,7 +34,7 @@ const getContent = view => {
 					<GlobalProducts />
 				</>
 			);
-		case 'statistics':
+		case screens['statistics']:
 			return (
 				<div className="worldCereal-statistics">
 					<StatisticsPanel />
@@ -42,9 +46,11 @@ const getContent = view => {
 	}
 };
 
-const App = ({activeView, open}) => {
-	const view = activeView?.data?.nameInternal;
-	const title = activeView?.data?.nameDisplay;
+const App = ({activeScreen, open}) => {
+	console.log('activeScreen', activeScreen);
+	// const view = activeView?.data?.nameInternal;
+	// const title = activeView?.data?.nameDisplay;
+	const title = 'TODO';
 
 	return (
 		<>
@@ -52,15 +58,14 @@ const App = ({activeView, open}) => {
 				defaultTitle={`WorldCereal ${title && !open ? `| ${title}` : ''}`}
 			/>
 			<div className="worldCereal-ProductViewer">
-				<IntroOverlay />
-				{getContent(view)}
+				{getContent(activeScreen)}
 			</div>
 		</>
 	);
 };
 
 App.propTypes = {
-	activeView: PropTypes.object,
+	activeScreen: PropTypes.object,
 	open: PropTypes.bool,
 };
 
