@@ -24,6 +24,24 @@ const IntroCard = ({disabled, onClick, Icon, children}) => {
 		'is-disabled': disabled,
 	});
 	return (
+		// 	<Link
+		// 	// classes={classes}
+		// 	name={path}
+		// 	router={getRouter()}
+		// 	paramsFilter={['tags']}
+		// 	recoverParams={true}
+		// >
+		// 	<div className={classes} onClick={onClick}>
+		// 		{Icon
+		// 			? createElement(Icon, {
+		// 					color: disabled ? 'rgb(110, 110, 110)' : 'rgb(239,180,9)',
+		// 					set: 'duotone',
+		// 					size: '50',
+		// 			  })
+		// 			: null}
+		// 		{children}
+		// 	</div>
+		// </Link>
 		<div className={classes} onClick={onClick}>
 			{Icon
 				? createElement(Icon, {

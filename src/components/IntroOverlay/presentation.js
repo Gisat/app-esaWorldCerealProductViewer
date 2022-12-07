@@ -8,7 +8,6 @@ const IntroOverlay = ({open}) => {
 		'is-open': open,
 	});
 
-	console.log('open', open);
 	return (
 		<div className={classes}>
 			<Intro />

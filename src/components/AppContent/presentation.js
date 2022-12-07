@@ -47,7 +47,6 @@ const getContent = view => {
 };
 
 const App = ({activeScreen, open}) => {
-	console.log('activeScreen', activeScreen);
 	// const view = activeView?.data?.nameInternal;
 	// const title = activeView?.data?.nameDisplay;
 	const title = 'TODO';

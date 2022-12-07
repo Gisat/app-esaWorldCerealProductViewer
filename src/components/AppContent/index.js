@@ -4,7 +4,6 @@ import Select from '../../state/Select';
 import Presentation from './presentation';
 
 const mapStateToProps = state => {
-	console.log('Select', Select);
 	const activeScreen = Select.router.getHomepageScreen(state);
 
 	return {

@@ -1,5 +1,4 @@
 import {Select as CommonSelect} from '@gisatcz/ptr-state';
-
 import globalProductMetadataSelectors from './worldCereal/GlobalProductMetadata/selectors';
 import productMetadataSelectors from './worldCereal/ProductMetadata/selectors';
 import productMetadataFilterSelectors from './worldCereal/ProductMetadataFilter/selectors';
