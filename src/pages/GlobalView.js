@@ -6,13 +6,29 @@ import PropTypes from 'prop-types';
 import Maps from '../components/Maps';
 import Header from '../components/views/common/Header';
 import GlobalProducts from '../components/views/global/GlobalProducts';
+import backgroundLayers from '../data/layers/backgroundLayers';
 
 const viewKey = 'fc3aac1e-ffb2-4925-ae38-c95b8e8311c7';
 const title = 'Global view';
 
-const GlobalViewPage = ({onViewSelect}) => {
+const activeSetKey = 'globalView-mapSet'; // TODO fetch from redux
+
+const GlobalViewPage = ({onViewSelect, setMapSetBackgroundLayer}) => {
 	useEffect(() => {
+		const urlSearchParams = new URLSearchParams(window.location.search);
+		const params = Object.fromEntries(urlSearchParams.entries());
+
+		console.log('params', params);
+
 		onViewSelect(viewKey);
+
+		const timer = setTimeout(() => {
+			if (params.backgroundLayer) {
+				setMapSetBackgroundLayer(params.backgroundLayer);
+			}
+		}, 500);
+
+		return () => clearTimeout(timer);
 	}, []);
 
 	return (
@@ -29,12 +45,21 @@ const GlobalViewPage = ({onViewSelect}) => {
 
 GlobalViewPage.propTypes = {
 	onViewSelect: PropTypes.func,
+	setMapSetBackgroundLayer: PropTypes.func,
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
 		onViewSelect: viewKey => {
 			dispatch(Action.worldCereal.applyView(viewKey));
+		},
+		setMapSetBackgroundLayer: layerKey => {
+			dispatch(
+				Action.maps.setMapSetBackgroundLayer(
+					activeSetKey,
+					backgroundLayers[layerKey]
+				)
+			);
 		},
 	};
 };
