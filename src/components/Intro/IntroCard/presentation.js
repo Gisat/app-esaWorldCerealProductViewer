@@ -19,47 +19,31 @@ IntroCardText.propTypes = {
 	children: PropTypes.node,
 };
 
-const IntroCard = ({disabled, onClick, Icon, children}) => {
+const IntroCard = ({disabled, Icon, children, href}) => {
 	const classes = classNames('worldCereal-IntroCard', {
 		'is-disabled': disabled,
 	});
 	return (
-		// 	<Link
-		// 	// classes={classes}
-		// 	name={path}
-		// 	router={getRouter()}
-		// 	paramsFilter={['tags']}
-		// 	recoverParams={true}
-		// >
-		// 	<div className={classes} onClick={onClick}>
-		// 		{Icon
-		// 			? createElement(Icon, {
-		// 					color: disabled ? 'rgb(110, 110, 110)' : 'rgb(239,180,9)',
-		// 					set: 'duotone',
-		// 					size: '50',
-		// 			  })
-		// 			: null}
-		// 		{children}
-		// 	</div>
-		// </Link>
-		<div className={classes} onClick={onClick}>
-			{Icon
-				? createElement(Icon, {
-						color: disabled ? 'rgb(110, 110, 110)' : 'rgb(239,180,9)',
-						set: 'duotone',
-						size: '50',
-				  })
-				: null}
-			{children}
-		</div>
+		<a href={href}>
+			<div className={classes}>
+				{Icon
+					? createElement(Icon, {
+							color: disabled ? 'rgb(110, 110, 110)' : 'rgb(239,180,9)',
+							set: 'duotone',
+							size: '50',
+					  })
+					: null}
+				{children}
+			</div>
+		</a>
 	);
 };
 
 IntroCard.propTypes = {
 	disabled: PropTypes.bool,
-	onClick: PropTypes.func,
 	Icon: PropTypes.object,
 	children: PropTypes.node,
+	href: PropTypes.string,
 };
 
 export default IntroCard;

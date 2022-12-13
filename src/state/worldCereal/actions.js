@@ -16,6 +16,7 @@ function applyView(viewKey) {
 		if (activeViewKey !== viewKey) {
 			const view = Select.views.getByKey(getState(), viewKey);
 			const viewName = view?.data?.nameInternal;
+
 			dispatch(
 				CommonAction.views.applyAndSetActive(viewKey, CommonAction)
 			).then(() => {
@@ -32,6 +33,7 @@ function applyView(viewKey) {
 				if (viewName === 'statistics') {
 					dispatch(applyStatisticsView(view));
 				}
+				// window.location.href = `/${viewName}`;
 			});
 		} else {
 			dispatch(CommonAction.components.set('IntroOverlay', 'open', false));
