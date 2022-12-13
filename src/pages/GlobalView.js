@@ -18,8 +18,6 @@ const GlobalViewPage = ({onViewSelect, setMapSetBackgroundLayer}) => {
 		const urlSearchParams = new URLSearchParams(window.location.search);
 		const params = Object.fromEntries(urlSearchParams.entries());
 
-		console.log('params', params);
-
 		onViewSelect(viewKey);
 
 		const timer = setTimeout(() => {
