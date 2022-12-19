@@ -7,26 +7,48 @@ import Maps from '../components/Maps';
 import Header from '../components/views/common/Header';
 import GlobalProducts from '../components/views/global/GlobalProducts';
 import backgroundLayers from '../data/layers/backgroundLayers';
+// import {Action} from '@gisatcz/ptr-state';
 
 const viewKey = 'fc3aac1e-ffb2-4925-ae38-c95b8e8311c7';
 const title = 'Global view';
 
 const activeSetKey = 'globalView-mapSet'; // TODO fetch from redux
 
-const GlobalViewPage = ({onViewSelect, setMapSetBackgroundLayer}) => {
+const GlobalViewPage = ({
+	onViewSelect,
+	setMapSetBackgroundLayer,
+	onViewChange,
+}) => {
 	useEffect(() => {
 		const urlSearchParams = new URLSearchParams(window.location.search);
 		const params = Object.fromEntries(urlSearchParams.entries());
 
+		// PARAMS
+		// backgroundLayer
+		// boxRange
+		// latitude
+		// longitude
+		// heading
+		// tilt
+		// roll
+		// elevation exaggeration
+
+		console.log('window.location', window.location);
+
 		onViewSelect(viewKey);
 
-		const timer = setTimeout(() => {
+		const delayForReduxAction = setTimeout(() => {
 			if (params.backgroundLayer) {
 				setMapSetBackgroundLayer(params.backgroundLayer);
 			}
+			if (params.boxRange) {
+				console.log(' params.boxRange', params.boxRange);
+				onViewChange({boxRange: params.boxRange});
+				// Action.views.updateEdited({boxRange: params.boxRange});
+			}
 		}, 500);
 
-		return () => clearTimeout(timer);
+		return () => clearTimeout(delayForReduxAction);
 	}, []);
 
 	return (
@@ -44,9 +66,10 @@ const GlobalViewPage = ({onViewSelect, setMapSetBackgroundLayer}) => {
 GlobalViewPage.propTypes = {
 	onViewSelect: PropTypes.func,
 	setMapSetBackgroundLayer: PropTypes.func,
+	onViewChange: PropTypes.func,
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onViewSelect: viewKey => {
 			dispatch(Action.worldCereal.applyView(viewKey));
@@ -58,6 +81,10 @@ const mapDispatchToProps = dispatch => {
 					backgroundLayers[layerKey]
 				)
 			);
+		},
+		onViewChange: update => {
+			dispatch(Action.worldCereal.updateMapView(ownProps.stateMapKey, update));
+			dispatch(Action.worldCereal.updateOverviewMap());
 		},
 	};
 };

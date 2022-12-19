@@ -105,8 +105,8 @@ export const addToUrl = (value, param) => {
 	const replacedExistingParams = encodeQueryData({...params, [param]: value});
 
 	const newUrl = params.param
-		? `${window.href}&${param}=${value}`
-		: `${window.origin}?${replacedExistingParams}`;
+		? `${window.location.href}&${param}=${value}`
+		: `${window.location.href}?${replacedExistingParams}`;
 
 	window.history.replaceState('', {}, newUrl);
 };
