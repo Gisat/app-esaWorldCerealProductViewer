@@ -1,7 +1,6 @@
 import {createSelector} from 'reselect';
 import {omit as _omit, isEmpty as _isEmpty} from 'lodash';
 import {getParsedQueryString, getValueAsArray} from './utils';
-import routerConstants from './constants';
 
 import {getRouter} from '../../router';
 import {screens, defaultHomeScreen} from '../../constants/app';
@@ -120,12 +119,6 @@ const getUrlForPath = createSelector(
 //
 // Custom UTEP url selectors
 //
-const getDarkModeActive = createSelector([getCurrent], routerState => {
-	const isDark =
-		routerState?.params?.parsedQueryString?.[routerConstants.darkMode] ===
-		'true';
-	return isDark;
-});
 
 const getQueryValuesByKey = createSelector(
 	[getCurrent, (state, key) => key],
@@ -133,12 +126,6 @@ const getQueryValuesByKey = createSelector(
 		return routerState?.params?.parsedQueryString?.[key];
 	}
 );
-
-const getTags = createSelector([getCurrent], routerState => {
-	const tags =
-		routerState?.params?.parsedQueryString?.[routerConstants.tags] || [];
-	return getValueAsArray(tags);
-});
 
 const getHomepageScreen = createSelector([getCurrent], routerState => {
 	const name = routerState?.name;
@@ -153,9 +140,7 @@ const getHomepageScreen = createSelector([getCurrent], routerState => {
 
 export default {
 	getCurrent,
-	getDarkModeActive,
 	getUrlForPath,
 	getHomepageScreen,
 	getQueryValuesByKey,
-	getTags,
 };
