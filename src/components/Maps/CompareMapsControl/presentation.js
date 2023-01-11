@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {IconTool, Tooltip} from '@gisatcz/visat-components';
+import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 import ComponentRenderer from '../ComponentRenderer';
 
 const CompareMapsControl = ({maps, mapMode, setMapMode}) => {

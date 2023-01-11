@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import PropTypes from 'prop-types';
-import {IconTool, Tooltip} from '@gisatcz/visat-components';
+import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 import {useTour} from '@reactour/tour';
 import classNames from 'classnames';
 import Title from '../Title';

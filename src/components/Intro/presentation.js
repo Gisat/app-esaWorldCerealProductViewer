@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {IconTool, Tooltip} from '@gisatcz/visat-components';
+import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 import {useTour} from '@reactour/tour';
 import {Search, Globe1, User1, ChartVertical} from 'react-swm-icon-pack';
 import IntroCard from './IntroCard';

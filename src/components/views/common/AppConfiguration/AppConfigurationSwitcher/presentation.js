@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {Switcher} from '@gisatcz/visat-components';
+import {ToggleSwitcher} from '@gisatcz/ptr-atoms';
 import './style.scss';
 
 const AppConfigurationSwitcher = ({
@@ -11,7 +11,7 @@ const AppConfigurationSwitcher = ({
 	onClick,
 }) => {
 	return (
-		<Switcher
+		<ToggleSwitcher
 			className="visat-AppConfigurationSwitcher"
 			active={active}
 			name={name}

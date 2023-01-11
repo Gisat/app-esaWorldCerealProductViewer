@@ -4,7 +4,7 @@ import TourStepsSection from '../components/TourStepsSection';
 
 import '../style.scss';
 
-import {IconTool} from '@gisatcz/visat-components';
+import {IconTool} from '@gisatcz/ptr-atoms';
 
 const MultipleMaps = () => (
 	<TourStepsContainer>

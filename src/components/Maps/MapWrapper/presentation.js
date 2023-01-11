@@ -3,7 +3,7 @@ import React from 'react';
 import {isEmpty as _isEmpty, forIn as _forIn} from 'lodash';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import {IconTool, Tooltip} from '@gisatcz/visat-components';
+import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 import ExpandableLabelsContainer from '../../atoms/ExpandableLabel/ExpandableLabelsContainer';
 import ExpandableProductLabel from '../ProductLabel';
 import ExpandableLayerLabel from '../ExpandableLayerLabel';

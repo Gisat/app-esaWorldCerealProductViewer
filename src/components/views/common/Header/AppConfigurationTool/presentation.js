@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {IconTool, Modal} from '@gisatcz/visat-components';
+import {IconTool, Modal} from '@gisatcz/ptr-atoms';
 import AppConfiguration from '../../AppConfiguration';
 // import Tooltip from '../../Tooltip';
 
