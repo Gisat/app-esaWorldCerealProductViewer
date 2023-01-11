@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import {Icon, Tooltip} from '@gisatcz/visat-components';
+import {Icon, Tooltip} from '@gisatcz/ptr-atoms';
 import './style.scss';
 
 const TimelineControlButton = ({collapsed, onClick}) => {

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {Toggle} from '@gisatcz/visat-components';
+import {Toggle} from '@gisatcz/ptr-atoms';
 import LayerLabelTool from '../LayerLabelTool';
 
 const TooltipControl = ({active, onChange}) => {

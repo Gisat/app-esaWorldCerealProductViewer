@@ -10,7 +10,7 @@ import Visualizations from './Visualizations';
 
 import './style.scss';
 import {useEffect} from 'react';
-import {IconTool, Tooltip} from '@gisatcz/visat-components';
+import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 import {useTour} from '@reactour/tour';
 import classNames from 'classnames';
 

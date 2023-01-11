@@ -8,8 +8,9 @@ module.exports = function override(config) {
 			// 	'C:/Users/PavelVlach/WebstormProjects/ptr-components/node_modules/react',
 			// '@gisatcz/ptr-components':
 			// 	'C:/Users/PavelVlach/WebstormProjects/ptr-components',
-			// react: 'C:/Users/PavelVlach/WebstormProjects/ptr-maps/node_modules/react',
-			// '@gisatcz/ptr-maps': 'C:/Users/PavelVlach/WebstormProjects/ptr-maps',
+			// react:
+			// 	'C:/Users/PavelVlach/WebstormProjects/ptr-atoms/node_modules/react',
+			// '@gisatcz/ptr-atoms': 'C:/Users/PavelVlach/WebstormProjects/ptr-atoms',
 			// 'classnames': './node_modules/classnames',
 			// 'react': '/Users/vojtadubrovsky/Work/GISAT/git/app-esaWorldCerealProductViewer/node_modules/@gisatcz/ptr-state/node_modules/react',
 			// '@gisatcz/ptr-state': '/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-state',

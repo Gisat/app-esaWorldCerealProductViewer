@@ -43,9 +43,6 @@ a.ptr-LayerLabelTool.is-hoverable:hover {
   flex: 1;
   white-space: nowrap;
   color: var(--base10);
-  @include maxWidth('x-small') {
-    font-size: $b1;
-  }
 }
 
 .ptr-LayerLabelTool-control {
@@ -53,7 +50,4 @@ a.ptr-LayerLabelTool.is-hoverable:hover {
   display: flex;
   align-items: center;
   margin-left: 2rem;
-  @include maxWidth('x-small') {
-    margin-left: 1rem;
-  }
 }

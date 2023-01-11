@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import {useState} from 'react';
-import {IconTool, Tooltip} from '@gisatcz/visat-components';
+import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 import {GeonamesSearch} from '@gisatcz/ptr-components';
 import ComponentRenderer from '../ComponentRenderer';
 

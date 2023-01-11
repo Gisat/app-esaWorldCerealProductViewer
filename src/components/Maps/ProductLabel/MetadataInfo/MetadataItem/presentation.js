@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {isArray as _isArray} from 'lodash';
-import {IconTool, Tooltip} from '@gisatcz/visat-components';
+import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 import WmsUrl from './WmsUrl';
 
 import './style.scss';
