@@ -217,21 +217,19 @@ function setOpacityByLayerKeys(mapKey, layerKeys, opacity) {
 	};
 }
 
-function setLayersPickableByLayerKeys(mapKey, layerKeys, active) {
+function setLayersPickableByMapKey(mapKey, active) {
 	return (dispatch, getState) => {
 		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);
-		if (mapLayers && layerKeys.length) {
+		if (mapLayers && mapLayers.length) {
 			mapLayers.forEach(layer => {
-				if (layerKeys.indexOf(layer.layerKey) !== -1) {
-					dispatch(
-						CommonAction.maps.setMapLayerOption(
-							mapKey,
-							layer.key,
-							'pickable',
-							active
-						)
-					);
-				}
+				dispatch(
+					CommonAction.maps.setMapLayerOption(
+						mapKey,
+						layer.key,
+						'pickable',
+						active
+					)
+				);
 			});
 		}
 	};
@@ -258,7 +256,7 @@ export default {
 	applyView,
 	adjustInitialBoxRange,
 	setOpacityByLayerKeys,
-	setLayersPickableByLayerKeys,
+	setLayersPickableByMapKey,
 	removeAllLayersFromMapByLayerKeys,
 	updateMapView,
 	updateOverviewMap,

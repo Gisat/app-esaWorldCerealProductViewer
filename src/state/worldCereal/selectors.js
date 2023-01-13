@@ -225,26 +225,6 @@ const getMapLayerOpacity = createCachedSelector(
 	}
 )((state, mapKey) => mapKey);
 
-const getMapLayersTooltipActive = createSelector(
-	[
-		CommonSelect.maps.getMapLayersStateByMapKey,
-		(state, mapKey, productMetadataKeys) => productMetadataKeys,
-	],
-	(layers, productMetadataKeys) => {
-		const selectedLayers = layers.filter(layer =>
-			_includes(productMetadataKeys, layer.layerKey)
-		);
-
-		let tooltipActive = false;
-		if (selectedLayers.length) {
-			tooltipActive = selectedLayers.some(selectedLayer => {
-				return selectedLayer.options.pickable;
-			});
-		}
-
-		return tooltipActive;
-	}
-);
 const getMapLayerTooltipActive = createSelector(
 	[
 		CommonSelect.maps.getMapLayersStateByMapKey,
@@ -280,6 +260,12 @@ const getMapLayerOptionValueByKey = createSelector(
 		}
 	}
 );
+const dataQueryActiveByMapKey = createSelector(
+	[CommonSelect.maps.getMapLayersStateByMapKey],
+	(layers = []) => {
+		return layers?.some(layer => layer?.options?.pickable);
+	}
+);
 
 const getProductValue = createCachedSelector(
 	[product => product, (product, value) => value],
@@ -295,9 +281,9 @@ export default {
 	getStyleDefinitionByProductTemplateKey,
 	isInteractivityLimited,
 	getMapLayersOpacity,
-	getMapLayersTooltipActive,
 	getProductValue,
 	getMapLayerTooltipActive,
 	getMapLayerOpacity,
 	getMapLayerOptionValueByKey,
+	dataQueryActiveByMapKey,
 };

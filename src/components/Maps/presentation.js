@@ -83,6 +83,8 @@ const Maps = ({
 					wrapperProps={{noTools: true, componentsByLayer}}
 					mapComponent={DeckGlMap}
 					stateMapKey={maps[0].key}
+					Tooltip={Tooltip}
+					tooltipProps={{}}
 				/>
 			}
 			itemTwo={
@@ -91,6 +93,8 @@ const Maps = ({
 					wrapperProps={{labelsRight: true, noTools: true, componentsByLayer}}
 					mapComponent={DeckGlMap}
 					stateMapKey={maps[1].key}
+					Tooltip={Tooltip}
+					tooltipProps={{}}
 				>
 					<MapComponentsGroup className="worldCereal-MapInfoElements">
 						<OverviewMap overviewMapKey="overview" />

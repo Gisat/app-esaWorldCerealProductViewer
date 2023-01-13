@@ -29,6 +29,12 @@ const mapStateToProps = (state, ownProps) => {
 	const activeView = Select.views.getActive(state);
 	const view = activeView?.data?.nameInternal;
 	const showRemoveAllLayers = view !== disabledRemoveAllLayerForViewName;
+
+	const dataQueryActive = Select.worldCereal.dataQueryActiveByMapKey(
+		state,
+		ownProps.mapKey
+	);
+
 	return {
 		activeMapKey: Select.maps.getMapSetActiveMapKey(state, mapSetKey),
 		mapSetMapKeys: Select.maps.getMapSetMapKeys(state, mapSetKey),
@@ -36,6 +42,7 @@ const mapStateToProps = (state, ownProps) => {
 		layersState: Select.maps.getLayersStateByMapKey(state, ownProps.mapKey),
 		overlayLayer,
 		showRemoveAllLayers,
+		dataQueryActive,
 	};
 };
 
@@ -46,6 +53,9 @@ const mapDispatchToProps = dispatch => {
 		},
 		removeAllLayers: mapKey => {
 			dispatch(Action.maps.removeAllMapLayers(mapKey));
+		},
+		toggleDataQuery: (mapKey, active) => {
+			dispatch(Action.worldCereal.setLayersPickableByMapKey(mapKey, active));
 		},
 	};
 };

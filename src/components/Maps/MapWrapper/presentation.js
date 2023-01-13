@@ -20,6 +20,8 @@ const MapWrapper = ({
 	mapSetMapKeys,
 	productsMetadata,
 	removeAllLayers,
+	toggleDataQuery,
+	dataQueryActive,
 	noTools,
 	labelsRight,
 	overlayLayer,
@@ -98,6 +100,22 @@ const MapWrapper = ({
 							icon="ri-remove-layers"
 						/>
 					) : null}
+					{!noMetadata || overlayLayer ? (
+						<IconTool
+							className={`worldCereal-toggleDataQuery ${
+								dataQueryActive ? 'active' : ''
+							}`}
+							tooltip={{
+								text: 'Allow data query',
+								position: 'left',
+								component: Tooltip,
+							}}
+							onClick={() => toggleDataQuery(mapKey, !dataQueryActive)}
+							floating
+							medium
+							icon="map-pin"
+						/>
+					) : null}
 					{mapSetMapKeys?.length > 1 ? (
 						<IconTool
 							className="worldCereal-RemoveMapIcon"
@@ -136,6 +154,8 @@ MapWrapper.propTypes = {
 	noTools: PropTypes.bool,
 	removeMap: PropTypes.func,
 	removeAllLayers: PropTypes.func,
+	toggleDataQuery: PropTypes.func,
+	dataQueryActive: PropTypes.bool,
 	overlayLayer: PropTypes.object,
 	componentsByLayer: PropTypes.array,
 	layersState: PropTypes.array,

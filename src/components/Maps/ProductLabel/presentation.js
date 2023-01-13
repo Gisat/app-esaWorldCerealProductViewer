@@ -13,7 +13,6 @@ import ExpandableLabel, {
 import ModalWindow from '../../atoms/ModalWindow';
 import {MetadataInfoTitle} from './MetadataInfo/presentation';
 import MetadataInfo from './MetadataInfo';
-import TooltipControl from './TooltipControl';
 import OpacitySlider from '../../atoms/OpacitySlider';
 
 import './style.scss';
@@ -22,8 +21,6 @@ Modal.setAppElement('#root');
 
 const ProductLabel = ({
 	layersOpacity,
-	layerTooltipActive,
-	onLayerTooltipActiveChange,
 	productMetadata,
 	productTemplate,
 	productKey,
@@ -57,7 +54,7 @@ const ProductLabel = ({
 						color={color}
 					/>
 				</ExpandableLabelHeader>
-				<ExpandableLabelBody height={styleForLegend ? 11.5 : 8}>
+				<ExpandableLabelBody height={styleForLegend ? 9.5 : 7}>
 					<div className="worldCereal-ProductLabelBody">
 						<div>
 							<ProductLabelBodyItem title="Set opacity">
@@ -79,10 +76,6 @@ const ProductLabel = ({
 							>
 								<Icon icon="close" />
 							</ProductLabelBodyItem>
-							<TooltipControl
-								active={layerTooltipActive}
-								onChange={onLayerTooltipActiveChange}
-							/>
 						</div>
 						<ProductLabelLegend style={styleForLegend} />
 					</div>
@@ -113,8 +106,6 @@ ProductLabel.propTypes = {
 	layersOpacity: PropTypes.number,
 	onOpacityChange: PropTypes.func,
 	zIndex: PropTypes.number,
-	layerTooltipActive: PropTypes.bool,
-	onLayerTooltipActiveChange: PropTypes.func,
 	tourGuideProductLabelExpanded: PropTypes.object,
 	tourGuideIsOpen: PropTypes.bool,
 };

@@ -17,11 +17,6 @@ const mapStateToProps = (state, ownProps) => {
 			ownProps.mapKey,
 			ownProps.productMetadataKeys
 		),
-		layerTooltipActive: Select.worldCereal.getMapLayersTooltipActive(
-			state,
-			ownProps.mapKey,
-			ownProps.productMetadataKeys
-		),
 		tourGuideProductLabelExpanded: Select.components.get(
 			state,
 			'tourGuide',
@@ -47,15 +42,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 					ownProps.mapKey,
 					ownProps.productMetadataKeys,
 					opacity / 100
-				)
-			);
-		},
-		onLayerTooltipActiveChange: active => {
-			dispatch(
-				Action.worldCereal.setLayersPickableByLayerKeys(
-					ownProps.mapKey,
-					ownProps.productMetadataKeys,
-					active
 				)
 			);
 		},
