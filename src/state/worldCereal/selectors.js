@@ -202,6 +202,29 @@ const getMapLayersOpacity = createCachedSelector(
 	}
 )((state, mapKey) => mapKey);
 
+const getMapLayersConfidenceActive = createCachedSelector(
+	[
+		CommonSelect.maps.getMapLayersStateByMapKey,
+		(state, mapKey, productMetadataKeys) => productMetadataKeys,
+	],
+	(layers, productMetadataKeys) => {
+		const selectedLayers = layers.filter(layer =>
+			_includes(productMetadataKeys, layer.layerKey)
+		);
+
+		let confidenceActive = false;
+		if (selectedLayers.length) {
+			selectedLayers.forEach(selectedLayer => {
+				if (selectedLayer.options.confidenceActive) {
+					confidenceActive = true;
+				}
+			});
+		}
+
+		return confidenceActive;
+	}
+)((state, mapKey) => mapKey);
+
 const getMapLayerOpacity = createCachedSelector(
 	[
 		CommonSelect.maps.getMapLayersStateByMapKey,
@@ -286,4 +309,5 @@ export default {
 	getMapLayerOpacity,
 	getMapLayerOptionValueByKey,
 	dataQueryActiveByMapKey,
+	getMapLayersConfidenceActive,
 };

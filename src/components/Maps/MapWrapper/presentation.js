@@ -113,7 +113,7 @@ const MapWrapper = ({
 							onClick={() => toggleDataQuery(mapKey, !dataQueryActive)}
 							floating
 							medium
-							icon="map-pin"
+							icon="ri-tooltip"
 						/>
 					) : null}
 					{mapSetMapKeys?.length > 1 ? (

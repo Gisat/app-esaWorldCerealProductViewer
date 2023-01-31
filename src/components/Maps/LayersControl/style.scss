@@ -1,6 +1,13 @@
 @use 'sass:math';
 @import '../../../styles/variables';
 
+.worldCereal-LayerControls.open .ptr-IconTool{
+	background: var(--accent50);
+    color: var(--base100);
+	path{
+		fill: var(--base100);
+	}
+}
 .worldCereal-LayerControls .line {
 	fill: var(--base60);
 }

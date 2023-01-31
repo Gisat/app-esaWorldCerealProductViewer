@@ -23,6 +23,11 @@ const mapStateToProps = (state, ownProps) => {
 			'productLabel.expanded'
 		),
 		tourGuideIsOpen: Select.components.get(state, 'tourGuide', 'isOpen'),
+		confidenceLayerActive: Select.worldCereal.getMapLayersConfidenceActive(
+			state,
+			ownProps.mapKey,
+			ownProps.productMetadataKeys
+		),
 	};
 };
 
@@ -42,6 +47,16 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 					ownProps.mapKey,
 					ownProps.productMetadataKeys,
 					opacity / 100
+				)
+			);
+		},
+		onConfidenceLayerActiveChange: confidenceLayerActive => {
+			dispatch(
+				Action.worldCereal.setConfidenceLayerActive(
+					ownProps.mapKey,
+					ownProps.productMetadataKeys,
+					confidenceLayerActive,
+					ownProps.productMetadata
 				)
 			);
 		},

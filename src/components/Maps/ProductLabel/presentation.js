@@ -13,6 +13,7 @@ import ExpandableLabel, {
 import ModalWindow from '../../atoms/ModalWindow';
 import {MetadataInfoTitle} from './MetadataInfo/presentation';
 import MetadataInfo from './MetadataInfo';
+import ConfidenceLayerControl from './ConfidenceLayerControl';
 import OpacitySlider from '../../atoms/OpacitySlider';
 
 import './style.scss';
@@ -30,11 +31,23 @@ const ProductLabel = ({
 	zIndex,
 	tourGuideProductLabelExpanded,
 	tourGuideIsOpen,
+	confidenceLayerActive,
+	onConfidenceLayerActiveChange,
 }) => {
 	const [modalIsOpen, setModalOpen] = useState(false);
 	const productCount = productMetadataKeys?.length;
 	const styles = productTemplate?.data?.style?.rules?.[0]?.styles;
 	const styleForLegend = _find(styles, style => style.legend);
+	const styleForConfidenceLayer = {
+		bandIndex: 0,
+		legend: true,
+		values: [
+			{color: null},
+			{color: '#ab0527', name: 'Low'},
+			{color: '#f7f8af', name: 'Midle'},
+			{color: '#046e39', name: 'High'},
+		],
+	};
 	const color = productTemplate?.data?.color;
 
 	return (
@@ -54,7 +67,9 @@ const ProductLabel = ({
 						color={color}
 					/>
 				</ExpandableLabelHeader>
-				<ExpandableLabelBody height={styleForLegend ? 9.5 : 7}>
+				<ExpandableLabelBody
+					height={confidenceLayerActive ? 12.5 : styleForLegend ? 11.5 : 8}
+				>
 					<div className="worldCereal-ProductLabelBody">
 						<div>
 							<ProductLabelBodyItem title="Set opacity">
@@ -76,8 +91,17 @@ const ProductLabel = ({
 							>
 								<Icon icon="close" />
 							</ProductLabelBodyItem>
+							<ConfidenceLayerControl
+								active={confidenceLayerActive}
+								onChange={onConfidenceLayerActiveChange}
+							/>
 						</div>
-						<ProductLabelLegend style={styleForLegend} />
+						<ProductLabelLegend
+							height={confidenceLayerActive ? '4.5rem' : '3.5rem'}
+							style={
+								confidenceLayerActive ? styleForConfidenceLayer : styleForLegend
+							}
+						/>
 					</div>
 				</ExpandableLabelBody>
 			</ExpandableLabel>
@@ -108,6 +132,8 @@ ProductLabel.propTypes = {
 	zIndex: PropTypes.number,
 	tourGuideProductLabelExpanded: PropTypes.object,
 	tourGuideIsOpen: PropTypes.bool,
+	confidenceLayerActive: PropTypes.bool,
+	onConfidenceLayerActiveChange: PropTypes.func,
 };
 
 const ProductLabelHeader = ({count, product, productMetadata, color}) => {
@@ -227,7 +253,7 @@ ProductLabelBodyItem.propTypes = {
 	title: PropTypes.string,
 };
 
-const ProductLabelLegend = ({style}) => {
+const ProductLabelLegend = ({style, height}) => {
 	// for cogs values only
 	if (style) {
 		let legendItems = [];
@@ -238,7 +264,7 @@ const ProductLabelLegend = ({style}) => {
 		});
 
 		return (
-			<div className="worldCereal-ProductLabelLegend">
+			<div className="worldCereal-ProductLabelLegend" style={{height}}>
 				{legendItems.reverse().map((item, i) => {
 					return (
 						<ProductLabelLegendItem
@@ -256,6 +282,7 @@ const ProductLabelLegend = ({style}) => {
 };
 
 ProductLabelLegend.propTypes = {
+	height: PropTypes.number,
 	style: PropTypes.shape({
 		values: PropTypes.object,
 	}),

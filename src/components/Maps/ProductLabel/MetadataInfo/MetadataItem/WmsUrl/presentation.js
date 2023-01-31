@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-const MetadataInfoItemRec = ({dataSource}) => {
+const WmsUrl = ({dataSource}) => {
 	return <a href={dataSource.data.url}>{dataSource.data.url}</a>;
 };
 
-MetadataInfoItemRec.propTypes = {
+WmsUrl.propTypes = {
 	dataSource: PropTypes.object,
 };
-export default MetadataInfoItemRec;
+export default WmsUrl;

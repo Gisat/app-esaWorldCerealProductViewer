@@ -53,6 +53,7 @@
 .worldCereal-toggleDataQuery{
   &.active{
     background: var(--accent50);
+    color: var(--base100);
     
     &:hover{
       background: var(--accent30);

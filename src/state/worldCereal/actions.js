@@ -217,6 +217,70 @@ function setOpacityByLayerKeys(mapKey, layerKeys, opacity) {
 	};
 }
 
+function setConfidenceLayerActive(
+	mapKey,
+	layerKeys,
+	confidenceLayerActive,
+	productMetadata
+) {
+	return (dispatch, getState) => {
+		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);
+		if (mapLayers && layerKeys.length) {
+			mapLayers.forEach(layer => {
+				if (layerKeys.indexOf(layer.layerKey) !== -1) {
+					const urlMatch = layer.options.url.match(/.+(\/.+)$/);
+					let newWmsUrl, layers;
+					if (confidenceLayerActive) {
+						newWmsUrl = layer.options.url.replace(
+							urlMatch[1],
+							`/${productMetadata[0].data.dataSource.confidence}`
+						);
+						layers = layer.options.params.layers.replace(
+							'product',
+							'confidence'
+						);
+					} else {
+						newWmsUrl = layer.options.url.replace(
+							urlMatch[1],
+							`/${productMetadata[0].data.dataSource.product}`
+						);
+						layers = layer.options.params.layers.replace(
+							'confidence',
+							'product'
+						);
+					}
+					dispatch(
+						CommonAction.maps.setMapLayerOption(
+							mapKey,
+							layer.key,
+							'url',
+							newWmsUrl
+						)
+					);
+					dispatch(
+						CommonAction.maps.setMapLayerOption(
+							mapKey,
+							layer.key,
+							'params.layers',
+							layers
+						)
+					);
+
+					//add layer confidence
+					dispatch(
+						CommonAction.maps.setMapLayerOption(
+							mapKey,
+							layer.key,
+							'confidenceActive',
+							confidenceLayerActive
+						)
+					);
+				}
+			});
+		}
+	};
+}
+
 function setLayersPickableByMapKey(mapKey, active) {
 	return (dispatch, getState) => {
 		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);
@@ -262,4 +326,5 @@ export default {
 	updateOverviewMap,
 	updateMapSetActiveMapView,
 	loadProducts,
+	setConfidenceLayerActive,
 };
