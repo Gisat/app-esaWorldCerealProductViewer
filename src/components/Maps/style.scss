@@ -71,4 +71,9 @@ div[data-rcs="clip-item"] {
   display: flex;
   flex-direction: column;
   z-index: 9;
+
+  .ptr-IconTool.is-active {
+    background: var(--accent50);
+    color: var(--base100);
+  }
 }

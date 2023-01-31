@@ -3,7 +3,7 @@ import React from 'react';
 import {isEmpty as _isEmpty, forIn as _forIn} from 'lodash';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import {IconTool, Tooltip} from '@gisatcz/visat-components';
+import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 import ExpandableLabelsContainer from '../../atoms/ExpandableLabel/ExpandableLabelsContainer';
 import ExpandableProductLabel from '../ProductLabel';
 import ExpandableLayerLabel from '../ExpandableLayerLabel';
@@ -20,6 +20,8 @@ const MapWrapper = ({
 	mapSetMapKeys,
 	productsMetadata,
 	removeAllLayers,
+	toggleDataQuery,
+	dataQueryActive,
 	noTools,
 	labelsRight,
 	overlayLayer,
@@ -98,6 +100,22 @@ const MapWrapper = ({
 							icon="ri-remove-layers"
 						/>
 					) : null}
+					{!noMetadata || overlayLayer ? (
+						<IconTool
+							className={`worldCereal-toggleDataQuery ${
+								dataQueryActive ? 'active' : ''
+							}`}
+							tooltip={{
+								text: 'Allow data query',
+								position: 'left',
+								component: Tooltip,
+							}}
+							onClick={() => toggleDataQuery(mapKey, !dataQueryActive)}
+							floating
+							medium
+							icon="ri-tooltip"
+						/>
+					) : null}
 					{mapSetMapKeys?.length > 1 ? (
 						<IconTool
 							className="worldCereal-RemoveMapIcon"
@@ -136,6 +154,8 @@ MapWrapper.propTypes = {
 	noTools: PropTypes.bool,
 	removeMap: PropTypes.func,
 	removeAllLayers: PropTypes.func,
+	toggleDataQuery: PropTypes.func,
+	dataQueryActive: PropTypes.bool,
 	overlayLayer: PropTypes.object,
 	componentsByLayer: PropTypes.array,
 	layersState: PropTypes.array,

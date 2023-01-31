@@ -1,4 +1,8 @@
-import {Action as CommonAction} from '@gisatcz/ptr-state';
+import {
+	Action as CommonAction,
+	commonSelectors,
+	commonHelpers,
+} from '@gisatcz/ptr-state';
 import {forIn as _forIn, isEqual as _isEqual, isNumber} from 'lodash';
 import Action from '../../Action';
 import Select from '../../Select';
@@ -385,6 +389,56 @@ function useChartAttributes(componentKey, componentId) {
 	};
 }
 
+function ensureRegionName(fid, nameAttributeKey) {
+	return (dispatch, getState) => {
+		const order = null;
+
+		const filterByActive = {
+			areaTreeLevel: true,
+			place: true,
+			scope: true,
+			application: true,
+		};
+
+		const activeKeys = commonSelectors.getAllActiveKeys(getState());
+		let fullFilter = commonHelpers.mergeFilters(activeKeys, filterByActive, {});
+
+		const commonFilter = {
+			attributeKeys: [nameAttributeKey],
+			areaTreeLevelKey: fullFilter.areaTreeLevelKey,
+			modifiers: {
+				placeKey: fullFilter.placeKey,
+				scopeKey: fullFilter.scopeKey,
+				applicationKey: fullFilter.applicationKey,
+			},
+		};
+
+		const attributeDataFilterExtension = {featureKeys: [fid]};
+		const loadRelations = false;
+		const loadData = true;
+		const relationsPagination = {
+			offset: 0,
+			limit: 1,
+		};
+		const attributeDataPagination = {
+			offset: 0,
+			limit: 1,
+		};
+
+		dispatch(
+			Action.data.components.loadIndexedPage(
+				order,
+				commonFilter,
+				attributeDataFilterExtension,
+				loadRelations,
+				loadData,
+				relationsPagination,
+				attributeDataPagination
+			)
+		);
+	};
+}
+
 export default {
 	setActiveSelectionFeatureKeysByActivePlaceKeys,
 	setActivePlaceKeysByActiveSelectionFeatureKeys,
@@ -397,4 +451,5 @@ export default {
 	recalculateStatisticLayerStyle,
 	useChartAttributes,
 	zoomToActivePlace,
+	ensureRegionName,
 };

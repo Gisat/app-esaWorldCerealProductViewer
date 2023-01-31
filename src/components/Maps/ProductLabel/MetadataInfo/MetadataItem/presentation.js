@@ -3,8 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {isArray as _isArray} from 'lodash';
-import {IconTool, Tooltip} from '@gisatcz/visat-components';
+import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 import WmsUrl from './WmsUrl';
+import ConfidenceWmsUrl from './ConfidenceWmsUrl';
 
 import './style.scss';
 import {useState} from 'react';
@@ -89,8 +90,14 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 				) : null}
 			</div>
 			<div className="worldCereal-MetadataInfoItemUrl">
-				<MetadataInfoItemRec label="wms url">
+				<MetadataInfoItemRec label="product wms url">
 					<WmsUrl spatialDataSourceKey={dataSource.product} />
+				</MetadataInfoItemRec>
+				<MetadataInfoItemRec label="confidence wms url">
+					<ConfidenceWmsUrl
+						spatialDataSourceKey={dataSource.product}
+						confidence={dataSource.confidence}
+					/>
 				</MetadataInfoItemRec>
 			</div>
 			{!isGlobal ? (

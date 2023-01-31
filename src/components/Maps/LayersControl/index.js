@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import BackgroundLayersControl from './BackgroundLayersControl';
 import OverlayLayer from './OverlayLayer';
 import ComponentRenderer from '../ComponentRenderer';
-import {IconTool, Tooltip} from '@gisatcz/visat-components';
+import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 
 import './style.scss';
 

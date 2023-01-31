@@ -8,8 +8,9 @@ module.exports = function override(config) {
 			// 	'C:/Users/PavelVlach/WebstormProjects/ptr-components/node_modules/react',
 			// '@gisatcz/ptr-components':
 			// 	'C:/Users/PavelVlach/WebstormProjects/ptr-components',
-			// react: 'C:/Users/PavelVlach/WebstormProjects/ptr-maps/node_modules/react',
-			// '@gisatcz/ptr-maps': 'C:/Users/PavelVlach/WebstormProjects/ptr-maps',
+			// react:
+			// 	'C:/Users/PavelVlach/WebstormProjects/ptr-atoms/node_modules/react',
+			// '@gisatcz/ptr-atoms': 'C:/Users/PavelVlach/WebstormProjects/ptr-atoms',
 			// 'classnames': './node_modules/classnames',
 			// 'react': '/Users/vojtadubrovsky/Work/GISAT/git/app-esaWorldCerealProductViewer/node_modules/@gisatcz/ptr-state/node_modules/react',
 			// '@gisatcz/ptr-state': '/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-state',
@@ -22,10 +23,12 @@ module.exports = function override(config) {
 			// 'react-resize-detector': '/Users/vojtadubrovsky/Work/GISAT/git/app-esaWorldCerealProductViewer/node_modules/@gisatcz/ptr-maps/node_modules/react-resize-detector',
 			// 'react-resize-detector': '/Users/vojtadubrovsky/Work/GISAT/git/app-esaWorldCerealProductViewer/node_modules/react-resize-detector',
 			// react:
-			// 	'/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-maps/node_modules/react',
+			// 	'/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-atoms/node_modules/react',
 			// 'react-dom':
-			// 	'/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-maps/node_modules/react-dom',
+			// '/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-atoms/node_modules/react-dom',
 			// '@gisatcz/ptr-maps': '/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-maps',
+			// '@gisatcz/ptr-state': '/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-state',
+			// '@gisatcz/ptr-atoms': '/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-atoms',
 		},
 		fallback: {
 			fs: false,

@@ -112,16 +112,20 @@ function updateMapView(mapKey, viewUpdate) {
 	return CommonAction.maps.updateMapAndSetView(mapKey, viewUpdate);
 }
 
+/**
+ * Load products only if active MapSetKey is detailedExploration-mapSet
+ * @returns
+ */
 function loadProducts() {
 	return (dispatch, getState) => {
 		const state = getState();
 		const mapSetKey = Select.maps.getActiveSetKey(state);
-		const disabledMapSetKey = 'globalView-mapSet';
+		const allowedMapSetKey = 'detailedExploration-mapSet';
 		const isInteractivityLimited = Select.worldCereal.isInteractivityLimited(
 			state,
 			mapSetKey
 		);
-		if (!isInteractivityLimited && mapSetKey !== disabledMapSetKey) {
+		if (!isInteractivityLimited && mapSetKey === allowedMapSetKey) {
 			dispatch(productMetadataActions.loadForMapSetView());
 		}
 	};
@@ -213,21 +217,83 @@ function setOpacityByLayerKeys(mapKey, layerKeys, opacity) {
 	};
 }
 
-function setLayersPickableByLayerKeys(mapKey, layerKeys, active) {
+function setConfidenceLayerActive(
+	mapKey,
+	layerKeys,
+	confidenceLayerActive,
+	productMetadata
+) {
 	return (dispatch, getState) => {
 		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);
 		if (mapLayers && layerKeys.length) {
 			mapLayers.forEach(layer => {
 				if (layerKeys.indexOf(layer.layerKey) !== -1) {
+					const urlMatch = layer.options.url.match(/.+(\/.+)$/);
+					let newWmsUrl, layers;
+					if (confidenceLayerActive) {
+						newWmsUrl = layer.options.url.replace(
+							urlMatch[1],
+							`/${productMetadata[0].data.dataSource.confidence}`
+						);
+						layers = layer.options.params.layers.replace(
+							'product',
+							'confidence'
+						);
+					} else {
+						newWmsUrl = layer.options.url.replace(
+							urlMatch[1],
+							`/${productMetadata[0].data.dataSource.product}`
+						);
+						layers = layer.options.params.layers.replace(
+							'confidence',
+							'product'
+						);
+					}
 					dispatch(
 						CommonAction.maps.setMapLayerOption(
 							mapKey,
 							layer.key,
-							'pickable',
-							active
+							'url',
+							newWmsUrl
+						)
+					);
+					dispatch(
+						CommonAction.maps.setMapLayerOption(
+							mapKey,
+							layer.key,
+							'params.layers',
+							layers
+						)
+					);
+
+					//add layer confidence
+					dispatch(
+						CommonAction.maps.setMapLayerOption(
+							mapKey,
+							layer.key,
+							'confidenceActive',
+							confidenceLayerActive
 						)
 					);
 				}
+			});
+		}
+	};
+}
+
+function setLayersPickableByMapKey(mapKey, active) {
+	return (dispatch, getState) => {
+		const mapLayers = Select.maps.getMapLayersStateByMapKey(getState(), mapKey);
+		if (mapLayers && mapLayers.length) {
+			mapLayers.forEach(layer => {
+				dispatch(
+					CommonAction.maps.setMapLayerOption(
+						mapKey,
+						layer.key,
+						'pickable',
+						active
+					)
+				);
 			});
 		}
 	};
@@ -254,10 +320,11 @@ export default {
 	applyView,
 	adjustInitialBoxRange,
 	setOpacityByLayerKeys,
-	setLayersPickableByLayerKeys,
+	setLayersPickableByMapKey,
 	removeAllLayersFromMapByLayerKeys,
 	updateMapView,
 	updateOverviewMap,
 	updateMapSetActiveMapView,
 	loadProducts,
+	setConfidenceLayerActive,
 };

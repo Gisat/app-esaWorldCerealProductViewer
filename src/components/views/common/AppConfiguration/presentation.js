@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import {Icon} from '@gisatcz/visat-components';
+import {Icon} from '@gisatcz/ptr-atoms';
 import AppConfigurationSection from './AppConfigurationSection';
 import AppComponentsConfiguration from './AppComponentsConfiguration';
 import './style.scss';

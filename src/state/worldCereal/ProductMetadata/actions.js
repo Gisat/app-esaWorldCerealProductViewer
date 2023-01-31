@@ -102,6 +102,10 @@ function handleDataSourceAndAddtoMap(
 	productMetadataKey
 ) {
 	return (dispatch, getState) => {
+		const dataQueryActive = Select.worldCereal.dataQueryActiveByMapKey(
+			getState(),
+			mapKey
+		);
 		dispatch(
 			Action.data.spatialDataSources.useKeys([spatialDataSourceKey])
 		).then(() => {
@@ -115,7 +119,7 @@ function handleDataSourceAndAddtoMap(
 				spatialDataSourceKey,
 				type: 'wms',
 				options: {
-					pickable: false,
+					pickable: dataQueryActive,
 					hoverable: true,
 					transparentColor: [255, 255, 255, 0], // white border, transparent background
 					params: {

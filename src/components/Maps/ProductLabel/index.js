@@ -17,17 +17,17 @@ const mapStateToProps = (state, ownProps) => {
 			ownProps.mapKey,
 			ownProps.productMetadataKeys
 		),
-		layerTooltipActive: Select.worldCereal.getMapLayersTooltipActive(
-			state,
-			ownProps.mapKey,
-			ownProps.productMetadataKeys
-		),
 		tourGuideProductLabelExpanded: Select.components.get(
 			state,
 			'tourGuide',
 			'productLabel.expanded'
 		),
 		tourGuideIsOpen: Select.components.get(state, 'tourGuide', 'isOpen'),
+		confidenceLayerActive: Select.worldCereal.getMapLayersConfidenceActive(
+			state,
+			ownProps.mapKey,
+			ownProps.productMetadataKeys
+		),
 	};
 };
 
@@ -50,12 +50,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 				)
 			);
 		},
-		onLayerTooltipActiveChange: active => {
+		onConfidenceLayerActiveChange: confidenceLayerActive => {
 			dispatch(
-				Action.worldCereal.setLayersPickableByLayerKeys(
+				Action.worldCereal.setConfidenceLayerActive(
 					ownProps.mapKey,
 					ownProps.productMetadataKeys,
-					active
+					confidenceLayerActive,
+					ownProps.productMetadata
 				)
 			);
 		},

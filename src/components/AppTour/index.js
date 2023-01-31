@@ -7,9 +7,13 @@ const mapStateToProps = state => {
 	return {
 		activeView: Select.views.getActive(state),
 		introOverlayIsOpen: Select.components.get(state, 'IntroOverlay', 'open'),
-		activeMap: Select.maps.getActiveMap(state),
 		activeFilters:
 			Select.worldCereal.productMetadataFilter.getActiveFilter(state),
+		activeMapWindows: Select.maps.getMapSetMaps(
+			state,
+			'detailedExploration-mapSet'
+		),
+		activeMapWindow: Select.maps.getActiveMap(state),
 	};
 };
 
@@ -33,11 +37,11 @@ const mapDispatchToProps = dispatch => {
 				Action.worldCereal.applyView('95ad1c41-9027-4546-9fd4-f7210cdbf493')
 			);
 		},
-		activateDefaultLayer: () => {
+		activateDefaultLayer: (layerKey, sourceKey) => {
 			dispatch(
 				Action.worldCereal.productMetadata.handleProductInActiveMap(
-					'b8ae22a1-5444-52db-bcd3-096faf2315cc',
-					'f7e2d7d4-55af-5077-99dc-d72ce9b748e2'
+					layerKey,
+					sourceKey
 				)
 			);
 		},
@@ -76,6 +80,20 @@ const mapDispatchToProps = dispatch => {
 			);
 			dispatch(Action.worldCereal.updateOverviewMap());
 			dispatch(Action.worldCereal.loadProducts());
+		},
+		addNewMapWindow: () => {
+			dispatch(
+				Action.maps.addMap({key: '377062eb-2aeb-437f-b6ea-f6964b28157d'})
+			);
+			dispatch(
+				Action.maps.addMapToSet(
+					'377062eb-2aeb-437f-b6ea-f6964b28157d',
+					'detailedExploration-mapSet'
+				)
+			);
+		},
+		activateMapWindow: mapKey => {
+			dispatch(Action.maps.setMapSetActiveMapKey(mapKey));
 		},
 	};
 };

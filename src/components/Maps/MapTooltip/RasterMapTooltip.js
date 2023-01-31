@@ -45,7 +45,6 @@ RasterMapTooltip.propTypes = {
 	info: PropTypes.object,
 	children: PropTypes.node,
 	event: PropTypes.object,
-	mapKey: PropTypes.string,
 	layer: PropTypes.object,
 	onLoadEnd: PropTypes.func,
 	onLoadStart: PropTypes.func,

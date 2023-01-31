@@ -49,3 +49,14 @@
 .ptr-map-wrapper.worldCereal-MapWrapper.active .worldCereal-MapToolsButton.ptr-button {
   background: var(--accent30);
 }
+
+.worldCereal-toggleDataQuery{
+  &.active{
+    background: var(--accent50);
+    color: var(--base100);
+    
+    &:hover{
+      background: var(--accent30);
+    }
+  }
+}
