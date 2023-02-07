@@ -38,6 +38,16 @@
   z-index: 2;
   display: flex;
   grid-gap: .35rem;
+
+
+  .ptr-IconTool.is-floating:hover{
+    background: var(--accent20);
+    color: var(--base100);
+    // stroke: var(--base100);
+    .line {
+      fill: var(--base100);
+    }
+  }
 }
 
 .worldCereal-MapToolsButton.ptr-button {

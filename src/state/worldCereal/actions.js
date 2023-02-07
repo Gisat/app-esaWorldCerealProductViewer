@@ -50,11 +50,6 @@ function applyDetailedExplorationView(view) {
 				view.data.state.worldCereal.productMetadataFilter.activeFilter
 			)
 		);
-
-		// TODO handle differently
-		setTimeout(() => {
-			dispatch(productMetadataActions.loadForMapSetView());
-		}, 1000);
 	};
 }
 
