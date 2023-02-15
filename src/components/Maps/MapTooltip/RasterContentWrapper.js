@@ -61,6 +61,12 @@ const RasterContentWrapper = ({event, timeout = 200, children}) => {
 		}
 	};
 
+	/**
+	 * Check if response is valid to be displayer in tooltip
+	 * If return false, response should not be displayed
+	 * @param {Array} response
+	 * @returns {Boolean}
+	 */
 	const responseValidator = response => {
 		// We don`t want to show zero values which means "no data"
 		return !response.every(i => i.value_list === '0');
