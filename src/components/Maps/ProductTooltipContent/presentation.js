@@ -50,19 +50,23 @@ const ProductTooltipContent = ({
 	const endDate = isGlobal ? eos.slice(0, 4) : eos;
 	const fullDate = isGlobal ? startDate + endDate : startDate + ' / ' + endDate;
 
-	return (
-		<>
-			<SingleProductLabelHeader
-				product={productTemplate?.data?.nameDisplay}
-				zone={aez}
-				date={fullDate}
-			>
-				<>
-					<ProductLabelLegendItem color={`rgba(${color})`} name={value} />
-				</>
-			</SingleProductLabelHeader>
-		</>
-	);
+	if (value) {
+		return (
+			<>
+				<SingleProductLabelHeader
+					product={productTemplate?.data?.nameDisplay}
+					zone={aez}
+					date={fullDate}
+				>
+					<>
+						<ProductLabelLegendItem color={`rgba(${color})`} name={value} />
+					</>
+				</SingleProductLabelHeader>
+			</>
+		);
+	} else {
+		return null;
+	}
 };
 
 ProductTooltipContent.propTypes = {

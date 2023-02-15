@@ -44,7 +44,7 @@ const RasterContentWrapper = ({event, timeout = 200, children}) => {
 		}
 	};
 
-	// Handler which should child component execute aftef success loading of getfeatureinfo.
+	// Handler which should child component execute after success loading of getfeatureinfo.
 	// If retrun true, then some data receive, and will be displayed, if false, then component will show nothing
 	const onLoadEnd = (round, dataReceived) => {
 		componentsDataRef.current[round].push(dataReceived);
@@ -59,6 +59,11 @@ const RasterContentWrapper = ({event, timeout = 200, children}) => {
 				[]
 			);
 		}
+	};
+
+	const responseValidator = response => {
+		// We don`t want to show zero values which means "no data"
+		return !response.every(i => i.value_list === '0');
 	};
 
 	const getChildren = () => {
@@ -82,6 +87,7 @@ const RasterContentWrapper = ({event, timeout = 200, children}) => {
 							y: coordsState[1],
 							onLoadEnd,
 							onLoadStart,
+							responseValidator,
 							round: componentsDataRef.current.length,
 						})
 					);

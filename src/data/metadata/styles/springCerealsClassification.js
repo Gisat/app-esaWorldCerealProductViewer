@@ -16,10 +16,10 @@ export default {
 								0: {
 									color: null,
 								},
-								1: {
-									color: 'rgb(186, 186, 186)',
-									name: 'Other crop',
-								},
+								// 1: {
+								// 	color: 'rgb(186, 186, 186)',
+								// 	name: 'Other crop',
+								// },
 								2: {
 									color: 'rgb(186, 113, 53)',
 									name: 'Spring cereals',
