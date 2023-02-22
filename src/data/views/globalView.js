@@ -44,11 +44,11 @@ export default {
 									},
 								},
 								zoomToDetail: {
-									icon: 'plus-thick',
+									icon: 'ri-zoom-in-area',
 									title: 'Zoom to detail control',
 								},
 								zoomToWorld: {
-									icon: 'globe',
+									icon: 'ri-globe',
 									title: 'Zoom to whole World control',
 								},
 								mapAttribution: {

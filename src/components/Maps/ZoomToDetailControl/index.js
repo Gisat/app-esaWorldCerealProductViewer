@@ -16,6 +16,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onBoxRangeChange: boxRange => {
 			dispatch(Action.maps.updateSetView(ownProps.mapSetKey, {boxRange}));
+			dispatch(Action.worldCereal.updateOverviewMap());
+			dispatch(Action.worldCereal.loadProducts());
 		},
 	};
 };

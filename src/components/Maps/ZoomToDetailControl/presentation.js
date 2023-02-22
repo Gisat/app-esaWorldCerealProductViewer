@@ -15,7 +15,7 @@ const ZoomToDetailControl = ({currentBoxRange, onBoxRangeChange}) => {
 				onClick={() => onBoxRangeChange(DETAILED_BOX_RANGE)}
 				floating
 				medium
-				icon="ri-plus"
+				icon="ri-zoom-in-area"
 			/>
 		</ComponentRenderer>
 	);

@@ -16,6 +16,8 @@ export default {
 						'detailedExploration-mapSet': {
 							open: [
 								'zoomControls',
+								'zoomToDetail',
+								'zoomToWorld',
 								'layerControls',
 								'addMap',
 								'compareMaps',
@@ -25,12 +27,14 @@ export default {
 								'searchPlace',
 							],
 							available: [
-								'searchPlace',
 								'addMap',
 								'compareMaps',
 								'layerControls',
-								'zoomControls',
 								'overviewMap',
+								'searchPlace',
+								'zoomControls',
+								'zoomToDetail',
+								'zoomToWorld',
 							],
 							componentsByKey: {
 								addMap: {
@@ -47,6 +51,14 @@ export default {
 									settings: {
 										horizontal: false,
 									},
+								},
+								zoomToDetail: {
+									icon: 'ri-zoom-in-area',
+									title: 'Zoom to detail control',
+								},
+								zoomToWorld: {
+									icon: 'ri-globe',
+									title: 'Zoom to whole World control',
 								},
 								mapAttribution: {
 									icon: 'info',

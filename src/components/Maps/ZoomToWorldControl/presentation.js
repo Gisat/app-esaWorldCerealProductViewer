@@ -15,7 +15,7 @@ const ZoomToWorldControl = ({currentBoxRange, onBoxRangeChange}) => {
 				onClick={() => onBoxRangeChange(WORLD_BOX_RANGE)}
 				floating
 				medium
-				icon="globe"
+				icon="ri-globe"
 			/>
 		</ComponentRenderer>
 	);
