@@ -4,6 +4,8 @@ export const globalAreaLevelKey = 'a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47';
 
 export const MAX_MAPS_IN_MAP_SET = 4;
 export const MAX_BOX_RANGE_FOR_LAYERS_HANDLING = 4000000;
+export const DETAILED_BOX_RANGE = 10000;
+export const WORLD_BOX_RANGE = 20000000;
 export const MIN_FILTER_PARAMETER_VALUES_FOR_GROUPING = 3;
 export const MIN_PRODUCT_MAP_LABELS_FOR_GROUPING = 3;
 

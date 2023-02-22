@@ -1,6 +1,10 @@
 @use 'sass:math';
 @import '../../../styles/variables';
 
+.worldCereal-LayerControls {
+	position: relative;
+}
+
 .worldCereal-LayerControls.open .ptr-IconTool{
 	background: var(--accent50);
     color: var(--base100);
@@ -15,7 +19,7 @@
 // menu
 .worldCereal-LayerControls-menu {
 	right: calc(100% + 1.5rem);
-	bottom: 4.5rem;
+	bottom: 0;
 	position: absolute;
 	border-radius: 0.25rem 0.25rem 0 0.25rem;
 	width: 0;

@@ -20,6 +20,8 @@ import OverviewMap from './OverviewMap';
 import CompareMapsControl from './CompareMapsControl';
 import AddMapControl from './AddMapControl';
 import SearchPlaceControl from './SearchPlaceControl';
+import ZoomToDetailControl from './ZoomToDetailControl';
+import ZoomToWorldControl from './ZoomToWorldControl';
 import StyleBasedLegend from '../common/maps/MapLegends/StyleBasedLegend';
 
 import MapTooltip from './MapTooltip';
@@ -111,6 +113,8 @@ const Maps = ({
 						/>
 						<CompareMapsControl mapSetKey={mapSetKey} />
 						<LayersControl mapSetKey={mapSetKey} />
+						<ZoomToDetailControl mapSetKey={mapSetKey} />
+						<ZoomToWorldControl mapSetKey={mapSetKey} />
 						<ZoomControls viewLimits={viewLimits} />
 					</MapComponentsGroup>
 				</Map>
@@ -138,6 +142,8 @@ const Maps = ({
 				/>
 				<CompareMapsControl mapSetKey={mapSetKey} />
 				<LayersControl mapSetKey={mapSetKey} />
+				<ZoomToDetailControl mapSetKey={mapSetKey} />
+				<ZoomToWorldControl mapSetKey={mapSetKey} />
 				<ZoomControls viewLimits={viewLimits} />
 			</MapComponentsGroup>
 			<MapComponentsGroup className="worldCereal-MapInfoElements">

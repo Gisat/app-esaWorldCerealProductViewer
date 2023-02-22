@@ -16,21 +16,24 @@ export default {
 						'globalView-mapSet': {
 							open: [
 								'zoomControls',
+								'zoomToDetail',
+								'zoomToWorld',
 								'layerControls',
 								'mapAttribution',
 								'addMap',
 								'compareMaps',
 								'scale',
-								'searchPlace',
 								'overviewMap',
 							],
 							available: [
-								'searchPlace',
-								'layerControls',
 								'addMap',
+								'layerControls',
 								'compareMaps',
-								'zoomControls',
 								'overviewMap',
+								'searchPlace',
+								'zoomControls',
+								'zoomToDetail',
+								'zoomToWorld',
 							],
 							componentsByKey: {
 								zoomControls: {
@@ -39,6 +42,14 @@ export default {
 									settings: {
 										horizontal: false,
 									},
+								},
+								zoomToDetail: {
+									icon: 'ri-zoom-in-area',
+									title: 'Zoom to detail control',
+								},
+								zoomToWorld: {
+									icon: 'ri-globe',
+									title: 'Zoom to whole World control',
 								},
 								mapAttribution: {
 									icon: 'info',
