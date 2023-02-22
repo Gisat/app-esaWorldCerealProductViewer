@@ -76,4 +76,15 @@ div[data-rcs="clip-item"] {
     background: var(--accent50);
     color: var(--base100);
   }
+
+  .ptr-IconTool.is-floating:hover,
+  .ptr-ZoomControls .zoom-control.control .ptr-button:hover 
+   {
+    background: var(--accent20);
+    color: var(--base100);
+    // stroke: var(--base100);
+    .line {
+      fill: var(--base100);
+    }
+  }
 }

@@ -5,6 +5,7 @@ const RasterMapTooltip = ({
 	children,
 	onLoadEnd,
 	onLoadStart,
+	responseValidator,
 	round,
 	...props
 }) => {
@@ -33,6 +34,7 @@ const RasterMapTooltip = ({
 			onLoadEnd={onLoadEnd}
 			onLoadStart={onLoadStart}
 			round={round}
+			responseValidator={responseValidator}
 		>
 			{childWithProps}
 		</GetFeatureInfoTooltip>
@@ -48,6 +50,7 @@ RasterMapTooltip.propTypes = {
 	layer: PropTypes.object,
 	onLoadEnd: PropTypes.func,
 	onLoadStart: PropTypes.func,
+	responseValidator: PropTypes.func,
 	round: PropTypes.number,
 };
 

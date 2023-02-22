@@ -38,6 +38,7 @@ const GetFeatureInfoTooltip = ({
 	children,
 	onLoadEnd,
 	onLoadStart,
+	responseValidator,
 	round,
 }) => {
 	const [jsonResponse, setJsonResponse] = useState([]);
@@ -59,7 +60,14 @@ const GetFeatureInfoTooltip = ({
 			responseText = responseText.replaceAll(/\n/g, '').replaceAll('}{', '},{');
 			const parsedResponse = JSON.parse(`[${responseText}]`);
 			setJsonResponse(parsedResponse);
-			onLoadEnd(round, parsedResponse.length > 0);
+			if (
+				parsedResponse.length > 0 &&
+				typeof responseValidator === 'function'
+			) {
+				onLoadEnd(round, responseValidator(parsedResponse));
+			} else {
+				onLoadEnd(round, parsedResponse.length > 0);
+			}
 		} catch (error) {
 			onLoadEnd(round, false);
 		}
@@ -91,6 +99,7 @@ GetFeatureInfoTooltip.propTypes = {
 	children: PropTypes.node,
 	onLoadEnd: PropTypes.func,
 	onLoadStart: PropTypes.func,
+	responseValidator: PropTypes.func,
 	round: PropTypes.number,
 };
 
