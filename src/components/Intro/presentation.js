@@ -56,9 +56,9 @@ const Intro = ({onViewSelect, views, tourGuideIsOpen}) => {
 						<img className="worldCereal-Intro-logo" src={logo} />
 						<div className="worldCereal-Intro-title">
 							<h1>
-								World<em>Cereal</em>, global cropland monitoring based on
-								Sentinels
+								World<em>Cereal</em>
 							</h1>
+							<p>Global cropland monitoring based on Sentinels</p>
 						</div>
 						<EsaLogo />
 					</div>
@@ -73,10 +73,10 @@ const Intro = ({onViewSelect, views, tourGuideIsOpen}) => {
 								<IntroCardText>{view.data.description}</IntroCardText>
 							</IntroCard>
 						))}
-						<IntroCard disabled Icon={User1}>
-							<IntroCardTitle>User products</IntroCardTitle>
-							<IntroCardText>exploration</IntroCardText>
-						</IntroCard>
+						{/*<IntroCard disabled Icon={User1}>*/}
+						{/*	<IntroCardTitle>User products</IntroCardTitle>*/}
+						{/*	<IntroCardText>exploration</IntroCardText>*/}
+						{/*</IntroCard>*/}
 					</div>
 				</div>
 				<div className="worldCereal-Intro-body"></div>
