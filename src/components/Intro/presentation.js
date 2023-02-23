@@ -73,10 +73,10 @@ const Intro = ({onViewSelect, views, tourGuideIsOpen}) => {
 								<IntroCardText>{view.data.description}</IntroCardText>
 							</IntroCard>
 						))}
-						<IntroCard disabled Icon={User1}>
-							<IntroCardTitle>User products</IntroCardTitle>
-							<IntroCardText>exploration</IntroCardText>
-						</IntroCard>
+						{/*<IntroCard disabled Icon={User1}>*/}
+						{/*	<IntroCardTitle>User products</IntroCardTitle>*/}
+						{/*	<IntroCardText>exploration</IntroCardText>*/}
+						{/*</IntroCard>*/}
 					</div>
 				</div>
 				<div className="worldCereal-Intro-body"></div>
