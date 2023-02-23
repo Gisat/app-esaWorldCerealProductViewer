@@ -3,12 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {isArray as _isArray} from 'lodash';
-import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
+// import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 import WmsUrl from './WmsUrl';
 import ConfidenceWmsUrl from './ConfidenceWmsUrl';
 
 import './style.scss';
-import {useState} from 'react';
+// import {useState} from 'react';
 
 const MetadataInfoItemRec = ({label, small, children}) => {
 	const classes = classnames('worldCereal-MetadataInfoItemRec', {
@@ -34,7 +34,7 @@ MetadataInfoItemRec.propTypes = {
 };
 
 const MetadataInfoItem = ({productMetadata, productTemplate}) => {
-	const [showAllTiles, setShowAllTiles] = useState(true);
+	// const [showAllTiles, setShowAllTiles] = useState(true);
 	const {
 		isGlobal,
 		product,
@@ -103,50 +103,50 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 			{!isGlobal ? (
 				tiles ? (
 					<div className="worldCereal-MetadataInfoItemTiles">
-						<MetadataInfoItemRec
-							label={'Original data for S2 tiles (' + tiles.length + ')'}
-						>
-							<a
-								key={tiles[0].tile}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="worldCereal-MetadataInfoItemTiles-content"
-							>
-								{tiles[0].tile}
-							</a>
-						</MetadataInfoItemRec>
-						{!showAllTiles
-							? tiles.map((tile, index) =>
-									index > 0 ? (
-										<a
-											key={tile.tile}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="worldCereal-MetadataInfoItemTiles-content"
-										>
-											{tile.tile}
-										</a>
-									) : null
-							  )
-							: null}
-						<div
-							className="worldCereal-MetadataInfoItemTiles-BtnShowTiles"
-							style={
-								showAllTiles
-									? {transform: 'rotate(0deg)'}
-									: {transform: 'rotate(180deg)'}
-							}
-						>
-							<IconTool
-								icon={'ri-read-more'}
-								tooltip={{
-									text: showAllTiles ? 'Show all' : '',
-									position: 'right',
-									component: Tooltip,
-								}}
-								onClick={() => setShowAllTiles(!showAllTiles)}
-							/>
-						</div>
+						{/*<MetadataInfoItemRec*/}
+						{/*	label={'Original data for S2 tiles (' + tiles.length + ')'}*/}
+						{/*>*/}
+						{/*	<a*/}
+						{/*		key={tiles[0].tile}*/}
+						{/*		target="_blank"*/}
+						{/*		rel="noopener noreferrer"*/}
+						{/*		className="worldCereal-MetadataInfoItemTiles-content"*/}
+						{/*	>*/}
+						{/*		{tiles[0].tile}*/}
+						{/*	</a>*/}
+						{/*</MetadataInfoItemRec>*/}
+						{/*{!showAllTiles*/}
+						{/*	? tiles.map((tile, index) =>*/}
+						{/*			index > 0 ? (*/}
+						{/*				<a*/}
+						{/*					key={tile.tile}*/}
+						{/*					target="_blank"*/}
+						{/*					rel="noopener noreferrer"*/}
+						{/*					className="worldCereal-MetadataInfoItemTiles-content"*/}
+						{/*				>*/}
+						{/*					{tile.tile}*/}
+						{/*				</a>*/}
+						{/*			) : null*/}
+						{/*	  )*/}
+						{/*	: null}*/}
+						{/*<div*/}
+						{/*	className="worldCereal-MetadataInfoItemTiles-BtnShowTiles"*/}
+						{/*	style={*/}
+						{/*		showAllTiles*/}
+						{/*			? {transform: 'rotate(0deg)'}*/}
+						{/*			: {transform: 'rotate(180deg)'}*/}
+						{/*	}*/}
+						{/*>*/}
+						{/*	<IconTool*/}
+						{/*		icon={'ri-read-more'}*/}
+						{/*		tooltip={{*/}
+						{/*			text: showAllTiles ? 'Show all' : '',*/}
+						{/*			position: 'right',*/}
+						{/*			component: Tooltip,*/}
+						{/*		}}*/}
+						{/*		onClick={() => setShowAllTiles(!showAllTiles)}*/}
+						{/*	/>*/}
+						{/*</div>*/}
 					</div>
 				) : (
 					<div className="worldCereal-MetadataInfoItemTiles">
