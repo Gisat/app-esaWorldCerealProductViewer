@@ -56,9 +56,9 @@ const Intro = ({onViewSelect, views, tourGuideIsOpen}) => {
 						<img className="worldCereal-Intro-logo" src={logo} />
 						<div className="worldCereal-Intro-title">
 							<h1>
-								World<em>Cereal</em>, global cropland monitoring based on
-								Sentinels
+								World<em>Cereal</em>
 							</h1>
+							<p>Global cropland monitoring based on Sentinels</p>
 						</div>
 						<EsaLogo />
 					</div>
