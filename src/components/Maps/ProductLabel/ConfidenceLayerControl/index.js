@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
 import {Toggle} from '@gisatcz/ptr-atoms';
-import LayerLabelTool from '../LayerLabelTool';
+import {ProductLabelBodyItem} from '../presentation';
 
 const ConfidenceLayerControl = ({active, onChange}) => {
 	return (
-		<LayerLabelTool
+		<ProductLabelBodyItem
 			title="Confidence layer"
 			key="confidence"
 			onClick={() => onChange(!active)}
+			disabled
 		>
-			<Toggle className="ptr-dark" notInteractive on={active} />
-		</LayerLabelTool>
+			<Toggle notInteractive on={active} />
+		</ProductLabelBodyItem>
 	);
 };
 

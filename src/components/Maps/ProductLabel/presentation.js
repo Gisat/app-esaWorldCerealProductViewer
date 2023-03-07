@@ -232,10 +232,17 @@ MultipleProductLabelHeader.propTypes = {
 	product: PropTypes.string,
 };
 
-const ProductLabelBodyItem = ({title, dangerous, onClick, children}) => {
+export const ProductLabelBodyItem = ({
+	title,
+	dangerous,
+	disabled,
+	onClick,
+	children,
+}) => {
 	const classes = classnames('worldCereal-ProductLabelBodyItem', {
 		'is-hoverable': !!onClick,
 		'is-dangerous': dangerous,
+		'is-disabled': disabled,
 	});
 
 	return (
@@ -249,6 +256,7 @@ const ProductLabelBodyItem = ({title, dangerous, onClick, children}) => {
 ProductLabelBodyItem.propTypes = {
 	children: PropTypes.node,
 	dangerous: PropTypes.bool,
+	disabled: PropTypes.bool,
 	onClick: PropTypes.func,
 	title: PropTypes.string,
 };
