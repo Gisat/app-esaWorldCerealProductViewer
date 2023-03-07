@@ -16,7 +16,6 @@ export default {
 						'detailedExploration-mapSet': {
 							open: [
 								'zoomControls',
-								'zoomToDetail',
 								'zoomToWorld',
 								'layerControls',
 								'addMap',
