@@ -427,6 +427,26 @@
 				}
 			},
 			{
+				"key": "6b7cab38-1c9e-4f03-9755-36bd7f2d276d",
+				"data": {
+					"applicationKey": "esaWorldCerealProductViewer",
+					"nameInternal": "attribute_activeCroplandArea",
+					"nameDisplay": "Total active cropland area",
+					"type": "number",
+					"unit": "ha"
+				}
+			},
+			{
+				"key": "3ab0e826-ee5e-4870-be8b-f9989e37681f",
+				"data": {
+					"applicationKey": "esaWorldCerealProductViewer",
+					"nameInternal": "attribute_activeCroplandAreaShare",
+					"nameDisplay": "Share of active cropland area in total cropland area",
+					"type": "number",
+					"unit": "%"
+				}
+			},
+			{
 				"key": "55cb5a4a-8ce3-40a1-9f12-1a6b211f4255",
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
@@ -450,8 +470,8 @@
 				"key": "6c8e8332-b01b-4c56-bf8e-2025a5abc465",
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
-					"nameInternal": "attribute_springWheatArea",
-					"nameDisplay": "Total cereals area",
+					"nameInternal": "attribute_springCerealsArea",
+					"nameDisplay": "Total spring cereals area",
 					"type": "number",
 					"unit": "ha"
 				}
@@ -460,8 +480,28 @@
 				"key": "eb9dce86-39c6-480b-b7e3-2fac2101eac0",
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
-					"nameInternal": "attribute_springWheatShare",
-					"nameDisplay": "Share of cereals area in total cropland area",
+					"nameInternal": "attribute_springCerealsShare",
+					"nameDisplay": "Share of spring cereals area in total cropland area",
+					"type": "number",
+					"unit": "%"
+				}
+			},
+			{
+				"key": "13cb710d-56b6-4e22-8cff-cac50ce7af8a",
+				"data": {
+					"applicationKey": "esaWorldCerealProductViewer",
+					"nameInternal": "attribute_winterCerealsArea",
+					"nameDisplay": "Total winter cereals area",
+					"type": "number",
+					"unit": "ha"
+				}
+			},
+			{
+				"key": "64a8d202-1392-4196-be22-343d2b5c9fb8",
+				"data": {
+					"applicationKey": "esaWorldCerealProductViewer",
+					"nameInternal": "attribute_winterCerealsShare",
+					"nameDisplay": "Share of winter cereals area in total cropland area",
 					"type": "number",
 					"unit": "%"
 				}
