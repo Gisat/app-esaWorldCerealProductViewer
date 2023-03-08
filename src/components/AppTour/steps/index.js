@@ -8,9 +8,9 @@ import DetailViewActiveMaps from './DetailView/ActiveMaps';
 import DetailViewTimeline from './DetailView/Timeline';
 import DetailViewFilters from './DetailView/Filters';
 import GlobalViewIntro from './GlobalView/Intro';
-import StatisticsViewIntro from './StatisticsView/Intro';
-import StatisticsMap from './StatisticsView/Map';
-import StatisticsPanel from './StatisticsView/Panel';
+// import StatisticsViewIntro from './StatisticsView/Intro';
+// import StatisticsMap from './StatisticsView/Map';
+// import StatisticsPanel from './StatisticsView/Panel';
 
 export default [
 	{
@@ -54,16 +54,18 @@ export default [
 		selector: '.worldCereal-Title',
 		content: GlobalViewIntro,
 	},
-	{
-		selector: '.worldCereal-Title',
-		content: StatisticsViewIntro,
-	},
-	{
-		selector: '.ptr-map-set',
-		content: StatisticsMap,
-	},
-	{
-		selector: '.worldCereal-StatisticsPanel-body',
-		content: StatisticsPanel,
-	},
+
+	// TODO hide for now
+	// {
+	// 	selector: '.worldCereal-Title',
+	// 	content: StatisticsViewIntro,
+	// },
+	// {
+	// 	selector: '.ptr-map-set',
+	// 	content: StatisticsMap,
+	// },
+	// {
+	// 	selector: '.worldCereal-StatisticsPanel-body',
+	// 	content: StatisticsPanel,
+	// },
 ];
