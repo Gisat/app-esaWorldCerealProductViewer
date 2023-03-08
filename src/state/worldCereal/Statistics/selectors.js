@@ -121,26 +121,6 @@ const getPeriods = createSelector(
 );
 
 /**
- * TODO for now there is a limitation in configuration
- */
-const isCountryLevelDisabled = createSelector(
-	[
-		CommonSelect.places.getActiveKeys,
-		state =>
-			CommonSelect.app.getConfiguration(
-				state,
-				'availableCountryLevelForPlaceKey'
-			),
-	],
-	(activePlaceKeys, availableForPlaceKey) => {
-		return !(
-			activePlaceKeys?.length === 1 &&
-			activePlaceKeys[0] === availableForPlaceKey
-		);
-	}
-);
-
-/**
  * Get selection associated wit country level
  * @returns {string}
  */
@@ -357,7 +337,6 @@ const getRegionName = createSelector(
 );
 
 export default {
-	isCountryLevelDisabled,
 	isDataForCurrentSettings,
 	getVisualizationComponentSet,
 	getPeriods,
