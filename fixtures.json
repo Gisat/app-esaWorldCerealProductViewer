@@ -2771,6 +2771,33 @@
 				}
 			},
 			{
+				"key": "1ba804e4-abe9-43a4-8f01-348e172aa85c",
+				"data": {
+					"nameDisplay": "style_activeCropland",
+					"nameInternal": "style_activeCropland",
+					"definition": {
+						"rules": [
+							{
+								"styles": [
+									{
+										"fill": "rgb(150,150,150)",
+										"fillOpacity": 0.8,
+										"outlineColor": "#232323",
+										"outlineWidth": 1,
+										"outlineOpacity": 1
+									},
+									{
+										"attributeKey": "3ab0e826-ee5e-4870-be8b-f9989e37681f",
+										"attributeClasses": []
+									}
+								]
+							}
+						]
+					},
+					"applicationKey": "esaWorldCerealProductViewer"
+				}
+			},
+			{
 				"key": "7ae3bcd9-aa57-4fb1-9b6f-5b909d392328",
 				"data": {
 					"nameDisplay": "style_maize",
@@ -2800,8 +2827,8 @@
 			{
 				"key": "2afcdbd6-fdc8-4756-a96b-0bf7d07637b0",
 				"data": {
-					"nameDisplay": "style_cereals",
-					"nameInternal": "style_cereals",
+					"nameDisplay": "style_springCereals",
+					"nameInternal": "style_springCereals",
 					"definition": {
 						"rules": [
 							{
@@ -2815,6 +2842,33 @@
 									},
 									{
 										"attributeKey": "eb9dce86-39c6-480b-b7e3-2fac2101eac0",
+										"attributeClasses": []
+									}
+								]
+							}
+						]
+					},
+					"applicationKey": "esaWorldCerealProductViewer"
+				}
+			},
+			{
+				"key": "9cf982e9-744d-40bc-92b2-1741cd2d2e4b",
+				"data": {
+					"nameDisplay": "style_winterCereals",
+					"nameInternal": "style_winterCereals",
+					"definition": {
+						"rules": [
+							{
+								"styles": [
+									{
+										"fill": "rgb(150,150,150)",
+										"fillOpacity": 0.8,
+										"outlineColor": "#232323",
+										"outlineWidth": 1,
+										"outlineOpacity": 1
+									},
+									{
+										"attributeKey": "64a8d202-1392-4196-be22-343d2b5c9fb8",
 										"attributeClasses": []
 									}
 								]
