@@ -478,6 +478,15 @@
 				}
 			},
 			{
+				"key": "af7de331-4acb-4d5e-abea-418e2d09de1d",
+				"data": {
+					"applicationKey": "esaWorldCerealProductViewer",
+					"nameInternal": "case_activeCropland",
+					"nameDisplay": "Active cropland",
+					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3"
+				}
+			},
+			{
 				"key": "66f490a6-d8df-45a3-adcb-d3648715ddd5",
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
@@ -499,8 +508,17 @@
 				"key": "d439a6db-8f7b-4123-9e93-3892cad157f7",
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
-					"nameInternal": "case_cereals_summer",
-					"nameDisplay": "Cereals",
+					"nameInternal": "case_cereals_spring",
+					"nameDisplay": "Spring cereals",
+					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3"
+				}
+			},
+			{
+				"key": "41fbf26c-9cd6-4670-88d5-eae5ee2f7c56",
+				"data": {
+					"applicationKey": "esaWorldCerealProductViewer",
+					"nameInternal": "case_cereals_winter",
+					"nameDisplay": "Winter cereals",
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3"
 				}
 			}
