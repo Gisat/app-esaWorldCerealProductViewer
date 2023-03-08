@@ -507,43 +507,13 @@
 		],
 		"periods": [
 			{
-				"key": "1f5cf9d2-58cc-4463-8ef7-bcc0c4932a08",
-				"data": {
-					"applicationKey": "esaWorldCerealProductViewer",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"nameInternal": "period_2019annual",
-					"nameDisplay": "2019",
-					"period": "2019"
-				}
-			},
-			{
-				"key": "2a293769-d7ba-4c83-800e-8184b457ac85",
-				"data": {
-					"applicationKey": "esaWorldCerealProductViewer",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"nameInternal": "period_2019summer1",
-					"nameDisplay": "2019 - summer1",
-					"period": "2019"
-				}
-			},
-			{
-				"key": "df428b66-5a83-4943-93b2-56dea2805509",
-				"data": {
-					"applicationKey": "esaWorldCerealProductViewer",
-					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"nameInternal": "period_2019winter",
-					"nameDisplay": "2019 - winter",
-					"period": "2019"
-				}
-			},
-			{
 				"key": "6a7a4193-1339-4172-b54d-817c3e8cd6f7",
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"nameInternal": "period_2020annual",
-					"nameDisplay": "2020",
-					"period": "2020"
+					"nameInternal": "period_2021annual",
+					"nameDisplay": "2021",
+					"period": "2021"
 				}
 			},
 			{
@@ -551,9 +521,9 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"nameInternal": "period_2020summer1",
-					"nameDisplay": "2020 - summer1",
-					"period": "2020"
+					"nameInternal": "period_2021summer1",
+					"nameDisplay": "2021 - summer1",
+					"period": "2021"
 				}
 			},
 			{
@@ -561,9 +531,9 @@
 				"data": {
 					"applicationKey": "esaWorldCerealProductViewer",
 					"scopeKey": "10de783b-810b-4f8a-aceb-4c9e9f91d4d3",
-					"nameInternal": "period_2020winter",
-					"nameDisplay": "2020 - winter",
-					"period": "2020"
+					"nameInternal": "period_2021winter",
+					"nameDisplay": "2021 - winter",
+					"period": "2021"
 				}
 			}
 		],
