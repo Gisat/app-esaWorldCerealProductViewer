@@ -67,9 +67,7 @@ const ProductLabel = ({
 						color={color}
 					/>
 				</ExpandableLabelHeader>
-				<ExpandableLabelBody
-					height={confidenceLayerActive ? 12.5 : styleForLegend ? 11.5 : 8}
-				>
+				<ExpandableLabelBody height={12.5}>
 					<div className="worldCereal-ProductLabelBody">
 						<div>
 							<ProductLabelBodyItem title="Set opacity">
@@ -97,7 +95,7 @@ const ProductLabel = ({
 							/>
 						</div>
 						<ProductLabelLegend
-							height={confidenceLayerActive ? '4.5rem' : '3.5rem'}
+							height="4.5rem"
 							style={
 								confidenceLayerActive ? styleForConfidenceLayer : styleForLegend
 							}

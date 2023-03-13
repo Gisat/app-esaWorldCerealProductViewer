@@ -8,9 +8,8 @@ const ConfidenceLayerControl = ({active, onChange}) => {
 			title="Confidence layer"
 			key="confidence"
 			onClick={() => onChange(!active)}
-			disabled
 		>
-			<Toggle notInteractive on={active} />
+			<Toggle className="ptr-dark" notInteractive on={active} />
 		</ProductLabelBodyItem>
 	);
 };
