@@ -1436,10 +1436,10 @@ export default {
 					GlobalOneSelectedAnnualCropland: {
 						components: [
 							'GlobalSharePieChart',
-							'GlobalSharePieChartActiveIrrigation2020Summer1',
-							'GlobalSharePieChartMaize2020Summer1',
-							'GlobalSharePieChartCereals2020Winter',
-							'GlobalSharePieChartCereals2020Summer1',
+							// 'GlobalSharePieChartActiveIrrigation2020Summer1',
+							// 'GlobalSharePieChartMaize2020Summer1',
+							// 'GlobalSharePieChartCereals2020Winter',
+							// 'GlobalSharePieChartCereals2020Summer1',
 						],
 					},
 					GlobalMultipleSelected: {
@@ -1457,9 +1457,9 @@ export default {
 					CountryOneSelectedRegionAnnualCropland: {
 						components: [
 							'CountrySharePieChart',
-							'CountrySharePieChartMaize2020Summer1',
-							'CountrySharePieChartCereals2020Winter',
-							'CountrySharePieChartCereals2020Summer1',
+							// 'CountrySharePieChartMaize2020Summer1',
+							// 'CountrySharePieChartCereals2020Winter',
+							// 'CountrySharePieChartCereals2020Summer1',
 						],
 					},
 					CountryMultipleSelectedRegions: {

@@ -109,10 +109,12 @@ function zoomToActivePlace(activeLevelKey) {
 			if (activePlaceKeys?.length === 1) {
 				const activePlaceKey = activePlaceKeys[0];
 				const activePlace = Select.places.getByKey(getState(), activePlaceKey);
-				const bbox = activePlace?.data?.bbox;
+				const geometry = activePlace?.data?.geometry;
 
-				if (bbox) {
-					const view = mapUtils.view.getViewFromGeometry(activePlace.data.bbox);
+				if (geometry) {
+					const view = mapUtils.view.getViewFromGeometry(
+						activePlace.data.geometry
+					);
 					const mapSetKey = Select.maps.getActiveSetKey(getState());
 					dispatch(CommonAction.maps.updateSetView(mapSetKey, view));
 				}
@@ -316,7 +318,11 @@ function recalculateStatisticLayerStyle(statisticLayer) {
 			}
 		});
 
-		const range = maxValue - minValue;
+		let range = null;
+		if (maxValue || (maxValue === 0 && minValue) || minValue === 0) {
+			range = maxValue - minValue;
+		}
+
 		const classRange = range / CLASSES_COUNT;
 
 		const mapKey = Select.maps.getActiveMapKey(getState());
@@ -331,15 +337,24 @@ function recalculateStatisticLayerStyle(statisticLayer) {
 
 		let attributeClasses = [];
 
-		for (let i = 0; i < CLASSES_COUNT; i++) {
-			const max =
-				i === CLASSES_COUNT - 1 ? maxValue : minValue + (i + 1) * classRange;
-			const min =
-				i === 0 ? minValue + i * classRange : minValue + i * classRange;
+		if (range > 0) {
+			for (let i = 0; i < CLASSES_COUNT; i++) {
+				const max =
+					i === CLASSES_COUNT - 1 ? maxValue : minValue + (i + 1) * classRange;
+				const min =
+					i === 0 ? minValue + i * classRange : minValue + i * classRange;
+				attributeClasses.push({
+					intervalBounds: [true, i === CLASSES_COUNT - 1 ? true : false],
+					fill: COLORS[i],
+					interval: [min, max],
+				});
+			}
+		} else if (range === 0) {
 			attributeClasses.push({
-				intervalBounds: [true, i === CLASSES_COUNT - 1 ? true : false],
-				fill: COLORS[i],
-				interval: [min, max],
+				intervalBounds: [true, true],
+				fill: COLORS[0],
+				interval: [0, 0],
+				name: '0',
 			});
 		}
 
@@ -347,7 +362,7 @@ function recalculateStatisticLayerStyle(statisticLayer) {
 			{...(style?.data?.definition?.rules?.[0]?.styles?.[0] || {})},
 			{
 				attributeKey: attributeKey,
-				...(range === 0 ? {attributeClasses: []} : {attributeClasses}),
+				attributeClasses,
 			},
 		];
 		//check if same style is not applied to prevent cycle of changes
