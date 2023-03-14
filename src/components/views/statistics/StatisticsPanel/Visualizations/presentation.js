@@ -21,7 +21,7 @@ const getComponent = component => {
 		case 'GlobalSharePieChartActiveIrrigation2020Summer1':
 		case 'GlobalSharePieChartMaize2020Summer1':
 		case 'GlobalSharePieChartCereals2020Summer1':
-		case 'GlobalSharePieChartCereals2020Winter':
+			// case 'GlobalSharePieChartCereals2020Winter':
 			return (
 				<GlobalChartWrapper key={component}>
 					<ChartWrapper small componentKey={component} />
@@ -29,7 +29,7 @@ const getComponent = component => {
 			);
 		case 'CountrySharePieChartMaize2020Summer1':
 		case 'CountrySharePieChartCereals2020Summer1':
-		case 'CountrySharePieChartCereals2020Winter':
+			// case 'CountrySharePieChartCereals2020Winter':
 			return <ChartWrapper small key={component} componentKey={component} />;
 		default:
 			return (

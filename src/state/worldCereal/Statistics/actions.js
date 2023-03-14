@@ -109,10 +109,12 @@ function zoomToActivePlace(activeLevelKey) {
 			if (activePlaceKeys?.length === 1) {
 				const activePlaceKey = activePlaceKeys[0];
 				const activePlace = Select.places.getByKey(getState(), activePlaceKey);
-				const bbox = activePlace?.data?.bbox;
+				const geometry = activePlace?.data?.geometry;
 
-				if (bbox) {
-					const view = mapUtils.view.getViewFromGeometry(activePlace.data.bbox);
+				if (geometry) {
+					const view = mapUtils.view.getViewFromGeometry(
+						activePlace.data.geometry
+					);
 					const mapSetKey = Select.maps.getActiveSetKey(getState());
 					dispatch(CommonAction.maps.updateSetView(mapSetKey, view));
 				}
