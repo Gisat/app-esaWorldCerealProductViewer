@@ -85,7 +85,9 @@
                                                       "577b253f-754f-421e-94a2-092f092b4947": "GlobalOneSelectedAnnualCropland",
                                                       "66f490a6-d8df-45a3-adcb-d3648715ddd5": "GlobalOneSelected",
                                                       "33caa296-cf88-4d5c-a67d-ffba11376d4a": "GlobalOneSelected",
-                                                      "d439a6db-8f7b-4123-9e93-3892cad157f7": "GlobalOneSelected"
+                                                      "d439a6db-8f7b-4123-9e93-3892cad157f7": "GlobalOneSelected",
+                                                      "af7de331-4acb-4d5e-abea-418e2d09de1d": "GlobalOneSelected",
+                                                      "41fbf26c-9cd6-4670-88d5-eae5ee2f7c56": "GlobalOneSelected"
                                                 },
                                                 "multiple-selected": "GlobalMultipleSelected"
                                           },
@@ -95,7 +97,9 @@
                                                       "577b253f-754f-421e-94a2-092f092b4947": "CountryOneSelectedRegionAnnualCropland",
                                                       "66f490a6-d8df-45a3-adcb-d3648715ddd5": "CountryOneSelectedRegion",
                                                       "33caa296-cf88-4d5c-a67d-ffba11376d4a": "CountryOneSelectedRegion",
-                                                      "d439a6db-8f7b-4123-9e93-3892cad157f7": "CountryOneSelectedRegion"
+                                                      "d439a6db-8f7b-4123-9e93-3892cad157f7": "CountryOneSelectedRegion",
+                                                      "af7de331-4acb-4d5e-abea-418e2d09de1d": "CountryOneSelectedRegion",
+                                                      "41fbf26c-9cd6-4670-88d5-eae5ee2f7c56": "CountryOneSelectedRegion"
                                                 },
                                                 "multiple-selected": "CountryMultipleSelectedRegions"
                                           }
