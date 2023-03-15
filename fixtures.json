@@ -9530,7 +9530,7 @@
                         "data": {
                               "nameInternal": "dataSource_attribute_czechia_name",
                               "tableName": "czechia",
-                              "columnName": "COUNTRY",
+                              "columnName": "NAME_1",
                               "fidColumnName": "GID_1"
                         }
                   },
@@ -9737,7 +9737,7 @@
                         "data": {
                               "nameInternal": "dataSource_attribute_slovakia_name",
                               "tableName": "slovakia",
-                              "columnName": "COUNTRY",
+                              "columnName": "NAME_1",
                               "fidColumnName": "GID_1"
                         }
                   },
@@ -9944,7 +9944,7 @@
                         "data": {
                               "nameInternal": "dataSource_attribute_moldova_name",
                               "tableName": "moldova",
-                              "columnName": "COUNTRY",
+                              "columnName": "NAME_1",
                               "fidColumnName": "GID_1"
                         }
                   },
@@ -10151,7 +10151,7 @@
                         "data": {
                               "nameInternal": "dataSource_attribute_slovenia_name",
                               "tableName": "slovenia",
-                              "columnName": "COUNTRY",
+                              "columnName": "NAME_1",
                               "fidColumnName": "GID_1"
                         }
                   },
