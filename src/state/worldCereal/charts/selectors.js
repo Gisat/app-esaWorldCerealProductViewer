@@ -52,7 +52,7 @@ const getChartSubtitle = createCachedSelector(
 	[
 		(state, componentKey) =>
 			CommonSelect.components.get(state, componentKey, 'subtitle'),
-		(state, componentKey, subtitle) => subtitle,
+		(state, componentKey, subtitle) => subtitle || null,
 	],
 	(componentSubtitle, givenSubtitle) => {
 		return `${componentSubtitle}${givenSubtitle || ''}`;
@@ -158,10 +158,27 @@ const getDataForNivoDonutChart = createRecomputeSelector(componentKey => {
 	}
 }, recomputeSelectorOptions);
 
+const getDataForHeatMapTable = createRecomputeSelector(componentKey => {
+	const componentState =
+		CommonSelect.data.components.getComponentStateByKeyObserver(componentKey);
+	if (componentState) {
+		componentState?.components.forEach(stateComponentKey => {
+			const data = CommonSelect.data.components.getDataForCartesianChart({
+				stateComponentKey,
+			});
+			// TODO
+			return null;
+		});
+	} else {
+		return null;
+	}
+}, recomputeSelectorOptions);
+
 export default {
 	getChartMetadata,
 	getChartTitle,
 	getChartSubtitle,
 	getDataForNivoBarChart,
 	getDataForNivoDonutChart,
+	getDataForHeatMapTable,
 };

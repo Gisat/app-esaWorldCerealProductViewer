@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import BarChart from '../charts/BarChart';
 import DonutChart from '../charts/DonutChart';
+import HeatMapTable from '../charts/HeatMapTable';
 
 import './style.scss';
 
@@ -24,6 +25,9 @@ const ChartWrapper = ({
 			break;
 		case 'donutChart':
 			content = <DonutChart componentKey={componentKey} />;
+			break;
+		case 'heatMapTable':
+			content = <HeatMapTable componentKey={componentKey} />;
 			break;
 	}
 
