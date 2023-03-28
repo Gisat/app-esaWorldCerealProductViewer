@@ -10,6 +10,7 @@ import {
 	orderBy as _orderBy,
 	compact as _compact,
 	forIn as _forIn,
+	isEmpty as _isEmpty,
 } from 'lodash';
 
 const getChartMetadata = createCachedSelector(
@@ -158,19 +159,59 @@ const getDataForNivoDonutChart = createRecomputeSelector(componentKey => {
 	}
 }, recomputeSelectorOptions);
 
+const getPeriodsAsObjectObserver = createRecomputeObserver(
+	CommonSelect.periods.getAllAsObject
+);
+const getCasesAsObjectObserver = createRecomputeObserver(
+	CommonSelect.cases.getAllAsObject
+);
+
 const getDataForHeatMapTable = createRecomputeSelector(componentKey => {
 	const componentState =
 		CommonSelect.data.components.getComponentStateByKeyObserver(componentKey);
 	if (componentState) {
+		const dataForTable = {};
+		const periods = getPeriodsAsObjectObserver();
+		const cases = getCasesAsObjectObserver();
 		componentState?.components.forEach(stateComponentKey => {
+			const subcomponentState =
+				CommonSelect.data.components.getComponentStateByKeyObserver(
+					stateComponentKey
+				);
+			const attributeKey = subcomponentState?.attributeKeys[0];
+			const periodKey = subcomponentState?.metadataModifiers?.periodKey;
+			const caseKey = subcomponentState?.metadataModifiers?.caseKey;
+			const caseName = cases?.[caseKey]?.data?.nameDisplay;
+			const periodName = periods?.[periodKey]?.data?.nameDisplay;
 			const data = CommonSelect.data.components.getDataForCartesianChart({
 				stateComponentKey,
 			});
-			// TODO
-			return null;
+			const value = data?.data?.[0]?.data?.[attributeKey];
+			if (value || value === 0) {
+				const rec = {
+					x: periodName,
+					y: value / 100,
+				};
+
+				// add record for case (and create case item, if it doesn't exist
+				if (dataForTable[caseName]) {
+					dataForTable[caseName].data.push(rec);
+				} else {
+					dataForTable[caseName] = {
+						id: caseName,
+						data: [rec],
+					};
+				}
+			}
 		});
+
+		if (!_isEmpty(dataForTable)) {
+			return Object.values(dataForTable);
+		} else {
+			return [];
+		}
 	} else {
-		return null;
+		return [];
 	}
 }, recomputeSelectorOptions);
 

@@ -6,95 +6,7 @@ import './style.scss';
 import {useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-const data = [
-	{
-		id: 'Active cropland',
-		data: [
-			{
-				x: 'Summer1',
-				y: 0.23,
-			},
-			{
-				x: 'Summer2',
-				y: 0.33,
-			},
-			{
-				x: 'Winter',
-				y: 0.11,
-			},
-		],
-	},
-	{
-		id: 'Active irrigation',
-		data: [
-			{
-				x: 'Summer1',
-				y: 0,
-			},
-			{
-				x: 'Summer2',
-				y: 0.002,
-			},
-			{
-				x: 'Winter',
-				y: 0.05,
-			},
-		],
-	},
-	{
-		id: 'Maize',
-		data: [
-			{
-				x: 'Summer1',
-				y: 0.111,
-			},
-			{
-				x: 'Summer2',
-				y: 0.2,
-			},
-			{
-				x: 'Winter',
-				y: null,
-			},
-		],
-	},
-	{
-		id: 'Spring cereals',
-		data: [
-			{
-				x: 'Summer1',
-				y: 0.97,
-			},
-			{
-				x: 'Winter',
-				y: null,
-			},
-			{
-				x: 'Summer2',
-				y: null,
-			},
-		],
-	},
-	{
-		id: 'Winter cereals',
-		data: [
-			{
-				x: 'Summer1',
-				y: null,
-			},
-			{
-				x: 'Winter',
-				y: 0.66,
-			},
-			{
-				x: 'Summer2',
-				y: null,
-			},
-		],
-	},
-];
-
-const HeatMapTable = ({onMount, onUnmount}) => {
+const HeatMapTable = ({data, onMount, onUnmount}) => {
 	useEffect(() => {
 		if (typeof onMount === 'function') {
 			onMount();
@@ -162,6 +74,7 @@ const HeatMapTable = ({onMount, onUnmount}) => {
 };
 
 HeatMapTable.propTypes = {
+	data: PropTypes.array,
 	onMount: PropTypes.func,
 	onUnmount: PropTypes.func,
 };
