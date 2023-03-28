@@ -470,6 +470,21 @@ function useDataForHeatMapTable(componentKey) {
 	};
 }
 
+function clearUseForHeatMapTable(componentKey) {
+	return (dispatch, getState) => {
+		const componentState = Select.data.components.getComponentStateByKey(
+			getState(),
+			componentKey
+		);
+		const components = componentState?.components;
+		if (components) {
+			components.forEach(componentKey =>
+				dispatch(CommonAction.data.components.componentUseClear(componentKey))
+			);
+		}
+	};
+}
+
 export default {
 	setActiveSelectionFeatureKeysByActivePlaceKeys,
 	setActivePlaceKeysByActiveSelectionFeatureKeys,
@@ -484,4 +499,5 @@ export default {
 	zoomToActivePlace,
 	ensureRegionName,
 	useDataForHeatMapTable,
+	clearUseForHeatMapTable,
 };

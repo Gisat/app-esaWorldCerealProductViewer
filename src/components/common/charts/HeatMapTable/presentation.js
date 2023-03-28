@@ -6,7 +6,13 @@ import './style.scss';
 import {useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-const HeatMapTable = ({data, onMount, onUnmount}) => {
+const HeatMapTable = ({
+	data,
+	selectedFeatureKeys,
+	onMount,
+	onUnmount,
+	onSelectedFeaturesChange,
+}) => {
 	useEffect(() => {
 		if (typeof onMount === 'function') {
 			onMount();
@@ -15,6 +21,10 @@ const HeatMapTable = ({data, onMount, onUnmount}) => {
 			return onUnmount;
 		}
 	}, []);
+
+	useEffect(() => {
+		onSelectedFeaturesChange(selectedFeatureKeys);
+	}, [selectedFeatureKeys]);
 
 	return (
 		<ResponsiveHeatMap
@@ -68,6 +78,7 @@ const HeatMapTable = ({data, onMount, onUnmount}) => {
 				},
 			}}
 			emptyColor="#ffffff22"
+			animate={false}
 			tooltip={() => {}}
 		/>
 	);
@@ -77,6 +88,8 @@ HeatMapTable.propTypes = {
 	data: PropTypes.array,
 	onMount: PropTypes.func,
 	onUnmount: PropTypes.func,
+	selectedFeatureKeys: PropTypes.array,
+	onSelectedFeaturesChange: PropTypes.func,
 };
 
 export default HeatMapTable;

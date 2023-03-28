@@ -772,8 +772,16 @@ export default {
 					GlobalShareAnnualCroplandTable: {
 						type: 'heatMapTable',
 						components: [
+							'GlobalShareAnnualCroplandTable_ActiveCropland_summer1',
+							'GlobalShareAnnualCroplandTable_ActiveCropland_summer2',
+							'GlobalShareAnnualCroplandTable_ActiveCropland_winter',
 							'GlobalShareAnnualCroplandTable_ActiveIrrigation_summer1',
 							'GlobalShareAnnualCroplandTable_ActiveIrrigation_summer2',
+							'GlobalShareAnnualCroplandTable_ActiveIrrigation_winter',
+							'GlobalShareAnnualCroplandTable_Maize_summer1',
+							'GlobalShareAnnualCroplandTable_Maize_summer2',
+							'GlobalShareAnnualCroplandTable_SpringCereals_summer1',
+							'GlobalShareAnnualCroplandTable_WinterCereals_winter',
 						],
 					},
 					GlobalShareAnnualCroplandTable_ActiveIrrigation_summer1: {
@@ -801,6 +809,118 @@ export default {
 							areaTreeLevel: true,
 						},
 						attributeKeys: ['934a9fa2-ddb9-49a8-b4b2-170e39ef531e'],
+						start: 1,
+						length: 1,
+					},
+					GlobalShareAnnualCroplandTable_ActiveIrrigation_winter: {
+						metadataModifiers: {
+							caseKey: '66f490a6-d8df-45a3-adcb-d3648715ddd5',
+							periodKey: 'd93a6ec5-e6e2-4f9a-a368-8a8f2aa8c0fe',
+						},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+						},
+						attributeKeys: ['934a9fa2-ddb9-49a8-b4b2-170e39ef531e'],
+						start: 1,
+						length: 1,
+					},
+					GlobalShareAnnualCroplandTable_ActiveCropland_summer1: {
+						metadataModifiers: {
+							caseKey: 'af7de331-4acb-4d5e-abea-418e2d09de1d',
+							periodKey: 'f3293b7c-4725-49a6-beeb-19718083ab6c',
+						},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+						},
+						attributeKeys: ['3ab0e826-ee5e-4870-be8b-f9989e37681f'],
+						start: 1,
+						length: 1,
+					},
+					GlobalShareAnnualCroplandTable_ActiveCropland_summer2: {
+						metadataModifiers: {
+							caseKey: 'af7de331-4acb-4d5e-abea-418e2d09de1d',
+							periodKey: 'b26e7cf9-4014-4ed7-bf23-1dc6cbae440f',
+						},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+						},
+						attributeKeys: ['3ab0e826-ee5e-4870-be8b-f9989e37681f'],
+						start: 1,
+						length: 1,
+					},
+					GlobalShareAnnualCroplandTable_ActiveCropland_winter: {
+						metadataModifiers: {
+							caseKey: 'af7de331-4acb-4d5e-abea-418e2d09de1d',
+							periodKey: 'd93a6ec5-e6e2-4f9a-a368-8a8f2aa8c0fe',
+						},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+						},
+						attributeKeys: ['3ab0e826-ee5e-4870-be8b-f9989e37681f'],
+						start: 1,
+						length: 1,
+					},
+					GlobalShareAnnualCroplandTable_Maize_summer1: {
+						metadataModifiers: {
+							caseKey: '33caa296-cf88-4d5c-a67d-ffba11376d4a',
+							periodKey: 'f3293b7c-4725-49a6-beeb-19718083ab6c',
+						},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+						},
+						attributeKeys: ['8e71e4da-5a90-4222-9350-f1c1f1bad5c5'],
+						start: 1,
+						length: 1,
+					},
+					GlobalShareAnnualCroplandTable_Maize_summer2: {
+						metadataModifiers: {
+							caseKey: '33caa296-cf88-4d5c-a67d-ffba11376d4a',
+							periodKey: 'b26e7cf9-4014-4ed7-bf23-1dc6cbae440f',
+						},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+						},
+						attributeKeys: ['8e71e4da-5a90-4222-9350-f1c1f1bad5c5'],
+						start: 1,
+						length: 1,
+					},
+					GlobalShareAnnualCroplandTable_SpringCereals_summer1: {
+						metadataModifiers: {
+							caseKey: 'd439a6db-8f7b-4123-9e93-3892cad157f7',
+							periodKey: 'f3293b7c-4725-49a6-beeb-19718083ab6c',
+						},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+						},
+						attributeKeys: ['eb9dce86-39c6-480b-b7e3-2fac2101eac0'],
+						start: 1,
+						length: 1,
+					},
+					GlobalShareAnnualCroplandTable_WinterCereals_winter: {
+						metadataModifiers: {
+							caseKey: '41fbf26c-9cd6-4670-88d5-eae5ee2f7c56',
+							periodKey: 'd93a6ec5-e6e2-4f9a-a368-8a8f2aa8c0fe',
+						},
+						filterByActive: {
+							application: true,
+							scope: true,
+							areaTreeLevel: true,
+						},
+						attributeKeys: ['64a8d202-1392-4196-be22-343d2b5c9fb8'],
 						start: 1,
 						length: 1,
 					},

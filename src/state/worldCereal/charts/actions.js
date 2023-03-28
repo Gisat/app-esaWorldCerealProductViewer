@@ -64,17 +64,26 @@ function onSelectedFeaturesChange(chartComponentKey, featureKeys) {
 			chartComponentKey
 		);
 
-		if (componentState) {
-			const prevFeatureKeys = componentState?.featureKeys;
+		const useIfNeeded = (compState, compKey) => {
+			const prevFeatureKeys = compState?.featureKeys;
 			if (JSON.stringify(featureKeys) !== JSON.stringify(prevFeatureKeys)) {
 				dispatch(
-					CommonAction.data.components.setFeatureKeys(
-						chartComponentKey,
-						featureKeys
-					)
+					CommonAction.data.components.setFeatureKeys(compKey, featureKeys)
 				);
-				dispatch(CommonAction.data.components.use(chartComponentKey));
+				dispatch(CommonAction.data.components.use(compKey));
 			}
+		};
+
+		if (componentState?.components) {
+			componentState.components.forEach(componentKey => {
+				const compState = Select.data.components.getComponentStateByKey(
+					getState(),
+					componentKey
+				);
+				useIfNeeded(compState, componentKey);
+			});
+		} else if (componentState) {
+			useIfNeeded(componentState, chartComponentKey);
 		}
 	};
 }

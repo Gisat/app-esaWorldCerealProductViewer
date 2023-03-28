@@ -6,10 +6,13 @@ import Presentation from './presentation';
 
 const mapStateToProps = (state, ownProps) => {
 	setRecomputeState(state);
+	const activeSelection = Select.selections.getActive(state);
+
 	return {
 		data: Select.worldCereal.charts.getDataForHeatMapTable(
 			ownProps.componentKey
 		),
+		selectedFeatureKeys: activeSelection?.data?.featureKeysFilter?.keys,
 	};
 };
 
@@ -19,6 +22,20 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 			dispatch(
 				Action.worldCereal.statistics.useDataForHeatMapTable(
 					ownProps.componentKey
+				)
+			);
+		},
+		onUnmount: () =>
+			dispatch(
+				Action.worldCereal.statistics.clearUseForHeatMapTable(
+					ownProps.componentKey
+				)
+			),
+		onSelectedFeaturesChange: keys => {
+			dispatch(
+				Action.worldCereal.charts.onSelectedFeaturesChange(
+					ownProps.componentKey,
+					keys
 				)
 			);
 		},
