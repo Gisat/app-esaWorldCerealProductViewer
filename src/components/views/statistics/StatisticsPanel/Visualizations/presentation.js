@@ -18,7 +18,7 @@ const getComponent = component => {
 					</WordCerealBaseChartWrapper>
 				</GlobalChartWrapper>
 			);
-		case 'GlobalShareAnnualCroplandTable':
+		case 'UniversalShareAnnualCroplandTable':
 			return <ChartWrapper componentKey={component} />;
 		default:
 			return (

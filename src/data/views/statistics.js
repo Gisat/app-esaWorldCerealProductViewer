@@ -208,7 +208,7 @@ export default {
 						},
 					},
 				},
-				GlobalShareAnnualCroplandTable: {
+				UniversalShareAnnualCroplandTable: {
 					title: 'Share of products in total cropland area',
 					subtitle: 'In particular seasons [%]',
 					settings: {
@@ -225,6 +225,7 @@ export default {
 							tickPadding: 5,
 							tickRotation: 0,
 						},
+						opacity: 0.85,
 						colors: {
 							type: 'sequential',
 							scheme: 'yellow_orange_brown',
@@ -824,22 +825,22 @@ export default {
 						start: 1,
 						length: 1,
 					},
-					GlobalShareAnnualCroplandTable: {
+					UniversalShareAnnualCroplandTable: {
 						type: 'heatMapTable',
 						components: [
-							'GlobalShareAnnualCroplandTable_ActiveCropland_summer1',
-							'GlobalShareAnnualCroplandTable_ActiveCropland_summer2',
-							'GlobalShareAnnualCroplandTable_ActiveCropland_winter',
-							'GlobalShareAnnualCroplandTable_ActiveIrrigation_summer1',
-							'GlobalShareAnnualCroplandTable_ActiveIrrigation_summer2',
-							'GlobalShareAnnualCroplandTable_ActiveIrrigation_winter',
-							'GlobalShareAnnualCroplandTable_Maize_summer1',
-							'GlobalShareAnnualCroplandTable_Maize_summer2',
-							'GlobalShareAnnualCroplandTable_SpringCereals_summer1',
-							'GlobalShareAnnualCroplandTable_WinterCereals_winter',
+							'UniversalShareAnnualCroplandTable_ActiveCropland_summer1',
+							'UniversalShareAnnualCroplandTable_ActiveCropland_summer2',
+							'UniversalShareAnnualCroplandTable_ActiveCropland_winter',
+							'UniversalShareAnnualCroplandTable_ActiveIrrigation_summer1',
+							'UniversalShareAnnualCroplandTable_ActiveIrrigation_summer2',
+							'UniversalShareAnnualCroplandTable_ActiveIrrigation_winter',
+							'UniversalShareAnnualCroplandTable_Maize_summer1',
+							'UniversalShareAnnualCroplandTable_Maize_summer2',
+							'UniversalShareAnnualCroplandTable_SpringCereals_summer1',
+							'UniversalShareAnnualCroplandTable_WinterCereals_winter',
 						],
 					},
-					GlobalShareAnnualCroplandTable_ActiveIrrigation_summer1: {
+					UniversalShareAnnualCroplandTable_ActiveIrrigation_summer1: {
 						metadataModifiers: {
 							caseKey: '66f490a6-d8df-45a3-adcb-d3648715ddd5',
 							periodKey: 'f3293b7c-4725-49a6-beeb-19718083ab6c',
@@ -853,7 +854,7 @@ export default {
 						start: 1,
 						length: 1,
 					},
-					GlobalShareAnnualCroplandTable_ActiveIrrigation_summer2: {
+					UniversalShareAnnualCroplandTable_ActiveIrrigation_summer2: {
 						metadataModifiers: {
 							caseKey: '66f490a6-d8df-45a3-adcb-d3648715ddd5',
 							periodKey: 'b26e7cf9-4014-4ed7-bf23-1dc6cbae440f',
@@ -867,7 +868,7 @@ export default {
 						start: 1,
 						length: 1,
 					},
-					GlobalShareAnnualCroplandTable_ActiveIrrigation_winter: {
+					UniversalShareAnnualCroplandTable_ActiveIrrigation_winter: {
 						metadataModifiers: {
 							caseKey: '66f490a6-d8df-45a3-adcb-d3648715ddd5',
 							periodKey: 'd93a6ec5-e6e2-4f9a-a368-8a8f2aa8c0fe',
@@ -881,7 +882,7 @@ export default {
 						start: 1,
 						length: 1,
 					},
-					GlobalShareAnnualCroplandTable_ActiveCropland_summer1: {
+					UniversalShareAnnualCroplandTable_ActiveCropland_summer1: {
 						metadataModifiers: {
 							caseKey: 'af7de331-4acb-4d5e-abea-418e2d09de1d',
 							periodKey: 'f3293b7c-4725-49a6-beeb-19718083ab6c',
@@ -895,7 +896,7 @@ export default {
 						start: 1,
 						length: 1,
 					},
-					GlobalShareAnnualCroplandTable_ActiveCropland_summer2: {
+					UniversalShareAnnualCroplandTable_ActiveCropland_summer2: {
 						metadataModifiers: {
 							caseKey: 'af7de331-4acb-4d5e-abea-418e2d09de1d',
 							periodKey: 'b26e7cf9-4014-4ed7-bf23-1dc6cbae440f',
@@ -909,7 +910,7 @@ export default {
 						start: 1,
 						length: 1,
 					},
-					GlobalShareAnnualCroplandTable_ActiveCropland_winter: {
+					UniversalShareAnnualCroplandTable_ActiveCropland_winter: {
 						metadataModifiers: {
 							caseKey: 'af7de331-4acb-4d5e-abea-418e2d09de1d',
 							periodKey: 'd93a6ec5-e6e2-4f9a-a368-8a8f2aa8c0fe',
@@ -923,7 +924,7 @@ export default {
 						start: 1,
 						length: 1,
 					},
-					GlobalShareAnnualCroplandTable_Maize_summer1: {
+					UniversalShareAnnualCroplandTable_Maize_summer1: {
 						metadataModifiers: {
 							caseKey: '33caa296-cf88-4d5c-a67d-ffba11376d4a',
 							periodKey: 'f3293b7c-4725-49a6-beeb-19718083ab6c',
@@ -937,7 +938,7 @@ export default {
 						start: 1,
 						length: 1,
 					},
-					GlobalShareAnnualCroplandTable_Maize_summer2: {
+					UniversalShareAnnualCroplandTable_Maize_summer2: {
 						metadataModifiers: {
 							caseKey: '33caa296-cf88-4d5c-a67d-ffba11376d4a',
 							periodKey: 'b26e7cf9-4014-4ed7-bf23-1dc6cbae440f',
@@ -951,7 +952,7 @@ export default {
 						start: 1,
 						length: 1,
 					},
-					GlobalShareAnnualCroplandTable_SpringCereals_summer1: {
+					UniversalShareAnnualCroplandTable_SpringCereals_summer1: {
 						metadataModifiers: {
 							caseKey: 'd439a6db-8f7b-4123-9e93-3892cad157f7',
 							periodKey: 'f3293b7c-4725-49a6-beeb-19718083ab6c',
@@ -965,7 +966,7 @@ export default {
 						start: 1,
 						length: 1,
 					},
-					GlobalShareAnnualCroplandTable_WinterCereals_winter: {
+					UniversalShareAnnualCroplandTable_WinterCereals_winter: {
 						metadataModifiers: {
 							caseKey: '41fbf26c-9cd6-4670-88d5-eae5ee2f7c56',
 							periodKey: 'd93a6ec5-e6e2-4f9a-a368-8a8f2aa8c0fe',
@@ -1157,7 +1158,7 @@ export default {
 					GlobalOneSelectedAnnualCropland: {
 						components: [
 							'GlobalSharePieChart',
-							'GlobalShareAnnualCroplandTable',
+							'UniversalShareAnnualCroplandTable',
 						],
 					},
 					GlobalMultipleSelected: {
@@ -1173,7 +1174,10 @@ export default {
 						components: ['CountrySharePieChart'],
 					},
 					CountryOneSelectedRegionAnnualCropland: {
-						components: ['CountrySharePieChart'],
+						components: [
+							'CountrySharePieChart',
+							'UniversalShareAnnualCroplandTable',
+						],
 					},
 					CountryMultipleSelectedRegions: {
 						components: [
