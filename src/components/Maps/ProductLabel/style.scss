@@ -4,7 +4,7 @@
   background: var(--accent30);
   min-width: 12rem;
 
-  &.worldCereal-LayerLabel .ptr-ExpandableLabelHeader > div > div.ptr-button{
+  &.worldCereal-LayerLabel .ptr-ExpandableLabelHeader > div > div.ptr-button {
     min-height: unset;
   }
 }
@@ -96,6 +96,11 @@
 
 .worldCereal-ProductLabelBodyItem.is-dangerous:hover {
   background: #f1d7d8;
+}
+
+.worldCereal-ProductLabelBodyItem.is-disabled {
+  color: $disabledTextColor;
+  pointer-events: none;
 }
 
 .worldCereal-ProductLabelBodyItem-title {

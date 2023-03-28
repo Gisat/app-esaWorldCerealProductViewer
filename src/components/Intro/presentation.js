@@ -68,6 +68,7 @@ const Intro = ({onViewSelect, views, tourGuideIsOpen}) => {
 								key={view.key}
 								onClick={() => onViewSelect(view.key)}
 								Icon={getIcon(view.data.nameInternal)}
+								disabled={view.data.nameInternal === 'statistics'}
 							>
 								<IntroCardTitle>{view.data.nameDisplay}</IntroCardTitle>
 								<IntroCardText>{view.data.description}</IntroCardText>

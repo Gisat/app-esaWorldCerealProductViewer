@@ -67,9 +67,7 @@ const ProductLabel = ({
 						color={color}
 					/>
 				</ExpandableLabelHeader>
-				<ExpandableLabelBody
-					height={confidenceLayerActive ? 12.5 : styleForLegend ? 11.5 : 8}
-				>
+				<ExpandableLabelBody height={12.5}>
 					<div className="worldCereal-ProductLabelBody">
 						<div>
 							<ProductLabelBodyItem title="Set opacity">
@@ -97,7 +95,7 @@ const ProductLabel = ({
 							/>
 						</div>
 						<ProductLabelLegend
-							height={confidenceLayerActive ? '4.5rem' : '3.5rem'}
+							height="4.5rem"
 							style={
 								confidenceLayerActive ? styleForConfidenceLayer : styleForLegend
 							}
@@ -232,10 +230,17 @@ MultipleProductLabelHeader.propTypes = {
 	product: PropTypes.string,
 };
 
-const ProductLabelBodyItem = ({title, dangerous, onClick, children}) => {
+export const ProductLabelBodyItem = ({
+	title,
+	dangerous,
+	disabled,
+	onClick,
+	children,
+}) => {
 	const classes = classnames('worldCereal-ProductLabelBodyItem', {
 		'is-hoverable': !!onClick,
 		'is-dangerous': dangerous,
+		'is-disabled': disabled,
 	});
 
 	return (
@@ -249,6 +254,7 @@ const ProductLabelBodyItem = ({title, dangerous, onClick, children}) => {
 ProductLabelBodyItem.propTypes = {
 	children: PropTypes.node,
 	dangerous: PropTypes.bool,
+	disabled: PropTypes.bool,
 	onClick: PropTypes.func,
 	title: PropTypes.string,
 };
