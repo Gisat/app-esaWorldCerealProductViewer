@@ -1176,13 +1176,13 @@ export default {
 					CountryOneSelectedRegion: {
 						components: [
 							'CountrySharePieChart',
-							'UniversalShareAnnualCroplandTable',
+							// 'UniversalShareAnnualCroplandTable',
 						],
 					},
 					CountryOneSelectedRegionAnnualCropland: {
 						components: [
 							'CountrySharePieChart',
-							'UniversalShareAnnualCroplandTable',
+							// 'UniversalShareAnnualCroplandTable',
 						],
 					},
 					CountryMultipleSelectedRegions: {
