@@ -8,7 +8,7 @@
 }
 
 .ptr-ChartWrapper.is-small {
-  width: calc(50% - .5rem);
+  display: flex;
 }
 
 .ptr-ChartWrapper:last-child {
@@ -18,6 +18,10 @@
 .ptr-ChartWrapper-header {
   display: flex;
   flex-direction: column;
+}
+
+.ptr-ChartWrapper.is-small .ptr-ChartWrapper-header {
+  flex: 1;
 }
 
 .ptr-ChartWrapper-header > div:first-child {
@@ -36,10 +40,6 @@
   color: var(--base90);
 }
 
-.ptr-ChartWrapper.is-small .ptr-ChartWrapper-title {
-  font-size: .85rem;
-}
-
 .ptr-ChartWrapper-subtitle {
   font-size: .8rem;
   color: var(--base70);
@@ -51,5 +51,7 @@
 }
 
 .ptr-ChartWrapper.is-small .ptr-ChartWrapper-body {
-  height: 8rem;
+  height: 5rem;
+  width: 6rem;
+  padding: 0;
 }
