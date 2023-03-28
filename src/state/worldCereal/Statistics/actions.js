@@ -455,6 +455,36 @@ function ensureRegionName(fid, nameAttributeKey) {
 	};
 }
 
+function useDataForHeatMapTable(componentKey) {
+	return (dispatch, getState) => {
+		const componentState = Select.data.components.getComponentStateByKey(
+			getState(),
+			componentKey
+		);
+		const components = componentState?.components;
+		if (components) {
+			components.forEach(componentKey =>
+				dispatch(CommonAction.data.components.use(componentKey))
+			);
+		}
+	};
+}
+
+function clearUseForHeatMapTable(componentKey) {
+	return (dispatch, getState) => {
+		const componentState = Select.data.components.getComponentStateByKey(
+			getState(),
+			componentKey
+		);
+		const components = componentState?.components;
+		if (components) {
+			components.forEach(componentKey =>
+				dispatch(CommonAction.data.components.componentUseClear(componentKey))
+			);
+		}
+	};
+}
+
 export default {
 	setActiveSelectionFeatureKeysByActivePlaceKeys,
 	setActivePlaceKeysByActiveSelectionFeatureKeys,
@@ -468,4 +498,6 @@ export default {
 	useChartAttributes,
 	zoomToActivePlace,
 	ensureRegionName,
+	useDataForHeatMapTable,
+	clearUseForHeatMapTable,
 };
