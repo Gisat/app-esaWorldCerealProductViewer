@@ -1153,7 +1153,10 @@ export default {
 						components: ['GlobalTopTenBarChart', 'GlobalTopTenBarChartShare'],
 					},
 					GlobalOneSelected: {
-						components: ['GlobalSharePieChart'],
+						components: [
+							'GlobalSharePieChart',
+							'UniversalShareAnnualCroplandTable',
+						],
 					},
 					GlobalOneSelectedAnnualCropland: {
 						components: [
@@ -1171,7 +1174,10 @@ export default {
 						components: ['CountryTopTenBarChart', 'CountryTopTenBarChartShare'],
 					},
 					CountryOneSelectedRegion: {
-						components: ['CountrySharePieChart'],
+						components: [
+							'CountrySharePieChart',
+							'UniversalShareAnnualCroplandTable',
+						],
 					},
 					CountryOneSelectedRegionAnnualCropland: {
 						components: [
