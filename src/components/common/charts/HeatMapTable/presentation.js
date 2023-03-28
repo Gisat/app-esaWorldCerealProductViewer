@@ -44,8 +44,8 @@ const HeatMapTable = ({
 			}}
 			colors={{
 				type: 'sequential',
-				scheme: 'oranges',
-				// colors: ['#ff0000', '#0000ff'],
+				scheme: 'yellow_orange_brown',
+				// colors: ['#FFFFFF', '#F2D072', '#FF4B7E'],
 				minValue: 0,
 				maxValue: 1,
 			}}
