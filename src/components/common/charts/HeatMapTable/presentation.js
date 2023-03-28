@@ -8,11 +8,14 @@ import PropTypes from 'prop-types';
 
 const HeatMapTable = ({
 	data,
+	metadata,
 	selectedFeatureKeys,
 	onMount,
 	onUnmount,
 	onSelectedFeaturesChange,
 }) => {
+	const {settings} = metadata;
+
 	useEffect(() => {
 		if (typeof onMount === 'function') {
 			onMount();
@@ -29,68 +32,23 @@ const HeatMapTable = ({
 	return (
 		<ResponsiveHeatMap
 			data={data}
-			margin={{top: 20, right: 10, bottom: 10, left: 90}}
-			valueFormat=">-.1%"
-			axisTop={{
-				tickSize: 5,
-				tickPadding: 5,
-				legend: '',
-				legendOffset: 46,
-			}}
-			axisLeft={{
-				tickSize: 5,
-				tickPadding: 5,
-				tickRotation: 0,
-			}}
-			colors={{
-				type: 'sequential',
-				scheme: 'yellow_orange_brown',
-				minValue: 0,
-				maxValue: 1,
-			}}
-			xInnerPadding={0.02}
-			yInnerPadding={0.1}
-			borderRadius={3}
 			labelTextColor={item => {
-				return item?.value > 0.7 ? '#ffffff' : '#333333';
+				if (item?.value > 0.7) {
+					return '#ffffff';
+				} else if (item.value) {
+					return '#333333';
+				} else {
+					return '#cccccc';
+				}
 			}}
-			theme={{
-				fontSize: 11,
-				textColor: 'var(--base70)',
-				axis: {
-					legend: {
-						text: {
-							fontSize: 13,
-							fontWeight: 'bold',
-						},
-					},
-					ticks: {
-						line: {
-							stroke: 'var(--base20)',
-						},
-					},
-				},
-				grid: {
-					line: {
-						stroke: 'var(--base20)',
-					},
-				},
-				labels: {
-					text: {
-						fontSize: 13,
-						fontWeight: 'bold',
-					},
-				},
-			}}
-			emptyColor="#ffffff22"
-			animate={false}
-			tooltip={() => {}}
+			{...settings}
 		/>
 	);
 };
 
 HeatMapTable.propTypes = {
 	data: PropTypes.array,
+	metadata: PropTypes.object,
 	onMount: PropTypes.func,
 	onUnmount: PropTypes.func,
 	selectedFeatureKeys: PropTypes.array,

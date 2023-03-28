@@ -211,6 +211,61 @@ export default {
 				GlobalShareAnnualCroplandTable: {
 					title: 'Share of products in total cropland area',
 					subtitle: 'In particular seasons [%]',
+					settings: {
+						margin: {top: 20, right: 10, bottom: 10, left: 90},
+						valueFormat: '>-.1%',
+						axisTop: {
+							tickSize: 5,
+							tickPadding: 5,
+							legend: '',
+							legendOffset: 46,
+						},
+						axisLeft: {
+							tickSize: 5,
+							tickPadding: 5,
+							tickRotation: 0,
+						},
+						colors: {
+							type: 'sequential',
+							scheme: 'yellow_orange_brown',
+							minValue: 0,
+							maxValue: 1,
+						},
+						xInnerPadding: 0.02,
+						yInnerPadding: 0.1,
+						borderRadius: 3,
+						theme: {
+							fontSize: 11,
+							textColor: 'var(--base70)',
+							axis: {
+								legend: {
+									text: {
+										fontSize: 13,
+										fontWeight: 'bold',
+									},
+								},
+								ticks: {
+									line: {
+										stroke: 'var(--base20)',
+									},
+								},
+							},
+							grid: {
+								line: {
+									stroke: 'var(--base20)',
+								},
+							},
+							labels: {
+								text: {
+									fontSize: 13,
+									fontWeight: 'bold',
+								},
+							},
+						},
+						emptyColor: '#ffffff22',
+						animate: false,
+						tooltip: () => {},
+					},
 				},
 				GlobalShareCountryProductsBarChart: {
 					title: '',

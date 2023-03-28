@@ -12,6 +12,10 @@ const mapStateToProps = (state, ownProps) => {
 		data: Select.worldCereal.charts.getDataForHeatMapTable(
 			ownProps.componentKey
 		),
+		metadata: Select.worldCereal.charts.getChartMetadata(
+			state,
+			ownProps.componentKey
+		),
 		selectedFeatureKeys: activeSelection?.data?.featureKeysFilter?.keys,
 	};
 };
