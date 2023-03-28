@@ -47,6 +47,11 @@ const mapDispatchToPropsFactory = dispatch => {
 				dispatch(
 					Action.data.components.componentUseClear('CountryRegionsBarChart')
 				);
+				dispatch(
+					Action.worldCereal.statistics.clearUseForHeatMapTable(
+						'UniversalShareAnnualCroplandTable'
+					)
+				);
 
 				dispatch(Action.areas.areaTreeLevels.setActiveKey(activeLevelKey));
 				dispatch(

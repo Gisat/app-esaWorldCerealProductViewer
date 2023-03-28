@@ -22,13 +22,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		onMount: () => {
-			dispatch(
-				Action.worldCereal.statistics.useDataForHeatMapTable(
-					ownProps.componentKey
-				)
-			);
-		},
 		onUnmount: () =>
 			dispatch(
 				Action.worldCereal.statistics.clearUseForHeatMapTable(
