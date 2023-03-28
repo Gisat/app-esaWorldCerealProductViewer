@@ -45,9 +45,14 @@ const HeatMapTable = ({
 			colors={{
 				type: 'sequential',
 				scheme: 'yellow_orange_brown',
-				// colors: ['#FFFFFF', '#F2D072', '#FF4B7E'],
 				minValue: 0,
 				maxValue: 1,
+			}}
+			xInnerPadding={0.02}
+			yInnerPadding={0.1}
+			borderRadius={3}
+			labelTextColor={item => {
+				return item?.value > 0.7 ? '#ffffff' : '#333333';
 			}}
 			theme={{
 				fontSize: 11,
