@@ -21,7 +21,7 @@ const AppTour = ({
 	openIntroOverlay,
 	redirectToDetailedView,
 	redirectToGlobalView,
-	// redirectToStatisticsView,
+	redirectToStatisticsView,
 
 	controlTourGuide,
 	activateDefaultLayer,
