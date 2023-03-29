@@ -210,26 +210,24 @@ const AppTour = ({
 				expandProductLabel(false);
 				expandFilterWindow(false);
 				break;
-
-			// TODO hide for now
-			// case 10:
-			// 	openIntroOverlay(false);
-			// 	redirectToStatisticsView();
-			// 	expandProductLabel(false);
-			// 	expandFilterWindow(false);
-			// 	break;
-			// case 11:
-			// 	openIntroOverlay(false);
-			// 	redirectToStatisticsView();
-			// 	expandProductLabel(false);
-			// 	expandFilterWindow(false);
-			// 	break;
-			// case 12:
-			// 	openIntroOverlay(false);
-			// 	redirectToStatisticsView();
-			// 	expandProductLabel(false);
-			// 	expandFilterWindow(false);
-			// 	break;
+			case 10:
+				openIntroOverlay(false);
+				redirectToStatisticsView();
+				expandProductLabel(false);
+				expandFilterWindow(false);
+				break;
+			case 11:
+				openIntroOverlay(false);
+				redirectToStatisticsView();
+				expandProductLabel(false);
+				expandFilterWindow(false);
+				break;
+			case 12:
+				openIntroOverlay(false);
+				redirectToStatisticsView();
+				expandProductLabel(false);
+				expandFilterWindow(false);
+				break;
 			default:
 				break;
 		}
