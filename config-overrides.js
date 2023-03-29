@@ -4,10 +4,8 @@ module.exports = function override(config) {
 	// comment when using package from npm
 	config.resolve = {
 		alias: {
-			// react:
-			// 	'C:/Users/PavelVlach/WebstormProjects/ptr-components/node_modules/react',
-			// '@gisatcz/ptr-components':
-			// 	'C:/Users/PavelVlach/WebstormProjects/ptr-components',
+			// react: 'C:/Users/PavelVlach/WebstormProjects/ptr-maps/node_modules/react',
+			// '@gisatcz/ptr-maps': 'C:/Users/PavelVlach/WebstormProjects/ptr-maps',
 			// react:
 			// 	'C:/Users/PavelVlach/WebstormProjects/ptr-atoms/node_modules/react',
 			// '@gisatcz/ptr-atoms': 'C:/Users/PavelVlach/WebstormProjects/ptr-atoms',

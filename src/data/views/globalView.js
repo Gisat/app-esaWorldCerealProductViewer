@@ -16,7 +16,6 @@ export default {
 						'globalView-mapSet': {
 							open: [
 								'zoomControls',
-								'zoomToDetail',
 								'zoomToWorld',
 								'layerControls',
 								'mapAttribution',
@@ -24,6 +23,7 @@ export default {
 								'compareMaps',
 								'scale',
 								'overviewMap',
+								'searchPlace',
 							],
 							available: [
 								'addMap',
