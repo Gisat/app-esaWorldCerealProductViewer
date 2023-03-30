@@ -268,67 +268,6 @@ export default {
 						tooltip: () => {},
 					},
 				},
-				GlobalShareCountryProductsBarChart: {
-					title: '',
-					subtitle: '',
-					settings: {
-						indexBy: 'id',
-						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
-						valueScale: {type: 'linear'},
-						indexScale: {type: 'band', round: true},
-						valueFormat: ' >-,d',
-						axisTop: null,
-						axisRight: null,
-						axisBottom: {
-							values: false,
-							enable: true,
-							// legend: 'Area [ha]',
-							legendPosition: 'middle',
-							legendOffset: 33,
-							tickPadding: 0,
-							tickValues: 4,
-							format: ' >-,d',
-						},
-						// maxValue: 100,
-						padding: 0.1,
-						innerPadding: 3,
-						groupMode: 'grouped',
-						enableGridY: false,
-						enableGridX: true,
-						enableLabel: true,
-						labelSkipHeight: 13,
-						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
-						theme: {
-							fontSize: 11,
-							textColor: 'var(--base70)',
-							axis: {
-								legend: {
-									text: {
-										fontSize: 13,
-										fontWeight: 'bold',
-									},
-								},
-								ticks: {
-									line: {
-										stroke: 'var(--base20)',
-									},
-								},
-							},
-							grid: {
-								line: {
-									stroke: 'var(--base20)',
-								},
-							},
-							labels: {
-								text: {
-									fontSize: 13,
-									fontWeight: 'bold',
-								},
-							},
-						},
-					},
-				},
 				GlobalCountriesBarChart: {
 					title: '',
 					subtitle: '',
@@ -1040,28 +979,6 @@ export default {
 						start: 1,
 						length: 1,
 					},
-					GlobalShareCountryProductsBarChart: {
-						type: 'barChart',
-						options: {
-							nameComponentKey: 'CountryNames',
-							selectedFeaturesOnly: true,
-						},
-						metadataModifiers: {},
-						filterByActive: {
-							application: true,
-							scope: true,
-							areaTreeLevel: true,
-							period: true,
-						},
-						attributeKeys: [
-							'73e3bd86-8701-47e4-b27b-9d2555d68304',
-							'934a9fa2-ddb9-49a8-b4b2-170e39ef531e',
-							'8e71e4da-5a90-4222-9350-f1c1f1bad5c5',
-							'eb9dce86-39c6-480b-b7e3-2fac2101eac0',
-						],
-						start: 1,
-						length: 100,
-					},
 					GlobalCountriesBarChart: {
 						type: 'barChart',
 						options: {
@@ -1069,6 +986,7 @@ export default {
 							attributeType: 'absolute',
 							selectedFeaturesOnly: true,
 						},
+						attributeOrder: [['4fb212bb-ff1a-46d7-8fce-e341e7f08376', 'desc']],
 						metadataModifiers: {},
 						filterByActive: {
 							application: true,
@@ -1088,6 +1006,7 @@ export default {
 							attributeType: 'relative',
 							selectedFeaturesOnly: true,
 						},
+						attributeOrder: [['73e3bd86-8701-47e4-b27b-9d2555d68304', 'desc']],
 						metadataModifiers: {},
 						filterByActive: {
 							application: true,
@@ -1339,6 +1258,7 @@ export default {
 							attributeType: 'absolute',
 							selectedFeaturesOnly: true,
 						},
+						attributeOrder: [['4fb212bb-ff1a-46d7-8fce-e341e7f08376', 'desc']],
 						metadataModifiers: {},
 						filterByActive: {
 							application: true,
@@ -1359,6 +1279,7 @@ export default {
 							attributeType: 'relative',
 							selectedFeaturesOnly: true,
 						},
+						attributeOrder: [['73e3bd86-8701-47e4-b27b-9d2555d68304', 'desc']],
 						metadataModifiers: {},
 						filterByActive: {
 							application: true,
