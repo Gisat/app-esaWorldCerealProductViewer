@@ -19,6 +19,7 @@ const getComponent = component => {
 				</GlobalChartWrapper>
 			);
 		case 'GlobalShareAnnualCroplandTable':
+		case 'CountryShareAnnualCroplandTable':
 			return <ChartWrapper componentKey={component} />;
 		default:
 			return (

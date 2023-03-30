@@ -52,6 +52,11 @@ const mapDispatchToPropsFactory = dispatch => {
 						'GlobalShareAnnualCroplandTable'
 					)
 				);
+				dispatch(
+					Action.worldCereal.statistics.clearUseForHeatMapTable(
+						'CountryShareAnnualCroplandTable'
+					)
+				);
 
 				dispatch(Action.areas.areaTreeLevels.setActiveKey(activeLevelKey));
 				dispatch(
