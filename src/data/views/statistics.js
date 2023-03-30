@@ -49,7 +49,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -108,7 +108,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -274,7 +274,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -334,7 +334,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-.2r',
@@ -395,7 +395,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -454,7 +454,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -620,7 +620,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -680,7 +680,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-.2r',
