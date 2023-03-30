@@ -49,7 +49,7 @@ const mapDispatchToPropsFactory = dispatch => {
 				);
 				dispatch(
 					Action.worldCereal.statistics.clearUseForHeatMapTable(
-						'UniversalShareAnnualCroplandTable'
+						'GlobalShareAnnualCroplandTable'
 					)
 				);
 
