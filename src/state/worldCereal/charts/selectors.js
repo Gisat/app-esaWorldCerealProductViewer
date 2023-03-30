@@ -60,160 +60,180 @@ const getChartSubtitle = createCachedSelector(
 	}
 )((state, componentKey) => componentKey);
 
-const getDataForNivoBarChart = createRecomputeSelector(componentKey => {
-	const data = CommonSelect.data.components.getDataForCartesianChart({
-		stateComponentKey: componentKey,
-	});
-	const metadata = getChartMetadataObserver(componentKey);
+const getDataForNivoBarChart = createRecomputeSelector(
+	(componentKey = 'chart') => {
+		const data = CommonSelect.data.components.getDataForCartesianChart({
+			stateComponentKey: componentKey,
+		});
+		const metadata = getChartMetadataObserver(componentKey);
 
-	if (metadata && data) {
-		const {attributeOrder, options, settings} = metadata;
-		const {data: chartData} = data;
+		if (metadata && data) {
+			const {attributeOrder, options, settings} = metadata;
+			const {data: chartData} = data;
 
-		if (chartData) {
-			let adjustedData =
-				chartData &&
-				_compact(
-					chartData.map(item => {
-						if (item) {
-							return {
-								...item.data,
-								id: item.name,
-								name: item.name,
-								key: item.key,
-							};
-						} else {
-							return null;
-						}
-					})
-				);
+			if (chartData) {
+				let adjustedData =
+					chartData &&
+					_compact(
+						chartData.map(item => {
+							if (item) {
+								return {
+									...item.data,
+									id: item.name,
+									name: item.name,
+									key: item.key,
+								};
+							} else {
+								return null;
+							}
+						})
+					);
 
-			// sort data
-			if (attributeOrder) {
-				const [attributeForOrdering, orderDirection] = attributeOrder[0]; // TODO order just by one attribute
-				adjustedData = _orderBy(
-					adjustedData,
-					item => {
-						return item?.[attributeForOrdering];
-					},
-					orderDirection
-				);
+				// sort data
+				if (attributeOrder) {
+					const [attributeForOrdering, orderDirection] = attributeOrder[0]; // TODO order just by one attribute
+					adjustedData = _orderBy(
+						adjustedData,
+						item => {
+							return item?.[attributeForOrdering];
+						},
+						orderDirection
+					);
+				}
+
+				// trim data
+				if (options?.limit) {
+					adjustedData = adjustedData.slice(0, options?.limit);
+				}
+
+				// flip data
+				if (settings?.layout === 'horizontal') {
+					adjustedData.reverse();
+				}
+
+				return adjustedData;
+			} else {
+				return null;
 			}
-
-			// trim data
-			if (options?.limit) {
-				adjustedData = adjustedData.slice(0, options?.limit);
-			}
-
-			// flip data
-			if (settings?.layout === 'horizontal') {
-				adjustedData.reverse();
-			}
-
-			return adjustedData;
 		} else {
 			return null;
 		}
-	} else {
-		return null;
-	}
-}, recomputeSelectorOptions);
+	},
+	recomputeSelectorOptions
+);
 
-const getDataForNivoDonutChart = createRecomputeSelector(componentKey => {
-	const data = CommonSelect.data.components.getDataForCartesianChart({
-		stateComponentKey: componentKey,
-	});
-	const metadata = getChartMetadataObserver(componentKey);
+const getDataForNivoDonutChart = createRecomputeSelector(
+	(componentKey = 'chart') => {
+		const data = CommonSelect.data.components.getDataForCartesianChart({
+			stateComponentKey: componentKey,
+		});
+		const metadata = getChartMetadataObserver(componentKey);
 
-	if (metadata && data) {
-		const {options} = metadata;
-		const {data: chartData} = data;
+		if (metadata && data) {
+			const {options} = metadata;
+			const {data: chartData} = data;
 
-		if (chartData?.length) {
-			const {key, data: attributes} = chartData[0];
-			const fragments = [];
-			let total = 0;
-			_forIn(attributes, value => {
-				total += value;
-				fragments.push({
-					key,
-					value,
-					color: 'var(--accent70)',
+			if (chartData?.length) {
+				const {key, data: attributes} = chartData[0];
+				const fragments = [];
+				let total = 0;
+				_forIn(attributes, value => {
+					total += value;
+					fragments.push({
+						key,
+						value,
+						color: 'var(--accent70)',
+					});
 				});
-			});
 
-			if (options?.valuesAsPercentage) {
-				fragments.push({
-					key: 'rest',
-					value: 100 - total,
-					color: 'rgba(var(--base50rgb), .5)',
-				});
+				if (options?.valuesAsPercentage) {
+					fragments.push({
+						key: 'rest',
+						value: 100 - total,
+						color: 'rgba(var(--base50rgb), .5)',
+					});
+				}
+
+				return fragments;
+			} else {
+				return null;
 			}
-
-			return fragments;
 		} else {
 			return null;
 		}
-	} else {
-		return null;
-	}
-}, recomputeSelectorOptions);
-
+	},
+	recomputeSelectorOptions
+);
 const getPeriodsAsObjectObserver = createRecomputeObserver(
 	CommonSelect.periods.getAllAsObject
 );
-const getCasesAsObjectObserver = createRecomputeObserver(
-	CommonSelect.cases.getAllAsObject
-);
 
-const getDataForHeatMapTable = createRecomputeSelector(componentKey => {
-	const componentState =
-		CommonSelect.data.components.getComponentStateByKeyObserver(componentKey);
-	if (componentState) {
-		const dataForTable = {};
-		const periods = getPeriodsAsObjectObserver();
-		const cases = getCasesAsObjectObserver();
-		componentState?.components.forEach(stateComponentKey => {
-			const subcomponentState =
-				CommonSelect.data.components.getComponentStateByKeyObserver(
-					stateComponentKey
-				);
-			const attributeKey = subcomponentState?.attributeKeys[0];
-			const periodKey = subcomponentState?.metadataModifiers?.periodKey;
-			const caseKey = subcomponentState?.metadataModifiers?.caseKey;
-			const caseName = cases?.[caseKey]?.data?.nameDisplay;
-			const periodName = periods?.[periodKey]?.data?.nameDisplay;
-			const data = CommonSelect.data.components.getDataForCartesianChart({
-				stateComponentKey,
-			});
-			const value = data?.data?.[0]?.data?.[attributeKey];
-			if (value || value === 0) {
-				const rec = {
-					x: periodName,
-					y: value / 100,
-				};
+const getDataForHeatMapTable = createRecomputeSelector(
+	(componentKey = 'chart', config) => {
+		const componentState =
+			CommonSelect.data.components.getComponentStateByKeyObserver(componentKey);
+		if (componentState) {
+			const dataForTable = {};
+			const periods = getPeriodsAsObjectObserver();
+			componentState?.components.forEach(stateComponentKey => {
+				const subcomponentState =
+					CommonSelect.data.components.getComponentStateByKeyObserver(
+						stateComponentKey
+					);
 
-				// add record for case (and create case item, if it doesn't exist
-				if (dataForTable[caseName]) {
-					dataForTable[caseName].data.push(rec);
-				} else {
-					dataForTable[caseName] = {
-						id: caseName,
-						data: [rec],
-					};
+				const periodKey = subcomponentState?.metadataModifiers?.periodKey;
+				const periodName = periods?.[periodKey]?.data?.nameDisplay;
+				const data = CommonSelect.data.components.getDataForCartesianChart({
+					stateComponentKey,
+				});
+
+				const attributes = data?.data?.[0]?.data;
+				if (attributes) {
+					_forIn(attributes, (value, attributeKey) => {
+						const rec = {
+							x: periodName,
+							y: value / 100,
+						};
+
+						// add record for attribute (and create attribute item, if it doesn't exist
+						if (dataForTable[attributeKey]) {
+							dataForTable[attributeKey].data.push(rec);
+						} else {
+							dataForTable[attributeKey] = {
+								id: attributeKey,
+								data: [rec],
+							};
+						}
+					});
 				}
-			}
-		});
+			});
 
-		if (!_isEmpty(dataForTable)) {
-			return Object.values(dataForTable);
+			if (!_isEmpty(dataForTable)) {
+				let data = Object.values(dataForTable);
+				if (config?.nameByAttributeKey) {
+					data = data.map(item => {
+						const name = config?.nameByAttributeKey?.[item.id] || item.id;
+						return {
+							...item,
+							id: name,
+						};
+					});
+				}
+
+				if (config?.order) {
+					return _orderBy(data, config.order[0], config.order[1]);
+				}
+
+				return data;
+			} else {
+				return [];
+			}
 		} else {
 			return [];
 		}
-	} else {
-		return [];
-	}
-}, recomputeSelectorOptions);
+	},
+	recomputeSelectorOptions
+);
 
 export default {
 	getChartMetadata,

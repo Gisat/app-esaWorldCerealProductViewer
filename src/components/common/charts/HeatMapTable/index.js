@@ -7,10 +7,18 @@ import Presentation from './presentation';
 const mapStateToProps = (state, ownProps) => {
 	setRecomputeState(state);
 	const activeSelection = Select.selections.getActive(state);
+	const nameByAttributeKey =
+		Select.worldCereal.statistics.getCaseNameByRelativeAttributeKeyMapping(
+			state
+		);
 
 	return {
 		data: Select.worldCereal.charts.getDataForHeatMapTable(
-			ownProps.componentKey
+			ownProps.componentKey,
+			{
+				nameByAttributeKey,
+				order: ['id', 'asc'],
+			}
 		),
 		metadata: Select.worldCereal.charts.getChartMetadata(
 			state,

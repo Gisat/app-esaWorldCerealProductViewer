@@ -4,6 +4,7 @@ import {
 	omit as _omit,
 	includes as _includes,
 	isObject as _isObject,
+	forIn as _forIn,
 } from 'lodash';
 import {
 	recomputeSelectorOptions,
@@ -336,6 +337,25 @@ const getRegionName = createSelector(
 	}
 );
 
+const getCaseNameByRelativeAttributeKeyMapping = createSelector(
+	[
+		CommonSelect.cases.getAllAsObject,
+		state => CommonSelect.app.getConfiguration(state, 'configByCaseKey'),
+	],
+	(cases, config) => {
+		if (config && cases) {
+			const mapping = {};
+			_forIn(config, (data, caseKey) => {
+				mapping[data?.relativeAttributeKey] = cases[caseKey]?.data?.nameDisplay;
+			});
+
+			return mapping;
+		} else {
+			return null;
+		}
+	}
+);
+
 export default {
 	isDataForCurrentSettings,
 	getVisualizationComponentSet,
@@ -351,4 +371,5 @@ export default {
 	getStyleKeyForActiveMapAndLayerKey,
 	getSubtitleForBaseChartWrapper,
 	getRegionName,
+	getCaseNameByRelativeAttributeKeyMapping,
 };
