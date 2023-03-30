@@ -167,52 +167,64 @@ const getDataForNivoDonutChart = createRecomputeSelector(
 const getPeriodsAsObjectObserver = createRecomputeObserver(
 	CommonSelect.periods.getAllAsObject
 );
-const getCasesAsObjectObserver = createRecomputeObserver(
-	CommonSelect.cases.getAllAsObject
-);
 
 const getDataForHeatMapTable = createRecomputeSelector(
-	(componentKey = 'chart') => {
+	(componentKey = 'chart', config) => {
 		const componentState =
 			CommonSelect.data.components.getComponentStateByKeyObserver(componentKey);
 		if (componentState) {
 			const dataForTable = {};
 			const periods = getPeriodsAsObjectObserver();
-			const cases = getCasesAsObjectObserver();
 			componentState?.components.forEach(stateComponentKey => {
 				const subcomponentState =
 					CommonSelect.data.components.getComponentStateByKeyObserver(
 						stateComponentKey
 					);
-				const attributeKey = subcomponentState?.attributeKeys[0];
+
 				const periodKey = subcomponentState?.metadataModifiers?.periodKey;
-				const caseKey = subcomponentState?.metadataModifiers?.caseKey;
-				const caseName = cases?.[caseKey]?.data?.nameDisplay;
 				const periodName = periods?.[periodKey]?.data?.nameDisplay;
 				const data = CommonSelect.data.components.getDataForCartesianChart({
 					stateComponentKey,
 				});
-				const value = data?.data?.[0]?.data?.[attributeKey];
-				if (value || value === 0) {
-					const rec = {
-						x: periodName,
-						y: value / 100,
-					};
 
-					// add record for case (and create case item, if it doesn't exist
-					if (dataForTable[caseName]) {
-						dataForTable[caseName].data.push(rec);
-					} else {
-						dataForTable[caseName] = {
-							id: caseName,
-							data: [rec],
+				const attributes = data?.data?.[0]?.data;
+				if (attributes) {
+					_forIn(attributes, (value, attributeKey) => {
+						const rec = {
+							x: periodName,
+							y: value / 100,
 						};
-					}
+
+						// add record for attribute (and create attribute item, if it doesn't exist
+						if (dataForTable[attributeKey]) {
+							dataForTable[attributeKey].data.push(rec);
+						} else {
+							dataForTable[attributeKey] = {
+								id: attributeKey,
+								data: [rec],
+							};
+						}
+					});
 				}
 			});
 
 			if (!_isEmpty(dataForTable)) {
-				return Object.values(dataForTable);
+				let data = Object.values(dataForTable);
+				if (config?.nameByAttributeKey) {
+					data = data.map(item => {
+						const name = config?.nameByAttributeKey?.[item.id] || item.id;
+						return {
+							...item,
+							id: name,
+						};
+					});
+				}
+
+				if (config?.order) {
+					return _orderBy(data, config.order[0], config.order[1]);
+				}
+
+				return data;
 			} else {
 				return [];
 			}
