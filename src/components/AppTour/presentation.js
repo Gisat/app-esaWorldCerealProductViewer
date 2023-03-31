@@ -74,7 +74,7 @@ const AppTour = ({
 		} else if (activeView?.data?.nameInternal === 'globalView') {
 			setStep(7);
 		} else if (activeView?.data?.nameInternal === 'statistics') {
-			setStep(8);
+			setStep(10);
 		}
 
 		// if default layer is already added to the map
