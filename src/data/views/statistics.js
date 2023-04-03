@@ -417,6 +417,7 @@ export default {
 						enableGridX: true,
 						enableLabel: true,
 						labelSkipHeight: 13,
+						labelSkipWidth: 50,
 						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
 						theme: {
 							fontSize: 11,
@@ -476,6 +477,7 @@ export default {
 						enableGridX: true,
 						enableLabel: true,
 						labelSkipHeight: 13,
+						labelSkipWidth: 30,
 						maxValue: 100,
 						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
 						theme: {
@@ -703,6 +705,7 @@ export default {
 						enableGridX: true,
 						enableLabel: true,
 						labelSkipHeight: 13,
+						labelSkipWidth: 30,
 						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
 						theme: {
 							fontSize: 11,
