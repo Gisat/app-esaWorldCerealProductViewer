@@ -93,12 +93,14 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 				<MetadataInfoItemRec label="product wms url">
 					<WmsUrl spatialDataSourceKey={dataSource.product} />
 				</MetadataInfoItemRec>
-				<MetadataInfoItemRec label="confidence wms url">
-					<ConfidenceWmsUrl
-						spatialDataSourceKey={dataSource.product}
-						confidence={dataSource.confidence}
-					/>
-				</MetadataInfoItemRec>
+				{productTemplate?.key !== 'activecropland' ? (
+					<MetadataInfoItemRec label="confidence wms url">
+						<ConfidenceWmsUrl
+							spatialDataSourceKey={dataSource.product}
+							confidence={dataSource.confidence}
+						/>
+					</MetadataInfoItemRec>
+				) : null}
 			</div>
 			{!isGlobal ? (
 				tiles ? (
