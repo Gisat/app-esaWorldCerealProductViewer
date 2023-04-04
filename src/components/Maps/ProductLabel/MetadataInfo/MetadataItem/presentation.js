@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import {isArray as _isArray} from 'lodash';
 // import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 import WmsUrl from './WmsUrl';
-import ConfidenceWmsUrl from './ConfidenceWmsUrl';
+// import ConfidenceWmsUrl from './ConfidenceWmsUrl';
 
 import './style.scss';
 // import {useState} from 'react';
@@ -93,14 +93,15 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 				<MetadataInfoItemRec label="product wms url">
 					<WmsUrl spatialDataSourceKey={dataSource.product} />
 				</MetadataInfoItemRec>
-				{productTemplate?.key !== 'activecropland' ? (
-					<MetadataInfoItemRec label="confidence wms url">
-						<ConfidenceWmsUrl
-							spatialDataSourceKey={dataSource.product}
-							confidence={dataSource.confidence}
-						/>
-					</MetadataInfoItemRec>
-				) : null}
+				{/* TODO temporary */}
+				{/*{productTemplate?.key !== 'activecropland' ? (*/}
+				{/*	<MetadataInfoItemRec label="confidence wms url">*/}
+				{/*		<ConfidenceWmsUrl*/}
+				{/*			spatialDataSourceKey={dataSource.product}*/}
+				{/*			confidence={dataSource.confidence}*/}
+				{/*		/>*/}
+				{/*	</MetadataInfoItemRec>*/}
+				{/*) : null}*/}
 			</div>
 			{!isGlobal ? (
 				tiles ? (
