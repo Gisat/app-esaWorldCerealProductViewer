@@ -4,6 +4,7 @@ import {
 	omit as _omit,
 	includes as _includes,
 	isObject as _isObject,
+	forIn as _forIn,
 } from 'lodash';
 import {
 	recomputeSelectorOptions,
@@ -117,26 +118,6 @@ const getPeriods = createSelector(
 		} else {
 			return null;
 		}
-	}
-);
-
-/**
- * TODO for now there is a limitation in configuration
- */
-const isCountryLevelDisabled = createSelector(
-	[
-		CommonSelect.places.getActiveKeys,
-		state =>
-			CommonSelect.app.getConfiguration(
-				state,
-				'availableCountryLevelForPlaceKey'
-			),
-	],
-	(activePlaceKeys, availableForPlaceKey) => {
-		return !(
-			activePlaceKeys?.length === 1 &&
-			activePlaceKeys[0] === availableForPlaceKey
-		);
 	}
 );
 
@@ -356,8 +337,26 @@ const getRegionName = createSelector(
 	}
 );
 
+const getCaseNameByRelativeAttributeKeyMapping = createSelector(
+	[
+		CommonSelect.cases.getAllAsObject,
+		state => CommonSelect.app.getConfiguration(state, 'configByCaseKey'),
+	],
+	(cases, config) => {
+		if (config && cases) {
+			const mapping = {};
+			_forIn(config, (data, caseKey) => {
+				mapping[data?.relativeAttributeKey] = cases[caseKey]?.data?.nameDisplay;
+			});
+
+			return mapping;
+		} else {
+			return null;
+		}
+	}
+);
+
 export default {
-	isCountryLevelDisabled,
 	isDataForCurrentSettings,
 	getVisualizationComponentSet,
 	getPeriods,
@@ -372,4 +371,5 @@ export default {
 	getStyleKeyForActiveMapAndLayerKey,
 	getSubtitleForBaseChartWrapper,
 	getRegionName,
+	getCaseNameByRelativeAttributeKeyMapping,
 };

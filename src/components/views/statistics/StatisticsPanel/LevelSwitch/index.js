@@ -16,8 +16,6 @@ export const levelsFilter = {
 
 const mapStateToProps = state => {
 	return {
-		countryLevelDisabled:
-			Select.worldCereal.statistics.isCountryLevelDisabled(state),
 		activeLevelKey: Select.areas.areaTreeLevels.getActiveKey(state),
 		activePlaceKeys: Select.places.getActiveKeys(state),
 		levels: Select.areas.areaTreeLevels.getIndexed(
@@ -48,6 +46,16 @@ const mapDispatchToPropsFactory = dispatch => {
 				);
 				dispatch(
 					Action.data.components.componentUseClear('CountryRegionsBarChart')
+				);
+				dispatch(
+					Action.worldCereal.statistics.clearUseForHeatMapTable(
+						'GlobalShareAnnualCroplandTable'
+					)
+				);
+				dispatch(
+					Action.worldCereal.statistics.clearUseForHeatMapTable(
+						'CountryShareAnnualCroplandTable'
+					)
 				);
 
 				dispatch(Action.areas.areaTreeLevels.setActiveKey(activeLevelKey));

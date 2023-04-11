@@ -21,7 +21,7 @@ const AppTour = ({
 	openIntroOverlay,
 	redirectToDetailedView,
 	redirectToGlobalView,
-	// redirectToStatisticsView,
+	redirectToStatisticsView,
 
 	controlTourGuide,
 	activateDefaultLayer,
@@ -74,7 +74,7 @@ const AppTour = ({
 		} else if (activeView?.data?.nameInternal === 'globalView') {
 			setStep(7);
 		} else if (activeView?.data?.nameInternal === 'statistics') {
-			setStep(8);
+			setStep(10);
 		}
 
 		// if default layer is already added to the map
@@ -210,26 +210,24 @@ const AppTour = ({
 				expandProductLabel(false);
 				expandFilterWindow(false);
 				break;
-
-			// TODO hide for now
-			// case 10:
-			// 	openIntroOverlay(false);
-			// 	redirectToStatisticsView();
-			// 	expandProductLabel(false);
-			// 	expandFilterWindow(false);
-			// 	break;
-			// case 11:
-			// 	openIntroOverlay(false);
-			// 	redirectToStatisticsView();
-			// 	expandProductLabel(false);
-			// 	expandFilterWindow(false);
-			// 	break;
-			// case 12:
-			// 	openIntroOverlay(false);
-			// 	redirectToStatisticsView();
-			// 	expandProductLabel(false);
-			// 	expandFilterWindow(false);
-			// 	break;
+			case 10:
+				openIntroOverlay(false);
+				redirectToStatisticsView();
+				expandProductLabel(false);
+				expandFilterWindow(false);
+				break;
+			case 11:
+				openIntroOverlay(false);
+				redirectToStatisticsView();
+				expandProductLabel(false);
+				expandFilterWindow(false);
+				break;
+			case 12:
+				openIntroOverlay(false);
+				redirectToStatisticsView();
+				expandProductLabel(false);
+				expandFilterWindow(false);
+				break;
 			default:
 				break;
 		}

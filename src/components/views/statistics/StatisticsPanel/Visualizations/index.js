@@ -1,10 +1,8 @@
-import {connect, setRecomputeState} from '@gisatcz/ptr-state';
+import {connect} from '@gisatcz/ptr-state';
 import Select from '../../../../../state/Select';
 import Presentation from './presentation';
 
 const mapStateToProps = state => {
-	setRecomputeState(state);
-
 	return {
 		noDataForCurrentSettings:
 			!Select.worldCereal.statistics.isDataForCurrentSettings(state),
