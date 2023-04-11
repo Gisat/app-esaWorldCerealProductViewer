@@ -49,7 +49,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -108,7 +108,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -274,7 +274,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -334,7 +334,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-.2r',
@@ -395,7 +395,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -417,6 +417,7 @@ export default {
 						enableGridX: true,
 						enableLabel: true,
 						labelSkipHeight: 13,
+						labelSkipWidth: 50,
 						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
 						theme: {
 							fontSize: 11,
@@ -454,7 +455,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -476,6 +477,7 @@ export default {
 						enableGridX: true,
 						enableLabel: true,
 						labelSkipHeight: 13,
+						labelSkipWidth: 30,
 						maxValue: 100,
 						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
 						theme: {
@@ -620,7 +622,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-,d',
@@ -680,7 +682,7 @@ export default {
 					settings: {
 						indexBy: 'id',
 						layout: 'horizontal',
-						margin: {top: 0, right: 25, bottom: 20, left: 100},
+						margin: {top: 0, right: 25, bottom: 20, left: 130},
 						valueScale: {type: 'linear'},
 						indexScale: {type: 'band', round: true},
 						valueFormat: ' >-.2r',
@@ -703,6 +705,7 @@ export default {
 						enableGridX: true,
 						enableLabel: true,
 						labelSkipHeight: 13,
+						labelSkipWidth: 30,
 						labelTextColor: {from: 'color', modifiers: [['darker', 3]]},
 						theme: {
 							fontSize: 11,
