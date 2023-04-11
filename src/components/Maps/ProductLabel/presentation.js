@@ -44,7 +44,7 @@ const ProductLabel = ({
 		values: [
 			{color: null},
 			{color: '#ab0527', name: 'Low'},
-			{color: '#f7f8af', name: 'Midle'},
+			{color: '#f7f8af', name: 'Medium'},
 			{color: '#046e39', name: 'High'},
 		],
 	};
