@@ -2,7 +2,7 @@ export default [
 	{
 		key: 'annualcropland',
 		data: {
-			nameDisplay: 'Annual cropland',
+			nameDisplay: 'Temporary crops',
 			cogStyleKey: '92519f8a-59b4-4b09-b076-1df38b7cab50',
 			color: '#e41a1c',
 		},

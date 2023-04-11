@@ -17,6 +17,7 @@ import ConfidenceLayerControl from './ConfidenceLayerControl';
 import OpacitySlider from '../../atoms/OpacitySlider';
 
 import './style.scss';
+import helpers from '../../../helpers';
 
 Modal.setAppElement('#root');
 
@@ -141,12 +142,10 @@ const ProductLabelHeader = ({count, product, productMetadata, color}) => {
 	if (count === 1) {
 		const {sos, eos, aez, season, isGlobal} = productMetadata[0].data;
 
-		const startDate = isGlobal
-			? season[0].toUpperCase() + season.slice(1, season.length) + ' - '
-			: sos;
+		const startDate = isGlobal ? helpers.getSeasonName(season) : sos;
 		const endDate = isGlobal ? eos.slice(0, 4) : eos;
 		const fullDate = isGlobal
-			? startDate + endDate
+			? `${startDate} (${endDate})`
 			: startDate + ' / ' + endDate;
 
 		return (
