@@ -10,6 +10,7 @@ import RemovableLabel, {
 } from '../../../../atoms/RemovableLabel';
 
 import './style.scss';
+import helpers from '../../../../../helpers';
 
 const FilterParameterLabels = ({
 	parameter,
@@ -36,7 +37,8 @@ const FilterParameterLabels = ({
 			<Fragment key={parameter.key}>
 				{parameter.values.map(value => {
 					const valueKey = value.key || value;
-					const valueName = value.data?.nameDisplay || value;
+					const valueName =
+						value.data?.nameDisplay || helpers.getSeasonName(value) || value;
 
 					return (
 						<RemovableLabel
