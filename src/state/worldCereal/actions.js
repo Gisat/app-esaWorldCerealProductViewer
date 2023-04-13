@@ -270,6 +270,14 @@ function setConfidenceLayerActive(
 							confidenceLayerActive
 						)
 					);
+					dispatch(
+						CommonAction.maps.setMapLayerOption(
+							mapKey,
+							layer.key,
+							'singleTile',
+							confidenceLayerActive
+						)
+					);
 				}
 			});
 		}

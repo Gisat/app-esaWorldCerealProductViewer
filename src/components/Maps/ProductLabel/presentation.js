@@ -95,7 +95,7 @@ const ProductLabel = ({
 								onChange={onConfidenceLayerActiveChange}
 								// disabled={productTemplate?.key === 'activecropland'}
 								// TODO temporary
-								disabled={true}
+								disabled={false}
 							/>
 						</div>
 						<ProductLabelLegend
