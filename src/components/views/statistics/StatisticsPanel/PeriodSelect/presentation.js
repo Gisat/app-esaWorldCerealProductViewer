@@ -3,6 +3,16 @@ import {useEffect} from 'react';
 import {includes as _includes} from 'lodash';
 import StatisticsSelect from '../StatisticsSelect';
 import './style.scss';
+import {components} from 'react-select';
+
+const SingleValueComponent = ({children, ...props}) => {
+	const value = children ? children.slice(0, children.indexOf('(')) : null;
+	return <components.SingleValue {...props}>{value}</components.SingleValue>;
+};
+
+SingleValueComponent.propTypes = {
+	children: PropTypes.node,
+};
 
 const PeriodSelect = ({
 	availablePeriods,
@@ -41,6 +51,7 @@ const PeriodSelect = ({
 			options={options}
 			value={value}
 			onChange={setActivePeriodKey}
+			SingleValueComponent={SingleValueComponent}
 		/>
 	);
 };

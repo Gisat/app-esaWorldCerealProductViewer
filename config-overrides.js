@@ -28,7 +28,7 @@ module.exports = function override(config) {
 			// '@gisatcz/ptr-state': '/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-state',
 			// '@gisatcz/ptr-atoms': '/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-atoms',
 			// react:
-			// 	'/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-atoms/node_modules/react',
+			// 	'/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-maps/node_modules/react',
 			// 'react-dom':
 			// 	'/Users/vojtadubrovsky/_WORK/GISAT/git/ptr-atoms/node_modules/react-dom',
 		},

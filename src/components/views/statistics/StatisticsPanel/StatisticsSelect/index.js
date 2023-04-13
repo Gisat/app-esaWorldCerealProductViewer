@@ -12,6 +12,7 @@ const StatisticsSelect = ({
 	isSearchable,
 	disabled,
 	onChange,
+	SingleValueComponent,
 }) => {
 	const customStyles = {
 		control: (provided, state) => ({
@@ -177,6 +178,9 @@ const StatisticsSelect = ({
 				value={value}
 				isDisabled={disabled}
 				onChange={onChange}
+				components={
+					SingleValueComponent ? {SingleValue: SingleValueComponent} : null
+				}
 			/>
 		</StatisticsConfigurationItem>
 	);
@@ -198,6 +202,7 @@ StatisticsSelect.propTypes = {
 	menuPosition: PropTypes.string,
 	menuWidth: PropTypes.string,
 	onChange: PropTypes.func,
+	SingleValueComponent: PropTypes.node,
 };
 
 export default StatisticsSelect;
