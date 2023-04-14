@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
+import helpers from '../../../../../../helpers';
 
 const ProductFilterOption = ({
 	value,
@@ -11,7 +12,8 @@ const ProductFilterOption = ({
 	onValueChange,
 	isInteractivityLimited,
 }) => {
-	const name = metadata?.data?.nameDisplay || value;
+	const name =
+		metadata?.data?.nameDisplay || helpers.getSeasonName(value) || value;
 
 	return (
 		<div className="worldCereal-ProductFilterOption">

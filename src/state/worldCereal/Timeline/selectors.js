@@ -8,6 +8,7 @@ import {
 	timelineLayerLineHeight,
 	timelineLayerOrder,
 } from '../../../constants/app';
+import helpers from '../../../helpers';
 const getTimelineLayers = createSelector(
 	[
 		CommonSelect.cases.getAllAsObject,
@@ -48,7 +49,7 @@ const getTimelineLayers = createSelector(
 					elementHeight: timelineLayerElementHeight,
 					legend: {
 						title: productName,
-						subtitle: `(${seasonID}, zone ${placeID})`,
+						subtitle: `(${helpers.getSeasonName(seasonID)}, zone ${placeID})`,
 						key: product.key,
 					},
 					items: [

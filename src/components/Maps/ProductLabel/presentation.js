@@ -17,6 +17,7 @@ import ConfidenceLayerControl from './ConfidenceLayerControl';
 import OpacitySlider from '../../atoms/OpacitySlider';
 
 import './style.scss';
+import helpers from '../../../helpers';
 
 Modal.setAppElement('#root');
 
@@ -70,9 +71,12 @@ const ProductLabel = ({
 				<ExpandableLabelBody height={12.5}>
 					<div className="worldCereal-ProductLabelBody">
 						<div>
-							<ProductLabelBodyItem title="Set opacity">
+							<ProductLabelBodyItem
+								title="Set opacity"
+								disabled={confidenceLayerActive}
+							>
 								<OpacitySlider
-									value={layersOpacity}
+									value={confidenceLayerActive ? 100 : layersOpacity}
 									onChange={onOpacityChange}
 								/>
 							</ProductLabelBodyItem>
@@ -92,9 +96,7 @@ const ProductLabel = ({
 							<ConfidenceLayerControl
 								active={confidenceLayerActive}
 								onChange={onConfidenceLayerActiveChange}
-								// disabled={productTemplate?.key === 'activecropland'}
-								// TODO temporary
-								disabled={true}
+								disabled={productTemplate?.key === 'activecropland'}
 							/>
 						</div>
 						<ProductLabelLegend
@@ -141,12 +143,10 @@ const ProductLabelHeader = ({count, product, productMetadata, color}) => {
 	if (count === 1) {
 		const {sos, eos, aez, season, isGlobal} = productMetadata[0].data;
 
-		const startDate = isGlobal
-			? season[0].toUpperCase() + season.slice(1, season.length) + ' - '
-			: sos;
+		const startDate = isGlobal ? helpers.getSeasonName(season) : sos;
 		const endDate = isGlobal ? eos.slice(0, 4) : eos;
 		const fullDate = isGlobal
-			? startDate + endDate
+			? `${startDate} (${endDate})`
 			: startDate + ' / ' + endDate;
 
 		return (

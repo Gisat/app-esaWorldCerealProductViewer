@@ -29,6 +29,7 @@ export default {
 		key: 'season',
 		name: 'Season',
 		type: 'checkbox',
+		dataType: 'periods',
 		orderDirection: 'asc',
 		options: ['annual', 'winter', 'summer1', 'summer2'],
 	},

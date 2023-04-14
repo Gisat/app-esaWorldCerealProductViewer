@@ -5,9 +5,10 @@ import classnames from 'classnames';
 import {isArray as _isArray} from 'lodash';
 // import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 import WmsUrl from './WmsUrl';
-// import ConfidenceWmsUrl from './ConfidenceWmsUrl';
+import ConfidenceWmsUrl from './ConfidenceWmsUrl';
 
 import './style.scss';
+import helpers from '../../../../../helpers';
 // import {useState} from 'react';
 
 const MetadataInfoItemRec = ({label, small, children}) => {
@@ -61,7 +62,8 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 		<div className="worldCereal-MetadataInfoItem" style={style}>
 			<div className="worldCereal-MetadataInfoItemHeader">
 				<h4 className="worldCereal-MetadataInfoItemHeader-title">
-					{productName} {!isGlobal ? `- zone ${aez}` : null} - season {season}
+					{productName} {!isGlobal ? `- zone ${aez}` : null} - season{' '}
+					{helpers.getSeasonName(season)}
 				</h4>
 			</div>
 			<div className="worldCereal-MetadataInfoItemBasics">
@@ -73,7 +75,9 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 					<MetadataInfoItemRec label="ID">{merged.id}</MetadataInfoItemRec>
 				) : null}
 				<MetadataInfoItemRec label="product">{productName}</MetadataInfoItemRec>
-				<MetadataInfoItemRec label="season">{season}</MetadataInfoItemRec>
+				<MetadataInfoItemRec label="season">
+					{helpers.getSeasonName(season)}
+				</MetadataInfoItemRec>
 				<MetadataInfoItemRec label="start of season">{sos}</MetadataInfoItemRec>
 				<MetadataInfoItemRec label="end of season">{eos}</MetadataInfoItemRec>
 				{!isGlobal ? (
@@ -93,15 +97,14 @@ const MetadataInfoItem = ({productMetadata, productTemplate}) => {
 				<MetadataInfoItemRec label="product wms url">
 					<WmsUrl spatialDataSourceKey={dataSource.product} />
 				</MetadataInfoItemRec>
-				{/* TODO temporary */}
-				{/*{productTemplate?.key !== 'activecropland' ? (*/}
-				{/*	<MetadataInfoItemRec label="confidence wms url">*/}
-				{/*		<ConfidenceWmsUrl*/}
-				{/*			spatialDataSourceKey={dataSource.product}*/}
-				{/*			confidence={dataSource.confidence}*/}
-				{/*		/>*/}
-				{/*	</MetadataInfoItemRec>*/}
-				{/*) : null}*/}
+				{productTemplate?.key !== 'activecropland' ? (
+					<MetadataInfoItemRec label="confidence wms url">
+						<ConfidenceWmsUrl
+							spatialDataSourceKey={dataSource.product}
+							confidence={dataSource.confidence}
+						/>
+					</MetadataInfoItemRec>
+				) : null}
 			</div>
 			{!isGlobal ? (
 				tiles ? (

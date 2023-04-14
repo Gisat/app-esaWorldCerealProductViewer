@@ -1,20 +1,8 @@
 import PropTypes from 'prop-types';
 import {Button} from '@gisatcz/ptr-atoms';
+import helpers from '../../../../../helpers';
 
 import './style.scss';
-
-const getSeasonName = season => {
-	switch (season) {
-		case 'summer1':
-			return 'Summer1';
-		case 'summer2':
-			return 'Summer2';
-		case 'winter':
-			return 'Winter';
-		case 'annual':
-			return 'Annual';
-	}
-};
 
 const Product = ({product, onProductClick}) => {
 	return (
@@ -25,7 +13,7 @@ const Product = ({product, onProductClick}) => {
 			onClick={() => onProductClick(product)}
 			primary={product.active}
 		>
-			{getSeasonName(product.data.season)}
+			{helpers.getSeasonName(product.data.season)}
 		</Button>
 	);
 };

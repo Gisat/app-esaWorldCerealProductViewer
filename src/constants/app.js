@@ -33,7 +33,7 @@ export const AEZLAYERKEY = 'aez';
 export const disabledRemoveAllLayerForViewName = 'statistics';
 
 export const timelineLayerOrder = [
-	'Annual cropland',
+	'Temporary crops',
 	'Winter cereals',
 	'Spring cereals',
 	'Maize',
