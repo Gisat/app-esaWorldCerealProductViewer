@@ -1,72 +1,71 @@
 @import '../../../styles/variables';
 
 .worldCereal-MapWrapper {
-  position: relative;
+	position: relative;
 }
 
 .ptr-map-wrapper.worldCereal-MapWrapper.active::after {
-  border: 2px dashed var(--accent50);
-  z-index: 1;
+	border: 2px dashed var(--accent50);
+	z-index: 1;
 }
 
 .ptr-map-wrapper.worldCereal-MapWrapper.one-map.active:after,
 .ptr-map-wrapper.worldCereal-MapWrapper.not-highlight-active.active:after {
-  border: 0;
+	border: 0;
 }
 
 .worldCereal-MapProductLabelContainer {
-  position: absolute;
-  top: .4rem;
-  left: .4rem;
-  z-index: 2;
-  max-width: calc(100% - 2rem);
+	position: absolute;
+	top: 0.4rem;
+	left: 0.4rem;
+	z-index: 2;
+	max-width: calc(100% - 2rem);
 }
 
 .worldCereal-MapProductLabelContainer.is-right {
-  left: auto;
-  right: .4rem;
+	left: auto;
+	right: 0.4rem;
 }
 
 .worldCereal-MapProductLabelContainer > div {
-  position: relative;
+	position: relative;
 }
 
 .worldCereal-MapTools {
-  position: absolute;
-  top: .5rem;
-  right: .5rem;
-  z-index: 2;
-  display: flex;
-  grid-gap: .35rem;
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	z-index: 2;
+	display: flex;
+	grid-gap: 0.35rem;
 
-
-  .ptr-IconTool.is-floating:hover{
-    background: var(--accent20);
-    color: var(--base100);
-    // stroke: var(--base100);
-    .line {
-      fill: var(--base100);
-    }
-  }
+	.ptr-IconTool.is-floating:hover {
+		background: var(--accent20);
+		color: var(--base100);
+		// stroke: var(--base100);
+		.line {
+			fill: var(--base100);
+		}
+	}
 }
 
 .worldCereal-MapToolsButton.ptr-button {
-  padding: 0 .15rem;
-  border-radius: 0;
-  background: var(--base40);
+	padding: 0 0.15rem;
+	border-radius: 0;
+	background: var(--base40);
 }
 
 .ptr-map-wrapper.worldCereal-MapWrapper.active .worldCereal-MapToolsButton.ptr-button {
-  background: var(--accent30);
+	background: var(--accent30);
 }
 
-.worldCereal-toggleDataQuery{
-  &.active{
-    background: var(--accent50);
-    color: var(--base100);
-    
-    &:hover{
-      background: var(--accent30);
-    }
-  }
+.ptr-IconTool.is-floating.worldCereal-toggleDataQuery {
+	&.active {
+		background: var(--accent50);
+		color: var(--base100);
+
+		&:hover {
+			background: var(--accent30);
+		}
+	}
 }
