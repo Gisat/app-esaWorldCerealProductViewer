@@ -71,9 +71,12 @@ const ProductLabel = ({
 				<ExpandableLabelBody height={12.5}>
 					<div className="worldCereal-ProductLabelBody">
 						<div>
-							<ProductLabelBodyItem title="Set opacity">
+							<ProductLabelBodyItem
+								title="Set opacity"
+								disabled={confidenceLayerActive}
+							>
 								<OpacitySlider
-									value={layersOpacity}
+									value={confidenceLayerActive ? 100 : layersOpacity}
 									onChange={onOpacityChange}
 								/>
 							</ProductLabelBodyItem>
