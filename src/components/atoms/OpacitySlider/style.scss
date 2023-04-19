@@ -22,6 +22,12 @@
   cursor: pointer;
 }
 
+.ptr-OpacitySlider.disabled .ptr-OpacitySlider-thumb {
+  background: var(--base30);
+  color: var(--base50);
+  border: 2px solid var(--base30);
+}
+
 .ptr-OpacitySlider-thumb:hover {
   background: var(--base50);
 }
@@ -37,5 +43,9 @@
 }
 
 .ptr-OpacitySlider-track-1 {
+  background: var(--base30);
+}
+
+.ptr-OpacitySlider.disabled .ptr-OpacitySlider-track-0 {
   background: var(--base30);
 }

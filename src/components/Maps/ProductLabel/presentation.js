@@ -78,6 +78,7 @@ const ProductLabel = ({
 								<OpacitySlider
 									value={confidenceLayerActive ? 100 : layersOpacity}
 									onChange={onOpacityChange}
+									disabled={confidenceLayerActive}
 								/>
 							</ProductLabelBodyItem>
 							<ProductLabelBodyItem
@@ -96,7 +97,7 @@ const ProductLabel = ({
 							<ConfidenceLayerControl
 								active={confidenceLayerActive}
 								onChange={onConfidenceLayerActiveChange}
-								disabled={productTemplate?.key === 'activecropland'}
+								isActiveCropland={productTemplate?.key === 'activecropland'}
 							/>
 						</div>
 						<ProductLabelLegend

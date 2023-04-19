@@ -7,6 +7,8 @@ import './style.scss';
 import Action from '../../../state/Action';
 
 const mapStateToProps = (state, ownProps) => {
+	const mapSetKey = Select.maps.getActiveSetKey(state);
+
 	return {
 		productTemplate: Select.worldCereal.getProductTemplateByKey(
 			state,
@@ -28,6 +30,7 @@ const mapStateToProps = (state, ownProps) => {
 			ownProps.mapKey,
 			ownProps.productMetadataKeys
 		),
+		boxRange: Select.maps.getMapSetView(state, mapSetKey)?.boxRange,
 	};
 };
 
