@@ -78,6 +78,7 @@ const ProductLabel = ({
 								<OpacitySlider
 									value={confidenceLayerActive ? 100 : layersOpacity}
 									onChange={onOpacityChange}
+									disabled={confidenceLayerActive}
 								/>
 							</ProductLabelBodyItem>
 							<ProductLabelBodyItem
