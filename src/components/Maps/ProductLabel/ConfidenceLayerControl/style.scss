@@ -1,0 +1,14 @@
+@use 'sass:math';
+@import '../../../../styles/variables';
+
+.worldWater-ConfidenceLayerControlHelp {
+  pointer-events: auto;
+  margin-right: .5rem;
+  fill: var(--base10);
+}
+
+.worldWater-ConfidenceLayerControlHelp-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

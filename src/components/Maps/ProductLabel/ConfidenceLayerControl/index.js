@@ -1,28 +1,20 @@
-import PropTypes from 'prop-types';
-import {Toggle} from '@gisatcz/ptr-atoms';
-import {ProductLabelBodyItem} from '../presentation';
+import {connect} from '@gisatcz/ptr-state';
+import Select from '../../../../state/Select';
+// import Action from '../../../../state/Action';
 
-const ConfidenceLayerControl = ({active, onChange, disabled}) => {
-	return (
-		<ProductLabelBodyItem
-			title="Confidence layer"
-			key="confidence"
-			onClick={() => onChange(!active)}
-			disabled={disabled}
-		>
-			<Toggle
-				className={disabled ? '' : 'ptr-dark'}
-				notInteractive
-				on={active}
-			/>
-		</ProductLabelBodyItem>
-	);
+import Presentation from './presentation';
+
+const mapStateToProps = state => {
+	const mapSetKey = Select.maps.getActiveSetKey(state);
+
+	return {
+		disabledDueBoxRange:
+			Select.maps.getMapSetView(state, mapSetKey)?.boxRange > 1000000,
+	};
 };
 
-ConfidenceLayerControl.propTypes = {
-	active: PropTypes.bool,
-	disabled: PropTypes.bool,
-	onChange: PropTypes.func,
+const mapDispatchToProps = () => {
+	return {};
 };
 
-export default ConfidenceLayerControl;
+export default connect(mapStateToProps, mapDispatchToProps)(Presentation);
