@@ -1,11 +1,13 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import Favicon from 'react-favicon';
+import {AnalyticsProvider} from 'use-analytics';
 
 import {connects, setFetch} from '@gisatcz/ptr-state';
 import {create as createRouter} from '@gisatcz/ptr-router';
 import {AppContainer} from '@gisatcz/ptr-components';
 
+import analytics from './utils/analytics';
 import Action from './state/Action';
 import {init as initCore} from './core';
 import {appKey} from './constants/app';
@@ -97,9 +99,11 @@ const App = () => {
 	return (
 		<>
 			<Favicon url={favicon} />
-			<ConnectedAppContainer appKey={appKey}>
-				<AppContent />
-			</ConnectedAppContainer>
+			<AnalyticsProvider instance={analytics}>
+				<ConnectedAppContainer appKey={appKey}>
+					<AppContent />
+				</ConnectedAppContainer>
+			</AnalyticsProvider>
 		</>
 	);
 };

@@ -18,6 +18,7 @@
 		"url": "https://github.com/gisat-panther/app-worldWaterPreliminaryDataReview"
 	},
 	"dependencies": {
+		"@analytics/google-analytics": "^1.0.5",
 		"@gisatcz/ptr-atoms": "^1.8.0",
 		"@gisatcz/ptr-components": "^1.5.0",
 		"@gisatcz/ptr-core": "^1.7.2",
@@ -35,6 +36,7 @@
 		"@turf/helpers": "^6.5.0",
 		"@turf/intersect": "^6.5.0",
 		"@turf/projection": "^6.5.0",
+		"analytics": "^0.8.1",
 		"babel-plugin-file-loader": "^2.0.0",
 		"chroma-js": "^2.4.2",
 		"classnames": "^2.3.2",
@@ -62,7 +64,8 @@
 		"react-slider": "^2.0.4",
 		"react-swm-icon-pack": "^1.0.14",
 		"react-uid": "^2.3.2",
-		"reselect": "^4.1.7"
+		"reselect": "^4.1.7",
+		"use-analytics": "^0.0.5"
 	},
 	"devDependencies": {
 		"@babel/preset-env": "^7.20.2",
