@@ -101,6 +101,11 @@
 .worldCereal-ProductLabelBodyItem.is-disabled {
   color: $disabledTextColor;
   pointer-events: none;
+  cursor: auto;
+}
+
+.worldCereal-ProductLabelBodyItem.is-disabled:hover {
+  background: none;
 }
 
 .worldCereal-ProductLabelBodyItem-title {
