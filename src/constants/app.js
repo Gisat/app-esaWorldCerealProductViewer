@@ -2,6 +2,8 @@ export const appKey = 'esaWorldCerealProductViewer';
 export const defaultStyleKey = '20c6c7c5-1b58-4db2-85f2-442cf64e341a';
 export const globalAreaLevelKey = 'a53a54dd-8a0b-4e28-b7aa-aa566cd2ba47';
 
+export const gaId = 'UA-59584085-20';
+
 export const MAX_MAPS_IN_MAP_SET = 4;
 export const MAX_BOX_RANGE_FOR_LAYERS_HANDLING = 4000000;
 export const DETAILED_BOX_RANGE = 10000;
