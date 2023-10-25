@@ -15,6 +15,15 @@ export const timelineLayerLineHeight = 16; //px
 
 export const timelineLayerElementHeight = 10; //px, rest is for line padding
 
+export const screens = {
+	home: 'home',
+	exploration: 'exploration',
+	globalView: 'global-view',
+	statistics: 'statistics',
+};
+
+export const defaultHomeScreen = screens['home'];
+
 export const baseChartColorPalette = [
 	'#f0c85b',
 	'#BF9C2F',

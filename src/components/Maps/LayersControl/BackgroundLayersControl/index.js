@@ -2,7 +2,7 @@ import {connect} from '@gisatcz/ptr-state';
 import Select from '../../../../state/Select';
 import Action from '../../../../state/Action';
 import backgroundLayers from '../../../../data/layers/backgroundLayers';
-
+import {addToUrl} from '../../../../utils';
 import presentation from './presentation';
 
 const mapStateToProps = (state, ownProps) => {
@@ -25,6 +25,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onSelect: layerKey => {
+			addToUrl(layerKey, 'backgroundLayer');
+
 			dispatch(
 				Action.maps.setMapSetBackgroundLayer(
 					ownProps.mapSetKey,

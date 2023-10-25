@@ -99,7 +99,28 @@ function request(url, method, query, payload, userKey) {
 		.catch(err => new Error(`Failed to fetch. Error: ${err}`));
 }
 
+export const addToUrl = (value, param) => {
+	const urlSearchParams = new URLSearchParams(window.location.search);
+	const params = Object.fromEntries(urlSearchParams.entries());
+	const replacedExistingParams = encodeQueryData({...params, [param]: value});
+
+	const newUrl = params.param
+		? `${window.location.href}&${param}=${value}`
+		: `${window.location.href}?${replacedExistingParams}`;
+
+	window.history.replaceState('', {}, newUrl);
+};
+
+const encodeQueryData = data => {
+	const ret = [];
+	for (let d in data)
+		ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+	return ret.join('&');
+};
+
 export default {
 	getExtentFromMapViewAsFeature,
 	request,
+	addToUrl,
+	encodeQueryData,
 };

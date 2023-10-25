@@ -1,5 +1,4 @@
 import {Select as CommonSelect} from '@gisatcz/ptr-state';
-
 import globalProductMetadataSelectors from './worldCereal/GlobalProductMetadata/selectors';
 import productMetadataSelectors from './worldCereal/ProductMetadata/selectors';
 import productMetadataFilterSelectors from './worldCereal/ProductMetadataFilter/selectors';
@@ -8,9 +7,11 @@ import configurationSelectors from './worldCereal/configuration/selectors';
 import timelineSelect from './worldCereal/Timeline/selectors';
 import statisticsSelectors from './worldCereal/Statistics/selectors';
 import worldCerealSelectors from './worldCereal/selectors';
+import router from './router/selectors'; // eslint-disable-line
 
 export default {
 	...CommonSelect,
+	router,
 	worldCereal: {
 		productMetadata: productMetadataSelectors,
 		globalProductMetadata: globalProductMetadataSelectors,
