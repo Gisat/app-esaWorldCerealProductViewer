@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {IconTool, Tooltip} from '@gisatcz/ptr-atoms';
 import {useTour} from '@reactour/tour';
-import {Search, Globe1, User1, ChartVertical} from 'react-swm-icon-pack';
+import {Search, Globe1, Settings, ChartVertical} from 'react-swm-icon-pack';
 import IntroCard from './IntroCard';
 import {IntroCardText, IntroCardTitle} from './IntroCard/presentation';
 import EsaLogo from '../atoms/EsaLogo';
@@ -27,7 +27,7 @@ const getIcon = name => {
 		case 'globalView':
 			return Globe1;
 		case 'userProducts':
-			return User1;
+			return Settings;
 		case 'statistics':
 			return ChartVertical;
 		default:
@@ -73,10 +73,13 @@ const Intro = ({onViewSelect, views, tourGuideIsOpen}) => {
 								<IntroCardText>{view.data.description}</IntroCardText>
 							</IntroCard>
 						))}
-						{/*<IntroCard disabled Icon={User1}>*/}
-						{/*	<IntroCardTitle>User products</IntroCardTitle>*/}
-						{/*	<IntroCardText>exploration</IntroCardText>*/}
-						{/*</IntroCard>*/}
+						<IntroCard
+							Icon={Settings}
+							onClick={() => window.open(window.runtimeConfig.processesAppURL)}
+						>
+							<IntroCardTitle>Processing hub</IntroCardTitle>
+							<IntroCardText>Manage your processing jobs</IntroCardText>
+						</IntroCard>
 					</div>
 				</div>
 				<div className="worldCereal-Intro-body"></div>
