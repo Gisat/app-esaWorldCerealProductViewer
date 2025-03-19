@@ -76,9 +76,12 @@ const Intro = ({onViewSelect, views, tourGuideIsOpen}) => {
 						<IntroCard
 							Icon={Settings}
 							onClick={() => window.open(window.runtimeConfig.processesAppURL)}
+							disabled={!window.runtimeConfig.processesAppURL}
 						>
-							<IntroCardTitle>Processing hub</IntroCardTitle>
-							<IntroCardText>Manage your processing jobs</IntroCardText>
+							<IntroCardTitle>Processing Hub</IntroCardTitle>
+							<IntroCardText>
+								to manage your WorldCereal processes
+							</IntroCardText>
 						</IntroCard>
 					</div>
 				</div>
